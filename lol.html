@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DNB x James Brown Mashup DJ Set</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #eee; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+    .warning { background: #ff4444; color: #fff; padding: 10px; margin-bottom: 20px; border-radius: 4px; max-width: 600px; text-align: center; }
+    h1 { margin-bottom: 10px; }
+    #playlist { list-style: none; padding: 0; width: 100%; max-width: 600px; }
+    #playlist li { padding: 10px; border-bottom: 1px solid #333; cursor: pointer; }
+    #playlist li.active { background: #222; }
+    #controls { margin-top: 20px; }
+    button { padding: 10px 20px; font-size: 1rem; cursor: pointer; margin: 0 5px; }
+  </style>
+</head>
+<body>
+  <div class="warning">
+    ⚠️ This page must be served over HTTP/HTTPS (not opened via file://) and <br>
+    you must replace each <code>YOUR_URL_n.mp3</code> with a valid audio URL.<br>
+    Consider running a local server (e.g., <code>npx http-server</code>).
+  </div>
+  <h1>Drum & Bass x James Brown Mashup DJ Set</h1>
+  <ul id="playlist"></ul>
+  <div id="controls">
+    <button id="playBtn">Play</button>
+    <button id="pauseBtn">Pause</button>
+  </div>
+
+  <script>
+    console.log('Page loaded');
+
+    const playlist = [
+      { title: "I Got You (I Feel Good) - VoodooVibe DNB Edit", url: "YOUR_URL_1.mp3" },
+      { title: "Sunny (Regroove by Featurecast)", url: "YOUR_URL_2.mp3" },
+      { title: "The Boss (DnB Remix) by Irsiz", url: "YOUR_URL_3.mp3" },
+      { title: "The Payback (Ronnie B's Drum & Bass Mix)", url: "YOUR_URL_4.mp3" },
+      { title: "I Feel Good (Movin Whata Remix)", url: "YOUR_URL_5.mp3" },
+      { title: "Bisweed – Rooftop (Drum & Bass Remix)", url: "YOUR_URL_6.mp3" },
+      { title: "High Contrast – Kiss Kiss Bang Bang (instr.) + Soul Power (acapella)", url: "YOUR_URL_7.mp3" },
+      { title: "Calibre – Even If (instr.) + It’s a Man’s Man’s Man’s World (acapella)", url: "YOUR_URL_8.mp3" },
+      { title: "Sub Focus – Tidal Wave (instr.) + Sex Machine (acapella)", url: "YOUR_URL_9.mp3" },
+      { title: "DJ Marky – LK (instr.) + Give It Up or Turnit a Loose (acapella)", url: "YOUR_URL_10.mp3" },
+      { title: "Logistics – Together (instr.) + Papa’s Got a Brand New Bag (acapella)", url: "YOUR_URL_11.mp3" },
+      { title: "Metrik – We Got It (instr.) + Get Up Offa That Thing (acapella)", url: "YOUR_URL_12.mp3" }
+    ];
+
+    const fadeTime = 10; // seconds for crossfade
+    let current = 0, playing = false, useA1 = true, crossfadeTimeout;
+    const a1 = new Audio(), a2 = new Audio();
+
+    [a1, a2].forEach((audio, i) => {
+      audio.addEventListener('error', e => console.error(`Audio${i+1} error:`, e));
+    });
+
+    const playlistEl = document.getElementById('playlist');
+    playlist.forEach((track, i) => {
+      const li = document.createElement('li');
+      li.textContent = track.title;
+      li.addEventListener('click', () => { current = i; playFrom(current); });
+      playlistEl.appendChild(li);
+    });
+
+    document.getElementById('playBtn').addEventListener('click', () => {
+      console.log('Play clicked');
+      if (!playing) { playing = true; current = 0; useA1 = true; playFrom(current); }
+      else { const curr = useA1 ? a1 : a2; curr.play().catch(e => console.error('Play error:', e)); }
+    });
+
+    document.getElementById('pauseBtn').addEventListener('click', () => {
+      (useA1 ? a1 : a2).pause();
+    });
+
+    function updateUI() {
+      Array.from(playlistEl.children).forEach((li, i) => li.classList.toggle('active', i === current));
+    }
+
+    function playFrom(index) {
+      clearTimeout(crossfadeTimeout);
+      const track = playlist[index];
+      if (track.url.includes('YOUR_URL')) {
+        alert('Please replace all YOUR_URL_n.mp3 placeholders with valid audio URLs.');
+        return;
+      }
+      const curr = useA1 ? a1 : a2, next = useA1 ? a2 : a1;
+      curr.src = track.url; curr.volume = 1;
+      curr.play().then(() => console.log(`Playing: ${track.title}`))
+        .catch(e => console.error('Playback failed:', e));
+      updateUI();
+
+      curr.addEventListener('loadedmetadata', () => {
+        const delay = Math.max((curr.duration - fadeTime) * 1000, 0);
+        crossfadeTimeout = setTimeout(() => startCrossfade(curr, next), delay);
+      }, { once: true });
+
+      curr.onended = () => {
+        current = (current + 1) % playlist.length;
+        useA1 = !useA1;
+        playFrom(current);
+      };
+    }
+
+    function startCrossfade(from, to) {
+      console.log('Starting crossfade');
+      const nextIndex = (current + 1) % playlist.length;
+      const nextTrack = playlist[nextIndex];
+      if (nextTrack.url.includes('YOUR_URL')) return;
+      to.src = nextTrack.url; to.volume = 0;
+      to.play().catch(e => console.error('Next play error:', e));
+
+      let step = 0, steps = 50;
+      const interval = (fadeTime * 1000) / steps;
+      const fade = setInterval(() => {
+        step++;
+        from.volume = Math.max(1 - step/steps, 0);
+        to.volume = Math.min(step/steps, 1);
+        if (step >= steps) clearInterval(fade);
+      }, interval);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Job Replacement Timeline | AITimeline.net</title>
+  <meta name="description" content="See when AI is projected to replace your job — and by how much. Explore a visual timeline with expert predictions across industries. Updated 2025.">
+  <meta property="og:title" content="AI Job Replacement Timeline" />
+  <meta property="og:description" content="When will AI take over your job? This interactive timeline visualizes AI's impact on 30+ job roles, based on expert forecasts." />
+  <meta property="og:url" content="https://aitimeline.net/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aitimeline.net/preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Job Replacement Timeline" />
+  <meta name="twitter:description" content="Explore expert predictions for when AI will automate your job. Browse an interactive timeline by industry." />
+  <meta name="twitter:image" content="https://aitimeline.net/preview.jpg" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    :root {
+      --bg: #18181b;
+      --fg: #e4e4e7;
+      --accent: #c026d3;
+      --accent-light: #d946ef;
+      --scroll: #3f3f46;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+body {
+  height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+    a {
+      color: var(--accent-light);
+      text-decoration: none;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .75rem 1rem;
+      background: #000a;
+      backdrop-filter: blur(8px);
+    }
+    header h1 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    nav {
+      display: flex;
+      gap: .45rem;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 7px;
+      padding: .45rem .9rem;
+      font-size: .8rem;
+      background: #3f3f46;
+      color: var(--fg);
+      transition: .2s;
+    }
+    button.active,
+    button:hover {
+      background: var(--accent);
+    }
+main {
+  flex: 1;
+  position: relative;
+  height: calc(100% - 56px); /* or whatever your header height is */
+}
+.view {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+#timelineWrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+}
+
+@media(max-width: 650px) {
+  #timelineWrap {
+    overflow-y: auto;
+  }
+}
+    #timelineWrap:active {
+      cursor: grabbing;
+    }
+    #dashWrap {
+      display: none;
+      overflow: auto;
+      padding: 1rem;
+    }
+    #timelineWrap::-webkit-scrollbar {
+      height: 13px;
+      width: 13px;
+    }
+    #timelineWrap::-webkit-scrollbar-track {
+      background: #1f1f23;
+    }
+    #timelineWrap::-webkit-scrollbar-thumb {
+      background: var(--scroll);
+    }
+    #timelineWrap:hover::-webkit-scrollbar-thumb {
+      background: var(--accent);
+    }
+    .tick-line {
+      stroke: #2d2d32;
+      stroke-width: 1;
+    }
+    .tick-text {
+      fill: var(--fg);
+      font-size: .75rem;
+      font-weight: 400;
+      text-anchor: middle;
+    }
+.job-rect {
+  rx: 6;
+  ry: 6;
+  fill: #000; /* black background */
+  stroke: var(--accent); /* magenta outline */
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+/* hover and active glow effect */
+g[data-j]:hover .job-rect,
+g[data-j]:active .job-rect {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 8px var(--accent-light));
+}
+    .job-text {
+      fill: #fff;
+      font-size: .64rem;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+    }
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #000c;
+      padding: .6rem;
+      font-size: .75rem;
+      text-align: left;
+      color: var(--accent-light);
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+    }
+    tbody td {
+      padding: .55rem .65rem;
+      font-size: .72rem;
+      border-bottom: 1px solid #2f2f33;
+      vertical-align: top;
+    }
+    tbody tr:hover {
+      background: #222225;
+    }
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  visibility: hidden;
+  background: #000d;
+  padding: .8rem 1rem;
+  border-radius: 6px;
+  font-size: .77rem;
+  max-width: 320px; /* <- made a little wider */
+  line-height: 1.4;
+}
+    #tooltip h4 {
+      margin: 0 0 .25rem;
+      font-size: .8rem;
+      color: var(--accent-light);
+    }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: #000c;
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      opacity: 0;
+      visibility: hidden;
+      transition: .2s;
+    }
+    .modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal {
+      background: #26262b;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 92%;
+      font-size: .84rem;
+      line-height: 1.4;
+    }
+    .modal h3 {
+      margin: 0 0 .55rem;
+      font-size: .9rem;
+      color: var(--accent-light);
+    }
+    .modal-close {
+      text-align: right;
+      margin-top: .85rem;
+    }
+    .modal-close button {
+      background: #3f3f46;
+      color: var(--fg);
+      padding: .4rem .8rem;
+      border-radius: 6px;
+      font-size: .75rem;
+    }
+    @media(max-width:850px) {
+      header h1 { font-size:.92rem; }
+      button { font-size:.76rem; padding:.4rem .8rem; }
+      .job-text { font-size:.6rem; }
+    }
+    @media(max-width:650px) {
+      button { font-size:.73rem; padding:.35rem .7rem; }
+      .tick-text { font-size:.8rem; text-anchor:start; }
+      .job-text { font-size:.55rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Job Replacement Timeline</h1>
+    <nav>
+      <button id="btnTime" class="active">Timeline</button>
+      <button id="btnDash">Current State</button>
+      <button id="btnAbout">About</button>
+    </nav>
+  </header>
+  <main>
+    <div id="timelineWrap" class="view">
+      <svg id="timelineSVG"></svg>
+    </div>
+    <div id="dashWrap" class="view">
+      <table id="dashTbl">
+        <thead>
+<tr>
+  <th data-sort="job_title" data-label="Job">Job</th>
+  <th data-sort="current_automation_pct" data-label="Current State">Current State</th>
+  <th data-sort="industry" data-label="Industry">Industry</th>
+  <th data-sort="full_auto_year" data-label="Full-Auto Year">Full-Auto Year</th>
+  <th>Sources</th>
+  <th>Reasoning</th>
+</tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="tooltip"></div>
+  <div id="modalOv" class="modal-overlay">
+    <div id="modalBox" class="modal"></div>
+  </div>
+
+  <script>
+    const CARD_W = 160, CARD_H = 40;
+    const GAP_V = 14, GAP_H = 14;
+    const LEFT_PAD = 90, TOP_PAD = 60;
+    const LEFT_PAD_M = 110;
+    const YEAR_PX = 200;
+    const MOBILE_BREAK = 650;
+    const ROWS_PER_COL_M = 4;
+    let jobs = [], isMob = false;
+    let sortKey = null, sortAsc = true;
+
+    fetch('jobs.json')
+      .then(r => r.json())
+      .then(data => {
+        jobs = Array.isArray(data) ? data : Object.values(data).flat();
+        init();
+      })
+      .catch(e => console.error('jobs.json missing', e));
+
+function init(){
+  isMob = window.innerWidth < MOBILE_BREAK;
+  buildTimeline();
+  sortJobs();        // Sort jobs right after fetching them
+  buildDash();       // Build the sorted dashboard
+  enableSorting();   // Attach click handlers to the new headers
+  updateSortArrows(); // Show the arrow next to the current column
+  navInit();
+  modalInit();
+  window.addEventListener('resize', debounce(() => location.reload(), 300));
+}
+
+    function trunc(s, l){
+      return s && s.length > l ? s.slice(0, l-1) + '…' : s;
+    }
+    function find(code){
+      return jobs.find(j => j.job_code == code);
+    }
+    function renderSources(src){
+      if(!src || src.length === 0) return '—';
+      return src.map(s => s.trim()).join('; ');
+    }
+    function buildTimeline(){
+      const svg = d3.select('#timelineSVG');
+      svg.selectAll('*').remove();
+
+      const years = jobs
+        .map(j => j.full_auto_year)
+        .filter(Boolean);
+      const yMin = Math.min(...years),
+            yMax = Math.max(...years);
+
+      if(isMob) {
+        vertical(svg, yMin, yMax);
+      } else {
+        horizontal(svg, yMin, yMax);
+      }
+
+      attachCardEvents();
+      enableDrag();
+    }
+
+    function horizontal(svg, yMin, yMax){
+      const x = d3.scaleLinear()
+                  .domain([yMin, yMax])
+                  .range([LEFT_PAD, (yMax - yMin) * YEAR_PX + LEFT_PAD]);
+
+      const buckets = {};
+      jobs.forEach(j => {
+        const yr = j.full_auto_year;
+        (buckets[yr] = buckets[yr] || []).push(j);
+      });
+
+      const maxStack = Math.max(...Object.values(buckets).map(b => b.length));
+const headerHeight = document.querySelector('header').offsetHeight;
+const availableHeight = window.innerHeight - headerHeight;
+const H = Math.max(availableHeight, TOP_PAD + maxStack * (CARD_H + GAP_V) + 20);
+
+      const W = x(yMax) + CARD_W + LEFT_PAD;
+      svg.attr('width', W).attr('height', H);
+
+      svg.append('g').selectAll('g').data(d3.range(yMin, yMax + 1)).enter()
+        .append('g')
+        .attr('transform', d => `translate(${x(d)},0)`)
+        .call(g => {
+          g.append('line')
+            .attr('class','tick-line')
+            .attr('y1',0).attr('y2',H);
+          g.append('text')
+            .attr('class','tick-text')
+            .attr('y',18)
+            .text(d => d);
+        });
+
+      Object.entries(buckets).forEach(([yr, list]) => {
+        list.forEach((j, i) => {
+          const gx = x(+yr) - CARD_W / 2;
+          const gy = TOP_PAD + i * (CARD_H + GAP_V);
+          const g = svg.append('g')
+                       .attr('transform', `translate(${gx},${gy})`)
+                       .attr('data-j', j.job_code);
+          g.append('rect')
+            .attr('class','job-rect')
+            .attr('width', CARD_W)
+            .attr('height', CARD_H);
+          g.append('text')
+            .attr('class','job-text')
+            .attr('x', CARD_W / 2)
+            .attr('y', CARD_H / 2 + 5) // slightly larger offset for better centering
+            .attr('text-anchor','middle')
+            .text(trunc(j.job_title, 22));
+        });
+      });
+    }
+    function vertical(svg, yMin, yMax){
+      const YEAR_SPACING = isMob ? 40 : 0;
+
+const yScale = d3.scaleLinear()
+  .domain([yMin, yMax])
+  .range([TOP_PAD, (yMax - yMin) * (YEAR_PX + YEAR_SPACING) + TOP_PAD]);
+
+
+      const buckets = {};
+      jobs.forEach(j => {
+        const yr = j.full_auto_year;
+        (buckets[yr] = buckets[yr] || []).push(j);
+      });
+
+      const maxCols = Math.max(...Object.values(buckets)
+        .map(b => Math.ceil(b.length / ROWS_PER_COL_M)));
+      const W = LEFT_PAD_M + maxCols * (CARD_W + GAP_H) + 40;
+const headerHeight = document.querySelector('header').offsetHeight;
+const availableHeight = window.innerHeight - headerHeight;
+const H = Math.max(availableHeight, yScale(yMax) + ROWS_PER_COL_M * (CARD_H + GAP_V) + 120);
+
+
+      svg.attr('width', W).attr('height', H);
+
+      svg.append('g').selectAll('g').data(d3.range(yMin, yMax + 1)).enter()
+        .append('g')
+        .attr('transform', d => `translate(0,${yScale(d)})`)
+        .call(g => {
+          g.append('line')
+            .attr('class','tick-line')
+            .attr('x1',0)
+            .attr('x2',W);
+          g.append('text')
+            .attr('class','tick-text')
+            .attr('x',10)
+            .attr('dy',5)
+            .text(d => d);
+        });
+
+      Object.entries(buckets).forEach(([yr, list]) => {
+        list.forEach((j, idx) => {
+          const col = Math.floor(idx / ROWS_PER_COL_M);
+          const row = idx % ROWS_PER_COL_M;
+          const gx = LEFT_PAD_M + col * (CARD_W + GAP_H);
+          const gy = yScale(+yr) + row * (CARD_H + GAP_V);
+          const g = svg.append('g')
+                       .attr('transform', `translate(${gx},${gy})`)
+                       .attr('data-j', j.job_code);
+          g.append('rect')
+            .attr('class','job-rect')
+            .attr('width', CARD_W)
+            .attr('height', CARD_H);
+          g.append('text')
+            .attr('class','job-text')
+            .attr('x', CARD_W / 2)
+            .attr('y', CARD_H / 2 + 4)
+            .attr('text-anchor','middle')
+            .text(trunc(j.job_title, 22));
+        });
+      });
+    }
+
+    function attachCardEvents(){
+      const tip = document.getElementById('tooltip');
+      d3.selectAll('g[data-j]')
+        .on('mousemove', function(e){
+  if(isMob) return;
+  const j = find(this.dataset.j);
+  
+  let percent = j.current_automation_pct ?? 0;
+  let radius = 20;
+  let circumference = 2 * Math.PI * radius;
+  let offset = circumference * (1 - percent / 100);
+
+  tip.innerHTML = `
+    <h4>${j.job_title}</h4>
+    <svg width="50" height="50" style="margin-bottom:8px;">
+      <circle cx="25" cy="25" r="${radius}" stroke="#333" stroke-width="6" fill="none" />
+      <circle cx="25" cy="25" r="${radius}" stroke="${percent >= 100 ? '#4ade80' : '#c026d3'}" stroke-width="6" fill="none"
+        stroke-dasharray="${circumference}" stroke-dashoffset="${offset}" transform="rotate(-90 25 25)" />
+      <text x="25" y="30" text-anchor="middle" font-size="12" fill="#e4e4e7">${percent}%</text>
+    </svg>
+    <p><b>Industry:</b> ${j.industry}</p>
+    <p><b>Current State:</b> ${percent}%</p>
+    <p><b>Full-Auto Year:</b> ${j.full_auto_year ?? '—'}</p>
+    <p><b>Sources:</b> ${renderSources(j.sources)}</p>
+    <p><b>Reasoning:</b> ${trunc(j.reasoning || '', 120)}</p>
+  `;
+
+  tip.style.left = `${e.clientX + 16}px`;
+  tip.style.top = `${e.clientY + 16}px`;
+  tip.style.visibility = 'visible';
+})
+        .on('mouseleave', () => {
+          if(!isMob) tip.style.visibility = 'hidden';
+        })
+.on('click', function(){
+  const j = find(this.dataset.j);
+  
+  let percent = j.current_automation_pct ?? 0;
+  let radius = 20;
+  let circumference = 2 * Math.PI * radius;
+  let offset = circumference * (1 - percent / 100);
+
+  showModal(`
+    <h3>${j.job_title}</h3>
+    <svg width="50" height="50" style="display:block;margin:0 auto 12px;" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="${radius}" stroke="#333" stroke-width="6" fill="none" />
+      <circle cx="25" cy="25" r="${radius}" stroke="${percent >= 100 ? '#4ade80' : '#c026d3'}" stroke-width="6" fill="none"
+        stroke-dasharray="${circumference}" stroke-dashoffset="${offset}" transform="rotate(-90 25 25)" />
+      <text x="25" y="30" text-anchor="middle" font-size="12" fill="#e4e4e7">${percent}%</text>
+    </svg>
+    <p><b>Industry:</b> ${j.industry}</p>
+    <p><b>Current State:</b> ${percent}%</p>
+    <p><b>Full-Auto Year:</b> ${j.full_auto_year ?? '—'}</p>
+    <p><b>Sources:</b> ${renderSources(j.sources)}</p>
+    <p><b>Reasoning:</b> ${j.reasoning}</p>
+  `);
+        });
+    }
+    let currentSort = { key: 'current_automation_pct', asc: false };
+
+function buildDash(){
+  const tbody = d3.select('#dashTbl tbody');
+  tbody.selectAll('tr').remove();
+
+  jobs.forEach(j => {
+    tbody.append('tr').html(`
+      <td>${j.job_title}</td>
+      <td>${j.current_automation_pct ?? '—'}%</td>
+      <td>${j.industry}</td>
+      <td>${j.full_auto_year ?? '—'}</td>
+      <td>${renderSources(j.sources)}</td>
+      <td>${trunc(j.reasoning || '', 120)}</td>
+    `);
+  });
+
+  enableSorting();
+  updateSortArrows();  // <-- ADD THIS LINE
+}
+
+
+function enableSorting(){
+  const headers = document.querySelectorAll('#dashTbl thead th');
+  headers.forEach((th, idx) => {
+    if (idx === 4 || idx === 5) return; // skip Sources, Reasoning
+    th.style.cursor = 'pointer';
+    th.onclick = () => {
+      let key;
+      switch(idx){
+        case 0: key = 'job_title'; break;
+        case 1: key = 'current_automation_pct'; break;
+        case 2: key = 'industry'; break;
+        case 3: key = 'full_auto_year'; break;
+      }
+      if (currentSort.key === key) {
+        currentSort.asc = !currentSort.asc;
+      } else {
+        currentSort.key = key;
+        currentSort.asc = true;
+      }
+      sortJobs();
+      buildDash();
+      updateSortArrows();
+    };
+  });
+}
+function updateSortArrows(){
+  const headers = document.querySelectorAll('#dashTbl thead th');
+  headers.forEach((th, idx) => {
+    if (idx === 4 || idx === 5) return; // skip Sources, Reasoning
+    let key;
+    switch(idx){
+      case 0: key = 'job_title'; break;
+      case 1: key = 'current_automation_pct'; break;
+      case 2: key = 'industry'; break;
+      case 3: key = 'full_auto_year'; break;
+    }
+    const isActive = currentSort.key === key;
+    const arrow = isActive ? (currentSort.asc ? '▲' : '▼') : '▲'; // arrow always present
+    const arrowStyle = isActive ? 'opacity:1;' : 'opacity:0;';
+    th.innerHTML = `${th.dataset.label}<span style="font-size:0.8em;margin-left:4px;${arrowStyle}">${arrow}</span>`;
+  });
+}
+
+    function sortJobs(){
+      const key = currentSort.key;
+      const asc = currentSort.asc ? 1 : -1;
+      if (!key) return;
+      jobs.sort((a, b) => {
+        let va = a[key], vb = b[key];
+        if (va == null) return 1;
+        if (vb == null) return -1;
+        if (typeof va === 'string') {
+          return va.localeCompare(vb) * asc;
+        }
+        return (va - vb) * asc;
+      });
+    }
+
+    function enableDrag(){
+      const wrap = document.getElementById('timelineWrap');
+      let down = false, sx, sy, sl, st;
+      wrap.onmousedown = e => {
+        down = true;
+        sx = e.pageX;
+        sy = e.pageY;
+        sl = wrap.scrollLeft;
+        st = wrap.scrollTop;
+      };
+      wrap.onmousemove = e => {
+        if (down) {
+          wrap.scrollLeft = sl - (e.pageX - sx);
+          // do nothing to scrollTop — lock vertical scroll
+        }
+      };
+      document.onmouseup = () => down = false;
+      wrap.addEventListener('wheel', e => {
+        if (!e.ctrlKey) return;
+        e.preventDefault();
+        const svg = wrap.querySelector('svg');
+        const cur = wrap._z || 1;
+        const nxt = Math.max(.5, Math.min(3, cur * (e.deltaY < 0 ? 1.1 : .9)));
+        wrap._z = nxt;
+        svg.style.transformOrigin = '0 0';
+        svg.style.transform = `scale(${nxt})`;
+      }, { passive: false });
+    }
+    function navInit(){
+      const t = document.getElementById('btnTime');
+      const d = document.getElementById('btnDash');
+      t.onclick = () => {
+        t.classList.add('active');
+        d.classList.remove('active');
+        tl().style.display = 'block';
+        dw().style.display = 'none';
+      };
+      d.onclick = () => {
+        d.classList.add('active');
+        t.classList.remove('active');
+        dw().style.display = 'block';
+        tl().style.display = 'none';
+      };
+      document.getElementById('btnAbout').onclick = about;
+      function tl(){ return document.getElementById('timelineWrap'); }
+      function dw(){ return document.getElementById('dashWrap'); }
+    }
+
+    function modalInit(){
+      document.getElementById('modalOv').onclick = e => {
+        if (e.target.id === 'modalOv') {
+          hideModal();
+        }
+      };
+    }
+
+    function showModal(html){
+      document.getElementById('modalBox').innerHTML = html +
+        `<div class="modal-close">
+          <button onclick="hideModal()">Close</button>
+        </div>`;
+      document.getElementById('modalOv').classList.add('show');
+    }
+
+    function hideModal(){
+      document.getElementById('modalOv').classList.remove('show');
+    }
+
+    function about(){
+      showModal(`
+<h3>About the AI Job Replacement Timeline</h3>
+<p><strong>AITimeline.net</strong> is an interactive tool that visualizes when artificial intelligence and automation are expected to fully replace specific jobs—based on expert predictions from leading academic, consulting, and industry sources.</p>
+<p>Explore a timeline of 30+ occupations across industries. See how much of each role is already automated, and discover projected dates for full AI-only or AI+robotics replacement.</p>
+<p>Hover (desktop) or tap (mobile) on any job card to view detailed insights, sources, and reasoning.</p>
+<p>Built by <a href="https://oliphantdigital.com" target="_blank" rel="noopener">Oliphant Digital</a> — empowering workers, educators, and business leaders to prepare for the future of work.</p>
+      `);
+    }
+
+    function debounce(fn, ms) {
+      let t;
+      return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(() => fn(...args), ms);
+      };
+    }
+  </script>
+</body>
+</html>

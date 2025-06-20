@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI News Aggregator</title>
+<style>
+/* ---------- base & backdrop ---------- */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:linear-gradient(135deg,#0c0c0c 0%,#1a1a2e 25%,#16213e 50%,#0f0f23 100%);
+  background-attachment:fixed;color:#e0e6ed;min-height:100vh;overflow-x:hidden;position:relative}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(600px circle at 20% 30%,rgba(56,189,248,.15),transparent 50%),
+    radial-gradient(800px circle at 80% 70%,rgba(168,85,247,.1),transparent 50%),
+    radial-gradient(400px circle at 40% 80%,rgba(34,197,94,.1),transparent 50%)}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+/* ---------- headings ---------- */
+h1{font-size:3.5rem;font-weight:800;margin-bottom:10px;
+    background:linear-gradient(135deg,#60a5fa,#a78bfa,#34d399);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    text-shadow:0 0 40px rgba(96,165,250,.3);animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{filter:drop-shadow(0 0 10px rgba(96,165,250,.4))}
+               to{filter:drop-shadow(0 0 20px rgba(96,165,250,.6))}}
+.subtitle{font-size:1.1rem;color:#94a3b8;font-weight:300}
+/* ---------- buttons ---------- */
+.btn{position:relative;overflow:hidden;cursor:pointer;font-weight:600;text-transform:uppercase;
+  letter-spacing:.5px;border:none;border-radius:12px;padding:14px 24px;font-size:.9rem;transition:.3s}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s}
+.btn:hover::before{left:100%}
+.btn-primary{background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;
+  box-shadow:0 4px 15px rgba(59,130,246,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,.6)}
+.btn-secondary{background:linear-gradient(135deg,#10b981,#059669);color:#fff;
+  box-shadow:0 4px 15px rgba(16,185,129,.4)}
+.btn-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(16,185,129,.6)}
+.btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;
+  box-shadow:0 4px 15px rgba(239,68,68,.4)}
+.btn-danger:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(239,68,68,.6)}
+/* ---------- collapsible bar ---------- */
+details#settings{margin-bottom:40px}
+details#settings summary{
+  background:rgba(15,23,42,.85);backdrop-filter:blur(16px);
+  border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:18px 24px;
+  font-size:1.1rem;font-weight:600;cursor:pointer;list-style:none;
+  display:flex;align-items:center;gap:10px;user-select:none}
+details#settings summary::-webkit-details-marker{display:none}
+details#settings[open] summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
+details#settings .panel{
+  background:rgba(15,23,42,.8);backdrop-filter:blur(20px);
+  border:1px solid rgba(51,65,85,.3);border-top:0;border-bottom-left-radius:16px;border-bottom-right-radius:16px;
+  padding:30px;animation:fadeIn .4s ease}@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+/* ---------- control-panel internals ---------- */
+.control-section{margin-bottom:25px}
+.control-title{display:flex;align-items:center;gap:10px;margin-bottom:15px;
+  font-size:1.2rem;font-weight:600;color:#f1f5f9}
+.control-title::before{content:'';width:4px;height:20px;background:linear-gradient(135deg,#60a5fa,#a78bfa);border-radius:2px}
+.input-group{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:15px}
+input[type=text]{
+  flex:1;min-width:200px;padding:14px 18px;background:rgba(30,41,59,.8);
+  border:1px solid rgba(71,85,105,.5);border-radius:12px;color:#e2e8f0;font-size:.95rem;
+  transition:.3s;backdrop-filter:blur(10px)}
+input[type=text]:focus{outline:none;border-color:#60a5fa;background:rgba(30,41,59,.95);
+  box-shadow:0 0 0 3px rgba(96,165,250,.1),0 4px 12px rgba(96,165,250,.15);transform:translateY(-1px)}
+input::placeholder{color:#64748b}
+/* ---------- list & tag styling ---------- */
+.list-container{background:rgba(15,23,42,.6);backdrop-filter:blur(10px);
+  border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:20px;margin-bottom:20px;
+  max-height:400px;overflow-y:auto}
+.list-item{display:flex;justify-content:space-between;align-items:center;
+  background:rgba(30,41,59,.6);border:1px solid rgba(71,85,105,.3);
+  border-radius:12px;padding:16px 20px;margin-bottom:12px;flex-wrap:wrap;gap:10px;transition:.3s}
+.list-item:hover{background:rgba(30,41,59,.8);border-color:rgba(96,165,250,.5);
+  transform:translateX(5px);box-shadow:0 4px 20px rgba(96,165,250,.1)}
+.item-content{flex:1;min-width:200px;display:flex;align-items:center;gap:8px}
+.item-url{font-weight:500;word-break:break-all}
+.status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.status-loading{background:#f59e0b;animation:pulse 1s infinite}
+.status-ok{background:#34d399}
+.status-fail{background:#ef4444}
+@keyframes pulse{0%{opacity:.6}50%{opacity:1}100%{opacity:.6}}
+.item-tags{font-size:.85rem;color:#94a3b8;margin-top:4px}
+.item-actions{display:flex;gap:8px;flex-shrink:0}.btn-small{padding:8px 12px;font-size:.8rem}
+.tag-toggle{display:inline-block;padding:10px 16px;margin:5px;border-radius:20px;
+  background:rgba(30,41,59,.8);border:1px solid rgba(71,85,105,.5);
+  color:#94a3b8;cursor:pointer;font-weight:500;font-size:.9rem;transition:.3s}
+.tag-toggle:hover{background:rgba(30,41,59,.95);border-color:rgba(96,165,250,.5);transform:translateY(-2px)}
+.tag-toggle.active{background:linear-gradient(135deg,#3b82f6,#6366f1);border-color:#3b82f6;color:#fff;box-shadow:0 4px 15px rgba(59,130,246,.4)}
+/* ---------- news cards ---------- */
+.news-container{margin-top:40px}
+.section{margin-bottom:50px;animation:slideUp .6s ease}@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.section-header{background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,41,59,.8));
+  backdrop-filter:blur(20px);border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:20px 25px;margin-bottom:20px;position:relative;overflow:hidden}
+.section-header::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#60a5fa,#a78bfa,#34d399)}
+.section-title{font-size:1.8rem;font-weight:700;color:#f1f5f9;margin:0;text-shadow:0 2px 10px rgba(96,165,250,.3)}
+.section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}
+.news-card{background:rgba(15,23,42,.8);backdrop-filter:blur(20px);border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:24px;
+  cursor:pointer;position:relative;overflow:hidden;transition:.4s}
+.news-card::before{content:'';position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(96,165,250,.5),transparent);transition:.3s}
+.news-card:hover{transform:translateY(-8px);border-color:rgba(96,165,250,.6);box-shadow:0 20px 40px rgba(0,0,0,.3),0 0 50px rgba(96,165,250,.1)}
+.news-card:hover::before{height:2px;background:linear-gradient(90deg,rgba(96,165,250,.3),rgba(168,85,247,.3),rgba(52,211,153,.3))}
+.news-title{display:block;margin-bottom:15px;font-size:1.1rem;font-weight:600;color:#f1f5f9;text-decoration:none;line-height:1.4;transition:color .3s}
+.news-title:hover{color:#60a5fa}
+.news-meta{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#64748b;margin-top:15px;padding-top:15px;border-top:1px solid rgba(51,65,85,.3)}
+.news-source{font-weight:500;color:#94a3b8}.news-date{color:#64748b}
+.loading{text-align:center;padding:60px 20px;color:#64748b;font-size:1.1rem}
+.loading::after{content:'';display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid rgba(96,165,250,.3);
+  border-top-color:#60a5fa;animation:spin 1s linear infinite;margin-left:10px}@keyframes spin{to{transform:rotate(360deg)}}
+.error{color:#f87171;text-align:center;padding:40px 20px;font-size:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;margin:20px 0}
+.empty-state{text-align:center;padding:80px 20px;color:#64748b}.empty-state h3{color:#94a3b8;font-size:1.3rem;margin-bottom:10px}
+/* ---------- responsive ---------- */
+@media(max-width:768px){
+  .container{padding:15px}h1{font-size:2.5rem}
+  .input-group{flex-direction:column}.section-grid{grid-template-columns:1fr}
+  .list-item{flex-direction:column;align-items:flex-start}
+  .item-actions{width:100%;justify-content:flex-end}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header" style="text-align:center;margin-bottom:40px">
+    <h1>AI News Aggregator</h1>
+    <p class="subtitle">Real-time intelligence from the AI frontier</p>
+  </div>
+
+  <!-- collapsible feed/section settings -->
+  <details id="settings">
+    <summary>⚙️ Feed & Section Settings</summary>
+    <div class="panel">
+      <!-- Feed management -->
+      <div class="control-section">
+        <div class="control-title">Feed Management</div>
+        <div class="input-group">
+          <input id="new-feed-url"  type="text" placeholder="RSS or Atom feed URL">
+          <input id="new-feed-tags" type="text" placeholder="Tags (comma-separated)">
+          <button id="add-feed" class="btn btn-primary">Add Feed</button>
+        </div>
+        <div class="list-container"><ul id="feed-list"></ul></div>
+      </div>
+
+      <!-- Section management -->
+      <div class="control-section">
+        <div class="control-title">Section Management</div>
+        <div class="input-group">
+          <input id="new-section-name" type="text" placeholder="New section/tag name">
+          <button id="add-section"  class="btn btn-secondary">Add Section</button>
+          <button id="reset-sections" class="btn btn-danger">Reset Sections</button>
+        </div>
+        <div class="list-container"><div class="tags-container" id="section-list"></div></div>
+      </div>
+    </div>
+  </details>
+
+  <!-- news -->
+  <div id="news-container" class="news-container">
+    <div class="loading">Loading neural feed…</div>
+  </div>
+</div>
+
+<script>
+/* --- curated AI feeds (30) --- */
+let feeds = [
+  /* core model-makers & labs */
+  { url: 'https://openai.com/news/rss.xml',                         tags: ['OpenAI','ChatGPT'] },
+  { url: 'http://googleaiblog.blogspot.com/atom.xml',               tags: ['Google','Gemini','Research'] },  // Atom
+  { url: 'https://blog.anthropic.com/rss.xml',                      tags: ['Anthropic','Claude'] },
+  { url: 'https://deepmind.com/blog/feed/basic/',                   tags: ['DeepMind','Research'] },
+
+  /* mainstream tech & business news */
+  { url: 'https://venturebeat.com/category/ai/feed/',               tags: ['VentureBeat','Industry'] },       // VB AI channel
+  { url: 'https://www.technologyreview.com/feed/?tag=ai',           tags: ['MITTR','Innovation'] },
+  { url: 'https://www.wired.com/feed/category/artificial-intelligence/rss', tags: ['Wired','AI'] },           // WIRED AI feed :contentReference[oaicite:0]{index=0}
+  { url: 'https://techcrunch.com/tag/automation/feed/',             tags: ['TechCrunch','Automation'] },
+  { url: 'https://techcrunch.com/tag/chatbots/feed/',               tags: ['TechCrunch','Chatbots'] },
+
+  /* dedicated AI-only outlets */
+  { url: 'https://www.artificialintelligence-news.com/feed/rss/',   tags: ['AI News','Industry'] },          // AI-News :contentReference[oaicite:1]{index=1}
+  { url: 'https://aibusiness.com/rss.xml',                          tags: ['AI Business','Enterprise'] },    // :contentReference[oaicite:2]{index=2}
+  { url: 'https://www.marktechpost.com/feed',                       tags: ['MarkTechPost','Research'] },     // :contentReference[oaicite:3]{index=3}
+  { url: 'https://insidebigdata.com/feed',                          tags: ['InsideBigData','Analytics'] },   // :contentReference[oaicite:4]{index=4}
+  { url: 'https://www.datanami.com/feed/',                          tags: ['Datanami','Analytics'] },        // :contentReference[oaicite:5]{index=5}
+  { url: 'https://gradientflow.com/feed/',                          tags: ['GradientFlow','Data'] },         // :contentReference[oaicite:6]{index=6}
+
+  /* newsletters & Substacks */
+  { url: 'https://lastweekin.ai/feed',                              tags: ['Newsletter','Weekly'] },         // :contentReference[oaicite:7]{index=7}
+  { url: 'https://aimodels.substack.com/feed',                      tags: ['Substack','Models'] },           // :contentReference[oaicite:8]{index=8}
+  { url: 'https://magazine.sebastianraschka.com/feed',              tags: ['Ahead-of-AI','Research'] },      // :contentReference[oaicite:9]{index=9}
+  { url: 'https://www.latent.space/feed',                           tags: ['Latent Space','Product'] },      // :contentReference[oaicite:10]{index=10}
+
+  /* tooling / dev-ops blogs */
+  { url: 'https://huggingface.co/blog/feed.xml',                    tags: ['Hugging Face','NLP'] },          // :contentReference[oaicite:11]{index=11}
+  { url: 'https://blog.langchain.dev/rss/',                         tags: ['LangChain','Agents'] },          // :contentReference[oaicite:12]{index=12}
+  { url: 'https://txt.cohere.ai/rss/',                              tags: ['Cohere','NLP'] },                // :contentReference[oaicite:13]{index=13}
+  { url: 'https://feed.infoq.com/ai-ml-data-eng/',                  tags: ['InfoQ','Engineering'] },         // :contentReference[oaicite:14]{index=14}
+  { url: 'https://hackernoon.com/tagged/ai/feed',                   tags: ['HackerNoon','Stories'] },        // :contentReference[oaicite:15]{index=15}
+
+  /* academic & research streams */
+  { url: 'https://www.jmlr.org/jmlr.xml',                           tags: ['JMLR','Research'] },             // :contentReference[oaicite:16]{index=16}
+  { url: 'https://arxiv.org/rss/cs.LG',                             tags: ['arXiv','Machine Learning'] },
+  { url: 'https://arxiv.org/rss/cs.CL',                             tags: ['arXiv','NLP'] },
+  { url: 'https://arxiv.org/rss/cs.CV',                             tags: ['arXiv','Vision'] },
+
+  /* community round-ups */
+  { url: 'https://kdnuggets.com/feed',                              tags: ['KDnuggets','Community'] },       // :contentReference[oaicite:17]{index=17}
+  { url: 'https://aibusiness.com/rss.xml',                          tags: ['DuplicateCheck','Ignore'] },     // placeholder to show deduping if desired
+];
+
+/* status map  {url: {state:'loading'|'ok'|'fail', error:''}} */
+const feedStatus={};
+const defaultSectionNames=['Most Recent','ChatGPT','Gemini','Claude','Automation','Agents','Coding','Tools','Ethics'];
+let sections=defaultSectionNames.map(n=>({name:n,active:true}));
+
+/* ---------- DOM refs ---------- */
+const feedListEl       =document.getElementById('feed-list');
+const sectionListEl    =document.getElementById('section-list');
+const newsContainer    =document.getElementById('news-container');
+const newFeedUrlInput  =document.getElementById('new-feed-url');
+const newFeedTagsInput =document.getElementById('new-feed-tags');
+const newSectionInput  =document.getElementById('new-section-name');
+const addFeedBtn       =document.getElementById('add-feed');
+const addSectionBtn    =document.getElementById('add-section');
+const resetSectionsBtn =document.getElementById('reset-sections');
+
+/* ---------- UI helpers ---------- */
+function renderFeedList(){
+  feedListEl.innerHTML='';
+  if(!feeds.length){
+    feedListEl.innerHTML='<div class="empty-state"><h3>No feeds added</h3><p>Add feeds to get started.</p></div>';return;}
+  feeds.forEach((feed,i)=>{
+    const li=document.createElement('li');li.className='list-item';
+    const content=document.createElement('div');content.className='item-content';
+
+    const status=feedStatus[feed.url]?.state||'loading';
+    const dot=document.createElement('span');dot.className='status-dot status-'+status;
+    if(feedStatus[feed.url]?.error)dot.title=feedStatus[feed.url].error;
+
+    const urlDiv=document.createElement('div');urlDiv.className='item-url';urlDiv.textContent=feed.url;
+    content.append(dot,urlDiv);
+
+    const tagsDiv=document.createElement('div');tagsDiv.className='item-tags';tagsDiv.textContent='Tags: '+feed.tags.join(', ');
+
+    const wrap=document.createElement('div');
+    wrap.append(content,tagsDiv);
+
+    const actions=document.createElement('div');actions.className='item-actions';
+    const edit=document.createElement('button');edit.className='btn btn-secondary btn-small';edit.textContent='Edit';
+    edit.onclick=()=>{
+      const t=prompt('Tags (comma-separated)',feed.tags.join(', '));
+      if(t!==null){feed.tags=t.split(',').map(x=>x.trim()).filter(Boolean);renderFeedList();renderSectionList();loadNews();}
+    };
+    const remove=document.createElement('button');remove.className='btn btn-danger btn-small';remove.textContent='Remove';
+    remove.onclick=()=>{feeds.splice(i,1);delete feedStatus[feed.url];renderFeedList();loadNews();};
+    actions.append(edit,remove);
+
+    li.append(wrap,actions);feedListEl.appendChild(li);
+  });
+}
+function renderSectionList(){
+  sectionListEl.innerHTML='';
+  sections.forEach((sec,i)=>{
+    const tag=document.createElement('span');tag.className='tag-toggle'+(sec.active?' active':'');tag.textContent=sec.name;
+    tag.onclick=()=>{sec.active=!sec.active;renderSectionList();loadNews();};
+    if(!defaultSectionNames.includes(sec.name)){
+      tag.ondblclick=e=>{e.stopPropagation();if(confirm(`Remove "${sec.name}"?`)){sections.splice(i,1);renderSectionList();loadNews();}};
+      tag.title='Double-click to remove';
+    }
+    sectionListEl.appendChild(tag);
+  });
+}
+
+/* ---------- event hooks ---------- */
+addFeedBtn.onclick=()=>{
+  const url=newFeedUrlInput.value.trim();
+  const tags=newFeedTagsInput.value.split(',').map(t=>t.trim()).filter(Boolean);
+  if(!url){alert('Enter a feed URL');return;}
+  if(feeds.some(f=>f.url===url)){alert('Feed already added');return;}
+  feeds.push({url,tags,added:Date.now()});
+  newFeedUrlInput.value='';newFeedTagsInput.value='';
+  feedStatus[url]={state:'loading'};renderFeedList();loadNews();
+};
+addSectionBtn.onclick=()=>{
+  const name=newSectionInput.value.trim();
+  if(!name){alert('Enter a section name');return;}
+  if(sections.some(s=>s.name===name)){alert('Section exists');return;}
+  sections.push({name,active:true});newSectionInput.value='';
+  renderSectionList();loadNews();
+};
+resetSectionsBtn.onclick=()=>{
+  if(confirm('Reset sections to default?')){
+    sections=defaultSectionNames.map(n=>({name:n,active:true}));
+    renderSectionList();loadNews();
+  }
+};
+[newFeedUrlInput,newFeedTagsInput].forEach(i=>i.addEventListener('keypress',e=>{if(e.key==='Enter')addFeedBtn.click()}));
+newSectionInput.addEventListener('keypress',e=>{if(e.key==='Enter')addSectionBtn.click()});
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey||e.metaKey){
+    if(['r','R'].includes(e.key)){e.preventDefault();loadNews();}
+    if(['f','F'].includes(e.key)){e.preventDefault();newFeedUrlInput.focus();}
+    if(['s','S'].includes(e.key)){e.preventDefault();newSectionInput.focus();}
+  }
+});
+
+/* ---------- proxy helpers ---------- */
+const proxiers=[
+  u=>fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,{timeout:10000}).then(r=>{if(!r.ok)throw new Error('allorigins '+r.status);return r.text();}),
+  u=>fetch(`https://thingproxy.freeboard.io/fetch/${encodeURIComponent(u)}`,{timeout:10000}).then(r=>{if(!r.ok)throw new Error('thingproxy '+r.status);return r.text();}),
+  async u=>{
+    const r=await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(u)}`,{timeout:10000});
+    if(!r.ok)throw new Error('rss2json '+r.status);
+    const data=await r.json();if(!data.items)throw new Error('rss2json bad data');
+    return ['<root>',...data.items.map(i=>`
+      <item><title>${i.title||''}</title><link>${i.link||''}</link><pubDate>${i.pubDate||i.publishedDate||''}</pubDate><description>${i.description||''}</description></item>`),'</root>'].join('');
+  }
+];
+
+/* ---------- feed fetching with multiple fallbacks ---------- */
+async function fetchFeed(feed){
+  feedStatus[feed.url]={state:'loading'};renderFeedList();
+  let lastErr;
+  for(const proxy of proxiers){
+    try{
+      const xml=await proxy(feed.url);
+      const doc=new DOMParser().parseFromString(xml,'application/xml');
+      if(doc.querySelector('parsererror'))throw new Error('XML parse error');
+      const nodes=[...doc.querySelectorAll('item,entry')];
+      const items=nodes.map(n=>{
+        const title=n.querySelector('title')?.textContent?.trim()||'Untitled';
+        let link='#';const linkEl=n.querySelector('link[rel="alternate"]')||n.querySelector('link');
+        if(linkEl)link=linkEl.getAttribute('href')||linkEl.textContent||'#';
+        const dateText=n.querySelector('pubDate')?.textContent?.trim()||n.querySelector('updated')?.textContent?.trim()||n.querySelector('published')?.textContent?.trim();
+        let pubDate=new Date(dateText);if(isNaN(pubDate))pubDate=new Date();
+        const desc=n.querySelector('description')?.textContent?.trim()||n.querySelector('summary')?.textContent?.trim()||'';
+        return{title,link,pubDate,description:desc.slice(0,200),source:new URL(feed.url).hostname,tags:feed.tags,added:feed.added};
+      }).filter(i=>i.title&&i.link);
+
+      feedStatus[feed.url]={state:'ok'};renderFeedList();
+      return items;
+    }catch(err){lastErr=err}
+  }
+  feedStatus[feed.url]={state:'fail',error:lastErr?.message||'error'};renderFeedList();
+  return[];
+}
+
+/* ---------- news loading ---------- */
+async function loadNews(){
+  newsContainer.innerHTML='<div class="loading">Loading neural feed…</div>';
+  try{
+    const results=await Promise.allSettled(feeds.map(fetchFeed));
+    const articles=results.filter(r=>r.status==='fulfilled').flatMap(r=>r.value);
+    newsContainer.innerHTML='';
+    if(!articles.length){
+      newsContainer.innerHTML='<div class="empty-state"><h3>No articles found</h3><p>Add feeds or check your connection.</p></div>';return;}
+    const active=sections.filter(s=>s.active);
+    if(!active.length){
+      newsContainer.innerHTML='<div class="empty-state"><h3>No active sections</h3><p>Enable a section to see news.</p></div>';return;}
+    active.forEach(sec=>{
+      let list;
+      if(sec.name==='Most Recent'){list=[...articles].sort((a,b)=>b.pubDate-a.pubDate);}
+      else{
+        const kw=sec.name.toLowerCase();
+        list=articles.filter(a=>{
+          const tagMatch=a.tags.some(t=>t.toLowerCase().includes(kw));
+          const titleMatch=a.title.toLowerCase().includes(kw);
+          return tagMatch||titleMatch;}).sort((a,b)=>b.pubDate-a.pubDate);
+      }
+      if(!list.length)return;
+      const section=document.createElement('div');section.className='section';
+      section.innerHTML=`<div class="section-header"><h2 class="section-title">${sec.name} (${list.length})</h2></div>`;
+      const grid=document.createElement('div');grid.className='section-grid';
+      list.slice(0,12).forEach(a=>{
+        const card=document.createElement('div');card.className='news-card';
+        card.innerHTML=`<a class="news-title" href="${a.link}" target="_blank" rel="noopener noreferrer">${a.title}</a>
+                        <div class="news-meta"><span class="news-source">${a.source}</span><span class="news-date">${formatDate(a.pubDate)}</span></div>`;
+        card.onclick=e=>{if(e.target===card)window.open(a.link,'_blank','noopener,noreferrer')};
+        grid.appendChild(card);
+      });
+      section.appendChild(grid);newsContainer.appendChild(section);
+    });
+    if(!newsContainer.children.length){
+      newsContainer.innerHTML='<div class="empty-state"><h3>No matches</h3><p>Enable more sections or add different feeds.</p></div>';
+    }
+  }catch(err){
+    console.error(err);
+    newsContainer.innerHTML='<div class="error">Failed to load news. Check your connection and try again.</div>';
+  }
+}
+/* ---------- util ---------- */
+function formatDate(d){
+  const now=new Date();const mins=Math.floor((now-d)/60000);
+  if(mins<1)return'Just now';if(mins<60)return`${mins}m ago`;
+  const hrs=Math.floor(mins/60);if(hrs<24)return`${hrs}h ago`;
+  const days=Math.floor(hrs/24);if(days===1)return'Yesterday';
+  if(days<7)return`${days}d ago`;
+  return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:now.getFullYear()!==d.getFullYear()?'numeric':undefined});
+}
+/* ---------- auto-refresh ---------- */
+let refreshId;function startRefresh(){refreshId=setInterval(loadNews,10*60*1000)}
+function stopRefresh(){clearInterval(refreshId)}
+document.addEventListener('visibilitychange',()=>document.hidden?stopRefresh():(startRefresh(),loadNews()));
+window.addEventListener('online',()=>loadNews());
+window.addEventListener('offline',()=>newsContainer.innerHTML='<div class="error">Offline. Check your network.</div>');
+/* ---------- init ---------- */
+(function init(){feeds.forEach(f=>feedStatus[f.url]={state:'loading'});renderFeedList();renderSectionList();loadNews();startRefresh();})();
+</script>
+</body>
+</html>

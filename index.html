@@ -254,7 +254,13 @@ At Oliphant Digital, we handle the heavy lifting so you can lead with confidence
                                             </div>
                                             
                                             <div class="composition-6-image">
-                                                <img src="images/demo-gradient/hs-image-1.jpg" alt="Image Description" class="wow scaleOutIn" data-wow-duration="1.2s" />
+                                                <a href="https://www.youtube.com/watch?v=VIDEO_ID&autoplay=1"
+   class="composition-6-image hero-video-link mfp-iframe">
+
+  <img src="images/demo-gradient/hs-image-1.jpg"
+       alt="Watch our intro video"
+       class="wow scaleOutIn" data-wow-duration="1.2s" />
+</a>
                                             </div>
                                         </div>
                                         
@@ -1596,6 +1602,16 @@ Whatever you’re working on, we can help make it exceptional. From startups to 
        <!-- <script src="js/contact-form.js"></script> -->       
         <script src="js/all.js"></script> 
         <!-- End JS -->       
-        
+        <script>
+jQuery(function ($) {
+  $('.hero-video-link').magnificPopup({
+    type: 'iframe',
+    mainClass: 'mfp-fade',
+    removalDelay: 160,
+    preloader: false,
+    fixedContentPos: true   // keeps iframe fixed for a full-screen feel
+  });
+});
+</script>
     </body>
 </html>

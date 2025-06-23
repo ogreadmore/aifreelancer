@@ -238,24 +238,39 @@
         </div>
         <!-- ───── End left column ───── -->
 
-        <!-- ───── Right: YouTube video ───── -->
-        <div class="col-lg-6 d-flex align-items-center">
-          <div class="w-100 ps-xl-3">
+       <!-- ───── Right: video + floating decorations ───── -->
+<div class="col-lg-6 d-flex align-items-center">
+  <div class="w-100 ps-xl-3">
 
-            <!-- 16:9 responsive embed; replace VIDEO_ID with your own -->
-            <div class="ratio ratio-16x9 shadow-lg rounded wow fadeIn" data-wow-delay="0.2s">
-              <iframe
-                src="https://www.youtube.com/embed/VIDEO_ID?rel=0&amp;showinfo=0&amp;modestbranding=1"
-                title="Oliphant Digital intro video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                loading="lazy">
-              </iframe>
-            </div>
+    <div class="composition-6">
 
-          </div>
+      <!-- Floating SVG decorations (unchanged assets & classes) -->
+      <div class="composition-6-decoration-1">
+        <img src="images/demo-gradient/decoration-1.svg" alt="" />
+      </div>
+
+      <div class="composition-6-decoration-2">
+        <img src="images/demo-gradient/decoration-1.svg" alt="" />
+      </div>
+
+      <!-- Replace image with responsive YouTube iframe -->
+      <div class="composition-6-image">
+        <div class="ratio ratio-16x9 shadow-lg rounded wow fadeIn" data-wow-delay="0.2s">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID?rel=0&amp;showinfo=0&amp;modestbranding=1"
+            title="Oliphant Digital intro video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
-        <!-- ───── End right column ───── -->
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- ───── End right column ───── -->
 
       </div>
     </div>

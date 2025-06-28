@@ -468,7 +468,10 @@
             }
         };
 
-        chatbotLauncher.addEventListener('click', () => toggleChatbot(!chatbotWindow.classList.contains('hidden')));
+        chatbotLauncher.addEventListener('click', () => {
+            const isHidden = chatbotWindow.classList.contains('hidden');
+            toggleChatbot(isHidden);
+        });
         closeChatbotButton.addEventListener('click', () => toggleChatbot(false));
         
         // --- Video Modal ---

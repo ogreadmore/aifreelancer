@@ -42,33 +42,6 @@
         .gemini-gradient-bg {
             background: linear-gradient(105deg, #4B88DA, #8A3BF1, #D941A1, #E5484D);
         }
-
-        /* Hero Video Background */
-        #home {
-            position: relative;
-            overflow: hidden;
-        }
-        #hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -100;
-            transform: translateX(-50%) translateY(-50%);
-            background-size: cover;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.2); /* Increased opacity for better readability */
-            z-index: -50;
-        }
         
         /* Chatbot styles */
         .chatbot-container {
@@ -190,13 +163,19 @@
 
     <main>
         <!-- Section 1: Hero -->
-        <section id="home" class="min-h-screen flex items-center">
-             <div class="hero-overlay"></div>
-             <video id="hero-video" autoplay loop muted poster="https://aifreelancer.co/vidbg1.mp4">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-long-hexagon-tunnel-43421-large.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="container mx-auto px-6 pt-32 pb-16 text-center relative z-10">
+        <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+            <!-- Background elements container -->
+            <div class="absolute inset-0 z-[-1]">
+                <video autoplay loop muted poster="https://aifreelancer.co/vidbg1.mp4" class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-long-hexagon-tunnel-43421-large.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <!-- White overlay -->
+                <div class="absolute inset-0 bg-white/70"></div>
+            </div>
+            
+            <!-- Foreground content -->
+            <div class="container mx-auto px-6 pt-32 pb-16 text-center relative">
                 <h1 class="font-jakarta text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-800 leading-tight md:leading-tight lg:leading-tight tracking-tighter mb-8">
                     Amplify Your Vision with
                     <br class="hidden md:block">
@@ -347,7 +326,7 @@
                     <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl relative lg:-translate-y-4">
                         <div class="bg-white p-8 rounded-[15px] flex flex-col h-full relative">
                             <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
-                                <span class="bg-blue-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Most Popular</span>
+                                <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Most Popular</span>
                             </div>
                             <h3 class="text-2xl font-bold text-gray-800 mb-2 mt-4">Pro Automation</h3>
                             <p class="text-gray-500 mb-6">For businesses looking to automate and scale operations.</p>

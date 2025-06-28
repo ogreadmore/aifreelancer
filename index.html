@@ -507,30 +507,6 @@
         const chatbotMessages = document.getElementById('chatbot-messages');
         const thinkingIndicator = document.getElementById('chatbot-thinking');
 
-        // --- AI FREELANCER KNOWLEDGE BASE ---
-        const KNOWLEDGE_BASE = `
-            Company Name: AI Freelancer
-
-            About Us: We build custom AI solutions for businesses worldwide that cut operational costs, capture more leads, and free teams to focus on growth. Our philosophy is to succeed when our clients succeed by deeply understanding their business. Our expertise is in enterprise software and machine learning.
-
-            Services / Solutions:
-            - 24/7 Lead Capture & Support: We build AI agents for websites to answer questions and capture customer info 24/7.
-            - Automate Operations: We build automations to eliminate costly data entry and manual work, saving teams hours.
-            - Unlock Business Insights: We turn sales and customer data into a roadmap for growth with clear reports.
-            - Data-Driven Forecasting: We build models to predict sales trends and customer behavior.
-            - Enhance Existing Tools: We can integrate AI into your current CRM, ERP, and other tools.
-            - AI-Powered Marketing: We can generate high-quality social media content, email campaigns, and blog posts at scale.
-
-            Pricing Plans:
-            - Website Lead Capture: A one-time fee of $499. It includes a Custom AI Chat Agent, website integration, knowledge base training, and lead capture notifications.
-            - Operations Growth Engine: $1,299 per month. This includes everything in the Lead Capture plan, plus Core Workflow Automation, AI-Powered Content Tools, Integration with your existing tools, and monthly strategy & support.
-            - Full-Scale Transformation: Custom pricing. This is for established companies seeking a complete AI overhaul. It includes everything in the previous plan plus advanced predictive analytics, custom-trained AI models, dedicated project management, and training.
-
-            Contact Information:
-            - To get a quote or a free consultation, clients should fill out the contact form on the website or call the phone number.
-            - Phone Number: (440) 941-1785.
-        `;
-
         /**
          * Adds a message to the chatbot's UI.
          * @param {string} message - The text content of the message.
@@ -581,31 +557,16 @@
          */
         async function getGeminiResponseForChatbot(userMessage) {
             // IMPORTANT: Replace this with your actual Cloud Run Service URL from Step 5 of the guide.
-            const proxyUrl = "https://gemini-chatbot-proxy-999168740722.us-central1.run.app"; 
-
-            // The full prompt, including the knowledge base, is now constructed on the server-side proxy.
-            // We only need to send the user's raw message.
-            const fullPrompt = `
-                You are a friendly and professional AI Assistant for a company called "AI Freelancer".
-                Your goal is to answer user questions based *only* on the information provided in the following knowledge base.
-                Do not make up information. If the user asks something not in the knowledge base, politely state that you don't have that information and suggest they call (440) 941-1785 or fill out the contact form for more details.
-                Keep your answers concise and helpful. Be conversational.
-
-                --- KNOWLEDGE BASE START ---
-                ${KNOWLEDGE_BASE}
-                --- KNOWLEDGE BASE END ---
-
-                User question: "${userMessage}"
-
-                Answer:
-            `;
+            const proxyUrl = "YOUR_CLOUD_FUNCTION_TRIGGER_URL"; 
 
             const response = await fetch(proxyUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ userMessage: fullPrompt }) // We send the full prompt in the body
+                // IMPORTANT: Only send the user's message.
+                // The server will add the knowledge base and prompt instructions.
+                body: JSON.stringify({ userMessage: userMessage })
             });
             
             if (!response.ok) {

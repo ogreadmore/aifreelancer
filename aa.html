@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIFreelancer - Intelligent Solutions</title>
+    <title>AI Freelancer - Intelligent Solutions</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -66,7 +66,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.8); /* Increased opacity for better readability */
             z-index: -50;
         }
         
@@ -192,9 +192,8 @@
         <!-- Section 1: Hero -->
         <section id="home" class="min-h-screen flex items-center">
              <div class="hero-overlay"></div>
-             <video id="hero-video" autoplay loop muted poster="/vidbg1.mp4">
-                <!-- Using a placeholder video URL. Replace with your actual video file. -->
-                <source src="https://aifreelancer.co/vidbg1.mp4" type="video/mp4">
+             <video id="hero-video" autoplay loop muted poster="https://aifreelancer.co/vidbg1.mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-long-hexagon-tunnel-43421-large.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="container mx-auto px-6 pt-32 pb-16 text-center relative z-10">
@@ -225,14 +224,15 @@
                     <p class="max-w-3xl mx-auto text-lg text-gray-500 mb-12">I specialize in making advanced AI accessible and impactful for businesses of all sizes. Let's unlock your company's full potential.</p>
                 </div>
                 <div class="max-w-5xl mx-auto mb-16">
-                    <div id="about-video-trigger" class="relative rounded-2xl shadow-2xl overflow-hidden cursor-pointer group">
-                        <img src="https://placehold.co/1280x720/1f2937/ffffff?text=Click+to+Play+Intro" 
-                             alt="Click to play video" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+                    <div id="about-video-trigger" class="relative rounded-2xl shadow-2xl overflow-hidden cursor-pointer group bg-gray-900">
+                        <img src="https://placehold.co/1280x720/1f2937/1f2937?text=+" 
+                             alt="Video thumbnail" 
+                             class="w-full h-full object-cover opacity-50">
+                        <div class="absolute inset-0 transition-all duration-300 flex flex-col items-center justify-center p-8">
+                            <div class="w-20 h-20 md:w-24 md:h-24 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform mb-4">
                                 <i class="fa-solid fa-play text-white text-3xl md:text-4xl ml-1"></i>
                             </div>
+                            <h3 class="font-bold text-white text-2xl text-center">Click to Play Intro Video</h3>
                         </div>
                     </div>
                 </div>
@@ -259,7 +259,6 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Cards remain the same -->
                     <div class="bg-gray-50/70 p-8 rounded-2xl border border-gray-100/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div class="w-16 h-16 gemini-gradient-bg rounded-xl flex items-center justify-center mb-6 text-white text-3xl">
                             <i class="fa-solid fa-robot"></i>
@@ -331,7 +330,7 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                    <!-- Pricing Cards remain the same -->
+                    <!-- Pricing Card 1: Starter -->
                     <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Starter</h3>
                         <p class="text-gray-500 mb-6">For individuals and small teams getting started with AI.</p>
@@ -344,22 +343,26 @@
                             <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Analytics Dashboard</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-8 rounded-2xl border-2 border-blue-500 shadow-2xl flex flex-col h-full relative lg:-translate-y-4">
-                         <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
-                            <span class="bg-blue-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Most Popular</span>
+                    <!-- Pricing Card 2: Pro (Featured) -->
+                    <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl relative lg:-translate-y-4">
+                        <div class="bg-white p-8 rounded-[15px] flex flex-col h-full relative">
+                            <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
+                                <span class="bg-blue-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Most Popular</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2 mt-4">Pro Automation</h3>
+                            <p class="text-gray-500 mb-6">For businesses looking to automate and scale operations.</p>
+                            <p class="text-5xl font-bold text-gray-900 mb-6">$1,299<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                            <a href="#contact" class="w-full text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all mb-8">Get Started</a>
+                            <ul class="space-y-4 text-gray-600">
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Everything in Starter, plus:</li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Advanced Workflow Automation</li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>AI-Powered Content Generation</li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>API & 3rd Party Integrations</li>
+                                <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Priority Support</li>
+                            </ul>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pro Automation</h3>
-                        <p class="text-gray-500 mb-6">For businesses looking to automate and scale operations.</p>
-                        <p class="text-5xl font-bold text-gray-900 mb-6">$1,299<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                        <a href="#contact" class="w-full text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all mb-8">Get Started</a>
-                        <ul class="space-y-4 text-gray-600">
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Everything in Starter, plus:</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Advanced Workflow Automation</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>AI-Powered Content Generation</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>API & 3rd Party Integrations</li>
-                             <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Priority Support</li>
-                        </ul>
                     </div>
+                    <!-- Pricing Card 3: Enterprise -->
                     <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Enterprise</h3>
                         <p class="text-gray-500 mb-6">For large organizations needing custom, end-to-end AI solutions.</p>
@@ -434,7 +437,6 @@
 
     <!-- Chatbot Popup -->
     <div class="chatbot-container">
-         <!-- The Chatbot code remains the same -->
         <div id="chatbot-window" class="chatbot-window hidden" style="transform: scale(0.95); opacity: 0;">
             <div class="gemini-gradient-bg p-4 flex items-center justify-between text-white">
                 <h3 class="font-bold text-lg">AI Assistant</h3>

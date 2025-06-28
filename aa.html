@@ -163,19 +163,18 @@
 
     <main>
         <!-- Section 1: Hero -->
-        <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
-            <!-- Background elements container -->
-            <div class="absolute inset-0 z-[-1]">
-                <video autoplay loop muted poster="https://aifreelancer.co/vidbg1.mp4" class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover">
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-long-hexagon-tunnel-43421-large.mp4" type="video/mp4">
+        <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+            <!-- Background Layer -->
+            <div class="absolute top-0 left-0 w-full h-full z-[-1]">
+                <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover">
+                    <source src="https://aifreelancer.co/vidbg1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <!-- White overlay -->
-                <div class="absolute inset-0 bg-white/70"></div>
+                <div class="absolute top-0 left-0 w-full h-full bg-white/85"></div>
             </div>
-            
-            <!-- Foreground content -->
-            <div class="container mx-auto px-6 pt-32 pb-16 text-center relative">
+
+            <!-- Foreground Content Layer -->
+            <div class="relative z-10 container mx-auto px-6">
                 <h1 class="font-jakarta text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-800 leading-tight md:leading-tight lg:leading-tight tracking-tighter mb-8">
                     Amplify Your Vision with
                     <br class="hidden md:block">

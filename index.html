@@ -556,7 +556,9 @@
          * @returns {Promise<string>} The chatbot's response text.
          */
         async function getGeminiResponseForChatbot(userMessage) {
-            // IMPORTANT: Replace this with your actual Cloud Run Service URL from Step 5 of the guide.
+            // ##########################################################################
+            // #  IMPORTANT: REPLACE THIS URL WITH YOUR ACTUAL CLOUD RUN SERVICE URL    #
+            // ##########################################################################
             const proxyUrl = "YOUR_CLOUD_FUNCTION_TRIGGER_URL"; 
 
             const response = await fetch(proxyUrl, {

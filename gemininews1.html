@@ -1,12 +1,3 @@
-You've spotted an excellent point, and my apologies for that oversight\!
-
-You are correct. In adding the new ranking and summary features, I introduced a bug that changed how articles were de-duplicated. It was removing articles from their original sections if the same story appeared in multiple feeds (e.g., on an official blog *and* a news site).
-
-I have corrected this logic. The updated script below now properly **merges tags** from duplicate articles *before* ranking them. This ensures that every story appears in all of its correct sections, restoring the original functionality while keeping the new summary and top 10 lists.
-
-The changes are entirely within the `<script>` block. Here is the fully corrected page.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -693,4 +684,3 @@ function formatDate(d) {
 </script>
 </body>
 </html>
-```

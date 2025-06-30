@@ -53,7 +53,6 @@
             padding: 10px;
             margin: 30px 0;
             display: flex;
-            /* UPDATED: Allow items to wrap and center them for a clean look */
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
@@ -803,15 +802,25 @@ function renderSectionNav(sections) {
     });
 }
 
-
-/* ---------- news loading ---------- */
+/* ======================================================================
+BUG FIX: The entire loadNews function has been replaced.
+Instead of fetching all feeds at once (which triggers rate-limiting),
+this new version fetches them sequentially, one by one. This is more
+robust and avoids overwhelming the CORS proxy service.
+======================================================================
+*/
 async function loadNews() {
     newsContainer.innerHTML = `<div class="loading">Compiling intelligence stream…</div>`;
     headlinesContainer.innerHTML = ''; 
 
     try {
-        const results = await Promise.allSettled(feeds.map(fetchFeed));
-        const allArticles = results.filter(r => r.status === 'fulfilled').flatMap(r => r.value);
+        const allArticles = [];
+        // Fetch feeds one by one to avoid rate-limiting by the proxy.
+        for (const feed of feeds) {
+            const items = await fetchFeed(feed);
+            allArticles.push(...items);
+        }
+
         newsContainer.innerHTML = '';
 
         if (!allArticles.length) {

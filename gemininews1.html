@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Gemini Fan - Your Gemini News Hub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Your real-time, unofficial hub for the latest news, updates, and tutorials on Google Gemini. Aggregate feeds from official blogs, news sites, and social media.">
     <meta name="keywords" content="Google Gemini, Gemini AI, AI News, Gemini Aggregator, Gemini Fan, Artificial Intelligence, LLM, Google AI Studio">
     <meta property="og:type" content="website">
@@ -42,7 +41,7 @@
         @keyframes glow{from{filter:drop-shadow(0 0 10px rgba(76, 137, 255,.4))} to{filter:drop-shadow(0 0 20px rgba(76, 137, 255,.6))}}
         .subtitle{font-size:1.1rem;color:#94a3b8;font-weight:300}
         
-        /* ---------- Section Navigation ---------- */
+        /* ---------- NEW: Section Navigation ---------- */
         #section-nav {
             background: rgba(15, 23, 42, .7);
             backdrop-filter: blur(10px);
@@ -51,11 +50,15 @@
             padding: 10px;
             margin: 30px 0;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap; 
+            flex-wrap: nowrap; /* Prevent wrapping */
             gap: 10px;
+            overflow-x: auto; /* Allow horizontal scrolling */
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
         }
+        #section-nav::-webkit-scrollbar { display: none; } /* Chrome, Safari, and Opera */
         #section-nav a {
+            flex-shrink: 0; /* Prevent links from shrinking */
             display: block;
             padding: 10px 18px;
             border-radius: 12px;
@@ -149,14 +152,10 @@
             gap: 25px;
         }
         @media (min-width: 768px) {
-            .top-stories-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .top-stories-container { grid-template-columns: 1fr 1fr; }
         }
         @media (min-width: 1200px) {
-            .top-stories-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .top-stories-container { grid-template-columns: repeat(3, 1fr); }
         }
         .story-list {
             background: rgba(15, 23, 42, .6);
@@ -225,10 +224,7 @@
         }
         .section-header::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#4c89ff,#8855f7,#40cc80)}
         .section-title{font-size:1.8rem;font-weight:700;color:#f1f5f9;margin:0;text-shadow:0 2px 10px rgba(76, 137, 255,.3)}
-        .section-grid{display:grid;grid-template-columns:1fr;gap:20px}
-        @media (min-width: 640px) {
-            .section-grid{grid-template-columns:repeat(auto-fill,minmax(350px,1fr));}
-        }
+        .section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}
         .news-card{
             background:rgba(15,23,42,.8);backdrop-filter:blur(20px);border:1px solid rgba(51,65,85,.3);border-radius:16px;
             cursor:pointer;position:relative;overflow:hidden;transition:.4s;
@@ -252,7 +248,7 @@
         .card-content {
             display: flex;
             flex-direction: column;
-            flex-grow: 1; 
+            flex-grow: 1; /* This is essential for the layout */
         }
         .news-title{display:block;margin-bottom:10px;font-size:1.1rem;font-weight:600;color:#f1f5f9;text-decoration:none;line-height:1.4;transition:color .3s}
         .news-title:hover{color:#4c89ff}
@@ -261,7 +257,7 @@
             color: #94a3b8;
             line-height: 1.5;
             margin-bottom: 15px;
-            flex-grow: 1; 
+            flex-grow: 1; /* Pushes the meta block to the bottom */
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -270,7 +266,7 @@
         .news-meta{
             display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#64748b;
             padding-top:15px;border-top:1px solid rgba(51,65,85,.3);
-            flex-shrink: 0; 
+            flex-shrink: 0; /* Prevents meta from shrinking */
         }
         .news-source{font-weight:500;color:#94a3b8}.news-date{color:#64748b}
         .loading{text-align:center;padding:60px 20px;color:#64748b;font-size:1.1rem}
@@ -278,32 +274,26 @@
         border-top-color:#4c89ff;animation:spin 1s linear infinite;margin-left:10px}
         @keyframes spin{to{transform:rotate(360deg)}}.error{color:#f87171;text-align:center;padding:40px 20px;font-size:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;margin:20px 0}
         .empty-state{text-align:center;padding:80px 20px;color:#64748b}.empty-state h3{color:#94a3b8;font-size:1.3rem;margin-bottom:10px}
-        
-        /* ---------- Responsive Fixes ---------- */
-        @media (max-width: 767px){
-            h1{font-size:2.8rem}
-            .input-group{flex-direction:column}
-            .list-item{flex-direction:column;align-items:flex-start}
-            .item-actions{width:100%;justify-content:flex-end}
-            .summary-box, .story-list, .section-header { padding-left: 20px; padding-right: 20px; }
+        /* ---------- responsive ---------- */
+        @media(max-width:1199px){
+             .top-stories-container { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
         }
-        @media (max-width: 480px) {
-            h1 {font-size: 2.4rem;}
-            .subtitle {font-size: 1rem;}
-            .summary-box, .story-list { padding: 20px 15px; }
-        }
+        @media(max-width:768px){.container{padding:15px}h1{font-size:2.5rem}.input-group{flex-direction:column}
+        .section-grid{grid-template-columns:1fr}.list-item{flex-direction:column;align-items:flex-start}
+        .item-actions{width:100%;justify-content:flex-end}}
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header" style="text-align:center;margin-bottom:20px">
         <h1>Gemini Fan</h1>
-        <p class="subtitle">Google Gemini News You Can Use</p>
+        <p class="subtitle">Your Unofficial Hub for Google Gemini News</p>
     </div>
 
     <nav id="section-nav"></nav>
 
-    <div id="headlines-section" class="section"></div>
+    <div id="headlines-section" class="section">
+        </div>
 
     <div id="news-container" class="news-container">
         <div class="loading">Compiling intelligence stream…</div>
@@ -341,13 +331,14 @@
 </div>
 
 <script id="aggregator-script">
+// Using an ID for the script tag makes it easier to replace its content
 /*FEEDS_START*/let feeds = [
     { "url": "https://blog.google/technology/ai/rss/", "tags": ["Official Google", "Gemini"] },
     { "url": "https://ai.google.dev/blog/rss.xml", "tags": ["Official Google", "Developer"] },
     { "url": "https://cloud.google.com/blog/products/ai-machine-learning/rss", "tags": ["Official Google", "Cloud"] },
     { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwfrxG24uhCo_pWkF_M4iWA", "tags": ["Official YouTube", "Announcements"] },
-    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg77", "tags": ["Official YouTube", "Developer"] },
-    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg78", "tags": ["Official YouTube", "Cloud"] },
+    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC_x5XG1OV2P6uZZ5FSM9Ttw", "tags": ["Official YouTube", "Developer"] },
+    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNh4w", "tags": ["Official YouTube", "Cloud"] },
     { "url": "https://www.androidpolice.com/tags/google-gemini/rss/", "tags": ["Gemini Sites"] },
     { "url": "https://9to5google.com/guides/google-gemini/feed/", "tags": ["Gemini Sites"] },
     { "url": "https://www.theverge.com/rss/google/index.xml", "tags": ["Gemini Sites"] },
@@ -356,16 +347,18 @@
     { "url": "https://news.google.com/rss/search?q=google+gemini+when:7d&hl=en-US&gl=US&ceid=US:en", "tags": ["Google News"] },
     { "url": "https://rsshub.app/twitter/user/GoogleAI", "tags": ["Social Media"] },
     { "url": "https://rsshub.app/twitter/user/demishassabis", "tags": ["Social Media"] },
-    { "url": "https://rsshub.app/twitter/user/sundarpichai", "tags": ["Social Media"] },
+    { "url": "https://rsshub.app/twitter/user/jeffdean", "tags": ["Social Media"] },
     { "url": "https://openai.com/news/rss.xml", "tags": ["General AI", "OpenAI"] },
     { "url": "https://www.technologyreview.com/feed/?tag=ai", "tags": ["General AI", "MITTR"] },
     { "url": "https://www.wired.com/feed/category/artificial-intelligence/rss", "tags": ["General AI", "Wired"] },
     { "url": "https://venturebeat.com/category/ai/feed/", "tags": ["General AI", "VentureBeat"] },
     { "url": "https://huggingface.co/blog/feed.xml", "tags": ["General AI", "Hugging Face"] }
 ];/*FEEDS_END*/
-/*SECTIONS_START*/const defaultSectionNames = ["Official Google","Official YouTube","Gemini Sites","Gemini YouTubers","Google News","Social Media","General AI"];let sections = defaultSectionNames.map(n=>({name: n, active: true}));/*SECTIONS_END*/
+/*SECTIONS_START*/const defaultSectionNames = [    "Official Google",    "Official YouTube",    "Gemini Sites",    "Gemini YouTubers",    "Google News",    "Social Media",    "General AI"];let sections = defaultSectionNames.map(n=>({name: n, active: true}));/*SECTIONS_END*/
 
+/* status map: {url: {state:'loading'|'ok'|'fail', error:''}} */
 const feedStatus = {};
+/* ---------- DOM refs ---------- */
 const feedListEl = document.getElementById('feed-list');
 const sectionListEl = document.getElementById('section-list');
 const sectionNavEl = document.getElementById('section-nav');
@@ -379,31 +372,38 @@ const addSectionBtn = document.getElementById('add-section');
 const resetSectionsBtn = document.getElementById('reset-sections');
 const saveBtn = document.getElementById('save-button');
 
+/* ---------- UI helpers ---------- */
 function renderFeedList() {
     feedListEl.innerHTML = '';
     if (!feeds.length) {
         feedListEl.innerHTML = '<div class="empty-state"><h3>No feeds added</h3><p>Add feeds to get started.</p></div>';
         return;
     }
+    // Sort feeds alphabetically by URL for consistency
     feeds.sort((a, b) => a.url.localeCompare(b.url));
     feeds.forEach((feed, i) => {
         const li = document.createElement('li');
         li.className = 'list-item';
         const content = document.createElement('div');
         content.className = 'item-content';
+
         const status = feedStatus[feed.url]?.state || 'loading';
         const dot = document.createElement('span');
         dot.className = 'status-dot status-' + status;
         if (feedStatus[feed.url]?.error) dot.title = feedStatus[feed.url].error;
+
         const urlDiv = document.createElement('div');
         urlDiv.className = 'item-url';
         urlDiv.textContent = feed.url;
         content.append(dot, urlDiv);
+
         const tagsDiv = document.createElement('div');
         tagsDiv.className = 'item-tags';
         tagsDiv.textContent = 'Tags: ' + feed.tags.join(', ');
+
         const wrap = document.createElement('div');
         wrap.append(content, tagsDiv);
+
         const actions = document.createElement('div');
         actions.className = 'item-actions';
         const edit = document.createElement('button');
@@ -428,6 +428,7 @@ function renderFeedList() {
             loadNews();
         };
         actions.append(edit, remove);
+
         li.append(wrap, actions);
         feedListEl.appendChild(li);
     });
@@ -441,6 +442,7 @@ function renderSectionList() {
     });
     sections = uniqueSections;
     sections.sort((a,b) => (defaultSectionNames.indexOf(a.name) > -1 ? defaultSectionNames.indexOf(a.name) : Infinity) - (defaultSectionNames.indexOf(b.name) > -1 ? defaultSectionNames.indexOf(b.name) : Infinity));
+
     sections.forEach((sec, i) => {
         const tag = document.createElement('span');
         tag.className = 'tag-toggle' + (sec.active ? ' active' : '');
@@ -464,6 +466,7 @@ function renderSectionList() {
         sectionListEl.appendChild(tag);
     });
 }
+/* ---------- event hooks ---------- */
 addFeedBtn.onclick = () => {
     const url = newFeedUrlInput.value.trim();
     const tags = newFeedTagsInput.value.split(',').map(t => t.trim()).filter(Boolean);
@@ -498,7 +501,7 @@ saveBtn.onclick = () => {
         let html = document.documentElement.outerHTML;
         const feedsString = `let feeds = ${JSON.stringify(feeds, null, 4)};`;
         const sectionsString = `const defaultSectionNames = ${JSON.stringify(defaultSectionNames, null, 4)};\nlet sections = ${JSON.stringify(sections, null, 4)};`;
-        const scriptTag = document.getElementById('aggregator-script');
+                const scriptTag = document.getElementById('aggregator-script');
         const scriptContent = scriptTag.innerHTML;
         const feedsRegex = /\/\*FEEDS_START\*\/([\s\S]*?)\/\*FEEDS_END\*\//;
         const sectionsRegex = /\/\*SECTIONS_START\*\/([\s\S]*?)\/\*SECTIONS_END\*\//;
@@ -520,31 +523,44 @@ saveBtn.onclick = () => {
     }
 };
 
-const CORS_PROXY = 'https://api.codetabs.com/v1/proxy?quest=';
+/* ---------- feed fetching ---------- */
+const CORS_PROXY = 'https://corsproxy.io/?';
+
 async function fetchFeed(feed) {
     feedStatus[feed.url] = { state: 'loading' };
     renderFeedList();
     try {
-        const response = await fetch(CORS_PROXY + feed.url);
-        if (!response.ok) throw new Error(`Fetch failed: ${response.status} for ${feed.url}`);
+        const response = await fetch(CORS_PROXY + encodeURIComponent(feed.url));
+        if (!response.ok) throw new Error(`Fetch failed with status ${response.status} for ${feed.url}`);
         const xml = await response.text();
         const doc = new DOMParser().parseFromString(xml, 'application/xml');
-        const parserError = doc.querySelector('parsererror');
-        if (parserError) throw new Error(`XML parse error for ${feed.url}: ${parserError.textContent}`);
+        if (doc.querySelector('parsererror')) throw new Error(`XML parse error for ${feed.url}`);
         const nodes = [...doc.querySelectorAll('item, entry')];
         const items = nodes.map(n => {
             const title = n.querySelector('title')?.textContent?.trim() || 'Untitled';
-            let link = n.querySelector('link')?.getAttribute('href') || n.querySelector('link')?.textContent || '#';
+            let link = '#';
+            const linkEl = n.querySelector('link[rel="alternate"]') || n.querySelector('link');
+            if (linkEl) link = linkEl.getAttribute('href') || linkEl.textContent || '#';
             const dateText = n.querySelector('pubDate')?.textContent?.trim() || n.querySelector('updated')?.textContent?.trim() || n.querySelector('published')?.textContent?.trim();
-            let pubDate = dateText ? new Date(dateText) : new Date();
+            let pubDate = new Date(dateText);
             if (isNaN(pubDate)) pubDate = new Date();
             let sourceHost = 'unknown';
-            try { sourceHost = new URL(feed.url).hostname.replace('www.','') } catch (e) {}
+            try {
+                sourceHost = (new URL(feed.url)).hostname.replace('www.','');
+            } catch(e) {/* ignore invalid urls */}
             if (sourceHost === 'youtube.com') sourceHost = 'youtube.com';
+
             const rawHtml = n.querySelector('content\\:encoded, content')?.textContent || n.querySelector('description')?.textContent || '';
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = rawHtml;
-            let imageUrl = n.querySelector('media\\:thumbnail')?.getAttribute('url') || tempDiv.querySelector('img')?.src || null;
+            let imageUrl = null;
+            const mediaThumbnail = n.querySelector('media\\:thumbnail, thumbnail');
+            if (mediaThumbnail) {
+                imageUrl = mediaThumbnail.getAttribute('url');
+            } else {
+                const img = tempDiv.querySelector('img');
+                if (img) imageUrl = img.src;
+            }
             let cleanText = tempDiv.textContent.replace(/The post.*appeared first on.*/i, '').trim();
             if (cleanText.length > 150) {
                 cleanText = cleanText.substring(0, 150).replace(/\s\w+$/, '') + '…';
@@ -557,72 +573,91 @@ async function fetchFeed(feed) {
         renderFeedList();
         return items;
     } catch (err) {
-        console.error(`Feed Error (${feed.url}):`, err.message);
-        feedStatus[feed.url] = { state: 'fail', error: err.message };
+        console.error(err);
+        feedStatus[feed.url] = { state: 'fail', error: err?.message || 'Unknown error' };
         renderFeedList();
         return [];
     }
 }
 
+/* ---------- Article Ranking & Filtering ---------- */
 function rankAndFilterArticles(articles) {
     const now = new Date();
+
     const articleMap = new Map();
     articles.forEach(article => {
         if (articleMap.has(article.link)) {
             const existing = articleMap.get(article.link);
-            existing.tags = Array.from(new Set([...existing.tags, ...article.tags]));
-            if (article.pubDate > existing.pubDate) existing.pubDate = article.pubDate;
+            const mergedTags = new Set([...existing.tags, ...article.tags]);
+            existing.tags = Array.from(mergedTags);
+            if (article.pubDate > existing.pubDate) {
+                existing.pubDate = article.pubDate;
+            }
         } else {
             articleMap.set(article.link, { ...article, tags: [...article.tags] });
         }
     });
     const uniqueArticles = Array.from(articleMap.values());
+
     const sourceWeights = { 'blog.google': 1.8, 'ai.google.dev': 1.7, 'cloud.google.com': 1.5, 'openai.com': 1.4 };
     const announcementKeywords = { 'introducing': 5, 'announces': 5, 'release': 4 };
     const topicMultipliers = {
         'gemini': 2.0, 'vertex': 1.5, 'gemma': 1.5,
         'angular': 0.4, 'flutter': 0.4, 'chrome': 0.6, 'android': 0.8
     };
+    
     const ranked = uniqueArticles.map(article => {
         let score = 0;
         const titleLower = article.title.toLowerCase();
+        
         score += sourceWeights[article.source] || 1;
         for (const keyword in announcementKeywords) {
             if (titleLower.includes(keyword)) score += announcementKeywords[keyword];
         }
+
+        let topicFound = false;
+        // Prioritize Gemini boost above all else
         if (titleLower.includes('gemini')) {
             score *= topicMultipliers['gemini'];
+            topicFound = true;
         } else {
             for (const topic in topicMultipliers) {
-                if (topic === 'gemini') continue;
+                if (topic === 'gemini') continue; // Already handled
                 if (titleLower.includes(topic)) {
                     score *= topicMultipliers[topic];
                     break; 
                 }
             }
         }
+
         const hoursAgo = (now - article.pubDate) / (1000 * 60 * 60);
         score += Math.max(0, 10 - hoursAgo * 0.1);
+        
         article.score = score;
         return article;
     }).sort((a, b) => b.score - a.score);
+
     const dayMarker = new Date(now.getTime() - 24 * 60 * 60 * 1000);
     const weekMarker = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
     const monthMarker = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-    return { 
-        today: ranked.filter(a => a.pubDate >= dayMarker),
-        week: ranked.filter(a => a.pubDate >= weekMarker),
-        month: ranked.filter(a => a.pubDate >= monthMarker),
-        all: ranked 
-    };
+
+    const articlesToday = ranked.filter(a => a.pubDate >= dayMarker);
+    const articlesThisWeek = ranked.filter(a => a.pubDate >= weekMarker);
+    const articlesThisMonth = ranked.filter(a => a.pubDate >= monthMarker);
+
+    return { today: articlesToday, week: articlesThisWeek, month: articlesThisMonth, all: ranked };
 }
 
-const briefingStopWords = new Set(['a', 'an', 'the', 'and', 'or', 'in', 'on', 'for', 'with', 'to', 'from', 'of', 'as', 'its', 'is', 'i', 'me', 'my', 'we', 'our', 'you', 'your', 'he', 'she', 'it', 'they', 'them', 'their', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'but', 'if', 'because', 'while', 'at', 'by', 'up', 'down', 'out', 'about', 'more', 'how', 'when', 'where', 'why', 'all', 'any', 'both', 'each', 'few', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'its', 'into', 'not', 'get', 'one', 'two', 'again', 'after', 'also', 'could', 'did', 'find', 'here', 'his', 'how', 'its', 'like', 'make', 'many', 'more', 'new', 'see', 'use', 'used', 'uses', 'way', 'well', 'what', 'when', 'why', 'would', 'still', 'may', 'google', 'ai', 'gemini']);
+/* ---------- Insightful Summary Generation ---------- */
+const briefingStopWords = new Set(['a', 'an', 'the', 'and', 'or', 'in', 'on', 'for', 'with', 'to', 'from', 'of', 'as', 'its', 'is', 'i', 'me', 'my', 'we', 'our', 'you', 'your', 'he', 'she', 'it', 'they', 'them', 'their', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'but', 'if', 'because', 'while', 'at', 'by', 'up', 'down', 'out', 'about', 'more', 'how', 'when', 'where', 'why', 'all', 'any', 'both', 'each', 'few', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'its', 'into', 'not', 'get', 'one', 'two', 'again', 'after', 'also', 'could', 'did', 'find', 'here', 'his', 'how', 'its', 'like', 'make', 'many', 'more', 'new', 'see', 'use', 'used', 'uses', 'way', 'well', 'what', 'when', 'why', 'would', 'still', 'may', /* Obvious topics */ 'google', 'ai', 'gemini']);
+
 function getNormalizedWords(title) {
     return new Set(title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(word => word && !briefingStopWords.has(word) && isNaN(word)));
 }
+
 function findMostTalkedAbout(articles) {
     if (articles.length < 2) return null;
+
     const articlesWithScores = articles.map(articleA => {
         const wordsA = getNormalizedWords(articleA.title);
         if (wordsA.size === 0) return { ...articleA, talkScore: 0 };
@@ -638,9 +673,11 @@ function findMostTalkedAbout(articles) {
         }
         return { ...articleA, talkScore };
     });
+
     articlesWithScores.sort((a,b) => b.talkScore - a.talkScore);
     return articlesWithScores[0].talkScore > 0 ? articlesWithScores[0] : null;
 }
+
 function findTopThemes(articles, articlesToScan = 10) {
     const wordFreq = new Map();
     articles.slice(0, articlesToScan).forEach(article => {
@@ -649,16 +686,22 @@ function findTopThemes(articles, articlesToScan = 10) {
             wordFreq.set(word, (wordFreq.get(word) || 0) + 1);
         });
     });
+
     const themes = [];
     for (let [word, count] of wordFreq.entries()) {
         if (count > 1) themes.push(word);
     }
     return themes.sort((a, b) => wordFreq.get(b) - wordFreq.get(a)).slice(0, 3);
 }
+
 function generateAIBriefing(articlesThisWeek) {
-    if (articlesThisWeek.length < 2) return "Not enough news volume this week for a detailed briefing. Check the feeds directly for updates.";
+    if (articlesThisWeek.length < 2) {
+        return "Not enough news volume this week for a detailed briefing. Check the feeds directly for updates.";
+    }
+
     const topStory = articlesThisWeek[0];
     let summary = `This week's top-ranked story is <strong>${topStory.title}</strong> from ${topStory.source}. `;
+
     const mostTalkedAbout = findMostTalkedAbout(articlesThisWeek);
     if (mostTalkedAbout) {
         if (mostTalkedAbout.link !== topStory.link) {
@@ -667,39 +710,56 @@ function generateAIBriefing(articlesThisWeek) {
             summary += "This story is also receiving the most widespread coverage across different news outlets. ";
         }
     }
+
     const topThemes = findTopThemes(articlesThisWeek);
     if (topThemes.length > 0) {
         summary += `Other recurring keywords from the headlines include <strong>${topThemes.join('</strong>, <strong>')}</strong>.`;
     }
+
     return summary.trim();
 }
+
+/* ---------- Headline Section Rendering ---------- */
 function renderHeadlineSection(rankedToday, rankedWeek, rankedMonth) {
     headlinesContainer.innerHTML = ''; 
+    
     const summary = document.createElement('div');
     summary.className = 'summary-box';
-    const summaryText = generateAIBriefing(rankedWeek);
-    summary.innerHTML = `<div class="summary-title">This Week's AI Briefing</div><p class="summary-text">${summaryText}</p>`;
+    const summaryText = generateAIBriefing(rankedWeek); // Briefing now uses weekly data
+    summary.innerHTML = `
+        <div class="summary-title">This Week's AI Briefing</div>
+        <p class="summary-text">${summaryText}</p>
+    `;
     headlinesContainer.appendChild(summary);
+
     const topStoriesContainer = document.createElement('div');
     topStoriesContainer.className = 'top-stories-container';
     topStoriesContainer.innerHTML = `
         <div class="story-list">${renderStoryList('Top 5 of the Day', rankedToday.slice(0, 5))}</div>
         <div class="story-list">${renderStoryList('Top 10 of the Week', rankedWeek.slice(0, 10))}</div>
-        <div class="story-list">${renderStoryList('Top 10 of the Month', rankedMonth.slice(0, 10))}</div>`;
+        <div class="story-list">${renderStoryList('Top 10 of the Month', rankedMonth.slice(0, 10))}</div>
+    `;
     headlinesContainer.appendChild(topStoriesContainer);
 }
+
 function renderStoryList(title, articles) {
-    if (articles.length === 0) return `<h3>${title}</h3><p class="empty-state" style="padding: 20px 0;">No stories found.</p>`;
+    if (articles.length === 0) {
+        return `<h3>${title}</h3><p class="empty-state" style="padding: 20px 0;">No stories found.</p>`;
+    }
     const itemsHtml = articles.map((a, i) => `
         <li class="story-item">
             <span class="story-item-num">${i + 1}.</span>
             <div>
-                <a href="${a.link}" target="_blank" rel="noopener noreferrer"><div class="story-item-title">${a.title}</div></a>
+                <a href="${a.link}" target="_blank" rel="noopener noreferrer">
+                    <div class="story-item-title">${a.title}</div>
+                </a>
                 <div class="story-item-source">${a.source} • ${formatDate(a.pubDate)}</div>
             </div>
-        </li>`).join('');
+        </li>
+    `).join('');
     return `<h3>${title}</h3><ol>${itemsHtml}</ol>`;
 }
+
 function renderSectionNav(sections) {
     sectionNavEl.innerHTML = '';
     sections.forEach(sec => {
@@ -710,31 +770,45 @@ function renderSectionNav(sections) {
         sectionNavEl.appendChild(link);
     });
 }
+
+
+/* ---------- news loading ---------- */
 async function loadNews() {
     newsContainer.innerHTML = `<div class="loading">Compiling intelligence stream…</div>`;
     headlinesContainer.innerHTML = ''; 
+
     try {
         const results = await Promise.allSettled(feeds.map(fetchFeed));
         const allArticles = results.filter(r => r.status === 'fulfilled').flatMap(r => r.value);
         newsContainer.innerHTML = '';
+
         if (!allArticles.length) {
             headlinesContainer.innerHTML = '<div class="empty-state"><h3>Could not load any feeds.</h3><p>The proxy may be down or your network is offline.</p></div>';
             newsContainer.innerHTML = '<div class="empty-state"><h3>No articles found</h3><p>Check your feeds or network connection.</p></div>';
             return;
         }
+
         const { today: rankedToday, week: rankedWeek, month: rankedMonth, all: allRanked } = rankAndFilterArticles(allArticles);
         renderHeadlineSection(rankedToday, rankedWeek, rankedMonth);
+
         const activeSections = sections.filter(s => s.active);
-        renderSectionNav(activeSections);
+        renderSectionNav(activeSections); // Render the new nav bar
+
         if (!activeSections.length) {
             newsContainer.innerHTML = '<div class="empty-state"><h3>No active sections</h3><p>Enable a section from the settings to see news.</p></div>';
             return;
         }
+
         activeSections.forEach(sec => {
             const kw = sec.name.toLowerCase();
-            const sectionArticles = allRanked.filter(a => a.tags.some(t => t.toLowerCase().includes(kw))).sort((a, b) => b.pubDate - a.pubDate); 
+            const sectionArticles = allRanked.filter(a => {
+                return a.tags.some(t => t.toLowerCase().includes(kw));
+            }).sort((a, b) => b.pubDate - a.pubDate); 
+
             if (!sectionArticles.length) return;
+
             const sectionEl = document.createElement('div');
+            // Add ID for navigation
             sectionEl.id = 'section-' + sec.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             sectionEl.className = 'section';
             sectionEl.innerHTML = `<div class="section-header"><h2 class="section-title">${sec.name} (${sectionArticles.length})</h2></div>`;
@@ -760,6 +834,7 @@ async function loadNews() {
             sectionEl.appendChild(grid);
             newsContainer.appendChild(sectionEl);
         });
+
         if (!newsContainer.children.length) {
             newsContainer.innerHTML = '<div class="empty-state"><h3>No matches found</h3><p>Enable more sections or add different feeds to see articles.</p></div>';
         }
@@ -768,6 +843,8 @@ async function loadNews() {
         newsContainer.innerHTML = '<div class="error">Failed to load news. Check the console for details.</div>';
     }
 }
+
+/* ---------- util ---------- */
 function formatDate(d) {
     const now = new Date();
     const mins = Math.floor((now - d) / 60000);
@@ -780,12 +857,14 @@ function formatDate(d) {
     if (days < 7) return `${days}d ago`;
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
+
+/* ---------- init ---------- */
 (function init() {
     feeds.forEach(f => feedStatus[f.url] = { state: 'loading' });
     renderFeedList();
     renderSectionList();
     loadNews();
-    setInterval(loadNews, 15 * 60 * 1000); 
+    setInterval(loadNews, 15 * 60 * 1000); // Auto-refresh every 15 minutes
 })();
 </script>
 </body>

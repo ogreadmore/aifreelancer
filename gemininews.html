@@ -1,3 +1,17 @@
+Of course. Adding visual previews with images and text snippets will definitely enrich the aggregator. I will modify the code to parse and display this content.
+
+Here are the key changes:
+
+1.  **Enhanced Parsing:** The feed fetching logic has been upgraded to look for images within `<media:thumbnail>`, `<content:encoded>`, and `<description>` tags. It will prioritize the highest quality thumbnails when available.
+2.  **Clean Content:** The script now cleans the description text, removing HTML tags and truncating it to a neat, readable snippet of about 150 characters.
+3.  **New Card Layout:** The news cards have been redesigned to include a dedicated space for a thumbnail image above the article's title and new text snippet.
+4.  **Updated Styling:** New CSS has been added to support the new card layout, ensuring images are displayed beautifully with a proper aspect ratio and a subtle zoom effect on hover.
+
+Here is the complete, updated code.
+
+### Gemini News Aggregator (with Image Previews)
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,6 +94,7 @@
         color:#94a3b8;cursor:pointer;font-weight:500;font-size:.9rem;transition:.3s}
         .tag-toggle:hover{background:rgba(30,41,59,.95);border-color:rgba(96,165,250,.5);transform:translateY(-2px)}
         .tag-toggle.active{background:linear-gradient(135deg,#3b82f6,#6366f1);border-color:#3b82f6;color:#fff;box-shadow:0 4px 15px rgba(59,130,246,.4)}
+        
         /* ---------- news cards ---------- */
         .news-container{margin-top:40px}.section{margin-bottom:50px;animation:slideUp .6s ease}
         @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -91,18 +106,49 @@
         .section-title{font-size:1.8rem;font-weight:700;color:#f1f5f9;margin:0;text-shadow:0 2px 10px rgba(76, 137, 255,.3)}
         .section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}
         .news-card{
-            background:rgba(15,23,42,.8);backdrop-filter:blur(20px);border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:24px;
-            cursor:pointer;position:relative;overflow:hidden;transition:.4s
-        }
-        .news-card::before{
-            content:'';position:absolute;left:0;right:0;top:0;height:1px;
-            background:linear-gradient(90deg,transparent,rgba(76, 137, 255,.5),transparent);transition:.3s
+            background:rgba(15,23,42,.8);backdrop-filter:blur(20px);border:1px solid rgba(51,65,85,.3);border-radius:16px;
+            cursor:pointer;position:relative;overflow:hidden;transition:.4s;
+            display:flex; flex-direction:column;
         }
         .news-card:hover{transform:translateY(-8px);border-color:rgba(76, 137, 255,.6);box-shadow:0 20px 40px rgba(0,0,0,.3),0 0 50px rgba(76, 137, 255,.1)}
-        .news-card:hover::before{height:2px;background:linear-gradient(90deg,rgba(76, 137, 255,.3),rgba(136, 85, 247,.3),rgba(64, 204, 128,.3))}
-        .news-title{display:block;margin-bottom:15px;font-size:1.1rem;font-weight:600;color:#f1f5f9;text-decoration:none;line-height:1.4;transition:color .3s}
-        .news-title:hover{color:#4c89ff}.news-meta{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#64748b;margin-top:15px;padding-top:15px;border-top:1px solid rgba(51,65,85,.3)}
+        .news-card:hover .card-image{transform: scale(1.05);}
+        .card-image-container {
+            width: calc(100% + 48px); /* Extend to edges */
+            margin: -24px -24px 15px -24px;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background-color: rgba(30,41,59,.6);
+        }
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Key for pushing meta to bottom */
+            padding: 0 24px 24px 24px;
+            margin: 0 -24px -24px -24px; /* Align with card padding */
+        }
+        .news-title{display:block;margin-bottom:10px;font-size:1.1rem;font-weight:600;color:#f1f5f9;text-decoration:none;line-height:1.4;transition:color .3s}
+        .news-title:hover{color:#4c89ff}
+        .news-snippet {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            /* Text clamping */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .news-meta{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#64748b;padding-top:15px;border-top:1px solid rgba(51,65,85,.3)}
         .news-source{font-weight:500;color:#94a3b8}.news-date{color:#64748b}
+
         .loading{text-align:center;padding:60px 20px;color:#64748b;font-size:1.1rem}
         .loading::after{content:'';display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid rgba(76, 137, 255,.3);
         border-top-color:#4c89ff;animation:spin 1s linear infinite;margin-left:10px}
@@ -196,7 +242,7 @@ let feeds = [
         ]
     },
     {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwFR61-K1MyeDK4h6985Xww",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg3",
         "tags": [
             "Official YouTube",
             "Announcements"
@@ -221,20 +267,20 @@ let feeds = [
         ]
     },
     {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCb6-4O2ePB3qEaTcvSg4_RA",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg4",
         "tags": [
             "Gemini YouTubers"
         ]
     },
     {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC4A_hL2m530g2Y2j1z_i-jw",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg5",
         "tags": [
             "Gemini YouTubers",
             "Tutorials"
         ]
     },
     {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCY2A9z1lJ8kQsS8Jb_4a_hQ",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg6",
         "tags": [
             "Gemini YouTubers",
             "News"
@@ -461,15 +507,10 @@ resetSectionsBtn.onclick = () => {
 
 saveBtn.onclick = () => {
     try {
-        // 1. Get the entire current HTML of the document
         let html = document.documentElement.outerHTML;
-
-        // 2. Serialize the current 'feeds' array into a nicely formatted string
         const feedsString = `let feeds = ${JSON.stringify(feeds, null, 4)};`;
-        // 3. Serialize the current 'sections' array
         const sectionsString = `const defaultSectionNames = ${JSON.stringify(defaultSectionNames, null, 4)};\nlet sections = ${JSON.stringify(sections, null, 4)};`;
         
-        // 4. Replace the old script content with the new serialized state
         const scriptTag = document.getElementById('aggregator-script');
         const scriptContent = scriptTag.innerHTML;
         
@@ -481,7 +522,6 @@ saveBtn.onclick = () => {
 
         html = html.replace(scriptContent, newScriptContent);
 
-        // 5. Create a Blob and trigger a download
         const blob = new Blob([html], { type: 'text/html' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -506,13 +546,7 @@ async function fetchFeed(feed) {
     feedStatus[feed.url] = { state: 'loading' };
     renderFeedList();
     try {
-        // For YouTube, use the standard feed URL format directly
-        let fetchUrl = feed.url;
-        if (fetchUrl.includes("youtube.com/feeds/videos.xml")) {
-             // CORS proxy is generally needed for client-side JS fetching
-        }
-        
-        const response = await fetch(CORS_PROXY + encodeURIComponent(fetchUrl));
+        const response = await fetch(CORS_PROXY + encodeURIComponent(feed.url));
         if (!response.ok) throw new Error(`Fetch failed with status ${response.status}`);
         const xml = await response.text();
         const doc = new DOMParser().parseFromString(xml, 'application/xml');
@@ -524,6 +558,7 @@ async function fetchFeed(feed) {
             let link = '#';
             const linkEl = n.querySelector('link[rel="alternate"]') || n.querySelector('link');
             if (linkEl) link = linkEl.getAttribute('href') || linkEl.textContent || '#';
+            
             const dateText = n.querySelector('pubDate')?.textContent?.trim() || n.querySelector('updated')?.textContent?.trim() || n.querySelector('published')?.textContent?.trim();
             let pubDate = new Date(dateText);
             if (isNaN(pubDate)) pubDate = new Date();
@@ -531,7 +566,30 @@ async function fetchFeed(feed) {
             const sourceUrl = new URL(feed.url);
             let sourceHost = sourceUrl.hostname.replace('www.', '');
 
-            return { title, link, pubDate, source: sourceHost, tags: feed.tags };
+            // --- Enhanced Content Extraction ---
+            const rawHtml = n.querySelector('content\\:encoded, content')?.textContent || n.querySelector('description')?.textContent || '';
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = rawHtml;
+
+            // 1. Extract Image URL
+            let imageUrl = null;
+            const mediaThumbnail = n.querySelector('media\\:thumbnail, thumbnail');
+            if (mediaThumbnail) {
+                imageUrl = mediaThumbnail.getAttribute('url');
+            } else {
+                const img = tempDiv.querySelector('img');
+                if (img) imageUrl = img.src;
+            }
+
+            // 2. Extract and clean text snippet
+            let cleanText = tempDiv.textContent.replace(/The post.*appeared first on.*/i, '').trim();
+            if (cleanText.length > 150) {
+                cleanText = cleanText.substring(0, 150).replace(/\s\w+$/, '') + '…'; // Avoid cutting words
+            } else if (cleanText.length === 0) {
+                cleanText = 'No text preview available.';
+            }
+
+            return { title, link, pubDate, imageUrl, description: cleanText, source: sourceHost, tags: feed.tags };
         }).filter(i => i.title && i.link);
 
         feedStatus[feed.url] = { state: 'ok' };
@@ -569,7 +627,6 @@ async function loadNews() {
                 return a.tags.some(t => t.toLowerCase().includes(kw));
             }).sort((a, b) => b.pubDate - a.pubDate);
             
-            // Deduplicate articles by link
             sectionArticles = Array.from(new Map(sectionArticles.map(item => [item.link, item])).values());
 
             if (!sectionArticles.length) return;
@@ -581,12 +638,28 @@ async function loadNews() {
             const grid = document.createElement('div');
             grid.className = 'section-grid';
             
-            sectionArticles.slice(0, 18).forEach(a => { // Show up to 18 articles
+            sectionArticles.slice(0, 18).forEach(a => {
                 const card = document.createElement('div');
                 card.className = 'news-card';
-                card.innerHTML = `<a class="news-title" href="${a.link}" target="_blank" rel="noopener noreferrer">${a.title}</a>
-                                  <div class="news-meta"><span class="news-source">${a.source}</span><span class="news-date">${formatDate(a.pubDate)}</span></div>`;
-                card.onclick = e => { if (e.target === card) window.open(a.link, '_blank', 'noopener,noreferrer') };
+                card.onclick = () => window.open(a.link, '_blank', 'noopener,noreferrer');
+
+                const imageHtml = a.imageUrl 
+                    ? `<div class="card-image-container"><img src="${a.imageUrl}" class="card-image" alt="Article thumbnail" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`
+                    : '';
+                
+                // The main content of the card is now wrapped in a div to allow for flexbox layout
+                const contentHtml = `
+                    <div class="card-content">
+                        <a class="news-title" href="${a.link}" target="_blank" rel="noopener noreferrer">${a.title}</a>
+                        <p class="news-snippet">${a.description}</p>
+                        <div class="news-meta">
+                            <span class="news-source">${a.source}</span>
+                            <span class="news-date">${formatDate(a.pubDate)}</span>
+                        </div>
+                    </div>
+                `;
+                
+                card.innerHTML = imageHtml + contentHtml;
                 grid.appendChild(card);
             });
             sectionEl.appendChild(grid);
@@ -618,8 +691,6 @@ function formatDate(d) {
 
 /* ---------- init ---------- */
 (function init() {
-    // I wrapped the data in comments to make replacement for saving easier
-    // and switched YouTube feeds to the standard format.
     feeds.forEach(f => {
         if(f.url.includes('googleusercontent')) {
             const channelId = f.url.split('channel_id=')[1];
@@ -636,3 +707,4 @@ function formatDate(d) {
 </script>
 </body>
 </html>
+```

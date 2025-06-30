@@ -91,24 +91,28 @@
             const searchQuery = encodeURIComponent('"Google Gemini" OR "Gemini AI"');
             const googleNewsUrl = `https://news.google.com/rss/search?q=${searchQuery}&hl=en-US&gl=US&ceid=US:en`;
             
-            // Use a CORS proxy to bypass browser restrictions on fetching RSS feeds
-            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(googleNewsUrl)}`;
+            // Use a different, more reliable CORS proxy to bypass browser restrictions
+            const proxyUrl = `https://thingproxy.freeboard.io/fetch/${googleNewsUrl}`;
 
             try {
                 const response = await fetch(proxyUrl);
                 if (!response.ok) {
                     throw new Error(`Network response was not ok. Status: ${response.status}`);
                 }
-                const data = await response.json();
-
-                // Check if the proxy returned the feed content
-                if (!data.contents) {
-                    throw new Error('CORS proxy did not return content. The service may be down.');
-                }
                 
-                // Parse the XML feed
+                // This proxy returns raw text, not JSON, so we use .text()
+                const xmlText = await response.text();
+                
+                // Parse the XML feed from the text response
                 const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data.contents, "application/xml");
+                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+                
+                // Check for parsing errors which can happen if the proxy fails
+                const parseError = xmlDoc.querySelector('parsererror');
+                if (parseError) {
+                    console.error('XML Parse Error:', parseError);
+                    throw new Error('Failed to parse the news feed. The proxy may be down or returning an error page.');
+                }
                 
                 const items = xmlDoc.querySelectorAll('item');
                 if (items.length > 0) {

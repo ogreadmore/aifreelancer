@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gemini News Aggregator</title>
+    <title>Gemini Fan - Your Unofficial Gemini News Hub</title>
+    <meta name="description" content="Your real-time, unofficial hub for the latest news, updates, and tutorials on Google Gemini. Aggregate feeds from official blogs, news sites, and social media.">
+    <meta name="keywords" content="Google Gemini, Gemini AI, AI News, Gemini Aggregator, Gemini Fan, Artificial Intelligence, LLM, Google AI Studio">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gemini Fan - Your Unofficial Gemini News Hub">
+    <meta property="og:description" content="The ultimate real-time aggregator for all news related to Google Gemini, featuring official sources, top news sites, and social media.">
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg width='1200' height='630' viewBox='0 0 1200 630' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230c0c0c'/%3E%3Cstop offset='100%25' stop-color='%2316213e'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234c89ff'/%3E%3Cstop offset='100%25' stop-color='%238855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='630' fill='url(%23bg)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif' font-size='450' font-weight='800' fill='url(%23g)'%3EGF%3C/text%3E%3Ctext x='50%25' y='80%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif' font-size='60' font-weight='300' fill='%23e0e6ed'%3EGEMINI FAN%3C/text%3E%3C/svg%3E">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Gemini Fan - Your Unofficial Gemini News Hub">
+    <meta property="twitter:description" content="The ultimate real-time aggregator for all news related to Google Gemini, featuring official sources, top news sites, and social media.">
+    <meta property="twitter:image" content="data:image/svg+xml,%3Csvg width='1200' height='630' viewBox='0 0 1200 630' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230c0c0c'/%3E%3Cstop offset='100%25' stop-color='%2316213e'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234c89ff'/%3E%3Cstop offset='100%25' stop-color='%238855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='630' fill='url(%23bg)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif' font-size='450' font-weight='800' fill='url(%23g)'%3EGF%3C/text%3E%3Ctext x='50%25' y='80%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif' font-size='60' font-weight='300' fill='%23e0e6ed'%3EGEMINI FAN%3C/text%3E%3C/svg%3E">
+
     <style>
         /* ---------- base & backdrop ---------- */
+        html{scroll-behavior:smooth}
         *{margin:0;padding:0;box-sizing:border-box}
         body{
             font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
@@ -28,6 +40,38 @@
         }
         @keyframes glow{from{filter:drop-shadow(0 0 10px rgba(76, 137, 255,.4))} to{filter:drop-shadow(0 0 20px rgba(76, 137, 255,.6))}}
         .subtitle{font-size:1.1rem;color:#94a3b8;font-weight:300}
+        
+        /* ---------- NEW: Section Navigation ---------- */
+        #section-nav {
+            background: rgba(15, 23, 42, .7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(51, 65, 85, .3);
+            border-radius: 16px;
+            padding: 10px;
+            margin: 30px 0;
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping */
+            gap: 10px;
+            overflow-x: auto; /* Allow horizontal scrolling */
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        #section-nav::-webkit-scrollbar { display: none; } /* Chrome, Safari, and Opera */
+        #section-nav a {
+            flex-shrink: 0; /* Prevent links from shrinking */
+            display: block;
+            padding: 10px 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #c1d1e0;
+            font-weight: 500;
+            transition: all .3s ease;
+        }
+        #section-nav a:hover {
+            background: rgba(30, 41, 59, .9);
+            color: #fff;
+        }
+
         /* ---------- buttons ---------- */
         .btn{position:relative;overflow:hidden;cursor:pointer;font-weight:600;text-transform:uppercase;
         letter-spacing:.5px;border:none;border-radius:12px;padding:14px 24px;font-size:.9rem;transition:.3s}
@@ -42,7 +86,7 @@
         .btn-save{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;
         box-shadow:0 4px 15px rgba(168,85,247,.4)}.btn-save:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(168,85,247,.6)}
         /* ---------- collapsible bar ---------- */
-        details#settings{margin-bottom:40px}details#settings summary{
+        details#settings{margin: 40px 0;}details#settings summary{
         background:rgba(15,23,42,.85);backdrop-filter:blur(16px);
         border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:18px 24px;
         font-size:1.1rem;font-weight:600;cursor:pointer;list-style:none;
@@ -241,11 +285,20 @@
 </head>
 <body>
 <div class="container">
-    <div class="header" style="text-align:center;margin-bottom:40px">
-        <h1>Gemini News Central</h1>
-        <p class="subtitle">Your real-time intelligence feed for Google Gemini</p>
+    <div class="header" style="text-align:center;margin-bottom:20px">
+        <h1>Gemini Fan</h1>
+        <p class="subtitle">Your Unofficial Hub for Google Gemini News</p>
     </div>
 
+    <nav id="section-nav"></nav>
+
+    <div id="headlines-section" class="section">
+        </div>
+
+    <div id="news-container" class="news-container">
+        <div class="loading">Compiling intelligence stream…</div>
+    </div>
+    
     <details id="settings">
         <summary>⚙️ Feed & Section Settings</summary>
         <div class="panel">
@@ -275,12 +328,6 @@
             </div>
         </div>
     </details>
-
-    <div id="headlines-section" class="section">
-        </div>
-    <div id="news-container" class="news-container">
-        <div class="loading">Compiling intelligence stream…</div>
-    </div>
 </div>
 
 <script id="aggregator-script">
@@ -314,6 +361,7 @@ const feedStatus = {};
 /* ---------- DOM refs ---------- */
 const feedListEl = document.getElementById('feed-list');
 const sectionListEl = document.getElementById('section-list');
+const sectionNavEl = document.getElementById('section-nav');
 const headlinesContainer = document.getElementById('headlines-section');
 const newsContainer = document.getElementById('news-container');
 const newFeedUrlInput = document.getElementById('new-feed-url');
@@ -464,7 +512,7 @@ saveBtn.onclick = () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'gemini-news-aggregator.html';
+        a.download = 'gemini-fan.html';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -496,8 +544,11 @@ async function fetchFeed(feed) {
             const dateText = n.querySelector('pubDate')?.textContent?.trim() || n.querySelector('updated')?.textContent?.trim() || n.querySelector('published')?.textContent?.trim();
             let pubDate = new Date(dateText);
             if (isNaN(pubDate)) pubDate = new Date();
-            const sourceUrl = new URL(CORS_PROXY + feed.url);
-            let sourceHost = sourceUrl.hostname.includes('youtube.com') ? 'youtube.com' : (new URL(feed.url)).hostname.replace('www.','');
+            let sourceHost = 'unknown';
+            try {
+                sourceHost = (new URL(feed.url)).hostname.replace('www.','');
+            } catch(e) {/* ignore invalid urls */}
+            if (sourceHost === 'youtube.com') sourceHost = 'youtube.com';
 
             const rawHtml = n.querySelector('content\\:encoded, content')?.textContent || n.querySelector('description')?.textContent || '';
             const tempDiv = document.createElement('div');
@@ -548,42 +599,37 @@ function rankAndFilterArticles(articles) {
     });
     const uniqueArticles = Array.from(articleMap.values());
 
-    // --- NEW: Relevance Tuning ---
     const sourceWeights = { 'blog.google': 1.8, 'ai.google.dev': 1.7, 'cloud.google.com': 1.5, 'openai.com': 1.4 };
     const announcementKeywords = { 'introducing': 5, 'announces': 5, 'release': 4 };
     const topicMultipliers = {
-        'gemini': 2.0,      // Strong boost for Gemini
-        'vertex': 1.5,      // Medium boost for Vertex AI
-        'gemma': 1.5,       // Medium boost for Gemma
-        'angular': 0.4,     // Penalty for Angular
-        'flutter': 0.4,     // Penalty for Flutter
-        'chrome': 0.6,      // Penalty for Chrome
-        'android': 0.8      // Slight penalty (unless Gemini is also mentioned)
+        'gemini': 2.0, 'vertex': 1.5, 'gemma': 1.5,
+        'angular': 0.4, 'flutter': 0.4, 'chrome': 0.6, 'android': 0.8
     };
     
     const ranked = uniqueArticles.map(article => {
         let score = 0;
         const titleLower = article.title.toLowerCase();
         
-        // 1. Base score from source and announcement keywords
         score += sourceWeights[article.source] || 1;
         for (const keyword in announcementKeywords) {
-            if (titleLower.includes(keyword)) {
-                score += announcementKeywords[keyword];
-            }
+            if (titleLower.includes(keyword)) score += announcementKeywords[keyword];
         }
 
-        // 2. Apply powerful topic-based multipliers
         let topicFound = false;
-        for (const topic in topicMultipliers) {
-            if (titleLower.includes(topic)) {
-                score *= topicMultipliers[topic];
-                topicFound = true;
-                break; // Apply first and most specific multiplier found
+        // Prioritize Gemini boost above all else
+        if (titleLower.includes('gemini')) {
+            score *= topicMultipliers['gemini'];
+            topicFound = true;
+        } else {
+            for (const topic in topicMultipliers) {
+                if (topic === 'gemini') continue; // Already handled
+                if (titleLower.includes(topic)) {
+                    score *= topicMultipliers[topic];
+                    break; 
+                }
             }
         }
 
-        // 3. Add recency score
         const hoursAgo = (now - article.pubDate) / (1000 * 60 * 60);
         score += Math.max(0, 10 - hoursAgo * 0.1);
         
@@ -615,33 +661,26 @@ function findMostTalkedAbout(articles) {
     const articlesWithScores = articles.map(articleA => {
         const wordsA = getNormalizedWords(articleA.title);
         if (wordsA.size === 0) return { ...articleA, talkScore: 0 };
-
         let talkScore = 0;
         for (const articleB of articles) {
             if (articleA.link === articleB.link) continue;
-            
             const wordsB = getNormalizedWords(articleB.title);
             if (wordsB.size === 0) continue;
-
             const intersection = new Set([...wordsA].filter(x => wordsB.has(x)));
             const union = new Set([...wordsA, ...wordsB]);
             const similarity = union.size > 0 ? intersection.size / union.size : 0;
-            
-            if (similarity > 0.4) { // Similarity threshold
-                talkScore++;
-            }
+            if (similarity > 0.4) talkScore++;
         }
         return { ...articleA, talkScore };
     });
 
     articlesWithScores.sort((a,b) => b.talkScore - a.talkScore);
-    
     return articlesWithScores[0].talkScore > 0 ? articlesWithScores[0] : null;
 }
 
-function findTopThemes(articles) {
+function findTopThemes(articles, articlesToScan = 10) {
     const wordFreq = new Map();
-    articles.slice(0, 5).forEach(article => {
+    articles.slice(0, articlesToScan).forEach(article => {
         const words = getNormalizedWords(article.title);
         words.forEach(word => {
             wordFreq.set(word, (wordFreq.get(word) || 0) + 1);
@@ -650,31 +689,29 @@ function findTopThemes(articles) {
 
     const themes = [];
     for (let [word, count] of wordFreq.entries()) {
-        if (count > 1) { // A theme must appear in at least 2 headlines
-            themes.push(word);
-        }
+        if (count > 1) themes.push(word);
     }
     return themes.sort((a, b) => wordFreq.get(b) - wordFreq.get(a)).slice(0, 3);
 }
 
-function generateAIBriefing(articlesToday) {
-    if (articlesToday.length < 2) {
-        return "Not enough news volume in the last 24 hours for a detailed briefing. Check the feeds directly for updates.";
+function generateAIBriefing(articlesThisWeek) {
+    if (articlesThisWeek.length < 2) {
+        return "Not enough news volume this week for a detailed briefing. Check the feeds directly for updates.";
     }
 
-    const topStory = articlesToday[0];
-    let summary = `Today's top-ranked story is <strong>${topStory.title}</strong> from ${topStory.source}. `;
+    const topStory = articlesThisWeek[0];
+    let summary = `This week's top-ranked story is <strong>${topStory.title}</strong> from ${topStory.source}. `;
 
-    const mostTalkedAbout = findMostTalkedAbout(articlesToday);
+    const mostTalkedAbout = findMostTalkedAbout(articlesThisWeek);
     if (mostTalkedAbout) {
         if (mostTalkedAbout.link !== topStory.link) {
-            summary += `However, the most discussed topic across multiple sources appears to be "<strong>${mostTalkedAbout.title}</strong>," suggesting widespread industry interest. `;
+            summary += `Across the wire, the most covered event appears to be "<strong>${mostTalkedAbout.title}</strong>," suggesting widespread industry interest. `;
         } else {
-            summary += "This story is also receiving the most widespread coverage across different news outlets today. ";
+            summary += "This story is also receiving the most widespread coverage across different news outlets. ";
         }
     }
 
-    const topThemes = findTopThemes(articlesToday);
+    const topThemes = findTopThemes(articlesThisWeek);
     if (topThemes.length > 0) {
         summary += `Other recurring keywords from the headlines include <strong>${topThemes.join('</strong>, <strong>')}</strong>.`;
     }
@@ -688,9 +725,9 @@ function renderHeadlineSection(rankedToday, rankedWeek, rankedMonth) {
     
     const summary = document.createElement('div');
     summary.className = 'summary-box';
-    const summaryText = generateAIBriefing(rankedToday);
+    const summaryText = generateAIBriefing(rankedWeek); // Briefing now uses weekly data
     summary.innerHTML = `
-        <div class="summary-title">Today's AI Briefing</div>
+        <div class="summary-title">This Week's AI Briefing</div>
         <p class="summary-text">${summaryText}</p>
     `;
     headlinesContainer.appendChild(summary);
@@ -723,6 +760,17 @@ function renderStoryList(title, articles) {
     return `<h3>${title}</h3><ol>${itemsHtml}</ol>`;
 }
 
+function renderSectionNav(sections) {
+    sectionNavEl.innerHTML = '';
+    sections.forEach(sec => {
+        const id = 'section-' + sec.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        const link = document.createElement('a');
+        link.href = `#${id}`;
+        link.textContent = sec.name;
+        sectionNavEl.appendChild(link);
+    });
+}
+
 
 /* ---------- news loading ---------- */
 async function loadNews() {
@@ -744,6 +792,8 @@ async function loadNews() {
         renderHeadlineSection(rankedToday, rankedWeek, rankedMonth);
 
         const activeSections = sections.filter(s => s.active);
+        renderSectionNav(activeSections); // Render the new nav bar
+
         if (!activeSections.length) {
             newsContainer.innerHTML = '<div class="empty-state"><h3>No active sections</h3><p>Enable a section from the settings to see news.</p></div>';
             return;
@@ -753,11 +803,13 @@ async function loadNews() {
             const kw = sec.name.toLowerCase();
             const sectionArticles = allRanked.filter(a => {
                 return a.tags.some(t => t.toLowerCase().includes(kw));
-            }).sort((a, b) => b.pubDate - a.pubDate); // Sort by date for section view
+            }).sort((a, b) => b.pubDate - a.pubDate); 
 
             if (!sectionArticles.length) return;
 
             const sectionEl = document.createElement('div');
+            // Add ID for navigation
+            sectionEl.id = 'section-' + sec.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             sectionEl.className = 'section';
             sectionEl.innerHTML = `<div class="section-header"><h2 class="section-title">${sec.name} (${sectionArticles.length})</h2></div>`;
             const grid = document.createElement('div');

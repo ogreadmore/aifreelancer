@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Fan - Latest News on Google Gemini</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Use the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Simple animation for card fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .news-card {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Header Section -->
+    <header class="bg-white dark:bg-gray-800/50 shadow-sm sticky top-0 backdrop-blur-lg z-10">
+        <div class="container mx-auto px-4 py-4">
+            <h1 class="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">
+                GeminiFan.com
+            </h1>
+            <p class="text-center text-gray-500 dark:text-gray-400 mt-1">Your daily source for the latest news on Google Gemini</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-8">
+
+        <!-- API Key Input Section -->
+        <div id="api-key-section" class="max-w-xl mx-auto mb-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-3 text-center">Enter Your News API Key</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 text-center">
+                To fetch the latest news, you need a free API key from a provider like <a href="https://newsapi.org/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">newsapi.org</a>. Once you have it, paste it below.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-2">
+                <input type="password" id="api-key-input" class="flex-grow w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Paste your API key here">
+                <button id="save-key-button" class="w-full sm:w-auto px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900 transition-colors">
+                    Save & Fetch News
+                </button>
+            </div>
+             <button id="clear-key-button" class="w-full mt-2 px-6 py-2 bg-gray-200 text-gray-700 font-semibold rounded-md hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition-colors">
+                Clear Saved Key
+            </button>
+        </div>
+
+        <!-- News Container -->
+        <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- News articles will be injected here by JavaScript -->
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="text-center py-12 hidden">
+            <svg class="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p class="mt-4 text-lg font-medium text-gray-600 dark:text-gray-400">Fetching the latest Gemini news...</p>
+        </div>
+        
+        <!-- Error Message -->
+        <div id="error-message" class="text-center py-12 hidden">
+             <div class="max-w-md mx-auto p-6 bg-red-100 dark:bg-red-900/50 border border-red-400 dark:border-red-700 rounded-lg">
+                <h3 class="text-lg font-semibold text-red-800 dark:text-red-200">Something Went Wrong</h3>
+                <p id="error-text" class="mt-2 text-red-600 dark:text-red-300">Could not fetch news. Please check your API key and network connection.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 mt-8 border-t border-gray-200 dark:border-gray-800">
+        <p class="text-gray-500 dark:text-gray-400">Powered by <a href="https://newsapi.org/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">NewsAPI.org</a></p>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const apiKeySection = document.getElementById('api-key-section');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const saveKeyButton = document.getElementById('save-key-button');
+        const clearKeyButton = document.getElementById('clear-key-button');
+        const newsContainer = document.getElementById('news-container');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+
+        // --- API Configuration ---
+        const NEWS_API_KEY_STORAGE = 'newsApiKey';
+
+        /**
+         * Fetches news articles from the NewsAPI.
+         * @param {string} apiKey - The API key for NewsAPI.org.
+         */
+        async function fetchNews(apiKey) {
+            // Clear previous state
+            newsContainer.innerHTML = '';
+            errorMessage.classList.add('hidden');
+            loadingIndicator.classList.remove('hidden');
+
+            // Define the search query. This looks for articles about "Google Gemini" or "Gemini AI"
+            const query = encodeURIComponent('"Google Gemini" OR "Gemini AI"');
+            
+            // Construct the API endpoint URL
+            // We sort by 'relevancy' to get the most pertinent articles first.
+            const url = `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&language=en&apiKey=${apiKey}`;
+
+            try {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    // Handle HTTP errors like 401 (Unauthorized), 429 (Too Many Requests), etc.
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                if (data.articles && data.articles.length > 0) {
+                    displayArticles(data.articles);
+                } else {
+                    showError('No articles found for your query. Try again later.');
+                }
+
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                showError(`Failed to fetch news. ${error.message}`);
+            } finally {
+                // Always hide the loading indicator
+                loadingIndicator.classList.add('hidden');
+            }
+        }
+
+        /**
+         * Displays the fetched articles on the page.
+         * @param {Array} articles - An array of article objects.
+         */
+        function displayArticles(articles) {
+            newsContainer.innerHTML = ''; // Clear previous articles
+            articles.forEach(article => {
+                // Skip articles with removed content or no title
+                if (article.title === '[Removed]' || !article.title) return;
+
+                const articleCard = document.createElement('div');
+                articleCard.className = 'news-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col';
+                
+                // Fallback image in case article.urlToImage is null
+                const imageUrl = article.urlToImage || `https://placehold.co/600x400/2B6CB0/FFFFFF?text=${encodeURIComponent(article.source.name)}`;
+
+                articleCard.innerHTML = `
+                    <a href="${article.url}" target="_blank" rel="noopener noreferrer">
+                        <img src="${imageUrl}" alt="${article.title}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4A5568/FFFFFF?text=Image+Not+Found';">
+                    </a>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h2 class="text-xl font-bold mb-2 flex-grow">
+                            <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                ${article.title}
+                            </a>
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">${article.description || 'No description available.'}</p>
+                        <div class="mt-auto text-sm text-gray-500 dark:text-gray-400">
+                            <span class="font-semibold">${article.source.name}</span> &bull; <span>${new Date(article.publishedAt).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                `;
+                newsContainer.appendChild(articleCard);
+            });
+        }
+        
+        /**
+         * Shows an error message on the UI.
+         * @param {string} message - The error message to display.
+         */
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+        }
+        
+        /**
+         * Saves the API key to localStorage and fetches news.
+         */
+        function handleSaveAndFetch() {
+            const apiKey = apiKeyInput.value.trim();
+            if (apiKey) {
+                localStorage.setItem(NEWS_API_KEY_STORAGE, apiKey);
+                apiKeySection.classList.add('hidden');
+                fetchNews(apiKey);
+            } else {
+                alert('Please enter a valid API key.');
+            }
+        }
+
+        // --- Event Listeners ---
+        saveKeyButton.addEventListener('click', handleSaveAndFetch);
+        apiKeyInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSaveAndFetch();
+            }
+        });
+
+        clearKeyButton.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear your saved API key?')) {
+                localStorage.removeItem(NEWS_API_KEY_STORAGE);
+                apiKeyInput.value = '';
+                apiKeySection.classList.remove('hidden');
+                newsContainer.innerHTML = ''; // Clear news articles
+                errorMessage.classList.add('hidden'); // Hide any errors
+                loadingIndicator.classList.add('hidden'); // Hide loader
+            }
+        });
+
+        // --- Initial Load ---
+        window.addEventListener('load', () => {
+            const savedApiKey = localStorage.getItem(NEWS_API_KEY_STORAGE);
+            if (savedApiKey) {
+                apiKeySection.classList.add('hidden');
+                fetchNews(savedApiKey);
+            } else {
+                apiKeySection.classList.remove('hidden');
+            }
+        });
+
+    </script>
+</body>
+</html>

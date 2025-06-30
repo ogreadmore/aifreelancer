@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gemini Fan - Your Gemini News Hub</title>
     <meta name="description" content="Your real-time, unofficial hub for the latest news, updates, and tutorials on Google Gemini. Aggregate feeds from official blogs, news sites, and social media.">
     <meta name="keywords" content="Google Gemini, Gemini AI, AI News, Gemini Aggregator, Gemini Fan, Artificial Intelligence, LLM, Google AI Studio">
@@ -31,6 +33,7 @@
                 radial-gradient(400px circle at 40% 80%,rgba(64, 204, 128,.1),transparent 50%)
         }
         .container{max-width:1400px;margin:0 auto;padding:20px}
+        
         /* ---------- headings ---------- */
         h1{
             font-size:3.5rem;font-weight:800;margin-bottom:10px;
@@ -41,7 +44,7 @@
         @keyframes glow{from{filter:drop-shadow(0 0 10px rgba(76, 137, 255,.4))} to{filter:drop-shadow(0 0 20px rgba(76, 137, 255,.6))}}
         .subtitle{font-size:1.1rem;color:#94a3b8;font-weight:300}
         
-        /* ---------- NEW: Section Navigation ---------- */
+        /* ---------- Section Navigation ---------- */
         #section-nav {
             background: rgba(15, 23, 42, .7);
             backdrop-filter: blur(10px);
@@ -85,6 +88,7 @@
         box-shadow:0 4px 15px rgba(239,68,68,.4)}.btn-danger:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(239,68,68,.6)}
         .btn-save{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;
         box-shadow:0 4px 15px rgba(168,85,247,.4)}.btn-save:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(168,85,247,.6)}
+        
         /* ---------- collapsible bar ---------- */
         details#settings{margin: 40px 0;}details#settings summary{
         background:rgba(15,23,42,.85);backdrop-filter:blur(16px);
@@ -98,6 +102,7 @@
         border:1px solid rgba(51,65,85,.3);border-top:0;border-bottom-left-radius:16px;border-bottom-right-radius:16px;
         padding:30px;animation:fadeIn .4s ease}
         @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        
         /* ---------- control-panel internals ---------- */
         .control-section{margin-bottom:25px;}.control-section:last-of-type{margin-bottom:0;}
         .control-title{display:flex;align-items:center;gap:10px;margin-bottom:15px;
@@ -107,6 +112,7 @@
         border:1px solid rgba(71,85,105,.5);border-radius:12px;color:#e2e8f0;font-size:.95rem;
         transition:.3s;backdrop-filter:blur(10px)}input[type=text]:focus{outline:none;border-color:#60a5fa;background:rgba(30,41,59,.95);
         box-shadow:0 0 0 3px rgba(96,165,250,.1),0 4px 12px rgba(96,165,250,.15);transform:translateY(-1px)}input::placeholder{color:#64748b}
+        
         /* ---------- list & tag styling ---------- */
         .list-container{background:rgba(15,23,42,.6);backdrop-filter:blur(10px);
         border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:20px;margin-bottom:20px;
@@ -148,14 +154,8 @@
         .summary-text strong { color: #e0e6ed; font-weight: 600; }
         .top-stories-container {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr; /* Default to 1 column for mobile-first */
             gap: 25px;
-        }
-        @media (min-width: 768px) {
-            .top-stories-container { grid-template-columns: 1fr 1fr; }
-        }
-        @media (min-width: 1200px) {
-            .top-stories-container { grid-template-columns: repeat(3, 1fr); }
         }
         .story-list {
             background: rgba(15, 23, 42, .6);
@@ -274,13 +274,50 @@
         border-top-color:#4c89ff;animation:spin 1s linear infinite;margin-left:10px}
         @keyframes spin{to{transform:rotate(360deg)}}.error{color:#f87171;text-align:center;padding:40px 20px;font-size:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;margin:20px 0}
         .empty-state{text-align:center;padding:80px 20px;color:#64748b}.empty-state h3{color:#94a3b8;font-size:1.3rem;margin-bottom:10px}
-        /* ---------- responsive ---------- */
-        @media(max-width:1199px){
-             .top-stories-container { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+
+        /* ====================================================================== */
+        /* RESPONSIVE FIX: Consolidated and refined media queries.               */
+        /* These rules adapt the layout and typography for different screen sizes.*/
+        /* ====================================================================== */
+
+        /* Tablet (e.g., iPads, 768px and up) */
+        @media (min-width: 768px) {
+            .top-stories-container { grid-template-columns: 1fr 1fr; }
         }
-        @media(max-width:768px){.container{padding:15px}h1{font-size:2.5rem}.input-group{flex-direction:column}
-        .section-grid{grid-template-columns:1fr}.list-item{flex-direction:column;align-items:flex-start}
-        .item-actions{width:100%;justify-content:flex-end}}
+
+        /* Desktop (e.g., Laptops, 1200px and up) */
+        @media (min-width: 1200px) {
+            .top-stories-container { grid-template-columns: repeat(3, 1fr); }
+        }
+        
+        /* Mobile (e.g., iPhones, up to 767px) */
+        @media (max-width: 767px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1rem; }
+            .section-title { font-size: 1.5rem; }
+            .summary-title { font-size: 1.3rem; }
+            .summary-box { padding: 20px; }
+            .story-list { padding: 20px; }
+            details#settings .panel { padding: 20px; }
+            
+            /* Stack form inputs vertically */
+            .input-group { flex-direction: column; }
+            
+            /* Ensure news cards are single column (already default but good to be explicit) */
+            .section-grid { grid-template-columns: 1fr; }
+            
+            /* Stack feed items in settings for easier interaction */
+            .list-item { 
+                flex-direction: column; 
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .item-actions { 
+                width: 100%; 
+                justify-content: flex-end; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -293,7 +330,7 @@
     <nav id="section-nav"></nav>
 
     <div id="headlines-section" class="section">
-        </div>
+    </div>
 
     <div id="news-container" class="news-container">
         <div class="loading">Compiling intelligence stream…</div>
@@ -321,10 +358,10 @@
                 <div class="list-container"><div class="tags-container" id="section-list"></div></div>
             </div>
              <div class="control-section">
-                 <div class="control-title">Save Changes</div>
-                 <div class="input-group">
-                     <button id="save-button" class="btn btn-save" style="width:100%;">Save Aggregator as HTML</button>
-                 </div>
+                  <div class="control-title">Save Changes</div>
+                  <div class="input-group">
+                       <button id="save-button" class="btn btn-save" style="width:100%;">Save Aggregator as HTML</button>
+                  </div>
             </div>
         </div>
     </details>

@@ -2,200 +2,473 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini Fan - Latest News on Google Gemini</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <title>Gemini News Aggregator</title>
     <style>
-        /* Use the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
+        /* ---------- base & backdrop ---------- */
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+            background:linear-gradient(135deg,#0c0c0c 0%,#1a1a2e 25%,#16213e 50%,#0f0f23 100%);
+            background-attachment:fixed;color:#e0e6ed;min-height:100vh;overflow-x:hidden;position:relative
         }
-        /* Simple animation for card fade-in */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        body::before{
+            content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;
+            background:
+                radial-gradient(600px circle at 20% 30%,rgba(76, 137, 255,.15),transparent 50%),
+                radial-gradient(800px circle at 80% 70%,rgba(136, 85, 247,.1),transparent 50%),
+                radial-gradient(400px circle at 40% 80%,rgba(64, 204, 128,.1),transparent 50%)
         }
-        .news-card {
-            animation: fadeIn 0.5s ease-out forwards;
+        .container{max-width:1400px;margin:0 auto;padding:20px}
+        /* ---------- headings ---------- */
+        h1{
+            font-size:3.5rem;font-weight:800;margin-bottom:10px;
+            background:linear-gradient(135deg,#4c89ff,#8855f7,#40cc80);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            text-shadow:0 0 40px rgba(76, 137, 255,.3);animation:glow 2s ease-in-out infinite alternate
         }
+        @keyframes glow{from{filter:drop-shadow(0 0 10px rgba(76, 137, 255,.4))} to{filter:drop-shadow(0 0 20px rgba(76, 137, 255,.6))}}
+        .subtitle{font-size:1.1rem;color:#94a3b8;font-weight:300}
+        /* ---------- buttons ---------- */
+        .btn{position:relative;overflow:hidden;cursor:pointer;font-weight:600;text-transform:uppercase;
+        letter-spacing:.5px;border:none;border-radius:12px;padding:14px 24px;font-size:.9rem;transition:.3s}
+        .btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+        background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s}
+        .btn:hover::before{left:100%}.btn-primary{background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;
+        box-shadow:0 4px 15px rgba(59,130,246,.4)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,.6)}
+        .btn-secondary{background:linear-gradient(135deg,#10b981,#059669);color:#fff;
+        box-shadow:0 4px 15px rgba(16,185,129,.4)}.btn-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(16,185,129,.6)}
+        .btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;
+        box-shadow:0 4px 15px rgba(239,68,68,.4)}.btn-danger:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(239,68,68,.6)}
+        /* ---------- collapsible bar ---------- */
+        details#settings{margin-bottom:40px}details#settings summary{
+        background:rgba(15,23,42,.85);backdrop-filter:blur(16px);
+        border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:18px 24px;
+        font-size:1.1rem;font-weight:600;cursor:pointer;list-style:none;
+        display:flex;align-items:center;gap:10px;user-select:none}
+        details#settings summary::-webkit-details-marker{display:none}
+        details#settings[open] summary{border-bottom-left-radius:0;border-bottom-right-radius:0}
+        details#settings .panel{
+        background:rgba(15,23,42,.8);backdrop-filter:blur(20px);
+        border:1px solid rgba(51,65,85,.3);border-top:0;border-bottom-left-radius:16px;border-bottom-right-radius:16px;
+        padding:30px;animation:fadeIn .4s ease}
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        /* ---------- control-panel internals ---------- */
+        .control-section{margin-bottom:25px}.control-title{display:flex;align-items:center;gap:10px;margin-bottom:15px;
+        font-size:1.2rem;font-weight:600;color:#f1f5f9}.control-title::before{content:'';width:4px;height:20px;background:linear-gradient(135deg,#60a5fa,#a78bfa);border-radius:2px}
+        .input-group{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:15px}input[type=text]{
+        flex:1;min-width:200px;padding:14px 18px;background:rgba(30,41,59,.8);
+        border:1px solid rgba(71,85,105,.5);border-radius:12px;color:#e2e8f0;font-size:.95rem;
+        transition:.3s;backdrop-filter:blur(10px)}input[type=text]:focus{outline:none;border-color:#60a5fa;background:rgba(30,41,59,.95);
+        box-shadow:0 0 0 3px rgba(96,165,250,.1),0 4px 12px rgba(96,165,250,.15);transform:translateY(-1px)}input::placeholder{color:#64748b}
+        /* ---------- list & tag styling ---------- */
+        .list-container{background:rgba(15,23,42,.6);backdrop-filter:blur(10px);
+        border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:20px;margin-bottom:20px;
+        max-height:400px;overflow-y:auto}.list-item{display:flex;justify-content:space-between;align-items:center;
+        background:rgba(30,41,59,.6);border:1px solid rgba(71,85,105,.3);
+        border-radius:12px;padding:16px 20px;margin-bottom:12px;flex-wrap:wrap;gap:10px;transition:.3s}
+        .list-item:hover{background:rgba(30,41,59,.8);border-color:rgba(96,165,250,.5);
+        transform:translateX(5px);box-shadow:0 4px 20px rgba(96,165,250,.1)}.item-content{flex:1;min-width:200px;display:flex;align-items:center;gap:8px}
+        .item-url{font-weight:500;word-break:break-all}.status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+        .status-loading{background:#f59e0b;animation:pulse 1s infinite}.status-ok{background:#34d399}.status-fail{background:#ef4444}
+        @keyframes pulse{0%{opacity:.6}50%{opacity:1}100%{opacity:.6}}.item-tags{font-size:.85rem;color:#94a3b8;margin-top:4px}
+        .item-actions{display:flex;gap:8px;flex-shrink:0}.btn-small{padding:8px 12px;font-size:.8rem}
+        .tag-toggle{display:inline-block;padding:10px 16px;margin:5px;border-radius:20px;
+        background:rgba(30,41,59,.8);border:1px solid rgba(71,85,105,.5);
+        color:#94a3b8;cursor:pointer;font-weight:500;font-size:.9rem;transition:.3s}
+        .tag-toggle:hover{background:rgba(30,41,59,.95);border-color:rgba(96,165,250,.5);transform:translateY(-2px)}
+        .tag-toggle.active{background:linear-gradient(135deg,#3b82f6,#6366f1);border-color:#3b82f6;color:#fff;box-shadow:0 4px 15px rgba(59,130,246,.4)}
+        /* ---------- news cards ---------- */
+        .news-container{margin-top:40px}.section{margin-bottom:50px;animation:slideUp .6s ease}
+        @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .section-header{
+            background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,41,59,.8));
+            backdrop-filter:blur(20px);border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:20px 25px;margin-bottom:20px;position:relative;overflow:hidden
+        }
+        .section-header::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#4c89ff,#8855f7,#40cc80)}
+        .section-title{font-size:1.8rem;font-weight:700;color:#f1f5f9;margin:0;text-shadow:0 2px 10px rgba(76, 137, 255,.3)}
+        .section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}
+        .news-card{
+            background:rgba(15,23,42,.8);backdrop-filter:blur(20px);border:1px solid rgba(51,65,85,.3);border-radius:16px;padding:24px;
+            cursor:pointer;position:relative;overflow:hidden;transition:.4s
+        }
+        .news-card::before{
+            content:'';position:absolute;left:0;right:0;top:0;height:1px;
+            background:linear-gradient(90deg,transparent,rgba(76, 137, 255,.5),transparent);transition:.3s
+        }
+        .news-card:hover{transform:translateY(-8px);border-color:rgba(76, 137, 255,.6);box-shadow:0 20px 40px rgba(0,0,0,.3),0 0 50px rgba(76, 137, 255,.1)}
+        .news-card:hover::before{height:2px;background:linear-gradient(90deg,rgba(76, 137, 255,.3),rgba(136, 85, 247,.3),rgba(64, 204, 128,.3))}
+        .news-title{display:block;margin-bottom:15px;font-size:1.1rem;font-weight:600;color:#f1f5f9;text-decoration:none;line-height:1.4;transition:color .3s}
+        .news-title:hover{color:#4c89ff}.news-meta{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#64748b;margin-top:15px;padding-top:15px;border-top:1px solid rgba(51,65,85,.3)}
+        .news-source{font-weight:500;color:#94a3b8}.news-date{color:#64748b}
+        .loading{text-align:center;padding:60px 20px;color:#64748b;font-size:1.1rem}
+        .loading::after{content:'';display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid rgba(76, 137, 255,.3);
+        border-top-color:#4c89ff;animation:spin 1s linear infinite;margin-left:10px}
+        @keyframes spin{to{transform:rotate(360deg)}}.error{color:#f87171;text-align:center;padding:40px 20px;font-size:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;margin:20px 0}
+        .empty-state{text-align:center;padding:80px 20px;color:#64748b}.empty-state h3{color:#94a3b8;font-size:1.3rem;margin-bottom:10px}
+        /* ---------- responsive ---------- */
+        @media(max-width:768px){.container{padding:15px}h1{font-size:2.5rem}.input-group{flex-direction:column}
+        .section-grid{grid-template-columns:1fr}.list-item{flex-direction:column;align-items:flex-start}
+        .item-actions{width:100%;justify-content:flex-end}}
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+<body>
+<div class="container">
+    <div class="header" style="text-align:center;margin-bottom:40px">
+        <h1>Gemini News Central</h1>
+        <p class="subtitle">Your real-time intelligence feed for Google Gemini</p>
+    </div>
 
-    <!-- Header Section -->
-    <header class="bg-white dark:bg-gray-800/50 shadow-sm sticky top-0 backdrop-blur-lg z-10">
-        <div class="container mx-auto px-4 py-4">
-            <h1 class="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">
-                GeminiFan.com
-            </h1>
-            <p class="text-center text-gray-500 dark:text-gray-400 mt-1">Your daily source for the latest news on Google Gemini</p>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container mx-auto p-4 md:p-8">
-
-        <!-- News Container -->
-        <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- News articles will be injected here by JavaScript -->
-        </div>
-
-        <!-- Loading Indicator -->
-        <div id="loading-indicator" class="text-center py-12 hidden">
-            <svg class="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            <p class="mt-4 text-lg font-medium text-gray-600 dark:text-gray-400">Fetching the latest Gemini news...</p>
-        </div>
-        
-        <!-- Error Message -->
-        <div id="error-message" class="text-center py-12 hidden">
-             <div class="max-w-md mx-auto p-6 bg-red-100 dark:bg-red-900/50 border border-red-400 dark:border-red-700 rounded-lg">
-                <h3 class="text-lg font-semibold text-red-800 dark:text-red-200">Something Went Wrong</h3>
-                <p id="error-text" class="mt-2 text-red-600 dark:text-red-300">Could not fetch news. Please check your network connection.</p>
+    <details id="settings">
+        <summary>⚙️ Feed & Section Settings</summary>
+        <div class="panel">
+            <div class="control-section">
+                <div class="control-title">Feed Management</div>
+                <div class="input-group">
+                    <input id="new-feed-url" type="text" placeholder="RSS or Atom feed URL">
+                    <input id="new-feed-tags" type="text" placeholder="Tags (comma-separated)">
+                    <button id="add-feed" class="btn btn-primary">Add Feed</button>
+                </div>
+                <div class="list-container"><ul id="feed-list"></ul></div>
+            </div>
+            <div class="control-section">
+                <div class="control-title">Section Management</div>
+                <div class="input-group">
+                    <input id="new-section-name" type="text" placeholder="New section/tag name">
+                    <button id="add-section" class="btn btn-secondary">Add Section</button>
+                    <button id="reset-sections" class="btn btn-danger">Reset Sections</button>
+                </div>
+                <div class="list-container"><div class="tags-container" id="section-list"></div></div>
             </div>
         </div>
-    </main>
+    </details>
 
-    <!-- Footer -->
-    <footer class="text-center py-6 mt-8 border-t border-gray-200 dark:border-gray-800">
-        <p class="text-gray-500 dark:text-gray-400">News sourced from <a href="https://news.google.com/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">Google News</a></p>
-    </footer>
+    <div id="news-container" class="news-container">
+        <div class="loading">Loading neural feed…</div>
+    </div>
+</div>
 
-    <script>
-        // DOM Elements
-        const newsContainer = document.getElementById('news-container');
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const errorMessage = document.getElementById('error-message');
-        const errorText = document.getElementById('error-text');
+<script>
+/* --- Curated Gemini-focused feeds --- */
+// YouTube Channel IDs are used to construct the RSS feed URLs
+const YOUTUBE_FEEDS = {
+    'GoogleDevelopers': 'UC_x5XG1OV2P6uZZ5FSM9Ttw',
+    'GoogleCloud': 'UCJS9pqu9BzkAMNTmzNMNhvg',
+    'Google': 'UCwFR61-K1MyeDK4h6985Xww',
+    'MattWolfe': 'UCb6-4O2ePB3qEaTcvSg4_RA',
+    'DaveEbbelaar': 'UC4A_hL2m530g2Y2j1z_i-jw',
+    'TheAIAdvantage': 'UCY2A9z1lJ8kQsS8Jb_4a_hQ'
+};
 
-        /**
-         * Fetches and parses the Google News RSS feed.
-         */
-        async function fetchNews() {
-            // Clear previous state and show loader
-            newsContainer.innerHTML = '';
-            errorMessage.classList.add('hidden');
-            loadingIndicator.classList.remove('hidden');
+const buildYouTubeUrl = (channelId) => `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
-            // Construct Google News RSS feed URL for the search query
-            const searchQuery = encodeURIComponent('"Google Gemini" OR "Gemini AI"');
-            const googleNewsUrl = `https://news.google.com/rss/search?q=${searchQuery}&hl=en-US&gl=US&ceid=US:en`;
-            
-            // Use a different, more reliable CORS proxy to bypass browser restrictions
-            const proxyUrl = `https://thingproxy.freeboard.io/fetch/${googleNewsUrl}`;
+// Default feed list with tags that match the default sections
+let feeds = [
+    /* Section 1: Official Google Sources */
+    { url: 'https://blog.google/technology/ai/rss/', tags: ['Official Google', 'Gemini'] },
+    { url: 'https://ai.google.dev/blog/rss.xml', tags: ['Official Google', 'Developer'] },
+    { url: 'https://cloud.google.com/blog/products/ai-machine-learning/rss', tags: ['Official Google', 'Cloud'] },
 
-            try {
-                const response = await fetch(proxyUrl);
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok. Status: ${response.status}`);
-                }
-                
-                // This proxy returns raw text, not JSON, so we use .text()
-                const xmlText = await response.text();
-                
-                // Parse the XML feed from the text response
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-                
-                // Check for parsing errors which can happen if the proxy fails
-                const parseError = xmlDoc.querySelector('parsererror');
-                if (parseError) {
-                    console.error('XML Parse Error:', parseError);
-                    throw new Error('Failed to parse the news feed. The proxy may be down or returning an error page.');
-                }
-                
-                const items = xmlDoc.querySelectorAll('item');
-                if (items.length > 0) {
-                    // Map RSS items to a more usable article object structure
-                    const articles = Array.from(items).map(item => {
-                        const descriptionHTML = item.querySelector('description').textContent;
-                        const tempDiv = document.createElement('div');
-                        tempDiv.innerHTML = descriptionHTML;
+    /* Section 2: Official Google YouTube */
+    { url: buildYouTubeUrl(YOUTUBE_FEEDS.GoogleDevelopers), tags: ['Official YouTube', 'Developer'] },
+    { url: buildYouTubeUrl(YOUTUBE_FEEDS.GoogleCloud), tags: ['Official YouTube', 'Cloud'] },
+    { url: buildYouTubeUrl(YOUTUBE_FEEDS.Google), tags: ['Official YouTube', 'Announcements'] },
 
-                        // Extract image URL and a cleaner description from the HTML content
-                        const imageUrl = tempDiv.querySelector('img')?.src || null;
-                        const description = tempDiv.innerText.split(']')[1] || tempDiv.innerText || 'No description available.';
+    /* Section 3: Gemini-Oriented Sites */
+    { url: 'https://www.androidpolice.com/tags/google-gemini/rss/', tags: ['Gemini Sites'] },
+    { url: 'https://9to5google.com/guides/google-gemini/feed/', tags: ['Gemini Sites'] },
+    { url: 'https://www.theverge.com/rss/google/index.xml', tags: ['Gemini Sites'] },
 
-                        return {
-                            title: item.querySelector('title').textContent,
-                            link: item.querySelector('link').textContent,
-                            description: description.trim(),
-                            urlToImage: imageUrl,
-                            publishedAt: item.querySelector('pubDate').textContent,
-                            source: {
-                                name: item.querySelector('source').textContent
-                            }
-                        };
-                    });
-                    displayArticles(articles);
-                } else {
-                    showError('No articles found in the Google News RSS feed.');
-                }
+    /* Section 4: Popular YouTubers on Gemini */
+    { url: buildYouTubeUrl(YOUTUBE_FEEDS.MattWolfe), tags: ['Gemini YouTubers'] },
+    { url: buildYouTubeUrl(YOUTUBE_FEEDS.DaveEbbelaar), tags: ['Gemini YouTubers', 'Tutorials'] },
+    { url: buildYouTubeUrl(YOUTUBE_FEEDS.TheAIAdvantage), tags: ['Gemini YouTubers', 'News'] },
+    
+    /* Section 5: Google News Search: "Google Gemini" */
+    { url: 'https://news.google.com/rss/search?q=google+gemini+when:7d&hl=en-US&gl=US&ceid=US:en', tags: ['Google News'] },
+    
+    /* Section 6: Social Media & Key People (via RSS Hub) */
+    { url: 'https://rsshub.app/twitter/user/GoogleAI', tags: ['Social Media'] },
+    { url: 'https://rsshub.app/twitter/user/demishassabis', tags: ['Social Media'] },
+    { url: 'https://rsshub.app/twitter/user/jeffdean', tags: ['Social Media'] },
 
-            } catch (error) {
-                console.error('Error fetching or parsing RSS feed:', error);
-                showError(`Failed to fetch news. ${error.message}`);
-            } finally {
-                // Always hide the loading indicator
-                loadingIndicator.classList.add('hidden');
+    /* Section 7: General AI News */
+    { url: 'https://openai.com/news/rss.xml', tags: ['General AI', 'OpenAI'] },
+    { url: 'https://www.technologyreview.com/feed/?tag=ai', tags: ['General AI', 'MITTR'] },
+    { url: 'https://www.wired.com/feed/category/artificial-intelligence/rss', tags: ['General AI', 'Wired'] },
+    { url: 'https://venturebeat.com/category/ai/feed/', tags: ['General AI', 'VentureBeat'] },
+    { url: 'https://huggingface.co/blog/feed.xml', tags: ['General AI', 'Hugging Face'] },
+];
+
+/* status map: {url: {state:'loading'|'ok'|'fail', error:''}} */
+const feedStatus = {};
+const defaultSectionNames = [
+    'Official Google', 'Official YouTube', 'Gemini Sites', 'Gemini YouTubers',
+    'Google News', 'Social Media', 'General AI'
+];
+let sections = defaultSectionNames.map(n => ({ name: n, active: true }));
+
+/* ---------- DOM refs ---------- */
+const feedListEl = document.getElementById('feed-list');
+const sectionListEl = document.getElementById('section-list');
+const newsContainer = document.getElementById('news-container');
+const newFeedUrlInput = document.getElementById('new-feed-url');
+const newFeedTagsInput = document.getElementById('new-feed-tags');
+const newSectionInput = document.getElementById('new-section-name');
+const addFeedBtn = document.getElementById('add-feed');
+const addSectionBtn = document.getElementById('add-section');
+const resetSectionsBtn = document.getElementById('reset-sections');
+
+/* ---------- UI helpers ---------- */
+function renderFeedList() {
+    feedListEl.innerHTML = '';
+    if (!feeds.length) {
+        feedListEl.innerHTML = '<div class="empty-state"><h3>No feeds added</h3><p>Add feeds to get started.</p></div>';
+        return;
+    }
+    feeds.forEach((feed, i) => {
+        const li = document.createElement('li');
+        li.className = 'list-item';
+        const content = document.createElement('div');
+        content.className = 'item-content';
+
+        const status = feedStatus[feed.url]?.state || 'loading';
+        const dot = document.createElement('span');
+        dot.className = 'status-dot status-' + status;
+        if (feedStatus[feed.url]?.error) dot.title = feedStatus[feed.url].error;
+
+        const urlDiv = document.createElement('div');
+        urlDiv.className = 'item-url';
+        urlDiv.textContent = feed.url;
+        content.append(dot, urlDiv);
+
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'item-tags';
+        tagsDiv.textContent = 'Tags: ' + feed.tags.join(', ');
+
+        const wrap = document.createElement('div');
+        wrap.append(content, tagsDiv);
+
+        const actions = document.createElement('div');
+        actions.className = 'item-actions';
+        const edit = document.createElement('button');
+        edit.className = 'btn btn-secondary btn-small';
+        edit.textContent = 'Edit';
+        edit.onclick = () => {
+            const t = prompt('Edit Tags (comma-separated)', feed.tags.join(', '));
+            if (t !== null) {
+                feed.tags = t.split(',').map(x => x.trim()).filter(Boolean);
+                renderFeedList();
+                renderSectionList();
+                loadNews();
             }
+        };
+        const remove = document.createElement('button');
+        remove.className = 'btn btn-danger btn-small';
+        remove.textContent = 'Remove';
+        remove.onclick = () => {
+            feeds.splice(i, 1);
+            delete feedStatus[feed.url];
+            renderFeedList();
+            loadNews();
+        };
+        actions.append(edit, remove);
+
+        li.append(wrap, actions);
+        feedListEl.appendChild(li);
+    });
+}
+
+function renderSectionList() {
+    sectionListEl.innerHTML = '';
+    const allTags = new Set(defaultSectionNames.concat(sections.map(s => s.name)));
+    const uniqueSections = Array.from(allTags).map(name => {
+        const existing = sections.find(s => s.name === name);
+        return existing || { name, active: true };
+    });
+    sections = uniqueSections;
+
+    sections.forEach((sec, i) => {
+        const tag = document.createElement('span');
+        tag.className = 'tag-toggle' + (sec.active ? ' active' : '');
+        tag.textContent = sec.name;
+        tag.onclick = () => {
+            sec.active = !sec.active;
+            renderSectionList();
+            loadNews();
+        };
+        if (!defaultSectionNames.includes(sec.name)) {
+            tag.ondblclick = e => {
+                e.stopPropagation();
+                if (confirm(`Remove custom section "${sec.name}"?`)) {
+                    sections.splice(i, 1);
+                    renderSectionList();
+                    loadNews();
+                }
+            };
+            tag.title = 'Double-click to remove custom section';
+        }
+        sectionListEl.appendChild(tag);
+    });
+}
+
+/* ---------- event hooks ---------- */
+addFeedBtn.onclick = () => {
+    const url = newFeedUrlInput.value.trim();
+    const tags = newFeedTagsInput.value.split(',').map(t => t.trim()).filter(Boolean);
+    if (!url) { alert('Enter a feed URL'); return; }
+    if (feeds.some(f => f.url === url)) { alert('Feed already added'); return; }
+    feeds.push({ url, tags, added: Date.now() });
+    newFeedUrlInput.value = '';
+    newFeedTagsInput.value = '';
+    feedStatus[url] = { state: 'loading' };
+    renderFeedList();
+    renderSectionList();
+    loadNews();
+};
+addSectionBtn.onclick = () => {
+    const name = newSectionInput.value.trim();
+    if (!name) { alert('Enter a section name'); return; }
+    if (sections.some(s => s.name.toLowerCase() === name.toLowerCase())) { alert('Section already exists'); return; }
+    sections.push({ name, active: true });
+    newSectionInput.value = '';
+    renderSectionList();
+    loadNews();
+};
+resetSectionsBtn.onclick = () => {
+    if (confirm('Reset sections to default and remove custom ones?')) {
+        sections = defaultSectionNames.map(n => ({ name: n, active: true }));
+        renderSectionList();
+        loadNews();
+    }
+};
+
+/* ---------- feed fetching ---------- */
+const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+async function fetchFeed(feed) {
+    feedStatus[feed.url] = { state: 'loading' };
+    renderFeedList();
+    try {
+        const response = await fetch(CORS_PROXY + encodeURIComponent(feed.url));
+        if (!response.ok) throw new Error(`Fetch failed with status ${response.status}`);
+        const xml = await response.text();
+        const doc = new DOMParser().parseFromString(xml, 'application/xml');
+        if (doc.querySelector('parsererror')) throw new Error('XML parse error');
+
+        const nodes = [...doc.querySelectorAll('item, entry')];
+        const items = nodes.map(n => {
+            const title = n.querySelector('title')?.textContent?.trim() || 'Untitled';
+            let link = '#';
+            const linkEl = n.querySelector('link[rel="alternate"]') || n.querySelector('link');
+            if (linkEl) link = linkEl.getAttribute('href') || linkEl.textContent || '#';
+            const dateText = n.querySelector('pubDate')?.textContent?.trim() || n.querySelector('updated')?.textContent?.trim() || n.querySelector('published')?.textContent?.trim();
+            let pubDate = new Date(dateText);
+            if (isNaN(pubDate)) pubDate = new Date();
+            const desc = n.querySelector('description')?.textContent?.trim() || n.querySelector('summary')?.textContent?.trim() || '';
+            const sourceUrl = new URL(feed.url);
+            let sourceHost = sourceUrl.hostname.replace('www.', '');
+            // For youtube feeds, find channel name
+            if (sourceHost === 'youtube.com') {
+                const channelId = sourceUrl.searchParams.get('channel_id');
+                const channelName = Object.keys(YOUTUBE_FEEDS).find(key => YOUTUBE_FEEDS[key] === channelId);
+                sourceHost = channelName ? `${channelName} (YouTube)` : 'YouTube';
+            }
+            return { title, link, pubDate, description: desc.slice(0, 200), source: sourceHost, tags: feed.tags, added: feed.added };
+        }).filter(i => i.title && i.link);
+
+        feedStatus[feed.url] = { state: 'ok' };
+        renderFeedList();
+        return items;
+    } catch (err) {
+        console.error(`Failed to fetch ${feed.url}:`, err);
+        feedStatus[feed.url] = { state: 'fail', error: err?.message || 'Unknown error' };
+        renderFeedList();
+        return [];
+    }
+}
+
+/* ---------- news loading ---------- */
+async function loadNews() {
+    newsContainer.innerHTML = '<div class="loading">Loading neural feed…</div>';
+    try {
+        const results = await Promise.allSettled(feeds.map(fetchFeed));
+        const allArticles = results.filter(r => r.status === 'fulfilled').flatMap(r => r.value);
+        newsContainer.innerHTML = '';
+        if (!allArticles.length) {
+            newsContainer.innerHTML = '<div class="empty-state"><h3>No articles found</h3><p>Check your feeds or network connection.</p></div>';
+            return;
         }
 
-        /**
-         * Displays the fetched articles on the page.
-         * @param {Array} articles - An array of article objects.
-         */
-        function displayArticles(articles) {
-            newsContainer.innerHTML = ''; // Clear previous articles or loading indicators
-            articles.forEach(article => {
-                const articleCard = document.createElement('div');
-                articleCard.className = 'news-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col';
-                
-                const imageUrl = article.urlToImage || `https://placehold.co/600x400/2B6CB0/FFFFFF?text=${encodeURIComponent(article.source.name)}`;
+        const activeSections = sections.filter(s => s.active);
+        if (!activeSections.length) {
+            newsContainer.innerHTML = '<div class="empty-state"><h3>No active sections</h3><p>Enable a section from the settings to see news.</p></div>';
+            return;
+        }
 
-                articleCard.innerHTML = `
-                    <a href="${article.link}" target="_blank" rel="noopener noreferrer">
-                        <img src="${imageUrl}" alt="" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4A5568/FFFFFF?text=Image+Not+Found';this.alt='Image not available';">
-                    </a>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <h2 class="text-xl font-bold mb-2 flex-grow">
-                            <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                                ${article.title}
-                            </a>
-                        </h2>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">${article.description}</p>
-                        <div class="mt-auto pt-4 text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700">
-                            <span class="font-semibold">${article.source.name}</span> &bull; <span>${new Date(article.publishedAt).toLocaleDateString()}</span>
-                        </div>
-                    </div>
-                `;
-                newsContainer.appendChild(articleCard);
+        activeSections.forEach(sec => {
+            const kw = sec.name.toLowerCase();
+            let sectionArticles = allArticles.filter(a => {
+                const tagMatch = a.tags.some(t => t.toLowerCase().includes(kw));
+                // For general sections, also match title to catch relevant articles from broad feeds
+                const titleMatch = (kw === 'gemini' || kw === 'official google') ? a.title.toLowerCase().includes(kw) : false;
+                return tagMatch || titleMatch;
+            }).sort((a, b) => b.pubDate - a.pubDate);
+            
+            // Deduplicate articles by link
+            sectionArticles = Array.from(new Map(sectionArticles.map(item => [item.link, item])).values());
+
+            if (!sectionArticles.length) return;
+
+            const sectionEl = document.createElement('div');
+            sectionEl.className = 'section';
+            sectionEl.innerHTML = `<div class="section-header"><h2 class="section-title">${sec.name} (${sectionArticles.length})</h2></div>`;
+            
+            const grid = document.createElement('div');
+            grid.className = 'section-grid';
+            
+            sectionArticles.slice(0, 18).forEach(a => { // Show up to 18 articles
+                const card = document.createElement('div');
+                card.className = 'news-card';
+                card.innerHTML = `<a class="news-title" href="${a.link}" target="_blank" rel="noopener noreferrer">${a.title}</a>
+                                  <div class="news-meta"><span class="news-source">${a.source}</span><span class="news-date">${formatDate(a.pubDate)}</span></div>`;
+                card.onclick = e => { if (e.target === card) window.open(a.link, '_blank', 'noopener,noreferrer') };
+                grid.appendChild(card);
             });
-        }
-        
-        /**
-         * Shows an error message on the UI.
-         * @param {string} message - The error message to display.
-         */
-        function showError(message) {
-            errorText.textContent = message;
-            errorMessage.classList.remove('hidden');
-        }
+            sectionEl.appendChild(grid);
+            newsContainer.appendChild(sectionEl);
+        });
 
-        // --- Initial Load ---
-        // Fetch news as soon as the page loads.
-        window.addEventListener('load', fetchNews);
+        if (!newsContainer.children.length) {
+            newsContainer.innerHTML = '<div class="empty-state"><h3>No matches found</h3><p>Enable more sections or add different feeds to see articles.</p></div>';
+        }
+    } catch (err) {
+        console.error(err);
+        newsContainer.innerHTML = '<div class="error">Failed to load news. Check the console for details.</div>';
+    }
+}
 
-    </script>
+/* ---------- util ---------- */
+function formatDate(d) {
+    const now = new Date();
+    const mins = Math.floor((now - d) / 60000);
+    if (mins < 1) return 'Just now';
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    const days = Math.floor(hrs / 24);
+    if (days === 1) return 'Yesterday';
+    if (days < 7) return `${days}d ago`;
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+/* ---------- init ---------- */
+(function init() {
+    feeds.forEach(f => feedStatus[f.url] = { state: 'loading' });
+    renderFeedList();
+    renderSectionList();
+    loadNews();
+    setInterval(loadNews, 15 * 60 * 1000); // Auto-refresh every 15 minutes
+})();
+</script>
 </body>
 </html>

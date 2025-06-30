@@ -53,15 +53,13 @@
             padding: 10px;
             margin: 30px 0;
             display: flex;
-            flex-wrap: nowrap; /* Prevent wrapping */
+            /* UPDATED: Allow items to wrap and center them for a clean look */
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
-            overflow-x: auto; /* Allow horizontal scrolling */
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
         }
-        #section-nav::-webkit-scrollbar { display: none; } /* Chrome, Safari, and Opera */
         #section-nav a {
-            flex-shrink: 0; /* Prevent links from shrinking */
+            flex-shrink: 0;
             display: block;
             padding: 10px 18px;
             border-radius: 12px;
@@ -275,10 +273,7 @@
         @keyframes spin{to{transform:rotate(360deg)}}.error{color:#f87171;text-align:center;padding:40px 20px;font-size:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;margin:20px 0}
         .empty-state{text-align:center;padding:80px 20px;color:#64748b}.empty-state h3{color:#94a3b8;font-size:1.3rem;margin-bottom:10px}
 
-        /* ====================================================================== */
-        /* RESPONSIVE FIX: Consolidated and refined media queries.               */
-        /* These rules adapt the layout and typography for different screen sizes.*/
-        /* ====================================================================== */
+        /* ---------- Responsive Styles ---------- */
 
         /* Tablet (e.g., iPads, 768px and up) */
         @media (min-width: 768px) {
@@ -304,7 +299,7 @@
             /* Stack form inputs vertically */
             .input-group { flex-direction: column; }
             
-            /* Ensure news cards are single column (already default but good to be explicit) */
+            /* Ensure news cards are single column */
             .section-grid { grid-template-columns: 1fr; }
             
             /* Stack feed items in settings for easier interaction */

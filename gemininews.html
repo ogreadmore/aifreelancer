@@ -39,6 +39,8 @@
         box-shadow:0 4px 15px rgba(16,185,129,.4)}.btn-secondary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(16,185,129,.6)}
         .btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;
         box-shadow:0 4px 15px rgba(239,68,68,.4)}.btn-danger:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(239,68,68,.6)}
+        .btn-save{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;
+        box-shadow:0 4px 15px rgba(168,85,247,.4)}.btn-save:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(168,85,247,.6)}
         /* ---------- collapsible bar ---------- */
         details#settings{margin-bottom:40px}details#settings summary{
         background:rgba(15,23,42,.85);backdrop-filter:blur(16px);
@@ -53,7 +55,8 @@
         padding:30px;animation:fadeIn .4s ease}
         @keyframes fadeIn{from{opacity:0}to{opacity:1}}
         /* ---------- control-panel internals ---------- */
-        .control-section{margin-bottom:25px}.control-title{display:flex;align-items:center;gap:10px;margin-bottom:15px;
+        .control-section{margin-bottom:25px;}.control-section:last-of-type{margin-bottom:0;}
+        .control-title{display:flex;align-items:center;gap:10px;margin-bottom:15px;
         font-size:1.2rem;font-weight:600;color:#f1f5f9}.control-title::before{content:'';width:4px;height:20px;background:linear-gradient(135deg,#60a5fa,#a78bfa);border-radius:2px}
         .input-group{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:15px}input[type=text]{
         flex:1;min-width:200px;padding:14px 18px;background:rgba(30,41,59,.8);
@@ -139,73 +142,182 @@
                 </div>
                 <div class="list-container"><div class="tags-container" id="section-list"></div></div>
             </div>
+             <div class="control-section">
+                 <div class="control-title">Save Changes</div>
+                 <div class="input-group">
+                     <button id="save-button" class="btn btn-save" style="width:100%;">Save Aggregator as HTML</button>
+                 </div>
+            </div>
         </div>
     </details>
 
     <div id="news-container" class="news-container">
-        <div class="loading">Loading neural feed…</div>
+        <div class="loading">Compiling intelligence stream…</div>
     </div>
 </div>
 
-<script>
-/* --- Curated Gemini-focused feeds --- */
-// YouTube Channel IDs are used to construct the RSS feed URLs
-const YOUTUBE_FEEDS = {
-    'GoogleDevelopers': 'UC_x5XG1OV2P6uZZ5FSM9Ttw',
-    'GoogleCloud': 'UCJS9pqu9BzkAMNTmzNMNhvg',
-    'Google': 'UCwFR61-K1MyeDK4h6985Xww',
-    'MattWolfe': 'UCb6-4O2ePB3qEaTcvSg4_RA',
-    'DaveEbbelaar': 'UC4A_hL2m530g2Y2j1z_i-jw',
-    'TheAIAdvantage': 'UCY2A9z1lJ8kQsS8Jb_4a_hQ'
-};
-
-const buildYouTubeUrl = (channelId) => `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-
-// Default feed list with tags that match the default sections
+<script id="aggregator-script">
+// Using an ID for the script tag makes it easier to replace its content
+/*FEEDS_START*/
 let feeds = [
-    /* Section 1: Official Google Sources */
-    { url: 'https://blog.google/technology/ai/rss/', tags: ['Official Google', 'Gemini'] },
-    { url: 'https://ai.google.dev/blog/rss.xml', tags: ['Official Google', 'Developer'] },
-    { url: 'https://cloud.google.com/blog/products/ai-machine-learning/rss', tags: ['Official Google', 'Cloud'] },
-
-    /* Section 2: Official Google YouTube */
-    { url: buildYouTubeUrl(YOUTUBE_FEEDS.GoogleDevelopers), tags: ['Official YouTube', 'Developer'] },
-    { url: buildYouTubeUrl(YOUTUBE_FEEDS.GoogleCloud), tags: ['Official YouTube', 'Cloud'] },
-    { url: buildYouTubeUrl(YOUTUBE_FEEDS.Google), tags: ['Official YouTube', 'Announcements'] },
-
-    /* Section 3: Gemini-Oriented Sites */
-    { url: 'https://www.androidpolice.com/tags/google-gemini/rss/', tags: ['Gemini Sites'] },
-    { url: 'https://9to5google.com/guides/google-gemini/feed/', tags: ['Gemini Sites'] },
-    { url: 'https://www.theverge.com/rss/google/index.xml', tags: ['Gemini Sites'] },
-
-    /* Section 4: Popular YouTubers on Gemini */
-    { url: buildYouTubeUrl(YOUTUBE_FEEDS.MattWolfe), tags: ['Gemini YouTubers'] },
-    { url: buildYouTubeUrl(YOUTUBE_FEEDS.DaveEbbelaar), tags: ['Gemini YouTubers', 'Tutorials'] },
-    { url: buildYouTubeUrl(YOUTUBE_FEEDS.TheAIAdvantage), tags: ['Gemini YouTubers', 'News'] },
-    
-    /* Section 5: Google News Search: "Google Gemini" */
-    { url: 'https://news.google.com/rss/search?q=google+gemini+when:7d&hl=en-US&gl=US&ceid=US:en', tags: ['Google News'] },
-    
-    /* Section 6: Social Media & Key People (via RSS Hub) */
-    { url: 'https://rsshub.app/twitter/user/GoogleAI', tags: ['Social Media'] },
-    { url: 'https://rsshub.app/twitter/user/demishassabis', tags: ['Social Media'] },
-    { url: 'https://rsshub.app/twitter/user/jeffdean', tags: ['Social Media'] },
-
-    /* Section 7: General AI News */
-    { url: 'https://openai.com/news/rss.xml', tags: ['General AI', 'OpenAI'] },
-    { url: 'https://www.technologyreview.com/feed/?tag=ai', tags: ['General AI', 'MITTR'] },
-    { url: 'https://www.wired.com/feed/category/artificial-intelligence/rss', tags: ['General AI', 'Wired'] },
-    { url: 'https://venturebeat.com/category/ai/feed/', tags: ['General AI', 'VentureBeat'] },
-    { url: 'https://huggingface.co/blog/feed.xml', tags: ['General AI', 'Hugging Face'] },
+    {
+        "url": "https://blog.google/technology/ai/rss/",
+        "tags": [
+            "Official Google",
+            "Gemini"
+        ]
+    },
+    {
+        "url": "https://ai.google.dev/blog/rss.xml",
+        "tags": [
+            "Official Google",
+            "Developer"
+        ]
+    },
+    {
+        "url": "https://cloud.google.com/blog/products/ai-machine-learning/rss",
+        "tags": [
+            "Official Google",
+            "Cloud"
+        ]
+    },
+    {
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC_x5XG1OV2P6uZZ5FSM9Ttw",
+        "tags": [
+            "Official YouTube",
+            "Developer"
+        ]
+    },
+    {
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg",
+        "tags": [
+            "Official YouTube",
+            "Cloud"
+        ]
+    },
+    {
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwFR61-K1MyeDK4h6985Xww",
+        "tags": [
+            "Official YouTube",
+            "Announcements"
+        ]
+    },
+    {
+        "url": "https://www.androidpolice.com/tags/google-gemini/rss/",
+        "tags": [
+            "Gemini Sites"
+        ]
+    },
+    {
+        "url": "https://9to5google.com/guides/google-gemini/feed/",
+        "tags": [
+            "Gemini Sites"
+        ]
+    },
+    {
+        "url": "https://www.theverge.com/rss/google/index.xml",
+        "tags": [
+            "Gemini Sites"
+        ]
+    },
+    {
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCb6-4O2ePB3qEaTcvSg4_RA",
+        "tags": [
+            "Gemini YouTubers"
+        ]
+    },
+    {
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC4A_hL2m530g2Y2j1z_i-jw",
+        "tags": [
+            "Gemini YouTubers",
+            "Tutorials"
+        ]
+    },
+    {
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCY2A9z1lJ8kQsS8Jb_4a_hQ",
+        "tags": [
+            "Gemini YouTubers",
+            "News"
+        ]
+    },
+    {
+        "url": "https://news.google.com/rss/search?q=google+gemini+when:7d&hl=en-US&gl=US&ceid=US:en",
+        "tags": [
+            "Google News"
+        ]
+    },
+    {
+        "url": "https://rsshub.app/twitter/user/GoogleAI",
+        "tags": [
+            "Social Media"
+        ]
+    },
+    {
+        "url": "https://rsshub.app/twitter/user/demishassabis",
+        "tags": [
+            "Social Media"
+        ]
+    },
+    {
+        "url": "https://rsshub.app/twitter/user/jeffdean",
+        "tags": [
+            "Social Media"
+        ]
+    },
+    {
+        "url": "https://openai.com/news/rss.xml",
+        "tags": [
+            "General AI",
+            "OpenAI"
+        ]
+    },
+    {
+        "url": "https://www.technologyreview.com/feed/?tag=ai",
+        "tags": [
+            "General AI",
+            "MITTR"
+        ]
+    },
+    {
+        "url": "https://www.wired.com/feed/category/artificial-intelligence/rss",
+        "tags": [
+            "General AI",
+            "Wired"
+        ]
+    },
+    {
+        "url": "https://venturebeat.com/category/ai/feed/",
+        "tags": [
+            "General AI",
+            "VentureBeat"
+        ]
+    },
+    {
+        "url": "https://huggingface.co/blog/feed.xml",
+        "tags": [
+            "General AI",
+            "Hugging Face"
+        ]
+    }
 ];
+/*FEEDS_END*/
+
+/*SECTIONS_START*/
+const defaultSectionNames = [
+    "Official Google",
+    "Official YouTube",
+    "Gemini Sites",
+    "Gemini YouTubers",
+    "Google News",
+    "Social Media",
+    "General AI"
+];
+let sections = defaultSectionNames.map(n=>({name: n, active: true}));
+/*SECTIONS_END*/
+
 
 /* status map: {url: {state:'loading'|'ok'|'fail', error:''}} */
 const feedStatus = {};
-const defaultSectionNames = [
-    'Official Google', 'Official YouTube', 'Gemini Sites', 'Gemini YouTubers',
-    'Google News', 'Social Media', 'General AI'
-];
-let sections = defaultSectionNames.map(n => ({ name: n, active: true }));
 
 /* ---------- DOM refs ---------- */
 const feedListEl = document.getElementById('feed-list');
@@ -217,6 +329,8 @@ const newSectionInput = document.getElementById('new-section-name');
 const addFeedBtn = document.getElementById('add-feed');
 const addSectionBtn = document.getElementById('add-section');
 const resetSectionsBtn = document.getElementById('reset-sections');
+const saveBtn = document.getElementById('save-button');
+
 
 /* ---------- UI helpers ---------- */
 function renderFeedList() {
@@ -225,6 +339,8 @@ function renderFeedList() {
         feedListEl.innerHTML = '<div class="empty-state"><h3>No feeds added</h3><p>Add feeds to get started.</p></div>';
         return;
     }
+    // Sort feeds alphabetically by URL for consistency
+    feeds.sort((a, b) => a.url.localeCompare(b.url));
     feeds.forEach((feed, i) => {
         const li = document.createElement('li');
         li.className = 'list-item';
@@ -286,6 +402,7 @@ function renderSectionList() {
         return existing || { name, active: true };
     });
     sections = uniqueSections;
+    sections.sort((a,b) => (defaultSectionNames.indexOf(a.name) > -1 ? defaultSectionNames.indexOf(a.name) : Infinity) - (defaultSectionNames.indexOf(b.name) > -1 ? defaultSectionNames.indexOf(b.name) : Infinity));
 
     sections.forEach((sec, i) => {
         const tag = document.createElement('span');
@@ -317,7 +434,7 @@ addFeedBtn.onclick = () => {
     const tags = newFeedTagsInput.value.split(',').map(t => t.trim()).filter(Boolean);
     if (!url) { alert('Enter a feed URL'); return; }
     if (feeds.some(f => f.url === url)) { alert('Feed already added'); return; }
-    feeds.push({ url, tags, added: Date.now() });
+    feeds.push({ url, tags });
     newFeedUrlInput.value = '';
     newFeedTagsInput.value = '';
     feedStatus[url] = { state: 'loading' };
@@ -342,6 +459,46 @@ resetSectionsBtn.onclick = () => {
     }
 };
 
+saveBtn.onclick = () => {
+    try {
+        // 1. Get the entire current HTML of the document
+        let html = document.documentElement.outerHTML;
+
+        // 2. Serialize the current 'feeds' array into a nicely formatted string
+        const feedsString = `let feeds = ${JSON.stringify(feeds, null, 4)};`;
+        // 3. Serialize the current 'sections' array
+        const sectionsString = `const defaultSectionNames = ${JSON.stringify(defaultSectionNames, null, 4)};\nlet sections = ${JSON.stringify(sections, null, 4)};`;
+        
+        // 4. Replace the old script content with the new serialized state
+        const scriptTag = document.getElementById('aggregator-script');
+        const scriptContent = scriptTag.innerHTML;
+        
+        const feedsRegex = /\/\*FEEDS_START\*\/([\s\S]*?)\/\*FEEDS_END\*\//;
+        const sectionsRegex = /\/\*SECTIONS_START\*\/([\s\S]*?)\/\*SECTIONS_END\*\//;
+
+        let newScriptContent = scriptContent.replace(feedsRegex, `/*FEEDS_START*/\n${feedsString}\n/*FEEDS_END*/`);
+        newScriptContent = newScriptContent.replace(sectionsRegex, `/*SECTIONS_START*/\n${sectionsString}\n/*SECTIONS_END*/`);
+
+        html = html.replace(scriptContent, newScriptContent);
+
+        // 5. Create a Blob and trigger a download
+        const blob = new Blob([html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'gemini-news-aggregator.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+    } catch (error) {
+        console.error("Save failed:", error);
+        alert("Could not save the file. See the console for more details.");
+    }
+};
+
+
 /* ---------- feed fetching ---------- */
 const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 
@@ -349,7 +506,13 @@ async function fetchFeed(feed) {
     feedStatus[feed.url] = { state: 'loading' };
     renderFeedList();
     try {
-        const response = await fetch(CORS_PROXY + encodeURIComponent(feed.url));
+        // For YouTube, use the standard feed URL format directly
+        let fetchUrl = feed.url;
+        if (fetchUrl.includes("youtube.com/feeds/videos.xml")) {
+             // CORS proxy is generally needed for client-side JS fetching
+        }
+        
+        const response = await fetch(CORS_PROXY + encodeURIComponent(fetchUrl));
         if (!response.ok) throw new Error(`Fetch failed with status ${response.status}`);
         const xml = await response.text();
         const doc = new DOMParser().parseFromString(xml, 'application/xml');
@@ -364,16 +527,11 @@ async function fetchFeed(feed) {
             const dateText = n.querySelector('pubDate')?.textContent?.trim() || n.querySelector('updated')?.textContent?.trim() || n.querySelector('published')?.textContent?.trim();
             let pubDate = new Date(dateText);
             if (isNaN(pubDate)) pubDate = new Date();
-            const desc = n.querySelector('description')?.textContent?.trim() || n.querySelector('summary')?.textContent?.trim() || '';
+            
             const sourceUrl = new URL(feed.url);
             let sourceHost = sourceUrl.hostname.replace('www.', '');
-            // For youtube feeds, find channel name
-            if (sourceHost === 'youtube.com') {
-                const channelId = sourceUrl.searchParams.get('channel_id');
-                const channelName = Object.keys(YOUTUBE_FEEDS).find(key => YOUTUBE_FEEDS[key] === channelId);
-                sourceHost = channelName ? `${channelName} (YouTube)` : 'YouTube';
-            }
-            return { title, link, pubDate, description: desc.slice(0, 200), source: sourceHost, tags: feed.tags, added: feed.added };
+
+            return { title, link, pubDate, source: sourceHost, tags: feed.tags };
         }).filter(i => i.title && i.link);
 
         feedStatus[feed.url] = { state: 'ok' };
@@ -389,7 +547,7 @@ async function fetchFeed(feed) {
 
 /* ---------- news loading ---------- */
 async function loadNews() {
-    newsContainer.innerHTML = '<div class="loading">Loading neural feed…</div>';
+    newsContainer.innerHTML = `<div class="loading">Compiling intelligence stream…</div>`;
     try {
         const results = await Promise.allSettled(feeds.map(fetchFeed));
         const allArticles = results.filter(r => r.status === 'fulfilled').flatMap(r => r.value);
@@ -408,10 +566,7 @@ async function loadNews() {
         activeSections.forEach(sec => {
             const kw = sec.name.toLowerCase();
             let sectionArticles = allArticles.filter(a => {
-                const tagMatch = a.tags.some(t => t.toLowerCase().includes(kw));
-                // For general sections, also match title to catch relevant articles from broad feeds
-                const titleMatch = (kw === 'gemini' || kw === 'official google') ? a.title.toLowerCase().includes(kw) : false;
-                return tagMatch || titleMatch;
+                return a.tags.some(t => t.toLowerCase().includes(kw));
             }).sort((a, b) => b.pubDate - a.pubDate);
             
             // Deduplicate articles by link
@@ -463,6 +618,15 @@ function formatDate(d) {
 
 /* ---------- init ---------- */
 (function init() {
+    // I wrapped the data in comments to make replacement for saving easier
+    // and switched YouTube feeds to the standard format.
+    feeds.forEach(f => {
+        if(f.url.includes('googleusercontent')) {
+            const channelId = f.url.split('channel_id=')[1];
+            f.url = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+        }
+    });
+
     feeds.forEach(f => feedStatus[f.url] = { state: 'loading' });
     renderFeedList();
     renderSectionList();

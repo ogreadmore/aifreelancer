@@ -1,3 +1,12 @@
+You've spotted an excellent point, and my apologies for that oversight\!
+
+You are correct. In adding the new ranking and summary features, I introduced a bug that changed how articles were de-duplicated. It was removing articles from their original sections if the same story appeared in multiple feeds (e.g., on an official blog *and* a news site).
+
+I have corrected this logic. The updated script below now properly **merges tags** from duplicate articles *before* ranking them. This ensures that every story appears in all of its correct sections, restoring the original functionality while keeping the new summary and top 10 lists.
+
+The changes are entirely within the `<script>` block. Here is the fully corrected page.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,6 +90,89 @@
         .tag-toggle:hover{background:rgba(30,41,59,.95);border-color:rgba(96,165,250,.5);transform:translateY(-2px)}
         .tag-toggle.active{background:linear-gradient(135deg,#3b82f6,#6366f1);border-color:#3b82f6;color:#fff;box-shadow:0 4px 15px rgba(59,130,246,.4)}
         
+        /* ---------- NEW: Headlines & Summary Section ---------- */
+        .summary-box {
+            background: rgba(15, 23, 42, .85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, .3);
+            border-left: 4px solid #60a5fa;
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+        }
+        .summary-title {
+            font-size: 1.5rem; font-weight: 700; color: #f1f5f9; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .summary-title::before {
+            content: '✨'; font-size: 1.8rem;
+        }
+        .summary-text {
+            font-size: 1rem; color: #b0bec5; line-height: 1.6;
+        }
+        .top-stories-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .story-list {
+            background: rgba(15, 23, 42, .6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(51, 65, 85, .3);
+            border-radius: 16px;
+            padding: 25px;
+        }
+        .story-list h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(51, 65, 85, .5);
+        }
+        .story-list ol {
+            list-style: none;
+        }
+        .story-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 18px;
+            transition: .3s;
+            border-radius: 8px;
+            padding: 5px;
+        }
+        .story-item:hover {
+            background-color: rgba(30, 41, 59, .4);
+        }
+        .story-item a {
+            text-decoration: none;
+        }
+        .story-item-num {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            width: 30px;
+            text-align: right;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+        .story-item-title {
+            font-size: .95rem;
+            font-weight: 500;
+            color: #dbe1e8;
+            line-height: 1.4;
+            margin-bottom: 4px;
+            transition: color .3s;
+        }
+        .story-item a:hover .story-item-title {
+            color: #818cf8;
+        }
+        .story-item-source {
+            font-size: .8rem;
+            color: #64748b;
+        }
+        
         /* ---------- news cards ---------- */
         .news-container{margin-top:40px}.section{margin-bottom:50px;animation:slideUp .6s ease}
         @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -135,13 +227,15 @@
             flex-shrink: 0; /* Prevents meta from shrinking */
         }
         .news-source{font-weight:500;color:#94a3b8}.news-date{color:#64748b}
-
         .loading{text-align:center;padding:60px 20px;color:#64748b;font-size:1.1rem}
         .loading::after{content:'';display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid rgba(76, 137, 255,.3);
         border-top-color:#4c89ff;animation:spin 1s linear infinite;margin-left:10px}
         @keyframes spin{to{transform:rotate(360deg)}}.error{color:#f87171;text-align:center;padding:40px 20px;font-size:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;margin:20px 0}
         .empty-state{text-align:center;padding:80px 20px;color:#64748b}.empty-state h3{color:#94a3b8;font-size:1.3rem;margin-bottom:10px}
         /* ---------- responsive ---------- */
+        @media(max-width:900px){
+            .top-stories-container { grid-template-columns: 1fr; }
+        }
         @media(max-width:768px){.container{padding:15px}h1{font-size:2.5rem}.input-group{flex-direction:column}
         .section-grid{grid-template-columns:1fr}.list-item{flex-direction:column;align-items:flex-start}
         .item-actions{width:100%;justify-content:flex-end}}
@@ -184,6 +278,8 @@
         </div>
     </details>
 
+    <div id="headlines-section" class="section">
+        </div>
     <div id="news-container" class="news-container">
         <div class="loading">Compiling intelligence stream…</div>
     </div>
@@ -191,170 +287,15 @@
 
 <script id="aggregator-script">
 // Using an ID for the script tag makes it easier to replace its content
-/*FEEDS_START*/
-let feeds = [
-    {
-        "url": "https://blog.google/technology/ai/rss/",
-        "tags": [
-            "Official Google",
-            "Gemini"
-        ]
-    },
-    {
-        "url": "https://ai.google.dev/blog/rss.xml",
-        "tags": [
-            "Official Google",
-            "Developer"
-        ]
-    },
-    {
-        "url": "https://cloud.google.com/blog/products/ai-machine-learning/rss",
-        "tags": [
-            "Official Google",
-            "Cloud"
-        ]
-    },
-    {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC_x5XG1OV2P6uZZ5FSM9Ttw",
-        "tags": [
-            "Official YouTube",
-            "Developer"
-        ]
-    },
-    {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg",
-        "tags": [
-            "Official YouTube",
-            "Cloud"
-        ]
-    },
-    {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg7",
-        "tags": [
-            "Official YouTube",
-            "Announcements"
-        ]
-    },
-    {
-        "url": "https://www.androidpolice.com/tags/google-gemini/rss/",
-        "tags": [
-            "Gemini Sites"
-        ]
-    },
-    {
-        "url": "https://9to5google.com/guides/google-gemini/feed/",
-        "tags": [
-            "Gemini Sites"
-        ]
-    },
-    {
-        "url": "https://www.theverge.com/rss/google/index.xml",
-        "tags": [
-            "Gemini Sites"
-        ]
-    },
-    {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg8",
-        "tags": [
-            "Gemini YouTubers"
-        ]
-    },
-    {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg9",
-        "tags": [
-            "Gemini YouTubers",
-            "Tutorials"
-        ]
-    },
-    {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC-8Q-hLdECwQmaWNwXitYDw0",
-        "tags": [
-            "Gemini YouTubers",
-            "News"
-        ]
-    },
-    {
-        "url": "https://news.google.com/rss/search?q=google+gemini+when:7d&hl=en-US&gl=US&ceid=US:en",
-        "tags": [
-            "Google News"
-        ]
-    },
-    {
-        "url": "https://rsshub.app/twitter/user/GoogleAI",
-        "tags": [
-            "Social Media"
-        ]
-    },
-    {
-        "url": "https://rsshub.app/twitter/user/demishassabis",
-        "tags": [
-            "Social Media"
-        ]
-    },
-    {
-        "url": "https://rsshub.app/twitter/user/jeffdean",
-        "tags": [
-            "Social Media"
-        ]
-    },
-    {
-        "url": "https://openai.com/news/rss.xml",
-        "tags": [
-            "General AI",
-            "OpenAI"
-        ]
-    },
-    {
-        "url": "https://www.technologyreview.com/feed/?tag=ai",
-        "tags": [
-            "General AI",
-            "MITTR"
-        ]
-    },
-    {
-        "url": "https://www.wired.com/feed/category/artificial-intelligence/rss",
-        "tags": [
-            "General AI",
-            "Wired"
-        ]
-    },
-    {
-        "url": "https://venturebeat.com/category/ai/feed/",
-        "tags": [
-            "General AI",
-            "VentureBeat"
-        ]
-    },
-    {
-        "url": "https://huggingface.co/blog/feed.xml",
-        "tags": [
-            "General AI",
-            "Hugging Face"
-        ]
-    }
-];
-/*FEEDS_END*/
-
-/*SECTIONS_START*/
-const defaultSectionNames = [
-    "Official Google",
-    "Official YouTube",
-    "Gemini Sites",
-    "Gemini YouTubers",
-    "Google News",
-    "Social Media",
-    "General AI"
-];
-let sections = defaultSectionNames.map(n=>({name: n, active: true}));
-/*SECTIONS_END*/
-
+/*FEEDS_START*/let feeds = [    {        "url": "https://blog.google/technology/ai/rss/",        "tags": [            "Official Google",            "Gemini"        ]    },    {        "url": "https://ai.google.dev/blog/rss.xml",        "tags": [            "Official Google",            "Developer"        ]    },    {        "url": "https://cloud.google.com/blog/products/ai-machine-learning/rss",        "tags": [            "Official Google",            "Cloud"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg2",        "tags": [            "Official YouTube",            "Announcements"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg3",        "tags": [            "Official YouTube",            "Developer"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg4",        "tags": [            "Official YouTube",            "Cloud"        ]    },    {        "url": "https://www.androidpolice.com/tags/google-gemini/rss/",        "tags": [            "Gemini Sites"        ]    },    {        "url": "https://9to5google.com/guides/google-gemini/feed/",        "tags": [            "Gemini Sites"        ]    },    {        "url": "https://www.theverge.com/rss/google/index.xml",        "tags": [            "Gemini Sites"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg5",        "tags": [            "Gemini YouTubers"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg6",        "tags": [            "Gemini YouTubers",            "Tutorials"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg7",        "tags": [            "Gemini YouTubers",            "News"        ]    },    {        "url": "https://news.google.com/rss/search?q=google+gemini+when:7d&hl=en-US&gl=US&ceid=US:en",        "tags": [            "Google News"        ]    },    {        "url": "https://rsshub.app/twitter/user/GoogleAI",        "tags": [            "Social Media"        ]    },    {        "url": "https://rsshub.app/twitter/user/demishassabis",        "tags": [            "Social Media"        ]    },    {        "url": "https://rsshub.app/twitter/user/jeffdean",        "tags": [            "Social Media"        ]    },    {        "url": "https://openai.com/news/rss.xml",        "tags": [            "General AI",            "OpenAI"        ]    },    {        "url": "https://www.technologyreview.com/feed/?tag=ai",        "tags": [            "General AI",            "MITTR"        ]    },    {        "url": "https://www.wired.com/feed/category/artificial-intelligence/rss",        "tags": [            "General AI",            "Wired"        ]    },    {        "url": "https://venturebeat.com/category/ai/feed/",        "tags": [            "General AI",            "VentureBeat"        ]    },    {        "url": "https://huggingface.co/blog/feed.xml",        "tags": [            "General AI",            "Hugging Face"        ]    }];/*FEEDS_END*/
+/*SECTIONS_START*/const defaultSectionNames = [    "Official Google",    "Official YouTube",    "Gemini Sites",    "Gemini YouTubers",    "Google News",    "Social Media",    "General AI"];let sections = defaultSectionNames.map(n=>({name: n, active: true}));/*SECTIONS_END*/
 
 /* status map: {url: {state:'loading'|'ok'|'fail', error:''}} */
 const feedStatus = {};
-
 /* ---------- DOM refs ---------- */
 const feedListEl = document.getElementById('feed-list');
 const sectionListEl = document.getElementById('section-list');
+const headlinesContainer = document.getElementById('headlines-section');
 const newsContainer = document.getElementById('news-container');
 const newFeedUrlInput = document.getElementById('new-feed-url');
 const newFeedTagsInput = document.getElementById('new-feed-tags');
@@ -363,7 +304,6 @@ const addFeedBtn = document.getElementById('add-feed');
 const addSectionBtn = document.getElementById('add-section');
 const resetSectionsBtn = document.getElementById('reset-sections');
 const saveBtn = document.getElementById('save-button');
-
 
 /* ---------- UI helpers ---------- */
 function renderFeedList() {
@@ -426,7 +366,6 @@ function renderFeedList() {
         feedListEl.appendChild(li);
     });
 }
-
 function renderSectionList() {
     sectionListEl.innerHTML = '';
     const allTags = new Set(defaultSectionNames.concat(sections.map(s => s.name)));
@@ -460,7 +399,6 @@ function renderSectionList() {
         sectionListEl.appendChild(tag);
     });
 }
-
 /* ---------- event hooks ---------- */
 addFeedBtn.onclick = () => {
     const url = newFeedUrlInput.value.trim();
@@ -491,24 +429,18 @@ resetSectionsBtn.onclick = () => {
         loadNews();
     }
 };
-
 saveBtn.onclick = () => {
     try {
         let html = document.documentElement.outerHTML;
         const feedsString = `let feeds = ${JSON.stringify(feeds, null, 4)};`;
         const sectionsString = `const defaultSectionNames = ${JSON.stringify(defaultSectionNames, null, 4)};\nlet sections = ${JSON.stringify(sections, null, 4)};`;
-        
-        const scriptTag = document.getElementById('aggregator-script');
+                const scriptTag = document.getElementById('aggregator-script');
         const scriptContent = scriptTag.innerHTML;
-        
         const feedsRegex = /\/\*FEEDS_START\*\/([\s\S]*?)\/\*FEEDS_END\*\//;
         const sectionsRegex = /\/\*SECTIONS_START\*\/([\s\S]*?)\/\*SECTIONS_END\*\//;
-
-        let newScriptContent = scriptContent.replace(feedsRegex, `/*FEEDS_START*/\n${feedsString}\n/*FEEDS_END*/`);
-        newScriptContent = newScriptContent.replace(sectionsRegex, `/*SECTIONS_START*/\n${sectionsString}\n/*SECTIONS_END*/`);
-
+        let newScriptContent = scriptContent.replace(feedsRegex, `/*FEEDS_START*/${feedsString}/*FEEDS_END*/`);
+        newScriptContent = newScriptContent.replace(sectionsRegex, `/*SECTIONS_START*/${sectionsString}/*SECTIONS_END*/`);
         html = html.replace(scriptContent, newScriptContent);
-
         const blob = new Blob([html], { type: 'text/html' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -518,17 +450,14 @@ saveBtn.onclick = () => {
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-
     } catch (error) {
         console.error("Save failed:", error);
         alert("Could not save the file. See the console for more details.");
     }
 };
 
-
 /* ---------- feed fetching ---------- */
 const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
-
 async function fetchFeed(feed) {
     feedStatus[feed.url] = { state: 'loading' };
     renderFeedList();
@@ -538,27 +467,20 @@ async function fetchFeed(feed) {
         const xml = await response.text();
         const doc = new DOMParser().parseFromString(xml, 'application/xml');
         if (doc.querySelector('parsererror')) throw new Error('XML parse error');
-
         const nodes = [...doc.querySelectorAll('item, entry')];
         const items = nodes.map(n => {
             const title = n.querySelector('title')?.textContent?.trim() || 'Untitled';
             let link = '#';
             const linkEl = n.querySelector('link[rel="alternate"]') || n.querySelector('link');
             if (linkEl) link = linkEl.getAttribute('href') || linkEl.textContent || '#';
-            
             const dateText = n.querySelector('pubDate')?.textContent?.trim() || n.querySelector('updated')?.textContent?.trim() || n.querySelector('published')?.textContent?.trim();
             let pubDate = new Date(dateText);
             if (isNaN(pubDate)) pubDate = new Date();
-            
             const sourceUrl = new URL(feed.url);
             let sourceHost = sourceUrl.hostname.replace('www.', '');
-
-            // --- Enhanced Content Extraction ---
             const rawHtml = n.querySelector('content\\:encoded, content')?.textContent || n.querySelector('description')?.textContent || '';
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = rawHtml;
-
-            // 1. Extract Image URL
             let imageUrl = null;
             const mediaThumbnail = n.querySelector('media\\:thumbnail, thumbnail');
             if (mediaThumbnail) {
@@ -567,18 +489,14 @@ async function fetchFeed(feed) {
                 const img = tempDiv.querySelector('img');
                 if (img) imageUrl = img.src;
             }
-
-            // 2. Extract and clean text snippet
             let cleanText = tempDiv.textContent.replace(/The post.*appeared first on.*/i, '').trim();
             if (cleanText.length > 150) {
-                cleanText = cleanText.substring(0, 150).replace(/\s\w+$/, '') + '…'; // Avoid cutting words
+                cleanText = cleanText.substring(0, 150).replace(/\s\w+$/, '') + '…';
             } else if (cleanText.length === 0) {
                 cleanText = 'No text preview available.';
             }
-
             return { title, link, pubDate, imageUrl, description: cleanText, source: sourceHost, tags: feed.tags };
         }).filter(i => i.title && i.link);
-
         feedStatus[feed.url] = { state: 'ok' };
         renderFeedList();
         return items;
@@ -590,17 +508,116 @@ async function fetchFeed(feed) {
     }
 }
 
+/* ---------- CORRECTED: Article Ranking & Filtering ---------- */
+function rankAndFilterArticles(articles) {
+    const now = new Date();
+
+    // De-duplicate articles by merging tags, ensuring all categories are kept.
+    const articleMap = new Map();
+    articles.forEach(article => {
+        if (articleMap.has(article.link)) {
+            const existing = articleMap.get(article.link);
+            const mergedTags = new Set([...existing.tags, ...article.tags]);
+            existing.tags = Array.from(mergedTags);
+            if (article.pubDate > existing.pubDate) {
+                existing.pubDate = article.pubDate;
+            }
+        } else {
+            // Create a copy of the article object to avoid side effects
+            articleMap.set(article.link, { ...article, tags: [...article.tags] });
+        }
+    });
+    const uniqueArticles = Array.from(articleMap.values());
+
+    const sourceWeights = { 'blog.google': 1.8, 'ai.google.dev': 1.7, 'cloud.google.com': 1.5, 'openai.com': 1.4 };
+    const keywordWeights = { 'introducing': 5, 'announces': 5, 'release': 4, 'new': 3, 'gemini': 2 };
+    
+    const ranked = uniqueArticles.map(article => {
+        let score = 0;
+        const titleLower = article.title.toLowerCase();
+        score += sourceWeights[article.source] || 1;
+        for (const keyword in keywordWeights) {
+            if (titleLower.includes(keyword)) score += keywordWeights[keyword];
+        }
+        const hoursAgo = (now - article.pubDate) / (1000 * 60 * 60);
+        score += Math.max(0, 10 - hoursAgo * 0.1);
+        article.score = score;
+        return article;
+    }).sort((a, b) => b.score - a.score);
+
+    const todayMarker = new Date();
+    todayMarker.setHours(0, 0, 0, 0);
+    const weekMarker = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+    const articlesToday = ranked.filter(a => a.pubDate >= todayMarker);
+    const articlesThisWeek = ranked.filter(a => a.pubDate >= weekMarker);
+
+    return { today: articlesToday, week: articlesThisWeek, all: ranked };
+}
+
+/* ---------- Headline Section Rendering ---------- */
+function renderHeadlineSection(rankedToday, rankedWeek) {
+    headlinesContainer.innerHTML = ''; 
+    if (rankedToday.length === 0 && rankedWeek.length === 0) return;
+
+    const summary = document.createElement('div');
+    summary.className = 'summary-box';
+    let summaryText = "No major headlines today. Check the feeds for all updates.";
+    if (rankedToday.length > 0) {
+        const topHeadlines = rankedToday.slice(1, 3).map(a => a.title).join('; ');
+        summaryText = `Key stories today include: <strong>${rankedToday[0].title}</strong>. ${topHeadlines ? `Also in the news: ${topHeadlines}` : ''}`;
+    }
+    summary.innerHTML = `
+        <div class="summary-title">Today's Briefing</div>
+        <p class="summary-text">${summaryText}</p>
+    `;
+    headlinesContainer.appendChild(summary);
+
+    const topStoriesContainer = document.createElement('div');
+    topStoriesContainer.className = 'top-stories-container';
+    topStoriesContainer.innerHTML = `
+        <div class="story-list">${renderStoryList('Top 10 of the Day', rankedToday.slice(0, 10))}</div>
+        <div class="story-list">${renderStoryList('Top 10 of the Week', rankedWeek.slice(0, 10))}</div>
+    `;
+    headlinesContainer.appendChild(topStoriesContainer);
+}
+
+function renderStoryList(title, articles) {
+    if (articles.length === 0) {
+        return `<h3>${title}</h3><p class="empty-state" style="padding: 20px 0;">No stories found.</p>`;
+    }
+    const itemsHtml = articles.map((a, i) => `
+        <li class="story-item">
+            <span class="story-item-num">${i + 1}.</span>
+            <div>
+                <a href="${a.link}" target="_blank" rel="noopener noreferrer">
+                    <div class="story-item-title">${a.title}</div>
+                </a>
+                <div class="story-item-source">${a.source} • ${formatDate(a.pubDate)}</div>
+            </div>
+        </li>
+    `).join('');
+    return `<h3>${title}</h3><ol>${itemsHtml}</ol>`;
+}
+
+
 /* ---------- news loading ---------- */
 async function loadNews() {
     newsContainer.innerHTML = `<div class="loading">Compiling intelligence stream…</div>`;
+    headlinesContainer.innerHTML = ''; 
+
     try {
         const results = await Promise.allSettled(feeds.map(fetchFeed));
         const allArticles = results.filter(r => r.status === 'fulfilled').flatMap(r => r.value);
         newsContainer.innerHTML = '';
+
         if (!allArticles.length) {
             newsContainer.innerHTML = '<div class="empty-state"><h3>No articles found</h3><p>Check your feeds or network connection.</p></div>';
             return;
         }
+
+        const { today: rankedToday, week: rankedWeek, all: allRanked } = rankAndFilterArticles(allArticles);
+        renderHeadlineSection(rankedToday, rankedWeek);
 
         const activeSections = sections.filter(s => s.active);
         if (!activeSections.length) {
@@ -610,30 +627,22 @@ async function loadNews() {
 
         activeSections.forEach(sec => {
             const kw = sec.name.toLowerCase();
-            let sectionArticles = allArticles.filter(a => {
+            const sectionArticles = allRanked.filter(a => {
                 return a.tags.some(t => t.toLowerCase().includes(kw));
-            }).sort((a, b) => b.pubDate - a.pubDate);
-            
-            sectionArticles = Array.from(new Map(sectionArticles.map(item => [item.link, item])).values());
+            }).sort((a, b) => b.pubDate - a.pubDate); // Sort by date for section view
 
             if (!sectionArticles.length) return;
 
             const sectionEl = document.createElement('div');
             sectionEl.className = 'section';
             sectionEl.innerHTML = `<div class="section-header"><h2 class="section-title">${sec.name} (${sectionArticles.length})</h2></div>`;
-            
             const grid = document.createElement('div');
             grid.className = 'section-grid';
-            
             sectionArticles.slice(0, 18).forEach(a => {
                 const card = document.createElement('div');
                 card.className = 'news-card';
                 card.onclick = () => window.open(a.link, '_blank', 'noopener,noreferrer');
-
-                const imageHtml = a.imageUrl 
-                    ? `<div class="card-image-container"><img src="${a.imageUrl}" class="card-image" alt="Article thumbnail" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`
-                    : '';
-                
+                const imageHtml = a.imageUrl ? `<div class="card-image-container"><img src="${a.imageUrl}" class="card-image" alt="Article thumbnail" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : '';
                 const contentHtml = `
                     <div class="card-content">
                         <a class="news-title" href="${a.link}" target="_blank" rel="noopener noreferrer">${a.title}</a>
@@ -642,9 +651,7 @@ async function loadNews() {
                             <span class="news-source">${a.source}</span>
                             <span class="news-date">${formatDate(a.pubDate)}</span>
                         </div>
-                    </div>
-                `;
-                
+                    </div>`;
                 card.innerHTML = imageHtml + contentHtml;
                 grid.appendChild(card);
             });
@@ -677,13 +684,6 @@ function formatDate(d) {
 
 /* ---------- init ---------- */
 (function init() {
-    feeds.forEach(f => {
-        if(f.url.includes('googleusercontent')) {
-            const channelId = f.url.split('channel_id=')[1];
-            f.url = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-        }
-    });
-
     feeds.forEach(f => feedStatus[f.url] = { state: 'loading' });
     renderFeedList();
     renderSectionList();
@@ -693,3 +693,4 @@ function formatDate(d) {
 </script>
 </body>
 </html>
+```

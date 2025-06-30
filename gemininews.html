@@ -94,13 +94,13 @@
         .news-card{
             background:rgba(15,23,42,.8);backdrop-filter:blur(20px);border:1px solid rgba(51,65,85,.3);border-radius:16px;
             cursor:pointer;position:relative;overflow:hidden;transition:.4s;
-            display:flex; flex-direction:column;
+            display:flex; flex-direction:column; padding: 24px;
         }
         .news-card:hover{transform:translateY(-8px);border-color:rgba(76, 137, 255,.6);box-shadow:0 20px 40px rgba(0,0,0,.3),0 0 50px rgba(76, 137, 255,.1)}
         .news-card:hover .card-image{transform: scale(1.05);}
         .card-image-container {
-            width: calc(100% + 48px); /* Extend to edges */
-            margin: -24px -24px 15px -24px;
+            width: calc(100% + 48px);
+            margin: -24px -24px 24px -24px;
             aspect-ratio: 16 / 9;
             overflow: hidden;
             background-color: rgba(30,41,59,.6);
@@ -114,9 +114,7 @@
         .card-content {
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* Key for pushing meta to bottom */
-            padding: 0 24px 24px 24px;
-            margin: 0 -24px -24px -24px; /* Align with card padding */
+            flex-grow: 1; /* This is essential for the layout */
         }
         .news-title{display:block;margin-bottom:10px;font-size:1.1rem;font-weight:600;color:#f1f5f9;text-decoration:none;line-height:1.4;transition:color .3s}
         .news-title:hover{color:#4c89ff}
@@ -125,14 +123,17 @@
             color: #94a3b8;
             line-height: 1.5;
             margin-bottom: 15px;
-            flex-grow: 1;
-            /* Text clamping */
+            flex-grow: 1; /* Pushes the meta block to the bottom */
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .news-meta{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#64748b;padding-top:15px;border-top:1px solid rgba(51,65,85,.3)}
+        .news-meta{
+            display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#64748b;
+            padding-top:15px;border-top:1px solid rgba(51,65,85,.3);
+            flex-shrink: 0; /* Prevents meta from shrinking */
+        }
         .news-source{font-weight:500;color:#94a3b8}.news-date{color:#64748b}
 
         .loading{text-align:center;padding:60px 20px;color:#64748b;font-size:1.1rem}
@@ -228,7 +229,7 @@ let feeds = [
         ]
     },
     {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg3",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg7",
         "tags": [
             "Official YouTube",
             "Announcements"
@@ -253,20 +254,20 @@ let feeds = [
         ]
     },
     {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg4",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg8",
         "tags": [
             "Gemini YouTubers"
         ]
     },
     {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg5",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg9",
         "tags": [
             "Gemini YouTubers",
             "Tutorials"
         ]
     },
     {
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg6",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC-8Q-hLdECwQmaWNwXitYDw0",
         "tags": [
             "Gemini YouTubers",
             "News"
@@ -633,7 +634,6 @@ async function loadNews() {
                     ? `<div class="card-image-container"><img src="${a.imageUrl}" class="card-image" alt="Article thumbnail" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`
                     : '';
                 
-                // The main content of the card is now wrapped in a div to allow for flexbox layout
                 const contentHtml = `
                     <div class="card-content">
                         <a class="news-title" href="${a.link}" target="_blank" rel="noopener noreferrer">${a.title}</a>

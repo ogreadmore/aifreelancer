@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -245,7 +246,7 @@
         .card-content {
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* This is essential for the layout */
+            flex-grow: 1;
         }
         .news-title{display:block;margin-bottom:10px;font-size:1.1rem;font-weight:600;color:#f1f5f9;text-decoration:none;line-height:1.4;transition:color .3s}
         .news-title:hover{color:#4c89ff}
@@ -254,7 +255,7 @@
             color: #94a3b8;
             line-height: 1.5;
             margin-bottom: 15px;
-            flex-grow: 1; /* Pushes the meta block to the bottom */
+            flex-grow: 1;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -263,7 +264,7 @@
         .news-meta{
             display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:#64748b;
             padding-top:15px;border-top:1px solid rgba(51,65,85,.3);
-            flex-shrink: 0; /* Prevents meta from shrinking */
+            flex-shrink: 0;
         }
         .news-source{font-weight:500;color:#94a3b8}.news-date{color:#64748b}
         .loading{text-align:center;padding:60px 20px;color:#64748b;font-size:1.1rem}
@@ -274,17 +275,14 @@
 
         /* ---------- Responsive Styles ---------- */
 
-        /* Tablet (e.g., iPads, 768px and up) */
         @media (min-width: 768px) {
             .top-stories-container { grid-template-columns: 1fr 1fr; }
         }
 
-        /* Desktop (e.g., Laptops, 1200px and up) */
         @media (min-width: 1200px) {
             .top-stories-container { grid-template-columns: repeat(3, 1fr); }
         }
         
-        /* Mobile (e.g., iPhones, up to 767px) */
         @media (max-width: 767px) {
             .container { padding: 15px; }
             h1 { font-size: 2.5rem; }
@@ -295,13 +293,10 @@
             .story-list { padding: 20px; }
             details#settings .panel { padding: 20px; }
             
-            /* Stack form inputs vertically */
             .input-group { flex-direction: column; }
             
-            /* Ensure news cards are single column */
             .section-grid { grid-template-columns: 1fr; }
             
-            /* Stack feed items in settings for easier interaction */
             .list-item { 
                 flex-direction: column; 
                 align-items: flex-start;
@@ -410,7 +405,6 @@ function renderFeedList() {
         feedListEl.innerHTML = '<div class="empty-state"><h3>No feeds added</h3><p>Add feeds to get started.</p></div>';
         return;
     }
-    // Sort feeds alphabetically by URL for consistency
     feeds.sort((a, b) => a.url.localeCompare(b.url));
     feeds.forEach((feed, i) => {
         const li = document.createElement('li');
@@ -555,7 +549,12 @@ saveBtn.onclick = () => {
 };
 
 /* ---------- feed fetching ---------- */
-const CORS_PROXY = 'https://corsproxy.io/?';
+/*
+  DEFINITIVE FIX: The unreliable corsproxy.io has been replaced with allorigins.win.
+  This is a more stable, well-known public proxy that is less likely to block
+  our requests. This should permanently resolve the 403 Forbidden errors.
+*/
+const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 
 async function fetchFeed(feed) {
     feedStatus[feed.url] = { state: 'loading' };
@@ -614,7 +613,6 @@ async function fetchFeed(feed) {
 /* ---------- Article Ranking & Filtering ---------- */
 function rankAndFilterArticles(articles) {
     const now = new Date();
-
     const articleMap = new Map();
     articles.forEach(article => {
         if (articleMap.has(article.link)) {
@@ -647,13 +645,12 @@ function rankAndFilterArticles(articles) {
         }
 
         let topicFound = false;
-        // Prioritize Gemini boost above all else
         if (titleLower.includes('gemini')) {
             score *= topicMultipliers['gemini'];
             topicFound = true;
         } else {
             for (const topic in topicMultipliers) {
-                if (topic === 'gemini') continue; // Already handled
+                if (topic === 'gemini') continue;
                 if (titleLower.includes(topic)) {
                     score *= topicMultipliers[topic];
                     break; 
@@ -688,7 +685,6 @@ function getNormalizedWords(title) {
 
 function findMostTalkedAbout(articles) {
     if (articles.length < 2) return null;
-
     const articlesWithScores = articles.map(articleA => {
         const wordsA = getNormalizedWords(articleA.title);
         if (wordsA.size === 0) return { ...articleA, talkScore: 0 };
@@ -704,7 +700,6 @@ function findMostTalkedAbout(articles) {
         }
         return { ...articleA, talkScore };
     });
-
     articlesWithScores.sort((a,b) => b.talkScore - a.talkScore);
     return articlesWithScores[0].talkScore > 0 ? articlesWithScores[0] : null;
 }
@@ -717,7 +712,6 @@ function findTopThemes(articles, articlesToScan = 10) {
             wordFreq.set(word, (wordFreq.get(word) || 0) + 1);
         });
     });
-
     const themes = [];
     for (let [word, count] of wordFreq.entries()) {
         if (count > 1) themes.push(word);
@@ -729,7 +723,6 @@ function generateAIBriefing(articlesThisWeek) {
     if (articlesThisWeek.length < 2) {
         return "Not enough news volume this week for a detailed briefing. Check the feeds directly for updates.";
     }
-
     const topStory = articlesThisWeek[0];
     let summary = `This week's top-ranked story is <strong>${topStory.title}</strong> from ${topStory.source}. `;
 
@@ -741,12 +734,10 @@ function generateAIBriefing(articlesThisWeek) {
             summary += "This story is also receiving the most widespread coverage across different news outlets. ";
         }
     }
-
     const topThemes = findTopThemes(articlesThisWeek);
     if (topThemes.length > 0) {
         summary += `Other recurring keywords from the headlines include <strong>${topThemes.join('</strong>, <strong>')}</strong>.`;
     }
-
     return summary.trim();
 }
 
@@ -756,7 +747,7 @@ function renderHeadlineSection(rankedToday, rankedWeek, rankedMonth) {
     
     const summary = document.createElement('div');
     summary.className = 'summary-box';
-    const summaryText = generateAIBriefing(rankedWeek); // Briefing now uses weekly data
+    const summaryText = generateAIBriefing(rankedWeek);
     summary.innerHTML = `
         <div class="summary-title">This Week's AI Briefing</div>
         <p class="summary-text">${summaryText}</p>
@@ -802,20 +793,15 @@ function renderSectionNav(sections) {
     });
 }
 
-/* ======================================================================
-BUG FIX: The entire loadNews function has been replaced.
-Instead of fetching all feeds at once (which triggers rate-limiting),
-this new version fetches them sequentially, one by one. This is more
-robust and avoids overwhelming the CORS proxy service.
-======================================================================
-*/
+
+/* ---------- news loading ---------- */
 async function loadNews() {
     newsContainer.innerHTML = `<div class="loading">Compiling intelligence stream…</div>`;
     headlinesContainer.innerHTML = ''; 
 
     try {
         const allArticles = [];
-        // Fetch feeds one by one to avoid rate-limiting by the proxy.
+        // Fetch feeds one by one to be kind to the public API.
         for (const feed of feeds) {
             const items = await fetchFeed(feed);
             allArticles.push(...items);
@@ -833,7 +819,7 @@ async function loadNews() {
         renderHeadlineSection(rankedToday, rankedWeek, rankedMonth);
 
         const activeSections = sections.filter(s => s.active);
-        renderSectionNav(activeSections); // Render the new nav bar
+        renderSectionNav(activeSections);
 
         if (!activeSections.length) {
             newsContainer.innerHTML = '<div class="empty-state"><h3>No active sections</h3><p>Enable a section from the settings to see news.</p></div>';
@@ -849,7 +835,6 @@ async function loadNews() {
             if (!sectionArticles.length) return;
 
             const sectionEl = document.createElement('div');
-            // Add ID for navigation
             sectionEl.id = 'section-' + sec.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             sectionEl.className = 'section';
             sectionEl.innerHTML = `<div class="section-header"><h2 class="section-title">${sec.name} (${sectionArticles.length})</h2></div>`;

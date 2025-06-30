@@ -548,18 +548,45 @@ function rankAndFilterArticles(articles) {
     });
     const uniqueArticles = Array.from(articleMap.values());
 
+    // --- NEW: Relevance Tuning ---
     const sourceWeights = { 'blog.google': 1.8, 'ai.google.dev': 1.7, 'cloud.google.com': 1.5, 'openai.com': 1.4 };
-    const keywordWeights = { 'introducing': 5, 'announces': 5, 'release': 4, 'new': 3, 'gemini': 2 };
+    const announcementKeywords = { 'introducing': 5, 'announces': 5, 'release': 4 };
+    const topicMultipliers = {
+        'gemini': 2.0,      // Strong boost for Gemini
+        'vertex': 1.5,      // Medium boost for Vertex AI
+        'gemma': 1.5,       // Medium boost for Gemma
+        'angular': 0.4,     // Penalty for Angular
+        'flutter': 0.4,     // Penalty for Flutter
+        'chrome': 0.6,      // Penalty for Chrome
+        'android': 0.8      // Slight penalty (unless Gemini is also mentioned)
+    };
     
     const ranked = uniqueArticles.map(article => {
         let score = 0;
         const titleLower = article.title.toLowerCase();
+        
+        // 1. Base score from source and announcement keywords
         score += sourceWeights[article.source] || 1;
-        for (const keyword in keywordWeights) {
-            if (titleLower.includes(keyword)) score += keywordWeights[keyword];
+        for (const keyword in announcementKeywords) {
+            if (titleLower.includes(keyword)) {
+                score += announcementKeywords[keyword];
+            }
         }
+
+        // 2. Apply powerful topic-based multipliers
+        let topicFound = false;
+        for (const topic in topicMultipliers) {
+            if (titleLower.includes(topic)) {
+                score *= topicMultipliers[topic];
+                topicFound = true;
+                break; // Apply first and most specific multiplier found
+            }
+        }
+
+        // 3. Add recency score
         const hoursAgo = (now - article.pubDate) / (1000 * 60 * 60);
         score += Math.max(0, 10 - hoursAgo * 0.1);
+        
         article.score = score;
         return article;
     }).sort((a, b) => b.score - a.score);
@@ -575,66 +602,99 @@ function rankAndFilterArticles(articles) {
     return { today: articlesToday, week: articlesThisWeek, month: articlesThisMonth, all: ranked };
 }
 
-/* ---------- NEW: Insightful Summary Generation ---------- */
-function generateInsightfulSummary(articlesToday) {
-    if (articlesToday.length === 0) {
-        return "No significant AI news has been published in the last 24 hours. It's a quiet day.";
-    }
+/* ---------- Insightful Summary Generation ---------- */
+const briefingStopWords = new Set(['a', 'an', 'the', 'and', 'or', 'in', 'on', 'for', 'with', 'to', 'from', 'of', 'as', 'its', 'is', 'i', 'me', 'my', 'we', 'our', 'you', 'your', 'he', 'she', 'it', 'they', 'them', 'their', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'but', 'if', 'because', 'while', 'at', 'by', 'up', 'down', 'out', 'about', 'more', 'how', 'when', 'where', 'why', 'all', 'any', 'both', 'each', 'few', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'its', 'into', 'not', 'get', 'one', 'two', 'again', 'after', 'also', 'could', 'did', 'find', 'here', 'his', 'how', 'its', 'like', 'make', 'many', 'more', 'new', 'see', 'use', 'used', 'uses', 'way', 'well', 'what', 'when', 'why', 'would', 'still', 'may', /* Obvious topics */ 'google', 'ai', 'gemini']);
 
-    const topStory = articlesToday[0];
-    let summary = `The leading story today is <strong>${topStory.title}</strong> from ${topStory.source}. `;
+function getNormalizedWords(title) {
+    return new Set(title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(word => word && !briefingStopWords.has(word) && isNaN(word)));
+}
 
-    // A list of common English words to ignore when looking for themes.
-    const stopWords = new Set(['a', 'an', 'the', 'and', 'or', 'in', 'on', 'for', 'with', 'to', 'from', 'of', 'as', 'its', 'is', 'i', 'me', 'my', 'we', 'our', 'you', 'your', 'he', 'she', 'it', 'they', 'them', 'their', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'but', 'if', 'because', 'while', 'at', 'by', 'up', 'down', 'out', 'about', 'more', 'how', 'when', 'where', 'why', 'all', 'any', 'both', 'each', 'few', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'its', 'into', 'not', 'get', 'one', 'two', 'again']);
+function findMostTalkedAbout(articles) {
+    if (articles.length < 2) return null;
 
-    const wordFreq = new Map();
-    // Analyze the top 5 articles for themes
-    articlesToday.slice(0, 5).forEach(article => {
-        const words = article.title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
-        words.forEach(word => {
-            if (word && !stopWords.has(word) && isNaN(word)) { // Check if it's not a number
-                wordFreq.set(word, (wordFreq.get(word) || 0) + 1);
+    const articlesWithScores = articles.map(articleA => {
+        const wordsA = getNormalizedWords(articleA.title);
+        if (wordsA.size === 0) return { ...articleA, talkScore: 0 };
+
+        let talkScore = 0;
+        for (const articleB of articles) {
+            if (articleA.link === articleB.link) continue;
+            
+            const wordsB = getNormalizedWords(articleB.title);
+            if (wordsB.size === 0) continue;
+
+            const intersection = new Set([...wordsA].filter(x => wordsB.has(x)));
+            const union = new Set([...wordsA, ...wordsB]);
+            const similarity = union.size > 0 ? intersection.size / union.size : 0;
+            
+            if (similarity > 0.4) { // Similarity threshold
+                talkScore++;
             }
+        }
+        return { ...articleA, talkScore };
+    });
+
+    articlesWithScores.sort((a,b) => b.talkScore - a.talkScore);
+    
+    return articlesWithScores[0].talkScore > 0 ? articlesWithScores[0] : null;
+}
+
+function findTopThemes(articles) {
+    const wordFreq = new Map();
+    articles.slice(0, 5).forEach(article => {
+        const words = getNormalizedWords(article.title);
+        words.forEach(word => {
+            wordFreq.set(word, (wordFreq.get(word) || 0) + 1);
         });
     });
 
-    // Find words that appear in more than one headline to identify themes
     const themes = [];
     for (let [word, count] of wordFreq.entries()) {
-        if (count > 1) {
+        if (count > 1) { // A theme must appear in at least 2 headlines
             themes.push(word);
         }
     }
-
-    const topThemes = themes.slice(0, 3);
-
-    if (topThemes.length > 0) {
-        summary += `Recurring themes across the headlines include <strong>${topThemes.join('</strong>, <strong>')}</strong>. `;
-    } else if (articlesToday.length > 1) {
-        summary += "Discussions today span a diverse range of topics without a single overarching theme. ";
-    }
-
-    summary += `In total, ${articlesToday.length} relevant ${articlesToday.length === 1 ? 'article' : 'articles'} have been indexed in the last 24 hours.`;
-
-    return summary;
+    return themes.sort((a, b) => wordFreq.get(b) - wordFreq.get(a)).slice(0, 3);
 }
 
+function generateAIBriefing(articlesToday) {
+    if (articlesToday.length < 2) {
+        return "Not enough news volume in the last 24 hours for a detailed briefing. Check the feeds directly for updates.";
+    }
+
+    const topStory = articlesToday[0];
+    let summary = `Today's top-ranked story is <strong>${topStory.title}</strong> from ${topStory.source}. `;
+
+    const mostTalkedAbout = findMostTalkedAbout(articlesToday);
+    if (mostTalkedAbout) {
+        if (mostTalkedAbout.link !== topStory.link) {
+            summary += `However, the most discussed topic across multiple sources appears to be "<strong>${mostTalkedAbout.title}</strong>," suggesting widespread industry interest. `;
+        } else {
+            summary += "This story is also receiving the most widespread coverage across different news outlets today. ";
+        }
+    }
+
+    const topThemes = findTopThemes(articlesToday);
+    if (topThemes.length > 0) {
+        summary += `Other recurring keywords from the headlines include <strong>${topThemes.join('</strong>, <strong>')}</strong>.`;
+    }
+
+    return summary.trim();
+}
 
 /* ---------- Headline Section Rendering ---------- */
 function renderHeadlineSection(rankedToday, rankedWeek, rankedMonth) {
     headlinesContainer.innerHTML = ''; 
     
-    // Generate and render the new insightful summary
     const summary = document.createElement('div');
     summary.className = 'summary-box';
-    const summaryText = generateInsightfulSummary(rankedToday);
+    const summaryText = generateAIBriefing(rankedToday);
     summary.innerHTML = `
         <div class="summary-title">Today's AI Briefing</div>
         <p class="summary-text">${summaryText}</p>
     `;
     headlinesContainer.appendChild(summary);
 
-    // Render the top story lists
     const topStoriesContainer = document.createElement('div');
     topStoriesContainer.className = 'top-stories-container';
     topStoriesContainer.innerHTML = `

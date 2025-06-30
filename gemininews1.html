@@ -81,7 +81,7 @@
         .tag-toggle:hover{background:rgba(30,41,59,.95);border-color:rgba(96,165,250,.5);transform:translateY(-2px)}
         .tag-toggle.active{background:linear-gradient(135deg,#3b82f6,#6366f1);border-color:#3b82f6;color:#fff;box-shadow:0 4px 15px rgba(59,130,246,.4)}
         
-        /* ---------- NEW: Headlines & Summary Section ---------- */
+        /* ---------- Headlines & Summary Section ---------- */
         .summary-box {
             background: rgba(15, 23, 42, .85);
             backdrop-filter: blur(16px);
@@ -278,7 +278,28 @@
 
 <script id="aggregator-script">
 // Using an ID for the script tag makes it easier to replace its content
-/*FEEDS_START*/let feeds = [    {        "url": "https://blog.google/technology/ai/rss/",        "tags": [            "Official Google",            "Gemini"        ]    },    {        "url": "https://ai.google.dev/blog/rss.xml",        "tags": [            "Official Google",            "Developer"        ]    },    {        "url": "https://cloud.google.com/blog/products/ai-machine-learning/rss",        "tags": [            "Official Google",            "Cloud"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg7",        "tags": [            "Official YouTube",            "Announcements"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg8",        "tags": [            "Official YouTube",            "Developer"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg9",        "tags": [            "Official YouTube",            "Cloud"        ]    },    {        "url": "https://www.androidpolice.com/tags/google-gemini/rss/",        "tags": [            "Gemini Sites"        ]    },    {        "url": "https://9to5google.com/guides/google-gemini/feed/",        "tags": [            "Gemini Sites"        ]    },    {        "url": "https://www.theverge.com/rss/google/index.xml",        "tags": [            "Gemini Sites"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg70",        "tags": [            "Gemini YouTubers"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg71",        "tags": [            "Gemini YouTubers",            "Tutorials"        ]    },    {        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNhvg72",        "tags": [            "Gemini YouTubers",            "News"        ]    },    {        "url": "https://news.google.com/rss/search?q=google+gemini+when:7d&hl=en-US&gl=US&ceid=US:en",        "tags": [            "Google News"        ]    },    {        "url": "https://rsshub.app/twitter/user/GoogleAI",        "tags": [            "Social Media"        ]    },    {        "url": "https://rsshub.app/twitter/user/demishassabis",        "tags": [            "Social Media"        ]    },    {        "url": "https://rsshub.app/twitter/user/jeffdean",        "tags": [            "Social Media"        ]    },    {        "url": "https://openai.com/news/rss.xml",        "tags": [            "General AI",            "OpenAI"        ]    },    {        "url": "https://www.technologyreview.com/feed/?tag=ai",        "tags": [            "General AI",            "MITTR"        ]    },    {        "url": "https://www.wired.com/feed/category/artificial-intelligence/rss",        "tags": [            "General AI",            "Wired"        ]    },    {        "url": "https://venturebeat.com/category/ai/feed/",        "tags": [            "General AI",            "VentureBeat"        ]    },    {        "url": "https://huggingface.co/blog/feed.xml",        "tags": [            "General AI",            "Hugging Face"        ]    }];/*FEEDS_END*/
+/*FEEDS_START*/let feeds = [
+    { "url": "https://blog.google/technology/ai/rss/", "tags": ["Official Google", "Gemini"] },
+    { "url": "https://ai.google.dev/blog/rss.xml", "tags": ["Official Google", "Developer"] },
+    { "url": "https://cloud.google.com/blog/products/ai-machine-learning/rss", "tags": ["Official Google", "Cloud"] },
+    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwfrxG24uhCo_pWkF_M4iWA", "tags": ["Official YouTube", "Announcements"] },
+    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC_x5XG1OV2P6uZZ5FSM9Ttw", "tags": ["Official YouTube", "Developer"] },
+    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJS9pqu9BzkAMNTmzNMNh4w", "tags": ["Official YouTube", "Cloud"] },
+    { "url": "https://www.androidpolice.com/tags/google-gemini/rss/", "tags": ["Gemini Sites"] },
+    { "url": "https://9to5google.com/guides/google-gemini/feed/", "tags": ["Gemini Sites"] },
+    { "url": "https://www.theverge.com/rss/google/index.xml", "tags": ["Gemini Sites"] },
+    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCb31_r_p3A-p1s20w_kC4sw", "tags": ["Gemini YouTubers", "News"] },
+    { "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCRlvyf3T22p6s_i1gI3BfMw", "tags": ["Gemini YouTubers", "Tutorials"] },
+    { "url": "https://news.google.com/rss/search?q=google+gemini+when:7d&hl=en-US&gl=US&ceid=US:en", "tags": ["Google News"] },
+    { "url": "https://rsshub.app/twitter/user/GoogleAI", "tags": ["Social Media"] },
+    { "url": "https://rsshub.app/twitter/user/demishassabis", "tags": ["Social Media"] },
+    { "url": "https://rsshub.app/twitter/user/jeffdean", "tags": ["Social Media"] },
+    { "url": "https://openai.com/news/rss.xml", "tags": ["General AI", "OpenAI"] },
+    { "url": "https://www.technologyreview.com/feed/?tag=ai", "tags": ["General AI", "MITTR"] },
+    { "url": "https://www.wired.com/feed/category/artificial-intelligence/rss", "tags": ["General AI", "Wired"] },
+    { "url": "https://venturebeat.com/category/ai/feed/", "tags": ["General AI", "VentureBeat"] },
+    { "url": "https://huggingface.co/blog/feed.xml", "tags": ["General AI", "Hugging Face"] }
+];/*FEEDS_END*/
 /*SECTIONS_START*/const defaultSectionNames = [    "Official Google",    "Official YouTube",    "Gemini Sites",    "Gemini YouTubers",    "Google News",    "Social Media",    "General AI"];let sections = defaultSectionNames.map(n=>({name: n, active: true}));/*SECTIONS_END*/
 
 /* status map: {url: {state:'loading'|'ok'|'fail', error:''}} */
@@ -429,7 +450,7 @@ saveBtn.onclick = () => {
         const scriptContent = scriptTag.innerHTML;
         const feedsRegex = /\/\*FEEDS_START\*\/([\s\S]*?)\/\*FEEDS_END\*\//;
         const sectionsRegex = /\/\*SECTIONS_START\*\/([\s\S]*?)\/\*SECTIONS_END\*\//;
-        let newScriptContent = scriptContent.replace(feedsRegex, `/*FEEDS_START*/${feedsString}/*FEEDS_END*/`);
+        let newScriptContent = scriptContent.replace(feedsRegex, `/*FEEDS_START*/let feeds = ${JSON.stringify(feeds, null, 4)};/*FEEDS_END*/`);
         newScriptContent = newScriptContent.replace(sectionsRegex, `/*SECTIONS_START*/${sectionsString}/*SECTIONS_END*/`);
         html = html.replace(scriptContent, newScriptContent);
         const blob = new Blob([html], { type: 'text/html' });
@@ -448,16 +469,18 @@ saveBtn.onclick = () => {
 };
 
 /* ---------- feed fetching ---------- */
-const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+// **FIX 1: Switched to a more reliable CORS proxy**
+const CORS_PROXY = 'https://corsproxy.io/?';
+
 async function fetchFeed(feed) {
     feedStatus[feed.url] = { state: 'loading' };
     renderFeedList();
     try {
         const response = await fetch(CORS_PROXY + encodeURIComponent(feed.url));
-        if (!response.ok) throw new Error(`Fetch failed with status ${response.status}`);
+        if (!response.ok) throw new Error(`Fetch failed with status ${response.status} for ${feed.url}`);
         const xml = await response.text();
         const doc = new DOMParser().parseFromString(xml, 'application/xml');
-        if (doc.querySelector('parsererror')) throw new Error('XML parse error');
+        if (doc.querySelector('parsererror')) throw new Error(`XML parse error for ${feed.url}`);
         const nodes = [...doc.querySelectorAll('item, entry')];
         const items = nodes.map(n => {
             const title = n.querySelector('title')?.textContent?.trim() || 'Untitled';
@@ -467,8 +490,9 @@ async function fetchFeed(feed) {
             const dateText = n.querySelector('pubDate')?.textContent?.trim() || n.querySelector('updated')?.textContent?.trim() || n.querySelector('published')?.textContent?.trim();
             let pubDate = new Date(dateText);
             if (isNaN(pubDate)) pubDate = new Date();
-            const sourceUrl = new URL(feed.url);
-            let sourceHost = sourceUrl.hostname.replace('www.', '');
+            const sourceUrl = new URL(CORS_PROXY + feed.url);
+            let sourceHost = sourceUrl.hostname.includes('youtube.com') ? 'youtube.com' : (new URL(feed.url)).hostname.replace('www.','');
+
             const rawHtml = n.querySelector('content\\:encoded, content')?.textContent || n.querySelector('description')?.textContent || '';
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = rawHtml;
@@ -492,18 +516,17 @@ async function fetchFeed(feed) {
         renderFeedList();
         return items;
     } catch (err) {
-        console.error(`Failed to fetch ${feed.url}:`, err);
+        console.error(err);
         feedStatus[feed.url] = { state: 'fail', error: err?.message || 'Unknown error' };
         renderFeedList();
         return [];
     }
 }
 
-/* ---------- CORRECTED: Article Ranking & Filtering ---------- */
+/* ---------- Article Ranking & Filtering ---------- */
 function rankAndFilterArticles(articles) {
     const now = new Date();
 
-    // De-duplicate articles by merging tags, ensuring all categories are kept.
     const articleMap = new Map();
     articles.forEach(article => {
         if (articleMap.has(article.link)) {
@@ -514,7 +537,6 @@ function rankAndFilterArticles(articles) {
                 existing.pubDate = article.pubDate;
             }
         } else {
-            // Create a copy of the article object to avoid side effects
             articleMap.set(article.link, { ...article, tags: [...article.tags] });
         }
     });
@@ -536,7 +558,6 @@ function rankAndFilterArticles(articles) {
         return article;
     }).sort((a, b) => b.score - a.score);
 
-    // **FIXED LOGIC**: Use a 24-hour and 7-day rolling window from the current time.
     const dayMarker = new Date(now.getTime() - 24 * 60 * 60 * 1000);
     const weekMarker = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
@@ -604,6 +625,7 @@ async function loadNews() {
         newsContainer.innerHTML = '';
 
         if (!allArticles.length) {
+            headlinesContainer.innerHTML = '<div class="empty-state"><h3>Could not load any feeds.</h3><p>The proxy may be down or your network is offline.</p></div>';
             newsContainer.innerHTML = '<div class="empty-state"><h3>No articles found</h3><p>Check your feeds or network connection.</p></div>';
             return;
         }

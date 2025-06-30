@@ -1,15 +1,3 @@
-You are correct, my apologies. The last change to make the grid "smarter" had the opposite effect on desktop and wasn't quite right on tablets either. I've reverted that change and implemented a more explicit and robust set of rules to fix the layout.
-
-Here are the specific corrections:
-
-1.  **Fixed Desktop Layout:** The top stories section will now reliably display as **three columns** on wide desktop screens, as intended.
-2.  **Improved Tablet/Mobile Stacking:** The grid now waits until the screen is wider (`992px`) before switching to two columns. This ensures it stays in a **single, clean column** on all phones and most tablets, providing a much better viewing experience.
-
-These more deliberate rules will ensure the layout is clean, predictable, and correctly formatted across all devices.
-
-Here is the updated code:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -804,4 +792,3 @@ function formatDate(d) {
 </script>
 </body>
 </html>
-```

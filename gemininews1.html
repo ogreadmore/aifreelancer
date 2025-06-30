@@ -101,10 +101,17 @@
         .summary-text {
             font-size: 1rem; color: #b0bec5; line-height: 1.6;
         }
+        .summary-text strong { color: #e0e6ed; font-weight: 600; }
         .top-stories-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 25px;
+        }
+        @media (min-width: 768px) {
+            .top-stories-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (min-width: 1200px) {
+            .top-stories-container { grid-template-columns: repeat(3, 1fr); }
         }
         .story-list {
             background: rgba(15, 23, 42, .6);
@@ -224,8 +231,8 @@
         @keyframes spin{to{transform:rotate(360deg)}}.error{color:#f87171;text-align:center;padding:40px 20px;font-size:1rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;margin:20px 0}
         .empty-state{text-align:center;padding:80px 20px;color:#64748b}.empty-state h3{color:#94a3b8;font-size:1.3rem;margin-bottom:10px}
         /* ---------- responsive ---------- */
-        @media(max-width:900px){
-            .top-stories-container { grid-template-columns: 1fr; }
+        @media(max-width:1199px){
+             .top-stories-container { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
         }
         @media(max-width:768px){.container{padding:15px}h1{font-size:2.5rem}.input-group{flex-direction:column}
         .section-grid{grid-template-columns:1fr}.list-item{flex-direction:column;align-items:flex-start}
@@ -469,7 +476,6 @@ saveBtn.onclick = () => {
 };
 
 /* ---------- feed fetching ---------- */
-// **FIX 1: Switched to a more reliable CORS proxy**
 const CORS_PROXY = 'https://corsproxy.io/?';
 
 async function fetchFeed(feed) {
@@ -560,37 +566,81 @@ function rankAndFilterArticles(articles) {
 
     const dayMarker = new Date(now.getTime() - 24 * 60 * 60 * 1000);
     const weekMarker = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const monthMarker = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
     const articlesToday = ranked.filter(a => a.pubDate >= dayMarker);
     const articlesThisWeek = ranked.filter(a => a.pubDate >= weekMarker);
+    const articlesThisMonth = ranked.filter(a => a.pubDate >= monthMarker);
 
-    return { today: articlesToday, week: articlesThisWeek, all: ranked };
+    return { today: articlesToday, week: articlesThisWeek, month: articlesThisMonth, all: ranked };
+}
+
+/* ---------- NEW: Insightful Summary Generation ---------- */
+function generateInsightfulSummary(articlesToday) {
+    if (articlesToday.length === 0) {
+        return "No significant AI news has been published in the last 24 hours. It's a quiet day.";
+    }
+
+    const topStory = articlesToday[0];
+    let summary = `The leading story today is <strong>${topStory.title}</strong> from ${topStory.source}. `;
+
+    // A list of common English words to ignore when looking for themes.
+    const stopWords = new Set(['a', 'an', 'the', 'and', 'or', 'in', 'on', 'for', 'with', 'to', 'from', 'of', 'as', 'its', 'is', 'i', 'me', 'my', 'we', 'our', 'you', 'your', 'he', 'she', 'it', 'they', 'them', 'their', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'but', 'if', 'because', 'while', 'at', 'by', 'up', 'down', 'out', 'about', 'more', 'how', 'when', 'where', 'why', 'all', 'any', 'both', 'each', 'few', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'its', 'into', 'not', 'get', 'one', 'two', 'again']);
+
+    const wordFreq = new Map();
+    // Analyze the top 5 articles for themes
+    articlesToday.slice(0, 5).forEach(article => {
+        const words = article.title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
+        words.forEach(word => {
+            if (word && !stopWords.has(word) && isNaN(word)) { // Check if it's not a number
+                wordFreq.set(word, (wordFreq.get(word) || 0) + 1);
+            }
+        });
+    });
+
+    // Find words that appear in more than one headline to identify themes
+    const themes = [];
+    for (let [word, count] of wordFreq.entries()) {
+        if (count > 1) {
+            themes.push(word);
+        }
+    }
+
+    const topThemes = themes.slice(0, 3);
+
+    if (topThemes.length > 0) {
+        summary += `Recurring themes across the headlines include <strong>${topThemes.join('</strong>, <strong>')}</strong>. `;
+    } else if (articlesToday.length > 1) {
+        summary += "Discussions today span a diverse range of topics without a single overarching theme. ";
+    }
+
+    summary += `In total, ${articlesToday.length} relevant ${articlesToday.length === 1 ? 'article' : 'articles'} have been indexed in the last 24 hours.`;
+
+    return summary;
 }
 
 
 /* ---------- Headline Section Rendering ---------- */
-function renderHeadlineSection(rankedToday, rankedWeek) {
+function renderHeadlineSection(rankedToday, rankedWeek, rankedMonth) {
     headlinesContainer.innerHTML = ''; 
-    if (rankedToday.length === 0 && rankedWeek.length === 0) return;
-
+    
+    // Generate and render the new insightful summary
     const summary = document.createElement('div');
     summary.className = 'summary-box';
-    let summaryText = "No major headlines in the last 24 hours. Check the feeds for all updates.";
-    if (rankedToday.length > 0) {
-        const topHeadlines = rankedToday.slice(1, 3).map(a => a.title).join('; ');
-        summaryText = `Key stories today include: <strong>${rankedToday[0].title}</strong>. ${topHeadlines ? `Also in the news: ${topHeadlines}` : ''}`;
-    }
+    const summaryText = generateInsightfulSummary(rankedToday);
     summary.innerHTML = `
-        <div class="summary-title">Today's Briefing</div>
+        <div class="summary-title">Today's AI Briefing</div>
         <p class="summary-text">${summaryText}</p>
     `;
     headlinesContainer.appendChild(summary);
 
+    // Render the top story lists
     const topStoriesContainer = document.createElement('div');
     topStoriesContainer.className = 'top-stories-container';
     topStoriesContainer.innerHTML = `
-        <div class="story-list">${renderStoryList('Top 10 of the Day', rankedToday.slice(0, 10))}</div>
+        <div class="story-list">${renderStoryList('Top 5 of the Day', rankedToday.slice(0, 5))}</div>
         <div class="story-list">${renderStoryList('Top 10 of the Week', rankedWeek.slice(0, 10))}</div>
+        <div class="story-list">${renderStoryList('Top 10 of the Month', rankedMonth.slice(0, 10))}</div>
     `;
     headlinesContainer.appendChild(topStoriesContainer);
 }
@@ -630,8 +680,8 @@ async function loadNews() {
             return;
         }
 
-        const { today: rankedToday, week: rankedWeek, all: allRanked } = rankAndFilterArticles(allArticles);
-        renderHeadlineSection(rankedToday, rankedWeek);
+        const { today: rankedToday, week: rankedWeek, month: rankedMonth, all: allRanked } = rankAndFilterArticles(allArticles);
+        renderHeadlineSection(rankedToday, rankedWeek, rankedMonth);
 
         const activeSections = sections.filter(s => s.active);
         if (!activeSections.length) {

@@ -1,17 +1,3 @@
-Of course. Adding visual previews with images and text snippets will definitely enrich the aggregator. I will modify the code to parse and display this content.
-
-Here are the key changes:
-
-1.  **Enhanced Parsing:** The feed fetching logic has been upgraded to look for images within `<media:thumbnail>`, `<content:encoded>`, and `<description>` tags. It will prioritize the highest quality thumbnails when available.
-2.  **Clean Content:** The script now cleans the description text, removing HTML tags and truncating it to a neat, readable snippet of about 150 characters.
-3.  **New Card Layout:** The news cards have been redesigned to include a dedicated space for a thumbnail image above the article's title and new text snippet.
-4.  **Updated Styling:** New CSS has been added to support the new card layout, ensuring images are displayed beautifully with a proper aspect ratio and a subtle zoom effect on hover.
-
-Here is the complete, updated code.
-
-### Gemini News Aggregator (with Image Previews)
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -707,4 +693,3 @@ function formatDate(d) {
 </script>
 </body>
 </html>
-```

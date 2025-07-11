@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -73,19 +69,14 @@
             letter-spacing: -0.025em;
         }
         
-/* ↓ just replace this rule */
-.gemini-gradient-text{
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent;
-
-  /* fix: let it behave like normal text */
-  display:inline;        /* was inline-block */
-  line-height:inherit;   /* keeps any heading’s leading intact */
-  /* vertical-align:baseline;  (optional, but harmless) */
-}
+        .gemini-gradient-text { 
+            background: var(--primary-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+            text-fill-color: transparent; 
+            display: inline-block; 
+        }
         
         .gemini-gradient-bg { 
             background: var(--primary-gradient);
@@ -150,9 +141,6 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .brand-star {
-            color: #4B88DA;
         }
         
         .stat-card {
@@ -350,23 +338,23 @@
             <div class="max-w-5xl mx-auto text-center">
                 <div class="inline-flex items-center gap-2 bg-gray-100 px-4 py-1.5 rounded-full mb-6">
                     <span class="h-2 w-2 rounded-full gemini-gradient-bg"></span>
-                    <span class="text-sm font-medium text-gray-700">AI Automation Experts Since 2022</span>
+                    <span class="text-sm font-medium text-gray-700">AI Automation Experts Since 2020</span>
                 </div>
                 
                 <h1 class="font-jakarta text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight mb-6">
-                    <span class="block">Stop Wasting Time</span>
-                    <span class="block mt-2 md:mt-4"><span class="gemini-gradient-text">Automate Your Business</span></span>
+                    <span class="block">Stop Wasting Time.</span>
+                    <span class="block mt-2 md:mt-4"><span class="gemini-gradient-text">Automate Your Business.</span></span>
                 </h1>
                 
                 <p class="max-w-3xl mx-auto text-xl text-gray-600 mb-10">
-                    We build custom AI solutions that work 24/7 to cut operational costs, capture more leads, and help businesses grow.
+                    We build custom AI solutions for businesses worldwide that cut operational costs, capture more leads, and free your team to focus on what matters most: <span class="font-semibold">growth.</span>
                 </p>
                 
                 <div class="flex justify-center items-center gap-4 flex-wrap">
-                    <a href="#solutions" class="bg-gray-900 text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-800 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+                    <a href="#solutions" class="gemini-gradient-bg text-white font-bold py-4 px-8 rounded-full text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
                         <i class="fa-solid fa-bolt"></i> View Solutions
                     </a>
-                    <a href="#contact" class="gemini-gradient-bg text-white font-bold py-4 px-8 rounded-full text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+                    <a href="#contact" class="bg-gray-900 text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-800 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
                         <i class="fa-solid fa-calendar-check"></i> Free Consultation
                     </a>
                 </div>
@@ -417,40 +405,61 @@
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Philosophy</h3>
                         <p class="text-lg text-gray-600 leading-relaxed">
-                            Our approach is simple: We succeed when you succeed. We take the time to deeply understand your business and its unique challenges before recommending a solution. The goal is always a measurable return on your investment.
+                            Our approach is simple: we succeed when you succeed. We take the time to deeply understand your business and its unique challenges before recommending a solution. The goal is always a measurable return on your investment.
                         </p>
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Expertise</h3>
                         <p class="text-lg text-gray-600 leading-relaxed">
-                            With decades of experience in enterprise software development and business systems automation, our team handles strategy, development, and deployment—so you can focus on growth, not headaches.
+                            With a global team experienced in enterprise software and machine learning, we bridge the gap between complex technology and real-world business needs. We handle everything from strategy to deployment so you can stay focused on your company.
                         </p>
                     </div>
                 </div>
-
-                
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="pt-4 pb-24 bg-white">
+    <!-- Benefits Section -->
+    <section id="benefits" class="section-padding bg-white">
         <div class="container mx-auto px-6">
-            <div class="max-w-6xl mx-auto">
-                <div class="gemini-gradient-bg rounded-2xl p-8 md:p-12 text-center shadow-xl relative overflow-hidden">
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
-                    <div class="relative z-10">
-                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Ready to Transform Your Business?</h2>
-                        <p class="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-8">
-                            Book a free strategy session with our AI experts and discover how automation can drive growth for your business.
-                        </p>
-                        <a href="#contact" class="inline-block w-full sm:w-auto bg-white text-gray-900 font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-100 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                            <i class="fa-solid fa-calendar-check mr-2"></i> Schedule Free Consultation
-                        </a>
-                        <p class="mt-6 text-white/80 text-sm">
-                            <i class="fa-solid fa-shield-alt mr-2"></i>100% Confidential • No Obligation • 30-Day ROI Guarantee
-                        </p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-normal">The <span class="gemini-gradient-text">AI Advantage</span>: Tangible Results</h2>
+                <p class="text-xl text-gray-600">
+                    We focus on measurable outcomes that drive real business growth. AI isn't just technology - it's your competitive edge.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 gemini-gradient-bg rounded-xl flex items-center justify-center mb-6 text-white text-2xl">
+                        <i class="fa-solid fa-rocket"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Accelerate Sales</h3>
+                    <p class="text-gray-600">AI chatbots engage prospects 24/7, qualify leads instantly, and automate follow-ups to close more deals faster.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 gemini-gradient-bg rounded-xl flex items-center justify-center mb-6 text-white text-2xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Recover Lost Time</h3>
+                    <p class="text-gray-600">Automate repetitive tasks like data entry, reporting, and scheduling to free up 20+ hours per week for strategic work.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 gemini-gradient-bg rounded-xl flex items-center justify-center mb-6 text-white text-2xl">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Boost Efficiency</h3>
+                    <p class="text-gray-600">Reduce operational costs by 30-60% with AI solutions that optimize workflows and eliminate manual processes.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl">
+                    <div class="w-16 h-16 gemini-gradient-bg rounded-xl flex items-center justify-center mb-6 text-white text-2xl">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Actionable Insights</h3>
+                    <p class="text-gray-600">Transform raw data into strategic intelligence with AI analytics that reveal hidden opportunities and trends.</p>
                 </div>
             </div>
         </div>
@@ -460,7 +469,7 @@
     <section id="solutions" class="section-padding bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style="line-height: 1.5;">The <span class="gemini-gradient-text">Solutions</span> Business Want</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style="line-height: 1.5;">Our <span class="gemini-gradient-text">Solutions & Pricing</span></h2>
                 <p class="text-xl text-gray-600">
                     We offer packages for the most common business needs. Don't see what you're looking for? We can build a custom solution for any challenge.
                 </p>
@@ -492,8 +501,8 @@
                         <ul class="space-y-4 text-gray-600 mb-8">
                             <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Custom Workflow Design</li>
                             <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Automated Data Entry</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Automated Report Generation</li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Ongoing Support & Maintenance</li>
+                            <li class="flex items-center gap=3"><i class="fa-solid fa-check gemini-gradient-text"></i>Automated Report Generation</li>
+                            <li class="flex items-center gap=3"><i class="fa-solid fa-check gemini-gradient-text"></i>Ongoing Support & Maintenance</li>
                         </ul>
                         <a href="#contact" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Increase Efficiency</a>
                     </div>
@@ -504,25 +513,25 @@
                     <p class="text-gray-600 mb-6 flex-grow">We automate your sales pipeline by integrating with your CRM to handle lead nurturing and follow-ups, freeing your sales team to focus on what they do best: closing deals.</p>
                     <p class="text-5xl font-bold text-gray-900 mb-6">$999<span class="text-lg font-medium text-gray-500">/mo</span></p>
                     <ul class="space-y-4 text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Salesforce, HubSpot & More</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Automated Lead Follow-up</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Automatic Activity Logging</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Predictive Lead Scoring</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Salesforce, HubSpot & More</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Automated Lead Follow-up</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Automatic Activity Logging</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Predictive Lead Scoring</li>
                     </ul>
                     <a href="#contact" class="w-full mt-auto text-center bg-gray-100 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-200 transition-all">Boost Sales</a>
                 </div>
                 
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">AI Data & Analytics</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">We transform your raw business data into a strategic asset. Our AI models uncover hidden trends, predict customer behavior, and provide actionable insights to guide your growth strategy.</p>
-                    <p class="text-5xl font-bold text-gray-900 mb-6">$1,499<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">AI Content Creation</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Our AI content engine generates high-quality social media posts, email campaigns, and blog articles that are consistently tailored to your brand's unique voice and style.</p>
+                    <p class="text-5xl font-bold text-gray-900 mb-6">$649<span class="text-lg font-medium text-gray-500">/mo</span></p>
                     <ul class="space-y-4 text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Custom Data Dashboard Setup</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Predictive Sales Forecasting</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Customer Segmentation Analysis</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Monthly Insights & Strategy Report</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Social Media Post Generation</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Email Campaign Writing</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Blog Ideas & Drafts</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Custom Brand Voice Matching</li>
                     </ul>
-                    <a href="#contact" class="w-full mt-auto text-center bg-gray-100 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-200 transition-all">Unlock Insights</a>
+                    <a href="#contact" class="w-full mt-auto text-center bg-gray-100 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-200 transition-all">Create Content</a>
                 </div>
                 
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
@@ -530,10 +539,10 @@
                     <p class="text-gray-600 mb-6 flex-grow">We build an AI-powered support system that integrates with your helpdesk to provide instant answers, automate ticket routing, and improve customer satisfaction.</p>
                     <p class="text-5xl font-bold text-gray-900 mb-6">$749<span class="text-lg font-medium text-gray-500">/mo</span></p>
                     <ul class="space-y-4 text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Integrates with Helpdesks</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Automated Ticket Routing</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Instant Answers via AI</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Customer Sentiment Analysis</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Integrates with Helpdesks</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Automated Ticket Routing</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Instant Answers via AI</li>
+                        <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Customer Sentiment Analysis</li>
                     </ul>
                     <a href="#contact" class="w-full mt-auto text-center bg-gray-100 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-200 transition-all">Automate Support</a>
                 </div>
@@ -543,10 +552,10 @@
                     <p class="text-gray-500 mb-6 flex-grow">For companies seeking a complete AI overhaul, we provide a dedicated team and custom-built solutions for your operations, marketing, and data strategy to unlock growth.</p>
                     <p class="text-4xl font-bold text-gray-900 mb-6">Starts at $5,000</p>
                     <ul class="space-y-4 text-gray-600 mb-8">
-                       <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Includes All Solutions, plus:</li>
-                       <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Advanced Predictive Analytics</li>
-                       <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Custom-Trained AI Models</li>
-                       <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Dedicated Project Management</li>
+                       <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Includes All Solutions, plus:</li>
+                       <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Advanced Predictive Analytics</li>
+                       <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Custom-Trained AI Models</li>
+                       <li class="flex items-center gap=3"><i class="fa-solid fa-check text-blue-500"></i>Dedicated Project Management</li>
                     </ul>
                     <a href="#contact" class="w-full mt-auto text-center bg-gray-100 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-200 transition-all">Contact For Quote</a>
                 </div>
@@ -571,25 +580,25 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="testimonial-card bg-white p-8">
                     <div class="flex items-center mb-6">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-16 h-16 rounded-full mr-4">
                         <div>
                             <p class="font-bold text-gray-900">Michael Reynolds</p>
                             <p class="text-gray-600">CEO, TechSolutions Inc.</p>
-                            <div class="flex brand-star mt-1">
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
                     </div>
                     <p class="text-gray-600 italic mb-6">"The AI chatbot AI Freelancer implemented captures 40% more leads than our previous contact form. It handles routine inquiries 24/7, freeing our team to focus on high-value clients. The ROI was evident within the first month."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 gemini-gradient-bg rounded-full flex items-center justify-center text-white mr-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 mr-3">
                             <i class="fa-solid fa-arrow-up"></i>
                         </div>
                         <p class="text-gray-800 font-medium">68% more qualified leads in 90 days</p>
@@ -602,18 +611,18 @@
                         <div>
                             <p class="font-bold text-gray-900">Sarah Johnson</p>
                             <p class="text-gray-600">Operations Director, RetailChain</p>
-                            <div class="flex brand-star mt-1">
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
                     </div>
                     <p class="text-gray-600 italic mb-6">"Their process automation solution eliminated 25 hours of manual data entry per week across our team. What impressed me most was how they tailored the solution to our specific workflows. The support has been exceptional."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 gemini-gradient-bg rounded-full flex items-center justify-center text-white mr-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 mr-3">
                             <i class="fa-solid fa-arrow-down"></i>
                         </div>
                         <p class="text-gray-800 font-medium">45% reduction in operational costs</p>
@@ -626,94 +635,21 @@
                         <div>
                             <p class="font-bold text-gray-900">David Chen</p>
                             <p class="text-gray-600">Sales Director, GrowthTech</p>
-                            <div class="flex brand-star mt-1">
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
                     </div>
                     <p class="text-gray-600 italic mb-6">"Our sales automation system has transformed how we manage leads. Follow-ups that used to take hours now happen automatically. Our conversion rate increased by 28% in the first quarter after implementation."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 gemini-gradient-bg rounded-full flex items-center justify-center text-white mr-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 mr-3">
                             <i class="fa-solid fa-arrow-up"></i>
                         </div>
                         <p class="text-gray-800 font-medium">28% higher conversion rate</p>
-                    </div>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                <div class="testimonial-card bg-white p-8">
-                    <div class="flex items-center mb-6">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <p class="font-bold text-gray-900">Jessica Williams</p>
-                            <p class="text-gray-600">Founder, Creative Co.</p>
-                            <div class="flex brand-star mt-1">
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic mb-6">"The AI-powered analytics dashboard gives us insights we never had before. We can now make data-driven decisions with confidence, which has been a game-changer for our marketing campaigns."</p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 gemini-gradient-bg rounded-full flex items-center justify-center text-white mr-3">
-                            <i class="fa-solid fa-arrow-up"></i>
-                        </div>
-                        <p class="text-gray-800 font-medium">50% increase in marketing ROI</p>
-                    </div>
-                </div>
-
-                <div class="testimonial-card bg-white p-8">
-                    <div class="flex items-center mb-6">
-                        <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Client" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <p class="font-bold text-gray-900">James Brown</p>
-                            <p class="text-gray-600">CFO, Manufacturing Solutions</p>
-                            <div class="flex brand-star mt-1">
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic mb-6">"We were skeptical about AI, but the team at AI Freelancer made the process seamless. Their automation of our invoicing and reporting has saved us countless hours and reduced errors significantly."</p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 gemini-gradient-bg rounded-full flex items-center justify-center text-white mr-3">
-                            <i class="fa-solid fa-arrow-down"></i>
-                        </div>
-                        <p class="text-gray-800 font-medium">90% reduction in invoicing errors</p>
-                    </div>
-                </div>
-
-                <div class="testimonial-card bg-white p-8">
-                    <div class="flex items-center mb-6">
-                        <img src="https://randomuser.me/api/portraits/women/94.jpg" alt="Client" class="w-16 h-16 rounded-full mr-4">
-                        <div>
-                            <p class="font-bold text-gray-900">Emily White</p>
-                            <p class="text-gray-600">Owner, The Local Bakery</p>
-                            <div class="flex brand-star mt-1">
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                                <i class="fa-solid fa-star gemini-gradient-text"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic mb-6">"As a small business, we don't have a large support team. The AI chatbot has been a lifesaver, answering customer questions after hours and helping us secure more online orders than ever before."</p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 gemini-gradient-bg rounded-full flex items-center justify-center text-white mr-3">
-                            <i class="fa-solid fa-arrow-up"></i>
-                        </div>
-                        <p class="text-gray-800 font-medium">30% increase in after-hours sales</p>
                     </div>
                 </div>
             </div>
@@ -722,160 +658,195 @@
         </div>
     </section>
 
-    
-
-<!-- ▸▸ CONTACT SECTION — aligned to video width & tighter left column ◂◂ -->
-<section id="contact" class="bg-gray-50 py-20">
-  <div class="container mx-auto px-6">
-
-    <!-- centred section header -->
-    <div class="max-w-3xl mx-auto text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
-        Let’s Build Your <span class="gemini-gradient-text">AI Advantage</span>
-      </h2>
-      <p class="mt-4 text-xl text-gray-600">
-        Complete the form and one of our AI specialists will contact you shortly!
-      </p>
-    </div>
-
-    <!-- same width as intro-video (≈ 6xl) -->
-    <div class="max-w-6xl mx-auto">
-
-      <!-- grid: fixed 360-px left column + fluid form -->
-      <div class="grid gap-10 items-start lg:grid-cols-[minmax(0,_360px)_1fr]">
-
-        <!-- LEFT COLUMN -->
-        <div class="space-y-10">
-
-          <!-- Contact Info -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-6">Contact&nbsp;Info</h3>
-
-            <div class="space-y-8">
-              <!-- phone -->
-              <div class="flex items-center gap-5">
-                <div class="w-14 h-14 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-xl">
-                  <i class="fa-solid fa-phone-volume"></i>
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="gemini-gradient-bg rounded-2xl p-8 md:p-12 text-center shadow-xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Ready to <span class="gemini-gradient-text">Transform Your Business?</span></h2>
+                    <p class="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-8">
+                        Book a free strategy session with our AI experts and discover how automation can drive growth for your business.
+                    </p>
+                    <a href="#contact" class="inline-block w-full sm:w-auto bg-white text-gray-900 font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-100 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <i class="fa-solid fa-calendar-check mr-2"></i> Schedule Free Consultation
+                    </a>
+                    <p class="mt-6 text-white/80 text-sm">
+                        <i class="fa-solid fa-shield-alt mr-2"></i>100% Confidential • No Obligation • 30-Day ROI Guarantee
+                    </p>
                 </div>
-                <div>
-                  <p class="text-gray-600">Call us</p>
-                  <a href="tel:440-941-1785"
-                     class="text-2xl font-bold text-gray-900 hover:text-blue-600">(440) 941-1785</a>
-                </div>
-              </div>
-
-              <!-- email -->
-              <div class="flex items-center gap-5">
-                <div class="w-14 h-14 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-xl">
-                  <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div>
-                  <p class="text-gray-600">Email us</p>
-                  <a href="mailto:hello@ai-freelancer.co"
-                     class="text-2xl font-bold text-gray-900 hover:text-blue-600">hello@ai-freelancer.co</a>
-                </div>
-              </div>
-
-              <!-- location -->
-              <div class="flex items-center gap-5">
-                <div class="w-14 h-14 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-xl">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div>
-                  <p class="text-gray-600">Based in</p>
-                  <p class="text-xl font-bold text-gray-900">
-                    Cleveland, Ohio • Serving&nbsp;Worldwide
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
-
-          <!-- divider -->
-          <!-- Social Media -->
-          <!--
-          <div class="h-px bg-gray-200"></div>
-
-          <div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Social&nbsp;Media</h3>
-
-            <div class="flex gap-4">
-              <a href="https://www.linkedin.com/company/ai-freelancer" target="_blank" aria-label="LinkedIn"
-                 class="w-10 h-10 gemini-gradient-bg rounded-full flex items-center justify-center text-white text-lg hover:shadow-lg transition">
-                <i class="fa-brands fa-linkedin-in"></i>
-              </a>
-              <a href="https://www.facebook.com/aifreelancer" target="_blank" aria-label="Facebook"
-                 class="w-10 h-10 gemini-gradient-bg rounded-full flex items-center justify-center text-white text-lg hover:shadow-lg transition">
-                <i class="fa-brands fa-facebook-f"></i>
-              </a>
-            </div>
-          </div>
-          -->
-
         </div>
+    </section>
 
-        <!-- RIGHT COLUMN — FORM -->
-        <div class="bg-white rounded-3xl p-10 shadow-xl w-full">
-          <form class="space-y-6">
-
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 gemini-gradient-text-parent">Let's Build Your <span class="gemini-gradient-text">AI Advantage</span></h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Complete the form and one of our AI specialists will contact you within 24 hours to discuss your project.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Call us directly</p>
+                                <a href="tel:440-941-1785" class="text-2xl font-bold text-gray-900 hover:text-blue-600">(440) 941-1785</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Email us</p>
+                                <a href="mailto:hello@ai-freelancer.co" class="text-2xl font-bold text-gray-900 hover:text-blue-600">hello@ai-freelancer.co</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600">Based in</p>
+                                <p class="text-xl font-bold text-gray-900">Cleveland, Ohio • Serving Worldwide</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="you@company.com" required class="form-input">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                            <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
+                        </div>
+                        
+                        <div>
+                            <label for="interest" class="block text-sm font-medium text-gray-700 mb-2">I'm interested in *</label>
+                            <select id="interest" name="interest" required class="form-input">
+                                <option value="">Select a solution</option>
+                                <option value="chatbot">AI Website Chatbot</option>
+                                <option value="process">Process Automation</option>
+                                <option value="sales">Sales & CRM Automation</option>
+                                <option value="support">Customer Support AI</option>
+                                <option value="custom">Custom AI Solution</option>
+                                <option value="consultation">Free Consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Tell us about your business needs *</label>
+                            <textarea id="message" name="message" rows="4" placeholder="What are your biggest operational challenges or growth goals?" required class="form-input"></textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg hover:shadow-xl w-full transition-all duration-300">
+                                <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
+                            </button>
+                        </div>
+                        
+                        <p class="text-center text-gray-500 text-sm">
+                            <i class="fa-solid fa-lock mr-1"></i>We respect your privacy and will never share your information
+                        </p>
+                    </form>
+                </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                <input type="email" id="email" name="email" placeholder="you@company.com" required class="form-input">
-              </div>
-              <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" class="form-input">
-              </div>
-            </div>
-
-            <div>
-              <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
-              <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
-            </div>
-
-            <div>
-              <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
-                Tell us about your business needs *
-              </label>
-              <textarea id="message" name="message" rows="4"
-                        placeholder="What are your biggest operational challenges or growth goals?"
-                        required class="form-input"></textarea>
-            </div>
-
-            <button type="submit"
-                    class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
-              <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
-            </button>
-
-            <p class="text-center text-gray-500 text-sm mt-3">
-              <i class="fa-solid fa-lock mr-1"></i>Your information stays private.
-            </p>
-          </form>
         </div>
-
-      </div><!-- /grid -->
-    </div><!-- /max-w wrapper -->
-  </div><!-- /container -->
-</section>
-
-
-
+    </section>
     
-<!-- ▸▸ MINIMAL LIGHT FOOTER ◂◂ -->
-<footer class="bg-gray-50 text-gray-600">
-  <div class="container mx-auto px-6">
-    
-    <p class="text-center text-sm pb-8">
-      © 2025 <span class="font-semibold">AI Freelancer</span>. All rights reserved.
-    </p>
-  </div>
-</footer>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <!-- Updated Footer Logo -->
+                    <a href="#home" class="text-2xl flex items-center mb-6">
+                        <span class="font-bold text-white">AI<span class="gemini-gradient-text">Freelancer</span></span>
+                    </a>
+                    <p class="text-gray-400 mb-6">Custom AI solutions that transform businesses through intelligent automation and innovation.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Solutions</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI Chatbots</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Process Automation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Sales Automation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Customer Support AI</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Data Analytics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Custom AI Development</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI Guides</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Webinars</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Get AI insights and automation tips delivered to your inbox.</p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-blue-500">
+                        <button type="submit" class="gemini-gradient-bg text-white font-semibold py-3 rounded-lg">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>© 2025 AI Freelancer. All rights reserved.</p>
+                <div class="mt-4 flex justify-center gap-6 text-sm">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Security</a>
+                    <a href="#" class="hover:text-white transition-colors">GDPR Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- AI Chatbot -->
     <div class="chatbot-container">
@@ -896,7 +867,7 @@
             <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto">
                 <div class="flex mb-4">
                     <div class="chat-bubble-bot p-3">
-                        <p>Hi there!  I'm your AI assistant. How can I help you today?</p>
+                        <p>Hi there! 👋 I'm your AI assistant. How can I help you today?</p>
                         <p class="mt-2">You can ask me about:</p>
                         <ul class="list-disc pl-5 mt-1 space-y-1">
                             <li>Our AI solutions</li>

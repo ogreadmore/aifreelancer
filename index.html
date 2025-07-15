@@ -1040,25 +1040,6 @@
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
         
-        // Simple chatbot responses
-        function getBotResponse(userMessage) {
-            userMessage = userMessage.toLowerCase();
-            
-            if (userMessage.includes('hello') || userMessage.includes('hi') || userMessage.includes('hey')) {
-                return "Hello! How can I assist you today?";
-            } else if (userMessage.includes('solution') || userMessage.includes('service')) {
-                return "We offer several AI solutions: 1) AI Chatbots for lead generation 2) Process automation 3) Sales automation 4) Custom AI development. Which one are you interested in?";
-            } else if (userMessage.includes('price') || userMessage.includes('cost')) {
-                return "Our pricing starts at $499 for an AI chatbot. Process automation is $2,500/month. We also offer custom solutions. Would you like a detailed quote?";
-            } else if (userMessage.includes('contact') || userMessage.includes('talk')) {
-                return "You can call us at (440) 941-1785 or email hello@ai-freelancer.co. Would you like me to schedule a free consultation?";
-            } else if (userMessage.includes('process') || userMessage.includes('work')) {
-                return "Our process has 4 steps: 1) Discovery & Strategy 2) Solution Development 3) Deployment & Training 4) Optimization & Support. Each project typically takes 2-4 weeks.";
-            } else {
-                return "I'm here to help with information about our AI solutions. You can ask about pricing, services, case studies, or how to get started.";
-            }
-        }
-        
         chatbotForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const userMessage = chatbotInput.value.trim();
@@ -1082,12 +1063,22 @@
             chatbotMessages.appendChild(thinkingIndicator);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             
-            // Simulate AI response time
-            setTimeout(() => {
-                thinkingIndicator.remove();
-                const botResponse = getBotResponse(userMessage);
-                addChatMessage(botResponse, 'bot');
-            }, 1000);
+            // Call your Vercel API
+fetch('https://aifreelancerchatbotvercelthing.vercel.app/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: userMessage })
+})
+.then(res => res.json())
+.then(data => {
+    thinkingIndicator.remove();
+    addChatMessage(data.reply, 'bot');
+})
+.catch(err => {
+    thinkingIndicator.remove();
+    addChatMessage("Sorry, something went wrong. Please try again.", 'bot');
+});
+
         });
     </script>
 </body>

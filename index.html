@@ -1091,5 +1091,40 @@ fetch('https://aifreelancerchatbotvercelthing.vercel.app/api/chat', {
 
         });
     </script>
+
+
+<script>
+  // Contact form → Formspree → custom pop‑up
+  const contactForm   = document.getElementById('contact-form');
+  const thankOverlay  = document.getElementById('thank-you-overlay');
+  const closeThanks   = document.getElementById('close-thank-you');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();               // stop normal form navigation
+    const formData = new FormData(contactForm);
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
+
+      if (res.ok) {
+        contactForm.reset();
+        thankOverlay.classList.remove('hidden');
+      } else {
+        alert('Sorry—something went wrong. Please email us directly.');
+      }
+    } catch (err) {
+      alert('Network error. Please try again later.');
+    }
+  });
+
+  closeThanks.addEventListener('click', () => {
+    thankOverlay.classList.add('hidden');
+  });
+</script>
+
 </body>
 </html>

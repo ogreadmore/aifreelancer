@@ -1064,7 +1064,7 @@
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             
             // Call your Vercel API
-fetch('https://aifreelancerchatbotvercelthing-7w45mqxfv.vercel.app', {
+fetch('https://aifreelancerchatbotvercelthing-7w45mqxfv.vercel.app/api/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: userMessage })

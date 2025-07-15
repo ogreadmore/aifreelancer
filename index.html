@@ -723,7 +723,6 @@
     
 
 <!-- ▸▸ CONTACT SECTION — aligned to video width & tighter left column ◂◂ -->
-<!-- ▸▸ CONTACT SECTION — aligned to video width & tighter left column ◂◂ -->
 <section id="contact" class="bg-gray-50 py-20">
   <div class="container mx-auto px-6">
 
@@ -824,47 +823,55 @@
 
         <!-- RIGHT COLUMN — FORM -->
         <div class="bg-white rounded-3xl p-10 shadow-xl w-full">
-          <form class="space-y-6">
+          <!-- ────── CONTACT FORM (Formspree) ────── -->
+<form action="https://formspree.io/f/mldlebob" method="POST" id="contact-form" class="space-y-6">
+  <!-- customise the e‑mail subject line you’ll receive -->
+  <input type="hidden" name="_subject" value="New Lead from AI‑Freelancer.co">
 
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
-            </div>
+  <!-- Name -->
+  <div>
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
+  </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                <input type="email" id="email" name="email" placeholder="you@company.com" required class="form-input">
-              </div>
-              <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" class="form-input">
-              </div>
-            </div>
+  <!-- Email + Phone -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+      <input type="email" id="email" name="email" placeholder="you@company.com" required class="form-input">
+    </div>
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="(123) 456‑7890" class="form-input">
+    </div>
+  </div>
 
-            <div>
-              <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
-              <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
-            </div>
+  <!-- Company -->
+  <div>
+    <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+    <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
+  </div>
 
-            <div>
-              <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
-                Tell us about your business needs *
-              </label>
-              <textarea id="message" name="message" rows="4"
-                        placeholder="What are your biggest operational challenges or growth goals?"
-                        required class="form-input"></textarea>
-            </div>
+  <!-- Message -->
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+      Tell us about your business needs *
+    </label>
+    <textarea id="message" name="message" rows="4"
+              placeholder="What are your biggest operational challenges or growth goals?"
+              required class="form-input"></textarea>
+  </div>
 
-            <button type="submit"
-                    class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
-              <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
-            </button>
+  <!-- Submit -->
+  <button type="submit"
+          class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
+    <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
+  </button>
 
-            <p class="text-center text-gray-500 text-sm mt-3">
-              <i class="fa-solid fa-lock mr-1"></i>Your information stays private.
-            </p>
-          </form>
+  <p class="text-center text-gray-500 text-sm mt-3">
+    <i class="fa-solid fa-lock mr-1"></i>Your information stays private.
+  </p>
+</form>
         </div>
 
       </div><!-- /grid -->

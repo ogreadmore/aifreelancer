@@ -950,86 +950,140 @@
     </div>
 </div>
 
-    <script>
-/* ===== CONFIG =====
-   Ordered list of chat endpoints to try.
-   1. Production same-origin (implement when ready).
-   2. Your current working Vercel test endpoint (fallback).
-*/
-const CHAT_ENDPOINTS = [
-  '/api/chat',
-  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat'
+<script>
+/* ============================================================
+   AI FREELANCER CHAT WIDGET — QUICK-WINS PACK
+   ------------------------------------------------------------
+   Features:
+     • Endpoint fallback (prod → vercel)
+     • Dynamic greeting + quick-reply chips
+     • Enter=send, Shift+Enter=newline
+     • Disable send while pending
+     • Local session persistence (history + lead data)
+     • Lead intent detection & capture (name/email/phone)
+     • Auto-submit captured lead to page Formspree form (if present)
+     • gtag analytics events (guarded)
+     • Safe linkified bot messages
+============================================================ */
+
+/* ---------- CONFIG ---------- */
+const AF_CHAT_ENDPOINTS = [
+  '/api/chat', // production (implement when ready)
+  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat' // fallback
 ];
 
-/* ===== MOBILE MENU ===== */
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-});
+// Optional config endpoint (ignored if fails)
+const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config';
 
-/* ===== STICKY HEADER ===== */
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header.classList.add('bg-white', 'backdrop-blur-sm', 'shadow-md');
-  } else {
-    header.classList.remove('bg-white', 'backdrop-blur-sm', 'shadow-md');
-  }
-});
+// Greeting + suggestion defaults (overridden if config loads)
+const AF_CHAT_DEFAULT_CONFIG = {
+  brand: 'AI Freelancer',
+  greeting: "Hi there! I'm the AI assistant for AI Freelancer. How can I help you today?",
+  suggestions: [
+    "Pricing options",
+    "Schedule a consultation",
+    "What do you automate?",
+    "Show case studies"
+  ],
+  leadKeywords: [
+    "price","pricing","quote","consult","consultation","demo","call","book","speak","talk","contact","estimate"
+  ]
+};
 
-/* ===== SMOOTH SCROLL ===== */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
+// Lead capture form mapping (keys in `leadData` → form field names)
+const AF_CHAT_LEAD_FIELD_MAP = {
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  message: 'message'  // we'll stuff transcript here if available
+};
 
-/* ===== CHATBOT UI TOGGLE ===== */
-const chatbotLauncher = document.getElementById('chatbot-launcher');
-const chatbotWindow = document.getElementById('chatbot-window');
-const closeChatbotButton = document.getElementById('close-chatbot');
+// LocalStorage key
+const AF_CHAT_STORAGE_KEY = 'afChat_' + location.hostname;
 
-function toggleChatbot(show) {
-  if (show) {
-    chatbotWindow.classList.remove('hidden');
-    requestAnimationFrame(() => {
-      chatbotWindow.style.transform = 'scale(1)';
-      chatbotWindow.style.opacity = '1';
-    });
-  } else {
-    chatbotWindow.style.transform = 'scale(0.95)';
-    chatbotWindow.style.opacity = '0';
-    setTimeout(() => chatbotWindow.classList.add('hidden'), 300);
+/* ---------- STATE ---------- */
+const AFChatState = {
+  initialized: false,
+  sending: false,
+  history: [],      // {role:'user'|'assistant',content:'...'}
+  leadStage: null,  // null|'name'|'email'|'phone'|'done'
+  leadData: { name:'', email:'', phone:'', message:'' },
+  config: { ...AF_CHAT_DEFAULT_CONFIG }
+};
+
+/* ---------- DOM LOOKUPS ---------- */
+const afEls = {
+  launcher: document.getElementById('chatbot-launcher'),
+  window: document.getElementById('chatbot-window'),
+  closeBtn: document.getElementById('close-chatbot'),
+  form: document.getElementById('chatbot-form'),
+  input: document.getElementById('chatbot-input'),
+  messages: document.getElementById('chatbot-messages'),
+  contactForm: document.getElementById('contact-form'),
+  thankYouModal: document.getElementById('thank-you-modal'),
+  closeModalButton: document.getElementById('close-modal-button'),
+  header: document.getElementById('header'),
+  mobileMenuButton: document.getElementById('mobile-menu-button'),
+  mobileMenu: document.getElementById('mobile-menu'),
+  video: document.getElementById('intro-video'),
+  videoOverlay: document.getElementById('video-overlay')
+};
+
+/* ---------- UTIL: safe gtag ---------- */
+function afGtag(eventName, params={}) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params);
   }
 }
-chatbotLauncher.addEventListener('click', () => toggleChatbot(chatbotWindow.classList.contains('hidden')));
-closeChatbotButton.addEventListener('click', () => toggleChatbot(false));
 
-/* ===== CHATBOT LOGIC ===== */
-const chatbotForm = document.getElementById('chatbot-form');
-const chatbotInput = document.getElementById('chatbot-input');
-const chatbotMessages = document.getElementById('chatbot-messages');
+/* ---------- UTIL: basic HTML escape ---------- */
+function afEscape(str='') {
+  return str
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
 
-// In-memory history (reset on reload). Trim if needed for token control.
-const conversationHistory = [];
+/* ---------- UTIL: linkify URLs in plain text ---------- */
+function afLinkify(str='') {
+  const escaped = afEscape(str);
+  return escaped.replace(
+    /(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 break-all">$1</a>'
+  );
+}
 
-function addChatMessage(message, sender) {
+/* ---------- UTIL: convert newlines to <br> ---------- */
+function afNl2br(str='') {
+  return str.replace(/\n/g,'<br>');
+}
+
+/* ---------- RENDER: bot message (HTML) ---------- */
+function afAddBotMessage(text) {
   const wrapper = document.createElement('div');
-  wrapper.className = `flex mb-4 ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+  wrapper.className = 'flex mb-4 justify-start';
   const bubble = document.createElement('div');
-  bubble.className = `p-3 max-w-xs ${sender === 'user' ? 'chat-bubble-user' : 'chat-bubble-bot text-gray-700'}`;
-  bubble.textContent = message;
+  bubble.className = 'p-3 max-w-xs chat-bubble-bot text-gray-700 af-chat-msg';
+  bubble.innerHTML = afNl2br(afLinkify(text));
   wrapper.appendChild(bubble);
-  chatbotMessages.appendChild(wrapper);
-  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  afEls.messages.appendChild(wrapper);
+  afScrollMessages();
 }
 
-function addThinkingIndicator() {
+/* ---------- RENDER: user message (text only) ---------- */
+function afAddUserMessage(text) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'flex mb-4 justify-end';
+  const bubble = document.createElement('div');
+  bubble.className = 'p-3 max-w-xs chat-bubble-user af-chat-msg text-white';
+  bubble.textContent = text;
+  wrapper.appendChild(bubble);
+  afEls.messages.appendChild(wrapper);
+  afScrollMessages();
+}
+
+/* ---------- RENDER: thinking indicator ---------- */
+function afAddThinking() {
   const thinking = document.createElement('div');
   thinking.className = 'flex mb-4';
   thinking.innerHTML = `
@@ -1040,132 +1094,466 @@ function addThinkingIndicator() {
         <span class="thinking-dot"></span>
       </div>
     </div>`;
-  chatbotMessages.appendChild(thinking);
-  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  afEls.messages.appendChild(thinking);
+  afScrollMessages();
   return thinking;
 }
 
-chatbotForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const userMessage = chatbotInput.value.trim();
+/* ---------- RENDER: quick reply chips ---------- */
+function afRenderChips() {
+  const { suggestions=[] } = AFChatState.config;
+  if (!suggestions.length) return;
+  const chipRow = document.createElement('div');
+  chipRow.className = 'flex flex-wrap gap-2 mb-4';
+  suggestions.forEach(label => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'af-quick-chip px-3 py-1 rounded-full border text-sm hover:bg-gray-100 transition';
+    btn.textContent = label;
+    btn.addEventListener('click', () => {
+      afEls.input.value = label;
+      afSubmitMessage(); // auto-send on click
+    });
+    chipRow.appendChild(btn);
+  });
+  const wrapper = document.createElement('div');
+  wrapper.className = 'flex justify-start mb-2';
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble-bot p-2 max-w-xs';
+  bubble.appendChild(chipRow);
+  wrapper.appendChild(bubble);
+  afEls.messages.appendChild(wrapper);
+  afScrollMessages();
+}
+
+/* ---------- RENDER: greeting (clears static HTML on first init) ---------- */
+function afRenderGreeting() {
+  const { greeting } = AFChatState.config;
+  // wipe any server/static content (the hard-coded greeting)
+  afEls.messages.innerHTML = '';
+  afAddBotMessage(greeting);
+  afRenderChips();
+}
+
+/* ---------- SCROLL ---------- */
+function afScrollMessages() {
+  afEls.messages.scrollTop = afEls.messages.scrollHeight;
+}
+
+/* ---------- STORAGE ---------- */
+function afSaveState() {
+  try {
+    const data = {
+      history: AFChatState.history,
+      leadStage: AFChatState.leadStage,
+      leadData: AFChatState.leadData,
+      config: AFChatState.config
+    };
+    localStorage.setItem(AF_CHAT_STORAGE_KEY, JSON.stringify(data));
+  } catch (_) {}
+}
+function afLoadState() {
+  try {
+    const raw = localStorage.getItem(AF_CHAT_STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (Array.isArray(data.history)) AFChatState.history = data.history;
+    if (data.leadStage) AFChatState.leadStage = data.leadStage;
+    if (data.leadData) AFChatState.leadData = { ...AFChatState.leadData, ...data.leadData };
+    if (data.config) AFChatState.config = { ...AFChatState.config, ...data.config };
+  } catch (_) {}
+}
+
+/* ---------- REPLAY HISTORY ON LOAD ---------- */
+function afReplayHistory() {
+  afEls.messages.innerHTML = '';
+  if (!AFChatState.history.length) {
+    afRenderGreeting();
+    return;
+  }
+  AFChatState.history.forEach(m => {
+    if (m.role === 'user') afAddUserMessage(m.content);
+    else afAddBotMessage(m.content);
+  });
+  // If we were mid lead capture, prompt again
+  if (AFChatState.leadStage && AFChatState.leadStage !== 'done') {
+    afPromptNextLeadStage();
+  }
+}
+
+/* ---------- LEAD DETECTION ---------- */
+function afDetectLeadIntent(text) {
+  const kws = AFChatState.config.leadKeywords || [];
+  const lower = text.toLowerCase();
+  return kws.some(k => lower.includes(k));
+}
+
+/* ---------- LEAD FLOW ---------- */
+function afStartLeadCapture(initialUserText='') {
+  if (AFChatState.leadStage === 'done') return; // already done
+  AFChatState.leadData.message = initialUserText || AFChatState.leadData.message;
+  AFChatState.leadStage = 'name';
+  afAddBotMessage("Sounds good—let’s get you connected. What’s your *name*?");
+  afGtag('chat_lead_start', { event_category:'chat', method:'bot' });
+  afSaveState();
+}
+
+function afPromptNextLeadStage() {
+  switch (AFChatState.leadStage) {
+    case 'name':
+      afAddBotMessage("What’s your *name*?");
+      break;
+    case 'email':
+      afAddBotMessage("Thanks! What’s the best *email* to reach you?");
+      break;
+    case 'phone':
+      afAddBotMessage("Got it. Optional: a *phone number* if you'd like a quick call. Or type 'skip'.");
+      break;
+  }
+}
+
+function afHandleLeadInput(userText) {
+  const txt = userText.trim();
+  switch (AFChatState.leadStage) {
+    case 'name':
+      AFChatState.leadData.name = txt;
+      AFChatState.leadStage = 'email';
+      afAddBotMessage("Nice to meet you, " + txt + "! What's the best *email*?");
+      break;
+    case 'email':
+      if (!/\S+@\S+\.\S+/.test(txt)) {
+        afAddBotMessage("Hmm, that email doesn’t look right. Mind checking the format?");
+        return;
+      }
+      AFChatState.leadData.email = txt;
+      AFChatState.leadStage = 'phone';
+      afAddBotMessage("Thanks! Do you want to share a *phone number* (optional)? Type 'skip' to continue.");
+      break;
+    case 'phone':
+      if (txt.toLowerCase() !== 'skip') {
+        AFChatState.leadData.phone = txt;
+      }
+      AFChatState.leadStage = 'done';
+      afAddBotMessage("Great! We’ll be in touch soon. Anything else you'd like to ask?");
+      afSubmitLeadToForm();
+      afGtag('chat_lead_complete', { event_category:'chat', method:'bot' });
+      break;
+  }
+  afSaveState();
+}
+
+/* ---------- LEAD → FORMSPREE SUBMIT ---------- */
+async function afSubmitLeadToForm() {
+  const formEl = afEls.contactForm;
+  if (!formEl) {
+    console.warn('[AFChat] No contact form found; lead not auto-submitted.');
+    return;
+  }
+  const action = formEl.action;
+  if (!action) return;
+
+  // Build FormData using mapping
+  const fd = new FormData();
+  Object.entries(AF_CHAT_LEAD_FIELD_MAP).forEach(([key, fieldName]) => {
+    let val = '';
+    if (key === 'message') {
+      // Add transcript summary
+      val = AFChatState.leadData.message || 'Chat lead from widget.';
+      const tail = AFChatState.history
+        .slice(-10)
+        .map(m => (m.role === 'user' ? 'User: ' : 'Bot: ') + m.content)
+        .join('\n');
+      val += '\n\n--- Recent Chat ---\n' + tail;
+    } else {
+      val = AFChatState.leadData[key] || '';
+    }
+    fd.append(fieldName, val);
+  });
+
+  // Subject field if present in form markup
+  if (formEl.querySelector('input[name="_subject"]')) {
+    // let Formspree handle
+  }
+
+  try {
+    const res = await fetch(action, {
+      method: 'POST',
+      body: fd,
+      headers: { 'Accept':'application/json' }
+    });
+    if (!res.ok) console.warn('[AFChat] Lead submit non-OK:', res.status);
+  } catch (err) {
+    console.warn('[AFChat] Lead submit error:', err);
+  }
+}
+
+/* ---------- MESSAGE SUBMIT FLOW ---------- */
+function afSubmitMessage() {
+  if (AFChatState.sending) return;
+  const userMessage = afEls.input.value.trim();
   if (!userMessage) return;
+  afEls.input.value = '';
+  afAddUserMessage(userMessage);
 
-  addChatMessage(userMessage, 'user');
-  chatbotInput.value = '';
+  // If we are in a lead capture flow, handle locally & don't call model
+  if (AFChatState.leadStage && AFChatState.leadStage !== 'done') {
+    afHandleLeadInput(userMessage);
+    return;
+  }
 
-  const thinkingIndicator = addThinkingIndicator();
-  sendToAI(userMessage, thinkingIndicator);
-});
+  // Track user message in history early (so we can send to model)
+  AFChatState.history.push({ role:'user', content:userMessage });
+  afSaveState();
 
-/* Try each endpoint in order; return on first success. */
-async function sendToAI(userMessage, thinkingIndicator) {
-  console.log('[Chatbot] Sending:', userMessage, 'history:', conversationHistory.length);
-  let lastError;
-  for (const url of CHAT_ENDPOINTS) {
+  // Lead intent detection (async sidecar, does not block AI reply)
+  if (afDetectLeadIntent(userMessage)) {
+    // Launch lead capture AFTER model reply (nice UX)
+    AFChatState._pendingLeadTrigger = userMessage; // stash original text
+  }
+
+  const thinkingNode = afAddThinking();
+  afSetSending(true);
+  afSendToAI(userMessage, thinkingNode);
+}
+
+/* ---------- SEND TO AI (endpoint fallback) ---------- */
+async function afSendToAI(userMessage, thinkingNode) {
+  let lastErr;
+  // We'll send only the last ~20 messages to control token use
+  const payloadHistory = AFChatState.history.slice(-20);
+
+  for (const url of AF_CHAT_ENDPOINTS) {
     try {
       const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        // keep the payload small; adjust if you want more context
-        body: JSON.stringify({ message: userMessage, history: conversationHistory })
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({ message:userMessage, history:payloadHistory })
       });
-
       if (!res.ok) {
-        console.warn(`[Chatbot] ${url} responded ${res.status}`);
-        lastError = new Error('HTTP ' + res.status);
+        console.warn('[AFChat] '+url+' → '+res.status);
+        lastErr = new Error('HTTP '+res.status);
         continue;
       }
-
       const data = await res.json();
-      console.log('[Chatbot] Response from', url, data);
       const botReply = data.reply ?? data.message ?? data.content ?? '[No reply received]';
 
-      thinkingIndicator.remove();
-      addChatMessage(botReply, 'bot');
+      if (thinkingNode?.remove) thinkingNode.remove();
+      afAddBotMessage(botReply);
 
-      conversationHistory.push({ role: 'user', content: userMessage });
-      conversationHistory.push({ role: 'assistant', content: botReply });
-      return; // success
+      // Track bot reply
+      AFChatState.history.push({ role:'assistant', content:botReply });
+      afSaveState();
+
+      afSetSending(false);
+      afGtag('chat_bot_reply', { event_category:'chat' });
+
+      // If lead intent was detected, start capture now (unless already in flow)
+      if (!AFChatState.leadStage && AFChatState._pendingLeadTrigger) {
+        afStartLeadCapture(AFChatState._pendingLeadTrigger);
+        AFChatState._pendingLeadTrigger = null;
+      }
+      return;
     } catch (err) {
-      console.warn('[Chatbot] Error calling', url, err);
-      lastError = err;
+      console.warn('[AFChat] error calling', url, err);
+      lastErr = err;
     }
   }
 
-  // All endpoints failed
-  if (thinkingIndicator?.remove) thinkingIndicator.remove();
-  addChatMessage("Sorry, something went wrong. Please try again.", 'bot');
-  console.error('[Chatbot] All endpoints failed.', lastError);
+  // All failed
+  if (thinkingNode?.remove) thinkingNode.remove();
+  afAddBotMessage("Sorry, something went wrong. Please try again.");
+  afSetSending(false);
+  console.error('[AFChat] all endpoints failed', lastErr);
 }
 
-/* ===== VIDEO INTRO PLAYER ===== */
-const videoContainer = document.getElementById('video-container');
-const video = document.getElementById('intro-video');
-const videoOverlay = document.getElementById('video-overlay');
-if (video && videoOverlay) {
-  videoOverlay.addEventListener('click', () => video.play());
-  video.addEventListener('play', () => {
-    videoOverlay.style.opacity = '0';
-    videoOverlay.style.pointerEvents = 'none';
-    video.controls = true;
-  });
-  video.addEventListener('pause', () => {
-    if (video.currentTime > 0 && !video.ended) {
-      videoOverlay.style.opacity = '1';
-      videoOverlay.style.pointerEvents = 'auto';
-      video.controls = false;
+/* ---------- SENDING STATE UI ---------- */
+function afSetSending(isSending) {
+  AFChatState.sending = isSending;
+  const btn = afEls.form?.querySelector('button[type="submit"]');
+  if (btn) {
+    btn.disabled = isSending;
+    btn.classList.toggle('opacity-50', isSending);
+    btn.classList.toggle('cursor-not-allowed', isSending);
+  }
+}
+
+/* ---------- INPUT KEY HANDLING ---------- */
+if (afEls.input) {
+  afEls.input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      if (!e.shiftKey) {
+        e.preventDefault();
+        afSubmitMessage();
+      }
+      // allow newline if Shift+Enter (default)
     }
   });
-  video.addEventListener('ended', () => {
-    videoOverlay.style.opacity = '1';
-    videoOverlay.style.pointerEvents = 'auto';
-    video.controls = false;
-    video.currentTime = 0;
+}
+
+/* ---------- FORM SUBMIT ---------- */
+if (afEls.form) {
+  afEls.form.addEventListener('submit', e => {
+    e.preventDefault();
+    afSubmitMessage();
   });
 }
 
-/* ===== FORM SUBMISSION (Formspree) ===== */
-const contactForm = document.getElementById('contact-form');
-const thankYouModal = document.getElementById('thank-you-modal');
-const closeModalButton = document.getElementById('close-modal-button');
-
-function showModal() {
-  thankYouModal.classList.remove('hidden');
-}
-function hideModal() {
-  thankYouModal.classList.add('hidden');
-}
-
-contactForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const formData = new FormData(contactForm);
-  fetch(contactForm.action, {
-    method: 'POST',
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  }).then(response => {
-    if (response.ok) {
-      contactForm.reset();
-      showModal();
-    } else {
-      response.json().then(data => {
-        if (Object.hasOwn(data, 'errors')) {
-          alert(data.errors.map(error => error.message).join(', '));
-        } else {
-          alert('Sorry, there was a problem sending your message.');
-        }
-      });
+/* ---------- CHAT WINDOW TOGGLE ---------- */
+function afToggleChat(show) {
+  const win = afEls.window;
+  if (!win) return;
+  if (show) {
+    win.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      win.style.transform = 'scale(1)';
+      win.style.opacity = '1';
+    });
+    if (!AFChatState.initialized) {
+      AFChatState.initialized = true;
+      afReplayHistory();
+      afGtag('chat_open', { event_category:'chat' });
     }
-  }).catch(() => {
-    alert('Sorry, there was a problem sending your message.');
+  } else {
+    win.style.transform = 'scale(0.95)';
+    win.style.opacity = '0';
+    setTimeout(() => win.classList.add('hidden'), 300);
+    afGtag('chat_close', { event_category:'chat' });
+  }
+}
+if (afEls.launcher) {
+  afEls.launcher.addEventListener('click', () => {
+    const isHidden = afEls.window.classList.contains('hidden');
+    afToggleChat(isHidden);
   });
-});
+}
+if (afEls.closeBtn) {
+  afEls.closeBtn.addEventListener('click', () => afToggleChat(false));
+}
 
-closeModalButton.addEventListener('click', hideModal);
-thankYouModal.addEventListener('click', e => {
-  if (e.target === thankYouModal) hideModal();
-});
+/* ---------- LOAD REMOTE CONFIG (optional) ---------- */
+async function afLoadRemoteConfig() {
+  try {
+    const res = await fetch(AF_CHAT_CONFIG_ENDPOINT, { method:'GET' });
+    if (!res.ok) return;
+    const data = await res.json();
+    AFChatState.config = { ...AFChatState.config, ...data };
+    afSaveState();
+  } catch (_) {}
+}
+
+/* ---------- HEADER / MOBILE MENU / VIDEO (existing behaviors) ---------- */
+(function afHeaderMobileEtc(){
+  const { mobileMenuButton, mobileMenu, header, video, videoOverlay } = afEls;
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+  }
+
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('bg-white','backdrop-blur-sm','shadow-md');
+      } else {
+        header.classList.remove('bg-white','backdrop-blur-sm','shadow-md');
+      }
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+  if (video && videoOverlay) {
+    videoOverlay.addEventListener('click', () => video.play());
+    video.addEventListener('play', () => {
+      videoOverlay.style.opacity='0';
+      videoOverlay.style.pointerEvents='none';
+      video.controls=true;
+    });
+    video.addEventListener('pause', () => {
+      if (video.currentTime>0 && !video.ended) {
+        videoOverlay.style.opacity='1';
+        videoOverlay.style.pointerEvents='auto';
+        video.controls=false;
+      }
+    });
+    video.addEventListener('ended', () => {
+      videoOverlay.style.opacity='1';
+      videoOverlay.style.pointerEvents='auto';
+      video.controls=false;
+      video.currentTime=0;
+    });
+  }
+})();
+
+/* ---------- CONTACT FORM (existing AJAX submit + modal) ---------- */
+(function afContactFormAjax(){
+  const form = afEls.contactForm;
+  const modal = afEls.thankYouModal;
+  const closeBtn = afEls.closeModalButton;
+  if (!form) return;
+
+  function showModal() { modal?.classList.remove('hidden'); }
+  function hideModal() { modal?.classList.add('hidden'); }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method:'POST',
+      body:formData,
+      headers:{'Accept':'application/json'}
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        showModal();
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            alert(data.errors.map(error => error.message).join(', '));
+          } else {
+            alert('Sorry, there was a problem sending your message.');
+          }
+        });
+      }
+    }).catch(() => {
+      alert('Sorry, there was a problem sending your message.');
+    });
+  });
+
+  closeBtn?.addEventListener('click', hideModal);
+  modal?.addEventListener('click', e => { if (e.target === modal) hideModal(); });
+})();
+
+/* ---------- INJECT MINOR STYLE TWEAKS (chips, wrap) ---------- */
+(function afInjectStyles(){
+  const css = `
+    .af-chat-msg { white-space:pre-line; word-break:break-word; overflow-wrap:anywhere; }
+    .af-quick-chip { border:1px solid rgba(0,0,0,0.15); background:#fff; }
+    .af-quick-chip:hover { background:#f3f4f6; }
+  `;
+  const tag = document.createElement('style');
+  tag.setAttribute('data-afchat','');
+  tag.textContent = css;
+  document.head.appendChild(tag);
+})();
+
+/* ---------- INIT ---------- */
+(async function afInit(){
+  afLoadState();          // from localStorage
+  await afLoadRemoteConfig(); // optional override
+  // NOTE: chat window opens lazily on first click; greeting/history rendered then
+})();
 </script>
+
 
 </body>
 </html>

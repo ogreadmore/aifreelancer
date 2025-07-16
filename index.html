@@ -951,248 +951,221 @@
 </div>
 
     <script>
-        // --- Mobile Menu Toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+/* ===== CONFIG =====
+   Ordered list of chat endpoints to try.
+   1. Production same-origin (implement when ready).
+   2. Your current working Vercel test endpoint (fallback).
+*/
+const CHAT_ENDPOINTS = [
+  '/api/chat',
+  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat'
+];
 
-        // --- Sticky Header Background ---
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('bg-white', 'backdrop-blur-sm', 'shadow-md');
-            } else {
-                header.classList.remove('bg-white', 'backdrop-blur-sm', 'shadow-md');
-            }
-        });
+/* ===== MOBILE MENU ===== */
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+});
 
-        // --- Chatbot Popup Toggle ---
-        const chatbotLauncher = document.getElementById('chatbot-launcher');
-        const chatbotWindow = document.getElementById('chatbot-window');
-        const closeChatbotButton = document.getElementById('close-chatbot');
-        
-        const toggleChatbot = (show) => {
-            if (show) {
-                chatbotWindow.classList.remove('hidden');
-                setTimeout(() => {
-                    chatbotWindow.style.transform = 'scale(1)';
-                    chatbotWindow.style.opacity = '1';
-                }, 10);
-            } else {
-                chatbotWindow.style.transform = 'scale(0.95)';
-                chatbotWindow.style.opacity = '0';
-                setTimeout(() => {
-                    chatbotWindow.classList.add('hidden');
-                }, 300);
-            }
-        };
+/* ===== STICKY HEADER ===== */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('bg-white', 'backdrop-blur-sm', 'shadow-md');
+  } else {
+    header.classList.remove('bg-white', 'backdrop-blur-sm', 'shadow-md');
+  }
+});
 
-        chatbotLauncher.addEventListener('click', () => {
-            const isHidden = chatbotWindow.classList.contains('hidden');
-            toggleChatbot(isHidden);
-        });
-        
-        closeChatbotButton.addEventListener('click', () => toggleChatbot(false));
-        
-        // --- Smooth Scrolling ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // --- Chatbot Logic ---
-        const chatbotForm = document.getElementById('chatbot-form');
-        const chatbotInput = document.getElementById('chatbot-input');
-        const chatbotMessages = document.getElementById('chatbot-messages');
+/* ===== SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-        // In-memory conversation history sent to your backend for context.
-        // Do NOT include sensitive data. Resets on page reload.
-        const conversationHistory = [];
+/* ===== CHATBOT UI TOGGLE ===== */
+const chatbotLauncher = document.getElementById('chatbot-launcher');
+const chatbotWindow = document.getElementById('chatbot-window');
+const closeChatbotButton = document.getElementById('close-chatbot');
 
-        function addChatMessage(message, sender) {
-            const messageWrapper = document.createElement('div');
-            messageWrapper.className = `flex mb-4 ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+function toggleChatbot(show) {
+  if (show) {
+    chatbotWindow.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      chatbotWindow.style.transform = 'scale(1)';
+      chatbotWindow.style.opacity = '1';
+    });
+  } else {
+    chatbotWindow.style.transform = 'scale(0.95)';
+    chatbotWindow.style.opacity = '0';
+    setTimeout(() => chatbotWindow.classList.add('hidden'), 300);
+  }
+}
+chatbotLauncher.addEventListener('click', () => toggleChatbot(chatbotWindow.classList.contains('hidden')));
+closeChatbotButton.addEventListener('click', () => toggleChatbot(false));
 
-            const messageBubble = document.createElement('div');
-            messageBubble.className = `p-3 max-w-xs ${sender === 'user' ? 'chat-bubble-user' : 'chat-bubble-bot text-gray-700'}`;
-            messageBubble.textContent = message;
+/* ===== CHATBOT LOGIC ===== */
+const chatbotForm = document.getElementById('chatbot-form');
+const chatbotInput = document.getElementById('chatbot-input');
+const chatbotMessages = document.getElementById('chatbot-messages');
 
-            messageWrapper.appendChild(messageBubble);
-            chatbotMessages.appendChild(messageWrapper);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+// In-memory history (reset on reload). Trim if needed for token control.
+const conversationHistory = [];
+
+function addChatMessage(message, sender) {
+  const wrapper = document.createElement('div');
+  wrapper.className = `flex mb-4 ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+  const bubble = document.createElement('div');
+  bubble.className = `p-3 max-w-xs ${sender === 'user' ? 'chat-bubble-user' : 'chat-bubble-bot text-gray-700'}`;
+  bubble.textContent = message;
+  wrapper.appendChild(bubble);
+  chatbotMessages.appendChild(wrapper);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function addThinkingIndicator() {
+  const thinking = document.createElement('div');
+  thinking.className = 'flex mb-4';
+  thinking.innerHTML = `
+    <div class="chat-bubble-bot p-3">
+      <div class="flex items-center gap-1">
+        <span class="thinking-dot"></span>
+        <span class="thinking-dot"></span>
+        <span class="thinking-dot"></span>
+      </div>
+    </div>`;
+  chatbotMessages.appendChild(thinking);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  return thinking;
+}
+
+chatbotForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const userMessage = chatbotInput.value.trim();
+  if (!userMessage) return;
+
+  addChatMessage(userMessage, 'user');
+  chatbotInput.value = '';
+
+  const thinkingIndicator = addThinkingIndicator();
+  sendToAI(userMessage, thinkingIndicator);
+});
+
+/* Try each endpoint in order; return on first success. */
+async function sendToAI(userMessage, thinkingIndicator) {
+  console.log('[Chatbot] Sending:', userMessage, 'history:', conversationHistory.length);
+  let lastError;
+  for (const url of CHAT_ENDPOINTS) {
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        // keep the payload small; adjust if you want more context
+        body: JSON.stringify({ message: userMessage, history: conversationHistory })
+      });
+
+      if (!res.ok) {
+        console.warn(`[Chatbot] ${url} responded ${res.status}`);
+        lastError = new Error('HTTP ' + res.status);
+        continue;
+      }
+
+      const data = await res.json();
+      console.log('[Chatbot] Response from', url, data);
+      const botReply = data.reply ?? data.message ?? data.content ?? '[No reply received]';
+
+      thinkingIndicator.remove();
+      addChatMessage(botReply, 'bot');
+
+      conversationHistory.push({ role: 'user', content: userMessage });
+      conversationHistory.push({ role: 'assistant', content: botReply });
+      return; // success
+    } catch (err) {
+      console.warn('[Chatbot] Error calling', url, err);
+      lastError = err;
+    }
+  }
+
+  // All endpoints failed
+  if (thinkingIndicator?.remove) thinkingIndicator.remove();
+  addChatMessage("Sorry, something went wrong. Please try again.", 'bot');
+  console.error('[Chatbot] All endpoints failed.', lastError);
+}
+
+/* ===== VIDEO INTRO PLAYER ===== */
+const videoContainer = document.getElementById('video-container');
+const video = document.getElementById('intro-video');
+const videoOverlay = document.getElementById('video-overlay');
+if (video && videoOverlay) {
+  videoOverlay.addEventListener('click', () => video.play());
+  video.addEventListener('play', () => {
+    videoOverlay.style.opacity = '0';
+    videoOverlay.style.pointerEvents = 'none';
+    video.controls = true;
+  });
+  video.addEventListener('pause', () => {
+    if (video.currentTime > 0 && !video.ended) {
+      videoOverlay.style.opacity = '1';
+      videoOverlay.style.pointerEvents = 'auto';
+      video.controls = false;
+    }
+  });
+  video.addEventListener('ended', () => {
+    videoOverlay.style.opacity = '1';
+    videoOverlay.style.pointerEvents = 'auto';
+    video.controls = false;
+    video.currentTime = 0;
+  });
+}
+
+/* ===== FORM SUBMISSION (Formspree) ===== */
+const contactForm = document.getElementById('contact-form');
+const thankYouModal = document.getElementById('thank-you-modal');
+const closeModalButton = document.getElementById('close-modal-button');
+
+function showModal() {
+  thankYouModal.classList.remove('hidden');
+}
+function hideModal() {
+  thankYouModal.classList.add('hidden');
+}
+
+contactForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const formData = new FormData(contactForm);
+  fetch(contactForm.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if (response.ok) {
+      contactForm.reset();
+      showModal();
+    } else {
+      response.json().then(data => {
+        if (Object.hasOwn(data, 'errors')) {
+          alert(data.errors.map(error => error.message).join(', '));
+        } else {
+          alert('Sorry, there was a problem sending your message.');
         }
-        
-        chatbotForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const userMessage = chatbotInput.value.trim();
-            if (!userMessage) return;
-            
-            addChatMessage(userMessage, 'user');
-            chatbotInput.value = '';
-            
-            // Show thinking indicator
-            const thinkingIndicator = document.createElement('div');
-            thinkingIndicator.className = 'flex mb-4';
-            thinkingIndicator.innerHTML = `
-                <div class="chat-bubble-bot p-3">
-                    <div class="flex items-center gap-1">
-                        <span class="thinking-dot"></span>
-                        <span class="thinking-dot"></span>
-                        <span class="thinking-dot"></span>
-                    </div>
-                </div>
-            `;
-            chatbotMessages.appendChild(thinkingIndicator);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            
-            // Send to your OpenAI-backed endpoint (placeholder removed)
-            sendToAI(userMessage, thinkingIndicator);
-        });
+      });
+    }
+  }).catch(() => {
+    alert('Sorry, there was a problem sending your message.');
+  });
+});
 
-        /**
-         * Call your server-side /api/chat route (must proxy to OpenAI using a secret API key).
-         * Expected response JSON: { reply: "..." }
-         * You can also return tool results, metadata, etc.—adjust parsing below.
-         */
-        async function sendToAI(userMessage, thinkingIndicator) {
-            try {
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        message: userMessage,
-                        history: conversationHistory  // [{role:'user'|'assistant',content:'...'}, ...]
-                    })
-                });
+closeModalButton.addEventListener('click', hideModal);
+thankYouModal.addEventListener('click', e => {
+  if (e.target === thankYouModal) hideModal();
+});
+</script>
 
-                if (!response.ok) throw new Error('Network error: ' + response.status);
-
-                const data = await response.json();
-                const botReply = data.reply ?? data.message ?? data.content ?? '[No reply received]';
-
-                // Remove "thinking"
-                thinkingIndicator.remove();
-
-                // Render reply
-                addChatMessage(botReply, 'bot');
-
-                // Track convo
-                conversationHistory.push({ role: 'user', content: userMessage });
-                conversationHistory.push({ role: 'assistant', content: botReply });
-            } catch (err) {
-                console.error(err);
-                thinkingIndicator.remove();
-                addChatMessage("Sorry, something went wrong. Please try again.", 'bot');
-            }
-        }
-
-        // --- Video Player Logic ---
-        const videoContainer = document.getElementById('video-container');
-        const video = document.getElementById('intro-video');
-        const videoOverlay = document.getElementById('video-overlay');
-
-        videoOverlay.addEventListener('click', () => {
-            video.play();
-        });
-
-        video.addEventListener('play', () => {
-            videoOverlay.style.opacity = '0';
-            videoOverlay.style.pointerEvents = 'none';
-            video.controls = true;
-        });
-
-        video.addEventListener('pause', () => {
-            // Only show overlay if paused mid-way
-            if (video.currentTime > 0 && !video.ended) {
-                videoOverlay.style.opacity = '1';
-                videoOverlay.style.pointerEvents = 'auto';
-                video.controls = false;
-            }
-        });
-
-        video.addEventListener('ended', () => {
-            videoOverlay.style.opacity = '1';
-            videoOverlay.style.pointerEvents = 'auto';
-            video.controls = false;
-            video.currentTime = 0;
-        });
-        
-        // --- Formspree AJAX Submission & Modal ---
-        const contactForm = document.getElementById('contact-form');
-        const thankYouModal = document.getElementById('thank-you-modal');
-        const closeModalButton = document.getElementById('close-modal-button');
-        const modalContent = document.getElementById('modal-content');
-
-        const showModal = () => {
-            thankYouModal.classList.remove('hidden');
-        };
-
-        const hideModal = () => {
-            thankYouModal.classList.add('hidden');
-        };
-
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            
-            fetch(contactForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    contactForm.reset();
-                    showModal();
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            alert(data["errors"].map(error => error["message"]).join(", "));
-                        } else {
-                            alert('Sorry, there was a problem sending your message.');
-                        }
-                    });
-                }
-            }).catch(error => {
-                alert('Sorry, there was a problem sending your message.');
-            });
-        });
-
-        // Close the modal when the button is clicked
-        closeModalButton.addEventListener('click', hideModal);
-
-        // Close the modal when clicking on the background overlay
-        thankYouModal.addEventListener('click', (e) => {
-            if (e.target === thankYouModal) {
-                hideModal();
-            }
-        });
-
-        /* ------------------------------------------------------------------
-           SERVER-SIDE NOTE (implement separately; not executed in browser):
-           
-           Your /api/chat route should:
-             1. Read {message, history} from JSON body.
-             2. Prepend a system message that frames the assistant for your site.
-             3. Call OpenAI Chat Completions (or Responses) API with your API key (secret).
-             4. Return JSON { reply: <assistant_text> }.
-           
-           See earlier example I shared; happy to tailor to your framework.
-        ------------------------------------------------------------------ */
-    </script>
 </body>
 </html>

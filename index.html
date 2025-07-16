@@ -76,11 +76,8 @@
   -webkit-text-fill-color: transparent;
           background-clip: text;
           text-fill-color: transparent;
-
-  /* fix: let it behave like normal text */
-  display:inline;        /* was inline-block */
-  line-height:inherit;   /* keeps any heading’s leading intact */
-  /* vertical-align:baseline;  (optional, but harmless) */
+  display:inline;
+  line-height:inherit;
 }
         
         .gemini-gradient-bg { 
@@ -1021,37 +1018,10 @@
         const chatbotInput = document.getElementById('chatbot-input');
         const chatbotMessages = document.getElementById('chatbot-messages');
 
-        // --- Video Player Logic ---
-        const videoContainer = document.getElementById('video-container');
-        const video = document.getElementById('intro-video');
-        const videoOverlay = document.getElementById('video-overlay');
+        // In-memory conversation history sent to your backend for context.
+        // Do NOT include sensitive data. Resets on page reload.
+        const conversationHistory = [];
 
-        videoOverlay.addEventListener('click', () => {
-            video.play();
-        });
-
-        video.addEventListener('play', () => {
-            videoOverlay.style.opacity = '0';
-            videoOverlay.style.pointerEvents = 'none';
-            video.controls = true;
-        });
-
-        video.addEventListener('pause', () => {
-            // Only show overlay if paused mid-way
-            if (video.currentTime > 0 && !video.ended) {
-                videoOverlay.style.opacity = '1';
-                videoOverlay.style.pointerEvents = 'auto';
-                video.controls = false;
-            }
-        });
-
-        video.addEventListener('ended', () => {
-            videoOverlay.style.opacity = '1';
-            videoOverlay.style.pointerEvents = 'auto';
-            video.controls = false;
-            video.currentTime = 0;
-        });
-        
         function addChatMessage(message, sender) {
             const messageWrapper = document.createElement('div');
             messageWrapper.className = `flex mb-4 ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
@@ -1088,75 +1058,141 @@
             chatbotMessages.appendChild(thinkingIndicator);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             
-            // Call your Vercel API
-fetch('https://aifreelancerchatbotvercelthing.vercel.app/api/chat', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: userMessage })
-})
-.then(res => res.json())
-.then(data => {
-    thinkingIndicator.remove();
-    addChatMessage(data.reply, 'bot');
-})
-.catch(err => {
-    thinkingIndicator.remove();
-    addChatMessage("Sorry, something went wrong. Please try again.", 'bot');
-});
-
+            // Send to your OpenAI-backed endpoint (placeholder removed)
+            sendToAI(userMessage, thinkingIndicator);
         });
 
+        /**
+         * Call your server-side /api/chat route (must proxy to OpenAI using a secret API key).
+         * Expected response JSON: { reply: "..." }
+         * You can also return tool results, metadata, etc.—adjust parsing below.
+         */
+        async function sendToAI(userMessage, thinkingIndicator) {
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: userMessage,
+                        history: conversationHistory  // [{role:'user'|'assistant',content:'...'}, ...]
+                    })
+                });
+
+                if (!response.ok) throw new Error('Network error: ' + response.status);
+
+                const data = await response.json();
+                const botReply = data.reply ?? data.message ?? data.content ?? '[No reply received]';
+
+                // Remove "thinking"
+                thinkingIndicator.remove();
+
+                // Render reply
+                addChatMessage(botReply, 'bot');
+
+                // Track convo
+                conversationHistory.push({ role: 'user', content: userMessage });
+                conversationHistory.push({ role: 'assistant', content: botReply });
+            } catch (err) {
+                console.error(err);
+                thinkingIndicator.remove();
+                addChatMessage("Sorry, something went wrong. Please try again.", 'bot');
+            }
+        }
+
+        // --- Video Player Logic ---
+        const videoContainer = document.getElementById('video-container');
+        const video = document.getElementById('intro-video');
+        const videoOverlay = document.getElementById('video-overlay');
+
+        videoOverlay.addEventListener('click', () => {
+            video.play();
+        });
+
+        video.addEventListener('play', () => {
+            videoOverlay.style.opacity = '0';
+            videoOverlay.style.pointerEvents = 'none';
+            video.controls = true;
+        });
+
+        video.addEventListener('pause', () => {
+            // Only show overlay if paused mid-way
+            if (video.currentTime > 0 && !video.ended) {
+                videoOverlay.style.opacity = '1';
+                videoOverlay.style.pointerEvents = 'auto';
+                video.controls = false;
+            }
+        });
+
+        video.addEventListener('ended', () => {
+            videoOverlay.style.opacity = '1';
+            videoOverlay.style.pointerEvents = 'auto';
+            video.controls = false;
+            video.currentTime = 0;
+        });
+        
         // --- Formspree AJAX Submission & Modal ---
-const contactForm = document.getElementById('contact-form');
-const thankYouModal = document.getElementById('thank-you-modal');
-const closeModalButton = document.getElementById('close-modal-button');
-const modalContent = document.getElementById('modal-content');
+        const contactForm = document.getElementById('contact-form');
+        const thankYouModal = document.getElementById('thank-you-modal');
+        const closeModalButton = document.getElementById('close-modal-button');
+        const modalContent = document.getElementById('modal-content');
 
-const showModal = () => {
-    thankYouModal.classList.remove('hidden');
-};
+        const showModal = () => {
+            thankYouModal.classList.remove('hidden');
+        };
 
-const hideModal = () => {
-    thankYouModal.classList.add('hidden');
-};
+        const hideModal = () => {
+            thankYouModal.classList.add('hidden');
+        };
 
-contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(contactForm);
-    
-    fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-    }).then(response => {
-        if (response.ok) {
-            contactForm.reset();
-            showModal();
-        } else {
-            response.json().then(data => {
-                if (Object.hasOwn(data, 'errors')) {
-                    alert(data["errors"].map(error => error["message"]).join(", "));
-                } else {
-                    alert('Sorry, there was a problem sending your message.');
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
                 }
+            }).then(response => {
+                if (response.ok) {
+                    contactForm.reset();
+                    showModal();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert('Sorry, there was a problem sending your message.');
+                        }
+                    });
+                }
+            }).catch(error => {
+                alert('Sorry, there was a problem sending your message.');
             });
-        }
-    }).catch(error => {
-        alert('Sorry, there was a problem sending your message.');
-    });
-});
+        });
 
-// Close the modal when the button is clicked
-closeModalButton.addEventListener('click', hideModal);
+        // Close the modal when the button is clicked
+        closeModalButton.addEventListener('click', hideModal);
 
-// Close the modal when clicking on the background overlay
-thankYouModal.addEventListener('click', (e) => {
-    if (e.target === thankYouModal) {
-        hideModal();
-    }
-});
+        // Close the modal when clicking on the background overlay
+        thankYouModal.addEventListener('click', (e) => {
+            if (e.target === thankYouModal) {
+                hideModal();
+            }
+        });
+
+        /* ------------------------------------------------------------------
+           SERVER-SIDE NOTE (implement separately; not executed in browser):
+           
+           Your /api/chat route should:
+             1. Read {message, history} from JSON body.
+             2. Prepend a system message that frames the assistant for your site.
+             3. Call OpenAI Chat Completions (or Responses) API with your API key (secret).
+             4. Return JSON { reply: <assistant_text> }.
+           
+           See earlier example I shared; happy to tailor to your framework.
+        ------------------------------------------------------------------ */
     </script>
 </body>
 </html>

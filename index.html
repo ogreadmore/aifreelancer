@@ -957,25 +957,18 @@
 
 <script>
 /* ============================================================
-   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION (FORMATTING FIX v4)
-   ------------------------------------------------------------
-   Fixes in v4:
-     • Rewrote sanitizer to build a new container (avoids in-place mod bugs)
-     • Extra debug log for final bubble innerHTML
-     • Confirmed rel="noopener noreferrer" spelling
-   Keeps all prior optimizations.
+   AI FREELANCER CHAT WIDGET — ENHANCED VERSION
+   Fixes HTML rendering + adds major improvements
 ============================================================ */
 
 /* ---------- CONFIG ---------- */
 const AF_CHAT_ENDPOINTS = [
-  '/api/chat', // production (implement when ready)
-  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat' // fallback
+  '/api/chat',
+  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat'
 ];
 
-// Optional config endpoint (ignored if fails)
 const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config';
 
-// Greeting + suggestion defaults (overridden if config loads)
 const AF_CHAT_DEFAULT_CONFIG = {
   brand: 'AI Freelancer',
   greeting: "Hey! I'm the AI assistant for AI Freelancer. What can I help with today? 😊",
@@ -987,15 +980,37 @@ const AF_CHAT_DEFAULT_CONFIG = {
   leadKeywords: [
     "price","pricing","quote","consult","consultation","demo","call","book","speak","talk","contact","estimate","schedule","meeting"
   ],
-  schedulerLink: 'https://hello.aifreelancer.co/' // Your custom scheduler
+  schedulerLink: 'https://hello.aifreelancer.co/'
+};
+
+/* ---------- COMMON RESPONSES CACHE ---------- */
+const COMMON_RESPONSES = {
+  'pricing': {
+    keywords: ['price', 'pricing', 'cost', 'how much', 'expensive'],
+    response: "We offer solutions starting at $99/month for our AI Website Chatbot, with our most popular Internal Process Automation at $999/month. Would you like details on a specific solution?"
+  },
+  'how it works': {
+    keywords: ['how it works', 'process', 'how do you', 'implementation'],
+    response: "Great question! We start with a free consultation to understand your needs, then design a custom AI solution, implement it with your team's input, and provide ongoing support. The whole process typically takes 2-4 weeks."
+  },
+  'roi': {
+    keywords: ['roi', 'return on investment', 'save money', 'worth it'],
+    response: "Our clients typically see ROI within 60-90 days. For example, our chatbots capture 3x more leads, and our automation solutions save an average of 20 hours per week. Want to calculate potential ROI for your business?"
+  },
+  'solutions': {
+    keywords: ['solutions', 'what do you offer', 'services', 'automation'],
+    response: "We offer 6 main solutions: AI Website Chatbot ($99/mo), Internal Process Automation ($999/mo), Sales & CRM Automation ($599/mo), AI Data Analytics ($899/mo), Automated Customer Support ($599/mo), and Full-Scale Transformation (starting at $3,500). Which interests you most?"
+  }
 };
 
 /* ---------- STATE ---------- */
 const AFChatState = {
   initialized: false,
   sending: false,
-  history: [],      // {role:'user'|'assistant',content:'...'} — in-memory only, resets on close
-  config: { ...AF_CHAT_DEFAULT_CONFIG }
+  history: [],
+  config: { ...AF_CHAT_DEFAULT_CONFIG },
+  messageCount: 0,
+  sessionStart: Date.now()
 };
 
 /* ---------- DOM LOOKUPS ---------- */
@@ -1020,149 +1035,130 @@ const afEls = {
 /* ---------- UTIL: safe gtag ---------- */
 function afGtag(eventName, params={}) {
   if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, params);
+    window.gtag('event', eventName, {
+      event_category: 'chat',
+      message_count: AFChatState.messageCount,
+      session_duration: Date.now() - AFChatState.sessionStart,
+      ...params
+    });
   }
 }
 
-/* ---------- UTIL: basic HTML escape ---------- */
-function afEscape(str='') {
-  return str
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;');
-}
-
-/* ---------- UTIL: linkify URLs in plain text ---------- */
-function afLinkify(str='') {
-  const escaped = afEscape(str);
-  return escaped.replace(
-    /(https?:\/\/[^\s<]+)/g,
-    '<a href="$1" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 break-all">$1</a>'
-  );
-}
-
-/* ---------- UTIL: convert newlines to <br> ---------- */
-function afNl2br(str='') {
-  return str.replace(/\n/g,'<br>');
-}
-
-/* ---------- ENHANCED: Markdown to HTML with Sanitization & Unescaping ---------- */
+/* ---------- FIXED: Simplified Markdown to HTML ---------- */
 function afMarkdownToHtml(md) {
-  // Step 1: Unescape any HTML entities (in case backend escapes)
-  let html = md
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&');
-
-  // Step 2: Convert Markdown to HTML
+  let html = md;
+  
+  // Convert Markdown patterns
   html = html
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') // Bold
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/__(.+?)__/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>') // Italic
-    .replace(/_(.+?)_/g, '<em>$1</em>')
-    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline text-blue-600">$1</a>') // Links
-    .replace(/^# (.*$)/gm, '<h3 class="font-bold text-lg mt-2 mb-1">$1</h3>') // Headings
-    .replace(/^## (.*$)/gm, '<h4 class="font-bold text-md mt-2 mb-1">$1</h4>')
-    .replace(/^\s*[-*]\s+(.*$)/gm, '<li>$1</li>'); // Lists
-  html = html.replace(/(?:<li>.*?<\/li>\s*)+/g, match => `<ul class="list-disc pl-5 my-1">${match}</ul>`);
+    .replace(/\*([^*]+?)\*/g, '<em>$1</em>')
+    .replace(/_([^_]+?)_/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-800">$1</a>')
+    .replace(/^### (.+)$/gm, '<h3 class="font-bold text-lg mt-2 mb-1">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h4 class="font-bold text-md mt-2 mb-1">$1</h4>')
+    .replace(/^\* (.+)$/gm, '<li>$1</li>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>');
+  
+  // Wrap consecutive list items
+  html = html.replace(/(<li>.*<\/li>\s*)+/g, match => 
+    `<ul class="list-disc pl-5 my-2 space-y-1">${match}</ul>`
+  );
+  
+  // Convert line breaks
+  html = html.replace(/\n/g, '<br>');
+  
+  // Auto-link URLs not already in links
+  html = html.replace(
+    /(?<!href=["'])https?:\/\/[^\s<]+(?![^<]*<\/a>)/g,
+    '<a href="$&" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-800">$&</a>'
+  );
+  
+  return html;
+}
 
-  // Step 3: Fallback to linkify and nl2br for plain text parts
-  html = afLinkify(html);
-  html = afNl2br(html);
-
-  // Step 4: Sanitize to allow only safe tags/attributes
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = html; // Parse as HTML
-
-  const allowedTags = ['a', 'strong', 'em', 'ul', 'li', 'h3', 'h4', 'br', 'p', 'div', 'span'];
-  const allowedAttributes = {
-    'a': ['href', 'target', 'rel', 'class']
-  };
-
-  function sanitizeNode(node) {
-    if (node.nodeType === 1) { // Element node
-      const tag = node.tagName.toLowerCase();
-      if (!allowedTags.includes(tag)) {
-        return node.textContent; // Strip disallowed, keep text
-      }
-      // Remove disallowed attributes
-      Array.from(node.attributes).forEach(attr => {
-        if (!allowedAttributes[tag] || !allowedAttributes[tag].includes(attr.name)) {
-          node.removeAttribute(attr.name);
-        }
-      });
-      // Recurse on children (build new children array)
-      const newChildren = [];
-      Array.from(node.childNodes).forEach(child => {
-        const sanitizedChild = sanitizeNode(child);
-        if (typeof sanitizedChild === 'string') {
-          newChildren.push(document.createTextNode(sanitizedChild));
-        } else {
-          newChildren.push(sanitizedChild);
-        }
-      });
-      // Replace children
-      node.replaceChildren(...newChildren);
-      return node;
-    } else {
-      return node; // Text nodes, etc.
-    }
-  }
-
-  // Build a new sanitized container
-  const sanitizedContainer = document.createElement('div');
-  Array.from(tempDiv.childNodes).forEach(child => {
-    const sanitized = sanitizeNode(child);
-    if (typeof sanitized === 'string') {
-      sanitizedContainer.appendChild(document.createTextNode(sanitized));
-    } else {
-      sanitizedContainer.appendChild(sanitized);
-    }
-  });
-
-  const finalHtml = sanitizedContainer.innerHTML;
-  console.log('[AFChat Debug] Input text:', md);
-  console.log('[AFChat Debug] Rendered HTML:', finalHtml);
-  return finalHtml;
+/* ---------- UTIL: simulate typing delay ---------- */
+async function simulateTyping(duration = 1000) {
+  return new Promise(resolve => setTimeout(resolve, duration));
 }
 
 /* ---------- UTIL: get relative timestamp ---------- */
 function afGetTimestamp() {
-  return 'Just now';
+  const now = new Date();
+  return now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
 }
 
-/* ---------- RENDER: bot message (with enhanced Markdown/HTML) ---------- */
-function afAddBotMessage(text) {
+/* ---------- CHECK COMMON QUESTIONS ---------- */
+function checkCommonQuestions(message) {
+  const lower = message.toLowerCase();
+  for (const [key, data] of Object.entries(COMMON_RESPONSES)) {
+    if (data.keywords.some(keyword => lower.includes(keyword))) {
+      return data.response;
+    }
+  }
+  return null;
+}
+
+/* ---------- RENDER: bot message with animation ---------- */
+function afAddBotMessage(text, skipAnimation = false) {
   const timestamp = afGetTimestamp();
   const wrapper = document.createElement('div');
-  wrapper.className = 'flex mb-4 justify-start';
+  wrapper.className = 'flex mb-4 justify-start af-message-wrapper';
+  if (!skipAnimation) {
+    wrapper.style.opacity = '0';
+    wrapper.style.transform = 'translateY(10px)';
+  }
+  
   const bubble = document.createElement('div');
   bubble.className = 'p-3 max-w-xs chat-bubble-bot text-gray-700 af-chat-msg';
-  const renderedContent = afMarkdownToHtml(text);
-  bubble.innerHTML = renderedContent + `<div class="text-xs text-gray-400 mt-1 text-right">${timestamp}</div>`;
-  console.log('[AFChat Debug] Final bubble innerHTML:', bubble.innerHTML); // New debug
+  bubble.innerHTML = afMarkdownToHtml(text) + `<div class="text-xs text-gray-400 mt-1 text-right">${timestamp}</div>`;
+  
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
+  
+  if (!skipAnimation) {
+    requestAnimationFrame(() => {
+      wrapper.style.transition = 'all 0.3s ease-out';
+      wrapper.style.opacity = '1';
+      wrapper.style.transform = 'translateY(0)';
+    });
+  }
+  
   afScrollMessages();
 }
 
-/* ---------- RENDER: user message (text only, escaped) ---------- */
+/* ---------- RENDER: user message ---------- */
 function afAddUserMessage(text) {
   const timestamp = afGetTimestamp();
   const wrapper = document.createElement('div');
-  wrapper.className = 'flex mb-4 justify-end';
+  wrapper.className = 'flex mb-4 justify-end af-message-wrapper';
+  wrapper.style.opacity = '0';
+  wrapper.style.transform = 'translateY(10px)';
+  
   const bubble = document.createElement('div');
   bubble.className = 'p-3 max-w-xs chat-bubble-user af-chat-msg text-white';
-  bubble.innerHTML = afEscape(text) + `<div class="text-xs text-blue-200 mt-1 text-right">${timestamp}</div>`;
+  
+  // Escape HTML in user messages
+  const escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  bubble.innerHTML = escaped + `<div class="text-xs text-blue-200 mt-1 text-right">${timestamp}</div>`;
+  
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
+  
+  requestAnimationFrame(() => {
+    wrapper.style.transition = 'all 0.3s ease-out';
+    wrapper.style.opacity = '1';
+    wrapper.style.transform = 'translateY(0)';
+  });
+  
   afScrollMessages();
+  AFChatState.messageCount++;
 }
 
 /* ---------- RENDER: thinking indicator ---------- */
 function afAddThinking() {
   const thinking = document.createElement('div');
-  thinking.className = 'flex mb-4';
+  thinking.className = 'flex mb-4 af-thinking';
   thinking.innerHTML = `
     <div class="chat-bubble-bot p-3">
       <div class="flex items-center gap-1">
@@ -1177,23 +1173,38 @@ function afAddThinking() {
   return thinking;
 }
 
-/* ---------- RENDER: quick reply chips ---------- */
+/* ---------- RENDER: enhanced quick reply chips ---------- */
 function afRenderChips() {
   const { suggestions=[] } = AFChatState.config;
   if (!suggestions.length) return;
+  
   const chipRow = document.createElement('div');
   chipRow.className = 'flex flex-wrap gap-2 mb-4';
-  suggestions.forEach(label => {
+  chipRow.style.opacity = '0';
+  
+  suggestions.forEach((label, i) => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'af-quick-chip px-3 py-1 rounded-full border text-sm hover:bg-gray-100 transition';
+    btn.className = 'af-quick-chip px-4 py-2 rounded-full border text-sm hover:bg-gray-100 transition-all hover:scale-105 transform';
     btn.textContent = label;
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateY(5px)';
+    
     btn.addEventListener('click', () => {
       afEls.input.value = label;
-      afSubmitMessage(); // auto-send on click
+      afSubmitMessage();
     });
+    
     chipRow.appendChild(btn);
+    
+    // Stagger chip animations
+    setTimeout(() => {
+      btn.style.transition = 'all 0.3s ease-out';
+      btn.style.opacity = '1';
+      btn.style.transform = 'translateY(0)';
+    }, 100 * i);
   });
+  
   const wrapper = document.createElement('div');
   wrapper.className = 'flex justify-start mb-2';
   const bubble = document.createElement('div');
@@ -1201,30 +1212,40 @@ function afRenderChips() {
   bubble.appendChild(chipRow);
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
+  
+  requestAnimationFrame(() => {
+    chipRow.style.transition = 'opacity 0.3s ease-out';
+    chipRow.style.opacity = '1';
+  });
+  
   afScrollMessages();
 }
 
-/* ---------- RENDER: greeting (fresh every time) ---------- */
+/* ---------- RENDER: greeting ---------- */
 function afRenderGreeting() {
   const { greeting } = AFChatState.config;
   afEls.messages.innerHTML = '';
   afAddBotMessage(greeting);
-  afRenderChips();
+  setTimeout(() => afRenderChips(), 300);
 }
 
-/* ---------- SCROLL ---------- */
+/* ---------- SCROLL with smooth behavior ---------- */
 function afScrollMessages() {
-  afEls.messages.scrollTop = afEls.messages.scrollHeight;
+  afEls.messages.scrollTo({
+    top: afEls.messages.scrollHeight,
+    behavior: 'smooth'
+  });
 }
 
-/* ---------- CLEAR CHAT (resets to greeting) ---------- */
+/* ---------- CLEAR CHAT ---------- */
 function afClearChat() {
   AFChatState.history = [];
+  AFChatState.messageCount = 0;
   afRenderGreeting();
-  afGtag('chat_clear', { event_category:'chat' });
+  afGtag('chat_clear');
 }
 
-/* ---------- LEAD DETECTION & HANDLING (no capture, direct link) ---------- */
+/* ---------- LEAD DETECTION & HANDLING ---------- */
 function afDetectLeadIntent(text) {
   const kws = AFChatState.config.leadKeywords || [];
   const lower = text.toLowerCase();
@@ -1233,16 +1254,21 @@ function afDetectLeadIntent(text) {
 
 function afHandleLeadIntent() {
   const link = AFChatState.config.schedulerLink;
-  // Use Markdown for link to ensure parsing
-  afAddBotMessage(`Great! Let's get that scheduled. Head over [here](${link}) to book a free consultation.`);
-  afGtag('chat_lead_suggestion', { event_category:'chat' });
+  const responses = [
+    `Perfect! I'd love to connect you with our team. [Click here](${link}) to schedule your free consultation.`,
+    `Great timing! Let's get you scheduled. You can [book a call here](${link}) at a time that works for you.`,
+    `Excellent! Our team would be happy to discuss your needs. [Schedule your consultation here](${link}).`
+  ];
+  const response = responses[Math.floor(Math.random() * responses.length)];
+  afAddBotMessage(response);
+  afGtag('chat_lead_intent');
 }
 
 /* ---------- MESSAGE SUBMIT FLOW ---------- */
-function afSubmitMessage() {
+async function afSubmitMessage() {
   if (AFChatState.sending) return;
   let userMessage = afEls.input.value.trim();
-  if (!userMessage || userMessage.length > 500) { // Max length to prevent spam
+  if (!userMessage || userMessage.length > 500) {
     afEls.input.value = '';
     return;
   }
@@ -1251,10 +1277,25 @@ function afSubmitMessage() {
 
   AFChatState.history.push({ role:'user', content:userMessage });
 
-  // Check for lead intent (handle directly, no capture)
+  // Check for common questions first
+  const commonResponse = checkCommonQuestions(userMessage);
+  if (commonResponse) {
+    await simulateTyping(800);
+    afAddBotMessage(commonResponse);
+    AFChatState.history.push({ role:'assistant', content:commonResponse });
+    
+    // Check if this led to a lead intent
+    if (afDetectLeadIntent(userMessage)) {
+      setTimeout(() => afHandleLeadIntent(), 1000);
+    }
+    return;
+  }
+
+  // Check for lead intent
   if (afDetectLeadIntent(userMessage)) {
+    await simulateTyping(600);
     afHandleLeadIntent();
-    return; // Skip AI call if it's a clear lead intent
+    return;
   }
 
   const thinkingNode = afAddThinking();
@@ -1262,10 +1303,9 @@ function afSubmitMessage() {
   afSendToAI(userMessage, thinkingNode);
 }
 
-/* ---------- SEND TO AI (endpoint fallback, limited history) ---------- */
+/* ---------- SEND TO AI with better error handling ---------- */
 async function afSendToAI(userMessage, thinkingNode) {
   let lastErr;
-  // Send only last ~10 messages to save tokens
   const payloadHistory = AFChatState.history.slice(-10);
 
   for (const url of AF_CHAT_ENDPOINTS) {
@@ -1275,25 +1315,30 @@ async function afSendToAI(userMessage, thinkingNode) {
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({ message:userMessage, history:payloadHistory })
       });
+      
       if (!res.ok) {
         console.warn('[AFChat] '+url+' → '+res.status);
         lastErr = new Error('HTTP '+res.status);
         continue;
       }
+      
       const data = await res.json();
       const botReply = data.reply ?? data.message ?? data.content ?? '[No reply received]';
 
       if (thinkingNode?.remove) thinkingNode.remove();
+      
+      // Add realistic delay
+      await simulateTyping(Math.min(botReply.length * 10, 1500));
+      
       afAddBotMessage(botReply);
-
       AFChatState.history.push({ role:'assistant', content:botReply });
 
       afSetSending(false);
-      afGtag('chat_bot_reply', { event_category:'chat' });
+      afGtag('chat_bot_reply');
 
-      // Post-reply lead check (if not already handled)
+      // Post-reply lead check
       if (afDetectLeadIntent(botReply) || afDetectLeadIntent(userMessage)) {
-        afHandleLeadIntent();
+        setTimeout(() => afHandleLeadIntent(), 1000);
       }
       return;
     } catch (err) {
@@ -1302,9 +1347,14 @@ async function afSendToAI(userMessage, thinkingNode) {
     }
   }
 
-  // All failed
+  // All failed - provide helpful fallback
   if (thinkingNode?.remove) thinkingNode.remove();
-  afAddBotMessage("Sorry, something went wrong. Try the contact form below or ask again!");
+  const fallbackMessages = [
+    "I'm having trouble connecting right now. Feel free to use the contact form below, or try asking again in a moment!",
+    "Oops, something went wrong on my end. You can reach us directly at (440) 941-1785 or try again.",
+    "Sorry, I'm experiencing technical difficulties. Please use the contact form below or give us a call!"
+  ];
+  afAddBotMessage(fallbackMessages[Math.floor(Math.random() * fallbackMessages.length)]);
   afSetSending(false);
   console.error('[AFChat] all endpoints failed', lastErr);
 }
@@ -1338,50 +1388,72 @@ if (afEls.form) {
   });
 }
 
-/* ---------- CHAT WINDOW TOGGLE (reset state on close) ---------- */
+/* ---------- CHAT WINDOW TOGGLE with mobile optimization ---------- */
 function afToggleChat(show) {
   const win = afEls.window;
   if (!win) return;
+  
+  // Mobile optimization
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) {
+    win.style.width = '100vw';
+    win.style.height = '100vh';
+    win.style.bottom = '0';
+    win.style.right = '0';
+    win.style.borderRadius = '0';
+    win.style.maxHeight = '100vh';
+  }
+  
   if (show) {
     win.classList.remove('hidden');
     win.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = isMobile ? 'hidden' : '';
+    
     requestAnimationFrame(() => {
       win.style.transform = 'scale(1)';
       win.style.opacity = '1';
       afEls.input.focus();
     });
+    
     if (!AFChatState.initialized) {
       AFChatState.initialized = true;
+      AFChatState.sessionStart = Date.now();
       afRenderGreeting();
-      afGtag('chat_open', { event_category:'chat' });
+      afGtag('chat_open');
     }
   } else {
-    win.style.transform = 'scale(0.95)';
-    win.style.opacity = '0';
+    win.style.transform = isMobile ? 'translateY(100%)' : 'scale(0.95)';
+    win.style.opacity = isMobile ? '1' : '0';
+    document.body.style.overflow = '';
+    
     setTimeout(() => {
       win.classList.add('hidden');
       win.setAttribute('aria-hidden', 'true');
-      // Reset state on close (no persistence)
       AFChatState.history = [];
       AFChatState.initialized = false;
+      AFChatState.messageCount = 0;
     }, 300);
-    afGtag('chat_close', { event_category:'chat' });
+    
+    afGtag('chat_close');
   }
 }
+
 if (afEls.launcher) {
   afEls.launcher.addEventListener('click', () => {
     const isHidden = afEls.window.classList.contains('hidden');
     afToggleChat(isHidden);
   });
 }
+
 if (afEls.closeBtn) {
   afEls.closeBtn.addEventListener('click', () => afToggleChat(false));
 }
+
 if (afEls.clearBtn) {
   afEls.clearBtn.addEventListener('click', afClearChat);
 }
 
-/* ---------- LOAD REMOTE CONFIG (optional) ---------- */
+/* ---------- LOAD REMOTE CONFIG ---------- */
 async function afLoadRemoteConfig() {
   try {
     const res = await fetch(AF_CHAT_CONFIG_ENDPOINT, { method:'GET' });
@@ -1391,7 +1463,7 @@ async function afLoadRemoteConfig() {
   } catch (_) {}
 }
 
-/* ---------- HEADER / MOBILE MENU / VIDEO (existing behaviors) ---------- */
+/* ---------- HEADER / MOBILE MENU / VIDEO ---------- */
 (function afHeaderMobileEtc(){
   const { mobileMenuButton, mobileMenu, header, video, videoOverlay } = afEls;
 
@@ -1444,7 +1516,7 @@ async function afLoadRemoteConfig() {
   }
 })();
 
-/* ---------- CONTACT FORM (existing AJAX submit + modal) ---------- */
+/* ---------- CONTACT FORM ---------- */
 (function afContactFormAjax(){
   const form = afEls.contactForm;
   const modal = afEls.thankYouModal;
@@ -1465,6 +1537,7 @@ async function afLoadRemoteConfig() {
       if (response.ok) {
         form.reset();
         showModal();
+        afGtag('form_submit', { form_name: 'contact' });
       } else {
         response.json().then(data => {
           if (Object.hasOwn(data, 'errors')) {
@@ -1483,17 +1556,101 @@ async function afLoadRemoteConfig() {
   modal?.addEventListener('click', e => { if (e.target === modal) hideModal(); });
 })();
 
-/* ---------- INJECT MINOR STYLE TWEAKS (chips, wrap, Markdown) ---------- */
+/* ---------- INJECT ENHANCED STYLES ---------- */
 (function afInjectStyles(){
   const css = `
-    .af-chat-msg { white-space:pre-line; word-break:break-word; overflow-wrap:anywhere; }
-    .af-quick-chip { border:1px solid rgba(0,0,0,0.15); background:#fff; }
-    .af-quick-chip:hover { background:#f3f4f6; }
-    .chat-bubble-bot strong { font-weight: bold; color: #111827; }
+    /* Message styling */
+    .af-chat-msg { 
+      white-space: pre-line; 
+      word-break: break-word; 
+      overflow-wrap: anywhere; 
+    }
+    
+    /* Quick chips */
+    .af-quick-chip { 
+      border: 1px solid rgba(0,0,0,0.15); 
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .af-quick-chip:hover { 
+      background: #f3f4f6;
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+    .af-quick-chip::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.1);
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s;
+    }
+    .af-quick-chip:hover::before {
+      width: 200%;
+      height: 200%;
+    }
+    
+    /* Chat bubble content */
+    .chat-bubble-bot strong { font-weight: 700; color: #111827; }
     .chat-bubble-bot em { font-style: italic; color: #374151; }
-    .chat-bubble-bot ul { list-style-type: disc; padding-left: 1.25rem; margin: 0.5rem 0; }
-    .chat-bubble-bot h3 { font-size: 1.125rem; font-weight: 700; margin: 0.5rem 0; }
-    .chat-bubble-bot a { word-break: break-all; }
+    .chat-bubble-bot ul { 
+      list-style-type: disc; 
+      padding-left: 1.25rem; 
+      margin: 0.5rem 0; 
+    }
+    .chat-bubble-bot h3 { 
+      font-size: 1.125rem; 
+      font-weight: 700; 
+      margin: 0.5rem 0;
+      color: #111827;
+    }
+    .chat-bubble-bot a { 
+      word-break: break-all;
+      transition: all 0.2s ease;
+    }
+    
+    /* Message animations */
+    .af-message-wrapper {
+      animation: slideInUp 0.3s ease-out;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Mobile chat optimization */
+    @media (max-width: 768px) {
+      .chatbot-window {
+        position: fixed !important;
+      }
+      #chatbot-messages {
+        max-height: calc(100vh - 180px);
+      }
+    }
+    
+    /* Smooth scrolling for chat */
+    #chatbot-messages {
+      scroll-behavior: smooth;
+    }
+    
+    /* Active chat border animation */
+    .chatbot-window:not(.hidden) {
+      background: linear-gradient(white, white) padding-box,
+                  var(--primary-gradient) border-box;
+      border: 2px solid transparent;
+    }
   `;
   const tag = document.createElement('style');
   tag.setAttribute('data-afchat','');
@@ -1503,8 +1660,26 @@ async function afLoadRemoteConfig() {
 
 /* ---------- INIT ---------- */
 (async function afInit(){
-  await afLoadRemoteConfig(); // optional override
-  // Chat opens lazily on first click; greeting rendered fresh each time
+  await afLoadRemoteConfig();
+  
+  // Add escape key handler
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !afEls.window.classList.contains('hidden')) {
+      afToggleChat(false);
+    }
+  });
+  
+  // Handle window resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (!afEls.window.classList.contains('hidden')) {
+        afToggleChat(false);
+        setTimeout(() => afToggleChat(true), 100);
+      }
+    }, 250);
+  });
 })();
 </script>
 

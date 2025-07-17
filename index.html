@@ -957,13 +957,14 @@
 
 <script>
 /* ============================================================
-   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION (FORMATTING FIX v2)
+   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION (FORMATTING FIX v3)
    ------------------------------------------------------------
-   New changes:
-     • Added explicit HTML unescaping to handle escaped backend output
-     • Refined sanitizer to ensure links always render (no stripping)
-     • Debug log for rendering (check console if issues persist)
-   Keeps all prior optimizations (no storage, fresh starts, etc.)
+   Fixes:
+     • Sanitizer now processes contents without stripping allowed tags
+     • Added 'div'/'span' to allowed tags for better handling
+     • Lead intent uses Markdown for reliable link conversion
+     • Enhanced debug logging
+   Keeps all prior optimizations.
 ============================================================ */
 
 /* ---------- CONFIG ---------- */
@@ -1074,7 +1075,7 @@ function afMarkdownToHtml(md) {
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = html; // Parse as HTML
 
-  const allowedTags = ['a', 'strong', 'em', 'ul', 'li', 'h3', 'h4', 'br', 'p'];
+  const allowedTags = ['a', 'strong', 'em', 'ul', 'li', 'h3', 'h4', 'br', 'p', 'div', 'span'];
   const allowedAttributes = {
     'a': ['href', 'target', 'rel', 'class']
   };
@@ -1102,9 +1103,17 @@ function afMarkdownToHtml(md) {
     return node;
   }
 
-  sanitizeNode(tempDiv);
+  // Process children of tempDiv (skip sanitizing the temp div itself)
+  Array.from(tempDiv.childNodes).forEach(child => {
+    const sanitized = sanitizeNode(child);
+    if (typeof sanitized === 'string') {
+      tempDiv.replaceChild(document.createTextNode(sanitized), child);
+    }
+  });
+
   const finalHtml = tempDiv.innerHTML;
-  console.log('[AFChat Debug] Rendered HTML:', finalHtml); // Debug: Check console for what it's outputting
+  console.log('[AFChat Debug] Input text:', md);
+  console.log('[AFChat Debug] Rendered HTML:', finalHtml);
   return finalHtml;
 }
 
@@ -1213,7 +1222,8 @@ function afDetectLeadIntent(text) {
 
 function afHandleLeadIntent() {
   const link = AFChatState.config.schedulerLink;
-  afAddBotMessage(`Great! Let's get that scheduled. Head over <a href="${link}" target="_blank" rel="noopener noreferrer" class="underline text-blue-600">here</a> to book a free consultation.`);
+  // Use Markdown for link to ensure parsing
+  afAddBotMessage(`Great! Let's get that scheduled. Head over [here](${link}) to book a free consultation.`);
   afGtag('chat_lead_suggestion', { event_category:'chat' });
 }
 

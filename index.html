@@ -926,7 +926,6 @@
                             <li>Our AI solutions</li>
                             <li>Implementation process</li>
                             <li>Pricing options</li>
-                            <li>Case studies</li>
                         </ul>
                     </div>
                 </div>
@@ -988,14 +987,12 @@ const AF_CHAT_DEFAULT_CONFIG = {
   suggestions: [
     "Pricing options",
     "Schedule a consultation",
-    "What do you automate?",
-    "Show case studies"
+    "What do you automate?"
   ],
   leadKeywords: [
     "price","pricing","quote","consult","consultation","demo","call","book","speak","talk","contact","estimate"
   ],
-  calendlyLink: 'https://hello.aifreelancer.co/', // Replace with your real Calendly URL
-  caseStudyLink: '#results' // Or a specific URL
+  calendlyLink: 'https://hello.aifreelancer.co/' // Updated to your scheduler
 };
 
 // Lead capture form mapping (keys in `leadData` → form field names)
@@ -1293,7 +1290,7 @@ function afHandleLeadInput(userText) {
         AFChatState.leadData.phone = txt;
       }
       AFChatState.leadStage = 'done';
-      afAddBotMessage(`Great! We’ll be in touch soon. In the meantime, book a free consultation here: [Schedule Now](${AFChatState.config.calendlyLink})\n\nOr check out our case studies: [View Results](${AFChatState.config.caseStudyLink})`);
+      afAddBotMessage(`Great! We’ll be in touch soon. In the meantime, book a free consultation [here](${AFChatState.config.calendlyLink}).`);
       afSubmitLeadToForm();
       afGtag('chat_lead_complete', { event_category:'chat', method:'bot' });
       afGtag('chat_lead_suggestion', { event_category:'chat' });

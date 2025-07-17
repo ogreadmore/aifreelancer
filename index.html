@@ -1277,24 +1277,19 @@ async function afSubmitMessage() {
 
   AFChatState.history.push({ role:'user', content:userMessage });
 
-  // Check for common questions first
+  // Check for lead intent FIRST
+  if (afDetectLeadIntent(userMessage)) {
+    await simulateTyping(600);
+    afHandleLeadIntent();
+    return;
+  }
+
+  // Check for common questions
   const commonResponse = checkCommonQuestions(userMessage);
   if (commonResponse) {
     await simulateTyping(800);
     afAddBotMessage(commonResponse);
     AFChatState.history.push({ role:'assistant', content:commonResponse });
-    
-    // Check if this led to a lead intent
-    if (afDetectLeadIntent(userMessage)) {
-      setTimeout(() => afHandleLeadIntent(), 1000);
-    }
-    return;
-  }
-
-  // Check for lead intent
-  if (afDetectLeadIntent(userMessage)) {
-    await simulateTyping(600);
-    afHandleLeadIntent();
     return;
   }
 
@@ -1336,10 +1331,7 @@ async function afSendToAI(userMessage, thinkingNode) {
       afSetSending(false);
       afGtag('chat_bot_reply');
 
-      // Post-reply lead check
-      if (afDetectLeadIntent(botReply) || afDetectLeadIntent(userMessage)) {
-        setTimeout(() => afHandleLeadIntent(), 1000);
-      }
+      // No double message - removed post-reply lead check
       return;
     } catch (err) {
       console.warn('[AFChat] error calling', url, err);
@@ -1347,14 +1339,20 @@ async function afSendToAI(userMessage, thinkingNode) {
     }
   }
 
-  // All failed - provide helpful fallback
+  // All failed - check if this is a lead intent before showing error
   if (thinkingNode?.remove) thinkingNode.remove();
-  const fallbackMessages = [
-    "I'm having trouble connecting right now. Feel free to use the contact form below, or try asking again in a moment!",
-    "Oops, something went wrong on my end. You can reach us directly at (440) 941-1785 or try again.",
-    "Sorry, I'm experiencing technical difficulties. Please use the contact form below or give us a call!"
-  ];
-  afAddBotMessage(fallbackMessages[Math.floor(Math.random() * fallbackMessages.length)]);
+  
+  if (afDetectLeadIntent(userMessage)) {
+    afHandleLeadIntent();
+  } else {
+    const fallbackMessages = [
+      "I'm having trouble connecting right now. Feel free to use the contact form below, or try asking again in a moment!",
+      "Oops, something went wrong on my end. You can reach us directly at (440) 941-1785 or try again.",
+      "Sorry, I'm experiencing technical difficulties. Please use the contact form below or give us a call!"
+    ];
+    afAddBotMessage(fallbackMessages[Math.floor(Math.random() * fallbackMessages.length)]);
+  }
+  
   afSetSending(false);
   console.error('[AFChat] all endpoints failed', lastErr);
 }

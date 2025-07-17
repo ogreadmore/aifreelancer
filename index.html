@@ -957,13 +957,12 @@
 
 <script>
 /* ============================================================
-   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION (FORMATTING FIX v3)
+   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION (FORMATTING FIX v4)
    ------------------------------------------------------------
-   Fixes:
-     • Sanitizer now processes contents without stripping allowed tags
-     • Added 'div'/'span' to allowed tags for better handling
-     • Lead intent uses Markdown for reliable link conversion
-     • Enhanced debug logging
+   Fixes in v4:
+     • Rewrote sanitizer to build a new container (avoids in-place mod bugs)
+     • Extra debug log for final bubble innerHTML
+     • Confirmed rel="noopener noreferrer" spelling
    Keeps all prior optimizations.
 ============================================================ */
 
@@ -1092,26 +1091,36 @@ function afMarkdownToHtml(md) {
           node.removeAttribute(attr.name);
         }
       });
-      // Recurse on children
+      // Recurse on children (build new children array)
+      const newChildren = [];
       Array.from(node.childNodes).forEach(child => {
-        const sanitized = sanitizeNode(child);
-        if (typeof sanitized === 'string') {
-          node.replaceChild(document.createTextNode(sanitized), child);
+        const sanitizedChild = sanitizeNode(child);
+        if (typeof sanitizedChild === 'string') {
+          newChildren.push(document.createTextNode(sanitizedChild));
+        } else {
+          newChildren.push(sanitizedChild);
         }
       });
+      // Replace children
+      node.replaceChildren(...newChildren);
+      return node;
+    } else {
+      return node; // Text nodes, etc.
     }
-    return node;
   }
 
-  // Process children of tempDiv (skip sanitizing the temp div itself)
+  // Build a new sanitized container
+  const sanitizedContainer = document.createElement('div');
   Array.from(tempDiv.childNodes).forEach(child => {
     const sanitized = sanitizeNode(child);
     if (typeof sanitized === 'string') {
-      tempDiv.replaceChild(document.createTextNode(sanitized), child);
+      sanitizedContainer.appendChild(document.createTextNode(sanitized));
+    } else {
+      sanitizedContainer.appendChild(sanitized);
     }
   });
 
-  const finalHtml = tempDiv.innerHTML;
+  const finalHtml = sanitizedContainer.innerHTML;
   console.log('[AFChat Debug] Input text:', md);
   console.log('[AFChat Debug] Rendered HTML:', finalHtml);
   return finalHtml;
@@ -1129,7 +1138,9 @@ function afAddBotMessage(text) {
   wrapper.className = 'flex mb-4 justify-start';
   const bubble = document.createElement('div');
   bubble.className = 'p-3 max-w-xs chat-bubble-bot text-gray-700 af-chat-msg';
-  bubble.innerHTML = afMarkdownToHtml(text) + `<div class="text-xs text-gray-400 mt-1 text-right">${timestamp}</div>`;
+  const renderedContent = afMarkdownToHtml(text);
+  bubble.innerHTML = renderedContent + `<div class="text-xs text-gray-400 mt-1 text-right">${timestamp}</div>`;
+  console.log('[AFChat Debug] Final bubble innerHTML:', bubble.innerHTML); // New debug
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
   afScrollMessages();

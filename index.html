@@ -1044,17 +1044,28 @@ function afGtag(eventName, params={}) {
   }
 }
 
-/* ---------- FIXED: Simplified Markdown to HTML ---------- */
+/* ---------- FIXED: Robust Markdown to HTML ---------- */
 function afMarkdownToHtml(md) {
   let html = md;
   
-  // Convert Markdown patterns
+  // First, temporarily replace any existing HTML to protect it
+  const htmlPlaceholders = [];
+  html = html.replace(/<[^>]+>/g, (match) => {
+    htmlPlaceholders.push(match);
+    return `__HTML_${htmlPlaceholders.length - 1}__`;
+  });
+  
+  // Convert Markdown patterns (order matters!)
+  // Links first to avoid conflicts
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, 
+    '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-800">$1</a>');
+  
+  // Bold and italic
   html = html
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/__(.+?)__/g, '<strong>$1</strong>')
     .replace(/\*([^*]+?)\*/g, '<em>$1</em>')
     .replace(/_([^_]+?)_/g, '<em>$1</em>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-800">$1</a>')
     .replace(/^### (.+)$/gm, '<h3 class="font-bold text-lg mt-2 mb-1">$1</h3>')
     .replace(/^## (.+)$/gm, '<h4 class="font-bold text-md mt-2 mb-1">$1</h4>')
     .replace(/^\* (.+)$/gm, '<li>$1</li>')
@@ -1065,13 +1076,18 @@ function afMarkdownToHtml(md) {
     `<ul class="list-disc pl-5 my-2 space-y-1">${match}</ul>`
   );
   
-  // Convert line breaks
-  html = html.replace(/\n/g, '<br>');
+  // Restore protected HTML
+  htmlPlaceholders.forEach((placeholder, i) => {
+    html = html.replace(`__HTML_${i}__`, placeholder);
+  });
   
-  // Auto-link URLs not already in links
+  // Convert line breaks (but not inside HTML tags)
+  html = html.replace(/\n(?![^<]*>)/g, '<br>');
+  
+  // Auto-link bare URLs (not already in links)
   html = html.replace(
-    /(?<!href=["'])https?:\/\/[^\s<]+(?![^<]*<\/a>)/g,
-    '<a href="$&" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-800">$&</a>'
+    /(?<!href=["'])(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*))(?![^<]*>)(?![^<]*<\/a>)/gi,
+    '<a href="$1" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-800">$1</a>'
   );
   
   return html;
@@ -1082,10 +1098,14 @@ async function simulateTyping(duration = 1000) {
   return new Promise(resolve => setTimeout(resolve, duration));
 }
 
-/* ---------- UTIL: get relative timestamp ---------- */
+/* ---------- UTIL: get actual timestamp ---------- */
 function afGetTimestamp() {
   const now = new Date();
-  return now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  return now.toLocaleTimeString('en-US', { 
+    hour: 'numeric', 
+    minute: '2-digit',
+    hour12: true 
+  });
 }
 
 /* ---------- CHECK COMMON QUESTIONS ---------- */
@@ -1318,7 +1338,18 @@ async function afSendToAI(userMessage, thinkingNode) {
       }
       
       const data = await res.json();
-      const botReply = data.reply ?? data.message ?? data.content ?? '[No reply received]';
+      let botReply = data.reply ?? data.message ?? data.content ?? '[No reply received]';
+
+      // Filter out debug/test messages
+      if (botReply.toLowerCase().includes('please respond with text styled') || 
+          botReply.toLowerCase().includes('can only provide plain text') ||
+          botReply.toLowerCase().includes('testing ') ||
+          botReply.toLowerCase().includes('test message')) {
+        console.warn('Filtered debug message:', botReply);
+        if (thinkingNode?.remove) thinkingNode.remove();
+        afSetSending(false);
+        return;
+      }
 
       if (thinkingNode?.remove) thinkingNode.remove();
       
@@ -1562,6 +1593,30 @@ async function afLoadRemoteConfig() {
       white-space: pre-line; 
       word-break: break-word; 
       overflow-wrap: anywhere; 
+    }
+    
+    /* Thinking dots animation */
+    .thinking-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #9ca3af;
+      animation: thinking 1.4s infinite ease-in-out both;
+    }
+    
+    .thinking-dot:nth-child(1) { animation-delay: -0.32s; }
+    .thinking-dot:nth-child(2) { animation-delay: -0.16s; }
+    
+    @keyframes thinking {
+      0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
     
     /* Quick chips */

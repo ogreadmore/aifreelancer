@@ -957,15 +957,13 @@
 
 <script>
 /* ============================================================
-   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION
+   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION (FORMATTING FIX)
    ------------------------------------------------------------
-   Changes:
-     • Removed all localStorage (no history persistence)
-     • Removed in-chat lead capture (direct to scheduler)
-     • Improved Markdown rendering to handle potential HTML
-     • Fresh start every open; warmer greeting
-     • Better error handling; max message length
-     • Kept pro suggestions; no "case studies"
+   Changes from previous:
+     • Enhanced Markdown/HTML rendering with sanitization
+     • Allows safe tags (a, strong, em, ul, li, etc.) to render properly
+     • Strips risky/unwanted code; handles escaped HTML better
+     • Keeps all prior optimizations (no storage, fresh starts, etc.)
 ============================================================ */
 
 /* ---------- CONFIG ---------- */
@@ -1048,37 +1046,59 @@ function afNl2br(str='') {
   return str.replace(/\n/g,'<br>');
 }
 
-/* ---------- UTIL: improved Markdown to HTML (with HTML tolerance) ---------- */
+/* ---------- ENHANCED: Markdown to HTML with Sanitization ---------- */
 function afMarkdownToHtml(md) {
-  let html = md; // Don't escape initially; assume bot output is trusted
-
-  // If it looks like raw HTML tags are present, unescape them (safe for known patterns)
-  html = html.replace(/&lt;(em|strong)&gt;/g, '<$1>').replace(/&lt;\/(em|strong)&gt;/g, '</$1>');
-
-  // Bold: **text** or __text__ or <strong>
-  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-             .replace(/__(.+?)__/g, '<strong>$1</strong>');
-
-  // Italic: *text* or _text_ or <em>
-  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>')
-             .replace(/_(.+?)_/g, '<em>$1</em>');
-
-  // Links: [text](url) or <a>
-  html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline text-blue-600">$1</a>');
-
-  // Headings: # Heading → <h3>
-  html = html.replace(/^# (.*$)/gm, '<h3 class="font-bold text-lg mt-2 mb-1">$1</h3>')
-             .replace(/^## (.*$)/gm, '<h4 class="font-bold text-md mt-2 mb-1">$1</h4>');
-
-  // Unordered lists: - item or * item
-  html = html.replace(/^\s*[-*]\s+(.*$)/gm, '<li>$1</li>');
+  // Step 1: Convert Markdown to HTML
+  let html = md
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') // Bold
+    .replace(/__(.+?)__/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>') // Italic
+    .replace(/_(.+?)_/g, '<em>$1</em>')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline text-blue-600">$1</a>') // Links
+    .replace(/^# (.*$)/gm, '<h3 class="font-bold text-lg mt-2 mb-1">$1</h3>') // Headings
+    .replace(/^## (.*$)/gm, '<h4 class="font-bold text-md mt-2 mb-1">$1</h4>')
+    .replace(/^\s*[-*]\s+(.*$)/gm, '<li>$1</li>'); // Lists
   html = html.replace(/(?:<li>.*?<\/li>\s*)+/g, match => `<ul class="list-disc pl-5 my-1">${match}</ul>`);
 
-  // Fallback to linkify and nl2br
+  // Step 2: Fallback to linkify and nl2br for plain text parts
   html = afLinkify(html);
   html = afNl2br(html);
 
-  return html;
+  // Step 3: Sanitize to allow only safe tags/attributes and prevent raw code display
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html; // Parse as HTML
+
+  const allowedTags = ['a', 'strong', 'em', 'ul', 'li', 'h3', 'h4', 'br', 'p'];
+  const allowedAttributes = {
+    'a': ['href', 'target', 'rel', 'class']
+  };
+
+  function sanitizeNode(node) {
+    if (node.nodeType === 1) { // Element node
+      const tag = node.tagName.toLowerCase();
+      if (!allowedTags.includes(tag)) {
+        // Replace disallowed tags with their text content
+        return node.textContent;
+      }
+      // Remove disallowed attributes
+      Array.from(node.attributes).forEach(attr => {
+        if (!allowedAttributes[tag] || !allowedAttributes[tag].includes(attr.name)) {
+          node.removeAttribute(attr.name);
+        }
+      });
+      // Recurse on children
+      Array.from(node.childNodes).forEach(child => {
+        const sanitized = sanitizeNode(child);
+        if (typeof sanitized === 'string') {
+          node.replaceChild(document.createTextNode(sanitized), child);
+        }
+      });
+    }
+    return node;
+  }
+
+  sanitizeNode(tempDiv);
+  return tempDiv.innerHTML;
 }
 
 /* ---------- UTIL: get relative timestamp ---------- */
@@ -1086,7 +1106,7 @@ function afGetTimestamp() {
   return 'Just now';
 }
 
-/* ---------- RENDER: bot message (with Markdown) ---------- */
+/* ---------- RENDER: bot message (with enhanced Markdown/HTML) ---------- */
 function afAddBotMessage(text) {
   const timestamp = afGetTimestamp();
   const wrapper = document.createElement('div');
@@ -1186,7 +1206,7 @@ function afDetectLeadIntent(text) {
 
 function afHandleLeadIntent() {
   const link = AFChatState.config.schedulerLink;
-  afAddBotMessage(`Great! Let's get that scheduled. Head over [here](${link}) to book a free consultation.`);
+  afAddBotMessage(`Great! Let's get that scheduled. Head over <a href="${link}" target="_blank" rel="noopener noreferrer" class="underline text-blue-600">here</a> to book a free consultation.`);
   afGtag('chat_lead_suggestion', { event_category:'chat' });
 }
 

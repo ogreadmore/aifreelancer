@@ -958,7 +958,7 @@
 <script>
 /* ============================================================
    AI FREELANCER CHAT WIDGET — ENHANCED VERSION
-   Fixes HTML rendering + adds major improvements
+   With lead capture via Formspree integration
 ============================================================ */
 
 /* ---------- CONFIG ---------- */
@@ -1006,7 +1006,17 @@ const AFChatState = {
   history: [],
   config: { ...AF_CHAT_DEFAULT_CONFIG },
   messageCount: 0,
-  sessionStart: Date.now()
+  sessionStart: Date.now(),
+  collectingInfo: false,
+  leadData: {
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: ''
+  },
+  currentField: null,
+  conversationSummary: []
 };
 
 /* ---------- DOM LOOKUPS ---------- */
@@ -1038,6 +1048,122 @@ function afGtag(eventName, params={}) {
       ...params
     });
   }
+}
+
+/* ---------- LEAD CAPTURE FUNCTIONS ---------- */
+function afStartLeadCapture() {
+  AFChatState.collectingInfo = true;
+  AFChatState.currentField = 'name';
+  
+  // Create conversation summary
+  const summary = AFChatState.history
+    .filter(msg => msg.role === 'user')
+    .map(msg => msg.content)
+    .join(' | ');
+  AFChatState.leadData.message = `Chat conversation summary: ${summary}`;
+  
+  afAddBotMessage("I'd be happy to help you further! Could you please tell me your name?");
+}
+
+function afProcessLeadField(value) {
+  const field = AFChatState.currentField;
+  
+  if (field === 'name') {
+    AFChatState.leadData.name = value;
+    AFChatState.currentField = 'email';
+    afAddBotMessage(`Nice to meet you, ${value}! What's the best email to reach you at?`);
+  } 
+  else if (field === 'email') {
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      afAddBotMessage("That doesn't look like a valid email. Could you please provide a valid email address?");
+      return;
+    }
+    AFChatState.leadData.email = value;
+    AFChatState.currentField = 'phone';
+    afAddBotMessage("Great! And what's your phone number? (Optional - just type 'skip' if you prefer not to share)");
+  }
+  else if (field === 'phone') {
+    if (value.toLowerCase() !== 'skip') {
+      AFChatState.leadData.phone = value;
+    }
+    AFChatState.currentField = 'company';
+    afAddBotMessage("What company are you with? (Optional - type 'skip' if not applicable)");
+  }
+  else if (field === 'company') {
+    if (value.toLowerCase() !== 'skip') {
+      AFChatState.leadData.company = value;
+    }
+    AFChatState.currentField = 'additional';
+    afAddBotMessage("Is there anything specific you'd like us to know about your needs?");
+  }
+  else if (field === 'additional') {
+    if (value.toLowerCase() !== 'skip' && value.toLowerCase() !== 'no') {
+      AFChatState.leadData.message += `\n\nAdditional info: ${value}`;
+    }
+    afSubmitLeadToFormspree();
+  }
+}
+
+async function afSubmitLeadToFormspree() {
+  afAddBotMessage("Perfect! Let me submit your information... 📨");
+  
+  const formData = new FormData();
+  formData.append('name', AFChatState.leadData.name);
+  formData.append('email', AFChatState.leadData.email);
+  formData.append('phone', AFChatState.leadData.phone || '');
+  formData.append('company', AFChatState.leadData.company || '');
+  formData.append('message', AFChatState.leadData.message);
+  formData.append('_subject', 'New Lead from AI Chatbot');
+  formData.append('_cc', 'tayloroliphant@gmail.com');
+  
+  try {
+    const response = await fetch('https://formspree.io/f/mldlebob', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      afAddBotMessage("✅ Thank you! Your information has been sent successfully. Someone from our team will contact you within 24 hours.");
+      afGtag('chat_lead_captured', { 
+        email: AFChatState.leadData.email,
+        has_phone: !!AFChatState.leadData.phone,
+        has_company: !!AFChatState.leadData.company
+      });
+      
+      // Reset lead capture state
+      AFChatState.collectingInfo = false;
+      AFChatState.currentField = null;
+      AFChatState.leadData = {
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: ''
+      };
+    } else {
+      afAddBotMessage("I'm sorry, there was an issue submitting your information. Please try using the contact form below or call us at (440) 941-1785.");
+    }
+  } catch (error) {
+    console.error('Lead submission error:', error);
+    afAddBotMessage("I'm sorry, there was an issue submitting your information. Please try using the contact form below or call us at (440) 941-1785.");
+  }
+}
+
+/* ---------- CHECK FOR LEAD INTENT ---------- */
+function afCheckLeadIntent(message) {
+  const leadKeywords = [
+    'contact', 'call', 'demo', 'consultation', 'consult', 'meeting', 
+    'schedule', 'talk', 'speak', 'interested', 'quote', 'proposal',
+    'more information', 'get started', 'sign up', 'learn more'
+  ];
+  
+  const lower = message.toLowerCase();
+  return leadKeywords.some(keyword => lower.includes(keyword));
 }
 
 /* ---------- FIXED: Robust Markdown to HTML ---------- */
@@ -1257,6 +1383,15 @@ function afScrollMessages() {
 function afClearChat() {
   AFChatState.history = [];
   AFChatState.messageCount = 0;
+  AFChatState.collectingInfo = false;
+  AFChatState.currentField = null;
+  AFChatState.leadData = {
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: ''
+  };
   afRenderGreeting();
   afGtag('chat_clear');
 }
@@ -1272,7 +1407,23 @@ async function afSubmitMessage() {
   afEls.input.value = '';
   afAddUserMessage(userMessage);
 
+  // If we're collecting lead info, process the field
+  if (AFChatState.collectingInfo) {
+    await simulateTyping(600);
+    afProcessLeadField(userMessage);
+    return;
+  }
+
   AFChatState.history.push({ role:'user', content:userMessage });
+
+  // Check for lead intent
+  if (afCheckLeadIntent(userMessage)) {
+    await simulateTyping(800);
+    afAddBotMessage("I'd love to connect you with our team to discuss this further! Let me collect some quick information.");
+    await simulateTyping(1000);
+    afStartLeadCapture();
+    return;
+  }
 
   // Check for common questions
   const commonResponse = checkCommonQuestions(userMessage);
@@ -1280,6 +1431,12 @@ async function afSubmitMessage() {
     await simulateTyping(800);
     afAddBotMessage(commonResponse);
     AFChatState.history.push({ role:'assistant', content:commonResponse });
+    
+    // If they asked about pricing/solutions, offer to connect
+    if (userMessage.toLowerCase().includes('pric') || userMessage.toLowerCase().includes('solution')) {
+      await simulateTyping(1000);
+      afAddBotMessage("Would you like to schedule a free consultation to discuss your specific needs? Just say 'yes' and I'll collect your info!");
+    }
     return;
   }
 
@@ -1331,6 +1488,15 @@ async function afSendToAI(userMessage, thinkingNode) {
 
       afSetSending(false);
       afGtag('chat_bot_reply');
+      
+      // Check if bot response indicates interest
+      if (botReply.toLowerCase().includes('consultation') || 
+          botReply.toLowerCase().includes('schedule') ||
+          botReply.toLowerCase().includes('contact')) {
+        await simulateTyping(1000);
+        afAddBotMessage("If you'd like me to connect you with our team, just let me know!");
+      }
+      
       return;
     } catch (err) {
       console.warn('[AFChat] error calling', url, err);
@@ -1425,6 +1591,8 @@ function afToggleChat(show) {
       AFChatState.history = [];
       AFChatState.initialized = false;
       AFChatState.messageCount = 0;
+      AFChatState.collectingInfo = false;
+      AFChatState.currentField = null;
     }, 300);
     
     afGtag('chat_close');

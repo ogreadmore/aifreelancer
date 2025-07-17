@@ -957,13 +957,13 @@
 
 <script>
 /* ============================================================
-   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION (FORMATTING FIX)
+   AI FREELANCER CHAT WIDGET — OPTIMIZED VERSION (FORMATTING FIX v2)
    ------------------------------------------------------------
-   Changes from previous:
-     • Enhanced Markdown/HTML rendering with sanitization
-     • Allows safe tags (a, strong, em, ul, li, etc.) to render properly
-     • Strips risky/unwanted code; handles escaped HTML better
-     • Keeps all prior optimizations (no storage, fresh starts, etc.)
+   New changes:
+     • Added explicit HTML unescaping to handle escaped backend output
+     • Refined sanitizer to ensure links always render (no stripping)
+     • Debug log for rendering (check console if issues persist)
+   Keeps all prior optimizations (no storage, fresh starts, etc.)
 ============================================================ */
 
 /* ---------- CONFIG ---------- */
@@ -1046,10 +1046,16 @@ function afNl2br(str='') {
   return str.replace(/\n/g,'<br>');
 }
 
-/* ---------- ENHANCED: Markdown to HTML with Sanitization ---------- */
+/* ---------- ENHANCED: Markdown to HTML with Sanitization & Unescaping ---------- */
 function afMarkdownToHtml(md) {
-  // Step 1: Convert Markdown to HTML
+  // Step 1: Unescape any HTML entities (in case backend escapes)
   let html = md
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+
+  // Step 2: Convert Markdown to HTML
+  html = html
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') // Bold
     .replace(/__(.+?)__/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>') // Italic
@@ -1060,11 +1066,11 @@ function afMarkdownToHtml(md) {
     .replace(/^\s*[-*]\s+(.*$)/gm, '<li>$1</li>'); // Lists
   html = html.replace(/(?:<li>.*?<\/li>\s*)+/g, match => `<ul class="list-disc pl-5 my-1">${match}</ul>`);
 
-  // Step 2: Fallback to linkify and nl2br for plain text parts
+  // Step 3: Fallback to linkify and nl2br for plain text parts
   html = afLinkify(html);
   html = afNl2br(html);
 
-  // Step 3: Sanitize to allow only safe tags/attributes and prevent raw code display
+  // Step 4: Sanitize to allow only safe tags/attributes
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = html; // Parse as HTML
 
@@ -1077,8 +1083,7 @@ function afMarkdownToHtml(md) {
     if (node.nodeType === 1) { // Element node
       const tag = node.tagName.toLowerCase();
       if (!allowedTags.includes(tag)) {
-        // Replace disallowed tags with their text content
-        return node.textContent;
+        return node.textContent; // Strip disallowed, keep text
       }
       // Remove disallowed attributes
       Array.from(node.attributes).forEach(attr => {
@@ -1098,7 +1103,9 @@ function afMarkdownToHtml(md) {
   }
 
   sanitizeNode(tempDiv);
-  return tempDiv.innerHTML;
+  const finalHtml = tempDiv.innerHTML;
+  console.log('[AFChat Debug] Rendered HTML:', finalHtml); // Debug: Check console for what it's outputting
+  return finalHtml;
 }
 
 /* ---------- UTIL: get relative timestamp ---------- */
@@ -1479,7 +1486,6 @@ async function afLoadRemoteConfig() {
   // Chat opens lazily on first click; greeting rendered fresh each time
 })();
 </script>
-
 
 </body>
 </html>

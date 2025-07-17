@@ -900,21 +900,24 @@
 
     <!-- AI Chatbot -->
     <div class="chatbot-container">
-        <div id="chatbot-launcher" class="chatbot-launcher gemini-gradient-bg pulse">
+        <div id="chatbot-launcher" class="chatbot-launcher gemini-gradient-bg pulse" aria-label="Open AI chat assistant">
             <i class="fa-solid fa-robot text-xl"></i>
         </div>
         
-        <div id="chatbot-window" class="chatbot-window hidden">
-            <div class="gemini-gradient-bg p-4 text-white">
-                <div class="flex justify-between items-center">
-                    <h3 class="font-bold">AI Assistant</h3>
-                    <button id="close-chatbot" class="text-white">
+        <div id="chatbot-window" class="chatbot-window hidden" aria-hidden="true">
+            <div class="gemini-gradient-bg p-4 text-white flex justify-between items-center">
+                <h3 class="font-bold">AI Assistant</h3>
+                <div>
+                    <button id="clear-chatbot" class="text-white mr-2 text-sm opacity-70 hover:opacity-100" aria-label="Clear chat history">
+                        <i class="fa-solid fa-trash-can mr-1"></i> Clear
+                    </button>
+                    <button id="close-chatbot" class="text-white" aria-label="Close chat">
                         <i class="fa-solid fa-times"></i>
                     </button>
                 </div>
             </div>
             
-            <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto">
+            <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto" aria-live="polite">
                 <div class="flex mb-4">
                     <div class="chat-bubble-bot p-3">
                         <p>Hi there!  I'm your AI assistant. How can I help you today?</p>
@@ -931,8 +934,8 @@
             
             <div class="p-4 border-t border-gray-200">
                 <form id="chatbot-form" class="flex gap-2">
-                    <input type="text" id="chatbot-input" placeholder="Ask me anything..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <button type="submit" class="w-10 h-10 rounded-full gemini-gradient-bg text-white flex items-center justify-center">
+                    <input type="text" id="chatbot-input" placeholder="Ask me anything..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" aria-label="Type your message">
+                    <button type="submit" class="w-10 h-10 rounded-full gemini-gradient-bg text-white flex items-center justify-center" aria-label="Send message">
                         <i class="fa-solid fa-paper-plane"></i>
                     </button>
                 </form>
@@ -990,7 +993,9 @@ const AF_CHAT_DEFAULT_CONFIG = {
   ],
   leadKeywords: [
     "price","pricing","quote","consult","consultation","demo","call","book","speak","talk","contact","estimate"
-  ]
+  ],
+  calendlyLink: 'https://hello.aifreelancer.co/', // Replace with your real Calendly URL
+  caseStudyLink: '#results' // Or a specific URL
 };
 
 // Lead capture form mapping (keys in `leadData` → form field names)
@@ -1019,6 +1024,7 @@ const afEls = {
   launcher: document.getElementById('chatbot-launcher'),
   window: document.getElementById('chatbot-window'),
   closeBtn: document.getElementById('close-chatbot'),
+  clearBtn: document.getElementById('clear-chatbot'),
   form: document.getElementById('chatbot-form'),
   input: document.getElementById('chatbot-input'),
   messages: document.getElementById('chatbot-messages'),
@@ -1061,13 +1067,49 @@ function afNl2br(str='') {
   return str.replace(/\n/g,'<br>');
 }
 
-/* ---------- RENDER: bot message (HTML) ---------- */
+/* ---------- UTIL: basic Markdown to HTML ---------- */
+function afMarkdownToHtml(md) {
+  let html = afEscape(md); // Escape first to prevent injection
+
+  // Bold: **text** or __text__
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+             .replace(/__(.+?)__/g, '<strong>$1</strong>');
+
+  // Italic: *text* or _text_
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>')
+             .replace(/_(.+?)_/g, '<em>$1</em>');
+
+  // Links: [text](url)
+  html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline text-blue-600">$1</a>');
+
+  // Headings: # Heading → <h3> (or adjust to h4 for smaller chat)
+  html = html.replace(/^# (.*$)/gm, '<h3 class="font-bold text-lg mt-2 mb-1">$1</h3>')
+             .replace(/^## (.*$)/gm, '<h4 class="font-bold text-md mt-2 mb-1">$1</h4>');
+
+  // Unordered lists: - item or * item
+  html = html.replace(/^\s*[-*]\s+(.*$)/gm, '<li>$1</li>');
+  html = html.replace(/(?:<li>.*?<\/li>\s*)+/g, match => `<ul class="list-disc pl-5 my-1">${match}</ul>`); // Wrap in <ul>
+
+  // Fallback to linkify plain URLs and nl2br
+  html = afLinkify(html);
+  html = afNl2br(html);
+
+  return html;
+}
+
+/* ---------- UTIL: get relative timestamp ---------- */
+function afGetTimestamp() {
+  return 'Just now'; // Or use actual time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+}
+
+/* ---------- RENDER: bot message (with Markdown) ---------- */
 function afAddBotMessage(text) {
+  const timestamp = afGetTimestamp();
   const wrapper = document.createElement('div');
   wrapper.className = 'flex mb-4 justify-start';
   const bubble = document.createElement('div');
   bubble.className = 'p-3 max-w-xs chat-bubble-bot text-gray-700 af-chat-msg';
-  bubble.innerHTML = afNl2br(afLinkify(text));
+  bubble.innerHTML = afMarkdownToHtml(text) + `<div class="text-xs text-gray-400 mt-1 text-right">${timestamp}</div>`;
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
   afScrollMessages();
@@ -1075,11 +1117,12 @@ function afAddBotMessage(text) {
 
 /* ---------- RENDER: user message (text only) ---------- */
 function afAddUserMessage(text) {
+  const timestamp = afGetTimestamp();
   const wrapper = document.createElement('div');
   wrapper.className = 'flex mb-4 justify-end';
   const bubble = document.createElement('div');
   bubble.className = 'p-3 max-w-xs chat-bubble-user af-chat-msg text-white';
-  bubble.textContent = text;
+  bubble.innerHTML = afEscape(text) + `<div class="text-xs text-blue-200 mt-1 text-right">${timestamp}</div>`;
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
   afScrollMessages();
@@ -1096,6 +1139,7 @@ function afAddThinking() {
         <span class="thinking-dot"></span>
         <span class="thinking-dot"></span>
       </div>
+      <p class="text-xs text-gray-500 mt-1">AI is thinking...</p>
     </div>`;
   afEls.messages.appendChild(thinking);
   afScrollMessages();
@@ -1130,11 +1174,11 @@ function afRenderChips() {
 }
 
 /* ---------- RENDER: greeting (clears static HTML on first init) ---------- */
-function afRenderGreeting() {
+function afRenderGreeting(isResume=false) {
   const { greeting } = AFChatState.config;
   // wipe any server/static content (the hard-coded greeting)
   afEls.messages.innerHTML = '';
-  afAddBotMessage(greeting);
+  afAddBotMessage(isResume ? 'Welcome back! ' + greeting : greeting);
   afRenderChips();
 }
 
@@ -1170,10 +1214,12 @@ function afLoadState() {
 /* ---------- REPLAY HISTORY ON LOAD ---------- */
 function afReplayHistory() {
   afEls.messages.innerHTML = '';
-  if (!AFChatState.history.length) {
-    afRenderGreeting();
+  const isResume = AFChatState.history.length > 0;
+  if (!isResume) {
+    afRenderGreeting(false);
     return;
   }
+  afRenderGreeting(true); // Welcome back
   AFChatState.history.forEach(m => {
     if (m.role === 'user') afAddUserMessage(m.content);
     else afAddBotMessage(m.content);
@@ -1182,6 +1228,16 @@ function afReplayHistory() {
   if (AFChatState.leadStage && AFChatState.leadStage !== 'done') {
     afPromptNextLeadStage();
   }
+}
+
+/* ---------- CLEAR CHAT ---------- */
+function afClearChat() {
+  AFChatState.history = [];
+  AFChatState.leadStage = null;
+  AFChatState.leadData = { name:'', email:'', phone:'', message:'' };
+  localStorage.removeItem(AF_CHAT_STORAGE_KEY);
+  afRenderGreeting(false);
+  afGtag('chat_clear', { event_category:'chat' });
 }
 
 /* ---------- LEAD DETECTION ---------- */
@@ -1237,9 +1293,10 @@ function afHandleLeadInput(userText) {
         AFChatState.leadData.phone = txt;
       }
       AFChatState.leadStage = 'done';
-      afAddBotMessage("Great! We’ll be in touch soon. Anything else you'd like to ask?");
+      afAddBotMessage(`Great! We’ll be in touch soon. In the meantime, book a free consultation here: [Schedule Now](${AFChatState.config.calendlyLink})\n\nOr check out our case studies: [View Results](${AFChatState.config.caseStudyLink})`);
       afSubmitLeadToForm();
       afGtag('chat_lead_complete', { event_category:'chat', method:'bot' });
+      afGtag('chat_lead_suggestion', { event_category:'chat' });
       break;
   }
   afSaveState();
@@ -1383,12 +1440,9 @@ function afSetSending(isSending) {
 /* ---------- INPUT KEY HANDLING ---------- */
 if (afEls.input) {
   afEls.input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      if (!e.shiftKey) {
-        e.preventDefault();
-        afSubmitMessage();
-      }
-      // allow newline if Shift+Enter (default)
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      afSubmitMessage();
     }
   });
 }
@@ -1407,9 +1461,11 @@ function afToggleChat(show) {
   if (!win) return;
   if (show) {
     win.classList.remove('hidden');
+    win.setAttribute('aria-hidden', 'false');
     requestAnimationFrame(() => {
       win.style.transform = 'scale(1)';
       win.style.opacity = '1';
+      afEls.input.focus(); // Auto-focus input
     });
     if (!AFChatState.initialized) {
       AFChatState.initialized = true;
@@ -1419,7 +1475,10 @@ function afToggleChat(show) {
   } else {
     win.style.transform = 'scale(0.95)';
     win.style.opacity = '0';
-    setTimeout(() => win.classList.add('hidden'), 300);
+    setTimeout(() => {
+      win.classList.add('hidden');
+      win.setAttribute('aria-hidden', 'true');
+    }, 300);
     afGtag('chat_close', { event_category:'chat' });
   }
 }
@@ -1431,6 +1490,9 @@ if (afEls.launcher) {
 }
 if (afEls.closeBtn) {
   afEls.closeBtn.addEventListener('click', () => afToggleChat(false));
+}
+if (afEls.clearBtn) {
+  afEls.clearBtn.addEventListener('click', afClearChat);
 }
 
 /* ---------- LOAD REMOTE CONFIG (optional) ---------- */
@@ -1536,12 +1598,17 @@ async function afLoadRemoteConfig() {
   modal?.addEventListener('click', e => { if (e.target === modal) hideModal(); });
 })();
 
-/* ---------- INJECT MINOR STYLE TWEAKS (chips, wrap) ---------- */
+/* ---------- INJECT MINOR STYLE TWEAKS (chips, wrap, Markdown) ---------- */
 (function afInjectStyles(){
   const css = `
     .af-chat-msg { white-space:pre-line; word-break:break-word; overflow-wrap:anywhere; }
     .af-quick-chip { border:1px solid rgba(0,0,0,0.15); background:#fff; }
     .af-quick-chip:hover { background:#f3f4f6; }
+    .chat-bubble-bot strong { font-weight: bold; color: #111827; }
+    .chat-bubble-bot em { font-style: italic; color: #374151; }
+    .chat-bubble-bot ul { list-style-type: disc; padding-left: 1.25rem; margin: 0.5rem 0; }
+    .chat-bubble-bot h3 { font-size: 1.125rem; font-weight: 700; margin: 0.5rem 0; }
+    .chat-bubble-bot a { word-break: break-all; }
   `;
   const tag = document.createElement('style');
   tag.setAttribute('data-afchat','');

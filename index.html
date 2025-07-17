@@ -1062,7 +1062,8 @@ function afStartLeadCapture() {
     .join(' | ');
   AFChatState.leadData.message = `Chat conversation summary: ${summary}`;
   
-  afAddBotMessage("I'd be happy to help you further! Could you please tell me your name?");
+  // Single, natural message
+  afAddBotMessage("I'd love to connect you with our team! What's your name?");
 }
 
 function afProcessLeadField(value) {
@@ -1419,8 +1420,6 @@ async function afSubmitMessage() {
   // Check for lead intent
   if (afCheckLeadIntent(userMessage)) {
     await simulateTyping(800);
-    afAddBotMessage("I'd love to connect you with our team to discuss this further! Let me collect some quick information.");
-    await simulateTyping(1000);
     afStartLeadCapture();
     return;
   }

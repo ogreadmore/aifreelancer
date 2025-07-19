@@ -409,13 +409,18 @@
       <!-- Light-grey video box -->
       <div id="video-container"
            class="relative bg-gray-100 rounded-2xl shadow-2xl overflow-hidden aspect-video">
-        <video id="intro-video"
-               class="w-full h-full object-cover"
-               poster="https://aifreelancer.co/assets/images/video-poster.jpg"
-               src="https://ia804503.us.archive.org/35/items/Rick_Astley_Never_Gonna_Give_You_Up/Rick_Astley_Never_Gonna_Give_You_Up.mp4"
-               preload="metadata" playsinline>
-          Your browser does not support the video tag.
-        </video>
+<div id="video-container"
+     class="relative bg-gray-100 rounded-2xl shadow-2xl overflow-hidden aspect-video">
+  <iframe
+    id="intro-video"
+    class="w-full h-full"
+    src="https://www.youtube.com/embed/dexsgKVHDQk?rel=0&showinfo=0"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
 
         <!-- Overlay with animated-gradient play button -->
         <div id="video-overlay"

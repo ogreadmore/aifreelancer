@@ -69,7 +69,6 @@
             letter-spacing: -0.025em;
         }
         
-/* ↓ just replace this rule */
 .gemini-gradient-text{
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -407,32 +406,30 @@
 
     <div class="max-w-6xl mx-auto">
       <!-- Light-grey video box -->
-      <div id="video-container"
-           class="relative bg-gray-100 rounded-2xl shadow-2xl overflow-hidden aspect-video">
 <div id="video-container"
      class="relative bg-gray-100 rounded-2xl shadow-2xl overflow-hidden aspect-video">
-  <iframe
-    id="intro-video"
-    class="w-full h-full"
-    src="https://www.youtube.com/embed/dexsgKVHDQk?rel=0&showinfo=0"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
+
+  <!-- YT embed (starts muted & stopped) -->
+  <iframe id="intro-video"
+          class="w-full h-full"
+          src="https://www.youtube.com/embed/dexsgKVHDQk?rel=0&showinfo=0"
+          title="AI Freelancer intro"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+
+  <!-- Solid grey overlay + play button -->
+  <div id="video-overlay"
+       class="absolute inset-0 bg-gray-100 flex flex-col items-center justify-center
+              text-gray-900 cursor-pointer transition-opacity duration-300">
+    <div class="w-24 h-24 rounded-full gemini-gradient-bg flex items-center justify-center
+                transition-opacity hover:opacity-60">
+      <i class="fa-solid fa-play text-white text-4xl ml-1"></i>
+    </div>
+    <p class="mt-4 text-2xl font-bold">Watch Our 2‑Minute Intro</p>
+  </div>
 </div>
 
-        <!-- Overlay with animated-gradient play button -->
-        <div id="video-overlay"
-             class="absolute inset-0 bg-gray-100 bg-opacity-75 flex flex-col items-center justify-center
-                    text-gray-900 cursor-pointer transition-opacity duration-300">
-          <div class="w-24 h-24 rounded-full gemini-gradient-bg flex items-center justify-center
-                      transition-opacity hover:opacity-60">
-            <i class="fa-solid fa-play text-white text-4xl ml-1"></i>
-          </div>
-          <p class="mt-4 text-2xl font-bold">Watch Our 2-Minute Intro</p>
-        </div>
-      </div>
 
       <!-- Two-column text beneath video -->
       <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -1041,7 +1038,6 @@ const afEls = {
   header: document.getElementById('header'),
   mobileMenuButton: document.getElementById('mobile-menu-button'),
   mobileMenu: document.getElementById('mobile-menu'),
-  video: document.getElementById('intro-video'),
   videoOverlay: document.getElementById('video-overlay')
 };
 
@@ -1686,7 +1682,7 @@ async function afLoadRemoteConfig() {
 
 /* ---------- HEADER / MOBILE MENU / VIDEO ---------- */
 (function afHeaderMobileEtc(){
-  const { mobileMenuButton, mobileMenu, header, video, videoOverlay } = afEls;
+const { mobileMenuButton, mobileMenu, header, videoOverlay } = afEls;
 
   if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
@@ -1714,27 +1710,22 @@ async function afLoadRemoteConfig() {
     });
   });
 
-  if (video && videoOverlay) {
-    videoOverlay.addEventListener('click', () => video.play());
-    video.addEventListener('play', () => {
-      videoOverlay.style.opacity='0';
-      videoOverlay.style.pointerEvents='none';
-      video.controls=true;
-    });
-    video.addEventListener('pause', () => {
-      if (video.currentTime>0 && !video.ended) {
-        videoOverlay.style.opacity='1';
-        videoOverlay.style.pointerEvents='auto';
-        video.controls=false;
-      }
-    });
-    video.addEventListener('ended', () => {
-      videoOverlay.style.opacity='1';
-      videoOverlay.style.pointerEvents='auto';
-      video.controls=false;
-      video.currentTime=0;
-    });
-  }
+/* ---- simplified play‑overlay for YouTube iframe ---- */
+const ytFrame = document.getElementById('intro-video');
+
+if (ytFrame && videoOverlay) {
+  videoOverlay.addEventListener('click', () => {
+    // turn autoplay on (only first click)
+    let src = ytFrame.getAttribute('src');
+    if (!src.includes('autoplay=1')) {
+      src += (src.includes('?') ? '&' : '?') + 'autoplay=1';
+      ytFrame.setAttribute('src', src);
+    }
+    // fade overlay away and disable it
+    videoOverlay.style.opacity = '0';
+    videoOverlay.style.pointerEvents = 'none';
+  });
+}
 })();
 
 /* ---------- CONTACT FORM ---------- */

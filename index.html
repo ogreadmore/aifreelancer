@@ -1905,17 +1905,25 @@ if (ytFrame && videoOverlay) {
     }
   });
   
-  // Handle window resize
-  let resizeTimer;
-  window.addEventListener('resize', () => {
+// Handle window resize
+let lastWidth = window.innerWidth;
+let resizeTimer;
+window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      if (!afEls.window.classList.contains('hidden')) {
-        afToggleChat(false);
-        setTimeout(() => afToggleChat(true), 100);
-      }
+        const currentWidth = window.innerWidth;
+        // Only act if the width has changed (i.e., orientation change),
+        // not just the height (i.e., keyboard opening).
+        if (currentWidth !== lastWidth) {
+            lastWidth = currentWidth; // Update the width
+            if (!afEls.window.classList.contains('hidden')) {
+                // Redraw chat on orientation change
+                afToggleChat(false);
+                setTimeout(() => afToggleChat(true), 100);
+            }
+        }
     }, 250);
-  });
+});
 })();
 </script>
     

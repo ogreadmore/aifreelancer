@@ -290,29 +290,33 @@
 }
 
 /* -------------------------------------------
-   CHAT WINDOW – single scroll area, no rails
+   CHAT WINDOW — single scroll area, NO rails
 ------------------------------------------- */
 .chatbot-window{
-  overflow:hidden;            /* outer shell never scrolls */
-  display:flex;
-  flex-direction:column;
+  overflow: hidden;           /* outer shell never scrolls   */
+  display:  flex;
+  flex-direction: column;
 }
 
 #chatbot-messages{
-  flex:1 1 auto;              /* fill remaining height */
-  min-height:0;               /* critical for flex overflow */
-  overflow-y:auto;
-  overflow-x:hidden;          /* prevents bottom gray bar */
-  overscroll-behavior:contain;
-  -ms-overflow-style:none;    /* old Edge / IE */
-  scrollbar-width:none;       /* Firefox */
+  flex: 1 1 0%;               /* fill the remaining height   */
+  min-height: 0;              /* critical for flex overflow  */
+
+  overflow-y: auto;           /* scroll only vertically      */
+  overflow-x: hidden;         /* kill the bottom grey bar    */
+  overscroll-behavior: contain;
+
+  -ms-overflow-style: none;   /* IE / legacy Edge            */
+  scrollbar-width: none;      /* Firefox                     */
 }
 
-/* Chrome / Edge (Chromium) / Safari */
-#chatbot-messages::-webkit-scrollbar{
-  width:0 !important;
-  height:0 !important;
+/* Chrome / Safari / Chromium Edge */
+#chatbot-messages::-webkit-scrollbar,
+#chatbot-messages::-webkit-scrollbar-track,
+#chatbot-messages::-webkit-scrollbar-thumb{
+  display: none !important;   /* hides BOTH rails completely */
 }
+
 
 
     </style>

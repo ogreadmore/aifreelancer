@@ -288,6 +288,12 @@
     opacity: 1;
     transition: all 0.3s ease-out;
 }
+/* --- CHAT WINDOW CLEANUP ----------------------------------- */
+.chatbot-window{overflow:hidden;}                     /* outer shell never scrolls */
+#chatbot-messages{overflow-y:auto; overscroll-behavior:contain;}
+#chatbot-messages::-webkit-scrollbar{width:0;}         /* hide Chrome/Edge */
+#chatbot-messages{scrollbar-width:none;}               /* hide Firefox    */
+
     </style>
 </head>
 <body class="bg-white">

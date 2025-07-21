@@ -288,11 +288,29 @@
     opacity: 1;
     transition: all 0.3s ease-out;
 }
-/* --- CHAT WINDOW CLEANUP ----------------------------------- */
-.chatbot-window{overflow:hidden;}                     /* outer shell never scrolls */
-#chatbot-messages{overflow-y:auto; overscroll-behavior:contain;}
-#chatbot-messages::-webkit-scrollbar{width:0;}         /* hide Chrome/Edge */
-#chatbot-messages{scrollbar-width:none;}               /* hide Firefox    */
+
+/* -------------------------------------------
+   CHAT WINDOW – one clean scroller, no rails
+------------------------------------------- */
+.chatbot-window{                 /* outer shell never scrolls        */
+  overflow:hidden;
+  display:flex;                  /* make the inner area flex nicely */
+  flex-direction:column;
+}
+
+#chatbot-messages{               /* single place that CAN scroll    */
+  flex:1 1 auto;                 /* fill the free space             */
+  min-height:0;                  /* ← critical for flexbox overflow */
+  overflow-y:auto;
+  overscroll-behavior:contain;
+
+  /* hide the scrollbar itself */
+  scrollbar-width:none;          /* Firefox                         */
+}
+#chatbot-messages::-webkit-scrollbar{
+  display:none;                  /* Chrome / Edge / Safari          */
+}
+
 
     </style>
 </head>

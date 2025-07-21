@@ -289,35 +289,24 @@
     transition: all 0.3s ease-out;
 }
 
-/* -------------------------------------------
-   CHAT WINDOW — single scroll area, NO rails
-------------------------------------------- */
+/* 1 ▸ keep the border inside the 350 px box */
 .chatbot-window{
-  overflow: hidden;           /* outer shell never scrolls   */
-  display:  flex;
-  flex-direction: column;
+  box-sizing:border-box;          /* ← prevents the horizontal overflow  */
 }
 
-#chatbot-messages{
-  flex: 1 1 0%;               /* fill the remaining height   */
-  min-height: 0;              /* critical for flex overflow  */
-
-  overflow-y: auto;           /* scroll only vertically      */
-  overflow-x: hidden;         /* kill the bottom grey bar    */
-  overscroll-behavior: contain;
-
-  -ms-overflow-style: none;   /* IE / legacy Edge            */
-  scrollbar-width: none;      /* Firefox                     */
+/* 2 ▸ never show a scrollbar anywhere inside the widget (Chrome/Safari/Edge) */
+.chatbot-window *::-webkit-scrollbar{
+  width:0 !important;   /* vertical */
+  height:0 !important;  /* horizontal */
+  background:transparent !important;
 }
 
-/* Chrome / Safari / Chromium Edge */
-#chatbot-messages::-webkit-scrollbar,
-#chatbot-messages::-webkit-scrollbar-track,
-#chatbot-messages::-webkit-scrollbar-thumb{
-  display: none !important;   /* hides BOTH rails completely */
+/* 3 ▸ same thing for Firefox & old Edge */
+.chatbot-window,
+.chatbot-window *{
+  scrollbar-width:none;           /* Firefox */
+  -ms-overflow-style:none;        /* IE / legacy Edge */
 }
-
-
 
     </style>
 </head>

@@ -17,21 +17,20 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="AI experts building custom automation solutions for SMBs. Automate tasks, increase sales & save time. Free consultation & ROI guarantee.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.ai-freelancer.co">
     
     <!-- Favicons -->
     <link rel="icon" href="https://aifreelancer.co/favicon.ico" sizes="any">
     <link rel="icon" href="https://aifreelancer.co/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="https://aifreelancer.co/apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
+ <link rel="canonical" href="https://aifreelancer.co">
     
     <!-- Social Sharing -->
     <meta property="og:title" content="AI Automation Experts | Custom AI Solutions">
     <meta property="og:description" content="Transform your business with custom AI automation. Save time, reduce costs & increase revenue.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.ai-freelancer.co">
+    <meta property="og:url" content="https://aifreelancer.co">
     <meta property="og:site_name" content="AI Freelancer">
-    <meta property="og:image" content="https://www.ai-freelancer.co/assets/images/social-share-image.jpg">
+    <meta property="og:image" content="https://aifreelancer.co/assets/images/social-share-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
@@ -39,7 +38,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Automation Experts | Custom AI Solutions">
     <meta name="twitter:description" content="Transform your business with custom AI automation. Save time, reduce costs & increase revenue.">
-    <meta name="twitter:image" content="https://www.ai-freelancer.co/assets/images/social-share-image.jpg">
+    <meta name="twitter:image" content="https://aifreelancer.co/assets/images/social-share-image.jpg">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -52,7 +51,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Fillout calendar embed script -->
-<script src="https://server.fillout.com/embed/v1/"></script>
     <style>
         :root {
             --primary-gradient: linear-gradient(105deg, #4B88DA, #8A3BF1, #D941A1, #E5484D);
@@ -796,7 +794,7 @@
               </a>
 
               <!-- LinkedIn -->
-              <a href="https://www.linkedin.com/company/ai-freelancer" target="_blank"
+              <a href="https://www.linkedin.com/company/aifreelancer" target="_blank"
                  class="flex items-center gap-5 group">
                 <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
                             text-white text-2xl group-hover:shadow-lg transition">
@@ -944,16 +942,17 @@
             </div>
         </div>
     </div>
-<!-- ⬇️  CALENDAR BUBBLE TEMPLATE  — do not remove  -->
+<!-- ⬇️  CALENDAR BUBBLE TEMPLATE (iframe version) -->
 <template id="af-calendar-template">
   <div class="flex mb-4">
     <div class="p-0 chat-bubble-bot w-full overflow-hidden rounded-lg">
-      <!-- Fillout embed -->
-      <div  data-fillout-id="duqrQk4zTUus"
-            data-fillout-embed-type="standard"
-            data-fillout-inherit-parameters
-            data-fillout-dynamic-resize
-            style="width:100%;height:520px;"></div>
+      <iframe
+        src="https://form.fillout.com/duqrQk4zTUus?embed=true"
+        style="width:100%;height:520px;border:none;"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        sandbox="allow-forms allow-same-origin allow-scripts"
+      ></iframe>
     </div>
   </div>
 </template>
@@ -979,8 +978,8 @@
 
 /* ---------- CONFIG ---------- */
 const AF_CHAT_ENDPOINTS = [
-  '/api/chat',
-  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat'
+  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat',
+  '/api/chat'          // fallback
 ];
 
 const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config';
@@ -1363,17 +1362,13 @@ function afAddThinking() {
   afScrollMessages();
   return thinking;
 }
-// Injects the hidden template into the chat and refreshes Fillout
-function afShowCalendar(){
+// Injects the calendar iframe bubble
+function afShowCalendar () {
   const tmpl = document.getElementById('af-calendar-template');
-  if(!tmpl) return;
+  if (!tmpl) return;
 
   // Clone template and append
-  const node = tmpl.content.cloneNode(true);
-  afEls.messages.appendChild(node);
-
-  // Let Fillout re‑size the iframe
-  window.FilloutEmbed?.refresh?.();
+  afEls.messages.appendChild(tmpl.content.cloneNode(true));
 
   afScrollMessages();
   afGtag('calendar_shown');
@@ -1947,7 +1942,7 @@ if (ytFrame && videoOverlay) {
 
 // Listen for Fillout "form submitted" events
 window.addEventListener('message', (event) => {
-  if (event.origin !== 'https://server.fillout.com') return;
+  if (event.origin !== 'https://form.fillout.com') return;
   if (event.data?.eventName !== 'fillout.submitted') return;
 
   const iso   = event.data?.payload?.startDateTime;

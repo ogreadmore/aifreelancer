@@ -1473,31 +1473,38 @@ async function afSubmitMessage() {
   afEls.input.value = '';
   afAddUserMessage(userMessage);
 
-  // Check if we're waiting for lead confirmation
-  if (AFChatState.waitingForLeadConfirmation) {
-    AFChatState.waitingForLeadConfirmation = false;
-    const positiveResponses = ['yes', 'yeah', 'sure', 'ok', 'okay', 'definitely', 'please', 'yep', 'absolutely'];
-    
-    if (positiveResponses.some(resp => userMessage.toLowerCase().includes(resp))) {
-      await simulateTyping(600);
-      afStartLeadCapture();
-      return;
-    } else {
-      AFChatState.history.push({ role:'user', content:userMessage });
-        // 👉 If the user wants to book, show the calendar instead of normal flow
-if (afCheckScheduleIntent(userMessage)){
-  await simulateTyping(600);
-  afAddBotMessage("Sure — here’s my real‑time calendar. Pick any open slot:");
-  afShowCalendar();
-  return;  // skip the usual AI call
-}
+// ─── waiting‑for‑lead‑confirmation ──────────────────────────────
+if (AFChatState.waitingForLeadConfirmation) {
+  AFChatState.waitingForLeadConfirmation = false;
 
-      const thinkingNode = afAddThinking();
-      afSetSending(true);
-      afSendToAI(userMessage, thinkingNode);
-      return;
-    }
+  /* 1️⃣  – explicit scheduling intent → show calendar */
+  if (afCheckScheduleIntent(userMessage)) {
+    await simulateTyping(600);
+    afAddBotMessage("Sure — here’s my real‑time calendar. Pick any open slot:");
+    afShowCalendar();
+    return;                           // stop here (skip lead‑capture)
   }
+
+  /* 2️⃣  – simple “yes / ok / sure …” → start lead‑capture flow */
+  const positiveResponses = [
+    'yes','yeah','sure','ok','okay','definitely','please','yep','absolutely'
+  ];
+  if (positiveResponses.some(resp =>
+        userMessage.toLowerCase().includes(resp))) {
+    await simulateTyping(600);
+    afStartLeadCapture();
+    return;
+  }
+
+  /* 3️⃣  – anything else → normal AI reply */
+  AFChatState.history.push({ role: 'user', content: userMessage });
+  const thinkingNode = afAddThinking();
+  afSetSending(true);
+  afSendToAI(userMessage, thinkingNode);
+  return;
+}
+// ────────────────────────────────────────────────────────────────
+
 
   // If we're collecting lead info, process the field
   if (AFChatState.collectingInfo) {

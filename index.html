@@ -290,26 +290,29 @@
 }
 
 /* -------------------------------------------
-   CHAT WINDOW – completely hidden scrollbars
+   CHAT WINDOW – single scroll area, no rails
 ------------------------------------------- */
-#chatbot-messages {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow: auto;
-  overscroll-behavior: contain;
-
-  /* Hide scrollbar for Firefox */
-  scrollbar-width: none;
-
-  /* Hide scrollbar for IE, Edge (legacy) */
-  -ms-overflow-style: none;
+.chatbot-window{
+  overflow:hidden;            /* outer shell never scrolls */
+  display:flex;
+  flex-direction:column;
 }
 
-/* Hide scrollbar for Chrome, Safari, Edge (Chromium) */
-#chatbot-messages::-webkit-scrollbar {
-  display: none;
+#chatbot-messages{
+  flex:1 1 auto;              /* fill remaining height */
+  min-height:0;               /* critical for flex overflow */
+  overflow-y:auto;
+  overflow-x:hidden;          /* prevents bottom gray bar */
+  overscroll-behavior:contain;
+  -ms-overflow-style:none;    /* old Edge / IE */
+  scrollbar-width:none;       /* Firefox */
 }
 
+/* Chrome / Edge (Chromium) / Safari */
+#chatbot-messages::-webkit-scrollbar{
+  width:0 !important;
+  height:0 !important;
+}
 
 
     </style>

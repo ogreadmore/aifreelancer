@@ -311,6 +311,16 @@
 }
 /* ────────────────────────────────────────────────────────────── */
 
+  /* keep border inside the box & hide horizontal overflow everywhere */
+  .chatbot-window{box-sizing:border-box;overflow-x:hidden;}
+  .chatbot-window *{overflow-x:hidden!important;}
+
+  /* prevent long URLs / code from forcing a scroll-rail */
+  .chat-bubble-bot,
+  .chat-bubble-user{
+    max-width:85%; /* 85 % of 350 px ≈ 300 px */
+    word-break:break-word;
+  }
 
     </style>
 </head>

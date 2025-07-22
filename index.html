@@ -1517,7 +1517,7 @@ async function afSubmitMessage() {
   // Check for immediate scheduling intent first
   if (afCheckScheduleIntent(userMessage)) {
     await simulateTyping(600);
-    afAddBotMessage("Of course! Please pick a time from my calendar below.");
+    afAddBotMessage("Happy to help with that. My calendar should now be open on your screen.");
     afShowCalendar(); // This opens our new modal
     return; // Stop the function here to prevent sending to AI
   }

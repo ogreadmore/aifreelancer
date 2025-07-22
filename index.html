@@ -294,19 +294,23 @@
   box-sizing:border-box;          /* ← prevents the horizontal overflow  */
 }
 
-/* 2 ▸ never show a scrollbar anywhere inside the widget (Chrome/Safari/Edge) */
-.chatbot-window *::-webkit-scrollbar{
-  width:0 !important;   /* vertical */
-  height:0 !important;  /* horizontal */
-  background:transparent !important;
-}
 
-/* 3 ▸ same thing for Firefox & old Edge */
-.chatbot-window,
-.chatbot-window *{
-  scrollbar-width:none;           /* Firefox */
-  -ms-overflow-style:none;        /* IE / legacy Edge */
+/* ── KILL BOTH RAILS, EVERYWHERE ─────────────────────────────── */
+.chatbot-window,                     /* outer shell              */
+.chatbot-window * {                  /* every descendant         */
+  /* Firefox / old Edge */
+  scrollbar-width: none !important;      /*     hide rails        */
+  -ms-overflow-style: none !important;   /*     hide rails        */
+
+  /* WebKit (Chrome, Safari, new Edge, iOS) */
 }
+.chatbot-window::-webkit-scrollbar,
+.chatbot-window *::-webkit-scrollbar {
+  display: none !important;              /* full ghost‑mode rail  */
+  width: 0 !important; height: 0 !important;
+}
+/* ────────────────────────────────────────────────────────────── */
+
 
     </style>
 </head>

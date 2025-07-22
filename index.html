@@ -1573,6 +1573,7 @@ async function afSubmitMessage() {
     if (userMessage.toLowerCase().includes('pric') || userMessage.toLowerCase().includes('solution')) {
       await simulateTyping(1000);
       afAddBotMessage("Would you like to schedule a free consultation to discuss your specific needs? Just say 'yes' and I'll collect your info!");
+      AFChatState.waitingForLeadConfirmation = true;
     }
     return;
   }

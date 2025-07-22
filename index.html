@@ -17,20 +17,21 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="AI experts building custom automation solutions for SMBs. Automate tasks, increase sales & save time. Free consultation & ROI guarantee.">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.ai-freelancer.co">
     
     <!-- Favicons -->
     <link rel="icon" href="https://aifreelancer.co/favicon.ico" sizes="any">
     <link rel="icon" href="https://aifreelancer.co/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="https://aifreelancer.co/apple-touch-icon.png">
- <link rel="canonical" href="https://aifreelancer.co">
+    <link rel="manifest" href="site.webmanifest">
     
     <!-- Social Sharing -->
     <meta property="og:title" content="AI Automation Experts | Custom AI Solutions">
     <meta property="og:description" content="Transform your business with custom AI automation. Save time, reduce costs & increase revenue.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aifreelancer.co">
+    <meta property="og:url" content="https://www.ai-freelancer.co">
     <meta property="og:site_name" content="AI Freelancer">
-    <meta property="og:image" content="https://aifreelancer.co/assets/images/social-share-image.jpg">
+    <meta property="og:image" content="https://www.ai-freelancer.co/assets/images/social-share-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
@@ -38,7 +39,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Automation Experts | Custom AI Solutions">
     <meta name="twitter:description" content="Transform your business with custom AI automation. Save time, reduce costs & increase revenue.">
-    <meta name="twitter:image" content="https://aifreelancer.co/assets/images/social-share-image.jpg">
+    <meta name="twitter:image" content="https://www.ai-freelancer.co/assets/images/social-share-image.jpg">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,7 +51,7 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Fillout calendar embed script -->
+    
     <style>
         :root {
             --primary-gradient: linear-gradient(105deg, #4B88DA, #8A3BF1, #D941A1, #E5484D);
@@ -288,40 +289,6 @@
     opacity: 1;
     transition: all 0.3s ease-out;
 }
-
-/* 1 ▸ keep the border inside the 350 px box */
-.chatbot-window{
-  box-sizing:border-box;          /* ← prevents the horizontal overflow  */
-}
-
-
-/* ── KILL BOTH RAILS, EVERYWHERE ─────────────────────────────── */
-.chatbot-window,                     /* outer shell              */
-.chatbot-window * {                  /* every descendant         */
-  /* Firefox / old Edge */
-  scrollbar-width: none !important;      /*     hide rails        */
-  -ms-overflow-style: none !important;   /*     hide rails        */
-
-  /* WebKit (Chrome, Safari, new Edge, iOS) */
-}
-.chatbot-window::-webkit-scrollbar,
-.chatbot-window *::-webkit-scrollbar {
-  display: none !important;              /* full ghost‑mode rail  */
-  width: 0 !important; height: 0 !important;
-}
-/* ────────────────────────────────────────────────────────────── */
-
-  /* keep border inside the box & hide horizontal overflow everywhere */
-  .chatbot-window{box-sizing:border-box;overflow-x:hidden;}
-  .chatbot-window *{overflow-x:hidden!important;}
-
-  /* prevent long URLs / code from forcing a scroll-rail */
-  .chat-bubble-bot,
-  .chat-bubble-user{
-    max-width:85%; /* 85 % of 350 px ≈ 300 px */
-    word-break:break-word;
-  }
-
     </style>
 </head>
 <body class="bg-white">
@@ -828,7 +795,7 @@
               </a>
 
               <!-- LinkedIn -->
-              <a href="https://www.linkedin.com/company/aifreelancer" target="_blank"
+              <a href="https://www.linkedin.com/company/ai-freelancer" target="_blank"
                  class="flex items-center gap-5 group">
                 <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
                             text-white text-2xl group-hover:shadow-lg transition">
@@ -976,22 +943,6 @@
             </div>
         </div>
     </div>
-<!-- CALENDAR BUBBLE TEMPLATE (iframe version) -->
-<template id="af-calendar-template">
-  <div class="flex mb-4">
-    <div class="p-0 chat-bubble-bot overflow-hidden rounded-lg">
-      <iframe
-        src="https://aifreelancer.fillout.com/meet-with-taylor?embed=true&transparentBackground=true&hide_title_and_desc=true"
-        style="width:100%;height:540px;border:none;"
-        loading="lazy"
-        scrolling="no"
-        referrerpolicy="no-referrer-when-downgrade"
-        sandbox="allow-forms allow-same-origin allow-scripts">
-      </iframe>
-    </div>
-  </div>
-</template>
-
 
 <div id="thank-you-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-60 z-[100] flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center max-w-md mx-auto transform transition-all scale-95 opacity-0" id="modal-content">
@@ -1005,6 +956,18 @@
         </button>
     </div>
 </div>
+<div id="scheduler-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-60 z-[100] flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full h-[90vh] max-h-[700px] flex flex-col transform transition-all scale-95 opacity-0" id="scheduler-modal-content">
+        <div class="p-4 border-b flex justify-between items-center">
+            <h3 class="font-bold text-lg text-gray-800">Schedule a Consultation</h3>
+            <button id="close-scheduler-modal" class="text-gray-500 hover:text-gray-900" aria-label="Close scheduler">
+                <i class="fa-solid fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div id="scheduler-iframe-container" class="flex-1 w-full h-full">
+            </div>
+    </div>
+</div>
 
 <script>
 /* ============================================================
@@ -1014,8 +977,8 @@
 
 /* ---------- CONFIG ---------- */
 const AF_CHAT_ENDPOINTS = [
-  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat',
-  '/api/chat'          // fallback
+  '/api/chat',
+  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat'
 ];
 
 const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config';
@@ -1242,12 +1205,69 @@ function afCheckLeadIntent(message) {
   const lower = message.toLowerCase();
   return leadKeywords.some(keyword => lower.includes(keyword));
 }
-// Detect phrases that mean "show me the calendar"
-function afCheckScheduleIntent(message){
-  const kw = ['schedule','book','meeting','call','consultation',
-              'calendar','set up a time','pick a time'];
-  const lower = message.toLowerCase();
-  return kw.some(k => lower.includes(k));
+
+/* ---------- SCHEDULER MODAL FUNCTIONS ---------- */
+const schedulerModal = document.getElementById('scheduler-modal');
+const schedulerModalContent = document.getElementById('scheduler-modal-content');
+const closeSchedulerBtn = document.getElementById('close-scheduler-modal');
+const schedulerIframeContainer = document.getElementById('scheduler-iframe-container');
+
+// Detects if the user wants to schedule a meeting.
+function afCheckScheduleIntent(message) {
+  const keywords = ['schedule', 'book', 'meeting', 'call', 'consultation', 'calendar', 'appointment', 'talk to someone', 'pick a time'];
+  const lowerCaseMessage = message.toLowerCase();
+  return keywords.some(keyword => lowerCaseMessage.includes(keyword));
+}
+
+function afShowCalendar() {
+  if (!schedulerModal || !schedulerIframeContainer) return;
+
+  // Clear any previous iframe to be safe
+  schedulerIframeContainer.innerHTML = '';
+
+  // Create the iframe element
+  const iframe = document.createElement('iframe');
+  iframe.src = "https://aifreelancer.fillout.com/meet-with-taylor?embed=true&transparentBackground=true";
+  iframe.style.width = "100%";
+  iframe.style.height = "100%";
+  iframe.style.border = "none";
+  iframe.loading = "lazy";
+
+  // Add the new iframe to the modal
+  schedulerIframeContainer.appendChild(iframe);
+
+  // Show the modal with a nice animation
+  schedulerModal.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    schedulerModalContent.style.transform = 'scale(1)';
+    schedulerModalContent.style.opacity = '1';
+  });
+
+  afGtag('calendar_shown');
+}
+
+function afHideCalendar() {
+  if (!schedulerModal) return;
+  schedulerModalContent.style.transform = 'scale(0.95)';
+  schedulerModalContent.style.opacity = '0';
+  setTimeout(() => {
+    schedulerModal.classList.add('hidden');
+    // Important: remove the iframe to stop it from running in the background
+    schedulerIframeContainer.innerHTML = '';
+  }, 300);
+}
+
+// Add event listeners to close the new modal
+if (closeSchedulerBtn) {
+  closeSchedulerBtn.addEventListener('click', afHideCalendar);
+}
+if (schedulerModal) {
+  schedulerModal.addEventListener('click', (e) => {
+    // Close if the user clicks on the dark overlay
+    if (e.target === schedulerModal) {
+      afHideCalendar();
+    }
+  });
 }
 
 /* ---------- FIXED: Robust Markdown to HTML ---------- */
@@ -1398,17 +1418,6 @@ function afAddThinking() {
   afScrollMessages();
   return thinking;
 }
-// Injects the calendar iframe bubble
-function afShowCalendar () {
-  const tmpl = document.getElementById('af-calendar-template');
-  if (!tmpl) return;
-
-  // Clone template and append
-  afEls.messages.appendChild(tmpl.content.cloneNode(true));
-
-  afScrollMessages();
-  afGtag('calendar_shown');
-}
 
 /* ---------- RENDER: enhanced quick reply chips ---------- */
 function afRenderChips() {
@@ -1504,38 +1513,33 @@ async function afSubmitMessage() {
   afEls.input.value = '';
   afAddUserMessage(userMessage);
 
-// ─── waiting‑for‑lead‑confirmation ──────────────────────────────
-if (AFChatState.waitingForLeadConfirmation) {
-  AFChatState.waitingForLeadConfirmation = false;
-
-  /* 1️⃣  – explicit scheduling intent → show calendar */
+// --- ADD THIS BLOCK of code ---
+  // Check for immediate scheduling intent first
   if (afCheckScheduleIntent(userMessage)) {
     await simulateTyping(600);
-    afAddBotMessage("Sure — here’s my real‑time calendar. Pick any open slot:");
-    afShowCalendar();
-    return;                           // stop here (skip lead‑capture)
+    afAddBotMessage("Of course! Please pick a time from my calendar below.");
+    afShowCalendar(); // This opens our new modal
+    return; // Stop the function here to prevent sending to AI
   }
+  // --- END of the new block ---
 
-  /* 2️⃣  – simple “yes / ok / sure …” → start lead‑capture flow */
-  const positiveResponses = [
-    'yes','yeah','sure','ok','okay','definitely','please','yep','absolutely'
-  ];
-  if (positiveResponses.some(resp =>
-        userMessage.toLowerCase().includes(resp))) {
-    await simulateTyping(600);
-    afStartLeadCapture();
-    return;
+  // Check if we're waiting for lead confirmation
+  if (AFChatState.waitingForLeadConfirmation) {
+    AFChatState.waitingForLeadConfirmation = false;
+    const positiveResponses = ['yes', 'yeah', 'sure', 'ok', 'okay', 'definitely', 'please', 'yep', 'absolutely'];
+    
+    if (positiveResponses.some(resp => userMessage.toLowerCase().includes(resp))) {
+      await simulateTyping(600);
+      afStartLeadCapture();
+      return;
+    } else {
+      AFChatState.history.push({ role:'user', content:userMessage });
+      const thinkingNode = afAddThinking();
+      afSetSending(true);
+      afSendToAI(userMessage, thinkingNode);
+      return;
+    }
   }
-
-  /* 3️⃣  – anything else → normal AI reply */
-  AFChatState.history.push({ role: 'user', content: userMessage });
-  const thinkingNode = afAddThinking();
-  afSetSending(true);
-  afSendToAI(userMessage, thinkingNode);
-  return;
-}
-// ────────────────────────────────────────────────────────────────
-
 
   // If we're collecting lead info, process the field
   if (AFChatState.collectingInfo) {
@@ -1961,7 +1965,6 @@ if (ytFrame && videoOverlay) {
     /* Smooth scrolling for chat */
     #chatbot-messages {
       scroll-behavior: smooth;
-      overflow-x:hidden;
     }
     
     /* Active chat border animation */
@@ -1976,24 +1979,6 @@ if (ytFrame && videoOverlay) {
   tag.textContent = css;
   document.head.appendChild(tag);
 })();
-
-// Listen for Fillout "form submitted" events
-window.addEventListener('message', (event) => {
-  if (event.origin !== 'https://form.fillout.com') return;
-  if (event.data?.eventName !== 'fillout.submitted') return;
-
-  const iso   = event.data?.payload?.startDateTime;
-  const when  = iso
-      ? new Date(iso).toLocaleString('en-US',
-          { dateStyle:'long', timeStyle:'short' })
-      : 'the time you selected';
-
-  afAddBotMessage(
-    `✅ Perfect! Your meeting is booked for **${when}**. `+
-    `A calendar invite is on its way — talk to you soon!`
-  );
-  afGtag('calendar_booked');
-});
 
 /* ---------- INIT ---------- */
 (async function afInit(){
@@ -2024,6 +2009,30 @@ window.addEventListener('resize', () => {
             }
         }
     }, 250);
+});
+// Listen for when the Fillout form is submitted
+window.addEventListener('message', (event) => {
+  // Ensure the message is from Fillout for security
+  if (event.origin !== 'https://aifreelancer.fillout.com') {
+     return;
+  }
+
+  if (event.data?.eventName === 'fillout.submitted') {
+    // The form was submitted, so close the modal
+    afHideCalendar();
+    
+    // Parse the date/time from the event payload if available
+    const startTime = event.data?.payload?.startDateTime;
+    const friendlyTime = startTime 
+        ? new Date(startTime).toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' }) 
+        : 'the time you selected';
+
+    // Add a confirmation message to the chat
+    afAddBotMessage(
+      `✅ Confirmed! Your meeting is booked for **${friendlyTime}**. A calendar invite is on its way. Talk to you soon!`
+    );
+    afGtag('calendar_booked');
+  }
 });
 })();
 </script>

@@ -1530,9 +1530,10 @@ async function afSubmitMessage() {
     
     if (positiveResponses.some(resp => userMessage.toLowerCase().includes(resp))) {
       await simulateTyping(600);
-      afStartLeadCapture();
+      afAddBotMessage("Great! I've opened the calendar for you. Please pick a time that works.");
+      afShowCalendar();
       return;
-    } else {
+      } else {
       AFChatState.history.push({ role:'user', content:userMessage });
       const thinkingNode = afAddThinking();
       afSetSending(true);

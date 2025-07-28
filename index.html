@@ -1041,45 +1041,92 @@
 
 <script>
 /* ============================================================
-   AI FREELANCER CHAT WIDGET — ENHANCED VERSION
-   With lead capture via Formspree integration
-============================================================ */
+   AI FREELANCER CHAT WIDGET — FULL VERSION (updated 2025‑07‑28)
+   ============================================================ */
 
 /* ---------- CONFIG ---------- */
 const AF_CHAT_ENDPOINTS = [
-  '/api/chat',
-  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat'
+  '/api/chat'                                  // <<< UPDATED – use only the live serverless route
 ];
 
 const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config';
 
 const AF_CHAT_DEFAULT_CONFIG = {
   brand: 'AI Freelancer',
-  greeting: "Hey! I'm the AI assistant for AI Freelancer. What can I help with today? 😊",
-  suggestions: [
-    "Pricing options",
-    "Schedule a consultation",
-    "What do you automate?"
+  greeting:
+    "Hey there! I’m the AI assistant for AI Freelancer. How can I help today? 🤖",
+
+  suggestions: [                               // <<< UPDATED – richer quick‑reply chips
+    "What solutions do you offer?",
+    "How much does it cost?",
+    "ROI examples",
+    "Book a free consult"
   ]
 };
 
 /* ---------- COMMON RESPONSES CACHE ---------- */
 const COMMON_RESPONSES = {
-  'pricing': {
-    keywords: ['price', 'pricing', 'cost', 'how much', 'expensive'],
-    response: "We offer solutions starting at $99/month for our AI Website Chatbot, with our most popular Internal Process Automation at $999/month. Would you like details on a specific solution?"
+
+  pricing: {                                   // <<< UPDATED – dual‑price lines for every offer
+    keywords: [
+      'price','pricing','cost','fee','charge',
+      'how much','expensive','rate','rates'
+    ],
+    response:
+`Every solution has two clear parts: a pocket‑friendly monthly fee plus a one‑time kickoff charge.
+
+• AI Website Chatbot — **$99/mo + $499 setup**
+• Internal Process Automation — **$999/mo + $999 build**
+• Sales & CRM Automation — **$599/mo + $599 integration**
+• AI Data & Analytics — **$899/mo + $999 setup**
+• Automated Customer Support — **$599/mo + $599 integration**
+• AI Social Media Manager — **$499/mo + $999 strategy**
+• Creative & Development — **from $1,999 per project** (optional retainer)
+• AI‑Powered Team Training — **$599/mo + $299 setup**
+• Full‑Scale Transformation — **custom (typically $3,500+/mo + discovery)**
+
+Let me know which line item you’d like to explore!`
   },
-  'how it works': {
-    keywords: ['how it works', 'process', 'how do you', 'implementation'],
-    response: "Great question! We start with a free consultation to understand your needs, then design a custom AI solution, implement it with your team's input, and provide ongoing support. The whole process typically takes 2-4 weeks."
+
+  solutions: {                                 // <<< UPDATED – nine‑item catalogue
+    keywords: [
+      'solutions','services','offer','product','automation',
+      'packages','what do you do','catalog','line‑up'
+    ],
+    response:
+`Here’s our nine‑solution line‑up (each includes installation, training & 24/7 support):
+
+1. AI Website Chatbot — $99/mo + $499 setup  
+2. Internal Process Automation — $999/mo + $999 build  
+3. Sales & CRM Automation — $599/mo + $599 integration  
+4. AI Data & Analytics — $899/mo + $999 setup  
+5. Automated Customer Support — $599/mo + $599 integration  
+6. AI Social Media Manager — $499/mo + $999 strategy  
+7. Creative & Development — from $1,999 project (+ optional retainer)  
+8. AI‑Powered Team Training — $599/mo + $299 setup  
+9. Full‑Scale Transformation — bespoke, starts ≈ $3,500/mo  
+
+Ask for details on any package or bundle multiple for extra savings.`
   },
-  'roi': {
-    keywords: ['roi', 'return on investment', 'save money', 'worth it'],
-    response: "Our clients typically see ROI within 60-90 days. For example, our chatbots capture 3x more leads, and our automation solutions save an average of 20 hours per week. Want to calculate potential ROI for your business?"
+
+  'how it works': {                            // <<< UPDATED – extra onboarding keywords
+    keywords: [
+      'how it works','process','implementation','onboard',
+      'deployment','timeline','setup','integrate','rollout','steps'
+    ],
+    response:
+      "We start with a free discovery call ➜ design a pilot in 2–4 weeks ➜ launch, train & support continuously. " +
+      "All development is done by our engineers in Cleveland, Ohio. Interested in a sample project plan?"
   },
-  'solutions': {
-    keywords: ['solutions', 'what do you offer', 'services', 'automation'],
-    response: "We offer 6 main solutions: AI Website Chatbot ($99/mo), Internal Process Automation ($999/mo), Sales & CRM Automation ($599/mo), AI Data Analytics ($899/mo), Automated Customer Support ($599/mo), and Full-Scale Transformation (starting at $3,500). Which interests you most?"
+
+  roi: {
+    keywords: [
+      'roi','return on investment','payback','worth it',
+      'save money','profit','value','break even'
+    ],
+    response:
+      "Clients usually reach break‑even within **60–90 days**. Example: a retailer trimmed 120 support hours per month " +
+      "with our chatbot—over $7.8 k/month back to the bottom line. Shall we crunch your numbers?"
   }
 };
 
@@ -1107,28 +1154,28 @@ const AFChatState = {
 
 /* ---------- DOM LOOKUPS ---------- */
 const afEls = {
-  launcher: document.getElementById('chatbot-launcher'),
-  window: document.getElementById('chatbot-window'),
-  closeBtn: document.getElementById('close-chatbot'),
-  clearBtn: document.getElementById('clear-chatbot'),
-  form: document.getElementById('chatbot-form'),
-  input: document.getElementById('chatbot-input'),
-  messages: document.getElementById('chatbot-messages'),
-  contactForm: document.getElementById('contact-form'),
-  thankYouModal: document.getElementById('thank-you-modal'),
-  closeModalButton: document.getElementById('close-modal-button'),
-  header: document.getElementById('header'),
-  mobileMenuButton: document.getElementById('mobile-menu-button'),
-  mobileMenu: document.getElementById('mobile-menu'),
-  videoOverlay: document.getElementById('video-overlay')
+  launcher:          document.getElementById('chatbot-launcher'),
+  window:            document.getElementById('chatbot-window'),
+  closeBtn:          document.getElementById('close-chatbot'),
+  clearBtn:          document.getElementById('clear-chatbot'),
+  form:              document.getElementById('chatbot-form'),
+  input:             document.getElementById('chatbot-input'),
+  messages:          document.getElementById('chatbot-messages'),
+  contactForm:       document.getElementById('contact-form'),
+  thankYouModal:     document.getElementById('thank-you-modal'),
+  closeModalButton:  document.getElementById('close-modal-button'),
+  header:            document.getElementById('header'),
+  mobileMenuButton:  document.getElementById('mobile-menu-button'),
+  mobileMenu:        document.getElementById('mobile-menu'),
+  videoOverlay:      document.getElementById('video-overlay')
 };
 
 /* ---------- UTIL: safe gtag ---------- */
-function afGtag(eventName, params={}) {
+function afGtag(eventName, params = {}) {
   if (typeof window.gtag === 'function') {
     window.gtag('event', eventName, {
       event_category: 'chat',
-      message_count: AFChatState.messageCount,
+      message_count:  AFChatState.messageCount,
       session_duration: Date.now() - AFChatState.sessionStart,
       ...params
     });

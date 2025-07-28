@@ -1046,87 +1046,43 @@
    ============================================================ */
 
 /* ---------- CONFIG ---------- */
-const AF_CHAT_ENDPOINTS = ['https://aifreelancer.co/api/chat'];      // one, same‑origin route only
+const AF_CHAT_ENDPOINTS = [
+  '/api/chat',
+  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat'
+];
 
 // if you ever stand up a second backend you can push another item into the array
 //   e.g. AF_CHAT_ENDPOINTS.push('https://backup.my‑domain.com/api/chat');
 
-const AF_CHAT_CONFIG_ENDPOINT = 'https://aifreelancer.co/api/chat-config'; 
+const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config'; 
 
 const AF_CHAT_DEFAULT_CONFIG = {
   brand: 'AI Freelancer',
-  greeting:
-    "Hey there! I’m the AI assistant for AI Freelancer. How can I help today? 🤖",
+  greeting: "Hey! I'm the AI assistant for AI Freelancer. What can I help with today? ",
   suggestions: [
-    "What solutions do you offer?",
-    "How much does it cost?",
-    "ROI examples",
-    "Free consultation"
+    "Pricing options",
+    "Schedule a consultation",
+    "What do you automate?"
   ]
 };
 
-/* ---------- COMMON RESPONSES (pretty “solutions” list) ---------- */
+/* ---------- COMMON RESPONSES CACHE ---------- */
 const COMMON_RESPONSES = {
-  pricing: {
-    keywords: [
-      'price','pricing','cost','fee','charge',
-      'how much','expensive','rate','rates'
-    ],
-    response:
-`Every solution has two clear parts: a pocket‑friendly monthly fee **plus** a one‑time kickoff charge.
-
-• **AI Website Chatbot** — *$99 / mo* + $499 setup  
-• **Internal Process Automation** — *$999 / mo* + $999 build  
-• **Sales & CRM Automation** — *$599 / mo* + $599 integration  
-• **AI Data & Analytics** — *$899 / mo* + $999 setup  
-• **Automated Customer Support** — *$599 / mo* + $599 integration  
-• **AI Social Media Manager** — *$499 / mo* + $999 strategy  
-• **Creative & Development** — *from $1,999 per project* (retainer optional)  
-• **AI‑Powered Team Training** — *$599 / mo* + $299 setup  
-• **Full‑Scale Transformation** — *custom* (starts ≈ $3,500 / mo)  
-
-Let me know which line item you’d like to explore!`
+  'pricing': {
+    keywords: ['price', 'pricing', 'cost', 'how much', 'expensive'],
+    response: "We offer solutions starting at $99/month for our AI Website Chatbot, with our most popular Internal Process Automation at $999/month. Would you like details on a specific solution?"
   },
-
-  solutions: {
-    keywords: [
-      'solutions','services','offer','product','automation',
-      'packages','what do you do','catalog','line‑up'
-    ],
-    response:
-`Here’s our nine‑solution line‑up (installation, training & 24/7 support included):
-
-• **AI Website Chatbot** — *$99 / mo* + $499 setup  
-• **Internal Process Automation** — *$999 / mo* + $999 build  
-• **Sales & CRM Automation** — *$599 / mo* + $599 integration  
-• **AI Data & Analytics** — *$899 / mo* + $999 setup  
-• **Automated Customer Support** — *$599 / mo* + $599 integration  
-• **AI Social Media Manager** — *$499 / mo* + $999 strategy  
-• **Creative & Development** — *from $1,999 per project* (retainer optional)  
-• **AI‑Powered Team Training** — *$599 / mo* + $299 setup  
-• **Full‑Scale Transformation** — *custom* (starts ≈ $3,500 / mo)  
-
-Ask for details on any package or bundle multiple for extra savings.`
-  },
-
   'how it works': {
-    keywords: [
-      'how it works','process','implementation','onboard',
-      'deployment','timeline','setup','integrate','rollout','steps'
-    ],
-    response:
-      "We start with a free discovery call ➜ design a pilot in 2–4 weeks ➜ launch, train & support continuously. " +
-      "All development is done by our engineers in Cleveland, Ohio. Interested in a sample project plan?"
+    keywords: ['how it works', 'process', 'how do you', 'implementation'],
+    response: "Great question! We start with a free consultation to understand your needs, then design a custom AI solution, implement it with your team's input, and provide ongoing support. The whole process typically takes 2-4 weeks."
   },
-
-  roi: {
-    keywords: [
-      'roi','return on investment','payback','worth it',
-      'save money','profit','value','break even'
-    ],
-    response:
-      "Clients usually reach break‑even within **60–90 days**. Example: a retailer trimmed 120 support hours per month " +
-      "with our chatbot—over $7.8 k/month back to the bottom line. Shall we crunch your numbers?"
+  'roi': {
+    keywords: ['roi', 'return on investment', 'save money', 'worth it'],
+    response: "Our clients typically see ROI within 60-90 days. For example, our chatbots capture 3x more leads, and our automation solutions save an average of 20 hours per week. Want to calculate potential ROI for your business?"
+  },
+  'solutions': {
+    keywords: ['solutions', 'what do you offer', 'services', 'automation'],
+    response: "We offer 6 main solutions: AI Website Chatbot ($99/mo), Internal Process Automation ($999/mo), Sales & CRM Automation ($599/mo), AI Data Analytics ($899/mo), Automated Customer Support ($599/mo), and Full-Scale Transformation (starting at $3,500). Which interests you most?"
   }
 };
 

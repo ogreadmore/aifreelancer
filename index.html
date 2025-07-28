@@ -1044,72 +1044,79 @@
    AI FREELANCER CHAT WIDGET — FULL VERSION (updated 2025‑07‑28)
    ============================================================ */
 
-/* ---------- CONFIG ---------- */
+/* ---------- CONFIG (endpoints, greeting chips) ---------- */
 const AF_CHAT_ENDPOINTS = [
-  '/api/chat'                                  // <<< UPDATED – use only the live serverless route
+  // 1 – relative path (works when the HTML is served from the same domain as the function)
+  '/api/chat',
+
+  // 2 – absolute fallback to the same prod domain (avoids 404s when the page is in a sub‑folder / CDN)
+  'https://www.aifreelancer.co/api/chat',
+
+  // 3 – (OPTIONAL) your serverless URL if the above two ever fail
+  // 'https://ai-freelancer-functions.vercel.app/api/chat'
 ];
 
-const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config';
+const AF_CHAT_CONFIG_ENDPOINT = 'https://www.aifreelancer.co/api/chat-config';
 
 const AF_CHAT_DEFAULT_CONFIG = {
   brand: 'AI Freelancer',
   greeting:
     "Hey there! I’m the AI assistant for AI Freelancer. How can I help today? 🤖",
 
-  suggestions: [                               // <<< UPDATED – richer quick‑reply chips
+  suggestions: [
     "What solutions do you offer?",
     "How much does it cost?",
     "ROI examples",
-    "Book a free consult"
+    "Free consultation"            // ← renamed chip
   ]
 };
 
-/* ---------- COMMON RESPONSES CACHE ---------- */
+/* ---------- COMMON RESPONSES (pretty “solutions” list) ---------- */
 const COMMON_RESPONSES = {
 
-  pricing: {                                   // <<< UPDATED – dual‑price lines for every offer
+  pricing: {
     keywords: [
       'price','pricing','cost','fee','charge',
       'how much','expensive','rate','rates'
     ],
     response:
-`Every solution has two clear parts: a pocket‑friendly monthly fee plus a one‑time kickoff charge.
+`Every solution has two clear parts: a pocket‑friendly monthly fee **plus** a one‑time kickoff charge.
 
-• AI Website Chatbot — **$99/mo + $499 setup**
-• Internal Process Automation — **$999/mo + $999 build**
-• Sales & CRM Automation — **$599/mo + $599 integration**
-• AI Data & Analytics — **$899/mo + $999 setup**
-• Automated Customer Support — **$599/mo + $599 integration**
-• AI Social Media Manager — **$499/mo + $999 strategy**
-• Creative & Development — **from $1,999 per project** (optional retainer)
-• AI‑Powered Team Training — **$599/mo + $299 setup**
-• Full‑Scale Transformation — **custom (typically $3,500+/mo + discovery)**
+• **AI Website Chatbot** — *$99 / mo* + $499 setup  
+• **Internal Process Automation** — *$999 / mo* + $999 build  
+• **Sales & CRM Automation** — *$599 / mo* + $599 integration  
+• **AI Data & Analytics** — *$899 / mo* + $999 setup  
+• **Automated Customer Support** — *$599 / mo* + $599 integration  
+• **AI Social Media Manager** — *$499 / mo* + $999 strategy  
+• **Creative & Development** — *from $1,999 per project* (retainer optional)  
+• **AI‑Powered Team Training** — *$599 / mo* + $299 setup  
+• **Full‑Scale Transformation** — *custom* (starts ≈ $3,500 / mo)  
 
 Let me know which line item you’d like to explore!`
   },
 
-  solutions: {                                 // <<< UPDATED – nine‑item catalogue
+  solutions: {     // ← reformatted list
     keywords: [
       'solutions','services','offer','product','automation',
       'packages','what do you do','catalog','line‑up'
     ],
     response:
-`Here’s our nine‑solution line‑up (each includes installation, training & 24/7 support):
+`Here’s our nine‑solution line‑up (installation, training & 24/7 support included):
 
-1. AI Website Chatbot — $99/mo + $499 setup  
-2. Internal Process Automation — $999/mo + $999 build  
-3. Sales & CRM Automation — $599/mo + $599 integration  
-4. AI Data & Analytics — $899/mo + $999 setup  
-5. Automated Customer Support — $599/mo + $599 integration  
-6. AI Social Media Manager — $499/mo + $999 strategy  
-7. Creative & Development — from $1,999 project (+ optional retainer)  
-8. AI‑Powered Team Training — $599/mo + $299 setup  
-9. Full‑Scale Transformation — bespoke, starts ≈ $3,500/mo  
+• **AI Website Chatbot** — *$99 / mo* + $499 setup  
+• **Internal Process Automation** — *$999 / mo* + $999 build  
+• **Sales & CRM Automation** — *$599 / mo* + $599 integration  
+• **AI Data & Analytics** — *$899 / mo* + $999 setup  
+• **Automated Customer Support** — *$599 / mo* + $599 integration  
+• **AI Social Media Manager** — *$499 / mo* + $999 strategy  
+• **Creative & Development** — *from $1,999 per project* (retainer optional)  
+• **AI‑Powered Team Training** — *$599 / mo* + $299 setup  
+• **Full‑Scale Transformation** — *custom* (starts ≈ $3,500 / mo)  
 
 Ask for details on any package or bundle multiple for extra savings.`
   },
 
-  'how it works': {                            // <<< UPDATED – extra onboarding keywords
+  'how it works': {
     keywords: [
       'how it works','process','implementation','onboard',
       'deployment','timeline','setup','integrate','rollout','steps'

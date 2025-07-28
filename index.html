@@ -1066,23 +1066,44 @@ const AF_CHAT_DEFAULT_CONFIG = {
   ]
 };
 
-/* ---------- COMMON RESPONSES CACHE ---------- */
+/* ---------- COMMON RESPONSES (pretty “solutions” list) ---------- */
 const COMMON_RESPONSES = {
-  'pricing': {
-    keywords: ['price', 'pricing', 'cost', 'how much', 'expensive'],
-    response: "We offer solutions starting at $99/month for our AI Website Chatbot, with our most popular Internal Process Automation at $999/month. Would you like details on a specific solution?"
+  pricing: {
+    keywords: [
+      'price','pricing','cost','fee','charge',
+      'how much','expensive','rate','rates'
+    ],
+    response:
+`Every solution has two clear parts: a pocket‑friendly monthly fee **plus** a one‑time kickoff charge.\n\n• **AI\u00a0Website\u00a0Chatbot** — *$99\u00a0/\u00a0mo*\u00a0+\u00a0$499\u00a0setup  \n• **Internal\u00a0Process\u00a0Automation** — *$999\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0build  \n• **Sales\u00a0&\u00a0CRM\u00a0Automation** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$599\u00a0integration  \n• **AI\u00a0Data\u00a0&\u00a0Analytics** — *$899\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0setup  \n• **Automated\u00a0Customer\u00a0Support** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$599\u00a0integration  \n• **AI\u00a0Social\u00a0Media\u00a0Manager** — *$499\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0strategy  \n• **Creative\u00a0&\u00a0Development** — *from\u00a0$1,999\u00a0per\u00a0project* (retainer optional)  \n• **AI‑Powered\u00a0Team\u00a0Training** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$299\u00a0setup  \n• **Full‑Scale\u00a0Transformation** — *custom* (starts\u00a0≈\u00a0$3,500\u00a0/\u00a0mo)  \n\nLet me know which line item you’d like to explore!`
   },
+
+  solutions: {
+    keywords: [
+      'solutions','services','offer','product','automation',
+      'packages','what do you do','catalog','line‑up'
+    ],
+    response:
+`Here’s our nine‑solution line‑up (installation, training & 24/7 support included):\n\n• **AI\u00a0Website\u00a0Chatbot** — *$99\u00a0/\u00a0mo*\u00a0+\u00a0$499\u00a0setup  \n• **Internal\u00a0Process\u00a0Automation** — *$999\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0build  \n• **Sales\u00a0&\u00a0CRM\u00a0Automation** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$599\u00a0integration  \n• **AI\u00a0Data\u00a0&\u00a0Analytics** — *$899\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0setup  \n• **Automated\u00a0Customer\u00a0Support** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$599\u00a0integration  \n• **AI\u00a0Social\u00a0Media\u00a0Manager** — *$499\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0strategy  \n• **Creative\u00a0&\u00a0Development** — *from\u00a0$1,999\u00a0per\u00a0project* (retainer optional)  \n• **AI‑Powered\u00a0Team\u00a0Training** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$299\u00a0setup  \n• **Full‑Scale\u00a0Transformation** — *custom* (starts\u00a0≈\u00a0$3,500\u00a0/\u00a0mo)  \n\nAsk for details on any package or bundle multiple for extra savings.`
+  },
+
   'how it works': {
-    keywords: ['how it works', 'process', 'how do you', 'implementation'],
-    response: "Great question! We start with a free consultation to understand your needs, then design a custom AI solution, implement it with your team's input, and provide ongoing support. The whole process typically takes 2-4 weeks."
+    keywords: [
+      'how it works','process','implementation','onboard',
+      'deployment','timeline','setup','integrate','rollout','steps'
+    ],
+    response:
+      "We start with a free discovery call ➜ design a pilot in 2–4\u00a0weeks ➜ launch, train & support continuously. " +
+      "All development is done by our engineers in Cleveland, Ohio. Interested in a sample project plan?"
   },
-  'roi': {
-    keywords: ['roi', 'return on investment', 'save money', 'worth it'],
-    response: "Our clients typically see ROI within 60-90 days. For example, our chatbots capture 3x more leads, and our automation solutions save an average of 20 hours per week. Want to calculate potential ROI for your business?"
-  },
-  'solutions': {
-    keywords: ['solutions', 'what do you offer', 'services', 'automation'],
-    response: "We offer 6 main solutions: AI Website Chatbot ($99/mo), Internal Process Automation ($999/mo), Sales & CRM Automation ($599/mo), AI Data Analytics ($899/mo), Automated Customer Support ($599/mo), and Full-Scale Transformation (starting at $3,500). Which interests you most?"
+
+  roi: {
+    keywords: [
+      'roi','return on investment','payback','worth it',
+      'save money','profit','value','break even'
+    ],
+    response:
+      "Clients usually reach break‑even within **60–90\u00a0days**. Example: a retailer trimmed 120 support hours per month " +
+      "with our chatbot—over $7.8\u00a0k/month back to the bottom\u00a0line. Shall we crunch your numbers?"
   }
 };
 

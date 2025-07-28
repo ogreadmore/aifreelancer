@@ -1044,22 +1044,13 @@
    AI FREELANCER CHAT WIDGET — FULL VERSION (updated 2025‑07‑28)
    ============================================================ */
 
-/* ---------- CONFIG (endpoints, greeting chips) ---------- */
-const AF_CHAT_ENDPOINTS = [
-  // 1 — relative path (same origin)
-  '/api/chat',
+/* ---------- CONFIG ---------- */
+const AF_CHAT_ENDPOINTS = ['/api/chat'];      // one, same‑origin route only
 
-  // 2 — absolute (bare domain)
-  'https://aifreelancer.co/api/chat',
+// if you ever stand up a second backend you can push another item into the array
+//   e.g. AF_CHAT_ENDPOINTS.push('https://backup.my‑domain.com/api/chat');
 
-  // 3 — absolute (www subdomain)
-  'https://www.aifreelancer.co/api/chat',
-
-  // 4 — optional serverless URL if you have one:
-  // 'https://ai-freelancer-functions.vercel.app/api/chat'
-];
-
-const AF_CHAT_CONFIG_ENDPOINT = 'https://www.aifreelancer.co/api/chat-config';
+const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config'; 
 
 const AF_CHAT_DEFAULT_CONFIG = {
   brand: 'AI Freelancer',
@@ -1562,81 +1553,60 @@ async function afSubmitMessage() {
   afSendToAI(userMessage, thinkingNode);
 }
 
-/* ---------- SEND TO AI (CORS‑safe, tolerant response parsing) ---------- */
+/* ---------- SEND TO AI ---------- */
 async function afSendToAI(userMessage, thinkingNode) {
   let lastErr;
+  
+  // only keep the last ~10 messages for context
   const payloadHistory = AFChatState.history.slice(-10);
 
   for (const url of AF_CHAT_ENDPOINTS) {
     try {
       const res = await fetch(url, {
         method: 'POST',
-        mode: 'cors', // important for cross‑origin
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage, history: payloadHistory })
+        headers: { 'Content-Type': 'application/json' }, // simple request => no CORS pre‑flight
+        body: JSON.stringify({ 
+          message: userMessage,
+          history: payloadHistory
+        })
       });
 
-      console.info('[AFChat] POST', url, '→', res.status);
-
-      if (!res.ok) { lastErr = new Error('HTTP '+res.status); continue; }
+      if (!res.ok) {
+        console.warn(`[AFChat] ${url} → ${res.status}`);
+        lastErr = new Error(`HTTP ${res.status}`);
+        continue; // try next endpoint (there’s only one right now)
+      }
 
       const data = await res.json();
+      const botReply = data.reply ?? data.message ?? data.content ?? '';
 
-      // Accept a variety of back‑end shapes
-      const botReply =
-        data.reply ??
-        data.message ??
-        data.content ??
-        (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) ??
-        null;
+      if (!botReply) throw new Error('Empty reply from server');
 
-      if (!botReply) { lastErr = new Error('No reply field in JSON'); continue; }
-
-      // Filter out accidental debug content
-      const lower = String(botReply).toLowerCase();
-      if (lower.includes('please respond with text styled') ||
-          lower.includes('can only provide plain text') ||
-          lower.includes('testing ') ||
-          lower.includes('test message')) {
-        console.warn('[AFChat] filtered debug reply:', botReply);
-        if (thinkingNode?.remove) thinkingNode.remove();
-        afSetSending(false);
-        return;
-      }
-
+      // tidy up the “thinking…” indicator
       if (thinkingNode?.remove) thinkingNode.remove();
 
+      // mild typing delay
       await simulateTyping(Math.min(botReply.length * 10, 1500));
-      afAddBotMessage(botReply);
-      AFChatState.history.push({ role:'assistant', content: botReply });
 
+      afAddBotMessage(botReply);
+      AFChatState.history.push({ role: 'assistant', content: botReply });
       afSetSending(false);
       afGtag('chat_bot_reply');
-
-      if (AFChatState.detectedLeadIntent) {
-        AFChatState.detectedLeadIntent = false;
-        await simulateTyping(1000);
-        afAddBotMessage("Would you like me to have someone from our team reach out to you? I can collect your contact info right now.");
-        AFChatState.waitingForLeadConfirmation = true;
-      }
-      return; // success
+      return;                                          // ✅ success, stop here
     } catch (err) {
-      console.warn('[AFChat] error calling', url, err);
       lastErr = err;
-      // try next endpoint
+      console.warn('[AFChat] error calling', url, err);
+      // loop continues (will exit after last endpoint)
     }
   }
 
-  // All endpoints failed
+  /* ---- every endpoint failed ---- */
   if (thinkingNode?.remove) thinkingNode.remove();
-  const fallbackMessages = [
-    "I'm having trouble connecting right now. Feel free to use the contact form below, or try asking again in a moment!",
-    "Oops, something went wrong on my end. You can reach us directly at (440) 941-1785 or try again.",
-    "Sorry, I'm experiencing technical difficulties. Please use the contact form below or give us a call!"
-  ];
-  afAddBotMessage(fallbackMessages[Math.floor(Math.random() * fallbackMessages.length)]);
+  afAddBotMessage(
+    "Sorry, I'm having trouble connecting right now. " +
+    "Feel free to use the contact form below or try again in a moment!"
+  );
   afSetSending(false);
-  AFChatState.detectedLeadIntent = false;
   console.error('[AFChat] all endpoints failed', lastErr);
 }
 

@@ -66,9 +66,6 @@
     <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://www.google-analytics.com">
-
-    <!-- Preload hero poster to improve LCP on mobile -->
-    <link rel="preload" as="image" href="/assets/images/mobile-video-placeholder-1.jpg" imagesrcset="/assets/images/mobile-video-placeholder-1.jpg 1920w" imagesizes="100vw" fetchpriority="high">
     
     <style>
         :root {
@@ -361,10 +358,10 @@
     </header>
 
     <!-- Hero Section with Video Background -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div class="absolute inset-0 z-0">
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-gray-50 md:bg-transparent">
+        <div class="absolute inset-0 z-0 hidden md:block">
             <!-- Video Background -->
-            <video id="hero-video" autoplay loop muted playsinline preload="none" fetchpriority="low" poster="/assets/images/mobile-video-placeholder-1.jpg" class="hero-video">
+            <video id="hero-video" autoplay loop muted playsinline preload="none" fetchpriority="low" class="hero-video">
                 <source id="hero-video-source" data-src="/vidbg1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>

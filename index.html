@@ -21,7 +21,7 @@
     
     <!-- Favicons -->
     <link rel="icon" href="/assets/images/favicons/favicon.ico" sizes="any">
-    <link rel="icon" href="/assets/images/favicons/favicon.svg" type="image/svg+xml">
+    <!-- Removed SVG favicon to avoid 140KB download; PNG/ICO cover all targets -->
     <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png">
     <link rel="manifest" href="/assets/images/favicons/site.webmanifest">
     
@@ -49,6 +49,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800&display=swap" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet"></noscript>
     
@@ -65,6 +66,9 @@
     <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Preload hero poster to improve LCP on mobile -->
+    <link rel="preload" as="image" href="/assets/images/mobile-video-placeholder-1.jpg" imagesrcset="/assets/images/mobile-video-placeholder-1.jpg 1920w" imagesizes="100vw" fetchpriority="high">
     
     <style>
         :root {
@@ -360,8 +364,8 @@
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div class="absolute inset-0 z-0">
             <!-- Video Background -->
-            <video autoplay loop muted playsinline preload="none" fetchpriority="low" poster="/assets/images/mobile-video-placeholder-1.jpg" class="hero-video">
-                <source src="/vidbg1.mp4" type="video/mp4">
+            <video id="hero-video" autoplay loop muted playsinline preload="none" fetchpriority="low" poster="/assets/images/mobile-video-placeholder-1.jpg" class="hero-video">
+                <source id="hero-video-source" data-src="/vidbg1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="hero-overlay"></div>
@@ -1689,7 +1693,7 @@ async function afLoadRemoteConfig() {
 }
 
 /* ---------- HEADER / MOBILE MENU / VIDEO ---------- */
-(function afHeaderMobileEtc(){
+function afHeaderMobileEtc(){
   const { mobileMenuButton, mobileMenu, header, videoOverlay } = afEls;
 
   if (mobileMenuButton && mobileMenu) {
@@ -1727,10 +1731,10 @@ async function afLoadRemoteConfig() {
       videoOverlay.style.pointerEvents = 'none';
     });
   }
-})();
+}
 
 /* ---------- CONTACT FORM ---------- */
-(function afContactFormAjax(){
+function afContactFormAjax(){
   const form = afEls.contactForm;
   const modal = afEls.thankYouModal;
   const closeBtn = afEls.closeModalButton;
@@ -1767,10 +1771,10 @@ async function afLoadRemoteConfig() {
 
   closeBtn?.addEventListener('click', hideModal);
   modal?.addEventListener('click', e => { if (e.target === modal) hideModal(); });
-})();
+}
 
 /* ---------- INJECT ENHANCED STYLES ---------- */
-(function afInjectStyles(){
+function afInjectStyles(){
   const css = `
     .af-chat-msg { white-space: pre-line; word-break: break-word; overflow-wrap: anywhere; }
     .thinking-dot { display:inline-block; width:8px; height:8px; border-radius:50%; background-color:#9ca3af; animation:thinking 1.4s infinite ease-in-out both; }
@@ -1796,7 +1800,34 @@ async function afLoadRemoteConfig() {
   tag.setAttribute('data-afchat','');
   tag.textContent = css;
   document.head.appendChild(tag);
-})();
+}
+
+// Defer non-critical initializers and background video loading
+window.addEventListener('DOMContentLoaded', () => {
+  // Initialize header/menu and smooth scroll
+  afHeaderMobileEtc();
+  // Initialize contact form handlers
+  afContactFormAjax();
+  // Defer style injection to idle time
+  if ('requestIdleCallback' in window) requestIdleCallback(afInjectStyles); else setTimeout(afInjectStyles, 1);
+
+  // Load hero background video only on desktop/tablet widths
+  try {
+    const video = document.getElementById('hero-video');
+    const source = document.getElementById('hero-video-source');
+    if (video && source) {
+      const isWide = window.matchMedia('(min-width: 768px)').matches;
+      const dataSrc = source.getAttribute('data-src');
+      if (isWide && dataSrc) {
+        source.setAttribute('src', dataSrc);
+        // Avoid blocking; let browser schedule decode
+        video.load();
+        const play = () => video.play().catch(() => {});
+        if (document.readyState === 'complete') play(); else window.addEventListener('load', play, { once: true });
+      }
+    }
+  } catch (_) {}
+});
 
 /* ---------- INIT ---------- */
 (async function afInit(){

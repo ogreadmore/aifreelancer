@@ -8,7 +8,8 @@ if (window.AF_CHAT_WIDGET_LOADED) {
   if (!document.querySelector('link[data-afchat-css]')) {
     const l = document.createElement('link');
     l.rel = 'stylesheet';
-    l.href = '/assets/css/chatbot.css';
+    // Use relative path so the asset loads correctly on GitHub Pages
+    l.href = 'assets/css/chatbot.css';
     l.setAttribute('data-afchat-css', '');
     document.head.appendChild(l);
   }
@@ -887,5 +888,5 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 })();
-</script>
-\n// --- End original chat widget script ---
+
+// --- End original chat widget script ---

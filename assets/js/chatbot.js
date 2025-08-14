@@ -3,6 +3,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
   console.warn('AF chat widget already loaded');
 } else {
   window.AF_CHAT_WIDGET_LOADED = true;
+  console.log('AFCHAT: assets/js/chatbot.js loaded and executing');
 
   // Ensure CSS is present
   if (!document.querySelector('link[data-afchat-css]')) {
@@ -85,7 +86,13 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     </div>
 </div>
 `;
-  document.body.insertAdjacentHTML('beforeend', html);
+  try {
+    if (!document.body) console.warn('AFCHAT: document.body is not present');
+    document.body.insertAdjacentHTML('beforeend', html);
+    console.log('AFCHAT: injected chatbot HTML into document.body');
+  } catch (err) {
+    console.error('AFCHAT: failed to inject chatbot HTML', err);
+  }
 
   // --- Begin original chat widget script (extracted) ---
 /* ---------- CONFIG ---------- */

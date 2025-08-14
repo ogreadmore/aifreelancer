@@ -671,7 +671,10 @@ async function afSubmitMessage() {
 
   if (afCheckLeadIntent(userMessage)) {
     // If user explicitly asks to leave details, start client-side lead capture immediately
-    const explicitCapture = ['take my info','collect my info','i want to leave my details','give my contact','take my details','here is my email','contact me','i want to be contacted','send my info'];
+    const explicitCapture = [
+      'take my info','collect my info','i want to leave my details','give my contact','take my details','here is my email','contact me','i want to be contacted','send my info',
+      'ask the team','ask the team a question','i want to ask the team','i have a question','i want to ask','ask a question','i would like to ask','i want to talk to the team'
+    ];
     const lower = userMessage.toLowerCase();
     if (explicitCapture.some(p => lower.includes(p))) {
       AFChatState.detectedLeadIntent = true;
@@ -743,11 +746,14 @@ async function afSendToAI(userMessage, thinkingNode) {
       AFChatState.history.push({ role: 'assistant', content: botReply });
       // If we previously detected lead intent but the AI refused to collect PII,
       // start client-side lead capture so we can still gather visitor contact info.
-      const refusalPhrases = ["can't collect personal information","cannot collect personal information","can't collect personal","i can't collect personal","i'm not able to collect personal","i cannot collect personal"];
       const lowerReply = (botReply || '').toLowerCase();
-      if (AFChatState.detectedLeadIntent && refusalPhrases.some(r => lowerReply.includes(r))) {
-        // Ask user directly and start collecting info
-        console.log('AFCHAT: AI refused to collect PII; switching to client-side lead capture');
+      // Heuristic: if reply contains a negation and words about collecting/relaying personal info, treat as a refusal
+      const negWords = ["can't","cannot","cant","cannot","unable","not able","don't","do not","unable to","sorry"];
+      const infoWords = ['collect','personal','information','relay','contact','email','details','private'];
+      const containsNeg = negWords.some(n => lowerReply.includes(n));
+      const containsInfo = infoWords.some(n => lowerReply.includes(n));
+      if (AFChatState.detectedLeadIntent && containsNeg && containsInfo) {
+        console.log('AFCHAT: AI refusal heuristic matched; switching to client-side lead capture', {lowerReply});
         afAddBotMessage("I can collect your contact info here instead — what's your name? (You can type 'cancel' to stop)");
         AFChatState.collectingInfo = true;
         AFChatState.currentField = 'name';

@@ -275,11 +275,14 @@ async function afSubmitLeadToFormspree() {
   formData.append('_cc', 'tayloroliphant@gmail.com');
 
   try {
+    // Primary attempt: FormData POST
     const response = await fetch('https://formspree.io/f/mldlebob', {
       method: 'POST',
       body: formData,
       headers: { 'Accept': 'application/json' }
     });
+    const text = await response.text().catch(()=>'');
+    console.log('AFCHAT: formspree primary response', {status: response.status, ok: response.ok, text: text.slice(0,400)});
     if (response.ok) {
       afAddBotMessage("✅ Thank you! Your information has been sent. Someone from our team will contact you within 24 hours.");
       afGtag('chat_lead_captured', {
@@ -290,11 +293,48 @@ async function afSubmitLeadToFormspree() {
       AFChatState.collectingInfo = false;
       AFChatState.currentField = null;
       AFChatState.leadData = { name: '', email: '', phone: '', company: '', message: '' };
-    } else {
-      afAddBotMessage("I'm sorry, there was an issue submitting your info. Please try the contact form below or call us at (440) 941-1785.");
+      return;
     }
+
+    // Secondary attempt: send JSON payload (some CORS setups accept JSON)
+    const payload = {
+      name: AFChatState.leadData.name,
+      email: AFChatState.leadData.email,
+      phone: AFChatState.leadData.phone || '',
+      company: AFChatState.leadData.company || '',
+      message: AFChatState.leadData.message,
+      _subject: 'New Lead from AI Chatbot',
+      _cc: 'tayloroliphant@gmail.com'
+    };
+    try {
+      const r2 = await fetch('https://formspree.io/f/mldlebob', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const t2 = await r2.text().catch(()=>'');
+      console.log('AFCHAT: formspree json fallback response', {status: r2.status, ok: r2.ok, text: t2.slice(0,400)});
+      if (r2.ok) {
+        afAddBotMessage("✅ Thank you! Your information has been sent. Someone from our team will contact you within 24 hours.");
+        afGtag('chat_lead_captured', {
+          email: AFChatState.leadData.email,
+          has_phone: !!AFChatState.leadData.phone,
+          has_company: !!AFChatState.leadData.company
+        });
+        AFChatState.collectingInfo = false;
+        AFChatState.currentField = null;
+        AFChatState.leadData = { name: '', email: '', phone: '', company: '', message: '' };
+        return;
+      }
+    } catch (err2) {
+      console.error('AFCHAT: formspree json fallback error', err2);
+    }
+
+    // If we get here both attempts failed
+    console.warn('AFCHAT: Formspree submission failed (both attempts)');
+    afAddBotMessage("I'm sorry, there was an issue submitting your info. Please try the contact form below or call us at (440) 941-1785.");
   } catch (error) {
-    console.error('Lead submission error:', error);
+    console.error('AFCHAT: Lead submission error (primary attempt)', error);
     afAddBotMessage("I'm sorry, there was an issue submitting your info. Please try the contact form below or call us at (440) 941-1785.");
   }
 }

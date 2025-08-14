@@ -18,12 +18,12 @@ if (window.AF_CHAT_WIDGET_LOADED) {
   // Inject HTML container + modals
   const html = `
     <!-- AI Chatbot (injected) -->
-    <div class="chatbot-container">
+    <div class="chatbot-container" style="z-index:10000; position:fixed; bottom:2rem; right:2rem;">
         <div id="chatbot-launcher" class="chatbot-launcher gemini-gradient-bg pulse" aria-label="Open AI chat assistant">
             <i class="fa-solid fa-robot text-xl"></i>
         </div>
         
-        <div id="chatbot-window" class="chatbot-window hidden" aria-hidden="true">
+        <div id="chatbot-window" class="chatbot-window hidden" aria-hidden="true" style="display:none; opacity:0; transform:scale(.95);">
             <div class="gemini-gradient-bg p-4 text-white flex justify-between items-center">
                 <h3 class="font-bold">AI Assistant</h3>
                 <div>
@@ -664,6 +664,10 @@ function afToggleChat(show) {
   const win = afEls.window;
   if (!win) return;
   const isMobile = window.innerWidth < 768;
+  // ensure inline display toggled for reliable show/hide across pages
+  if (show) {
+    win.style.display = isMobile ? 'block' : 'flex';
+  }
   if (isMobile) {
     win.style.width = '100vw';
     win.style.height = '100vh';
@@ -697,6 +701,8 @@ function afToggleChat(show) {
       AFChatState.currentField = null;
       AFChatState.detectedLeadIntent = false;
       AFChatState.waitingForLeadConfirmation = false;
+      // hide via inline style to ensure it's not visible on other pages
+      win.style.display = 'none';
     }, 300);
     afGtag('chat_close');
   }

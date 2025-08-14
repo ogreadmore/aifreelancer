@@ -310,7 +310,8 @@ async function afSubmitLeadToFormspree() {
   formData.append('company', AFChatState.leadData.company || '');
   formData.append('message', AFChatState.leadData.message);
   formData.append('_subject', 'New Lead from AI Chatbot');
-  formData.append('_cc', 'tayloroliphant@gmail.com');
+  // NOTE: avoid CCing personal addresses from client-side code (privacy & spam risk)
+  // formData.append('_cc', 'tayloroliphant@gmail.com');
 
   try {
     // Primary attempt: FormData POST
@@ -323,8 +324,12 @@ async function afSubmitLeadToFormspree() {
     console.log('AFCHAT: formspree primary response', {status: response.status, ok: response.ok, text: text.slice(0,400)});
     if (response.ok) {
       afAddBotMessage("✅ Thank you! Your information has been sent. Someone from our team will contact you within 24 hours.");
+      // Avoid sending raw email addresses to analytics; send only presence and domain for segmentation
+      const email = AFChatState.leadData.email || '';
+      const emailDomain = (email.includes('@') ? email.split('@')[1] : '').toLowerCase();
       afGtag('chat_lead_captured', {
-        email: AFChatState.leadData.email,
+        has_email: !!email,
+        email_domain: emailDomain,
         has_phone: !!AFChatState.leadData.phone,
         has_company: !!AFChatState.leadData.company
       });
@@ -354,11 +359,15 @@ async function afSubmitLeadToFormspree() {
       console.log('AFCHAT: formspree json fallback response', {status: r2.status, ok: r2.ok, text: t2.slice(0,400)});
       if (r2.ok) {
         afAddBotMessage("✅ Thank you! Your information has been sent. Someone from our team will contact you within 24 hours.");
-        afGtag('chat_lead_captured', {
-          email: AFChatState.leadData.email,
-          has_phone: !!AFChatState.leadData.phone,
-          has_company: !!AFChatState.leadData.company
-        });
+      // Avoid sending raw email addresses to analytics; send only presence and domain for segmentation
+      const email2 = AFChatState.leadData.email || '';
+      const emailDomain2 = (email2.includes('@') ? email2.split('@')[1] : '').toLowerCase();
+      afGtag('chat_lead_captured', {
+        has_email: !!email2,
+        email_domain: emailDomain2,
+        has_phone: !!AFChatState.leadData.phone,
+        has_company: !!AFChatState.leadData.company
+      });
         AFChatState.collectingInfo = false;
         AFChatState.currentField = null;
         AFChatState.leadData = { name: '', email: '', phone: '', company: '', message: '' };
@@ -437,12 +446,13 @@ if (schedulerModal) {
 
 /* ---------- FIXED: Robust Markdown to HTML ---------- */
 function afMarkdownToHtml(md) {
-  let html = md;
-  const htmlPlaceholders = [];
-  html = html.replace(/<[^>]+>/g, match => {
-    htmlPlaceholders.push(match);
-    return `__HTML_${htmlPlaceholders.length - 1}__`;
-  });
+  // Sanitize input by escaping any raw HTML first to prevent XSS.
+  // Then run a limited markdown -> HTML transform (links, bold, emphasis, lists, headings).
+  let html = md
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g,
     '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-800">$1</a>');
   html = html
@@ -455,7 +465,7 @@ function afMarkdownToHtml(md) {
     .replace(/^\* (.+)$/gm, '<li>$1</li>')
     .replace(/^- (.+)$/gm, '<li>$1</li>');
   html = html.replace(/(<li>.*<\/li>\s*)+/g, m => `<ul class="list-disc pl-5 my-2 space-y-1">${m}</ul>`);
-  htmlPlaceholders.forEach((ph, i) => { html = html.replace(`__HTML_${i}__`, ph); });
+  // convert bare newlines to <br> while avoiding inside tags (we escaped raw tags above)
   html = html.replace(/\n(?![^<]*>)/g, '<br>');
   html = html.replace(
     /(?<!href=["'])(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*))(?![^<]*>)(?![^<]*<\/a>)/gi,

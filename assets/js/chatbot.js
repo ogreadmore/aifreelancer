@@ -94,11 +94,47 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     console.error('AFCHAT: failed to inject chatbot HTML', err);
   }
 
+  // Developer debug helper: if URL includes ?afdebug=1 show a test button
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('afdebug') === '1') {
+      const dbg = document.createElement('button');
+      dbg.textContent = 'AF Test Submit';
+      dbg.style.position = 'fixed';
+      dbg.style.right = '2rem';
+      dbg.style.bottom = '8rem';
+      dbg.style.zIndex = '10001';
+      dbg.style.padding = '10px 14px';
+      dbg.style.borderRadius = '8px';
+      dbg.style.background = 'rgba(59,130,246,0.95)';
+      dbg.style.color = '#fff';
+      dbg.style.border = 'none';
+      dbg.style.cursor = 'pointer';
+      dbg.title = 'Trigger a test Formspree submission';
+      dbg.addEventListener('click', async () => {
+        console.log('AFCHAT: debug button clicked — performing test submit');
+        AFChatState.leadData = {
+          name: 'Debug Tester',
+          email: 'debug@example.com',
+          phone: '(000) 000-0000',
+          company: 'Debug Co',
+          message: 'This is a test submission triggered from the debug button.\n\nPlease ignore.'
+        };
+        try {
+          await afSubmitLeadToFormspree();
+        } catch (e) { console.error('AFCHAT: debug submit error', e); }
+      });
+      document.body.appendChild(dbg);
+      console.log('AFCHAT: debug button appended (use ?afdebug=1 in URL to enable)');
+    }
+  } catch (e) { console.warn('AFCHAT: debug helper init failed', e); }
+
   // --- Begin original chat widget script (extracted) ---
 /* ---------- CONFIG ---------- */
+// Prefer the remote hosted endpoint first to avoid hitting a disabled local /api/chat
 const AF_CHAT_ENDPOINTS = [
-  '/api/chat',
-  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat'
+  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat',
+  '/api/chat'
 ];
 
 // if you ever stand up a second backend you can push another item into the array

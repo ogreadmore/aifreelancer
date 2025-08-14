@@ -752,8 +752,11 @@ async function afSendToAI(userMessage, thinkingNode) {
       const infoWords = ['collect','personal','information','relay','contact','email','details','private'];
       const containsNeg = negWords.some(n => lowerReply.includes(n));
       const containsInfo = infoWords.some(n => lowerReply.includes(n));
-      if (AFChatState.detectedLeadIntent && containsNeg && containsInfo) {
-        console.log('AFCHAT: AI refusal heuristic matched; switching to client-side lead capture', {lowerReply});
+      console.log('AFCHAT: refusal heuristic check', { lowerReply, containsNeg, containsInfo, detectedLeadIntent: AFChatState.detectedLeadIntent });
+      // If we previously detected lead intent, and the assistant mentions being unable
+      // or mentions contact/personal info, start our client-side capture so we can collect details.
+      if (AFChatState.detectedLeadIntent && (containsNeg || containsInfo)) {
+        console.log('AFCHAT: AI refusal heuristic triggered (loose mode); starting client capture', {lowerReply, containsNeg, containsInfo});
         afAddBotMessage("I can collect your contact info here instead — what's your name? (You can type 'cancel' to stop)");
         AFChatState.collectingInfo = true;
         AFChatState.currentField = 'name';

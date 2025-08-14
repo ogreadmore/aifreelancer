@@ -263,20 +263,7 @@
       <p class="text-sm">© 2025 AI Freelancer</p>
     </div>
   </footer>
-  <script>
-  (async function(){
-    try{
-      const r = await fetch('assets/js/chatbot.js');
-      const t = await r.text();
-      console.log('DIAG: chatbot.js ->', {status: r.status, len: t.length, start: t.slice(0,200)});
-    }catch(e){ console.error('DIAG: chatbot.js fetch error', e); }
-    try{
-      const r2 = await fetch('assets/css/chatbot.css');
-      const t2 = await r2.text();
-      console.log('DIAG: chatbot.css ->', {status: r2.status, len: t2.length, start: t2.slice(0,200)});
-    }catch(e){ console.error('DIAG: chatbot.css fetch error', e); }
-  })();
-  </script>
+  <link rel="stylesheet" href="assets/css/chatbot.css">
   <script src="assets/js/chatbot.js"></script>
 </body>
 </html>

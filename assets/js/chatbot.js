@@ -127,41 +127,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
       document.body.appendChild(dbg);
       console.log('AFCHAT: debug button appended (use ?afdebug=1 in URL to enable)');
     }
-  } catch (e) { console.warn('AFCHAT: debug helper init failed', e); }
-
-  // Always expose a debug/test submit button (helps when ?afdebug=1 isn't working)
-  try {
-    if (!document.getElementById('af-debug-btn')) {
-      const dbg = document.createElement('button');
-      dbg.id = 'af-debug-btn';
-      dbg.textContent = 'AF Test Submit';
-      dbg.style.position = 'fixed';
-      dbg.style.right = '2rem';
-      dbg.style.bottom = '8rem';
-      dbg.style.zIndex = '10001';
-      dbg.style.padding = '10px 14px';
-      dbg.style.borderRadius = '8px';
-      dbg.style.background = 'rgba(59,130,246,0.95)';
-      dbg.style.color = '#fff';
-      dbg.style.border = 'none';
-      dbg.style.cursor = 'pointer';
-      dbg.title = 'Trigger a test Formspree submission';
-      dbg.addEventListener('click', async () => {
-        console.log('AFCHAT: debug button clicked — performing test submit');
-        window.AFChatState = window.AFChatState || {};
-        window.AFChatState.leadData = {
-          name: 'Debug Tester',
-          email: 'debug@example.com',
-          phone: '(000) 000-0000',
-          company: 'Debug Co',
-          message: 'This is a test submission triggered from the debug button.\n\nPlease ignore.'
-        };
-        try { await afSubmitLeadToFormspree(); } catch (e) { console.error('AFCHAT: debug submit error', e); }
-      });
-      document.body.appendChild(dbg);
-      console.log('AFCHAT: debug button appended (always visible)');
-    }
-  } catch (err) { console.warn('AFCHAT: failed to append always-visible debug button', err); }
+  } catch (e) { /* debug helper init suppressed in production */ }
 
   // --- Begin original chat widget script (extracted) ---
 /* ---------- CONFIG ---------- */
@@ -289,7 +255,7 @@ function afStartLeadCapture() {
     .join(' | ');
   AFChatState.leadData.message = `Chat conversation summary: ${summary}`;
   console.log('AFCHAT: starting lead capture, summary=', summary);
-  afAddBotMessage("I'd love to connect you with our team! What's your name? (You can type 'cancel' at any time to stop)");
+  afAddBotMessage("Great — I'd be happy to pass this to the team. What's your name? (You can type 'cancel' at any time to stop)");
 }
 
 function afCheckCancellation(value) {
@@ -757,7 +723,7 @@ async function afSendToAI(userMessage, thinkingNode) {
       // or mentions contact/personal info, start our client-side capture so we can collect details.
       if (AFChatState.detectedLeadIntent && (containsNeg || containsInfo)) {
         console.log('AFCHAT: AI refusal heuristic triggered (loose mode); starting client capture', {lowerReply, containsNeg, containsInfo});
-        afAddBotMessage("I can collect your contact info here instead — what's your name? (You can type 'cancel' to stop)");
+        afAddBotMessage("Great — I can pass this on to the team. What's your name? (You can type 'cancel' to stop)");
         AFChatState.collectingInfo = true;
         AFChatState.currentField = 'name';
       }

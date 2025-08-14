@@ -288,6 +288,7 @@ function afStartLeadCapture() {
     .map(msg => msg.content)
     .join(' | ');
   AFChatState.leadData.message = `Chat conversation summary: ${summary}`;
+  console.log('AFCHAT: starting lead capture, summary=', summary);
   afAddBotMessage("I'd love to connect you with our team! What's your name? (You can type 'cancel' at any time to stop)");
 }
 
@@ -306,6 +307,7 @@ function afCancelLeadCapture() {
 function afProcessLeadField(value) {
   if (afCheckCancellation(value)) { afCancelLeadCapture(); return; }
   const field = AFChatState.currentField;
+  console.log('AFCHAT: processing lead field', { field, value });
 
   if (field === 'name') {
     AFChatState.leadData.name = value;
@@ -414,7 +416,9 @@ function afCheckLeadIntent(message) {
   const leadKeywords = [
     'contact','call','demo','consultation','consult','meeting',
     'schedule','talk','speak','interested','quote','proposal',
-    'more information','get started','sign up','learn more'
+    'more information','get started','sign up','learn more',
+    // additional conversation patterns that imply someone wants to reach out
+    'ask','question','inquiry','message'
   ];
   const lower = message.toLowerCase();
   return leadKeywords.some(k => lower.includes(k));
@@ -666,6 +670,15 @@ async function afSubmitMessage() {
   AFChatState.history.push({ role:'user', content:userMessage });
 
   if (afCheckLeadIntent(userMessage)) {
+    // If user explicitly asks to leave details, start client-side lead capture immediately
+    const explicitCapture = ['take my info','collect my info','i want to leave my details','give my contact','take my details','here is my email','contact me','i want to be contacted','send my info'];
+    const lower = userMessage.toLowerCase();
+    if (explicitCapture.some(p => lower.includes(p))) {
+      AFChatState.detectedLeadIntent = true;
+      afStartLeadCapture();
+      return;
+    }
+
     const thinkingNode = afAddThinking();
     afSetSending(true);
     AFChatState.detectedLeadIntent = true;
@@ -715,9 +728,9 @@ async function afSendToAI(userMessage, thinkingNode) {
         continue; // try next endpoint (there’s only one right now)
       }
 
-      const data = await res.json();
-      const botReply = data.reply ?? data.message ?? data.content ?? '';
-
+  const data = await res.json();
+  const botReply = data.reply ?? data.message ?? data.content ?? '';
+      console.log('AFCHAT: botReply received', { botReply: botReply.slice(0,400), detectedLeadIntent: AFChatState.detectedLeadIntent });
       if (!botReply) throw new Error('Empty reply from server');
 
       // tidy up the “thinking…” indicator
@@ -728,6 +741,17 @@ async function afSendToAI(userMessage, thinkingNode) {
 
       afAddBotMessage(botReply);
       AFChatState.history.push({ role: 'assistant', content: botReply });
+      // If we previously detected lead intent but the AI refused to collect PII,
+      // start client-side lead capture so we can still gather visitor contact info.
+      const refusalPhrases = ["can't collect personal information","cannot collect personal information","can't collect personal","i can't collect personal","i'm not able to collect personal","i cannot collect personal"];
+      const lowerReply = (botReply || '').toLowerCase();
+      if (AFChatState.detectedLeadIntent && refusalPhrases.some(r => lowerReply.includes(r))) {
+        // Ask user directly and start collecting info
+        console.log('AFCHAT: AI refused to collect PII; switching to client-side lead capture');
+        afAddBotMessage("I can collect your contact info here instead — what's your name? (You can type 'cancel' to stop)");
+        AFChatState.collectingInfo = true;
+        AFChatState.currentField = 'name';
+      }
       afSetSending(false);
       afGtag('chat_bot_reply');
       return;                                          // ✅ success, stop here

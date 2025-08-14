@@ -896,4 +896,6 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
+}
+
 // --- End original chat widget script ---

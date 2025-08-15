@@ -471,8 +471,46 @@ function afMarkdownToHtml(md) {
     /(?<!href=["'])(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*))(?![^<]*>)(?![^<]*<\/a>)/gi,
     '<a href="$1" target="_blank" rel="noopener noreferrer" class="underline text-blue-600 hover:text-blue-800">$1</a>'
   );
+
+  // If DOMPurify is available, run the resulting HTML through it to enforce a whitelist.
+  try {
+    if (window.DOMPurify && typeof DOMPurify.sanitize === 'function') {
+      const clean = DOMPurify.sanitize(html, {
+        ALLOWED_TAGS: ['a','strong','em','ul','li','br','h3','h4','p','div','span'],
+        ALLOWED_ATTR: ['href','target','rel','class']
+      });
+      return clean;
+    }
+  } catch (e) {
+    console.warn('AFCHAT: DOMPurify sanitize failed, falling back to raw html', e);
+  }
+
   return html;
 }
+
+// Dynamically load DOMPurify if not present. Returns a Promise that resolves when ready.
+function ensureDomPurify(timeout = 5000) {
+  return new Promise((resolve, reject) => {
+    if (window.DOMPurify && typeof DOMPurify.sanitize === 'function') return resolve(window.DOMPurify);
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/dompurify@2.4.0/dist/purify.min.js';
+    script.async = true;
+    let settled = false;
+    const t = setTimeout(() => {
+      if (!settled) { settled = true; reject(new Error('DOMPurify load timeout')); }
+    }, timeout);
+    script.onload = () => {
+      clearTimeout(t);
+      settled = true;
+      if (window.DOMPurify) resolve(window.DOMPurify); else reject(new Error('DOMPurify not available after load'));
+    };
+    script.onerror = (err) => { clearTimeout(t); if (!settled) { settled = true; reject(err); } };
+    document.head.appendChild(script);
+  });
+}
+
+// Kick off DOMPurify load early (non-blocking)
+ensureDomPurify().catch(()=>{/* non-fatal, we'll fallback to escaping */});
 
 /* ---------- UTIL ---------- */
 async function simulateTyping(duration = 1000) { return new Promise(r => setTimeout(r, duration)); }

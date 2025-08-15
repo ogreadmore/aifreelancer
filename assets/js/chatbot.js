@@ -148,7 +148,8 @@ const AF_CHAT_DEFAULT_CONFIG = {
   suggestions: [
     "Pricing options",
     "Schedule a consultation",
-    "What do you automate?"
+    "What do you automate?",
+    "Ask the team"
   ]
 };
 
@@ -597,7 +598,20 @@ function afRenderChips() {
     btn.textContent = label;
     btn.style.opacity = '0';
     btn.style.transform = 'translateY(5px)';
-    btn.addEventListener('click', () => { afEls.input.value = label; afSubmitMessage(); });
+    btn.addEventListener('click', () => {
+      const key = (label || '').toLowerCase();
+      // Special handling for chips that map to actions rather than simple messages
+      if (key === 'ask the team') {
+        // Immediately start lead capture flow
+        afStartLeadCapture();
+        return;
+      }
+      if (key.includes('schedule') || key.includes('consult')) {
+        afShowCalendar();
+        return;
+      }
+      afEls.input.value = label; afSubmitMessage();
+    });
     chipRow.appendChild(btn);
     setTimeout(() => {
       btn.style.transition = 'all 0.3s ease-out';

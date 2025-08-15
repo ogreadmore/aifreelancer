@@ -21,6 +21,15 @@
     .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
     .gemini-gradient-text{ background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .gemini-gradient-bg{ background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D); background-size:200% 200%; animation: gradientAnimation 8s ease infinite; }
+    .gemini-gradient-animated-text {
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 200% 200%;
+      animation: gradientAnimation 8s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
     @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     @media (prefers-reduced-motion: reduce) { .gemini-gradient-bg { animation: none !important; } }
     /* Match index page form input styles for consistency */
@@ -75,9 +84,9 @@
 
               <div class="mt-8 flex flex-wrap gap-4">
                 <a href="#contact" class="gemini-gradient-bg text-white font-semibold py-3 px-6 rounded-full inline-block">Free Consultation</a>
-                <a href="/#solutions" class="text-black hover:text-indigo-600 transition-colors inline-flex items-center">
+                <a href="/#solutions" class="group inline-flex items-center text-black hover:text-indigo-600 transition-colors">
                   <span class="underline">Our Solutions</span>
-                  <span class="ml-2 gemini-gradient-animated-text">→</span>
+                  <span class="ml-2 inline-block gemini-gradient-animated-text transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                 </a>
               </div>
             </div>

@@ -221,6 +221,11 @@
             border-color: #93c5fd;
             box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.3);
         }
+
+        /* Add ~5px spacing between price and subtext (e.g. "$599/mo" and "+ one-time") */
+        .mb-6 > .text-5xl + .text-sm {
+            margin-top: 5px;
+        }
         
         /* Chatbot styles moved to `assets/css/chatbot.css` (centralized) */
         
@@ -438,22 +443,22 @@
                 <a href="/sales-crm-automation.html" class="group block text-center mt-3 underline text-black hover:text-indigo-600 transition-colors">More info <span class="inline-block ml-1 gemini-gradient-animated-text transition-transform duration-200 group-hover:translate-x-0.5">→</span></a>
             </div>
             
-            <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl relative">
-                <div class="bg-white p-8 rounded-[15px] flex flex-col h-full relative">
+            <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative">
+                <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
                     <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
                         <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Most Popular</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2 mt-4">AI Website Chatbot</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">AI Website Chatbot</h3>
                     <p class="text-gray-600 mb-6 flex-grow">Our AI chatbot integrates with your site to capture leads and answer visitor questions instantly, ensuring you provide 24/7 support and never miss an opportunity.</p>
                     <div class="mb-6">
                         <p class="text-5xl font-bold text-gray-900 -mb-1">$99<span class="text-lg font-medium text-gray-500">/mo</span></p>
                         <p class="text-sm text-gray-600">+ $499 one-time setup fee</p>
                     </div>
                     <ul class="space-y-4 text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Custom AI Chat Agent</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Professional Website Integration</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Trained on Your Documents</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Instant Lead Notifications</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Custom AI Chat Agent</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Professional Website Integration</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Trained on Your Documents</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Instant Lead Notifications</li>
                     </ul>
                     <a href="https://buy.stripe.com/bJeaEY8VT1g2aQU4Q25ZC05" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Get Started</a>
                     <a href="/ai-website-chatbot.html" class="group block text-center mt-3 underline text-black hover:text-indigo-600 transition-colors">More info <span class="inline-block ml-1 gemini-gradient-animated-text transition-transform duration-200 group-hover:translate-x-0.5">→</span></a>
@@ -494,21 +499,24 @@
                 <a href="/automated-customer-support.html" class="group block text-center mt-3 underline text-black hover:text-indigo-600 transition-colors">More info <span class="inline-block ml-1 gemini-gradient-animated-text transition-transform duration-200 group-hover:translate-x-0.5">→</span></a>
             </div>
             
-            <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl relative">
-                <div class="bg-white p-8 rounded-[15px] flex flex-col h-full relative">
+            <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative">
+                <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
                     <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
                         <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Best Value</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2 mt-4">Full-Scale Transformation</h3>
-                    <p class="text-gray-500 mb-6 flex-grow">For companies seeking a complete AI overhaul, we provide a dedicated team and custom-built solutions for your operations, marketing, and data strategy to unlock growth.</p>
-                    <p class="text-4xl font-bold text-gray-900 mb-6">Starts at $3,500</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Fractional Chief AI Officer / Full-Scale Transformation</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Fractional AI leadership and delivery to embed AI across your business — from strategy &amp; governance to implementation &amp; optimization and ongoing support for measurable impact.</p>
+                    <div class="mb-6">
+                      <p class="text-5xl font-bold text-gray-900 -mb-1">$1,499<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                      <p class="text-sm text-gray-600">Discovery from $4,999</p>
+                    </div>
                     <ul class="space-y-4 text-gray-600 mb-8">
-                       <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Includes All Solutions, plus:</li>
-                       <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Advanced Predictive Analytics</li>
-                       <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Custom-Trained AI Models</li>
-                       <li class="flex items-center gap-3"><i class="fa-solid fa-check gemini-gradient-text"></i>Dedicated Project Management</li>
+                       <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Fractional AI leadership</li>
+                       <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>AI governance &amp; roadmap</li>
+                       <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Custom models &amp; analytics</li>
+                       <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-500"></i>Implementation &amp; optimization</li>
                     </ul>
-                    <a href="https://buy.stripe.com/eVq3cwfkhe2Of7abeq5ZC08" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Contact For Quote</a>
+                    <a href="https://buy.stripe.com/test_aFa00cfid8ic0yx87GefC09" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Transformation</a>
                     <a href="/full-scale-transformation.html" class="group block text-center mt-3 underline text-black hover:text-indigo-600 transition-colors">More info <span class="inline-block ml-1 gemini-gradient-animated-text transition-transform duration-200 group-hover:translate-x-0.5">→</span></a>
                 </div>
             </div>
@@ -580,10 +588,10 @@
 
         </div>
         
-        <div class="mt-16 text-center">
+            <div class="mt-16 text-center">
             <p class="text-gray-600 mb-6">Don't see what you need? We build custom solutions for any challenge.</p>
-            <a href="#contact" class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800">
-                Request Custom Solution <i class="fa-solid fa-arrow-right ml-2"></i>
+            <a href="#contact" class="inline-flex items-center group text-black hover:text-indigo-600 transition-colors">
+                <span class="underline">Request Custom Solution</span> <span class="inline-block ml-1 gemini-gradient-animated-text transition-transform duration-200 group-hover:translate-x-0.5">→</span>
             </a>
         </div>
     </div>

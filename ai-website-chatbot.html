@@ -27,20 +27,41 @@
   </style>
 </head>
 <body class="bg-white">
-  <header class="border-b border-gray-100">
-    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="text-2xl"><span class="font-extrabold gemini-gradient-text">AI</span> <span class="font-medium text-gray-700">Freelancer</span></a>
-      <nav class="hidden md:flex items-center gap-6 text-gray-600 font-medium">
-        <a href="/">Home</a>
-        <a href="/#solutions">Solutions</a>
-        <a href="/#results">Results</a>
-        <a href="/#contact">Contact</a>
-        <a href="tel:440-941-1785" class="gemini-gradient-bg text-white font-semibold py-2 px-4 rounded-full">(440) 941-1785</a>
-      </nav>
+  <header id="header" class="border-b border-gray-100">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <a href="/" class="text-2xl"><span class="font-extrabold gemini-gradient-text">AI</span> <span class="font-medium text-gray-700">Freelancer</span></a>
+        <nav class="hidden md:flex items-center gap-6 text-gray-600 font-medium">
+          <a href="/">Home</a>
+          <a href="#" aria-current="page" class="text-gray-900 font-medium pointer-events-none">About</a>
+          <a href="/#solutions">Solutions</a>
+          <a href="/#results">Results</a>
+          <a href="/#contact">Contact</a>
+          <a href="tel:440-941-1785" class="gemini-gradient-bg text-white font-semibold py-2 px-4 rounded-full">(440) 941-1785</a>
+        </nav>
+
+        <button id="mobile-menu-button" class="md:hidden p-3 rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden mt-4 bg-white rounded-xl shadow-2xl p-4">
+        <a href="/" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Home</a>
+        <a href="#" aria-current="page" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium pointer-events-none">About</a>
+        <a href="/#solutions" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Solutions</a>
+        <a href="/#results" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Results</a>
+        <a href="/#contact" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Contact</a>
+        <hr class="my-2 border-gray-100">
+        <a href="tel:440-941-1785" class="block w-full text-center mt-2 py-3 px-4 gemini-gradient-bg text-white font-semibold rounded-full hover:shadow-lg transition-all">
+          <i class="fa-solid fa-phone mr-2"></i>Call (440) 941-1785
+        </a>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main class="pt-0 md:pt-24">
     <section class="bg-gray-50">
       <div class="container mx-auto px-6 py-16">
         <div class="max-w-4xl">

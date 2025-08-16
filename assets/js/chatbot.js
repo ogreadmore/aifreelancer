@@ -944,8 +944,37 @@ function afContactFormAjax(){
   const closeBtn = afEls.closeModalButton;
   if (!form) return;
 
-  function showModal() { modal?.classList.remove('hidden'); }
-  function hideModal() { modal?.classList.add('hidden'); }
+  function showModal() {
+    if (!modal) return;
+    // Reveal overlay
+    modal.classList.remove('hidden');
+    // Animate modal content into view even if page CSS is missing
+    const content = modal.querySelector('#modal-content');
+    if (content) {
+      // Ensure starting state
+      content.style.transform = 'scale(0.95)';
+      content.style.opacity = '0';
+      // Trigger transition on next frame
+      requestAnimationFrame(() => {
+        content.style.transition = 'all 0.3s ease-out';
+        content.style.transform = 'scale(1)';
+        content.style.opacity = '1';
+      });
+    }
+  }
+
+  function hideModal() {
+    if (!modal) return;
+    const content = modal.querySelector('#modal-content');
+    if (content) {
+      // Animate out then hide overlay
+      content.style.transform = 'scale(0.95)';
+      content.style.opacity = '0';
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    } else {
+      modal.classList.add('hidden');
+    }
+  }
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();

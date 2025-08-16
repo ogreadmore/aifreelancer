@@ -211,76 +211,163 @@
 
     <!-- Contact section from homepage -->
     <section id="contact" class="bg-gray-50 py-20">
-      <div class="container mx-auto px-6">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Let’s Build Your <span class="gemini-gradient-text">AI Advantage</span></h2>
-          <p class="mt-4 text-xl text-gray-600">Complete the form and one of our AI specialists will contact you shortly!</p>
-        </div>
-        <div class="max-w-6xl mx-auto">
-          <div class="grid gap-10 items-start lg:grid-cols-[minmax(0,_360px)_1fr]">
-            <div class="space-y-10">
-              <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-6">Contact&nbsp;Info</h3>
-                <div class="space-y-8">
-                  <a href="tel:440-941-1785" class="flex items-center gap-5 group">
-                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition"><i class="fa-solid fa-phone-volume"></i></div>
-                    <div><p class="text-gray-600">Call us</p><span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">(440) 941-1785</span></div>
-                  </a>
-                  <a href="mailto:hello@aifreelancer.co" class="flex items-center gap-5 group">
-                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition"><i class="fa-solid fa-envelope"></i></div>
-                    <div><p class="text-gray-600">Email us</p><span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">hello@aifreelancer.co</span></div>
-                  </a>
-                  <a href="https://www.google.com/maps/search/?api=1&query=Cleveland+Ohio" target="_blank" class="flex items-center gap-5 group">
-                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition"><i class="fa-solid fa-location-dot"></i></div>
-                    <div><p class="text-gray-600">Based in</p><span class="text-xl font-bold text-gray-900 group-hover:text-blue-600">Cleveland, Ohio •<br>Serving Worldwide</span></div>
-                  </a>
-                  <a href="https://www.linkedin.com/company/ai-freelancer" target="_blank" class="flex items-center gap-5 group">
-                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition"><i class="fa-brands fa-linkedin-in"></i></div>
-                    <div><p class="text-gray-600">Connect&nbsp;on</p><span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">LinkedIn</span></div>
-                  </a>
-                  <a href="https://www.facebook.com/aifreelancer" target="_blank" class="flex items-center gap-5 group">
-                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition"><i class="fa-brands fa-facebook-f"></i></div>
-                    <div><p class="text-gray-600">Follow&nbsp;us</p><span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">Facebook</span></div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="bg-white rounded-3xl p-10 shadow-xl w-full">
-              <form action="https://formspree.io/f/mldlebob" method="POST" id="contact-form" class="space-y-6">
-                <input type="hidden" name="_subject" value="New Lead from AI‑Freelancer.co">
-                <input type="hidden" name="_cc" value="tayloroliphant@gmail.com">
-                <div>
-                  <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
-                  <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                    <input type="email" id="email" name="email" placeholder="you@company.com" required class="form-input">
-                  </div>
-                  <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(123) 456‑7890" class="form-input">
-                  </div>
+  <div class="container mx-auto px-6">
+
+    <!-- centred section header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+        Let’s Build Your <span class="gemini-gradient-text">AI Advantage</span>
+      </h2>
+      <p class="mt-4 text-xl text-gray-600">
+        Complete the form and one of our AI specialists will contact you shortly!
+      </p>
+    </div>
+
+    <!-- same width as intro-video (≈ 6xl) -->
+    <div class="max-w-6xl mx-auto">
+
+      <!-- grid: fixed 360-px left column + fluid form -->
+      <div class="grid gap-10 items-start lg:grid-cols-[minmax(0,_360px)_1fr]">
+
+        <!-- LEFT COLUMN -->
+        <div class="space-y-10">
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-6">Contact&nbsp;Info</h3>
+
+            <div class="space-y-8">
+
+              <!-- phone -->
+              <a href="tel:440-941-1785" class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-solid fa-phone-volume"></i>
                 </div>
                 <div>
-                  <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
-                  <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
+                  <p class="text-gray-600">Call us</p>
+                  <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">(440) 941-1785</span>
+                </div>
+              </a>
+
+              <!-- email -->
+              <a href="mailto:hello@aifreelancer.co" class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-solid fa-envelope"></i>
                 </div>
                 <div>
-                  <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Tell us about your business needs *</label>
-                  <textarea id="message" name="message" rows="4" placeholder="What are your biggest operational challenges or growth goals?" required class="form-input"></textarea>
+                  <p class="text-gray-600">Email us</p>
+                  <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">hello@aifreelancer.co</span>
                 </div>
-                <button type="submit" class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
-                  <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
-                </button>
-                <p class="text-center text-gray-500 text-sm mt-3"><i class="fa-solid fa-lock mr-1"></i>Your information stays private.</p>
-              </form>
+              </a>
+
+              <!-- location -->
+              <a href="https://www.google.com/maps/search/?api=1&query=Cleveland+Ohio" target="_blank"
+                 class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Based in</p>
+                  <span class="text-xl font-bold text-gray-900 group-hover:text-blue-600">
+                    Cleveland, Ohio •<br>Serving Worldwide
+                  </span>
+                </div>
+              </a>
+
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/company/ai-freelancer" target="_blank"
+                 class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Connect&nbsp;on</p>
+                  <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">LinkedIn</span>
+                </div>
+              </a>
+
+              <!-- Facebook -->
+              <a href="https://www.facebook.com/aifreelancer" target="_blank"
+                 class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Follow&nbsp;us</p>
+                  <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">Facebook</span>
+                </div>
+              </a>
+
             </div>
           </div>
+
         </div>
-      </div>
-    </section>
+
+        <!-- RIGHT COLUMN — FORM -->
+        <div class="bg-white rounded-3xl p-10 shadow-xl w-full">
+          <!-- ────── CONTACT FORM (Formspree) ────── -->
+<form action="https://formspree.io/f/mldlebob" method="POST" id="contact-form" class="space-y-6">
+  <!-- customise the e‑mail subject line you’ll receive -->
+  <input type="hidden" name="_subject" value="New Lead from AI‑Freelancer.co">
+  
+  <!-- Add this for CC to Gmail (replace with your actual Gmail address) -->
+  <input type="hidden" name="_cc" value="tayloroliphant@gmail.com">
+
+  <!-- Name -->
+  <div>
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
+  </div>
+
+  <!-- Email + Phone -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+      <input type="email" id="email" name="email" placeholder="you@company.com" required class="form-input">
+    </div>
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="(123) 456‑7890" class="form-input">
+    </div>
+  </div>
+
+  <!-- Company -->
+  <div>
+    <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+    <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
+  </div>
+
+  <!-- Message -->
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+      Tell us about your business needs *
+    </label>
+    <textarea id="message" name="message" rows="4"
+              placeholder="What are your biggest operational challenges or growth goals?"
+              required class="form-input"></textarea>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit"
+          class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
+    <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
+  </button>
+
+  <p class="text-center text-gray-500 text-sm mt-3">
+    <i class="fa-solid fa-lock mr-1"></i>Your information stays private.
+  </p>
+</form>
+        </div>
+
+      </div><!-- /grid -->
+    </div><!-- /max-w wrapper -->
+  </div><!-- /container -->
+</section>
   </main>
 
   <footer class="bg-gray-50 text-gray-600 py-8">

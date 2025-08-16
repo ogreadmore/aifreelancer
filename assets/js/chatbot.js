@@ -937,74 +937,7 @@ function afHeaderMobileEtc(){
   }
 }
 
-/* ---------- CONTACT FORM ---------- */
-function afContactFormAjax(){
-  const form = afEls.contactForm;
-  const modal = afEls.thankYouModal;
-  const closeBtn = afEls.closeModalButton;
-  if (!form) return;
-
-  function showModal() {
-    if (!modal) return;
-    // Reveal overlay
-    modal.classList.remove('hidden');
-    // Animate modal content into view even if page CSS is missing
-    const content = modal.querySelector('#modal-content');
-    if (content) {
-      // Ensure starting state
-      content.style.transform = 'scale(0.95)';
-      content.style.opacity = '0';
-      // Trigger transition on next frame
-      requestAnimationFrame(() => {
-        content.style.transition = 'all 0.3s ease-out';
-        content.style.transform = 'scale(1)';
-        content.style.opacity = '1';
-      });
-    }
-  }
-
-  function hideModal() {
-    if (!modal) return;
-    const content = modal.querySelector('#modal-content');
-    if (content) {
-      // Animate out then hide overlay
-      content.style.transform = 'scale(0.95)';
-      content.style.opacity = '0';
-      setTimeout(() => modal.classList.add('hidden'), 300);
-    } else {
-      modal.classList.add('hidden');
-    }
-  }
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    fetch(form.action, {
-      method:'POST',
-      body:formData,
-      headers:{'Accept':'application/json'}
-    }).then(response => {
-      if (response.ok) {
-        form.reset();
-        showModal();
-        afGtag('form_submit', { form_name: 'contact' });
-      } else {
-        response.json().then(data => {
-          if (Object.hasOwn(data, 'errors')) {
-            alert(data.errors.map(error => error.message).join(', '));
-          } else {
-            alert('Sorry, there was a problem sending your message.');
-          }
-        });
-      }
-    }).catch(() => {
-      alert('Sorry, there was a problem sending your message.');
-    });
-  });
-
-  closeBtn?.addEventListener('click', hideModal);
-  modal?.addEventListener('click', e => { if (e.target === modal) hideModal(); });
-}
+/* Contact form handling moved to `assets/js/contact-form.js` to keep chatbot responsibilities separate. */
 
 /* ---------- INJECT ENHANCED STYLES ---------- */
 function afInjectStyles(){
@@ -1039,8 +972,7 @@ function afInjectStyles(){
 window.addEventListener('DOMContentLoaded', () => {
   // Initialize header/menu and smooth scroll
   afHeaderMobileEtc();
-  // Initialize contact form handlers
-  afContactFormAjax();
+  // Contact form handlers moved to `assets/js/contact-form.js` (keeps chatbot responsibilities separate)
   // Defer style injection to idle time
   if ('requestIdleCallback' in window) requestIdleCallback(afInjectStyles); else setTimeout(afInjectStyles, 1);
 

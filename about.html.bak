@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About — AI Freelancer</title>
+  <meta name="description" content="AI Freelancer provides fractional AI leadership and practical AI solutions for SMBs. Learn about our mission, team, process, and results.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome (non-blocking load like index.html) -->
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </noscript>
+    <style>
+    body { font-family: 'Inter', sans-serif; color: #111827; }
+    .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gemini-gradient-text{ background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .gemini-gradient-bg{ background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D); background-size:200% 200%; animation: gradientAnimation 8s ease infinite; }
+    .gemini-gradient-animated-text {
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 200% 200%;
+      animation: gradientAnimation 8s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @media (prefers-reduced-motion: reduce) { .gemini-gradient-bg { animation: none !important; } }
+    /* Match index page form input styles for consistency */
+    .form-input { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; width: 100%; transition: all 0.3s ease; }
+    .form-input:focus { outline: none; border-color: #93c5fd; box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.3); }
+  
+    /* FAQ improvements */
+    #faq-full { padding-top: 4rem; padding-bottom: 4rem; }
+    #faq-full h2 { margin-bottom: 1.75rem; }
+    .faq-item { transition: box-shadow .18s ease, border-color .18s ease; }
+    .faq-item:hover { border-color: #e6e6f0; box-shadow: 0 8px 24px rgba(15,23,42,0.04); }
+    .faq-toggle:focus { outline: none; box-shadow: 0 0 0 4px rgba(147,197,253,0.12); }
+    /* Animated panel: collapsed by default. Use scaleY to avoid max-height clipping issues */
+    .faq-panel { font-size: 1.03rem; line-height: 1.7; transform-origin: top; transform: scaleY(0); opacity: 0; transition: transform 260ms ease, opacity 200ms ease; overflow: hidden; }
+    .faq-item.open .faq-panel { transform: scaleY(1); opacity: 1; padding-top: 1rem; padding-bottom: 1rem; }
+
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Header (consistent with index) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur py-3">
+    <div class="container mx-auto px-6">
+      <div class="flex items-center justify-between">
+        <a href="/" class="text-2xl">
+          <span class="font-extrabold gemini-gradient-text">AI</span> <span class="font-medium text-gray-700">Freelancer</span>
+        </a>
+        <nav class="hidden lg:flex items-center space-x-8">
+          <a href="/" class="text-gray-600 hover:text-gray-900 font-medium">Home</a>
+          <a href="/about.html" class="text-gray-900 font-medium">About</a>
+          <a href="/#solutions" class="text-gray-600 hover:text-gray-900 font-medium">Solutions</a>
+          <a href="#results" class="text-gray-600 hover:text-gray-900 font-medium">Results</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="tel:440-941-1785" class="flex items-center gap-2 text-white font-semibold py-2 px-6 rounded-full gemini-gradient-bg hover:shadow-lg transition-all">
+            <i class="fa-solid fa-phone-volume"></i>
+            (440) 941-1785
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-16 md:pt-24">
+    <!-- Hero -->
+    <section class="bg-white py-12 md:py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="col-content flex flex-col justify-center md:pr-6">
+              <h1 class="font-jakarta text-4xl md:text-5xl font-bold leading-tight">We build AI that pays for itself</h1>
+              <p class="mt-4 md:mt-6 text-lg text-gray-600 max-w-xl">AI Freelancer delivers fractional AI leadership and end-to-end delivery so small and mid-size businesses can deploy practical AI fast — to increase revenue, reduce costs and free teams to focus on strategic work.</p>
+
+              <div class="mt-8 flex flex-wrap gap-4">
+                <a href="#contact" class="gemini-gradient-bg text-white font-semibold py-3 px-6 rounded-full inline-block">Free Consultation</a>
+                <a href="/#solutions" class="group inline-flex items-center text-black hover:text-indigo-600 transition-colors">
+                  <span class="underline">Our Solutions</span>
+                  <span class="ml-2 inline-block gemini-gradient-animated-text transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-media relative flex items-center md:pl-6">
+              <img src="assets/images/about-image.jpg" loading="lazy" alt="Taylor Oliphant" class="rounded-2xl shadow-2xl w-full object-cover h-80">
+              <div class="absolute bottom-4 left-4 bg-white rounded-lg p-4 shadow">
+                <p class="text-sm text-gray-600">Founder &amp; Principal</p>
+                <p class="font-bold">Taylor Oliphant</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Video — two-column layout -->
+    <section class="py-12">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Video (left on desktop, below text on mobile) -->
+            <div class="order-2 md:order-1 flex items-center md:pr-6">
+              <div id="video-container" class="relative bg-gray-100 rounded-2xl shadow-2xl overflow-hidden h-80 w-full">
+                <iframe id="about-video" class="w-full h-full" loading="lazy" data-src="https://www.youtube.com/embed/4UZaMDg3GZk?rel=0&showinfo=0" title="AI Freelancer intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div id="video-overlay" class="absolute inset-0 bg-gray-100 flex flex-col items-center justify-center text-gray-900 cursor-pointer transition-opacity duration-300">
+                  <div class="w-24 h-24 rounded-full gemini-gradient-bg flex items-center justify-center transition-opacity hover:opacity-60">
+                    <i class="fa-solid fa-play text-white text-4xl ml-1"></i>
+                  </div>
+                  <p class="mt-4 text-2xl font-bold">Watch Our 2‑Minute Intro</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Text (right on desktop, above video on mobile) -->
+            <div class="order-1 md:order-2 max-w-xl flex flex-col justify-center md:pl-6">
+              <h2 class="text-3xl font-bold mb-4">About Taylor & AI Freelancer</h2>
+              <p class="text-gray-700 mb-4">Taylor Oliphant has spent over 20 years building and leading technology teams and delivering practical automation for businesses of all sizes. He holds an MBA from Purdue University and completed AI certificates with the University of Pennsylvania, Lund University, Intel, and Google. Taylor has also completed executive business programs at Harvard University. That combination of deep technical experience and formal business training informs a pragmatic approach: prioritize measurable impact, rapid delivery, and clear ROI.</p>
+
+            <!-- mission/experience moved to FAQ below -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- Full-width FAQ inserted here -->
+    <section id="faq-full" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold mb-8 text-center">Frequently asked questions</h2>
+          <div class="space-y-4">
+            <div class="faq-item border border-gray-100 rounded-lg overflow-hidden">
+              <button class="faq-toggle w-full text-left px-6 py-4 flex items-center justify-between bg-white">
+                <span class="text-lg md:text-xl font-semibold">What is your mission?</span>
+                <svg class="w-6 h-6 text-gray-500 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </button>
+              <div class="faq-panel px-6 py-4 bg-white text-gray-700 text-base md:text-lg">We help small and mid‑sized businesses deploy practical AI that delivers measurable ROI — increasing revenue, reducing costs, and freeing teams to focus on strategic work. We emphasize fast pilots, clear KPIs, and long‑term maintainability.</div>
+            </div>
+
+            <div class="faq-item border border-gray-100 rounded-lg overflow-hidden">
+              <button class="faq-toggle w-full text-left px-6 py-4 flex items-center justify-between bg-white">
+                <span class="text-lg md:text-xl font-semibold">Who is the ideal client?</span>
+                <svg class="w-6 h-6 text-gray-500 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </button>
+              <div class="faq-panel px-6 py-4 bg-white text-gray-700 text-base md:text-lg">Companies with recurring operational work, customer interactions, or data-rich processes — typically mid-market firms with clear revenue or cost KPIs. We work well with teams ready to measure impact and integrate solutions into existing workflows.</div>
+            </div>
+
+            <div class="faq-item border border-gray-100 rounded-lg overflow-hidden">
+              <button class="faq-toggle w-full text-left px-6 py-4 flex items-center justify-between bg-white">
+                <span class="text-lg md:text-xl font-semibold">What does a typical engagement look like?</span>
+                <svg class="w-6 h-6 text-gray-500 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </button>
+              <div class="faq-panel px-6 py-4 bg-white text-gray-700 text-base md:text-lg">We begin with a discovery call and a short, focused impact assessment. Most clients start with a 4–8 week pilot proving value; successful pilots move to phased rollouts with monitoring, governance and optimization.</div>
+            </div>
+
+            <div class="faq-item border border-gray-100 rounded-lg overflow-hidden">
+              <button class="faq-toggle w-full text-left px-6 py-4 flex items-center justify-between bg-white">
+                <span class="text-lg md:text-xl font-semibold">How long until we see results?</span>
+                <svg class="w-6 h-6 text-gray-500 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </button>
+              <div class="faq-panel px-6 py-4 bg-white text-gray-700 text-base md:text-lg">Pilot projects typically deliver measurable wins within 4–8 weeks. Time to full production depends on integration complexity and scale, but we focus on quick, high‑impact milestones first.</div>
+            </div>
+
+            <div class="faq-item border border-gray-100 rounded-lg overflow-hidden">
+              <button class="faq-toggle w-full text-left px-6 py-4 flex items-center justify-between bg-white">
+                <span class="text-lg md:text-xl font-semibold">What about pricing?</span>
+                <svg class="w-6 h-6 text-gray-500 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </button>
+              <div class="faq-panel px-6 py-4 bg-white text-gray-700 text-base md:text-lg">Engagements are scoped to outcomes: fixed-price pilots, monthly retainers for ongoing work, or blended models. Typical pilot investments start in the low five-figure range — contact us for a tailored estimate.</div>
+            </div>
+
+            <div class="faq-item border border-gray-100 rounded-lg overflow-hidden">
+              <button class="faq-toggle w-full text-left px-6 py-4 flex items-center justify-between bg-white">
+                <span class="text-lg md:text-xl font-semibold">How do you handle data & security?</span>
+                <svg class="w-6 h-6 text-gray-500 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </button>
+              <div class="faq-panel px-6 py-4 bg-white text-gray-700 text-base md:text-lg">We apply industry best practices: least privilege access, anonymization where possible, vendor assessments, and clear data retention policies. We can work within your security controls and sign NDAs or data processing agreements.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Contact section (copied from homepage contact for exact styling) -->
+<section id="contact" class="bg-gray-50 py-20">
+  <div class="container mx-auto px-6">
+
+    <!-- centred section header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+        Let’s Build Your <span class="gemini-gradient-text">AI Advantage</span>
+      </h2>
+      <p class="mt-4 text-xl text-gray-600">
+        Complete the form and one of our AI specialists will contact you shortly!
+      </p>
+    </div>
+
+    <!-- same width as intro-video (≈ 6xl) -->
+    <div class="max-w-6xl mx-auto">
+
+      <!-- grid: fixed 360-px left column + fluid form -->
+      <div class="grid gap-10 items-start lg:grid-cols-[minmax(0,_360px)_1fr]">
+
+        <!-- LEFT COLUMN -->
+        <div class="space-y-10">
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-6">Contact&nbsp;Info</h3>
+
+            <div class="space-y-8">
+
+              <!-- phone -->
+              <a href="tel:440-941-1785" class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Call us</p>
+                  <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">(440) 941-1785</span>
+                </div>
+              </a>
+
+              <!-- email -->
+              <a href="mailto:hello@aifreelancer.co" class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Email us</p>
+                  <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">hello@aifreelancer.co</span>
+                </div>
+              </a>
+
+              <!-- location -->
+              <a href="https://www.google.com/maps/search/?api=1&query=Cleveland+Ohio" target="_blank"
+                 class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Based in</p>
+                  <span class="text-xl font-bold text-gray-900 group-hover:text-blue-600">
+                    Cleveland, Ohio •<br>Serving Worldwide
+                  </span>
+                </div>
+              </a>
+
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/company/ai-freelancer" target="_blank"
+                 class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Connect&nbsp;on</p>
+                  <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">LinkedIn</span>
+                </div>
+              </a>
+
+              <!-- Facebook -->
+              <a href="https://www.facebook.com/aifreelancer" target="_blank"
+                 class="flex items-center gap-5 group">
+                <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
+                            text-white text-2xl group-hover:shadow-lg transition">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Follow&nbsp;us</p>
+                  <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">Facebook</span>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN — FORM -->
+        <div class="bg-white rounded-3xl p-10 shadow-xl w-full">
+          <!-- ────── CONTACT FORM (Formspree) ────── -->
+<form action="https://formspree.io/f/mldlebob" method="POST" id="contact-form" class="space-y-6">
+  <!-- customise the e‑mail subject line you’ll receive -->
+  <input type="hidden" name="_subject" value="New Lead from AI‑Freelancer.co">
+  
+  <!-- Add this for CC to Gmail (replace with your actual Gmail address) -->
+  <input type="hidden" name="_cc" value="tayloroliphant@gmail.com">
+
+  <!-- Name -->
+  <div>
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
+  </div>
+
+  <!-- Email + Phone -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+      <input type="email" id="email" name="email" placeholder="you@company.com" required class="form-input">
+    </div>
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="(123) 456‑7890" class="form-input">
+    </div>
+  </div>
+
+  <!-- Company -->
+  <div>
+    <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+    <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
+  </div>
+
+  <!-- Message -->
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+      Tell us about your business needs *
+    </label>
+    <textarea id="message" name="message" rows="4"
+              placeholder="What are your biggest operational challenges or growth goals?"
+              required class="form-input"></textarea>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit"
+          class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
+    <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
+  </button>
+
+  <p class="text-center text-gray-500 text-sm mt-3">
+    <i class="fa-solid fa-lock mr-1"></i>Your information stays private.
+  </p>
+</form>
+        </div>
+
+      </div><!-- /grid -->
+    </div><!-- /max-w wrapper -->
+  </div><!-- /container -->
+</section>
+  </main>
+
+  <!-- ▸▸ MINIMAL LIGHT FOOTER ◂◂ -->
+  <footer class="bg-gray-50 text-gray-600 py-8">
+    <div class="container mx-auto px-6 text-center">
+      <div class="mb-4">
+          <a href="privacy.html" class="text-sm text-gray-500 hover:text-gray-800 mx-3">Privacy Policy</a>
+          <a href="terms.html" class="text-sm text-gray-500 hover:text-gray-800 mx-3">Terms of Service</a>
+          <a href="cookies.html" class="text-sm text-gray-500 hover:text-gray-800 mx-3">Cookie Policy</a>
+      </div>
+      <p class="text-sm text-gray-500">
+        © 2025 <span class="font-semibold">AI Freelancer</span>. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Chatbot loader (same script used across the site) -->
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is your mission?",
+        "acceptedAnswer": {"@type": "Answer", "text": "We help small and mid‑sized businesses deploy practical AI that delivers measurable ROI — increasing revenue, reducing costs, and freeing teams to focus on strategic work. We emphasize fast pilots, clear KPIs, and long‑term maintainability."}
+      },
+      {
+        "@type": "Question",
+        "name": "Who is the ideal client?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Companies with recurring operational work, customer interactions, or data-rich processes — typically mid-market firms with clear revenue or cost KPIs."}
+      },
+      {
+        "@type": "Question",
+        "name": "What does a typical engagement look like?",
+        "acceptedAnswer": {"@type": "Answer", "text": "We begin with a discovery call and a short, focused impact assessment. Most clients start with a 4–8 week pilot proving value; successful pilots move to phased rollouts with monitoring, governance and optimization."}
+      },
+      {
+        "@type": "Question",
+        "name": "How long until we see results?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Pilot projects typically deliver measurable wins within 4–8 weeks. Time to full production depends on integration complexity and scale."}
+      },
+      {
+        "@type": "Question",
+        "name": "What about pricing?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Engagements are scoped to outcomes: fixed-price pilots, monthly retainers for ongoing work, or blended models. Typical pilot investments start in the low five-figure range."}
+      },
+      {
+        "@type": "Question",
+        "name": "How do you handle data & security?",
+        "acceptedAnswer": {"@type": "Answer", "text": "We apply industry best practices: least privilege access, anonymization where possible, vendor assessments, and clear data retention policies. We can work within your security controls and sign NDAs or data processing agreements."}
+      }
+    ]
+  }
+  </script>
+
+  <script src="assets/js/chatbot.js" defer></script>
+  <script>
+    // Accessible, animated accordion for FAQ (display toggling + scale animation)
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggles = Array.from(document.querySelectorAll('.faq-toggle'));
+
+      toggles.forEach((btn, i) => {
+        const item = btn.closest('.faq-item');
+        const panel = item.querySelector('.faq-panel');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-controls', 'faq-panel-' + i);
+        panel.setAttribute('id', 'faq-panel-' + i);
+        panel.setAttribute('aria-hidden', 'true');
+        // Start closed: hide panels
+        panel.style.display = 'none';
+
+        btn.addEventListener('click', () => toggleItem(i));
+      });
+
+      function closeItem(index) {
+        const btn = toggles[index];
+        const item = btn.closest('.faq-item');
+        const panel = item.querySelector('.faq-panel');
+        if (!item.classList.contains('open')) return;
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+        // after transition ends, hide to remove layout footprint
+        const onEnd = (ev) => {
+          if (ev.propertyName === 'transform') {
+            panel.style.display = 'none';
+            panel.removeEventListener('transitionend', onEnd);
+          }
+        };
+        panel.addEventListener('transitionend', onEnd);
+      }
+
+      function openItem(index) {
+        const btn = toggles[index];
+        const item = btn.closest('.faq-item');
+        const panel = item.querySelector('.faq-panel');
+        // close others
+        toggles.forEach((b, j) => { if (j !== index) closeItem(j); });
+        // display first so transform animation is visible
+        panel.style.display = 'block';
+        // force a reflow so the class addition triggers transition
+        panel.getBoundingClientRect();
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
+      }
+
+      function toggleItem(index) {
+        const btn = toggles[index];
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        if (isOpen) closeItem(index); else openItem(index);
+      }
+
+      // Auto-open first item for scannability
+      if (toggles.length) openItem(0);
+    });
+  </script>
+  <script>
+    // Lazy-load the about page video and start playback when overlay is clicked
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('#video-overlay') || e.target.closest('#video-container')) {
+        const iframe = document.getElementById('about-video');
+        if (iframe && iframe.dataset && iframe.dataset.src) {
+          const base = iframe.dataset.src || '';
+          const src = base + (base.includes('?') ? '&' : '?') + 'autoplay=1';
+          iframe.src = src;
+          // fade out overlay and disable pointer events (match index behavior)
+          const overlay = document.getElementById('video-overlay');
+          if (overlay) {
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

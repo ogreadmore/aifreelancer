@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Playbook — Internal Process Automation | AI Freelancer</title>
+  <meta name="description" content="SOPs for mapping, building, and operating internal automations with Make/Zapier/n8n: reliability, idempotency, monitoring, and ROI tracking." />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style> body{font-family:'Inter',sans-serif} code,kbd{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:.375rem;padding:.125rem .375rem} .sec{scroll-margin-top:80px} </style>
+  <style>
+    :root{ --teal:#0d9488; --indigo:#4f46e5; --muted:#6b7280; --text:#0f172a; }
+    body{ background: linear-gradient(180deg, rgba(79,70,229,0.04) 0%, rgba(13,148,136,0.02) 60%), #fff; color:var(--text); }
+    .bg-white.border.rounded-xl,.bg-white.border.rounded-2xl{position:relative;background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);border:1px solid rgba(79,70,229,0.06);box-shadow:0 10px 30px rgba(15,23,42,0.06);transition:transform .16s,box-shadow .16s}
+    .bg-white.border.rounded-xl:hover,.bg-white.border.rounded-2xl:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(15,23,42,0.12)}
+    h1{color:var(--indigo);font-weight:900;font-size:2.4rem}
+    h2{color:#061126;font-weight:800}
+    a{color:var(--indigo)} a:hover{color:#3730a3;text-decoration:underline}
+    .kpi-grid>div{padding-left:18px} .kpi-grid>div::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:6px;border-radius:6px}
+    .kpi-grid>div:nth-child(1)::before{background:linear-gradient(180deg,var(--teal),var(--indigo))}
+    .kpi-grid>div:nth-child(2)::before{background:linear-gradient(180deg,#f59e0b,#f97316)}
+    .kpi-grid>div:nth-child(3)::before{background:linear-gradient(180deg,#fb7185,#ef4444)}
+  </style>
+  <meta name="robots" content="noindex, follow" />
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-white border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
+      <nav class="text-sm text-gray-600">
+        <a href="/playbook.html" class="hover:text-gray-900">Playbook index</a>
+        <span class="mx-3">•</span>
+        <a href="/internal-process-automation.html" class="hover:text-gray-900">Service page</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-10 space-y-12">
+    <section class="sec" id="intro">
+      <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
+        <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
+        <p class="mt-2">Part 1 explains outcomes and scope tiers. Part 2 gives implementers detailed SOPs for reliable, observable automations.</p>
+      </div>
+    </section>
+    <section class="sec" id="overview">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: Internal Process Automation</h1>
+      <p class="mt-4 text-lg text-gray-700">Replace manual steps with resilient automations. We document workflows, implement idempotent flows with retries and alerts, and measure the hours you win back.</p>
+      <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Primary KPI</p><p class="text-xl font-bold">Hours saved ≥ 10/wk</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Reliability KPI</p><p class="text-xl font-bold">Success rate ≥ 99%</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold"><abbr title="Service Level Agreement">SLA</abbr> met ≥ 95%</p></div>
+      </div>
+    </section>
+
+    <section class="sec" id="toc">
+      <nav class="bg-white border rounded-xl p-5">
+        <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
+        <ol class="list-decimal ml-5 space-y-1 text-sm md:columns-2 lg:columns-3">
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Phases</a></li>
+          <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Implementer’s Guide</li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#security">Security</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Timeline</a></li>
+        </ol>
+      </nav>
+    </section>
+
+    <section class="sec" id="story-top">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Quick Story — What will happen</h2>
+        <p class="mt-3 text-sm text-gray-700">We will map your process, build resilient automations with idempotency and retries, and operate them with alerts and dashboards so you can trust them. We start by understanding the current steps and time spent, then we design safe flows, test thoroughly, and roll out gradually.</p>
+
+        <p class="mt-3 text-sm text-gray-700">What each step means (plain):</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Map:</strong> draw how work moves today (swimlanes, systems, owners) and where time is wasted.</li>
+          <li><strong>Design:</strong> define events, inputs/outputs, data contracts, SLAs, and failure modes.</li>
+          <li><strong>Build:</strong> create idempotent steps with dedupe guards, retries with backoff, and structured logs.</li>
+          <li><strong>Test:</strong> run happy‑path and chaos cases; check API limits and schema drift.</li>
+          <li><strong>Launch:</strong> start small with a rollback plan; watch the error inbox and metrics.</li>
+          <li><strong>Operate:</strong> weekly checks; monthly ROI report; close gaps and expand.</li>
+        </ul>
+
+        <p class="mt-3 text-sm text-gray-700"><strong>For you — the person doing the work:</strong></p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Collect access and map the process; baseline time/cost.</li>
+          <li>Design contracts and SLAs; implement idempotency and retries.</li>
+          <li>Set up error inbox and alerts; document a rollback plan.</li>
+          <li>Pilot with low‑risk volume; then scale and report ROI.</li>
+        </ul>
+
+        <p class="mt-3 text-sm text-gray-700"><strong>For the client — what it should feel like:</strong></p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Easy:</strong> clear progress and minimal interruptions; you approve stages.</li>
+          <li><strong>Helpful:</strong> hours come back each week; fewer manual errors.</li>
+          <li><strong>Safe:</strong> guardrails and rollback; incidents are rare and fast to fix.</li>
+          <li><strong>Clear:</strong> dashboards and simple reports show value and reliability.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="communication">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Communication</h2>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Weekly demo: shipped flows, incidents, ROI tracking</li>
+          <li>Error inbox channel: failed jobs, retries, SLAs</li>
+          <li>Monthly ROI report: hours saved, error rates, next targets</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="simple-checklist">
+      <div class="bg-white border rounded-2xl p-6">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
+            <p class="text-gray-600 text-sm">Use this live checklist during client working sessions. It saves progress in your browser. Expand any “Newbie guide” for step‑by‑step help.</p>
+          </div>
+          <div class="text-right">
+            <div class="text-sm text-gray-600">Progress</div>
+            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false">
+              <div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div>
+            </div>
+            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+          </div>
+        </div>
+
+        <div class="mt-6 space-y-6" id="crm-checklist">
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 1 — Map</p>
+            <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="swimlanes"/> Swimlanes + systems + owners</label>
+            <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="io-sla"/> Inputs/outputs; edge cases; SLAs</label>
+            <label class="flex gap-3"><input type="checkbox" class="mt-1" data-id="baseline"/> Baseline time/cost; ROI target</label>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 2 — Build</p>
+            <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="idempotent"/> Idempotent steps + dedupe guards</label>
+            <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="retries"/> Retries with backoff; error inbox</label>
+            <label class="flex gap-3"><input type="checkbox" class="mt-1" data-id="observability"/> Observability: metrics + alerts</label>
+          </div>
+        </div>
+        <details class="mt-4">
+          <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Idempotency</summary>
+          <div class="mt-2 text-sm text-gray-700">Idempotent means “safe to retry.” If a step runs twice, we get the same result once. This prevents duplicates when the internet hiccups.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="sec" id="phases">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Delivery Phases</h2>
+        <ol class="list-decimal ml-5 mt-2 space-y-2 text-sm text-gray-700">
+          <li><strong>Discovery:</strong> Process mapping, pain points, success criteria.</li>
+          <li><strong>Design:</strong> Event model, data contract, failure modes.</li>
+          <li><strong>Build:</strong> Orchestrations, webhooks, validation, logging.</li>
+          <li><strong>QA:</strong> Happy path + chaos tests; load & rate limits.</li>
+          <li><strong>Launch:</strong> Gradual traffic; rollback plan; hypercare.</li>
+          <li><strong>Operate:</strong> Weekly checks; monthly ROI review.</li>
+        </ol>
+        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Stage Gates</p><ul class="list-disc ml-5 space-y-1"><li>Design sign‑off: contracts + SLAs</li><li>QA: 0 Sev‑1 defects; retries verified</li><li>Pilot: success ≥ 99% for 7 days</li></ul></div>
+          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Risks</p><ul class="list-disc ml-5 space-y-1"><li>API limits → queues + backoff</li><li>Schema drift → contracts + tests</li><li>Secrets leakage → vault only</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="scope">
+      <h2 class="text-2xl font-bold mb-3">Scope Tiers</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <table class="min-w-full">
+          <thead><tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Workflows</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">MVP</td><td class="p-3">1–2 flows</td><td class="p-3">Highest ROI; simple alerts</td></tr>
+            <tr><td class="p-3 font-semibold">Standard</td><td class="p-3">3–5 flows</td><td class="p-3">Shared libs; error inbox</td></tr>
+            <tr><td class="p-3 font-semibold">Plus</td><td class="p-3">6–10 flows</td><td class="p-3">Common queue; dashboards</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="kpis">
+      <h2 class="text-2xl font-bold mb-3">KPIs & Reporting</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li><strong>Success rate:</strong> completed jobs / total; ≥ 99%</li>
+        <li><strong>MTTR:</strong> median time to resolve failures</li>
+        <li><strong>Hours saved:</strong> baseline time − automation time</li>
+        <li><strong>Error budget:</strong> allowed failures before freeze</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="design">
+      <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Idempotency keys for create/update; avoid duplicates on retries.</li>
+        <li>Validate inputs early; fail fast with actionable error messages.</li>
+        <li>Use queues for bursty workloads; respect API rate limits.</li>
+        <li>Make steps observable: correlation IDs, structured logs, metrics.</li>
+        <li>Backfill scripts and replay capabilities for resilience.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="tooling">
+      <h2 class="text-2xl font-bold mb-3">Tooling</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead><tr><th class="p-3 text-left">Layer</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Orchestration</td><td class="p-3">Make, Zapier, n8n</td><td class="p-3">Start low‑code; custom only when needed</td></tr>
+            <tr><td class="p-3 font-semibold">Data</td><td class="p-3">Google Sheets, Airtable, Postgres</td><td class="p-3">Schema with IDs, timestamps, status</td></tr>
+            <tr><td class="p-3 font-semibold">Messaging</td><td class="p-3">Slack/Email webhooks</td><td class="p-3">Alerts with correlation links</td></tr>
+            <tr><td class="p-3 font-semibold">Secrets</td><td class="p-3">Vault/Secrets Manager</td><td class="p-3">Rotate; least privilege</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="security">
+      <h2 class="text-2xl font-bold mb-3">Security & Compliance</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Service accounts; scoped API tokens; avoid personal creds.</li>
+        <li>PII minimization; encryption at rest/in transit; audit logs.</li>
+        <li>Access reviews quarterly; disable unused integrations.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="timeline">
+      <h2 class="text-2xl font-bold mb-3">Timeline (first 2 weeks)</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Day</th><th class="p-3 text-left">Theme</th><th class="p-3 text-left">Outputs</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3">1</td><td class="p-3">Kickoff</td><td class="p-3">Process map; ROI target; access</td></tr>
+            <tr><td class="p-3">2–3</td><td class="p-3">Design</td><td class="p-3">Contracts; failure modes; test plan</td></tr>
+            <tr><td class="p-3">4–6</td><td class="p-3">Build</td><td class="p-3">Flows; logging; alerts</td></tr>
+            <tr><td class="p-3">7</td><td class="p-3">QA</td><td class="p-3">Golden paths; chaos tests; fixes</td></tr>
+            <tr><td class="p-3">8–10</td><td class="p-3">Pilot</td><td class="p-3">25–50% traffic; hypercare</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Playbook — Creative & Development | AI Freelancer</title>
+  <meta name="description" content="Step-by-step delivery process for Creative & Development: discovery, UX/content, build, QA, launch, and optimization. Includes performance, accessibility, SEO, checklists, KPIs, and templates." />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style> body{font-family:'Inter',sans-serif} code,kbd{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:.375rem;padding:.125rem .375rem} .sec{scroll-margin-top:80px} </style>
+  <style>
+    :root{ --teal:#0d9488; --indigo:#4f46e5; --muted:#6b7280; --text:#0f172a; }
+    body{ background: linear-gradient(180deg, rgba(79,70,229,0.04) 0%, rgba(13,148,136,0.02) 60%), #fff; color:var(--text); }
+    .bg-white.border.rounded-xl,.bg-white.border.rounded-2xl{position:relative;background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);border:1px solid rgba(79,70,229,0.06);box-shadow:0 10px 30px rgba(15,23,42,0.06);transition:transform .16s,box-shadow .16s}
+    .bg-white.border.rounded-xl:hover,.bg-white.border.rounded-2xl:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(15,23,42,0.12)}
+    h1{color:var(--indigo);font-weight:900;font-size:2.4rem}
+    h2{color:#061126;font-weight:800}
+    a{color:var(--indigo)} a:hover{color:#3730a3;text-decoration:underline}
+    .kpi-grid>div{padding-left:18px} .kpi-grid>div::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:6px;border-radius:6px}
+    .kpi-grid>div:nth-child(1)::before{background:linear-gradient(180deg,var(--indigo),var(--teal))}
+    .kpi-grid>div:nth-child(2)::before{background:linear-gradient(180deg,#f59e0b,#f97316)}
+    .kpi-grid>div:nth-child(3)::before{background:linear-gradient(180deg,#fb7185,#ef4444)}
+    table.min-w-full thead th{ position: sticky; top:0; background: linear-gradient(180deg,#fbfdff,#f8fafc); color:var(--muted); font-weight:800; padding:12px 16px; z-index:2; }
+    table.min-w-full td{ padding:12px 16px; border-top:1px solid rgba(15,23,42,0.03); }
+  </style>
+  <meta name="robots" content="noindex, follow" />
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-white border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
+      <nav class="text-sm text-gray-600">
+        <a href="/playbook.html" class="hover:text-gray-900">Playbook index</a>
+        <span class="mx-3">•</span>
+        <a href="/creative-development.html" class="hover:text-gray-900">Service page</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-10 space-y-12">
+    
+    <section class="sec" id="overview">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: Creative & Development</h1>
+      <p class="mt-4 text-lg text-gray-700">Design and ship high‑quality websites, apps, and content fast. Use AI to accelerate copy, visuals, and code—without compromising Core Web Vitals, accessibility, or SEO. Launch safely with rollbacks, monitoring, and governance baked in.</p>
+      <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Performance KPI</p><p class="text-xl font-bold">CWV: LCP &lt; 2.5s</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold">WCAG 2.2 AA pass</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Outcome KPI</p><p class="text-xl font-bold">CR +10–20%</p></div>
+      </div>
+    </section>
+
+    <section class="sec" id="intro">
+      <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
+        <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
+        <p class="mt-2">Part 1 is accessible to non‑technical stakeholders (story, goals, checklist). Part 2 is an implementer’s guide (SOPs, timelines, templates) with deep technical detail.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="toc">
+      <nav class="bg-white border rounded-xl p-5">
+        <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
+        <ol class="list-decimal ml-5 space-y-1 text-sm md:columns-2 lg:columns-3">
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process & Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Quality</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#glossary">Glossary (Newbie‑friendly)</a></li>
+          <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Part 2: Implementer's Guide</li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#prereqs">Access & Prerequisites</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling Options</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#security">Security & QA</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Detailed Timeline</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates & Snippets</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#audit-monitoring">Audit & Monitoring (Ops)</a></li>
+        </ol>
+      </nav>
+    </section>
+
+    <section class="sec" id="story-top">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Quick Story — What will happen</h2>
+        <p class="mt-3 text-sm text-gray-700">Overview: We plan the structure, write copy, design components, then build and test. We launch with safety nets: rollback plan, analytics, and performance budgets. After go‑live, we optimize based on user signals.</p>
+        <p class="mt-3 text-sm text-gray-700">What each step means (plain):</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Discovery:</strong> agree on goals and who the site/app is for; outline pages and flows.</li>
+          <li><strong>UX & copy:</strong> make simple drafts (wireframes) and write clear copy.</li>
+          <li><strong>Build:</strong> turn designs into fast, accessible pages/components.</li>
+          <li><strong>Test:</strong> check that everything works, loads quickly, and is readable for everyone.</li>
+          <li><strong>Launch:</strong> go live with a plan to undo changes if needed; watch for errors.</li>
+        </ul>
+        <p class="mt-3 text-sm text-gray-700"><strong>For you — the person doing the work:</strong> checklist to follow:</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Confirm goals/KPIs, write IA and content plan; set budgets (CWV/a11y).</li>
+          <li>Create wireframes and copy; get sign‑off; freeze changes for QA.</li>
+          <li>Build components/pages; connect CMS/integrations; add analytics.</li>
+          <li>Run QA: a11y, CWV, SEO, cross‑browser; fix blockers.</li>
+          <li>Launch with monitoring and rollback; schedule optimization.</li>
+        </ul>
+        <p class="mt-3 text-sm text-gray-700"><strong>For the client — what it should feel like:</strong></p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Clear:</strong> you see the plan and weekly progress.</li>
+          <li><strong>Safe:</strong> we test thoroughly and can roll back quickly.</li>
+          <li><strong>Fast:</strong> pages feel snappy and pass performance checks.</li>
+          <li><strong>Accessible:</strong> everyone can use it comfortably.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="communication">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Communication</h2>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Weekly review: demo, backlog updates, approvals</li>
+          <li>QA readiness: a11y + CWV reports, test plan sign‑off</li>
+          <li>Launch checklist walkthrough: owners and rollback</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="simple-checklist">
+      <div class="bg-white border rounded-2xl p-6">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
+            <p class="text-gray-600 text-sm">Use this during build/QA. Expand any “Newbie guide” for step‑by‑step help.</p>
+          </div>
+          <div class="text-right">
+            <div class="text-sm text-gray-600">Progress</div>
+            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden"><div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div></div>
+            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1">0% complete</div>
+          </div>
+        </div>
+        <div class="mt-6 space-y-6" id="crm-checklist">
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 1 — Discovery</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="goals"/> <span>Goals/KPIs, audience, competitor scan</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ia"/> <span>IA/site map; content plan</span></label></div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 2 — UX & Copy</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="wireframes"/> <span>Wireframes for key pages</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="copy"/> <span>Copy drafts; approvals; freeze window for QA</span></label></div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 3 — Build</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="components"/> <span>Components/pages; CMS; analytics</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="integrations"/> <span>Integrations; env/config; secrets</span></label></div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 4 — QA</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="a11y"/> <span>Accessibility (WCAG 2.2 AA)</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="cwv"/> <span>Core Web Vitals; SEO checks; cross‑browser</span></label></div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 5 — Launch</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="launch"/> <span>DNS/SSL; redirects; sitemaps; robots; monitoring</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="rollback"/> <span>Rollback plan ready</span></label></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="phases">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Delivery Phases</h2>
+        <ol class="list-decimal ml-5 mt-2 space-y-2 text-sm text-gray-700">
+          <li><strong>Discovery:</strong> Goals, audience, IA, benchmarks; define success metrics.</li>
+          <li><strong>UX & Content:</strong> Wireframes, copy map, component inventory, brand kit.</li>
+          <li><strong>Build:</strong> Components, CMS, integrations, analytics; a11y patterns.</li>
+          <li><strong>QA:</strong> Functional tests, CWV, a11y audit, SEO checks.</li>
+          <li><strong>Launch:</strong> Deploy with rollback; observability + error inbox.</li>
+          <li><strong>Optimize:</strong> A/B tests, heatmaps, roadmap for iteration.</li>
+        </ol>
+        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Stage Gates</p><ul class="list-disc ml-5 space-y-1"><li>Content freeze for QA</li><li>CWV budget met on staging</li><li>A11y audit: WCAG 2.2 AA</li></ul></div>
+          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Risks & Mitigations</p><ul class="list-disc ml-5 space-y-1"><li>Scope creep → freeze windows</li><li>Slow pages → image budgets</li><li>SEO regressions → pre/post diff</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="scope">
+      <h2 class="text-2xl font-bold mb-3">Scope Tiers</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <table class="min-w-full">
+          <thead><tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Pages/Features</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">MVP</td><td class="p-3">3–5 pages</td><td class="p-3">Marketing site; static preferred</td></tr>
+            <tr><td class="p-3 font-semibold">Standard</td><td class="p-3">6–12 pages + CMS</td><td class="p-3">Blog + forms + analytics</td></tr>
+            <tr><td class="p-3 font-semibold">Plus</td><td class="p-3">Web app features</td><td class="p-3">Auth, storage, dashboards</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="kpis">
+      <h2 class="text-2xl font-bold mb-3">KPIs & Quality</h2>
+      <ul class="bg-white border rounded-xl p-5 text-sm space-y-2">
+        <li><strong>CWV:</strong> LCP, INP, CLS budgets met</li>
+        <li><strong>A11y:</strong> WCAG 2.2 AA checks pass</li>
+        <li><strong>SEO:</strong> Indexable pages, metadata, internal links</li>
+        <li><strong>Conversion:</strong> Baseline → +10–20% in 30–60 days</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="glossary">
+      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <p><strong>CWV:</strong> Core Web Vitals (LCP/INP/CLS) — key performance measures.</p>
+        <p><strong>WCAG:</strong> Accessibility standard that ensures usability for all.</p>
+        <p><strong>Rollback:</strong> A plan to revert a deployment if problems appear.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="initial-setup">
+      <h2 class="text-2xl font-bold mb-3">Initial Setup (SOP)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ol class="list-decimal ml-5 space-y-2">
+          <li>Confirm goals, KPIs, audiences; draft IA and content plan.</li>
+          <li>Establish budgets (CWV/a11y/SEO); select stack (framework/CMS/hosting).</li>
+          <li>Prepare design tokens, component inventory, and analytics plan.</li>
+          <li>Define a freeze window before QA; decide rollback and monitoring.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" id="prereqs">
+      <h2 class="text-2xl font-bold mb-3">Access & Prerequisites</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ul class="list-disc ml-5 space-y-1">
+          <li>Repo access and CI permissions; secrets vault</li>
+          <li>Design assets; copy source; analytics property</li>
+          <li>Hosting/DNS control; CDN and SSL</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="tooling">
+      <h2 class="text-2xl font-bold mb-3">Tooling Options</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead><tr><th class="p-3 text-left">Area</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Frontend</td><td class="p-3">Next.js/Astro, Tailwind</td><td class="p-3">Static where possible; hydrate islands</td></tr>
+            <tr><td class="p-3 font-semibold">CMS</td><td class="p-3">Sanity, Contentful, Ghost</td><td class="p-3">Editors own content; preview flow</td></tr>
+            <tr><td class="p-3 font-semibold">Backend</td><td class="p-3">Supabase/Firebase</td><td class="p-3">Auth, storage, simple APIs fast</td></tr>
+            <tr><td class="p-3 font-semibold">Deploy</td><td class="p-3">Vercel/Netlify</td><td class="p-3">CI checks for CWV, a11y, links</td></tr>
+            <tr><td class="p-3 font-semibold">Analytics</td><td class="p-3">GA4, Plausible</td><td class="p-3">Events + funnels; consent banners</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="design">
+      <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Image budgets (sizes, formats); avoid layout shift; lazy‑load offscreen.</li>
+        <li>Keyboard/screen reader paths; color contrast; focus styles.</li>
+        <li>SEO: titles, metas, canonical, sitemaps, schema where relevant.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="security">
+      <h2 class="text-2xl font-bold mb-3">Security & QA</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Secrets in vault; env segregation; dependency scanning.</li>
+        <li>CSP, security headers, HTTPS everywhere; cookie flags.</li>
+        <li>QA logs defects by severity; zero Sev‑1 before launch.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="timeline">
+      <h2 class="text-2xl font-bold mb-3">Detailed Timeline & Cadence</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Week</th><th class="p-3 text-left">Theme</th><th class="p-3 text-left">Outputs</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3">1</td><td class="p-3">Discovery</td><td class="p-3">IA, content plan, budgets; stack chosen</td></tr>
+            <tr><td class="p-3">2</td><td class="p-3">Build</td><td class="p-3">Components/pages; CMS; analytics; integrations</td></tr>
+            <tr><td class="p-3">3</td><td class="p-3">QA</td><td class="p-3">A11y, CWV, SEO, cross‑browser pass</td></tr>
+            <tr><td class="p-3">4</td><td class="p-3">Launch</td><td class="p-3">Deploy, monitoring, rollback; optimization plan</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="templates">
+      <h2 class="text-2xl font-bold mb-3">Templates & Snippets</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm space-y-3">
+        <details><summary class="font-semibold">Copy Brief</summary><pre class="mt-2 whitespace-pre-wrap">Audience, Promise, Proof, Offer, CTA, Voice</pre></details>
+        <details><summary class="font-semibold">A11y Checklist</summary><pre class="mt-2 whitespace-pre-wrap">Keyboard paths, focus order, aria‑labels, alt text, contrast</pre></details>
+        <details><summary class="font-semibold">Launch Checklist</summary><pre class="mt-2 whitespace-pre-wrap">DNS, SSL, redirects, sitemaps, robots, error pages, monitoring</pre></details>
+      </div>
+    </section>
+
+    <section class="sec" id="audit-monitoring">
+      <h2 class="text-2xl font-bold mb-3">Audit & Monitoring (Ops)</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Daily (launch week): error inbox, CWV regressions, 404/links</li>
+        <li>Weekly: a11y/SEO diffs; conversion trends; defect log</li>
+        <li>Monthly: dependency updates; security headers review</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
+</body>
+</html>

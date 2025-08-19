@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Playbook — AI‑Powered Team Training | AI Freelancer</title>
+  <meta name="description" content="Step-by-step delivery process for AI‑Powered Team Training: source inventory, ingestion with citations, permissions, QA, rollout, adoption, and freshness. Includes checklists, KPIs, and templates." />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style> body{font-family:'Inter',sans-serif} code,kbd{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:.375rem;padding:.125rem .375rem} .sec{scroll-margin-top:80px} </style>
+  <style>
+    :root{
+      --teal: #0d9488; --indigo: #4f46e5; --muted:#6b7280; --text:#0f172a; --card-bg:#ffffff; --glass:rgba(79,70,229,0.06);
+    }
+    body{ background: linear-gradient(180deg, rgba(79,70,229,0.04) 0%, rgba(13,148,136,0.02) 60%), #fff; color:var(--text); }
+    .bg-white.border.rounded-xl, .bg-white.border.rounded-2xl{ position:relative; background:linear-gradient(180deg,#fff 0%,#fbfdff 100%); border:1px solid rgba(79,70,229,0.06); box-shadow:0 10px 30px rgba(15,23,42,0.06); transition:transform .16s cubic-bezier(.2,.9,.3,1), box-shadow .16s }
+    .bg-white.border.rounded-xl:hover, .bg-white.border.rounded-2xl:hover{ transform:translateY(-6px); box-shadow:0 26px 60px rgba(15,23,42,0.12) }
+    h1{ color:var(--indigo); font-weight:900; font-size:2.4rem }
+    h2{ color:#061126; font-weight:800 }
+    a{ color:var(--indigo) } a:hover{ color:#3730a3; text-decoration:underline }
+    .kpi-grid>div{ padding-left:18px; overflow:hidden }
+    .kpi-grid>div::before{ content:''; position:absolute; left:0; top:12px; bottom:12px; width:6px; border-radius:6px }
+    .kpi-grid>div:nth-child(1)::before{ background:linear-gradient(180deg,var(--indigo),var(--teal)) }
+    .kpi-grid>div:nth-child(2)::before{ background:linear-gradient(180deg,#f59e0b,#f97316) }
+    .kpi-grid>div:nth-child(3)::before{ background:linear-gradient(180deg,#fb7185,#ef4444) }
+    table.min-w-full thead th{ position:sticky; top:0; background:linear-gradient(180deg,#fbfdff,#f8fafc); color:var(--muted); font-weight:800; padding:12px 16px; z-index:2 }
+    table.min-w-full td{ padding:12px 16px; border-top:1px solid rgba(15,23,42,0.03) }
+    table.min-w-full tbody tr:nth-child(odd) td{ background:#ffffff }
+    table.min-w-full tbody tr:nth-child(even) td{ background:#fbfdff }
+    details summary{ cursor:pointer }
+    details[open] summary{ color:var(--indigo) }
+    code,kbd{ background:#f1f5f9; border-color:#e6eef8 }
+    .muted{ color:var(--muted) }
+    .tip{ border-bottom:1px dotted rgba(14,20,24,0.06); cursor:default }
+  </style>
+  <meta name="robots" content="noindex, follow" />
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-white border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
+      <nav class="text-sm text-gray-600">
+        <a href="/playbook.html" class="hover:text-gray-900">Playbook index</a>
+        <span class="mx-3">•</span>
+        <a href="/ai-powered-team-training.html" class="hover:text-gray-900">Service page</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-10 space-y-12">
+
+    <section class="sec" id="overview">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: AI‑Powered Team Training</h1>
+      <p class="mt-4 text-lg text-gray-700">Turn SOPs and tribal knowledge into a secure, searchable assistant that answers team questions with citations, guides onboarding, and keeps knowledge fresh with light ownership. We define sources, permissions, and guardrails; test with real questions; and measure adoption, helpfulness, and freshness.</p>
+      <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Adoption KPI</p><p class="text-xl font-bold">≥ 60% team MAU</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold">Helpfulness ≥ 4.5 / 5</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Freshness KPI</p><p class="text-xl font-bold">≥ 90% verified &lt; 60 days</p></div>
+      </div>
+    </section>
+
+    <section class="sec" id="intro">
+      <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
+        <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
+        <p class="mt-2">This is a transparent, internal document that clients are welcome to review. It's designed to be understood by everyone, from a 14-year-old beginner to a seasoned expert. It's divided into two parts:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+          <li><strong>Part 1: The "What & Why" (Client & Manager View):</strong> Big picture: story, goals, and a simplified checklist.</li>
+          <li><strong>Part 2: The "How" (Implementer's Guide):</strong> SOPs, timelines, and contingency plans for implementation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="toc">
+      <nav class="bg-white border rounded-xl p-5">
+        <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
+        <ol class="list-decimal ml-5 space-y-1 text-sm md:columns-2 lg:columns-3">
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process & Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#glossary">Glossary (Newbie‑friendly)</a></li>
+          <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Part 2: Implementer's Guide</li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#prereqs">Access & Prerequisites</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling Options</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#security">Security & Compliance</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Detailed Timeline</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates & Snippets</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#audit-monitoring">Audit & Monitoring (Ops)</a></li>
+        </ol>
+      </nav>
+    </section>
+
+    <section class="sec" id="story-top">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Quick Story — What will happen</h2>
+        <p class="mt-3 text-sm text-gray-700">Overview: We collect your SOPs and important docs into one organized library. We connect that library to an AI assistant that answers questions and shows sources. We set permissions so people only see what they should. We test it with real questions and then roll it out with short training. Each week, we refresh content and improve the assistant using real questions.</p>
+        <p class="mt-3 text-sm text-gray-700">What each step means (plain):</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Inventory & Baseline:</strong> list sources; collect example questions; baseline onboarding time and interruptions.</li>
+          <li><strong>Ingestion:</strong> sync sources with citations and “last verified” dates.</li>
+          <li><strong>Permissions:</strong> set SSO groups; default deny; audit logs.</li>
+          <li><strong>Design:</strong> answer style, confidence handoff to a human expert, stale‑content handling.</li>
+          <li><strong>QA:</strong> test with a golden set of questions; fix gaps and tone.</li>
+          <li><strong>Rollout & Train:</strong> team intro, quick‑start guide, office hours.</li>
+          <li><strong>Operate:</strong> weekly refresh, adoption report, gap backlog.</li>
+        </ul>
+        <p class="mt-3 text-sm text-gray-700"><strong>For you — the person doing the work:</strong> Treat this as a concrete checklist you can follow:</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Ask for access</strong> to SSO group admin and read access to source‑of‑truth repositories.</li>
+          <li><strong>Export the baseline</strong> (onboarding time, interruptions/week, top repeated questions).</li>
+          <li><strong>Build a source map</strong> (repositories, owners, freshness targets).</li>
+          <li><strong>Ingest and chunk docs</strong>; enable citations; set refresh cadence and 404 monitors.</li>
+          <li><strong>Configure collections & permissions</strong> with SSO groups; default deny; audit logs.</li>
+          <li><strong>Create the answer style guide</strong> and draft sample answers.</li>
+          <li><strong>Run a golden set QA</strong> of 50 questions; fix gaps; owner sign‑offs.</li>
+          <li><strong>Train the team</strong> and schedule office hours; operate weekly.</li>
+        </ul>
+        <p class="mt-3 text-sm text-gray-700"><strong>For the client — what it should feel like:</strong></p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Easy:</strong> grant access, confirm sources/owners, and approve the style; we handle the rest.</li>
+          <li><strong>Helpful:</strong> employees get instant, cited answers; senior staff interruptions drop quickly.</li>
+          <li><strong>Safe:</strong> SSO permissions; default deny; audit logs; stale‑content warnings.</li>
+          <li><strong>Clear:</strong> monthly adoption and freshness reports show progress.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="communication">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Communication & Reporting</h2>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Weekly admin sync:</strong> ingestion health, stale content, top queries, gap backlog</li>
+          <li><strong>Office hours (bi‑weekly):</strong> live Q&A; collect feedback; share tips</li>
+          <li><strong>Monthly adoption report:</strong> MAU, helpfulness, freshness, top sources</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="simple-checklist">
+      <div class="bg-white border rounded-2xl p-6">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
+            <p class="text-gray-600 text-sm">Use this live checklist during enablement. Expand any “Newbie guide” for step‑by‑step help.</p>
+          </div>
+          <div class="text-right">
+            <div class="text-sm text-gray-600">Progress</div>
+            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false">
+              <div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div>
+            </div>
+            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+          </div>
+        </div>
+
+        <div class="mt-6 space-y-6" id="crm-checklist">
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 1 — Baseline & Access</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="baseline"/> <span>Export onboarding time, interruptions/week, and top repeated questions</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="access"/> <span>Provision SSO groups; service accounts; least‑privilege API access</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Why baseline?</summary><div class="mt-2 text-sm text-gray-700">We need a before/after comparison to show impact. It also helps us pick the most valuable content first.</div></details>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 2 — Source Inventory</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="inventory"/> <span>List SOPs, policies, FAQs, product docs; pick source of truth</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="owners"/> <span>Assign owners; add “last verified” dates</span></label>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 3 — Ingestion & Quality</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ingest"/> <span>Ingest with chunking by headings; attach source URLs; enable citations</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="refresh"/> <span>Index freshness fields; set refresh cadence and 404 monitoring</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Chunking</summary><div class="mt-2 text-sm text-gray-700">We split long documents into labeled chunks so answers can quote the right section instead of the entire page.</div></details>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 4 — Permissions & Guardrails</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="permissions"/> <span>Map SSO groups to collections; default deny; log access</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="handoff"/> <span>Confidence handoff to human expert; stale‑content warnings</span></label>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 5 — Answer Design</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="style"/> <span>Style guide (short, step‑by‑step, link sources, mention last‑verified)</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="seealso"/> <span>Add quick links and “see also” to related SOPs</span></label>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 6 — QA & UAT</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="qa"/> <span>Golden set of 50 common questions; evaluate helpfulness + citations</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="signoff"/> <span>Fix gaps and tone; owner review; sign‑off</span></label>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 7 — Launch & Enablement</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="training"/> <span>Team training; quick‑start guide; office hours</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="operate"/> <span>Weekly refresh routine; adoption dashboard</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="phases">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Delivery Phases</h2>
+        <ol class="list-decimal ml-5 mt-2 space-y-2 text-sm text-gray-700">
+          <li><strong>Discovery:</strong> Baseline metrics; example questions; source inventory; owners.</li>
+          <li><strong>Design:</strong> Ingestion plan; permissions map; answer style; handoff rules.</li>
+          <li><strong>Build:</strong> Ingest, chunk, index; citations; freshness fields; dashboards.</li>
+          <li><strong>QA & UAT:</strong> Golden set eval; tone, citations, and freshness fixes; sign‑off.</li>
+          <li><strong>Launch:</strong> Training, quick‑start guides, office hours.</li>
+          <li><strong>Operate:</strong> Weekly refresh, adoption reports, gap backlog.</li>
+        </ol>
+        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Stage Gates</p><ul class="list-disc ml-5 space-y-1"><li>Design sign‑off: sources, owners, permissions, style</li><li>QA pass: helpfulness ≥ 4.5/5 on golden set</li><li>Launch: adoption plan approved; training scheduled</li></ul></div>
+          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Risks & Mitigations</p><ul class="list-disc ml-5 space-y-1"><li>Stale content → freshness fields, owner reminders</li><li>Access leaks → default deny, SSO groups, audit logs</li><li>Low adoption → quick wins, office hours, shout‑outs</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="scope">
+      <h2 class="text-2xl font-bold mb-3">Scope Tiers</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <table class="min-w-full">
+          <thead><tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Coverage</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Pilot</td><td class="p-3">1–2 teams; top SOPs</td><td class="p-3">Prove value fast; refine style</td></tr>
+            <tr><td class="p-3 font-semibold">Department</td><td class="p-3">3–5 teams; policies & FAQs</td><td class="p-3">Formal owners; weekly refresh</td></tr>
+            <tr><td class="p-3 font-semibold">Company</td><td class="p-3">Org‑wide knowledge</td><td class="p-3">Enablement + change mgmt</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="kpis">
+      <h2 class="text-2xl font-bold mb-3">KPIs & Reporting</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li><strong>MAU:</strong> monthly active users vs target population (goal ≥ 60%)</li>
+        <li><strong>Helpfulness:</strong> 1–5 rating on answers (goal ≥ 4.5)</li>
+        <li><strong>Freshness:</strong> % items “last verified” &lt; 60 days (goal ≥ 90%)</li>
+        <li><strong>Interruptions↓:</strong> self‑reported senior interruptions down ≥ 40%</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="glossary">
+      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <p><strong>MAU:</strong> Monthly Active Users — how many people actually use it.</p>
+        <p><strong>Citations:</strong> Links to the exact part of the SOP used for an answer.</p>
+        <p><strong>Chunk:</strong> A small, labeled piece of a larger document.</p>
+        <p><strong>Confidence:</strong> How sure the assistant is; low confidence triggers handoff.</p>
+        <p><strong>Freshness:</strong> When content was last verified by an owner.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="initial-setup">
+      <h2 class="text-2xl font-bold mb-3">Initial Setup (SOP)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ol class="list-decimal ml-5 space-y-2">
+          <li>Collect example questions; identify top repeat topics.</li>
+          <li>Confirm source‑of‑truth repositories; assign owners and freshness targets.</li>
+          <li>Ingest sources; chunk by headings; store URLs.</li>
+          <li>Enable citations and answer style rules; add “see also” suggestions.</li>
+          <li>Configure SSO groups and permissions; default deny; audit logs.</li>
+          <li>Build dashboard for MAU, helpfulness, freshness, and top queries.</li>
+          <li>Run golden set QA; fix gaps; owner sign‑offs.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" id="prereqs">
+      <h2 class="text-2xl font-bold mb-3">Access & Prerequisites</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ul class="list-disc ml-5 space-y-1">
+          <li>SSO access (Okta/Google) with group mapping</li>
+          <li>Read access to Confluence/Notion/Drive and policy repositories</li>
+          <li>Admin for observability (dashboards) and audit logs</li>
+          <li>Owner list with emails; freshness targets per collection</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="tooling">
+      <h2 class="text-2xl font-bold mb-3">Tooling Options</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead>
+            <tr><th class="p-3 text-left">Layer</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">KB Source</td><td class="p-3">Confluence, Notion, Google Drive</td><td class="p-3">Use source‑of‑truth; avoid stale copies</td></tr>
+            <tr><td class="p-3 font-semibold">Retrieval</td><td class="p-3">pgvector, Pinecone, Weaviate</td><td class="p-3">Store source URL + version + last‑verified</td></tr>
+            <tr><td class="p-3 font-semibold">Models</td><td class="p-3">OpenAI, Anthropic, Google</td><td class="p-3">Citations on; style constraints; low‑confidence handoff</td></tr>
+            <tr><td class="p-3 font-semibold">Access</td><td class="p-3">SSO (Okta/Google), group mapping</td><td class="p-3">Default deny; log denies and grants</td></tr>
+            <tr><td class="p-3 font-semibold">Observability</td><td class="p-3">Dashboards, error inbox</td><td class="p-3">Track MAU, helpfulness, freshness, top queries</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="design">
+      <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Short answers with links; include “last verified” date for trust.</li>
+        <li>Confidence thresholds: “ask expert” when unsure or content is stale.</li>
+        <li>Collections per team/topic; avoid cross‑leakage; default deny.</li>
+        <li>Gap backlog from unanswered queries; route to owners weekly.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="security">
+      <h2 class="text-2xl font-bold mb-3">Security & Compliance</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Least privilege; group mapping via SSO; audit all access.</li>
+        <li>Do not use private data for model training; control retention.</li>
+        <li>Redact sensitive fields in logs; handle RTBF requests.</li>
+        <li>Owner approvals for policy content; legal sign‑off if regulated.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="timeline">
+      <h2 class="text-2xl font-bold mb-3">Detailed Timeline & Cadence (solo operator)</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Day</th><th class="p-3 text-left">Topic</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Output / Done</th><th class="p-3 text-left">Est.</th><th class="p-3 text-left">Owner</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3">1</td><td class="p-3">Kickoff + Access</td><td class="p-3">Baseline; example questions; confirm sources; SSO groups</td><td class="p-3">Charter; access checklist</td><td class="p-3">3h</td><td class="p-3">You+Client</td></tr>
+            <tr><td class="p-3">2</td><td class="p-3">Inventory</td><td class="p-3">List SOPs/policies; owners; freshness targets</td><td class="p-3">Source map</td><td class="p-3">4h</td><td class="p-3">You</td></tr>
+            <tr><td class="p-3">3</td><td class="p-3">Ingestion</td><td class="p-3">Connectors/exports; chunk by headings; store URLs</td><td class="p-3">Indexed KB</td><td class="p-3">4h</td><td class="p-3">You</td></tr>
+            <tr><td class="p-3">4</td><td class="p-3">Answer Design</td><td class="p-3">Style guide; citations; see‑also links</td><td class="p-3">Style v1</td><td class="p-3">3h</td><td class="p-3">You</td></tr>
+            <tr><td class="p-3">5</td><td class="p-3">Permissions</td><td class="p-3">SSO group mapping; default deny; audit logs</td><td class="p-3">Permissions live</td><td class="p-3">3h</td><td class="p-3">You+IT</td></tr>
+            <tr><td class="p-3">6</td><td class="p-3">Dashboards</td><td class="p-3">MAU/helpfulness/freshness/top queries</td><td class="p-3">Dash v1</td><td class="p-3">3h</td><td class="p-3">You</td></tr>
+            <tr><td class="p-3">7</td><td class="p-3">QA</td><td class="p-3">Golden set evaluation; fixes</td><td class="p-3">QA pass</td><td class="p-3">4h</td><td class="p-3">You</td></tr>
+            <tr><td class="p-3">8</td><td class="p-3">UAT</td><td class="p-3">Owner sign‑offs; launch plan</td><td class="p-3">UAT sign‑off</td><td class="p-3">2h</td><td class="p-3">Client</td></tr>
+            <tr><td class="p-3">9</td><td class="p-3">Training</td><td class="p-3">Team intro; quick‑start; office hours schedule</td><td class="p-3">Training delivered</td><td class="p-3">2h</td><td class="p-3">You</td></tr>
+            <tr><td class="p-3">10–14</td><td class="p-3">Hypercare</td><td class="p-3">Weekly refresh; close top gaps; adoption nudges</td><td class="p-3">Stability report</td><td class="p-3">1–2h/day</td><td class="p-3">You</td></tr>
+            <tr><td class="p-3">15</td><td class="p-3">Handover</td><td class="p-3">Admin routine; owner guide; next‑month plan</td><td class="p-3">Docs shared</td><td class="p-3">2h</td><td class="p-3">You+Client</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Fast‑Track (7 days)</p><ul class="list-disc list-inside space-y-1"><li>Limit to 1–2 teams and top 25 docs</li><li>Train + launch after QA; weekly refresh</li></ul></div>
+        <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">If Approvals Lag</p><ul class="list-disc list-inside space-y-1"><li>Use placeholders; continue ingestion</li><li>Gate launch behind owner sign‑off</li></ul></div>
+      </div>
+    </section>
+
+    <section class="sec" id="templates">
+      <h2 class="text-2xl font-bold mb-3">Templates & Snippets</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm space-y-3">
+        <details><summary class="font-semibold">Answer Style Guide</summary><pre class="mt-2 whitespace-pre-wrap">Keep answers short and actionable.
+Use numbered steps when relevant.
+Always include 1–2 source links and "last verified" date.
+Offer a friendly "ask expert" path for edge cases.</pre></details>
+        <details><summary class="font-semibold">Onboarding Checklist</summary><pre class="mt-2 whitespace-pre-wrap">1) SSO access confirmed
+2) Quick‑start guide shared
+3) Try 3 common questions
+4) Join office hours</pre></details>
+        <details><summary class="font-semibold">Weekly Admin Routine</summary><pre class="mt-2 whitespace-pre-wrap">1) Review top queries
+2) Close gaps; update freshness
+3) Publish tips/changelog
+4) Nudge low‑adoption teams</pre></details>
+        <details><summary class="font-semibold">Freshness Reminder (owner)</summary><pre class="mt-2 whitespace-pre-wrap">Subject: Verify SOP — {{doc_title}}
+Hi {{owner}}, please review and mark "last verified" by {{date}}.
+Link: {{url}}</pre></details>
+        <details><summary class="font-semibold">Escalation to Expert</summary><pre class="mt-2 whitespace-pre-wrap">Summary: {{one_line}}
+Sources consulted: {{citations}}
+Confidence: {{confidence}}
+Requested by: {{user}}</pre></details>
+      </div>
+    </section>
+
+    <section class="sec" id="audit-monitoring">
+      <h2 class="text-2xl font-bold mb-3">Audit & Monitoring (Ops)</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Daily (launch week): ingestion health, failed queries, top gaps</li>
+        <li>Weekly: MAU/helpfulness, freshness diffs, owner reminders</li>
+        <li>Monthly: adoption report, enablement plan, stale content sweep</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
+</body>
+</html>

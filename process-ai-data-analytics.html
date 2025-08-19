@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Playbook — AI Data & Analytics | AI Freelancer</title>
+  <meta name="description" content="Practical delivery process for small‑business data analytics with AI: source audit, ELT, modeling, dashboards, forecasting, governance, and cadence." />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style> body{font-family:'Inter',sans-serif} code,kbd{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:.375rem;padding:.125rem .375rem} .sec{scroll-margin-top:80px} </style>
+  <style>
+    /* Vibrant Indigo + Teal theme */
+    :root{
+      --teal: #0d9488;   /* teal-600 */
+      --indigo: #4f46e5; /* indigo-600 */
+      --accent: var(--indigo);
+      --muted: #6b7280;
+      --text: #0f172a;
+      --card-bg: #ffffff;
+      --glass: rgba(79,70,229,0.06);
+    }
+
+    /* Energetic page background */
+    body{ background: linear-gradient(180deg, rgba(79,70,229,0.04) 0%, rgba(13,148,136,0.02) 60%), #fff; color:var(--text); }
+
+    /* Cards with subtle gradient and punch */
+    .bg-white.border.rounded-xl, .bg-white.border.rounded-2xl {
+      position:relative;
+      background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+      border: 1px solid rgba(79,70,229,0.06);
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      transition: transform .16s cubic-bezier(.2,.9,.3,1), box-shadow .16s;
+    }
+    .bg-white.border.rounded-xl:hover, .bg-white.border.rounded-2xl:hover{ transform: translateY(-6px); box-shadow: 0 26px 60px rgba(15,23,42,0.12); }
+
+    /* Headings */
+    h1{ color:var(--indigo); font-weight:900; font-size:2.4rem; }
+    h2{ color:#061126; font-weight:800; }
+
+    /* Links */
+    a{ color:var(--indigo); }
+    a:hover{ color: #3730a3; text-decoration:underline; }
+
+    /* KPI card accents (indigo / amber / rose) */
+    .kpi-grid > div{ padding-left:18px; overflow:hidden; }
+    .kpi-grid > div::before{ content:''; position:absolute; left:0; top:12px; bottom:12px; width:6px; border-radius:6px; }
+    .kpi-grid > div:nth-child(1)::before{ background: linear-gradient(180deg,var(--indigo),var(--teal)); }
+    .kpi-grid > div:nth-child(2)::before{ background: linear-gradient(180deg,#f59e0b,#f97316); }
+    .kpi-grid > div:nth-child(3)::before{ background: linear-gradient(180deg,#fb7185,#ef4444); }
+    .mt-6 .bg-white.p-4 p.text-xl{ color:#061126; }
+
+    /* Tables: polished header + sticky */
+    table.min-w-full thead th{ position: sticky; top:0; background: linear-gradient(180deg,#fbfdff,#f8fafc); color:var(--muted); font-weight:800; padding:12px 16px; z-index:2; }
+    table.min-w-full td{ padding:12px 16px; border-top:1px solid rgba(15,23,42,0.03); }
+    table.min-w-full tbody tr:nth-child(odd) td{ background: #ffffff; }
+    table.min-w-full tbody tr:nth-child(even) td{ background: #fbfdff; }
+
+    /* Details/summary */
+    details summary{ cursor:pointer; }
+    details[open] summary{ color:var(--indigo); }
+
+    /* Code and pre */
+    code,kbd{ background:#f1f5f9; border-color:#e6eef8; }
+
+    /* Small helper */
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-white border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
+      <nav class="text-sm text-gray-600">
+        <a href="/playbook.html" class="hover:text-gray-900">Playbook index</a>
+        <span class="mx-3">•</span>
+        <a href="/ai-data-analytics.html" class="hover:text-gray-900">Service page</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-10 space-y-12">
+    
+    <section class="sec" id="overview">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: AI Data &amp; Analytics</h1>
+      <p class="mt-4 text-lg text-gray-700">Turn raw data into decisions with a lean ELT pipeline, sensible modeling, and opinionated dashboards. Designed to be run by one person and scale later.</p>
+      <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Primary KPI</p><p class="text-xl font-bold">Time‑to‑insight &lt; 2 weeks</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold">Data tests ≥ 95% pass</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Adoption KPI</p><p class="text-xl font-bold">≥ 5 weekly active viewers</p></div>
+      </div>
+    </section>
+
+    <section class="sec" id="intro">
+      <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
+        <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
+        <p class="mt-2">This is a transparent, internal document that clients are welcome to review. It's designed to be understood by everyone, from a 14-year-old beginner to a seasoned expert. It's divided into two parts:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+          <li><strong>Part 1: The "What & Why" (Client & Manager View):</strong> The big picture. It covers the project's story, goals, and a simplified checklist. Start here to understand the project at a high level.</li>
+          <li><strong>Part 2: The "How" (Implementer's Guide):</strong> The technical details. It includes the step-by-step SOPs, timelines, and contingency plans needed for execution. Dive in here for implementation specifics.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="toc">
+      <nav class="bg-white border rounded-xl p-5">
+        <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
+        <ol class="list-decimal ml-5 space-y-1 text-sm md:columns-2 lg:columns-3">
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process & Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
+          <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Part 2: Implementer's Guide</li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#sources">Source Audit & Priorities</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#elt">Lean ELT Pipeline</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#models">Core Models</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#dashboards">Dashboards & Analytics</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#ml">Forecasting & AI</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#governance">Governance & Quality</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">Operating Cadence & KPIs</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Detailed Timeline</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates</a></li>
+        </ol>
+      </nav>
+    </section>
+
+    <section class="sec" id="story-top">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Quick Story — What will happen</h2>
+        <p class="mt-3 text-sm text-gray-700">Overview: We will gather your messy, scattered data and turn it into clean, useful dashboards that help you make smart decisions. First, we'll figure out what questions you want to answer. Then, we'll connect to your data sources (like Google Analytics, your CRM, etc.) and pull everything into one central, organized place called a "warehouse." Next, we'll clean and model the data to create reliable metrics. Finally, we'll build a few key dashboards, test them to make sure they're accurate, and show you how to use them.</p>
+
+        <p class="mt-3 text-sm text-gray-700">What each step means (plain):</p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Define Metrics:</strong> We agree on the exact definitions for your key numbers (e.g., "What counts as an 'active user'?"). This is our "contract" for what the numbers mean.</li>
+          <li><strong>Connect Sources:</strong> We get safe, read-only access to your tools and set up automated pipelines to copy the data out.</li>
+          <li><strong>Build Warehouse:</strong> We create a central database. Think of it as a clean, organized library for all your business data.</li>
+          <li><strong>Model Data:</strong> We write code that takes the raw, messy data and transforms it into clean, reliable tables (e.g., a single `users` table or a `daily_sales` summary).</li>
+          <li><strong>Build Dashboards:</strong> We create the visual reports with charts and graphs that you'll use to see trends and answer questions.</li>
+          <li><strong>Test & Launch:</strong> We run checks to prove the numbers are correct and then give you and your team access.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Simplified, newbie-friendly, interactive checklist -->
+    <section class="sec" id="simple-checklist">
+      <div class="bg-white border rounded-2xl p-6">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
+            <p class="text-gray-600 text-sm">A practical step list to run analytics from zero. Progress saves in this browser.</p>
+          </div>
+          <div class="text-right">
+            <div class="text-sm text-gray-600">Progress</div>
+            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden"><div id="da-progress-bar" class="h-2 bg-indigo-500 w-0"></div></div>
+            <div id="da-progress-text" class="text-xs text-gray-500 mt-1">0% complete</div>
+          </div>
+        </div>
+
+        <div class="mt-6 space-y-6" id="da-checklist">
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 1 — Metrics & Sources</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="metrics"/> <span>Write metric contract (exact SQL, grain, filters, owner)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="source-inventory"/> <span>Complete source inventory (GA4, CRM, billing, support) w/ sample exports</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="access-list"/> <span>Request access list + credentials; note PII fields and policy</span></label>
+            <details class="mt-3">
+              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Why we start with metrics</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p><strong>What is a metric contract?</strong> It's a simple document where we write down the exact definition of each key number before we build anything. For example: "Monthly Active Users (MAU) is the count of unique users who logged in at least once in the last 28 days."</p>
+                <p><strong>Analogy: It's like agreeing on the rules of a game before you play.</strong> If we don't agree on what a "goal" is, we can't keep score. This contract ensures everyone in the company is counting the same way and trusts the numbers.</p>
+              </div>
+            </details>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 2 — Warehouse</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="warehouse"/> <span>Provision Postgres/BigQuery; create raw/stg/int/mart schemas and roles</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="security"/> <span>Force SSL; store creds in secrets manager</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="backups"/> <span>Enable daily backups and budget alerts</span></label>
+            <details class="mt-3">
+              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: What is a data warehouse?</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p>A data warehouse is a central database designed specifically for analytics. It's where we bring all your data together from different sources (like your website, CRM, and payment system) to get a complete picture of the business.</p>
+                <p><strong>Analogy: It's the clean, organized library for your data.</strong> Instead of having books scattered in different rooms, we bring them all to one library, organize them by topic (the schemas: `raw`, `staging`, `marts`), and make them easy to find and use for reports.</p>
+              </div>
+            </details>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 3 — Connectors</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="crm-connector"/> <span>Set CRM connector; verify incremental key (<code>updated_at</code>)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ga4-connector"/> <span>Load GA4 (BigQuery export or API); confirm event counts</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="row-counts"/> <span>Run row count checks vs. source exports</span></label>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 4 — dbt Staging</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="stg"/> <span>Create <code>stg_*</code> models; add not_null/unique tests</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="freshness"/> <span>Add freshness tests on raw tables; document SLA</span></label>
+             <details class="mt-3">
+              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: What is dbt and staging?</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p><strong>dbt</strong> is a tool that helps us transform data using simple SQL. It's the "T" (Transform) in our ELT (Extract, Load, Transform) process. <strong>Staging models</strong> are the first step in this transformation. They are simple models that do basic cleaning, like renaming columns or casting data types, to prepare the raw data for more complex joins later.</p>
+                <p><strong>Analogy: Staging is like the prep station in a kitchen (the *mise en place*).</strong> Before you start cooking the main dish, you wash the vegetables, chop the onions, and measure the spices. Staging models do this prep work for our data, ensuring everything is clean and ready before we start combining it.</p>
+              </div>
+            </details>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 5 — Core Models</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="int"/> <span>Build <code>int_funnel</code> (lead→mql→sql); track stage timestamps</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="mart"/> <span>Create <code>mart_kpis</code> daily snapshot for dashboards</span></label>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 6 — Dashboards</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="exec"/> <span>Publish Executive Overview; add channel/campaign/owner filters</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="pulse"/> <span>Schedule weekly pulse (Mon 9am); send test to stakeholders</span></label>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 7 — CI & QA</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ci"/> <span>Configure nightly <code>dbt build</code> in CI with failure alerts</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="anomaly"/> <span>Add simple z‑score anomaly checks to key KPIs</span></label>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 8 — Forecast & Cohorts</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="forecast"/> <span>Simple revenue forecast added (toggleable)</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="cohorts"/> <span>Cohort view by source/persona</span></label>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 9 — Docs & Handover</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="dictionary"/> <span>Data dictionary and lineage updated</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="training"/> <span>30‑min training delivered; questions answered</span></label>
+          </div>
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 10 — Ongoing Insights</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="weekly-insights"/> <span>Weekly insights note with 3–5 bullets</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="monthly-review"/> <span>Monthly deep‑dive and roadmap update</span></label>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center gap-3">
+          <button id="da-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50">Reset checklist</button>
+          <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+        </div>
+      </div>
+      <script>
+        (function(){
+          const ROOT = document.getElementById('da-checklist');
+          if(!ROOT) return;
+          const KEY = 'afl-checklist-data-analytics-v1';
+          const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+          const boxes = Array.from(ROOT.querySelectorAll('input[type="checkbox"][data-id]'));
+          boxes.forEach(cb => { const id = cb.dataset.id; if(saved[id]) cb.checked = true; });
+          function update(){
+            const state = {}; let done = 0;
+            boxes.forEach(cb => { state[cb.dataset.id] = cb.checked; if(cb.checked) done++; });
+            localStorage.setItem(KEY, JSON.stringify(state));
+            const pct = boxes.length ? Math.round((done/boxes.length)*100) : 0;
+            document.getElementById('da-progress-bar').style.width = pct + '%';
+            document.getElementById('da-progress-text').textContent = pct + '% complete';
+          }
+          boxes.forEach(cb => cb.addEventListener('change', update));
+          document.getElementById('da-reset')?.addEventListener('click', () => { boxes.forEach(cb => cb.checked = false); update(); });
+          update();
+        })();
+      </script>
+    </section>
+
+    <section class="sec" id="phases">
+      <h2 class="text-2xl font-bold mb-3">Delivery Phases</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs / Done</th></tr></thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="p-3 font-semibold">1) Discovery</td>
+              <td class="p-3">KPI definitions; source inventory; privacy & retention policy; access list</td>
+              <td class="p-3">You + Client</td>
+              <td class="p-3">Metric contract; source map; access granted</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">2) Design</td>
+              <td class="p-3">Warehouse plan; schema naming; dbt project layout; dashboard list</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Design doc; approved scope</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">3) Build</td>
+              <td class="p-3">Connectors; staging models; intermediate models; marts; seeds</td>
+              <td class="p-3">You</td>
+              <td class="p-3">dbt build green; marts materialized</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">4) Test</td>
+              <td class="p-3">dbt tests; freshness checks; anomaly detection; cost/latency tuning</td>
+              <td class="p-3">You</td>
+              <td class="p-3">QA report; thresholds met</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">5) Launch</td>
+              <td class="p-3">Dashboards publish; CI schedule; alerts; stakeholder walkthrough</td>
+              <td class="p-3">You + Client</td>
+              <td class="p-3">Dash v1 live; nightly runs stable</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">6) Optimize</td>
+              <td class="p-3">Forecast prototype; cohorts; documentation; training; backlog</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Insights cadence; roadmap</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="border-t pt-12">
+      <h2 class="text-3xl font-bold tracking-tight">Part 2: Implementer's Guide</h2>
+      <p class="mt-2 text-gray-600">This section contains the detailed, technical step-by-step procedures for execution.</p>
+    </div>
+
+    <section class="sec" id="initial-setup">
+      <h2 class="text-2xl font-bold mb-3">Initial Setup — Step‑by‑Step (SOP)</h2>
+      <div class="bg-white border rounded-xl p-5 space-y-6 text-sm">
+        <div>
+          <p class="font-semibold mb-2">0) Goals & Metric Contracts</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Define “north star” metrics (e.g., MQLs, SQLs, Revenue) and exact SQL definitions.</li>
+            <li>Create a 1‑pager: business questions, required cuts (channel, campaign, owner), refresh frequency.</li>
+            <li>Agree on data retention and privacy (which fields are PII and how they’re handled).</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-2">1) Warehouse Setup</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="border rounded-lg p-4">
+              <p class="font-semibold">Postgres (managed) quick start</p>
+<pre class="whitespace-pre-wrap text-xs">-- Create roles
+CREATE ROLE analytics_reader NOINHERIT;
+CREATE ROLE analytics_writer NOINHERIT;
+CREATE USER etl_user WITH PASSWORD '…';
+GRANT analytics_writer TO etl_user;
+
+-- Schemas
+CREATE SCHEMA raw;  -- unmodified loads
+CREATE SCHEMA stg;  -- cleaned
+CREATE SCHEMA int;  -- joined
+CREATE SCHEMA mart; -- dashboards
+
+-- Least privilege
+GRANT USAGE ON SCHEMA raw,stg,int,mart TO analytics_reader;
+GRANT SELECT ON ALL TABLES IN SCHEMA mart TO analytics_reader;
+ALTER DEFAULT PRIVILEGES IN SCHEMA mart GRANT SELECT ON TABLES TO analytics_reader;</pre>
+            </div>
+            <div class="border rounded-lg p-4">
+              <p class="font-semibold">Backup & Ops</p>
+              <ul class="list-disc list-inside">
+                <li>Enable daily automated backups; 7–30 days retention.</li>
+                <li>Force SSL; rotate credentials quarterly.</li>
+                <li>Tag costs and set monthly budget alerts.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-2">2) Connectors & Ingestion</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Prefer managed connectors (Fivetran/Hevo/Stitch). Budget option: Airbyte or scheduled CSVs.</li>
+            <li>GA4: export via BigQuery (if available) or use a connector/API pulls for core events.</li>
+            <li>CRM: nightly export of leads/deals/activities; include <code>updated_at</code> for incremental loads.</li>
+          </ul>
+          <div class="border rounded-lg p-4 mt-2">
+            <p class="font-semibold">Airbyte/Airflow‑style schedule (pseudocode)</p>
+<pre class="whitespace-pre-wrap text-xs">daily 02:00: extract crm_leads → raw.crm_leads_yyyy_mm_dd
+daily 02:15: extract crm_deals  → raw.crm_deals_yyyy_mm_dd
+daily 02:30: extract ga4_events → raw.ga4_events_yyyy_mm_dd
+daily 03:00: transform dbt build (stg → int → mart)</pre>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-2">3) dbt Project Bootstrap</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="border rounded-lg p-4">
+              <p class="font-semibold">Commands</p>
+<pre class="whitespace-pre-wrap text-xs">dbt init client_analytics
+cd client_analytics
+dbt run-operation generate_model --args '{name: stg_leads, schema: stg}'
+dbt run-operation generate_model --args '{name: stg_deals, schema: stg}'
+dbt run-operation generate_model --args '{name: int_funnel, schema: int}'
+dbt run-operation generate_model --args '{name: mart_kpis, schema: mart}'</pre>
+            </div>
+            <div class="border rounded-lg p-4">
+              <p class="font-semibold">Tests & Docs</p>
+<pre class="whitespace-pre-wrap text-xs">-- example in schema.yml
+models:
+  - name: stg_leads
+    columns:
+      - name: email
+        tests: [not_null, unique]
+      - name: first_seen_at
+        tests: [not_null]
+  - name: int_funnel
+    columns:
+      - name: stage
+        tests:
+          - accepted_values:
+              values: ['lead','mql','sql','won','lost']</pre>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-2">4) Dashboard Layer</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Use Metabase/Looker Studio/Toggle to warehouse. Create “Executive Overview” first.</li>
+            <li>Define filters: date range, channel, campaign, owner. Save default views for weekly review.</li>
+            <li>Enable email pulses each Monday 9am with prior week trends and anomalies.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-2">5) Scheduling & CI</p>
+          <div class="border rounded-lg p-4">
+            <p class="font-semibold">GitHub Actions (example)</p>
+<pre class="whitespace-pre-wrap text-xs">name: nightly-analytics
+on:
+  schedule: [{ cron: '0 3 * * *' }]
+jobs:
+  run-dbt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: pip install dbt-postgres
+      - run: dbt deps && dbt build --profiles-dir .
+        env:
+          DBT_USER: ${{ secrets.DBT_USER }}
+          DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}</pre>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-2">6) Data Quality & Alerts</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>dbt tests must pass ≥ 95% before dashboards refresh; failing tests page ops.</li>
+            <li>Freshness checks: <code>raw.*</code> tables updated within 36h; alert if stale.</li>
+            <li>Anomaly detection: simple z‑score on daily KPIs; flag ±2.5σ deviations.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-2">7) Contingency Matrix</p>
+          <div class="overflow-x-auto border rounded-lg">
+            <table class="min-w-full">
+              <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Issue</th><th class="p-3 text-left">Symptom</th><th class="p-3 text-left">Immediate</th><th class="p-3 text-left">Long‑term</th></tr></thead>
+              <tbody class="divide-y">
+                <tr><td class="p-3">Connector down</td><td class="p-3">No new raw data</td><td class="p-3">Pause transforms; surface “data stale” banner</td><td class="p-3">Failover to CSV export; add status checks</td></tr>
+                <tr><td class="p-3">Schema drift</td><td class="p-3">dbt test failures</td><td class="p-3">Patch staging model; pin version</td><td class="p-3">Contract schemas; add drift alerts</td></tr>
+                <tr><td class="p-3">Cost spike</td><td class="p-3">Warehouse bill jumps</td><td class="p-3">Limit concurrency; cache dashboards</td><td class="p-3">Materialize marts; add query guards</td></tr>
+                <tr><td class="p-3">Slow queries</td><td class="p-3">Dashboards lag</td><td class="p-3">Add indexes; pre‑aggregate</td><td class="p-3">Review model design; partition by date</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="sources">
+      <h2 class="text-2xl font-bold mb-3">Source Audit &amp; Priorities</h2>
+      <div class="bg-white border rounded-xl overflow-hidden">
+        <table class="min-w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Domain</th><th class="p-3 text-left">Typical Sources</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Marketing</td><td class="p-3">GA4, Ads (Google/Meta), website forms</td><td class="p-3">Ensure UTM hygiene; capture landing page, gclid/fbclid</td></tr>
+            <tr><td class="p-3 font-semibold">Sales</td><td class="p-3">CRM objects: leads, deals, activities</td><td class="p-3">Freeze schema during initial modeling</td></tr>
+            <tr><td class="p-3 font-semibold">Product/Service</td><td class="p-3">Billing, subscriptions, support tickets</td><td class="p-3">Map to lifecycle stages for funnels</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="elt">
+      <h2 class="text-2xl font-bold mb-3">Lean ELT Pipeline</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Extract via vendor exports or APIs (daily); prefer managed connectors when budget allows.</li>
+        <li>Load into a single warehouse (Postgres, BigQuery, or Snowflake); keep raw tables intact.</li>
+        <li>Transform with SQL models (dbt‑style folders): <code>stg_*</code> (clean), <code>int_*</code> (join), <code>mart_*</code> (dashboards).</li>
+        <li>Automate runs on a daily schedule; backfill initial 12–24 months where feasible.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="models">
+      <h2 class="text-2xl font-bold mb-3">Core Models</h2>
+      <div class="bg-white border rounded-xl overflow-hidden">
+        <table class="min-w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Model</th><th class="p-3 text-left">Purpose</th><th class="p-3 text-left">Keys</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">stg_leads</td><td class="p-3">Normalized inbound leads with UTM and source</td><td class="p-3">email, first_seen_at, source, utm_*</td></tr>
+            <tr><td class="p-3 font-semibold">stg_deals</td><td class="p-3">Deals/opportunities with stage history</td><td class="p-3">deal_id, account_id, stage_changed_at</td></tr>
+            <tr><td class="p-3 font-semibold">int_funnel</td><td class="p-3">Lead → MQL → SQL → Closed‑won funnel</td><td class="p-3">lead_id, first_touch, last_touch</td></tr>
+            <tr><td class="p-3 font-semibold">mart_kpis</td><td class="p-3">Daily KPI snapshot for dashboards</td><td class="p-3">date, kpi_name, value</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="dashboards">
+      <h2 class="text-2xl font-bold mb-3">Dashboards &amp; Analytics</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Executive Overview: traffic → leads → opps → revenue; week‑over‑week and 28‑day trends.</li>
+        <li>Marketing: channel and campaign performance; CAC proxies; assisted conversions.</li>
+        <li>Sales: pipeline by stage/owner, speed‑to‑lead, activity coverage.</li>
+        <li>Cohorts: customer retention/repeat purchases; segmented by source and persona.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="ml">
+      <h2 class="text-2xl font-bold mb-3">Forecasting &amp; AI Enhancements</h2>
+      <div class="bg-white border rounded-xl overflow-hidden">
+        <table class="min-w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Use‑Case</th><th class="p-3 text-left">Method</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Revenue forecast</td><td class="p-3">Time‑series (Prophet/ARIMA) with seasonality</td><td class="p-3">Start simple; compare to heuristic forecast</td></tr>
+            <tr><td class="p-3 font-semibold">Lead scoring</td><td class="p-3">Gradient boosting / logistic regression</td><td class="p-3">Bias for interpretability; monitor lift</td></tr>
+            <tr><td class="p-3 font-semibold">Segmentation</td><td class="p-3">K‑means / HDBSCAN on behavior features</td><td class="p-3">Use for messaging, not targeting alone</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="governance">
+      <h2 class="text-2xl font-bold mb-3">Governance &amp; Quality</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Data tests: null checks, uniqueness, referential integrity on keys.</li>
+        <li>Documentation: entity dictionary and metric definitions (single source of truth).</li>
+        <li>Access: principle of least privilege; separate read/write roles.</li>
+        <li>Change management: version models; batch releases; maintain a simple changelog.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="kpis">
+      <h2 class="text-2xl font-bold mb-3">Operating Cadence &amp; KPIs</h2>
+      <div class="bg-white border rounded-xl overflow-hidden">
+        <table class="min-w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Cadence</th><th class="p-3 text-left">Activities</th><th class="p-3 text-left">Outputs</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Weekly</td><td class="p-3">Pipeline run, data tests, KPI refresh, note anomalies</td><td class="p-3">Brief insights note (bullets)</td></tr>
+            <tr><td class="p-3 font-semibold">Monthly</td><td class="p-3">Deep‑dive on channels, cohort updates, forecast check</td><td class="p-3">Slide summary and actions</td></tr>
+            <tr><td class="p-3 font-semibold">Quarterly</td><td class="p-3">Model refresh, metric review, backlog grooming</td><td class="p-3">Roadmap update</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="timeline">
+      <h2 class="text-2xl font-bold mb-3">Detailed Timeline (2–3 weeks, solo operator)</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead class="bg-gray-50 text-gray-600">
+            <tr>
+              <th class="p-3 text-left">Day</th>
+              <th class="p-3 text-left">Topic</th>
+              <th class="p-3 text-left">Key Tasks</th>
+              <th class="p-3 text-left">Output / Done</th>
+              <th class="p-3 text-left">Est.</th>
+              <th class="p-3 text-left">Owner</th>
+              <th class="p-3 text-left">Depends</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="p-3">1</td>
+              <td class="p-3">Goals & Metrics</td>
+              <td class="p-3">Define KPIs + SQL definitions; confirm refresh SLA; identify PII policy</td>
+              <td class="p-3">Metric contract doc</td>
+              <td class="p-3">3h</td>
+              <td class="p-3">You + Client</td>
+              <td class="p-3">—</td>
+            </tr>
+            <tr>
+              <td class="p-3">2</td>
+              <td class="p-3">Warehouse</td>
+              <td class="p-3">Provision Postgres/BigQuery; create schemas/roles; backups; budget alerts</td>
+              <td class="p-3">Warehouse live; access granted</td>
+              <td class="p-3">4h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 1</td>
+            </tr>
+            <tr>
+              <td class="p-3">3</td>
+              <td class="p-3">Connectors</td>
+              <td class="p-3">Set up CRM + GA4 + billing connectors; incremental keys; test extracts</td>
+              <td class="p-3">Raw tables refreshed</td>
+              <td class="p-3">4h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 2</td>
+            </tr>
+            <tr>
+              <td class="p-3">4</td>
+              <td class="p-3">dbt init</td>
+              <td class="p-3">Bootstrap project; create stg models; add tests; run first build</td>
+              <td class="p-3">stg_* models green</td>
+              <td class="p-3">4h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 3</td>
+            </tr>
+            <tr>
+              <td class="p-3">5</td>
+              <td class="p-3">Intermediate</td>
+              <td class="p-3">Build <code>int_funnel</code>; stage history; dedupe; unit tests</td>
+              <td class="p-3">int_* models green</td>
+              <td class="p-3">4h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 4</td>
+            </tr>
+            <tr>
+              <td class="p-3">6</td>
+              <td class="p-3">Marts</td>
+              <td class="p-3">Build <code>mart_kpis</code>; daily snapshot; add freshness tests</td>
+              <td class="p-3">mart_* models green</td>
+              <td class="p-3">3h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 5</td>
+            </tr>
+            <tr>
+              <td class="p-3">7</td>
+              <td class="p-3">Dashboards</td>
+              <td class="p-3">Executive Overview; filters; saved views; email pulses</td>
+              <td class="p-3">Dash v1 published</td>
+              <td class="p-3">3h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 6</td>
+            </tr>
+            <tr>
+              <td class="p-3">8</td>
+              <td class="p-3">CI & Schedules</td>
+              <td class="p-3">Nightly build job; secrets; notifications on failure</td>
+              <td class="p-3">CI green; cron set</td>
+              <td class="p-3">2h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Days 4–7</td>
+            </tr>
+            <tr>
+              <td class="p-3">9</td>
+              <td class="p-3">Quality</td>
+              <td class="p-3">Expand tests; anomaly z‑scores; stale data banners</td>
+              <td class="p-3">QA dashboards; alerts wired</td>
+              <td class="p-3">3h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 8</td>
+            </tr>
+            <tr>
+              <td class="p-3">10</td>
+              <td class="p-3">Forecast</td>
+              <td class="p-3">Prototype time‑series forecast; compare to heuristic; add to dash</td>
+              <td class="p-3">Forecast v1; toggleable</td>
+              <td class="p-3">3h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 7</td>
+            </tr>
+            <tr>
+              <td class="p-3">11</td>
+              <td class="p-3">Cohorts</td>
+              <td class="p-3">Retention/repeat purchase; segment by source/persona</td>
+              <td class="p-3">Cohort view live</td>
+              <td class="p-3">3h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Day 6</td>
+            </tr>
+            <tr>
+              <td class="p-3">12</td>
+              <td class="p-3">Docs</td>
+              <td class="p-3">Data dictionary; model lineage; metric page</td>
+              <td class="p-3">Docs v1</td>
+              <td class="p-3">2h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">All prior</td>
+            </tr>
+            <tr>
+              <td class="p-3">13</td>
+              <td class="p-3">Review</td>
+              <td class="p-3">Stakeholder demo; capture feedback; backlog next improvements</td>
+              <td class="p-3">Sign‑off; roadmap</td>
+              <td class="p-3">1–2h</td>
+              <td class="p-3">You + Client</td>
+              <td class="p-3">Day 12</td>
+            </tr>
+            <tr>
+              <td class="p-3">14–15</td>
+              <td class="p-3">Polish</td>
+              <td class="p-3">Performance tuning; materializations; training session</td>
+              <td class="p-3">Stable nightly runs; trained users</td>
+              <td class="p-3">4h</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Review</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white border rounded-xl p-4">
+          <p class="font-semibold mb-1">Fast‑Track (7–8 days)</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Limit sources to CRM + GA4; 90‑day backfill; skip forecast until week 2.</li>
+            <li>Single “Executive Overview” dashboard first; cohorts later.</li>
+            <li>Daily 30‑min check‑ins to remove blockers quickly.</li>
+          </ul>
+        </div>
+        <div class="bg-white border rounded-xl p-4">
+          <p class="font-semibold mb-1">If Connectors Fail</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Use vendor CSV exports on a temporary S3/GCS bucket + scheduled loads.</li>
+            <li>Clearly mark dashboards with a “data stale” banner until connectors recover.</li>
+            <li>Switch to weekly refresh if nightly costs spike unexpectedly.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="templates">
+      <h2 class="text-2xl font-bold mb-3">Templates</h2>
+      <div class="bg-white border rounded-xl p-5 space-y-3 text-sm">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <p class="font-semibold">Example SQL — mart_kpis</p>
+<pre class="whitespace-pre-wrap text-xs">with daily as (
+  select date_trunc('day', first_seen_at) as d, count(*) as leads
+  from int.int_funnel where stage = 'lead' group by 1
+), mql as (
+  select date_trunc('day', first_mql_at) as d, count(*) as mqls
+  from int.int_funnel where first_mql_at is not null group by 1
+)
+select d as date, 'leads' as kpi_name, leads as value from daily
+union all
+select d, 'mqls', mqls from mql;</pre>
+          </div>
+          <div>
+            <p class="font-semibold">Data Dictionary (starter)</p>
+<pre class="whitespace-pre-wrap text-xs">email: unique lowercased email address (primary key for leads)
+first_seen_at: timestamp when contact first appeared in any source
+utm_source/campaign: marketing attribution fields
+stage: normalized funnel stage (lead/mql/sql/won/lost)</pre>
+          </div>
+        </div>
+        <div>
+          <p class="font-semibold">Metric Definition (example)</p>
+<pre class="whitespace-pre-wrap">Name: Marketing Qualified Lead (MQL)
+Definition: Lead with score ≥ 60 OR requested demo.
+Owner: Growth
+Upstream: stg_leads, int_funnel
+Freshness: daily
+Used in: Executive Overview, Funnel dashboard</pre>
+        </div>
+        <div>
+          <p class="font-semibold">dbt‑style Folder Structure</p>
+<pre class="whitespace-pre-wrap">models/
+  staging/
+    stg_leads.sql
+    stg_deals.sql
+  intermediate/
+    int_funnel.sql
+  marts/
+    mart_kpis.sql</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
+</body>
+</html>

@@ -68,6 +68,7 @@
     /* Small helper */
     .muted { color: var(--muted); }
   </style>
+  <meta name="robots" content="noindex, follow" />
 </head>
 <body class="bg-gray-50 text-gray-900">
   <header class="bg-white border-b border-gray-200">
@@ -93,6 +94,16 @@
       </div>
     </section>
 
+    <section class="sec" id="communication">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Communication & Reporting</h2>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Weekly sync:</strong> shipped models/dashboards, blockers, decisions.</li>
+          <li><strong>Changelog:</strong> note breaking changes and refresh schedules.</li>
+          <li><strong>KPIs:</strong> track time‑to‑insight, test pass rate, adoption.</li>
+        </ul>
+      </div>
+    </section>
     <section class="sec" id="intro">
       <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
         <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
@@ -110,19 +121,20 @@
         <ol class="list-decimal ml-5 space-y-1 text-sm md:columns-2 lg:columns-3">
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process & Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#glossary">Glossary (Newbie‑friendly)</a></li>
           <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Part 2: Implementer's Guide</li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#sources">Source Audit & Priorities</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#elt">Lean ELT Pipeline</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#models">Core Models</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#dashboards">Dashboards & Analytics</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#ml">Forecasting & AI</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#governance">Governance & Quality</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">Operating Cadence & KPIs</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#prereqs">Access & Prerequisites</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling Options</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Detailed Timeline</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#audit-monitoring">Audit & Monitoring (Ops)</a></li>
         </ol>
       </nav>
     </section>
@@ -141,6 +153,21 @@
           <li><strong>Build Dashboards:</strong> We create the visual reports with charts and graphs that you'll use to see trends and answer questions.</li>
           <li><strong>Test & Launch:</strong> We run checks to prove the numbers are correct and then give you and your team access.</li>
         </ul>
+
+        <p class="mt-3 text-sm text-gray-700"><strong>For you — the person doing the work:</strong></p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Write metric contracts; collect safe, read‑only access; set up a clean warehouse.</li>
+          <li>Build dbt models with tests; publish 1–2 dashboards; prove accuracy.</li>
+          <li>Document refresh schedules and owners; create a small runbook.</li>
+        </ul>
+
+        <p class="mt-3 text-sm text-gray-700"><strong>For the client — what it should feel like:</strong></p>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Easy:</strong> you approve definitions and grant access; we handle the build.</li>
+          <li><strong>Helpful:</strong> dashboards answer priority questions clearly.</li>
+          <li><strong>Safe:</strong> PII is minimized and protected; changes are tested.</li>
+          <li><strong>Clear:</strong> you see before/after and know when data refreshes.</li>
+        </ul>
       </div>
     </section>
 
@@ -154,12 +181,12 @@
           </div>
           <div class="text-right">
             <div class="text-sm text-gray-600">Progress</div>
-            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden"><div id="da-progress-bar" class="h-2 bg-indigo-500 w-0"></div></div>
-            <div id="da-progress-text" class="text-xs text-gray-500 mt-1">0% complete</div>
+            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false"><div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div></div>
+            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
           </div>
         </div>
 
-        <div class="mt-6 space-y-6" id="da-checklist">
+        <div class="mt-6 space-y-6" id="crm-checklist">
           <div class="border rounded-xl p-4">
             <p class="font-semibold mb-2">Step 1 — Metrics & Sources</p>
             <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="metrics"/> <span>Write metric contract (exact SQL, grain, filters, owner)</span></label>
@@ -242,24 +269,24 @@
         </div>
       </div>
       <script>
+        // Canonical checklist progress with namespaced localStorage
         (function(){
-          const ROOT = document.getElementById('da-checklist');
-          if(!ROOT) return;
-          const KEY = 'afl-checklist-data-analytics-v1';
-          const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
-          const boxes = Array.from(ROOT.querySelectorAll('input[type="checkbox"][data-id]'));
-          boxes.forEach(cb => { const id = cb.dataset.id; if(saved[id]) cb.checked = true; });
+          const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
+          const bar = document.getElementById('crm-progress-bar');
+          const txt = document.getElementById('crm-progress-text');
+          const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+          const KEY = (id) => `aflp:${slug}:check:${id}`;
           function update(){
-            const state = {}; let done = 0;
-            boxes.forEach(cb => { state[cb.dataset.id] = cb.checked; if(cb.checked) done++; });
-            localStorage.setItem(KEY, JSON.stringify(state));
-            const pct = boxes.length ? Math.round((done/boxes.length)*100) : 0;
-            document.getElementById('da-progress-bar').style.width = pct + '%';
-            document.getElementById('da-progress-text').textContent = pct + '% complete';
+            const total = boxes.length || 1;
+            const done = Array.from(boxes).filter(b => b.checked).length;
+            const pct = Math.round((done/total)*100);
+            if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+            if(txt){ txt.textContent = pct + '% complete'; }
           }
-          boxes.forEach(cb => cb.addEventListener('change', update));
-          document.getElementById('da-reset')?.addEventListener('click', () => { boxes.forEach(cb => cb.checked = false); update(); });
-          update();
+          function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+          function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1':'0'); } catch(e){} update(); }
+          boxes.forEach(b => b.addEventListener('change', onChange));
+          if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
         })();
       </script>
     </section>
@@ -311,7 +338,40 @@
       </div>
     </section>
 
-    <div class="border-t pt-12">
+    <section class="sec" id="scope">
+      <h2 class="text-2xl font-bold mb-3">Scope Tiers</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <table class="min-w-full">
+          <thead><tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Coverage</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">MVP</td><td class="p-3">1–2 sources; 2 KPIs; 1 dashboard</td><td class="p-3">Fast path; manual refresh OK</td></tr>
+            <tr><td class="p-3 font-semibold">Standard</td><td class="p-3">3–5 sources; 5+ KPIs; 2 dashboards</td><td class="p-3">Nightly refresh; alerts</td></tr>
+            <tr><td class="p-3 font-semibold">Plus</td><td class="p-3">6+ sources; forecasting</td><td class="p-3">CI, tests ≥ 95% pass</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="kpis">
+      <h2 class="text-2xl font-bold mb-3">KPIs & Reporting</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li><strong>Time‑to‑insight:</strong> ≤ 2 weeks from kickoff</li>
+        <li><strong>Test pass rate:</strong> ≥ 95% dbt tests green</li>
+        <li><strong>Adoption:</strong> ≥ 5 weekly active viewers</li>
+        <li><strong>Freshness:</strong> Meets defined SLAs per source</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="glossary">
+      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <p><strong>ELT:</strong> Extract, Load, Transform — copy data, then clean it in the warehouse.</p>
+        <p><strong>dbt:</strong> A tool to turn SQL into versioned, testable models.</p>
+        <p><strong>Freshness:</strong> How recent the data is compared to now.</p>
+      </div>
+    </section>
+
+  <div class="border-t pt-12">
       <h2 class="text-3xl font-bold tracking-tight">Part 2: Implementer's Guide</h2>
       <p class="mt-2 text-gray-600">This section contains the detailed, technical step-by-step procedures for execution.</p>
     </div>
@@ -463,6 +523,50 @@ jobs:
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="sec" id="audit-monitoring">
+      <h2 class="text-2xl font-bold mb-3">Audit & Monitoring (Ops)</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Freshness dashboard; warn if SLAs miss.</li>
+        <li>Error inbox for failed jobs; alert on spikes.</li>
+        <li>Monthly review: adoption, test pass rate, roadmap updates.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="prereqs">
+      <h2 class="text-2xl font-bold mb-3">Access & Prerequisites</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ul class="list-disc ml-5 space-y-1">
+          <li>Read‑only access to GA4, CRM, billing, support tools; service users preferred.</li>
+          <li>Warehouse credentials; ability to create schemas and roles.</li>
+          <li>Approval for connectors and budget for storage/ETL.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="tooling">
+      <h2 class="text-2xl font-bold mb-3">Tooling Options</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead><tr><th class="p-3 text-left">Layer</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Warehouse</td><td class="p-3">Postgres, BigQuery</td><td class="p-3">Start simple; enforce roles/schemas</td></tr>
+            <tr><td class="p-3 font-semibold">Connectors</td><td class="p-3">Fivetran, Hevo, Airbyte</td><td class="p-3">Prefer managed; incremental loads</td></tr>
+            <tr><td class="p-3 font-semibold">Transform</td><td class="p-3">dbt</td><td class="p-3">Tests, docs, lineage</td></tr>
+            <tr><td class="p-3 font-semibold">Dashboards</td><td class="p-3">Metabase, Looker Studio</td><td class="p-3">Start with Executive Overview</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="sec" id="design">
+      <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
+      <ul class="bg-white border rounded-xl p-5 text-sm space-y-2">
+        <li>Model naming: <code>raw</code>/<code>stg</code>/<code>int</code>/<code>mart</code>; one grain per model.</li>
+        <li>Tests: not_null, unique, accepted_values on critical fields.</li>
+        <li>Docs: metric definitions in repo; owners and refresh schedules visible.</li>
+      </ul>
     </section>
 
     <section class="sec" id="sources">

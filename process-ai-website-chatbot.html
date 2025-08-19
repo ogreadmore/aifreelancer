@@ -71,6 +71,7 @@
     /* Minimal tip marker (non-functional now) */
     .tip { border-bottom: 1px dotted rgba(14,20,24,0.06); cursor: default; }
   </style>
+  <meta name="robots" content="noindex, follow" />
 </head>
 <body class="bg-gray-50 text-gray-900">
   <header class="bg-white border-b border-gray-200">
@@ -114,7 +115,7 @@
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process & Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
@@ -176,13 +177,13 @@
           <div class="text-right">
             <div class="text-sm text-gray-600">Progress</div>
             <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false">
-              <div id="chatbot-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="chatbot-progress-text"></div>
+              <div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div>
             </div>
-            <div id="chatbot-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
           </div>
         </div>
 
-        <div class="mt-6 space-y-6" id="chatbot-checklist">
+        <div class="mt-6 space-y-6" id="crm-checklist">
 
           <div class="border rounded-xl p-4">
             <p class="font-semibold mb-2">Step 1 — Kickoff & Goals</p>
@@ -660,57 +661,36 @@ Always cite your sources by including the URL from the metadata.
 
   </footer>
   <script>
-  // Checklist progress + local save
+  // Canonical checklist progress with namespaced localStorage
   (function(){
-    const root = document.getElementById('chatbot-checklist');
-    if(!root) return;
-    const bar = document.getElementById('chatbot-progress-bar');
-    const txt = document.getElementById('chatbot-progress-text');
-    const resetBtn = document.getElementById('chatbot-reset');
-    const cbSelector = 'input[type="checkbox"][data-id]';
-    const boxes = Array.from(root.querySelectorAll(cbSelector));
-    const ids = boxes.map(b=>b.dataset.id).filter(Boolean);
-
-    function load(){
-      boxes.forEach(b=>{
-        try{
-          const k = 'chatbot-check-'+b.dataset.id;
-          const v = localStorage.getItem(k);
-          if(v === '1') b.checked = true;
-          else if(v === '0') b.checked = false;
-        }catch(e){/* ignore */}
-      });
-      update();
-    }
+    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('crm-progress-bar');
+    const txt = document.getElementById('crm-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
 
     function update(){
       const total = boxes.length || 1;
-      const checked = boxes.filter(b=>b.checked).length;
-      const pct = Math.round((checked/total)*100);
-      if(bar){
-        bar.style.width = pct + '%';
-        bar.setAttribute('aria-valuenow', String(pct));
-        bar.setAttribute('aria-valuetext', pct + '% complete');
-      }
-      if(txt) txt.textContent = pct + '% complete';
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
     }
 
-    function saveCheckbox(e){
-      const b = e.currentTarget;
-      try{ localStorage.setItem('chatbot-check-'+b.dataset.id, b.checked? '1':'0'); }catch(err){}
+    function load(){
+      boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} });
       update();
     }
 
-    boxes.forEach(b=> b.addEventListener('change', saveCheckbox));
-    if(resetBtn){ resetBtn.addEventListener('click', ()=>{
-      boxes.forEach(b=>{ b.checked=false; try{ localStorage.removeItem('chatbot-check-'+b.dataset.id); }catch(e){} });
+    function onChange(e){
+      const id = e.target?.dataset?.id;
+      if(!id) return;
+      try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){}
       update();
-    }); }
+    }
 
-    // init
-    document.addEventListener('DOMContentLoaded', load);
-    // if DOM already loaded
-    if(document.readyState === 'interactive' || document.readyState === 'complete') load();
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
   })();
   </script>
 </body>

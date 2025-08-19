@@ -113,7 +113,7 @@
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process & Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
@@ -516,5 +516,38 @@ If not, what was missing? [free text]</pre>
   </main>
 
   <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
+  <script>
+  // Canonical checklist progress with namespaced localStorage
+  (function(){
+    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('crm-progress-bar');
+    const txt = document.getElementById('crm-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+
+    function load(){
+      boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} });
+      update();
+    }
+
+    function onChange(e){
+      const id = e.target?.dataset?.id;
+      if(!id) return;
+      try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){}
+      update();
+    }
+
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
 </body>
 </html>

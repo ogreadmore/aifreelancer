@@ -39,12 +39,6 @@
   </header>
 
   <main class="container mx-auto px-6 py-10 space-y-12">
-    <section class="sec" id="intro">
-      <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
-        <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
-        <p class="mt-2">Part 1 explains outcomes and scope tiers. Part 2 gives implementers detailed SOPs for reliable, observable automations.</p>
-      </div>
-    </section>
     <section class="sec" id="overview">
       <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: Internal Process Automation</h1>
       <p class="mt-4 text-lg text-gray-700">Replace manual steps with resilient automations. We document workflows, implement idempotent flows with retries and alerts, and measure the hours you win back.</p>
@@ -55,21 +49,38 @@
       </div>
     </section>
 
+    <section class="sec" id="intro">
+      <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
+        <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
+        <p class="mt-2">This is a transparent, internal document that clients are welcome to review. It's designed to be understood by everyone, from a 14-year-old beginner to a seasoned expert. It's divided into two parts:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+          <li><strong>Part 1: The "What & Why" (Client & Manager View):</strong> The big picture. It covers the project's story, goals, and a simplified checklist. Start here to understand the project at a high level.</li>
+          <li><strong>Part 2: The "How" (Implementer's Guide):</strong> The technical details. It includes the step-by-step SOPs, timelines, and contingency plans needed for execution. Dive in here for implementation specifics.</li>
+        </ul>
+      </div>
+    </section>
+
     <section class="sec" id="toc">
       <nav class="bg-white border rounded-xl p-5">
         <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
         <ol class="list-decimal ml-5 space-y-1 text-sm md:columns-2 lg:columns-3">
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Checklist</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Phases</a></li>
-          <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Implementer’s Guide</li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#glossary">Glossary (Newbie‑friendly)</a></li>
+          <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Part 2: Implementer's Guide</li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#prereqs">Access & Prerequisites</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#security">Security</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Timeline</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates & Snippets</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#audit-monitoring">Audit & Monitoring (Ops)</a></li>
         </ol>
       </nav>
     </section>
@@ -198,6 +209,15 @@
       </ul>
     </section>
 
+    <section class="sec" id="glossary">
+      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <p><strong>Idempotency:</strong> Running the same step twice gives the same end result; prevents duplicates.</p>
+        <p><strong>Backoff:</strong> Waiting longer between retries to avoid hammering an API when it errors.</p>
+        <p><strong>Contract:</strong> The agreement for inputs/outputs a step expects and returns.</p>
+      </div>
+    </section>
+
     <section class="sec" id="design">
       <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
       <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
@@ -248,8 +268,83 @@
         </table>
       </div>
     </section>
+
+    <section class="sec" id="initial-setup">
+      <h2 class="text-2xl font-bold mb-3">Initial Setup (SOP)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ol class="list-decimal ml-5 space-y-2">
+          <li>Access: create service accounts and secrets store; define environments.</li>
+          <li>Repo: set up a shared folder for diagrams, contracts, and runbooks.</li>
+          <li>Monitoring: create error inbox and alert channels; test with a canary job.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" id="prereqs">
+      <h2 class="text-2xl font-bold mb-3">Access & Prerequisites</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ul class="list-disc ml-5 space-y-1">
+          <li>API keys for source/target systems with least‑privilege scopes.</li>
+          <li>Test accounts and sample data; a sandbox if available.</li>
+          <li>Approval to create webhooks and schedule jobs.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="templates">
+      <h2 class="text-2xl font-bold mb-3">Templates & Snippets</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm space-y-3">
+        <details><summary class="font-semibold">Retry w/Backoff (pseudocode)</summary><pre class="mt-2 whitespace-pre-wrap">for attempt in 1..5:
+  try: call_api()
+  catch e:
+    wait 2^attempt seconds; continue</pre></details>
+        <details><summary class="font-semibold">Rollback Plan Outline</summary><pre class="mt-2 whitespace-pre-wrap">Trigger, owner, steps to disable, data correction, comms template</pre></details>
+      </div>
+    </section>
+
+    <section class="sec" id="audit-monitoring">
+      <h2 class="text-2xl font-bold mb-3">Audit & Monitoring (Ops)</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Dashboards: success rate, retries, latency, error reasons by step.</li>
+        <li>Alerts: sustained error spikes; SLA breaches; dead‑letter growth.</li>
+        <li>Monthly review: ROI summary; backlog of fixes and new automations.</li>
+      </ul>
+    </section>
   </main>
 
   <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
+  <script>
+  // Canonical checklist progress with namespaced localStorage
+  (function(){
+    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('crm-progress-bar');
+    const txt = document.getElementById('crm-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+
+    function load(){
+      boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} });
+      update();
+    }
+
+    function onChange(e){
+      const id = e.target?.dataset?.id;
+      if(!id) return;
+      try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){}
+      update();
+    }
+
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
 </body>
 </html>

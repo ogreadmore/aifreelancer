@@ -58,7 +58,11 @@
     <section class="sec" id="intro">
       <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
         <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
-        <p class="mt-2">This is a transparent, internal document that clients are welcome to review. It’s divided into an accessible Part 1 (story, goals, checklist) and a detailed Part 2 (SOPs, timelines, templates) for implementers.</p>
+        <p class="mt-2">This is a transparent, internal document that clients are welcome to review. It's designed to be understood by everyone, from a 14-year-old beginner to a seasoned expert. It's divided into two parts:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+          <li><strong>Part 1: The "What & Why" (Client & Manager View):</strong> The big picture. It covers the project's story, goals, and a simplified checklist. Start here to understand the project at a high level.</li>
+          <li><strong>Part 2: The "How" (Implementer's Guide):</strong> The technical details. It includes the step-by-step SOPs, timelines, and contingency plans needed for execution. Dive in here for implementation specifics.</li>
+        </ul>
       </div>
     </section>
 
@@ -69,7 +73,7 @@
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process & Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
@@ -124,10 +128,19 @@
       <div class="bg-white border rounded-2xl p-6">
         <h2 class="text-2xl font-bold">Communication & Reporting</h2>
         <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Weekly content review:</strong> approve upcoming week; tweaks to tone/CTAs</li>
-          <li><strong>Monthly insights:</strong> winners/losers, pillar mix, next tests</li>
-          <li><strong>Alerting:</strong> brand‑risk terms flagged before posting</li>
+          <li><strong>Weekly content review (30–45 min):</strong> approve upcoming calendar, confirm experiments, adjust tone/CTAs, resolve blockers.</li>
+          <li><strong>Weekly status note (Fri):</strong> shipped posts, best/worst performers, experiments run, next week plan, approvals needed.</li>
+          <li><strong>Monthly insights deck (5–8 slides):</strong> pillar mix, hook performance, growth, leads by UTM, next bets.</li>
+          <li><strong>Alerting:</strong> Slack/Email for brand‑risk keywords, broken links, missed posts, auth issues.</li>
+          <li><strong>Dashboard:</strong> cadence, engagement rate, CTR, follower growth, and leads; filter by pillar and platform.</li>
         </ul>
+        <details class="mt-3">
+          <summary class="text-sm font-semibold cursor-pointer">Newbie guide: What to look for in the weekly review</summary>
+          <div class="mt-2 text-sm text-gray-700 space-y-2">
+            <p>Focus on <em>hooks</em> (first line), <em>visuals</em> (thumbnail/first frame), and <em>CTA</em>. If a post underperformed, try a new hook or a different asset before scrapping the idea.</p>
+            <p>Keep a simple scorecard: Hook strength (1–5), Asset fit (1–5), CTA clarity (1–5). Improve the lowest score first.</p>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -152,7 +165,7 @@
             <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="pillars"/> Define pillars + audiences</label>
             <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="voice"/> Voice & brand guardrails (dos/don'ts)</label>
             <label class="flex gap-3"><input type="checkbox" class="mt-1" data-id="cadence"/> Calendar cadence + approval flow</label>
-            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Pillars & cadence</summary><div class="mt-2 text-sm text-gray-700">Pillars are themes (like “tips” or “proof”) so your feed stays balanced. Cadence is how often you post; consistency beats bursts.</div></details>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Pillars & cadence</summary><div class="mt-2 text-sm text-gray-700 space-y-2"><p><strong>Pillars:</strong> Choose 3–6 themes you can post about every week (e.g., how‑to tips, customer stories, behind‑the‑scenes, offers). Rotate them to keep variety.</p><p><strong>Cadence:</strong> Pick a schedule you can keep. It’s better to post 3×/week consistently than 10× once and then stop.</p><p><strong>Approvals:</strong> Decide who approves what and how fast. Set a 24–48h SLA and a backup approver so the queue keeps moving.</p></div></details>
           </div>
 
           <div class="border rounded-xl p-4">
@@ -160,6 +173,7 @@
             <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ideas"/> 30 ideas; 2–3 caption variants each</label>
             <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="accessibility"/> Alt‑text + accessibility checks</label>
             <label class="flex gap-3"><input type="checkbox" class="mt-1" data-id="schedule"/> Schedule + UTM links + link‑in‑bio</label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Writing great captions</summary><div class="mt-2 text-sm text-gray-700 space-y-2"><p>Use this structure: <strong>Hook</strong> (1 line) → <strong>Value</strong> (1–3 lines) → <strong>CTA</strong> (what to do next).</p><p>Examples of hooks: “Most people get X wrong…”, “3 ways to Y this week”, “We almost quit because…”.</p><p>Always add alt text for images and subtitles for videos. Add UTM tags to links so you can see which post drove traffic.</p></div></details>
           </div>
 
           <div class="border rounded-xl p-4">
@@ -167,6 +181,7 @@
             <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="hooks"/> Test 3 hooks per pillar</label>
             <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="hashtags"/> Iterate hashtag sets</label>
             <label class="flex gap-3"><input type="checkbox" class="mt-1" data-id="repurpose"/> Refresh top posts into carousels/reels</label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Simple A/B tests</summary><div class="mt-2 text-sm text-gray-700 space-y-2"><p>Only change one thing at a time (hook, image, or CTA). Post at similar times. Keep a small log: date, change, result. Keep winners; archive losers.</p><p>Don’t trust tiny samples; wait for at least a few hundred impressions per variant.</p></div></details>
           </div>
 
           <div class="border rounded-xl p-4">
@@ -174,6 +189,7 @@
             <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="denylist"/> Maintain brand‑risk deny list</label>
             <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="approvals"/> Approver backups; SLA on approvals</label>
             <label class="flex gap-3"><input type="checkbox" class="mt-1" data-id="archive"/> Content archive with rights/attribution</label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Safety & rights</summary><div class="mt-2 text-sm text-gray-700 space-y-2"><p>Never make claims that require proof unless you have a source. If a post is sponsored or uses affiliate links, disclose it (e.g., “#ad”).</p><p>Track asset rights (stock licenses, creator permissions) and keep them in a shared folder. When in doubt, do not post.</p></div></details>
           </div>
         </div>
       </div>
@@ -190,8 +206,8 @@
           <li><strong>Optimize:</strong> Weekly insights, test hooks, iterate pillars.</li>
         </ol>
         <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Stage Gates</p><ul class="list-disc ml-5 space-y-1"><li>Voice guide signed off</li><li>First month calendar approved</li><li>Accessibility checklist pass</li></ul></div>
-          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Risks</p><ul class="list-disc ml-5 space-y-1"><li>Brand risk → deny‑list, approvals</li><li>Inconsistent cadence → buffer backlog</li><li>Low engagement → iterate hooks/CTAs</li></ul></div>
+          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Stage Gates</p><ul class="list-disc ml-5 space-y-1"><li>Voice guide signed off (tone traits, do/don’t examples)</li><li>Calendar v1 approved (≥ 2 weeks scheduled)</li><li>Accessibility checklist pass (alt text, captions)</li><li>UTM scheme agreed (source/medium/campaign)</li><li>Moderation plan live (reply policy + escalation)</li></ul></div>
+          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Risks & Mitigations</p><ul class="list-disc ml-5 space-y-1"><li><strong>Brand risk:</strong> deny‑list; 2‑person review for sensitive topics</li><li><strong>Inconsistent cadence:</strong> 2–3 week backlog; approval SLAs + backups</li><li><strong>Low engagement:</strong> test 3 hook patterns/week; rotate pillars; audit visuals</li><li><strong>Rights issues:</strong> track licenses; whitelist UGC sources; approval needed for reposts</li></ul></div>
         </div>
       </div>
     </section>
@@ -217,46 +233,133 @@
             <tr><td class="p-3 font-semibold">Plus</td><td class="p-3">6 pillars, daily</td><td class="p-3">Cross‑posting + UGC management</td></tr>
           </tbody>
         </table>
+        <div class="mt-3 grid md:grid-cols-3 gap-4">
+          <div class="bg-white border rounded-xl p-4">
+            <p class="font-semibold">Starter — Acceptance</p>
+            <ul class="list-disc list-inside text-xs">
+              <li>Voice guide approved</li>
+              <li>2‑week calendar scheduled</li>
+              <li>UTMs added to all links</li>
+            </ul>
+          </div>
+          <div class="bg-white border rounded-xl p-4">
+            <p class="font-semibold">Growth — Acceptance</p>
+            <ul class="list-disc list-inside text-xs">
+              <li>3 channels live with platform‑fit assets</li>
+              <li>Weekly insights shipped</li>
+              <li>2 active experiments</li>
+            </ul>
+          </div>
+          <div class="bg-white border rounded-xl p-4">
+            <p class="font-semibold">Plus — Acceptance</p>
+            <ul class="list-disc list-inside text-xs">
+              <li>Daily cadence met ≥ 90%</li>
+              <li>UGC rights tracking in place</li>
+              <li>Quarterly strategy refresh</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="sec" id="kpis">
       <h2 class="text-2xl font-bold mb-3">KPIs & Reporting</h2>
       <ul class="bg-white border rounded-xl p-5 text-sm space-y-2">
-        <li><strong>Consistency:</strong> posts/week vs target</li>
-        <li><strong>Engagement rate:</strong> interactions/impressions by platform</li>
-        <li><strong>Traffic & leads:</strong> UTM clicks, session quality, conversions</li>
-        <li><strong>Top content:</strong> pillars and hooks that win; replicate</li>
+        <li><strong>Consistency:</strong> posts/week vs. target (goal ≥ 4/wk).</li>
+        <li><strong>Engagement rate:</strong> (likes + comments + saves + shares) ÷ impressions (goal +25% vs. baseline).</li>
+        <li><strong>Click‑through rate (CTR):</strong> link clicks ÷ impressions (track by platform and pillar).</li>
+        <li><strong>Traffic & leads:</strong> UTM sessions, session quality (time, pages), conversions.</li>
+        <li><strong>Content winners:</strong> top pillars/hooks; replicate formats and CTAs.</li>
+      </ul>
+    </section>
+
+    <section class="sec" id="glossary">
+      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <p><strong>Pillars:</strong> 3–6 themes you post about consistently (e.g., tips, stories, product).</p>
+        <p><strong>Hook:</strong> The first line that grabs attention; short and punchy.</p>
+        <p><strong>Alt text:</strong> A short description for images so screen readers can describe them.</p>
+        <p><strong>UTM:</strong> Tags added to links so analytics can attribute traffic correctly.</p>
+      </div>
+    </section>
+
+    <section class="sec" id="initial-setup">
+      <h2 class="text-2xl font-bold mb-3">Initial Setup (SOP)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ol class="list-decimal ml-5 space-y-2">
+          <li>Draft one‑page voice & pillars; define approvers and cadence per channel.</li>
+          <li>Set up a content calendar (Notion/Sheets) with status, owner, and due dates.</li>
+          <li>Create asset library structure; define naming and rights/attribution policy.</li>
+          <li>Define UTM conventions (utm_source, utm_medium, utm_campaign) and add to scheduler templates.</li>
+          <li>Prepare 10 evergreen posts to seed the backlog and prevent cadence gaps.</li>
+          <li>Set up alerting for brand‑risk terms and link checks before publishing.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" id="prereqs">
+      <h2 class="text-2xl font-bold mb-3">Access & Prerequisites</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm">
+        <ul class="list-disc ml-5 space-y-1">
+          <li>Admin access to scheduling tool (Buffer/Later/Meta Business Suite).</li>
+          <li>Brand kit (logo, colors, fonts), product shots, and rights status.</li>
+          <li>Link shortener / UTM policy and analytics access.</li>
+          <li>Platform access for all channels; 2FA enabled.</li>
+          <li>Compliance guidelines: disclaimers, claims policy, sponsorship disclosure.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="design">
+      <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li>Accessibility: alt text, readable contrast, captions for video; avoid flashing.</li>
+        <li>Approvals: deny‑list of risky terms; two‑person review for high‑risk posts.</li>
+        <li>Variations: generate 2–3 caption variants per idea; test hooks and CTAs.</li>
+        <li>Visual fit: platform‑specific crops; safe areas for text; consistent thumbnail style.</li>
+        <li>Voice consistency: examples of “say this, not that” for clarity.</li>
       </ul>
     </section>
 
     <section class="sec" id="tooling">
-      <h2 class="text-2xl font-bold mb-3">Tooling</h2>
+      <h2 class="text-2xl font-bold mb-3">Tooling Options</h2>
       <div class="bg-white border rounded-xl overflow-hidden text-sm">
         <table class="min-w-full">
           <thead><tr><th class="p-3 text-left">Area</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
-        <tbody class="divide-y">
-          <tr><td class="p-3 font-semibold">Scheduling</td><td class="p-3">Buffer, Later, Hootsuite</td><td class="p-3">Support approvals + analytics</td></tr>
-          <tr><td class="p-3 font-semibold">Assets</td><td class="p-3">Canva, Figma</td><td class="p-3">Brand kit; templates per pillar</td></tr>
-          <tr><td class="p-3 font-semibold">Analytics</td><td class="p-3">Native + GA4</td><td class="p-3">Track CTR/UTM; attribute leads</td></tr>
-          <tr><td class="p-3 font-semibold">Models</td><td class="p-3">OpenAI/Anthropic</td><td class="p-3">Style control; fact‑check sensitive claims</td></tr>
-        </tbody>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Scheduling</td><td class="p-3">Buffer, Later, Hootsuite, Sprout</td><td class="p-3">Native approvals; best‑time suggestions</td></tr>
+            <tr><td class="p-3 font-semibold">Assets</td><td class="p-3">Canva, Figma</td><td class="p-3">Templates per pillar; safe margins for text</td></tr>
+            <tr><td class="p-3 font-semibold">Listening</td><td class="p-3">Native alerts, Mention, Brand24</td><td class="p-3">Track mentions; catch risks fast</td></tr>
+            <tr><td class="p-3 font-semibold">Analytics</td><td class="p-3">Native + GA4/Looker Studio</td><td class="p-3">CTR, assisted conversions, UTM rollups</td></tr>
+            <tr><td class="p-3 font-semibold">Link</td><td class="p-3">Bitly, Linktree, bio tools</td><td class="p-3">UTM templates; per‑post tracking</td></tr>
+            <tr><td class="p-3 font-semibold">Models</td><td class="p-3">OpenAI/Anthropic</td><td class="p-3">Guardrails: deny‑lists; fact‑check claims</td></tr>
+          </tbody>
         </table>
       </div>
+      <details class="mt-3">
+        <summary class="text-sm font-semibold cursor-pointer">Platform nuances (cheat sheet)</summary>
+        <div class="mt-2 text-sm text-gray-700 space-y-1">
+          <p><strong>Instagram:</strong> Visual first; use alt text; hashtags (3–10) relevant; links in bio.</p>
+          <p><strong>LinkedIn:</strong> Lead with a strong first line; avoid walls of hashtags; tag people/companies thoughtfully.</p>
+          <p><strong>TikTok/Reels:</strong> Hook in 1–2 seconds; big captions; on‑screen text + subtitles; trend sounds with care.</p>
+          <p><strong>X (Twitter):</strong> Short hooks; 1–2 hashtags max; threads for depth.</p>
+        </div>
+      </details>
     </section>
 
     <section class="sec" id="security">
-      <h2 class="text-2xl font-bold mb-3">Compliance & Safety</h2>
+      <h2 class="text-2xl font-bold mb-3">Security & Compliance</h2>
       <ul class="bg-white border rounded-xl p-5 text-sm space-y-2">
-        <li>Copyright: only licensed or original assets; cite sources.</li>
-        <li>Claims policy: avoid unverifiable promises; add disclaimers if needed.</li>
-        <li>Accessibility: alt text, readable contrast, captions on video.</li>
-        <li>Account security: SSO, role‑based access, 2FA on schedulers.</li>
+        <li><strong>Rights:</strong> use licensed/original assets; document creator permissions and expiry.</li>
+        <li><strong>Claims:</strong> avoid unverifiable promises; link to proof; add disclaimers where needed.</li>
+        <li><strong>Disclosures:</strong> mark sponsored or affiliate posts (#ad, #sponsored) per platform policy.</li>
+        <li><strong>Accessibility:</strong> alt text for images, captions for videos, readable contrast; avoid flashing content.</li>
+        <li><strong>Account security:</strong> SSO, role‑based access, 2FA, audit log reviews quarterly.</li>
       </ul>
     </section>
 
     <section class="sec" id="timeline">
-      <h2 class="text-2xl font-bold mb-3">Timeline (first 4 weeks)</h2>
+      <h2 class="text-2xl font-bold mb-3">Detailed Timeline (first 4 weeks)</h2>
       <div class="bg-white border rounded-xl overflow-hidden text-sm">
         <table class="min-w-full">
           <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Week</th><th class="p-3 text-left">Theme</th><th class="p-3 text-left">Outputs</th></tr></thead>
@@ -268,6 +371,24 @@
           </tbody>
         </table>
       </div>
+      <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white border rounded-xl p-4">
+          <p class="font-semibold mb-1">Fast‑Track (2 weeks)</p>
+          <ul class="list-disc list-inside">
+            <li>Condense audit + strategy into 2 focused sessions; MVP pillars only.</li>
+            <li>Produce 14 posts: 2 per day for 1 week; schedule after quick approvals.</li>
+            <li>Run at least 2 hook experiments; iterate daily.</li>
+          </ul>
+        </div>
+        <div class="bg-white border rounded-xl p-4">
+          <p class="font-semibold mb-1">If Approvals Lag</p>
+          <ul class="list-disc list-inside">
+            <li>Pre‑approve generic templates and voice patterns; swap specifics later.</li>
+            <li>Use placeholder assets and neutral copy to keep schedule moving.</li>
+            <li>Schedule internal‑only posts for review; gate public publish on sign‑off.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section class="sec" id="templates">
@@ -278,19 +399,74 @@ Tone: {{voice_attributes}}. Include CTA: {{cta}}.
 Max length: {{platform_limit}}. Add 3 relevant hashtags.</pre></details>
         <details><summary class="font-semibold">Alt‑Text Guidelines</summary><pre class="mt-2 whitespace-pre-wrap">Describe key details, avoid "image of". Keep 80–120 chars where possible.</pre></details>
         <details><summary class="font-semibold">Monthly Insights Outline</summary><pre class="mt-2 whitespace-pre-wrap">Wins, misses, pillar mix, hook tests, next month bets.</pre></details>
+        <details><summary class="font-semibold">Content Brief (per post)</summary><pre class="mt-2 whitespace-pre-wrap">Pillar: {{pillar}}
+Audience: {{persona}}
+Hook options (3):
+Asset: {{image/video}} + alt text
+Caption (3 variants):
+CTA:
+Hashtags (3–10):
+Link + UTM:
+Approver:</pre></details>
+        <details><summary class="font-semibold">Deny‑List & Approvals</summary><pre class="mt-2 whitespace-pre-wrap">Blocked phrases/claims: [...]
+Sensitive topics → require 2 reviewers.
+Escalation: tag {{owner}} in Slack #brand‑alerts.</pre></details>
       </div>
     </section>
 
     <section class="sec" id="audit-monitoring">
       <h2 class="text-2xl font-bold mb-3">Audit & Monitoring (Ops)</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Weekly: cadence vs target; engagement winners/losers; planned tests</li>
-        <li>Monthly: growth report; conversion impact (UTM); pillar mix refresh</li>
-        <li>Quarterly: brand audit; accessibility review; archive rights check</li>
-      </ul>
+      <div class="bg-white border rounded-xl p-5 space-y-3 text-sm">
+        <p class="font-semibold">Checks</p>
+        <ul class="list-disc list-inside">
+          <li>Cadence ≥ target; any misses explained.</li>
+          <li>UTM working; no broken links; platform previews render OK.</li>
+          <li>Accessibility: alt text present; captions on video.</li>
+          <li>Rights: assets in library with license notes; approvals recorded.</li>
+        </ul>
+        <p class="font-semibold">Monitoring tiles</p>
+        <ul class="list-disc list-inside">
+          <li>Engagement by pillar and hook pattern</li>
+          <li>CTR and sessions by platform</li>
+          <li>Top posts and repeats (repurpose candidates)</li>
+        </ul>
+      </div>
     </section>
   </main>
 
   <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
+  <script>
+  // Canonical checklist progress with namespaced localStorage
+  (function(){
+    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('crm-progress-bar');
+    const txt = document.getElementById('crm-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+
+    function load(){
+      boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} });
+      update();
+    }
+
+    function onChange(e){
+      const id = e.target?.dataset?.id;
+      if(!id) return;
+      try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){}
+      update();
+    }
+
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
 </body>
 </html>

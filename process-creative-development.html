@@ -55,7 +55,11 @@
     <section class="sec" id="intro">
       <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
         <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
-        <p class="mt-2">Part 1 is accessible to non‑technical stakeholders (story, goals, checklist). Part 2 is an implementer’s guide (SOPs, timelines, templates) with deep technical detail.</p>
+        <p class="mt-2">This is a transparent, internal document that clients are welcome to review. It's designed to be understood by everyone, from a 14-year-old beginner to a seasoned expert. It's divided into two parts:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+          <li><strong>Part 1: The "What & Why" (Client & Manager View):</strong> The big picture. It covers the project's story, goals, and a simplified checklist. Start here to understand the project at a high level.</li>
+          <li><strong>Part 2: The "How" (Implementer's Guide):</strong> The technical details. It includes the step-by-step SOPs, timelines, and contingency plans needed for execution. Dive in here for implementation specifics.</li>
+        </ul>
       </div>
     </section>
 
@@ -66,7 +70,7 @@
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process & Checklist</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Quality</a></li>
@@ -291,5 +295,38 @@
   </main>
 
   <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
+  <script>
+  // Canonical checklist progress with namespaced localStorage
+  (function(){
+    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('crm-progress-bar');
+    const txt = document.getElementById('crm-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+
+    function load(){
+      boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} });
+      update();
+    }
+
+    function onChange(e){
+      const id = e.target?.dataset?.id;
+      if(!id) return;
+      try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){}
+      update();
+    }
+
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
 </body>
 </html>

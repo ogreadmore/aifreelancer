@@ -112,10 +112,10 @@
         <ol class="list-decimal ml-5 space-y-1 text-sm md:columns-2 lg:columns-3">
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#overview">Overview</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#glossary">Glossary (Newbie‑friendly)</a></li>
           <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Part 2: Implementer's Guide</li>
@@ -191,13 +191,13 @@
           <div class="text-right">
             <div class="text-sm text-gray-600">Progress</div>
             <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false">
-              <div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div>
+              <div id="acs-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="acs-progress-text"></div>
             </div>
-            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+            <div id="acs-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
           </div>
         </div>
 
-        <div class="mt-6 space-y-6" id="crm-checklist">
+        <div class="mt-6 space-y-6" id="acs-checklist">
 
           <!-- STEP 1 -->
           <div class="border rounded-xl p-4">
@@ -206,7 +206,19 @@
             <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="accounts"/> <span>Provision sandbox + service accounts; API keys scoped least‑privilege</span></label>
             <details class="mt-2">
               <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Why baseline?</summary>
-              <div class="mt-2 text-sm text-gray-700">We need a “before” to prove the “after.” It’s like measuring your speed before upgrading your engine.</div>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p><strong>Plain idea:</strong> Take a clear “before” picture so we can show the “after” worked.</p>
+                <p><strong>Analogy:</strong> If you start a workout plan, you measure your time for a 1‑mile run first. After training, you measure again to see the improvement. We’re doing the same for support.</p>
+                <p><strong>What to export (non‑technical):</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                  <li><strong>CSAT</strong> (1–5 star rating), last 30 days</li>
+                  <li><strong>FRT/ASA</strong> (first response time / average speed to answer)</li>
+                  <li><strong>AHT</strong> (average handle time)</li>
+                  <li><strong>FCR</strong> (first‑contact resolution)</li>
+                  <li><strong>Top intents</strong> (most common questions) and their volumes</li>
+                </ul>
+                <p>Save the file to <code>/01_discovery/baseline/</code> with dates in the filename. This lets us prove the value and correct mistakes if anything goes wrong.</p>
+              </div>
             </details>
           </div>
 
@@ -215,6 +227,20 @@
             <p class="font-semibold mb-2">Step 2 — Knowledge Grounding</p>
             <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="kb-sync"/> <span>Sync help center, FAQs, policies (with citations + update cadence)</span></label>
             <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="gap-list"/> <span>Log knowledge gaps; assign owners + “last verified” dates</span></label>
+            <details class="mt-3">
+              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Grounding answers in your docs</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p><strong>Plain idea:</strong> The assistant should answer using <em>your</em> existing help pages, not random internet answers.</p>
+                <p><strong>How it works:</strong> We copy your help content into a searchable index. When a customer asks a question, we pull (“retrieve”) the best matching passages and show them to the model with your brand tone guidelines.</p>
+                <p><strong>Best practices:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                  <li>Chunk pages by headings. Store the page title and URL with each chunk.</li>
+                  <li>Add <strong>citations</strong> below answers: “From: Reset Password — help.example.com/reset”.</li>
+                  <li>Set a <strong>refresh schedule</strong> so new or edited articles are re‑indexed automatically.</li>
+                  <li>Keep a <strong>gap log</strong> for questions we can’t answer. Assign an owner to write or update the doc.</li>
+                </ul>
+              </div>
+            </details>
           </div>
 
           <!-- STEP 3 -->
@@ -225,7 +251,17 @@
             <details class="mt-3">
               <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Guardrails</summary>
               <div class="mt-2 text-sm text-gray-700 space-y-2">
-                <p>We teach the assistant what it must <em>never</em> do (like process refunds) and when to stop and ask a person. This keeps customers safe and staff confident.</p>
+                <p><strong>Plain idea:</strong> Guardrails are house rules that keep customers safe and protect your business.</p>
+                <p><strong>Do list:</strong> Answer from docs, link to sources, ask clarifying questions.</p>
+                <p><strong>Don’t list:</strong> <em>Never</em> process refunds, change credentials, disclose account details, or make promises.</p>
+                <p><strong>Confidence handoff:</strong> If the system isn’t sure, it should <em>stop</em> and hand off to a person with a short summary and links. This is safer than guessing.</p>
+                <p><strong>Escalation matrix (simple):</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                  <li><strong>Owner:</strong> which team gets it (billing, tech support)</li>
+                  <li><strong>Priority:</strong> how urgent (P1/P2/P3)</li>
+                  <li><strong>SLA:</strong> how fast to reply (e.g., 15 minutes)</li>
+                  <li><strong>After‑hours:</strong> who covers nights/weekends</li>
+                </ul>
               </div>
             </details>
           </div>
@@ -237,7 +273,17 @@
             <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="handoff"/> <span>Handoff packet (summary, intent, sentiment, confidence, links)</span></label>
             <details class="mt-3">
               <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Connecting the pipes</summary>
-              <div class="mt-2 text-sm text-gray-700">We connect your content to the assistant, so it answers from the right page and shows where it came from. If confidence is low, it hands off with a neat summary.</div>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p><strong>Answer flow:</strong> We feed the model the top passages found + your “brand voice” notes (friendly, concise). The answer must include citations and offer next steps (e.g., “Reset link” button).</p>
+                <p><strong>Handoff flow:</strong> If the assistant can’t help, it creates a tidy ticket with:</p>
+                <ul class="list-disc list-inside ml-4">
+                  <li>A one‑line summary in plain language</li>
+                  <li>Detected <strong>intent</strong> and <strong>sentiment</strong></li>
+                  <li>Confidence score and why it handed off</li>
+                  <li>Links to the cited pages the customer already saw</li>
+                  <li>A suggested first reply for the agent to edit</li>
+                </ul>
+              </div>
             </details>
           </div>
 
@@ -246,6 +292,14 @@
             <p class="font-semibold mb-2">Step 5 — Safety & Compliance</p>
             <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="redaction"/> <span>PII redaction in logs; content filters; quiet hours</span></label>
             <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="legal"/> <span>Consent/retention policies; DNC lists; unsubscribe mechanics</span></label>
+            <details class="mt-3">
+              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Safety first</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p><strong>PII redaction:</strong> Hide emails, phone numbers, and addresses in logs. Only show what the team needs to fix issues.</p>
+                <p><strong>Filters:</strong> Block unsafe words/topics. Respect “quiet hours” so customers don’t get messages at 2am.</p>
+                <p><strong>Consent:</strong> Make sure opt‑outs and do‑not‑contact lists are honored automatically.</p>
+              </div>
+            </details>
           </div>
 
           <!-- STEP 6 -->
@@ -255,7 +309,11 @@
             <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="signoff"/> <span>Brand/legal sign‑off; rollback plan</span></label>
             <details class="mt-3">
               <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Testing</summary>
-              <div class="mt-2 text-sm text-gray-700">We test the most common and the trickiest questions. If it fails, we teach it or tighten rules. We don’t ship until it’s safe and helpful.</div>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p><strong>Golden set:</strong> A fixed list of typical questions and tricky edge cases. We run this list every time we change the system to ensure quality doesn’t drop.</p>
+                <p><strong>Rubric:</strong> Score each answer for helpfulness, safety, tone, and citations. We require <em>0 critical safety issues</em> and high helpfulness before launch.</p>
+                <p><strong>UAT:</strong> The client tests in a safe environment and signs off that everything meets brand and legal requirements.</p>
+              </div>
             </details>
           </div>
 
@@ -264,40 +322,32 @@
             <p class="font-semibold mb-2">Step 7 — Launch & Hypercare</p>
             <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="pilot"/> <span>Pilot to 25% traffic; daily KPI checks; alert thresholds</span></label>
             <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="expand"/> <span>Expand to 50–100% after 7 days of stable KPIs</span></label>
+            <details class="mt-3">
+              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Careful rollout</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-2">
+                <p>Start small on purpose. We watch dashboards daily and fix issues quickly. Only expand when KPIs are healthy.</p>
+                <p>Keep a rollback plan handy (how to turn it off, how to fix data) so you’re never stuck.</p>
+              </div>
+            </details>
           </div>
         </div>
       </div>
     </section>
 
     <section class="sec" id="phases">
-      <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Delivery Phases</h2>
-        <ol class="list-decimal ml-5 mt-2 space-y-2 text-sm text-gray-700">
-          <li><strong>Discovery:</strong> Channels, top intents, SLAs, tone, policies, macro inventory.</li>
-          <li><strong>Design:</strong> Knowledge map, guardrails, escalation, evaluation plan.</li>
-          <li><strong>Build:</strong> KB sync, retrieval, response templates, routing, alerts.</li>
-          <li><strong>QA & UAT:</strong> Golden set, red‑team edge cases, sign‑offs.</li>
-          <li><strong>Pilot & Hypercare:</strong> Staged rollout, dashboarding, daily triage.</li>
-          <li><strong>Optimize:</strong> Close knowledge gaps, expand intents/channels, add safe automations.</li>
-        </ol>
-        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-          <div class="bg-white border rounded-xl p-4">
-            <p class="font-semibold mb-1">Stage Gates</p>
-            <ul class="list-disc ml-5 space-y-1">
-              <li>Design sign‑off: scope, guardrails, escalation matrix approved</li>
-              <li>QA pass: ≥ 85% helpfulness on golden set; 0 critical safety fails</li>
-              <li>Pilot exit: deflection ≥ 30% and CSAT ≥ 4.5 for 7 days</li>
-            </ul>
-          </div>
-          <div class="bg-white border rounded-xl p-4">
-            <p class="font-semibold mb-1">Risks & Mitigations</p>
-            <ul class="list-disc ml-5 space-y-1">
-              <li>Hallucination → citations, topic blocks, confidence handoff</li>
-              <li>Data leakage → least privilege, redaction, deny‑lists</li>
-              <li>Low adoption → embed where users ask; announce; measure</li>
-            </ul>
-          </div>
-        </div>
+      <h2 class="text-2xl font-bold mb-3">Delivery Phases</h2>
+      <div class="bg-white border rounded-xl overflow-hidden">
+        <table class="min-w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">What</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Output</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">1) Discover</td><td class="p-3">Channels, top intents, SLAs, tone, policies, macro inventory, baseline metrics</td><td class="p-3">You + Client</td><td class="p-3">Discovery doc; baseline export</td></tr>
+            <tr><td class="p-3 font-semibold">2) Design</td><td class="p-3">Knowledge map; guardrails; escalation matrix; evaluation plan</td><td class="p-3">You</td><td class="p-3">Design v1; sign‑off gate</td></tr>
+            <tr><td class="p-3 font-semibold">3) Build</td><td class="p-3">KB sync; retrieval with citations; templates; routing; alerts</td><td class="p-3">You</td><td class="p-3">Sandbox E2E</td></tr>
+            <tr><td class="p-3 font-semibold">4) Test</td><td class="p-3">Golden set eval; red‑team edge cases; brand/legal sign‑off</td><td class="p-3">You + Client</td><td class="p-3">Test log; zero critical fails</td></tr>
+            <tr><td class="p-3 font-semibold">5) Pilot & Launch</td><td class="p-3">Staged rollout 25→50→100%; dashboards; alert thresholds; rollback plan</td><td class="p-3">You</td><td class="p-3">Pilot live; go‑live checklist</td></tr>
+            <tr><td class="p-3 font-semibold">6) Operate & Optimize</td><td class="p-3">Daily triage; close knowledge gaps; expand intents/channels; safe automations</td><td class="p-3">You</td><td class="p-3">Stability report; improvements queued</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -318,10 +368,12 @@
     <section class="sec" id="kpis">
       <h2 class="text-2xl font-bold mb-3">KPIs & Reporting</h2>
       <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li><strong>Deflection rate:</strong> % resolved without human; target ≥ 35%</li>
-        <li><strong>CSAT:</strong> 1–5 rating; target ≥ 4.5</li>
-        <li><strong>Handoff quality:</strong> % with complete context; target ≥ 95%</li>
-        <li><strong>Knowledge gaps:</strong> top failed intents/week; close ≥ 5</li>
+        <li><strong>Deflection rate:</strong> % resolved without human; target ≥ 35%.</li>
+        <li><strong>CSAT:</strong> 1–5 rating; target ≥ 4.5.</li>
+        <li><strong>First Response Time (FRT):</strong> target within SLA (e.g., &lt; 2 min for chat).</li>
+        <li><strong>First Contact Resolution (FCR):</strong> % solved in one interaction; target ↑.</li>
+        <li><strong>Handoff quality:</strong> % with complete summary + links; target ≥ 95%.</li>
+        <li><strong>Knowledge gaps:</strong> top failed intents/week; close ≥ 5.</li>
       </ul>
     </section>
 
@@ -334,6 +386,24 @@
         <p><strong>Golden set:</strong> A list of example questions we use to test quality every time we change something.</p>
       </div>
     </section>
+
+    <!-- Communication & Reporting -->
+    <section class="sec" id="communication">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Communication & Reporting</h2>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Weekly: demo with transcripts; show deflection, CSAT, handoff quality.</li>
+          <li>Bi‑weekly: steering for scope/guardrails changes and prioritization.</li>
+          <li>Monthly: ROI report; top intents; knowledge gap closures; next bets.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Part 2 divider -->
+    <div class="border-t pt-12">
+      <h2 class="text-3xl font-bold tracking-tight">Part 2: Implementer's Guide</h2>
+      <p class="mt-2 text-gray-600">Detailed, technical procedures for execution.</p>
+    </div>
 
     <section class="sec" id="initial-setup">
       <h2 class="text-2xl font-bold mb-3">Initial Setup (SOP)</h2>
@@ -502,6 +572,21 @@ If user requests one, apologize and create an escalation with reason and require
 <pre class="mt-2 whitespace-pre-wrap">Was this answer helpful? (1–5)
 If not, what was missing? [free text]</pre>
         </details>
+        <details>
+          <summary class="text-sm font-semibold">Evaluation Rubric (golden set)</summary>
+<pre class="mt-2 whitespace-pre-wrap">Criteria: Helpfulness (0–2), Safety (0–2), Tone (0–1), Citations (0–1)
+Pass: No critical safety fails; total ≥ 4/6; notes for improvements</pre>
+        </details>
+        <details>
+          <summary class="text-sm font-semibold">Knowledge Gap Log</summary>
+<pre class="mt-2 whitespace-pre-wrap">Date | Intent | Example question | Missing doc | Owner | Due | Status</pre>
+        </details>
+        <details>
+          <summary class="text-sm font-semibold">Brand Tone Guide (micro)</summary>
+<pre class="mt-2 whitespace-pre-wrap">Voice: Friendly, clear, respectful.
+Do: Short sentences; link sources; offer next action.
+Don’t: Make promises; use jargon; guess.</pre>
+        </details>
       </div>
     </section>
 
@@ -517,11 +602,11 @@ If not, what was missing? [free text]</pre>
 
   <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
   <script>
-  // Canonical checklist progress with namespaced localStorage
+  // Checklist progress with namespaced localStorage (Automated Customer Support)
   (function(){
-    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
-    const bar = document.getElementById('crm-progress-bar');
-    const txt = document.getElementById('crm-progress-text');
+    const boxes = document.querySelectorAll('#acs-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('acs-progress-bar');
+    const txt = document.getElementById('acs-progress-text');
     const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
     const KEY = (id) => `aflp:${slug}:check:${id}`;
 

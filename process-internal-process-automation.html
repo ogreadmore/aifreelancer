@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Delivery Playbook — Internal Process Automation | AI Freelancer</title>
-  <meta name="description" content="SOPs for mapping, building, and operating internal automations with Make/Zapier/n8n: reliability, idempotency, monitoring, and ROI tracking." />
+  <meta name="description" content="Step‑by‑step delivery process for Internal Process Automation: map, design, build, test, launch, and operate with reliability and ROI tracking. Includes newbie guides, SOPs, KPIs, and templates." />
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,12 +19,15 @@
     h1{color:var(--indigo);font-weight:900;font-size:2.4rem}
     h2{color:#061126;font-weight:800}
     a{color:var(--indigo)} a:hover{color:#3730a3;text-decoration:underline}
-    .kpi-grid>div{padding-left:18px} .kpi-grid>div::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:6px;border-radius:6px}
+    .kpi-grid>div{padding-left:18px;overflow:hidden}
+    .kpi-grid>div::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:6px;border-radius:6px}
     .kpi-grid>div:nth-child(1)::before{background:linear-gradient(180deg,var(--teal),var(--indigo))}
     .kpi-grid>div:nth-child(2)::before{background:linear-gradient(180deg,#f59e0b,#f97316)}
     .kpi-grid>div:nth-child(3)::before{background:linear-gradient(180deg,#fb7185,#ef4444)}
   </style>
   <meta name="robots" content="noindex, follow" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="color-scheme" content="light only" />
 </head>
 <body class="bg-gray-50 text-gray-900">
   <header class="bg-white border-b border-gray-200">
@@ -39,6 +42,7 @@
   </header>
 
   <main class="container mx-auto px-6 py-10 space-y-12">
+    <!-- Overview -->
     <section class="sec" id="overview">
       <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: Internal Process Automation</h1>
       <p class="mt-4 text-lg text-gray-700">Replace manual steps with resilient automations. We document workflows, implement idempotent flows with retries and alerts, and measure the hours you win back.</p>
@@ -49,6 +53,7 @@
       </div>
     </section>
 
+    <!-- Intro -->
     <section class="sec" id="intro">
       <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
         <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
@@ -60,6 +65,7 @@
       </div>
     </section>
 
+    <!-- Table of contents -->
     <section class="sec" id="toc">
       <nav class="bg-white border rounded-xl p-5">
         <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
@@ -75,16 +81,17 @@
           <li class="font-semibold text-gray-500 mt-2 md:col-span-full">Part 2: Implementer's Guide</li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#prereqs">Access & Prerequisites</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling Options</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#security">Security</a></li>
-          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Timeline</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#security">Security & Compliance</a></li>
+          <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Detailed Timeline</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates & Snippets</a></li>
           <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#audit-monitoring">Audit & Monitoring (Ops)</a></li>
         </ol>
       </nav>
     </section>
 
+    <!-- Story -->
     <section class="sec" id="story-top">
       <div class="bg-white border rounded-2xl p-6">
         <h2 class="text-2xl font-bold">Quick Story — What will happen</h2>
@@ -118,106 +125,227 @@
       </div>
     </section>
 
-    <section class="sec" id="communication">
-      <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Communication</h2>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li>Weekly demo: shipped flows, incidents, ROI tracking</li>
-          <li>Error inbox channel: failed jobs, retries, SLAs</li>
-          <li>Monthly ROI report: hours saved, error rates, next targets</li>
-        </ul>
-      </div>
-    </section>
-
+    <!-- Simplified, newbie-friendly checklist with progress bar -->
     <section class="sec" id="simple-checklist">
       <div class="bg-white border rounded-2xl p-6">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
-            <p class="text-gray-600 text-sm">Use this live checklist during client working sessions. It saves progress in your browser. Expand any “Newbie guide” for step‑by‑step help.</p>
-          </div>
-          <div class="text-right">
-            <div class="text-sm text-gray-600">Progress</div>
-            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false">
-              <div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div>
+        <div class="flex items-center justify-between gap-4 mb-4">
+          <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
+          <div class="flex-1 max-w-sm">
+            <div class="w-full bg-gray-100 rounded-full h-2" aria-hidden="true">
+              <div id="ipa-progress-bar" class="h-2 rounded-full" style="width:0%; background:linear-gradient(90deg, var(--indigo), var(--teal))" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
             </div>
-            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+            <p id="ipa-progress-text" class="text-xs text-gray-500 mt-1">0% complete</p>
           </div>
         </div>
 
-        <div class="mt-6 space-y-6" id="crm-checklist">
+        <div id="ipa-checklist" class="mt-6 space-y-6 text-sm">
+          <!-- Step 1 -->
           <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 1 — Map</p>
-            <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="swimlanes"/> Swimlanes + systems + owners</label>
-            <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="io-sla"/> Inputs/outputs; edge cases; SLAs</label>
-            <label class="flex gap-3"><input type="checkbox" class="mt-1" data-id="baseline"/> Baseline time/cost; ROI target</label>
+            <p class="font-semibold mb-2">Step 1 — Discover & Map</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="baseline"/> <span>Baseline minutes per task and weekly frequency</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="swimlanes"/> <span>Draft swimlane map (systems, roles, handoffs)</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Mapping</summary><div class="mt-2 text-gray-700">Draw boxes for each step. Add arrows to show order. Write who does it and how long it takes. Circle any copy‑paste or waiting time.</div></details>
           </div>
 
+          <!-- Step 2 -->
           <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 2 — Build</p>
-            <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="idempotent"/> Idempotent steps + dedupe guards</label>
-            <label class="flex gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="retries"/> Retries with backoff; error inbox</label>
-            <label class="flex gap-3"><input type="checkbox" class="mt-1" data-id="observability"/> Observability: metrics + alerts</label>
+            <p class="font-semibold mb-2">Step 2 — Design Contracts & SLAs</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="contracts"/> <span>Define inputs/outputs and required fields per step</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="idem-keys"/> <span>Choose idempotency keys (e.g., external_id + timestamp)</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Contracts</summary><div class="mt-2 text-gray-700">A contract is a short list of the data each step needs and produces. Think of it like a recipe: ingredients in, dish out. If the same request comes twice, the idempotency key stops duplicates.</div></details>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 3 — Design Sign‑off</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="signoff"/> <span>Stakeholder review of scope, SLAs, and risks</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="freeze"/> <span>Freeze schema for build window; start change log</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Approval</summary><div class="mt-2 text-gray-700">Before building, show a simple plan. Ask leaders to approve it. This prevents rework and surprises.</div></details>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 4 — Build & Instrument</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="triggers"/> <span>Implement triggers, actions, and field mapping</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="retries"/> <span>Retries with exponential backoff + dedupe guards</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="logging"/> <span>Structured logs with correlation IDs; Slack alerts</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Build</summary><div class="mt-2 text-gray-700">Connect the apps in Make/Zapier/n8n. Add steps that check for duplicates. If an API call fails, the system should try again later automatically.</div></details>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 5 — QA: Golden + Chaos</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="golden"/> <span>Golden path tests with sample data</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="chaos"/> <span>Chaos tests: timeouts, rate limits, schema drift</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Testing</summary><div class="mt-2 text-gray-700">Test when everything goes right (golden) and when things go wrong (chaos). Make sure errors are caught and alerts fire.</div></details>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 6 — Pilot & Launch</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="pilot"/> <span>Route 25–50% traffic; monitor error inbox</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="rollback"/> <span>Rehearse rollback and data correction steps</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Launch</summary><div class="mt-2 text-gray-700">Turn it on for a small group first. Watch closely for issues. If something breaks, be ready to switch it off and fix data.</div></details>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="border rounded-xl p-4">
+            <p class="font-semibold mb-2">Step 7 — Operate & Optimize</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="hypercare"/> <span>Hypercare week: tune throttles; fix Sev‑2/3</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="roireport"/> <span>ROI report: hours saved, incidents, next wins</span></label>
+            <details class="mt-2"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Run</summary><div class="mt-2 text-gray-700">Check dashboards weekly. Keep a list of ideas to make it faster or more reliable. Share results with the team.</div></details>
           </div>
         </div>
-        <details class="mt-4">
-          <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Idempotency</summary>
-          <div class="mt-2 text-sm text-gray-700">Idempotent means “safe to retry.” If a step runs twice, we get the same result once. This prevents duplicates when the internet hiccups.</div>
-        </details>
       </div>
     </section>
+
+    <!-- Delivery Phases (detailed) -->
 
     <section class="sec" id="phases">
-      <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Delivery Phases</h2>
-        <ol class="list-decimal ml-5 mt-2 space-y-2 text-sm text-gray-700">
-          <li><strong>Discovery:</strong> Process mapping, pain points, success criteria.</li>
-          <li><strong>Design:</strong> Event model, data contract, failure modes.</li>
-          <li><strong>Build:</strong> Orchestrations, webhooks, validation, logging.</li>
-          <li><strong>QA:</strong> Happy path + chaos tests; load & rate limits.</li>
-          <li><strong>Launch:</strong> Gradual traffic; rollback plan; hypercare.</li>
-          <li><strong>Operate:</strong> Weekly checks; monthly ROI review.</li>
-        </ol>
-        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Stage Gates</p><ul class="list-disc ml-5 space-y-1"><li>Design sign‑off: contracts + SLAs</li><li>QA: 0 Sev‑1 defects; retries verified</li><li>Pilot: success ≥ 99% for 7 days</li></ul></div>
-          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Risks</p><ul class="list-disc ml-5 space-y-1"><li>API limits → queues + backoff</li><li>Schema drift → contracts + tests</li><li>Secrets leakage → vault only</li></ul></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec" id="scope">
-      <h2 class="text-2xl font-bold mb-3">Scope Tiers</h2>
-      <div class="bg-white border rounded-xl p-5 text-sm">
-        <table class="min-w-full">
-          <thead><tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Workflows</th><th class="p-3 text-left">Notes</th></tr></thead>
+      <h2 class="text-2xl font-bold mb-3">Delivery Phases</h2>
+      <div class="bg-white border rounded-xl overflow-hidden">
+        <table class="min-w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600">
+            <tr>
+              <th class="p-3 text-left">Phase</th>
+              <th class="p-3 text-left">What</th>
+              <th class="p-3 text-left">Owner</th>
+              <th class="p-3 text-left">Output</th>
+            </tr>
+          </thead>
           <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">MVP</td><td class="p-3">1–2 flows</td><td class="p-3">Highest ROI; simple alerts</td></tr>
-            <tr><td class="p-3 font-semibold">Standard</td><td class="p-3">3–5 flows</td><td class="p-3">Shared libs; error inbox</td></tr>
-            <tr><td class="p-3 font-semibold">Plus</td><td class="p-3">6–10 flows</td><td class="p-3">Common queue; dashboards</td></tr>
+            <tr>
+              <td class="p-3 font-semibold">1) Discover & Map</td>
+              <td class="p-3">Workshop triggers, systems, owners; swimlanes; baseline minutes × frequency; ROI hypothesis</td>
+              <td class="p-3">You + Client</td>
+              <td class="p-3">Process map; data dictionary v0; baseline</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">2) Design</td>
+              <td class="p-3">Contracts (inputs/outputs), validations, idempotency keys, SLAs, error budget, rollback plan</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Solution design v1; sign‑off gate</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">3) Build & Instrument</td>
+              <td class="p-3">Flows in Make/Zapier/n8n; retries/backoff; dedupe; structured logs; alerts; DLQ/replay</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Sandbox flow end‑to‑end</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">4) Test</td>
+              <td class="p-3">Golden path tests per contract; chaos tests (timeouts, rate limits, schema drift); UAT</td>
+              <td class="p-3">You + Client</td>
+              <td class="p-3">Test log; UAT sign‑off; zero Sev‑1</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">5) Pilot & Launch</td>
+              <td class="p-3">25–50% traffic; rate limits; verify SLAs; rollback drill; data correction runbook</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Pilot live; go‑live checklist complete</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold">6) Operate & Optimize</td>
+              <td class="p-3">Weekly incident review; tune throttles; monthly ROI report; backlog grooming</td>
+              <td class="p-3">You</td>
+              <td class="p-3">Stability report; improvements queued</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="sec" id="kpis">
-      <h2 class="text-2xl font-bold mb-3">KPIs & Reporting</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li><strong>Success rate:</strong> completed jobs / total; ≥ 99%</li>
-        <li><strong>MTTR:</strong> median time to resolve failures</li>
-        <li><strong>Hours saved:</strong> baseline time − automation time</li>
-        <li><strong>Error budget:</strong> allowed failures before freeze</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="glossary">
-      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
-      <div class="bg-white border rounded-xl p-5 text-sm">
-        <p><strong>Idempotency:</strong> Running the same step twice gives the same end result; prevents duplicates.</p>
-        <p><strong>Backoff:</strong> Waiting longer between retries to avoid hammering an API when it errors.</p>
-        <p><strong>Contract:</strong> The agreement for inputs/outputs a step expects and returns.</p>
+    <!-- Scope tiers -->
+    <section class="sec" id="scope">
+      <h2 class="text-2xl font-bold mb-3">Scope Tiers</h2>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-white border rounded-xl p-4">
+          <p class="font-semibold mb-1">MVP (Fast‑Track)</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Single trigger → 2–3 actions.</li>
+            <li>Idempotency + retries; basic alerts.</li>
+            <li>Manual replay; weekly report.</li>
+          </ul>
+        </div>
+        <div class="bg-white border rounded-xl p-4">
+          <p class="font-semibold mb-1">Standard</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Multiple branches; SLAs + error budget.</li>
+            <li>Dead‑letter queue; replay scripts.</li>
+            <li>Dashboards; monthly ROI report.</li>
+          </ul>
+        </div>
+        <div class="bg-white border rounded-xl p-4">
+          <p class="font-semibold mb-1">Advanced</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Queueing; rate‑limiters; batching.</li>
+            <li>Staging + prod; config as code.</li>
+            <li>Change management; access reviews.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
+    <!-- Communication (placed before Part 2 like Sales/CRM) -->
+    <section class="sec" id="communication">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Communication & Reporting</h2>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li>Weekly demo: shipped flows, incidents, ROI tracking.</li>
+          <li>Error inbox channel: failed jobs, retries, SLAs, owners.</li>
+          <li>Monthly ROI report: hours saved, error rates, next targets.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Part 2 divider -->
+    <div class="border-t pt-12">
+      <h2 class="text-3xl font-bold tracking-tight">Part 2: Implementer's Guide</h2>
+      <p class="mt-2 text-gray-600">Detailed, technical procedures for execution.</p>
+    </div>
+
+    <!-- KPIs -->
+    <section class="sec" id="kpis">
+      <h2 class="text-2xl font-bold mb-3">KPIs & Reporting</h2>
+      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
+        <li><strong>Success rate:</strong> completed jobs / total; ≥ 99%.</li>
+        <li><strong>MTTR:</strong> median time to resolve failures.</li>
+        <li><strong>Hours saved:</strong> baseline time − automation time.</li>
+        <li><strong>Error budget:</strong> allowed failures before freeze.</li>
+      </ul>
+    </section>
+
+    <!-- Glossary -->
+    <section class="sec" id="glossary">
+      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
+      <div class="bg-white border rounded-xl p-5 text-sm space-y-2">
+        <p><strong>Idempotency:</strong> Running the same request twice gives the same end result; prevents duplicates.</p>
+        <p><strong>Backoff:</strong> Waiting longer between retries to avoid hammering an API when it errors.</p>
+        <p><strong>Contract:</strong> The agreement for inputs/outputs a step expects and returns.</p>
+        <p><strong>Correlation ID:</strong> A unique code added to logs so you can follow one job across steps.</p>
+        <p><strong>Dead‑letter queue:</strong> A parking lot for jobs that failed too many times and need manual help.</p>
+        <p><strong>Schema drift:</strong> When a field changes name/type in a system, breaking integrations.</p>
+      </div>
+    </section>
+
+    <!-- Tooling -->
+    <section class="sec" id="tooling">
+      <h2 class="text-2xl font-bold mb-3">Tooling Options</h2>
+      <div class="bg-white border rounded-xl overflow-hidden text-sm">
+        <table class="min-w-full">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Layer</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">Orchestration</td><td class="p-3">Make, Zapier, n8n, custom API</td><td class="p-3">Start low‑code; elevate to custom for scale/special cases</td></tr>
+            <tr><td class="p-3 font-semibold">Data</td><td class="p-3">Google Sheets, Airtable, Postgres</td><td class="p-3">Use IDs, timestamps, status; avoid free‑text IDs</td></tr>
+            <tr><td class="p-3 font-semibold">Messaging</td><td class="p-3">Slack/Email webhooks</td><td class="p-3">Alerts with correlation links and runbook pointers</td></tr>
+            <tr><td class="p-3 font-semibold">Secrets</td><td class="p-3">Vault/Secrets Manager</td><td class="p-3">Rotate; least privilege; no creds in logs</td></tr>
+            <tr><td class="p-3 font-semibold">Observability</td><td class="p-3">Error inbox, dashboards</td><td class="p-3">Alert on failures, SLA breaches, rate limits</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Design notes -->
     <section class="sec" id="design">
       <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
       <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
@@ -229,57 +357,60 @@
       </ul>
     </section>
 
-    <section class="sec" id="tooling">
-      <h2 class="text-2xl font-bold mb-3">Tooling</h2>
-      <div class="bg-white border rounded-xl overflow-hidden text-sm">
-        <table class="min-w-full">
-          <thead><tr><th class="p-3 text-left">Layer</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">Orchestration</td><td class="p-3">Make, Zapier, n8n</td><td class="p-3">Start low‑code; custom only when needed</td></tr>
-            <tr><td class="p-3 font-semibold">Data</td><td class="p-3">Google Sheets, Airtable, Postgres</td><td class="p-3">Schema with IDs, timestamps, status</td></tr>
-            <tr><td class="p-3 font-semibold">Messaging</td><td class="p-3">Slack/Email webhooks</td><td class="p-3">Alerts with correlation links</td></tr>
-            <tr><td class="p-3 font-semibold">Secrets</td><td class="p-3">Vault/Secrets Manager</td><td class="p-3">Rotate; least privilege</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
+    <!-- Security -->
     <section class="sec" id="security">
       <h2 class="text-2xl font-bold mb-3">Security & Compliance</h2>
       <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
         <li>Service accounts; scoped API tokens; avoid personal creds.</li>
-        <li>PII minimization; encryption at rest/in transit; audit logs.</li>
-        <li>Access reviews quarterly; disable unused integrations.</li>
+        <li>PII minimization; data masking in logs; encryption in transit/at rest.</li>
+        <li>Access reviews quarterly; disable unused integrations; rotate secrets.</li>
       </ul>
     </section>
 
+    <!-- Detailed timeline -->
     <section class="sec" id="timeline">
-      <h2 class="text-2xl font-bold mb-3">Timeline (first 2 weeks)</h2>
+      <h2 class="text-2xl font-bold mb-3">Detailed Timeline (solo operator)</h2>
       <div class="bg-white border rounded-xl overflow-hidden text-sm">
         <table class="min-w-full">
-          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Day</th><th class="p-3 text-left">Theme</th><th class="p-3 text-left">Outputs</th></tr></thead>
+          <thead class="bg-gray-50 text-gray-600">
+            <tr>
+              <th class="p-3 text-left">Day</th>
+              <th class="p-3 text-left">Topic</th>
+              <th class="p-3 text-left">Key Tasks</th>
+              <th class="p-3 text-left">Output / Done</th>
+              <th class="p-3 text-left">Est.</th>
+              <th class="p-3 text-left">Owner</th>
+              <th class="p-3 text-left">Depends</th>
+            </tr>
+          </thead>
           <tbody class="divide-y">
-            <tr><td class="p-3">1</td><td class="p-3">Kickoff</td><td class="p-3">Process map; ROI target; access</td></tr>
-            <tr><td class="p-3">2–3</td><td class="p-3">Design</td><td class="p-3">Contracts; failure modes; test plan</td></tr>
-            <tr><td class="p-3">4–6</td><td class="p-3">Build</td><td class="p-3">Flows; logging; alerts</td></tr>
-            <tr><td class="p-3">7</td><td class="p-3">QA</td><td class="p-3">Golden paths; chaos tests; fixes</td></tr>
-            <tr><td class="p-3">8–10</td><td class="p-3">Pilot</td><td class="p-3">25–50% traffic; hypercare</td></tr>
+            <tr><td class="p-3">1</td><td class="p-3">Kickoff + Access</td><td class="p-3">Stakeholder kickoff; confirm goals/KPIs; collect accounts; set alert channel</td><td class="p-3">Charter; access checklist 100%</td><td class="p-3">3–4h</td><td class="p-3">You + Client</td><td class="p-3">—</td></tr>
+            <tr><td class="p-3">2</td><td class="p-3">Process Map</td><td class="p-3">Swimlanes; field inventory; baseline time/cost</td><td class="p-3">Map; data dictionary v0</td><td class="p-3">4h</td><td class="p-3">You</td><td class="p-3">Day 1</td></tr>
+            <tr><td class="p-3">3</td><td class="p-3">Design Draft</td><td class="p-3">Contracts; idempotency keys; SLAs; risk log</td><td class="p-3">Solution design v1</td><td class="p-3">5h</td><td class="p-3">You</td><td class="p-3">Day 2</td></tr>
+            <tr><td class="p-3">4</td><td class="p-3">Approval Gate</td><td class="p-3">Walkthrough; capture changes; freeze schema</td><td class="p-3">Sign‑off</td><td class="p-3">1–2h</td><td class="p-3">Client</td><td class="p-3">Day 3</td></tr>
+            <tr><td class="p-3">5–6</td><td class="p-3">Build</td><td class="p-3">Implement flows; retries; logging; alerts</td><td class="p-3">Sandbox flow E2E</td><td class="p-3">8–10h</td><td class="p-3">You</td><td class="p-3">Sign‑off</td></tr>
+            <tr><td class="p-3">7</td><td class="p-3">QA</td><td class="p-3">Golden + chaos tests; fix Sev‑1</td><td class="p-3">Test log; zero Sev‑1</td><td class="p-3">4h</td><td class="p-3">You</td><td class="p-3">Day 5–6</td></tr>
+            <tr><td class="p-3">8</td><td class="p-3">Pilot</td><td class="p-3">25–50% traffic; rate limit; verify SLAs</td><td class="p-3">Pilot live; rollback plan</td><td class="p-3">3h</td><td class="p-3">You</td><td class="p-3">QA</td></tr>
+            <tr><td class="p-3">9–10</td><td class="p-3">Hypercare</td><td class="p-3">Monitor errors; tune retries; fix Sev‑2/3</td><td class="p-3">Stability report</td><td class="p-3">3–4h</td><td class="p-3">You</td><td class="p-3">Pilot</td></tr>
+            <tr><td class="p-3">11</td><td class="p-3">Handover</td><td class="p-3">Runbook; recorded training; schedule weekly review</td><td class="p-3">Docs shared; training done</td><td class="p-3">2h</td><td class="p-3">You + Client</td><td class="p-3">—</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
+    <!-- Initial setup -->
     <section class="sec" id="initial-setup">
       <h2 class="text-2xl font-bold mb-3">Initial Setup (SOP)</h2>
       <div class="bg-white border rounded-xl p-5 text-sm">
         <ol class="list-decimal ml-5 space-y-2">
-          <li>Access: create service accounts and secrets store; define environments.</li>
-          <li>Repo: set up a shared folder for diagrams, contracts, and runbooks.</li>
+          <li>Access: create service accounts and store secrets; define environments.</li>
+          <li>Repo: shared folder for diagrams, contracts, and runbooks.</li>
           <li>Monitoring: create error inbox and alert channels; test with a canary job.</li>
         </ol>
       </div>
     </section>
 
+    <!-- Prereqs -->
     <section class="sec" id="prereqs">
       <h2 class="text-2xl font-bold mb-3">Access & Prerequisites</h2>
       <div class="bg-white border rounded-xl p-5 text-sm">
@@ -291,17 +422,21 @@
       </div>
     </section>
 
+    <!-- Templates -->
     <section class="sec" id="templates">
       <h2 class="text-2xl font-bold mb-3">Templates & Snippets</h2>
       <div class="bg-white border rounded-xl p-5 text-sm space-y-3">
-        <details><summary class="font-semibold">Retry w/Backoff (pseudocode)</summary><pre class="mt-2 whitespace-pre-wrap">for attempt in 1..5:
+        <details><summary class="font-semibold">Retry with Exponential Backoff (pseudo)</summary><pre class="mt-2 whitespace-pre-wrap">for attempt in 1..5:
   try: call_api()
   catch e:
     wait 2^attempt seconds; continue</pre></details>
         <details><summary class="font-semibold">Rollback Plan Outline</summary><pre class="mt-2 whitespace-pre-wrap">Trigger, owner, steps to disable, data correction, comms template</pre></details>
+        <details><summary class="font-semibold">ROI Calc (worksheet)</summary><pre class="mt-2 whitespace-pre-wrap">Weekly hours saved = (baseline minutes − automated minutes) × frequency ÷ 60
+Monthly value = Weekly hours saved × hourly cost × 4.33</pre></details>
       </div>
     </section>
 
+    <!-- Ops -->
     <section class="sec" id="audit-monitoring">
       <h2 class="text-2xl font-bold mb-3">Audit & Monitoring (Ops)</h2>
       <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
@@ -314,11 +449,11 @@
 
   <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
   <script>
-  // Canonical checklist progress with namespaced localStorage
+  // Checklist progress with namespaced localStorage (Internal Process Automation)
   (function(){
-    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
-    const bar = document.getElementById('crm-progress-bar');
-    const txt = document.getElementById('crm-progress-text');
+    const boxes = document.querySelectorAll('#ipa-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('ipa-progress-bar');
+    const txt = document.getElementById('ipa-progress-text');
     const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
     const KEY = (id) => `aflp:${slug}:check:${id}`;
 

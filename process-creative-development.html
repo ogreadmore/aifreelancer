@@ -118,17 +118,6 @@
       </div>
     </section>
 
-    <section class="sec" id="communication">
-      <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Communication</h2>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li>Weekly review: demo, backlog updates, approvals</li>
-          <li>QA readiness: a11y + CWV reports, test plan sign‑off</li>
-          <li>Launch checklist walkthrough: owners and rollback</li>
-        </ul>
-      </div>
-    </section>
-
     <section class="sec" id="simple-checklist">
       <div class="bg-white border rounded-2xl p-6">
         <div class="flex items-center justify-between gap-4">
@@ -138,35 +127,157 @@
           </div>
           <div class="text-right">
             <div class="text-sm text-gray-600">Progress</div>
-            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden"><div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div></div>
-            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1">0% complete</div>
+            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden"><div id="cdev-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="cdev-progress-text"></div></div>
+            <div id="cdev-progress-text" class="text-xs text-gray-500 mt-1">0% complete</div>
           </div>
         </div>
-        <div class="mt-6 space-y-6" id="crm-checklist">
-          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 1 — Discovery</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="goals"/> <span>Goals/KPIs, audience, competitor scan</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ia"/> <span>IA/site map; content plan</span></label></div>
-          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 2 — UX & Copy</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="wireframes"/> <span>Wireframes for key pages</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="copy"/> <span>Copy drafts; approvals; freeze window for QA</span></label></div>
-          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 3 — Build</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="components"/> <span>Components/pages; CMS; analytics</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="integrations"/> <span>Integrations; env/config; secrets</span></label></div>
-          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 4 — QA</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="a11y"/> <span>Accessibility (WCAG 2.2 AA)</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="cwv"/> <span>Core Web Vitals; SEO checks; cross‑browser</span></label></div>
-          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 5 — Launch</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="launch"/> <span>DNS/SSL; redirects; sitemaps; robots; monitoring</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="rollback"/> <span>Rollback plan ready</span></label></div>
+        <div class="mt-6 space-y-6" id="cdev-checklist">
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 1 — Discovery</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="goals"/> <span>Define primary KPI (e.g., demo bookings) + guardrails (a11y/CWV)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="audience"/> <span>Document audience, jobs‑to‑be‑done, top tasks</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="baseline"/> <span>Capture baseline: conversion, traffic, bounce, CWV</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="audit"/> <span>Competitive scan + heuristic audit (what’s good/bad today)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ia"/> <span>Draft IA/site map with canonical URLs and navigation labels</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="content-plan"/> <span>Content inventory (what exists) + gaps (what to write)</span></label>
+            <details class="mt-3"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Start with the map</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-3">
+                <p><strong>What this is:</strong> We decide who we’re building for, what they need to do, and how they’ll find it.</p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                  <li>Write one sentence: “This site helps [audience] do [main task].”</li>
+                  <li>List top tasks: learn pricing, book demo, read docs, contact support.</li>
+                  <li>Sketch a site map: Home → Product → Pricing → Contact (keep it short).</li>
+                  <li>Pick one primary CTA per page (e.g., “Book a demo”).</li>
+                </ul>
+                <p><strong>Why it matters:</strong> A simple map avoids confusion later and keeps the build focused.</p>
+                <p><strong>Acceptance criteria:</strong></p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                  <li>Primary KPI named and measurable.</li>
+                  <li>Baselines saved to the project folder.</li>
+                  <li>Site map fits on one page and includes canonical URLs.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 2 — UX & Copy</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="wireframes"/> <span>Mobile‑first wireframes for key pages (home/product/pricing)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="outlines"/> <span>Page outlines: headings, sections, primary/secondary CTAs</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="copy"/> <span>Copy drafts with voice/tone; grade level 8–10; legal notes</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="tokens"/> <span>Design tokens (colors, type scale, spacing) and component list</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="signoff"/> <span>Sign‑off captured; change‑freeze window agreed</span></label>
+            <details class="mt-3"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Boxes before colors</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-3">
+                <p><strong>Wireframes:</strong> Black‑and‑white boxes showing headings, text, images, and buttons. No fonts or colors yet.</p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                  <li>Start with mobile. Stack sections in the order they should be read.</li>
+                  <li>Each section needs a headline, short text, and a clear action.</li>
+                  <li>Avoid clutter: more white space = easier to read.</li>
+                </ul>
+                <p><strong>5‑second test:</strong> Show a friend and ask “What’s this page about? What would you do next?” If it’s unclear, rewrite the headline or move the CTA up.</p>
+                <p class="text-gray-600"><strong>Pro tip:</strong> Write benefit‑first headlines. Replace jargon with simple, active verbs.</p>
+                <p><strong>Acceptance criteria:</strong> Wireframes for the 3 key pages are approved; each page has a single primary CTA; copy drafts exist for all hero sections.</p>
+              </div>
+            </details>
+          </div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 3 — Build</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="scaffold"/> <span>Project scaffold set; formatter/linter; type checks</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="components"/> <span>Design‑system components implemented (buttons/forms/nav/cards)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="cms"/> <span>CMS schema/content types + preview flow</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="analytics"/> <span>Analytics events + consent banner (if required)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="integrations"/> <span>Integrations wired; env‑based config; secrets in vault</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="perf-budget"/> <span>Performance budget checks in CI (size, images, links)</span></label>
+            <details class="mt-3"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Reusable pieces</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-3">
+                <p>Think LEGO. Build blocks once and reuse them to stay consistent and fast.</p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                  <li><strong>Tokens:</strong> Define colors, font sizes, and spacing scale (e.g., 4/8/12px) once.</li>
+                  <li><strong>Buttons:</strong> Primary/secondary/ghost with hover/focus/disabled states.</li>
+                  <li><strong>Forms:</strong> Labels above inputs, helpful error messages, visible focus ring.</li>
+                </ul>
+                <p class="text-gray-600"><strong>Pro tip:</strong> Document component props and add Storybook/Playroom for quick visual checks.</p>
+              </div>
+            </details>
+            <details class="mt-3"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Performance budget</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-3">
+                <p>Set simple speed limits and build to meet them.</p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                  <li><strong>Images:</strong> Under 200KB above the fold; use AVIF/WebP; set <code>width/height</code>; provide <code>srcset</code> + <code>sizes</code>.</li>
+                  <li><strong>Fonts:</strong> 1–2 families, 2–3 weights; <code>preload</code> critical, use <code>font-display: swap</code>, subset if large.</li>
+                  <li><strong>Scripts:</strong> Defer non‑critical JS; remove unused; prefer native features; split by route.</li>
+                  <li><strong>Hints:</strong> Use <code>fetchpriority</code> and <code>rel="preload"</code> for critical assets; <code>loading="lazy"</code> for below‑fold media.</li>
+                  <li><strong>Measure:</strong> Run Lighthouse and WebPageTest; fix anything flagged red; re‑test on staging.</li>
+                </ul>
+                <p><strong>Acceptance criteria:</strong> No red Lighthouse items; bundle sizes within budget; above‑the‑fold images optimized.</p>
+              </div>
+            </details>
+          </div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 4 — QA</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="tests"/> <span>Lint/type/unit pass in CI; E2E smoke on key flows</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="a11y"/> <span>Accessibility (WCAG 2.2 AA) — Axe + manual checks</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="cwv"/> <span>Core Web Vitals lab tests (mobile‑simulated)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="cross"/> <span>Cross‑browser/device matrix (Safari/Chrome/Firefox + iOS/Android)</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="seo"/> <span>SEO on‑page + crawl: titles/meta, links, sitemap/robots</span></label>
+            <details class="mt-3"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Test like a user</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-3">
+                <p><strong>Keyboard:</strong> Press Tab and Shift+Tab to move around. You should see a clear outline (focus) on links and buttons.</p>
+                <p><strong>Phone:</strong> Try on a real phone. Can you read it without zooming? Do buttons feel big enough?</p>
+                <p><strong>Slow network:</strong> In DevTools, throttle to “Slow 3G”. If it feels sluggish, compress images and defer scripts.</p>
+                <p class="text-gray-600"><strong>Pro tip:</strong> Run Axe or Lighthouse a11y checks; test reduced motion and high‑contrast modes; verify form errors are announced to screen readers.</p>
+                <p><strong>Acceptance criteria:</strong> Zero Sev‑1 defects; obvious a11y blockers fixed; pages readable and interactive within target budgets on a budget phone profile.</p>
+              </div>
+            </details>
+          </div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 5 — Launch</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="dns"/> <span>DNS/SSL verified; HSTS post‑launch</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="redirects"/> <span>Redirect map (old → new); 404s handled; custom error pages</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="sitemap"/> <span>Sitemap.xml; robots.txt; canonical + schema</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="cache"/> <span>CDN/cache rules; image optimization working</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="monitoring"/> <span>Monitoring/alerts (errors + uptime); dashboards shared</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="rollback"/> <span>Rollback runbook rehearsed; comms plan ready</span></label>
+            <details class="mt-3"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Safe go‑live</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-3">
+                <p><strong>Before launch:</strong> Run through a launch checklist (DNS/SSL, redirects, sitemaps/robots, backups, monitoring on).</p>
+                <p><strong>During:</strong> Deploy at a calm time. Keep a status page ready.</p>
+                <p><strong>After:</strong> Crawl the site, watch logs, and check CWV snapshots for regressions. Pre‑warm caches.</p>
+                <p><strong>If something breaks:</strong> 1) Revert deploy, 2) validate DNS/CDN, 3) communicate, 4) fix, 5) retry.</p>
+                <p><strong>Acceptance criteria:</strong> No broken critical paths post‑deploy; redirects correct; monitoring green; rollback steps documented and tested.</p>
+              </div>
+            </details>
+          </div>
+          <div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 6 — Optimize & Experiments</p>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ideas"/> <span>Build hypothesis backlog (problem → idea → expected impact)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="prioritize"/> <span>Prioritize by ICE (Impact, Confidence, Effort) or similar</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="abtest"/> <span>Set up A/B or hold‑out with guardrails (don’t hurt core metrics)</span></label>
+            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="measure"/> <span>Define one success metric per experiment with a target</span></label>
+            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="review"/> <span>Weekly review: ship wins, stop losers, document learnings</span></label>
+            <details class="mt-3"><summary class="text-sm font-semibold cursor-pointer">Newbie guide: Improve with evidence</summary>
+              <div class="mt-2 text-sm text-gray-700 space-y-3">
+                <p><strong>Pick one change:</strong> e.g., “Shorter headline increases demo bookings.” Keep the test simple.</p>
+                <p><strong>Measure one thing:</strong> Choose the single metric you want to move (e.g., clicks on “Book demo”).</p>
+                <p><strong>Give it time:</strong> Run until you have enough visits to be confident (don’t stop early).</p>
+                <p class="text-gray-600"><strong>Pro tip:</strong> Start on high‑traffic pages and test big, obvious changes first (headline, hero image, CTA).</p>
+                <p><strong>Acceptance criteria:</strong> Each experiment has a hypothesis, owner, start/end, and a decision (ship/stop) recorded.</p>
+              </div>
+            </details>
+          </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="sec" id="phases">
-      <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Delivery Phases</h2>
-        <ol class="list-decimal ml-5 mt-2 space-y-2 text-sm text-gray-700">
-          <li><strong>Discovery:</strong> Goals, audience, IA, benchmarks; define success metrics.</li>
-          <li><strong>UX & Content:</strong> Wireframes, copy map, component inventory, brand kit.</li>
-          <li><strong>Build:</strong> Components, CMS, integrations, analytics; a11y patterns.</li>
-          <li><strong>QA:</strong> Functional tests, CWV, a11y audit, SEO checks.</li>
-          <li><strong>Launch:</strong> Deploy with rollback; observability + error inbox.</li>
-          <li><strong>Optimize:</strong> A/B tests, heatmaps, roadmap for iteration.</li>
-        </ol>
-        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Stage Gates</p><ul class="list-disc ml-5 space-y-1"><li>Content freeze for QA</li><li>CWV budget met on staging</li><li>A11y audit: WCAG 2.2 AA</li></ul></div>
-          <div class="bg-white border rounded-xl p-4"><p class="font-semibold mb-1">Risks & Mitigations</p><ul class="list-disc ml-5 space-y-1"><li>Scope creep → freeze windows</li><li>Slow pages → image budgets</li><li>SEO regressions → pre/post diff</li></ul></div>
-        </div>
+      <h2 class="text-2xl font-bold mb-3">Delivery Phases</h2>
+      <div class="bg-white border rounded-xl overflow-hidden">
+        <table class="min-w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">What</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Output</th></tr></thead>
+          <tbody class="divide-y">
+            <tr><td class="p-3 font-semibold">1) Discover</td><td class="p-3">Brief, IA, content plan, budgets</td><td class="p-3">You + Client</td><td class="p-3">One‑page brief; site map</td></tr>
+            <tr><td class="p-3 font-semibold">2) Design</td><td class="p-3">Wireframes, copy, tokens/components</td><td class="p-3">You</td><td class="p-3">Approved wires/copy; tokens</td></tr>
+            <tr><td class="p-3 font-semibold">3) Build</td><td class="p-3">Pages/components; CMS; analytics</td><td class="p-3">You</td><td class="p-3">Staging build</td></tr>
+            <tr><td class="p-3 font-semibold">4) Test</td><td class="p-3">A11y, CWV, SEO, cross‑browser</td><td class="p-3">You</td><td class="p-3">QA sign‑off (zero Sev‑1)</td></tr>
+            <tr><td class="p-3 font-semibold">5) Launch</td><td class="p-3">Deploy, monitoring, rollback</td><td class="p-3">You</td><td class="p-3">Live site</td></tr>
+            <tr><td class="p-3 font-semibold">6) Optimize</td><td class="p-3">A/B tests, copy/design tweaks</td><td class="p-3">You</td><td class="p-3">Lift in KPIs</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -184,21 +295,60 @@
       </div>
     </section>
 
+    <!-- Communication & Reporting placed before Part 2 -->
+    <section class="sec" id="communication">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">Communication & Reporting</h2>
+        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+          <li><strong>Slack channel:</strong> <code>#proj-creative-dev</code> for day‑to‑day. Response target: same business day.</li>
+          <li><strong>Weekly demo (30 min):</strong> Three bullets — <em>Shipped</em>, <em>Next</em>, <em>Needs/Blockers</em>. Link to staging + changelog.</li>
+          <li><strong>Decisions and sign‑offs:</strong> Brief, IA/wires, copy, tokens/components. Capture approvals in writing (Slack thread or doc comment).</li>
+          <li><strong>Definition of Done:</strong> Passes CWV budgets, WCAG 2.2 AA checks, link checker 0 criticals, design tokens applied, analytics firing.</li>
+          <li><strong>Launch report:</strong> CWV lab + field snapshot, a11y summary, SEO crawl issues, 404/redirect map, monitoring + rollback status.</li>
+          <li><strong>Escalation:</strong> Sev‑1 (outage/regression) = pause feature work, roll back, notify stakeholders, incident note in <code>#proj-creative-dev</code>.</li>
+        </ul>
+      </div>
+    </section>
+
     <section class="sec" id="kpis">
       <h2 class="text-2xl font-bold mb-3">KPIs & Quality</h2>
-      <ul class="bg-white border rounded-xl p-5 text-sm space-y-2">
-        <li><strong>CWV:</strong> LCP, INP, CLS budgets met</li>
-        <li><strong>A11y:</strong> WCAG 2.2 AA checks pass</li>
-        <li><strong>SEO:</strong> Indexable pages, metadata, internal links</li>
-        <li><strong>Conversion:</strong> Baseline → +10–20% in 30–60 days</li>
-      </ul>
+      <div class="bg-white border rounded-xl p-5 text-sm space-y-3">
+        <ul class="space-y-2">
+          <li><strong>Core Web Vitals:</strong> LCP &lt; 2.5s; INP &lt; 200ms; CLS &lt; 0.1.</li>
+          <li><strong>Accessibility:</strong> WCAG 2.2 AA checks pass; zero critical issues.</li>
+          <li><strong>SEO:</strong> Indexable pages; unique titles/meta; internal links; no major crawl errors.</li>
+          <li><strong>Conversion:</strong> Baseline → +10–20% in 30–60 days.</li>
+          <li><strong>Error rate:</strong> JS errors/pageview trending down.</li>
+          <li><strong>Uptime:</strong> ≥ 99.9% with monitoring and alerts.</li>
+        </ul>
+        <details class="mt-2"><summary class="font-semibold">How to measure</summary>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li><strong>CWV:</strong> Lighthouse + field data (CrUX/GA4 web‑vitals).</li>
+            <li><strong>A11y:</strong> Axe/Lighthouse; manual keyboard/screen reader passes.</li>
+            <li><strong>SEO:</strong> Search Console coverage + performance; site crawl.</li>
+            <li><strong>Errors:</strong> Sentry or equivalent; alert on spikes.</li>
+            <li><strong>Uptime:</strong> External monitor with SMS/email alerts.</li>
+          </ul>
+        </details>
+      </div>
     </section>
+
+    <!-- Part 2 divider -->
+    <div class="border-t pt-12">
+      <h2 class="text-3xl font-bold tracking-tight">Part 2: Implementer's Guide</h2>
+      <p class="mt-2 text-gray-600">Detailed, technical procedures for execution.</p>
+    </div>
 
     <section class="sec" id="glossary">
       <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
-      <div class="bg-white border rounded-xl p-5 text-sm">
+      <div class="bg-white border rounded-xl p-5 text-sm space-y-1">
         <p><strong>CWV:</strong> Core Web Vitals (LCP/INP/CLS) — key performance measures.</p>
         <p><strong>WCAG:</strong> Accessibility standard that ensures usability for all.</p>
+        <p><strong>IA (Information Architecture):</strong> How pages and content are organized and linked.</p>
+        <p><strong>Design tokens:</strong> Named values for color, spacing, fonts to keep designs consistent.</p>
+        <p><strong>SSR/SSG:</strong> Server‑Side Rendering / Static Site Generation (ways to build pages).</p>
+        <p><strong>CDN:</strong> A network of servers that serves your site from locations closer to users.</p>
+        <p><strong>Hydration/Islands:</strong> Techniques to add interactivity without loading too much JS.</p>
         <p><strong>Rollback:</strong> A plan to revert a deployment if problems appear.</p>
       </div>
     </section>
@@ -209,8 +359,10 @@
         <ol class="list-decimal ml-5 space-y-2">
           <li>Confirm goals, KPIs, audiences; draft IA and content plan.</li>
           <li>Establish budgets (CWV/a11y/SEO); select stack (framework/CMS/hosting).</li>
-          <li>Prepare design tokens, component inventory, and analytics plan.</li>
-          <li>Define a freeze window before QA; decide rollback and monitoring.</li>
+          <li>Create repo; add formatter/linter; set branch protections; enable preview deploys.</li>
+          <li>Prepare design tokens, component inventory, and analytics plan; add feature flags if needed.</li>
+          <li>Set up CI checks (lint, type, unit, a11y, link), and basic CWV tests.</li>
+          <li>Define a freeze window before QA; decide rollback and monitoring; document runbook.</li>
         </ol>
       </div>
     </section>
@@ -219,9 +371,11 @@
       <h2 class="text-2xl font-bold mb-3">Access & Prerequisites</h2>
       <div class="bg-white border rounded-xl p-5 text-sm">
         <ul class="list-disc ml-5 space-y-1">
-          <li>Repo access and CI permissions; secrets vault</li>
-          <li>Design assets; copy source; analytics property</li>
-          <li>Hosting/DNS control; CDN and SSL</li>
+          <li>Repo + CI permissions; secrets vault; feature flag dashboard (if used)</li>
+          <li>Design files; copy source; image/DAM access; license tracking sheet</li>
+          <li>Analytics (GA4/Plausible), Search Console, tag manager (if used)</li>
+          <li>Monitoring (Sentry), uptime checks, and access to logs</li>
+          <li>Hosting/DNS control; CDN and SSL (HSTS enabled post‑launch)</li>
         </ul>
       </div>
     </section>
@@ -232,11 +386,17 @@
         <table class="min-w-full">
           <thead><tr><th class="p-3 text-left">Area</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
           <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">Frontend</td><td class="p-3">Next.js/Astro, Tailwind</td><td class="p-3">Static where possible; hydrate islands</td></tr>
+            <tr><td class="p-3 font-semibold">Frontend</td><td class="p-3">Next.js/Astro, Tailwind</td><td class="p-3">Prefer SSG/ISR; hydrate islands</td></tr>
+            <tr><td class="p-3 font-semibold">Styling</td><td class="p-3">Tailwind + tokens, CSS Modules</td><td class="p-3">Design tokens for scale and consistency</td></tr>
             <tr><td class="p-3 font-semibold">CMS</td><td class="p-3">Sanity, Contentful, Ghost</td><td class="p-3">Editors own content; preview flow</td></tr>
             <tr><td class="p-3 font-semibold">Backend</td><td class="p-3">Supabase/Firebase</td><td class="p-3">Auth, storage, simple APIs fast</td></tr>
+            <tr><td class="p-3 font-semibold">Media/DAM</td><td class="p-3">Cloudinary, Imgix</td><td class="p-3">On‑the‑fly resize + AVIF/WebP</td></tr>
             <tr><td class="p-3 font-semibold">Deploy</td><td class="p-3">Vercel/Netlify</td><td class="p-3">CI checks for CWV, a11y, links</td></tr>
             <tr><td class="p-3 font-semibold">Analytics</td><td class="p-3">GA4, Plausible</td><td class="p-3">Events + funnels; consent banners</td></tr>
+            <tr><td class="p-3 font-semibold">Monitoring</td><td class="p-3">Sentry, UptimeRobot</td><td class="p-3">Error tracking + uptime alerts</td></tr>
+            <tr><td class="p-3 font-semibold">Testing</td><td class="p-3">Jest/Vitest, Playwright</td><td class="p-3">Unit + E2E smoke flows</td></tr>
+            <tr><td class="p-3 font-semibold">SEO</td><td class="p-3">Search Console, Screaming Frog</td><td class="p-3">Crawl, fix coverage/meta issues</td></tr>
+            <tr><td class="p-3 font-semibold">Compliance</td><td class="p-3">Cookie banner, policy pages</td><td class="p-3">Consent + clear disclosures</td></tr>
           </tbody>
         </table>
       </div>
@@ -245,18 +405,24 @@
     <section class="sec" id="design">
       <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
       <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Image budgets (sizes, formats); avoid layout shift; lazy‑load offscreen.</li>
-        <li>Keyboard/screen reader paths; color contrast; focus styles.</li>
-        <li>SEO: titles, metas, canonical, sitemaps, schema where relevant.</li>
+        <li><strong>Images:</strong> Use <code>srcset</code>/<code>sizes</code>; include <code>width</code>/<code>height</code>; prefer AVIF/WebP; lazy‑load offscreen.</li>
+        <li><strong>Typography:</strong> Limit families/weights; preload critical fonts; <code>font-display: swap</code>; ensure 16px+ base size.</li>
+        <li><strong>Layout stability:</strong> Reserve space; avoid CLS from ads/embeds; use aspect‑ratio.</li>
+        <li><strong>Motion & prefs:</strong> Respect <code>prefers-reduced-motion</code>; provide alternatives for animated content.</li>
+        <li><strong>Accessibility:</strong> Keyboard paths; visible focus; color contrast; clear error messages; labels/aria.</li>
+        <li><strong>SEO:</strong> Descriptive titles/meta; canonical; sitemap; schema where relevant.</li>
+        <li><strong>Icons/media:</strong> Sprite or inline SVGs; compress; defer non‑critical assets.</li>
       </ul>
     </section>
 
     <section class="sec" id="security">
       <h2 class="text-2xl font-bold mb-3">Security & QA</h2>
       <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Secrets in vault; env segregation; dependency scanning.</li>
-        <li>CSP, security headers, HTTPS everywhere; cookie flags.</li>
-        <li>QA logs defects by severity; zero Sev‑1 before launch.</li>
+        <li><strong>Secrets & access:</strong> Vault storage; least privilege; 2FA; separate envs (dev/stage/prod).</li>
+        <li><strong>Headers:</strong> CSP (script/style nonces), HSTS, X‑Content‑Type‑Options, Referrer‑Policy, COOP/COEP as needed.</li>
+        <li><strong>Transport & cookies:</strong> HTTPS; secure + HttpOnly + SameSite cookies; CSRF defenses.</li>
+        <li><strong>Supply chain:</strong> Dependency scanning; pin versions; SRI on third‑party assets where applicable.</li>
+        <li><strong>QA gates:</strong> Log defects by severity; zero Sev‑1 before launch; smoke tests post‑deploy.</li>
       </ul>
     </section>
 
@@ -278,9 +444,14 @@
     <section class="sec" id="templates">
       <h2 class="text-2xl font-bold mb-3">Templates & Snippets</h2>
       <div class="bg-white border rounded-xl p-5 text-sm space-y-3">
-        <details><summary class="font-semibold">Copy Brief</summary><pre class="mt-2 whitespace-pre-wrap">Audience, Promise, Proof, Offer, CTA, Voice</pre></details>
-        <details><summary class="font-semibold">A11y Checklist</summary><pre class="mt-2 whitespace-pre-wrap">Keyboard paths, focus order, aria‑labels, alt text, contrast</pre></details>
-        <details><summary class="font-semibold">Launch Checklist</summary><pre class="mt-2 whitespace-pre-wrap">DNS, SSL, redirects, sitemaps, robots, error pages, monitoring</pre></details>
+        <details><summary class="font-semibold">Creative Brief</summary><pre class="mt-2 whitespace-pre-wrap">Audience | Problem | Promise | Proof | Offer | CTA | Voice | Metrics</pre></details>
+        <details><summary class="font-semibold">Copy Checklist</summary><pre class="mt-2 whitespace-pre-wrap">Benefit‑first headings | Short sentences | Scannable lists | Clear CTAs | Alt text | Internal links</pre></details>
+        <details><summary class="font-semibold">A11y Checklist</summary><pre class="mt-2 whitespace-pre-wrap">Keyboard paths | Focus ring | aria‑labels | alt text | Contrast | Error messages</pre></details>
+        <details><summary class="font-semibold">Launch Checklist</summary><pre class="mt-2 whitespace-pre-wrap">DNS | SSL | Redirects | Sitemap | Robots | Schema | Error pages | Monitoring | Backups</pre></details>
+        <details><summary class="font-semibold">License Log</summary><pre class="mt-2 whitespace-pre-wrap">Asset | Source | License | Owner | Expiry | Notes</pre></details>
+        <details><summary class="font-semibold">SEO Meta Examples</summary><pre class="mt-2 whitespace-pre-wrap">&lt;title&gt;Project Management Software — Plan in Minutes&lt;/title&gt;
+&lt;meta name="description" content="Create plans, assign tasks, and track progress in one simple dashboard. Start free."&gt;</pre></details>
+        <details><summary class="font-semibold">Rollback Plan Outline</summary><pre class="mt-2 whitespace-pre-wrap">Trigger | Owner | Revert steps | DNS/CDN | Communications | Validate | Retry</pre></details>
       </div>
     </section>
 
@@ -296,11 +467,11 @@
 
   <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
   <script>
-  // Canonical checklist progress with namespaced localStorage
+  // Checklist progress with namespaced localStorage (Creative & Development)
   (function(){
-    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
-    const bar = document.getElementById('crm-progress-bar');
-    const txt = document.getElementById('crm-progress-text');
+    const boxes = document.querySelectorAll('#cdev-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('cdev-progress-bar');
+    const txt = document.getElementById('cdev-progress-text');
     const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
     const KEY = (id) => `aflp:${slug}:check:${id}`;
 

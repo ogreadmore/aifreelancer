@@ -4,12 +4,139 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Internal Process Automation | AI Freelancer</title>
-  <meta name="description" content="Automate repetitive internal workflows like data entry, reporting, and approvals to save hours every week.">
+  <meta name="description" content="Automate approvals, data handoffs, and routine updates with reliable internal process automation. Core, Enhanced, Enterprise tiers with transparent setup and monthly pricing.">
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Analytics (match index.html) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMV6PZPXJ4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-YMV6PZPXJ4');
+  </script>
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What systems can you integrate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Core focuses on popular SaaS tools (Google Workspace, Slack, Airtable). Enhanced adds APIs, webhooks, and databases. Enterprise includes platforms like ServiceNow, MuleSoft, Workato, and Microsoft 365/SharePoint."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you handle errors and retries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We build idempotent steps, add sensible timeouts, and implement queued retries with alerts. Enhanced adds run logs and dashboards; Enterprise includes centralized logging, DLQs, and on-call escalation paths."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can humans approve or override steps?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We support Slack/Teams approvals, email confirmations, and gated transitions. Enhanced includes lightweight admin UIs; Enterprise adds RBAC, change control, and full audit trails for regulated teams."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about security and access?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We scope least-privilege API keys and environment secrets. Enterprise supports SSO (SAML/OIDC), role-based access, network controls, and data residency options aligned with your compliance posture."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you measure ROI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We baseline current process times, error rates, and volume, then track saved hours, cycle-time reduction, and error reductions post-launch. Dashboards highlight run counts, outcomes, and exceptions handled."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Service with Offers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Internal Process Automation",
+    "provider": {
+      "@type": "Organization",
+      "name": "AI Freelancer",
+      "url": "https://aifreelancer.co"
+    },
+    "areaServed": "Worldwide",
+    "serviceType": "Internal Process Automation",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Plans",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Core",
+          "price": 400,
+          "priceCurrency": "USD",
+          "category": "starter",
+          "description": "Lean automation setup for common workflows: approvals, notifications, and scheduled syncs with basic monitoring.",
+          "additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "$3,500 one-time"}]
+        },
+        {
+          "@type": "Offer",
+          "name": "Enhanced",
+          "price": 1800,
+          "priceCurrency": "USD",
+          "category": "managed",
+          "description": "Custom orchestration across apps/APIs, human-in-the-loop approvals, admin UIs, and dashboards with alerting.",
+          "additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "$12,000 one-time"}]
+        },
+        {
+          "@type": "AggregateOffer",
+          "name": "Enterprise",
+          "lowPrice": 6500,
+          "priceCurrency": "USD",
+          "category": "enterprise",
+          "description": "Governed automation at scale with SSO/RBAC, audit logs, network controls, HA, and priority SLAs.",
+          "additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "From $45,000"}]
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- SEO and Social -->
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aifreelancer.co/internal-process-automation.html">
+  <meta property="og:title" content="Internal Process Automation | AI Freelancer">
+  <meta property="og:description" content="Automate approvals, data handoffs, and routine updates with reliable internal process automation. Core, Enhanced, Enterprise tiers with transparent pricing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aifreelancer.co/internal-process-automation.html">
+  <meta property="og:site_name" content="AI Freelancer">
+  <meta property="og:image" content="https://aifreelancer.co/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Internal Process Automation | AI Freelancer">
+  <meta name="twitter:description" content="Automate approvals, data handoffs, and routine updates with reliable internal process automation.">
+  <meta name="twitter:image" content="https://aifreelancer.co/assets/images/social-share-image.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/images/favicons/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/images/favicons/site.webmanifest">
+
+  <!-- Google Fonts (non-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"></noscript>
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
@@ -24,8 +151,17 @@
     @keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
     .form-input { background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1rem; width:100%; transition:all .3s ease; }
     .form-input:focus { outline:none; border-color:#93c5fd; box-shadow:0 0 0 3px rgba(147,197,253,.3); }
+
+    /* FAQ styling (matching About page) */
+    .faq-item { transition: box-shadow .18s ease, border-color .18s ease; border: 1px solid #f1f5f9; border-radius: .75rem; overflow: hidden; background: #fff; }
+    .faq-item:hover { border-color: #e6e6f0; box-shadow: 0 8px 24px rgba(15,23,42,0.04); }
+    .faq-toggle { width: 100%; text-align: left; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #fff; }
+    .faq-toggle:focus { outline: none; box-shadow: 0 0 0 4px rgba(147,197,253,0.12); }
+    .faq-panel { font-size: 1.03rem; line-height: 1.7; transform-origin: top; transform: scaleY(0); opacity: 0; transition: transform 260ms ease, opacity 200ms ease; overflow: hidden; display: none; }
+    .faq-item.open .faq-panel { transform: scaleY(1); opacity: 1; padding: 0.75rem 1.25rem 1rem 1.25rem; display: block; }
+    .faq-chevron { transition: transform 200ms ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
   </style>
-  <link rel="stylesheet" href="assets/css/chatbot.css">
 </head>
 <body class="bg-white">
     <!-- Header standardized to match index.html -->
@@ -46,13 +182,13 @@
             
             <div class="hidden lg:flex items-center gap-4">
                 <a href="tel:440-941-1785" class="flex items-center gap-2 text-white font-semibold py-2 px-6 rounded-full gemini-gradient-bg hover:shadow-lg transition-all">
-                    <i class="fa-solid fa-phone-volume"></i>
+                    <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                     (440) 941-1785
                 </a>
             </div>
             
             <button id="mobile-menu-button" class="lg:hidden p-3 rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
@@ -66,7 +202,7 @@
             <a href="#contact" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Contact</a>
             <hr class="my-2 border-gray-100">
             <a href="tel:440-941-1785" class="block w-full text-center mt-2 py-3 px-4 gemini-gradient-bg text-white font-semibold rounded-full hover:shadow-lg transition-all">
-                <i class="fa-solid fa-phone mr-2"></i>Call (440) 941-1785
+                <i class="fa-solid fa-phone mr-2" aria-hidden="true"></i>Call (440) 941-1785
             </a>
         </div>
     </div>
@@ -74,127 +210,264 @@
 
 
   <main class="pt-0">
-    <section class="bg-gray-50 pt-16 md:pt-24">
+    
+
+    <!-- Plans first: headline + 3-tier pricing -->
+    <section id="plans" class="bg-gray-50 pt-16 md:pt-24">
       <div class="container mx-auto px-6 py-16">
-        <div class="max-w-4xl">
+        <div class="text-center max-w-4xl mx-auto mb-10">
           <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900">Internal <span class="gemini-gradient-text">Process Automation</span></h1>
-          <p class="mt-6 text-xl text-gray-600 max-w-3xl">Eliminate manual, repetitive tasks with reliable workflows for data entry, reporting, and approvals. Your team focuses on high‑value work.</p>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a href="https://buy.stripe.com/9B6aEYegd3oa1gkdmy5ZC0c" class="gemini-gradient-bg text-white font-bold py-3 px-6 rounded-full">Buy Now</a>
-            <a href="#contact" class="bg-gray-900 text-white font-bold py-3 px-6 rounded-full">Free Consultation</a>
+          <p class="mt-5 text-xl text-gray-600">Select a plan to automate repetitive workflows—from quick wins to governed, enterprise-grade orchestration and monitoring.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          <!-- Core -->
+          <div class="rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col h-full bg-white">
+            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Lean Setup</div>
+            <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Core</h3>
+            <p class="text-gray-600 mb-5">Fast, dependable automations for common internal tasks. Launch quickly and reduce manual work without changing your stack.</p>
+            
+            <ul class="text-gray-700 space-y-3 mb-8">
+              <li class="flex gap-3"><i class="fa-solid fa-rocket gemini-gradient-text mt-1"></i><span>Approval flows in Slack/Email with status updates</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-file-lines gemini-gradient-text mt-1"></i><span>Form-to-Spreadsheet/CRM sync with validation</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-envelope-circle-check gemini-gradient-text mt-1"></i><span>Notifications and reminders on schedule or trigger</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-calendar-days gemini-gradient-text mt-1"></i><span>Weekly/monthly report generation and delivery</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-stethoscope gemini-gradient-text mt-1"></i><span>Basic monitoring and error alerts</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>On-brand templates and documentation</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-chart-simple gemini-gradient-text mt-1"></i><span>Run logs for key workflows</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1"></i><span><strong>Example technologies:</strong> Zapier, Make (Integromat), Airtable Automations, Slack, Google Sheets</span></li>
+            </ul>
+            <div class="mt-auto">
+              <div class="mb-3">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-5xl font-extrabold tracking-tight">$400</span>
+                  <span class="text-gray-500 font-semibold">/mo</span>
+                </div>
+                <div class="text-sm text-gray-600 mt-[10px]">
+                  <span class="font-semibold">Setup:</span> $3,500 one-time • <span class="font-semibold">Platform/usage:</span> Third-party vendor fees (e.g., Zapier/Make) are paid directly to the vendor.
+                </div>
+              </div>
+              <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Today</a>
+              <p class="text-sm text-gray-500 mt-3">Best for teams starting automation with quick wins.</p>
+            </div>
+          </div>
+
+          <!-- Enhanced (Most Popular) -->
+          <div class="gemini-gradient-bg p-0.5 rounded-2xl shadow-2xl">
+            <div class="bg-white rounded-2xl h-full p-7 flex flex-col border border-gray-100">
+              <div class="text-center -mt-8 mb-2">
+                <span class="inline-block gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">Most Popular</span>
+              </div>
+              <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Managed</div>
+              <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Enhanced</h3>
+              <p class="text-gray-600 mb-5">Everything most teams need: multi-app orchestration, human-in-the-loop steps, admin tools, and robust monitoring.</p>
+              
+              <ul class="text-gray-700 space-y-3 mb-8">
+                <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1"></i><span>Cross-app workflows with branching and retries</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-layer-group gemini-gradient-text mt-1"></i><span>API/webhook integrations and database writes</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-headset gemini-gradient-text mt-1"></i><span>Slack/Teams approvals and exception handling</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-language gemini-gradient-text mt-1"></i><span>Lightweight admin UIs for operations teams</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1"></i><span>Dashboards, alerts, and run-level tracing</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1"></i><span><strong>Example technologies:</strong> n8n, Retool, PostgreSQL, Slack/Teams, Google Cloud Run</span></li>
+              </ul>
+              <div class="mt-auto">
+                <div class="mb-3">
+                  <div class="flex items-baseline gap-2">
+                    <span class="text-5xl font-extrabold tracking-tight">$1,800</span>
+                    <span class="text-gray-500 font-semibold">/mo</span>
+                  </div>
+                  <div class="text-sm text-gray-600 mt-[10px]">
+                    <span class="font-semibold">Setup:</span> $12,000 one-time • <span class="font-semibold">Platform/usage:</span> Any vendor usage (e.g., n8n hosting) billed directly to your account.
+                  </div>
+                </div>
+                <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Today</a>
+                <p class="text-sm text-gray-500 mt-3">Best for growing teams standardizing core operations.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col h-full bg-white">
+            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Scale & Governance</div>
+            <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Enterprise</h3>
+            <p class="text-gray-600 mb-5">Advanced governance, scale, and resilience for complex organizations and regulated environments.</p>
+            
+            <ul class="text-gray-700 space-y-3 mb-8">
+              <li class="flex gap-3"><i class="fa-solid fa-user-shield gemini-gradient-text mt-1"></i><span>SSO (SAML/OIDC), RBAC, audit logs; SCIM</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-shield-halved gemini-gradient-text mt-1"></i><span>Secrets management, DLP, and retention controls</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-cloud gemini-gradient-text mt-1"></i><span>VPC/private networking and data residency</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-gauge-high gemini-gradient-text mt-1"></i><span>High availability, failover, and load testing</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-screwdriver-wrench gemini-gradient-text mt-1"></i><span>Change control, environments, and approvals</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-clipboard-check gemini-gradient-text mt-1"></i><span>Centralized logging and incident playbooks</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1"></i><span><strong>Example technologies:</strong> ServiceNow, Workato, MuleSoft, Camunda, Azure Logic Apps</span></li>
+            </ul>
+            <div class="mt-auto">
+              <div class="mb-3">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-5xl font-extrabold tracking-tight">From $6,500</span>
+                  <span class="text-gray-500 font-semibold">/mo</span>
+                </div>
+                <div class="text-sm text-gray-600 mt-[10px]">
+                  <span class="font-semibold">Setup:</span> From $45,000 • <span class="font-semibold">Platform/usage:</span> Enterprise platforms billed directly (e.g., ServiceNow or MuleSoft)
+                </div>
+              </div>
+              <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Request Proposal</a>
+              <p class="text-sm text-gray-500 mt-3">Best for enterprises with rigorous security and scale needs.</p>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </section>
+    <!-- Marketing narrative: centered header, tidy two-column -->
+    <section class="bg-white">
+      <div class="container mx-auto px-6 py-16">
+        <div class="max-w-3xl mx-auto text-center mb-10">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Make Work <span class="gemini-gradient-text">Flow</span> Automatically</h2>
+        <p class="mt-5 text-xl text-gray-600">Eliminate busywork by connecting the tools your team already uses—so approvals, handoffs, and updates happen reliably without manual steps.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
+          <div class="space-y-5">
+            <p class="text-lg text-gray-700">Core implements dependable workflows for routine tasks like approvals, scheduled reports, and notifications—delivering quick wins without heavy change management or new software training.</p>
+            <p class="text-lg text-gray-700">Enhanced orchestrates multiple apps and databases with human-in-the-loop steps, exception handling, and dashboards, so operations keep moving while people handle the edge cases.</p>
+            <p class="text-lg text-gray-700">As complexity grows, Enterprise adds governance, observability, and reliability patterns—giving IT confidence while teams benefit from faster cycle times and fewer errors.</p>
+          </div>
+          <div>
+            <ul class="space-y-4 text-gray-800 text-base md:text-lg">
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span><strong>Reduce manual steps:</strong> eliminate copy-paste and handoffs with triggers, scheduled jobs, and event-based flows.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span><strong>Speed up approvals:</strong> route decisions to Slack/Teams with context, due dates, and reminders built in.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span><strong>Improve data quality:</strong> add validation, enrichment, and standardized mappings before data lands downstream.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span><strong>See what’s running:</strong> dashboards and alerts show run counts, failures, and time saved by process.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span><strong>Start small, scale safely:</strong> expand from simple tasks to governed automations without rebuilding.</span></li>
+            </ul>
           </div>
         </div>
       </div>
-  </section>
-
-    <!-- Overview (main text) -->
-    <section class="bg-white">
-      <div class="container mx-auto px-6 py-12">
-        <div class="max-w-3xl">
-          <p class="text-xl md:text-2xl leading-relaxed text-gray-800">
-            Busywork steals focus. We map your repetitive workflows and replace them with dependable automations—so the right data lands in the right place, on time, every time.
-          </p>
-          <p class="mt-6 text-xl md:text-2xl leading-relaxed text-gray-800">
-            From data entry and reporting to approvals and notifications, we deliver resilient systems with monitoring and guardrails your team can trust.
-          </p>
-        </div>
-      </div>
     </section>
 
-    <!-- Highlights chips -->
-    <section class="bg-white">
-      <div class="container mx-auto px-6 py-8">
-        <div class="flex flex-wrap gap-3">
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm"><span class="h-2 w-2 rounded-full gemini-gradient-bg"></span><span class="text-sm font-medium text-gray-700">Hours back every week</span></span>
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm"><span class="h-2 w-2 rounded-full gemini-gradient-bg"></span><span class="text-sm font-medium text-gray-700">Lower error rates</span></span>
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm"><span class="h-2 w-2 rounded-full gemini-gradient-bg"></span><span class="text-sm font-medium text-gray-700">Monitoring + alerts</span></span>
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm"><span class="h-2 w-2 rounded-full gemini-gradient-bg"></span><span class="text-sm font-medium text-gray-700">Auditable workflows</span></span>
-        </div>
-      </div>
-    </section>
-
+    <!-- Feature grid: Why, Included, Use Cases -->
     <section class="container mx-auto px-6 py-16 grid md:grid-cols-3 gap-12">
       <div>
         <h2 class="text-3xl font-bold mb-4">Why It Works</h2>
         <ul class="space-y-3 text-gray-700">
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Removes manual steps and handoffs</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Reduces errors with validation + retries</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Keeps leadership informed automatically</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Triggers the right approvals on time</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Fewer errors and faster cycle times</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Consistent execution with auditability</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Less context switching for teams</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Scales from simple tasks to programs</span></li>
         </ul>
       </div>
       <div>
         <h2 class="text-3xl font-bold mb-4">What’s Included</h2>
         <ul class="space-y-3 text-gray-700">
-          <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1"></i><span>Make, Zapier, n8n orchestrations</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-table-columns gemini-gradient-text mt-1"></i><span>Google Workspace, Airtable, Sheets</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-code gemini-gradient-text mt-1"></i><span>Webhooks + custom APIs</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-shield-halved gemini-gradient-text mt-1"></i><span>Secure credentials and logging</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Workflow design, mapping, and documentation</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>App/API integrations and data validation</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Logging, alerts, and basic dashboards</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Handover, training, and support options</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1"></i><span>Change requests and iteration cadence</span></li>
         </ul>
       </div>
       <div>
         <h2 class="text-3xl font-bold mb-4">Use Cases</h2>
         <ul class="space-y-3 text-gray-700">
-          <li class="flex gap-3"><i class="fa-solid fa-file-invoice gemini-gradient-text mt-1"></i><span>Invoicing and billing automation</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-chart-column gemini-gradient-text mt-1"></i><span>Reporting + dashboard refreshes</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-users-gear gemini-gradient-text mt-1"></i><span>HR onboarding + access provisioning</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-boxes-stacked gemini-gradient-text mt-1"></i><span>Inventory + document workflows</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-bullseye gemini-gradient-text mt-1"></i><span>New hire onboarding and access provisioning</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-calendar-check gemini-gradient-text mt-1"></i><span>Finance approvals: POs, invoices, reimbursements</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-headset gemini-gradient-text mt-1"></i><span>RevOps syncs: CRM hygiene and handoffs</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-bolt gemini-gradient-text mt-1"></i><span>IT workflows: ticket triage and SLA alerts</span></li>
         </ul>
       </div>
     </section>
 
+    <!-- Info cards: Who, Outcomes, Timeline -->
+    <section class="bg-white">
+      <div class="container mx-auto px-6 pb-2">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Who It’s For</h3>
+            <p class="text-gray-700">Ops leaders, RevOps, finance, HR, and IT teams that run repeatable processes across many tools and want fewer errors with faster cycle times.</p>
+          </div>
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Outcomes</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li>• Hours back each week per team</li>
+              <li>• Lower error rates and rework</li>
+              <li>• Faster approvals and handoffs</li>
+            </ul>
+          </div>
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Timeline</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li>• Week 1: discovery & workflow mapping</li>
+              <li>• Week 2: build, integrations, testing</li>
+              <li>• Week 3: launch, dashboards, tuning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- CTA band -->
     <section class="py-12">
       <div class="container mx-auto px-6">
-        <div class="gemini-gradient-bg rounded-3xl p-8 md:p-12 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="gemini-gradient-bg rounded-3xl p-10 md:p-14 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <h3 class="text-2xl md:text-3xl font-extrabold">Automate the repetitive, elevate the work</h3>
-            <p class="opacity-90 mt-1">Reliable workflows with monitoring and guardrails.</p>
+            <h3 class="text-2xl md:text-3xl font-extrabold">Automate the busywork</h3>
+            <p class="opacity-90 mt-1">Build reliable workflows your team can trust—without replatforming or disrupting the tools you love.</p>
           </div>
           <div class="flex gap-3">
-            <a href="https://buy.stripe.com/9B6aEYegd3oa1gkdmy5ZC0c" class="bg-white text-gray-900 font-semibold px-6 py-3 rounded-full">Buy Now</a>
+            <a href="#plans" class="bg-white text-gray-900 font-semibold px-6 py-3 rounded-full">View Plans</a>
             <a href="#contact" class="border border-white/70 text-white font-semibold px-6 py-3 rounded-full">Free Consultation</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-white">
-      <div class="container mx-auto px-6 pb-2">
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-lg mb-2">Who It’s For</h3>
-            <p class="text-gray-700">Ops, finance, and RevOps teams drowning in repetitive tasks and manual handoffs.</p>
-          </div>
-          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-lg mb-2">Outcomes</h3>
-            <ul class="text-gray-700 space-y-2">
-              <li>• Hours back every week</li>
-              <li>• Lower error rates</li>
-              <li>• Automatic reporting + alerts</li>
-            </ul>
-          </div>
-          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-lg mb-2">Timeline</h3>
-            <ul class="text-gray-700 space-y-2">
-              <li>• Week 1: audit + design</li>
-              <li>• Week 2: build + QA</li>
-              <li>• Week 3: rollout + monitoring</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- FAQs (About page styling) -->
     <section class="bg-white">
       <div class="container mx-auto px-6 py-16">
-        <h2 class="text-2xl font-bold mb-6">FAQs</h2>
-        <div class="space-y-6 text-gray-700">
-          <div><p class="font-semibold">Will this break our processes?</p><p>We start with non‑critical paths, add monitoring, and roll out in phases to de‑risk.</p></div>
-          <div><p class="font-semibold">Do we need developer time?</p><p>We handle implementation. Light IT involvement is helpful for tokens and access.</p></div>
-          <div><p class="font-semibold">How do we measure ROI?</p><p>We baseline time‑on‑task and error rates, then track time saved and quality improvements.</p></div>
-          <div><p class="font-semibold">What if tools change?</p><p>We design for maintainability and can refactor automations as vendors update APIs.</p></div>
+        <div class="text-center mb-8">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-3">
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">What systems can you integrate?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">Core focuses on popular SaaS tools (Google Workspace, Slack, Airtable). Enhanced adds APIs, webhooks, and databases. Enterprise includes platforms like ServiceNow, MuleSoft, Workato, and Microsoft 365/SharePoint.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">How do you handle errors and retries?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">We build idempotent steps, add sensible timeouts, and implement queued retries with alerts. Enhanced adds run logs and dashboards; Enterprise includes centralized logging, DLQs, and on-call escalation paths.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">Can humans approve or override steps?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">Yes. We support Slack/Teams approvals, email confirmations, and gated transitions. Enhanced includes lightweight admin UIs; Enterprise adds RBAC, change control, and full audit trails for regulated teams.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">What about security and access?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">We scope least-privilege API keys and environment secrets. Enterprise supports SSO (SAML/OIDC), role-based access, network controls, and data residency options aligned with your compliance posture.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">How do you measure ROI?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">We baseline current process times, error rates, and volume, then track saved hours, cycle-time reduction, and error reductions post-launch. Dashboards highlight run counts, outcomes, and exceptions handled.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -232,7 +505,7 @@
               <a href="tel:440-941-1785" class="flex items-center gap-5 group">
                 <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
                             text-white text-2xl group-hover:shadow-lg transition">
-                  <i class="fa-solid fa-phone-volume"></i>
+              <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
                 </div>
                 <div>
                   <p class="text-gray-600">Call us</p>
@@ -244,7 +517,7 @@
               <a href="mailto:hello@aifreelancer.co" class="flex items-center gap-5 group">
                 <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
                             text-white text-2xl group-hover:shadow-lg transition">
-                  <i class="fa-solid fa-envelope"></i>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 </div>
                 <div>
                   <p class="text-gray-600">Email us</p>
@@ -257,7 +530,7 @@
                  class="flex items-center gap-5 group">
                 <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
                             text-white text-2xl group-hover:shadow-lg transition">
-                  <i class="fa-solid fa-location-dot"></i>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 </div>
                 <div>
                   <p class="text-gray-600">Based in</p>
@@ -269,10 +542,11 @@
 
               <!-- LinkedIn -->
               <a href="https://www.linkedin.com/company/ai-freelancer" target="_blank"
-                 class="flex items-center gap-5 group">
+                 class="flex items
+ items-center gap-5 group">
                 <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
                             text-white text-2xl group-hover:shadow-lg transition">
-                  <i class="fa-brands fa-linkedin-in"></i>
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
                 </div>
                 <div>
                   <p class="text-gray-600">Connect&nbsp;on</p>
@@ -285,7 +559,7 @@
                  class="flex items-center gap-5 group">
                 <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center
                             text-white text-2xl group-hover:shadow-lg transition">
-                  <i class="fa-brands fa-facebook-f"></i>
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                 </div>
                 <div>
                   <p class="text-gray-600">Follow&nbsp;us</p>
@@ -302,19 +576,14 @@
         <div class="bg-white rounded-3xl p-10 shadow-xl w-full">
           <!-- ────── CONTACT FORM (Formspree) ────── -->
 <form action="https://formspree.io/f/mldlebob" method="POST" id="contact-form" class="space-y-6">
-  <!-- customise the e‑mail subject line you’ll receive -->
-  <input type="hidden" name="_subject" value="New Lead from AI‑Freelancer.co">
-  
-  <!-- Add this for CC to Gmail (replace with your actual Gmail address) -->
+  <input type="hidden" name="_subject" value="New Lead from AI-Freelancer.co">
   <input type="hidden" name="_cc" value="tayloroliphant@gmail.com">
 
-  <!-- Name -->
   <div>
     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
     <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
   </div>
 
-  <!-- Email + Phone -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div>
       <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
@@ -322,29 +591,21 @@
     </div>
     <div>
       <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-      <input type="tel" id="phone" name="phone" placeholder="(123) 456‑7890" class="form-input">
+      <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" class="form-input">
     </div>
   </div>
 
-  <!-- Company -->
   <div>
     <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
     <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
   </div>
 
-  <!-- Message -->
   <div>
-    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
-      Tell us about your business needs *
-    </label>
-    <textarea id="message" name="message" rows="4"
-              placeholder="What are your biggest operational challenges or growth goals?"
-              required class="form-input"></textarea>
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Tell us about your business needs *</label>
+    <textarea id="message" name="message" rows="4" placeholder="What are your biggest operational challenges or growth goals?" required class="form-input"></textarea>
   </div>
 
-  <!-- Submit -->
-  <button type="submit"
-          class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
+  <button type="submit" class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
     <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
   </button>
 
@@ -370,7 +631,39 @@
       <p class="text-sm">© 2025 AI Freelancer</p>
     </div>
   </footer>
-  <script src="assets/js/chatbot.js"></script>
+  <link rel="stylesheet" href="assets/css/chatbot.css">
+  <script src="assets/js/chatbot.js" defer></script>
   <script src="assets/js/contact-form.js" defer></script>
+  <script>
+    // Minimal FAQ accordion behavior (from About page pattern)
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggles = Array.from(document.querySelectorAll('.faq-toggle'));
+      toggles.forEach((btn, i) => {
+        const item = btn.closest('.faq-item');
+        const panel = item.querySelector('.faq-panel');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-controls', 'faq-panel-' + i);
+        panel.setAttribute('id', 'faq-panel-' + i);
+        panel.setAttribute('aria-hidden', 'true');
+        panel.style.display = 'none';
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(openItem => {
+            openItem.classList.remove('open');
+            const p = openItem.querySelector('.faq-panel');
+            const b = openItem.querySelector('.faq-toggle');
+            if (p){ p.style.display = 'none'; p.setAttribute('aria-hidden','true'); }
+            if (b){ b.setAttribute('aria-expanded','false'); }
+          });
+          if (!isOpen){
+            item.classList.add('open');
+            panel.style.display = 'block';
+            panel.setAttribute('aria-hidden','false');
+            btn.setAttribute('aria-expanded','true');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

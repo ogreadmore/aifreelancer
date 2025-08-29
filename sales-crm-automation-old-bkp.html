@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Social Media Manager | AI Freelancer</title>
-  <meta name="description" content="Plan, create, and schedule on-brand content with an AI social media manager. Three tiers—Core, Enhanced, Enterprise—with transparent setup and monthly pricing for consistent, measurable growth.">
+  <title>Sales & CRM Automation | AI Freelancer</title>
+  <meta name="description" content="Automate lead capture, follow-ups, and CRM workflows. Improve conversion and pipeline visibility with AI-driven sales automation across Salesforce, HubSpot, and Pipedrive.">
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Analytics (match index.html) -->
@@ -13,6 +13,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-YMV6PZPXJ4');
   </script>
+
   <!-- Structured Data: FAQ -->
   <script type="application/ld+json">
   {
@@ -21,42 +22,42 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Which channels do you support?",
+        "name": "Which CRMs and tools do you support?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Core: Instagram and LinkedIn scheduling. Enhanced: + Facebook, X (Twitter), TikTok, and YouTube Shorts. Enterprise: global programs across major networks with region-specific calendars and governance."
+          "text": "Core: Salesforce, HubSpot, or Pipedrive. Enhanced: adds Outreach/Close and booking tools. Enterprise: advanced Salesforce with custom middleware, warehouse events, and governance."
         }
       },
       {
         "@type": "Question",
-        "name": "Who writes the content and captions?",
+        "name": "How do you handle data hygiene?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We draft on-brand captions using your voice guidelines and examples. Core includes calendar and drafts; Enhanced adds creative templates and video prompts; Enterprise layers legal/brand approvals and localization workflows."
+          "text": "We enrich, de-duplicate, and standardize fields automatically. Activities and stages are logged consistently so reporting and handoffs stay accurate without manual effort."
         }
       },
       {
         "@type": "Question",
-        "name": "How do you handle engagement and moderation?",
+        "name": "Will sequences match our brand and tone?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We define response windows, escalation rules, and moderation criteria. Enhanced adds social listening and competitor tracking; Enterprise includes crisis alerts, predefined responses, and audit-friendly logs with SSO/RBAC."
+          "text": "Yes. We define guardrails, voice, and approvals. Enhanced includes monthly updates; Enterprise adds change control, RBAC, and audit trails."
         }
       },
       {
         "@type": "Question",
-        "name": "Can you integrate with our CRM and analytics?",
+        "name": "Can you route leads and meetings automatically?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. We tag links with UTM, push leads to HubSpot/Salesforce via Zapier/Make, and report in GA4. Enhanced & Enterprise include dashboards and KPI reviews tied to campaigns and content pillars."
+          "text": "We qualify and route to the right owner in CRM/Slack and book with Chili Piper or Calendly. Enhanced supports advanced rules and queues across teams."
         }
       },
       {
         "@type": "Question",
-        "name": "What about brand safety and compliance?",
+        "name": "What about security and compliance?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Core follows simple guidelines. Enterprise adds approval workflows, brand safety checks, records retention, regional permissions, and SSO (SAML/OIDC) with role-based controls for publishing."
+          "text": "Core keeps things simple. Enterprise adds SSO (SAML/OIDC), RBAC, audit logs, DPA support, PII controls, and options for private networking and data residency."
         }
       }
     ]
@@ -68,45 +69,17 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AI Social Media Manager",
-    "provider": {
-      "@type": "Organization",
-      "name": "AI Freelancer",
-      "url": "https://aifreelancer.co"
-    },
+    "name": "Sales & CRM Automation",
+    "provider": {"@type": "Organization", "name": "AI Freelancer", "url": "https://aifreelancer.co"},
     "areaServed": "Worldwide",
-    "serviceType": "AI Social Media Manager",
+    "serviceType": "Sales & CRM Automation",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Plans",
       "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Core",
-          "price": 500,
-          "priceCurrency": "USD",
-          "category": "starter",
-          "description": "Lean setup, monthly calendar, caption drafts, and scheduling to two channels with basic engagement and reporting.",
-          "additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "$1,500 one-time"}]
-        },
-        {
-          "@type": "Offer",
-          "name": "Enhanced",
-          "price": 1800,
-          "priceCurrency": "USD",
-          "category": "managed",
-          "description": "Strategy, multi-channel scheduling, creative templates, community management SLAs, listening, and growth experiments with dashboards.",
-          "additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "$6,000 one-time"}]
-        },
-        {
-          "@type": "AggregateOffer",
-          "name": "Enterprise",
-          "lowPrice": 5000,
-          "priceCurrency": "USD",
-          "category": "enterprise",
-          "description": "Global governance, approvals, advanced listening and alerts, localization, executive reporting, and priority SLAs.",
-          "additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "From $20,000"}]
-        }
+        {"@type": "Offer","name": "Core","price": 599,"priceCurrency": "USD","category": "starter","description": "Lean CRM automations for lead capture, enrichment, routing, and hygiene.","additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "$599 one-time"}]},
+        {"@type": "Offer","name": "Enhanced","price": 1000,"priceCurrency": "USD","category": "managed","description": "Custom sequences, multi-step workflows, multi-tool routing, dashboards, and monthly tuning.","additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "$7,500 one-time"}]},
+        {"@type": "AggregateOffer","name": "Enterprise","lowPrice": 3000,"priceCurrency": "USD","category": "enterprise","description": "Advanced Salesforce governance, RBAC/SSO, PII controls, and data residency options.","additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": "From $25,000"}]}
       ]
     }
   }
@@ -114,16 +87,16 @@
 
   <!-- SEO and Social -->
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://aifreelancer.co/ai-social-media-manager.html">
-  <meta property="og:title" content="AI Social Media Manager | AI Freelancer">
-  <meta property="og:description" content="Plan, create, and schedule on-brand content with an AI social media manager. Core, Enhanced, Enterprise tiers with transparent setup and monthly pricing.">
+  <link rel="canonical" href="https://aifreelancer.co/sales-crm-automation.html">
+  <meta property="og:title" content="Sales & CRM Automation | AI Freelancer">
+  <meta property="og:description" content="Automate lead capture, follow-ups, and CRM workflows to boost conversion and pipeline visibility.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aifreelancer.co/ai-social-media-manager.html">
+  <meta property="og:url" content="https://aifreelancer.co/sales-crm-automation.html">
   <meta property="og:site_name" content="AI Freelancer">
   <meta property="og:image" content="https://aifreelancer.co/assets/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI Social Media Manager | AI Freelancer">
-  <meta name="twitter:description" content="Plan, create, and schedule on-brand content with an AI social media manager.">
+  <meta name="twitter:title" content="Sales & CRM Automation | AI Freelancer">
+  <meta name="twitter:description" content="Automate lead capture, follow-ups, and CRM workflows to boost conversion and pipeline visibility.">
   <meta name="twitter:image" content="https://aifreelancer.co/assets/images/social-share-image.jpg">
 
   <!-- Favicons -->
@@ -158,10 +131,13 @@
     .faq-toggle { width: 100%; text-align: left; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #fff; }
     .faq-toggle:focus { outline: none; box-shadow: 0 0 0 4px rgba(147,197,253,0.12); }
     .faq-panel { font-size: 1.03rem; line-height: 1.7; transform-origin: top; transform: scaleY(0); opacity: 0; transition: transform 260ms ease, opacity 200ms ease; overflow: hidden; display: none; }
-    .faq-item.open .faq-panel { transform: scaleY(1); opacity: 1; }
+    .faq-item.open .faq-panel { transform: scaleY(1); opacity: 1; padding: 0.75rem 1.25rem 1rem 1.25rem; display: block; }
+    .faq-chevron { transition: transform 200ms ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
   </style>
 </head>
 <body class="bg-white">
+    <!-- Header standardized to match index.html -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3">
     <div class="container mx-auto px-6">
         <div class="flex items-center justify-between">
@@ -213,38 +189,38 @@
     <section id="plans" class="bg-gray-50 pt-16 md:pt-24">
       <div class="container mx-auto px-6 py-16">
         <div class="text-center max-w-4xl mx-auto mb-10">
-          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900">AI Social Media <span class="gemini-gradient-text">Manager</span></h1>
-          <p class="mt-5 text-xl text-gray-600">Grow your brand with on-brand content, smart scheduling, and engagement—scaled from lean launch to enterprise governance and reporting needs.</p>
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900">Sales & <span class="gemini-gradient-text">CRM Automation</span></h1>
+          <p class="mt-5 text-xl text-gray-600">Choose a plan that boosts speed-to-lead, data hygiene, routing, and follow‑ups—so reps focus on selling while automations handle the busywork.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           <!-- Core -->
           <div class="rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col h-full bg-white">
             <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Lean Setup</div>
             <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Core</h3>
-            <p class="text-gray-600 mb-5">Affordable, done-for-you calendar, captions, and scheduling so you show up consistently without adding headcount.</p>
+            <p class="text-gray-600 mb-5">Cost-effective CRM automations that launch fast and keep your pipeline clean and moving.</p>
             
             <ul class="text-gray-700 space-y-3 mb-8">
-              <li class="flex gap-3"><i class="fa-solid fa-rocket gemini-gradient-text mt-1" aria-hidden="true"></i><span>Brand baseline and tone of voice (profiles, assets, tags)</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-calendar-days gemini-gradient-text mt-1" aria-hidden="true"></i><span>Monthly content calendar + caption drafts</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-share-nodes gemini-gradient-text mt-1" aria-hidden="true"></i><span>Scheduled posting to 2 channels (e.g., Instagram, LinkedIn)</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-comments gemini-gradient-text mt-1" aria-hidden="true"></i><span>Basic community monitoring with quick replies</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-link gemini-gradient-text mt-1" aria-hidden="true"></i><span>UTM tracking and link-in-bio upkeep</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-chart-simple gemini-gradient-text mt-1" aria-hidden="true"></i><span>Monthly highlights report (reach, clicks, top posts)</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-bullhorn gemini-gradient-text mt-1" aria-hidden="true"></i><span>One campaign template for a launch or giveaway</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Buffer, Later, Canva, ChatGPT</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-rocket gemini-gradient-text mt-1" aria-hidden="true"></i><span>Speed-to-lead auto outreach with on-brand templates</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-file-lines gemini-gradient-text mt-1" aria-hidden="true"></i><span>Lead enrichment and de-duplication on create/update</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-route gemini-gradient-text mt-1" aria-hidden="true"></i><span>Owner routing by territory, segment, or round-robin</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-broom gemini-gradient-text mt-1" aria-hidden="true"></i><span>Automatic activity logging and stage updates</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-stethoscope gemini-gradient-text mt-1" aria-hidden="true"></i><span>Monthly health check & minor workflow fixes</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-calendar-days gemini-gradient-text mt-1" aria-hidden="true"></i><span>Calendar booking embed for instant scheduling</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-chart-simple gemini-gradient-text mt-1" aria-hidden="true"></i><span>Basic dashboards to track conversion and SLAs</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Salesforce, HubSpot, Pipedrive, Zapier/Make, Chili Piper, Calendly, ChatGPT</span></li>
             </ul>
             <div class="mt-auto">
               <div class="mb-3">
                 <div class="flex items-baseline gap-2">
-                  <span class="text-5xl font-extrabold tracking-tight">$500</span>
+                  <span class="text-5xl font-extrabold tracking-tight">$599</span>
                   <span class="text-gray-500 font-semibold">/mo</span>
                 </div>
                 <div class="text-sm text-gray-600 mt-[10px]">
-                  <span class="font-semibold">Setup:</span> $1,500 one-time • <span class="font-semibold">Platform/usage:</span> Third-party vendor fees (e.g., Buffer/Later/Canva) are paid directly to the vendor.
+                  <span class="font-semibold">Setup:</span> $599 one-time • <span class="font-semibold">Platform/usage:</span> Third-party vendor fees (e.g., Salesforce, HubSpot) are paid directly to the vendor.
                 </div>
               </div>
               <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Today</a>
-              <p class="text-sm text-gray-500 mt-3">Best for startups establishing a consistent presence.</p>
+              <p class="text-sm text-gray-500 mt-3">Best for lean teams automating core CRM tasks.</p>
             </div>
           </div>
 
@@ -256,28 +232,28 @@
               </div>
               <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Managed</div>
               <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Enhanced</h3>
-              <p class="text-gray-600 mb-5">Strategy-led content, multi-channel scheduling, community management SLAs, listening, and growth experiments—with monthly tuning and dashboards.</p>
+              <p class="text-gray-600 mb-5">Everything most sales teams need: custom multi-step flows, advanced routing, and ongoing training & tuning.</p>
               
               <ul class="text-gray-700 space-y-3 mb-8">
-                <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1" aria-hidden="true"></i><span>Editorial strategy and content pillars with monthly planning</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-layer-group gemini-gradient-text mt-1" aria-hidden="true"></i><span>Scheduling across 4–6 channels with variations per network</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-photo-film gemini-gradient-text mt-1" aria-hidden="true"></i><span>Creative templates, short-form video prompts, carousels</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-headset gemini-gradient-text mt-1" aria-hidden="true"></i><span>Community management SLAs and escalation playbooks</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-magnifying-glass-chart gemini-gradient-text mt-1" aria-hidden="true"></i><span>Social listening and competitive insights with growth tests</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Sprout Social, Brandwatch, Airtable, ChatGPT, Adobe Express</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1" aria-hidden="true"></i><span>Custom sequences and follow-ups by segment and stage</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-layer-group gemini-gradient-text mt-1" aria-hidden="true"></i><span>Multi-tool workflows: CRM + email/SMS + booking + Slack</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-person-circle-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Advanced lead/account routing rules and queues</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-language gemini-gradient-text mt-1" aria-hidden="true"></i><span>Brand voice guardrails + approvals where needed</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1" aria-hidden="true"></i><span>Dashboards to measure SLA, conversion, and velocity</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Salesforce/HubSpot + Outreach/Close, Zapier/Make, Chili Piper, Segment, ChatGPT</span></li>
               </ul>
               <div class="mt-auto">
                 <div class="mb-3">
                   <div class="flex items-baseline gap-2">
-                    <span class="text-5xl font-extrabold tracking-tight">$1,800</span>
+                    <span class="text-5xl font-extrabold tracking-tight">$1,000</span>
                     <span class="text-gray-500 font-semibold">/mo</span>
                   </div>
                   <div class="text-sm text-gray-600 mt-[10px]">
-                    <span class="font-semibold">Setup:</span> $6,000 one-time • <span class="font-semibold">Platform/usage:</span> Vendor usage billed directly (e.g., Sprout Social seats, Brandwatch listening).
+                    <span class="font-semibold">Setup:</span> $7,500 one-time • <span class="font-semibold">Platform/usage:</span> Vendor usage billed directly (e.g., Outreach, Close, or Intercom where used).
                   </div>
                 </div>
                 <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Today</a>
-                <p class="text-sm text-gray-500 mt-3">Best for growing brands increasing reach and engagement.</p>
+                <p class="text-sm text-gray-500 mt-3">Best for growing teams improving conversion and velocity.</p>
               </div>
             </div>
           </div>
@@ -286,29 +262,29 @@
           <div class="rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col h-full bg-white">
             <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Scale & Governance</div>
             <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Enterprise</h3>
-            <p class="text-gray-600 mb-5">Run global programs with governance—approvals, compliance, localization, advanced listening, and executive reporting at scale.</p>
+            <p class="text-gray-600 mb-5">Advanced security, privacy, and governance for complex orgs, higher volumes, and regulated teams.</p>
             
             <ul class="text-gray-700 space-y-3 mb-8">
-              <li class="flex gap-3"><i class="fa-solid fa-user-shield gemini-gradient-text mt-1" aria-hidden="true"></i><span>SSO (SAML/OIDC), RBAC, audit logs; staged approvals</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-shield-halved gemini-gradient-text mt-1" aria-hidden="true"></i><span>Brand safety checks and legal/PR review gates</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-bullhorn gemini-gradient-text mt-1" aria-hidden="true"></i><span>Advanced listening with crisis alerts and playbooks</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-language gemini-gradient-text mt-1" aria-hidden="true"></i><span>Localization workflows for regions and products</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1" aria-hidden="true"></i><span>Executive dashboards by region and objective</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-screwdriver-wrench gemini-gradient-text mt-1" aria-hidden="true"></i><span>Dedicated environment, change control, and SLAs</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Sprinklr, Khoros, Talkwalker, Google Vertex AI</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-user-shield gemini-gradient-text mt-1" aria-hidden="true"></i><span>SSO (SAML/OIDC), RBAC, audit logs; SCIM provisioning</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-shield-halved gemini-gradient-text mt-1" aria-hidden="true"></i><span>PII redaction, retention controls, and DPA support</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-cloud gemini-gradient-text mt-1" aria-hidden="true"></i><span>Private networking/VPC; data residency controls</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-gauge-high gemini-gradient-text mt-1" aria-hidden="true"></i><span>High-volume readiness, load testing, rate limits</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-screwdriver-wrench gemini-gradient-text mt-1" aria-hidden="true"></i><span>Priority SLAs, dedicated environment, change control</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-clipboard-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Compliance testing and custom guardrails</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Salesforce Enterprise, Marketo, Segment, warehouse events, custom middleware</span></li>
             </ul>
             <div class="mt-auto">
               <div class="mb-3">
                 <div class="flex items-baseline gap-2">
-                  <span class="text-5xl font-extrabold tracking-tight">From $5,000</span>
+                  <span class="text-5xl font-extrabold tracking-tight">From $3,000</span>
                   <span class="text-gray-500 font-semibold">/mo</span>
                 </div>
                 <div class="text-sm text-gray-600 mt-[10px]">
-                  <span class="font-semibold">Setup:</span> From $20,000 • <span class="font-semibold">Platform/usage:</span> Enterprise platforms billed directly (e.g., Sprinklr or Khoros)
+                  <span class="font-semibold">Setup:</span> From $25,000 • <span class="font-semibold">Platform/usage:</span> Enterprise platforms billed directly (e.g., Salesforce, Marketo)
                 </div>
               </div>
               <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Request Proposal</a>
-              <p class="text-sm text-gray-500 mt-3">Best for enterprises managing global programs and risk.</p>
+              <p class="text-sm text-gray-500 mt-3">Best for enterprises with strict security & compliance needs.</p>
             </div>
           </div>
         </div>
@@ -320,23 +296,20 @@
     <section class="bg-white">
       <div class="container mx-auto px-6 py-16">
         <div class="max-w-3xl mx-auto text-center mb-10">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Consistent, On-Brand Growth</h2>
-        <p class="mt-5 text-xl text-gray-600">Publish on schedule, maintain voice consistency, and turn conversations into reach with lightweight automation that respects your brand.</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Make <span class="gemini-gradient-text">Every</span> Rep Effective</h2>
+          <p class="mt-5 text-xl text-gray-600">Turn leads into qualified conversations with instant outreach, clean data, and routing that puts the right owner in motion at the right time.</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
           <div class="space-y-5">
-            <p class="text-lg text-gray-700"><strong>Core</strong> launches a reliable posting rhythm with an editorial calendar and approved captions. <strong>Enhanced</strong> adds creative formats, listening, and community SLAs so you grow faster while protecting the brand. <strong>Enterprise</strong> brings governance and regional workflows for complex teams.</p>
-            <p class="text-lg text-gray-700">We set guardrails for tone, topics, and timing. You approve the plan, we draft and schedule, and your profiles stay active—even during campaigns, travel, or product launches.</p>
-            <p class="text-lg text-gray-700">Performance reviews connect posts to business goals. We tag links, track KPIs, and iterate on what works—so the feed compounds value instead of starting from zero each month.</p>
+            <p class="text-lg text-gray-700"><strong>Core</strong> launches quickly with dependable automations for speed‑to‑lead, enrichment, and logging. <strong>Enhanced</strong> adds multi‑step sequences, advanced routing, dashboards, and monthly tuning—what most teams need to scale reliably. <strong>Enterprise</strong> layers governance, privacy, and performance for higher volumes and regulated environments without disrupting existing tools or the way your reps already work.</p>
           </div>
           <div>
             <ul class="space-y-4 text-gray-800 text-base md:text-lg">
-              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Plan once, publish often: calendars keep momentum while we adapt posts for each network’s format and audience.</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>On-brand captions: voice guidelines and examples ensure every post sounds like you across channels and markets.</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Smarter engagement: predefined replies, escalation rules, and monitoring windows protect brand tone and response times.</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Learn from data: UTM tagging and dashboards reveal content pillars that actually drive reach, clicks, and signups.</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Scale safely: governance and approvals keep quality high as teams, channels, and regions expand.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Respond instantly:</strong> auto-acknowledge, qualify, and book without delay.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Keep CRM clean:</strong> enrich, normalize, and log consistently.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Route smartly:</strong> owners and queues matched to rules and SLAs.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Measure what matters:</strong> dashboards for conversion and velocity.</span></li>
             </ul>
           </div>
         </div>
@@ -348,29 +321,28 @@
       <div>
         <h2 class="text-3xl font-bold mb-4">Why It Works</h2>
         <ul class="space-y-3 text-gray-700">
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Steady cadence builds familiarity and reach</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Voice guardrails and review loops prevent off-brand posts</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Engagement windows and templates protect response times</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Dashboards tie content pillars to KPIs</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Faster responses and cleaner data raise win rates</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Consistent process removes leakage across stages</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Owners and queues get work with context</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Dashboards show bottlenecks and drive iteration</span></li>
         </ul>
       </div>
       <div>
         <h2 class="text-3xl font-bold mb-4">What’s Included</h2>
         <ul class="space-y-3 text-gray-700">
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Editorial calendar, caption drafts, and scheduling</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Creative templates (carousels, reels prompts, graphics)</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Community management with escalation and moderation rules</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>UTM tagging and link-in-bio upkeep</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Monthly KPI review and recommendations</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>CRM integration and enrichment (Salesforce, HubSpot, Pipedrive)</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Sequences for speed-to-lead, nurture, and handoffs</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Routing by territory, segment, and ownership rules</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Dashboards and alerts for SLAs and conversion</span></li>
         </ul>
       </div>
       <div>
         <h2 class="text-3xl font-bold mb-4">Use Cases</h2>
         <ul class="space-y-3 text-gray-700">
-          <li class="flex gap-3"><i class="fa-solid fa-bullseye gemini-gradient-text mt-1" aria-hidden="true"></i><span>Always-on presence with seasonal campaigns</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-calendar-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Product launches and event promotion</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-headset gemini-gradient-text mt-1" aria-hidden="true"></i><span>Community engagement and support deflection</span></li>
-          <li class="flex gap-3"><i class="fa-solid fa-bolt gemini-gradient-text mt-1" aria-hidden="true"></i><span>Thought leadership and employer branding</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-bolt gemini-gradient-text mt-1" aria-hidden="true"></i><span>Speed-to-lead auto-acknowledge, qualify, and book</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-users-gear gemini-gradient-text mt-1" aria-hidden="true"></i><span>Owner routing and queue assignment with SLAs</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-database gemini-gradient-text mt-1" aria-hidden="true"></i><span>Data hygiene: enrichment, de-duplication, normalization</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-envelope-open-text gemini-gradient-text mt-1" aria-hidden="true"></i><span>Sequenced follow-ups after demos and trials</span></li>
         </ul>
       </div>
     </section>
@@ -381,22 +353,22 @@
         <div class="grid md:grid-cols-3 gap-6">
           <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
             <h3 class="font-bold text-lg mb-2">Who It’s For</h3>
-            <p class="text-gray-700">Founder-led teams, B2B marketing, and consumer brands seeking dependable publishing, better engagement, and measurable outcomes without hiring a full in-house team.</p>
+            <p class="text-gray-700">Sales leaders, RevOps, and founder-led teams that want faster responses, cleaner data, predictable handoffs, and clear dashboards—without growing manual workload or changing the tools reps already use every day.</p>
           </div>
           <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
             <h3 class="font-bold text-lg mb-2">Outcomes</h3>
             <ul class="text-gray-700 space-y-2">
-              <li>• Consistent posting cadence across key channels</li>
-              <li>• Higher reach, engagement, and qualified traffic</li>
-              <li>• Clear reporting tied to business KPIs</li>
+              <li>• Faster speed-to-lead and more meetings</li>
+              <li>• Cleaner CRM data and reliable reporting</li>
+              <li>• Higher conversion with consistent follow-ups</li>
             </ul>
           </div>
           <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
             <h3 class="font-bold text-lg mb-2">Timeline</h3>
             <ul class="text-gray-700 space-y-2">
-              <li>• Week 1: brand baseline & calendar</li>
-              <li>• Week 2: content production & scheduling</li>
-              <li>• Week 3: go-live, engagement, reporting</li>
+              <li>• Week 1: mapping, routing rules, templates</li>
+              <li>• Week 2: build, integrations, QA</li>
+              <li>• Week 3: launch, dashboards, tuning</li>
             </ul>
           </div>
         </div>
@@ -408,8 +380,8 @@
       <div class="container mx-auto px-6">
         <div class="gemini-gradient-bg rounded-3xl p-10 md:p-14 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <h3 class="text-2xl md:text-3xl font-extrabold">Turn content into customers</h3>
-            <p class="opacity-90 mt-1">Stay on schedule and on brand—then learn what actually moves the metrics.</p>
+            <h3 class="text-2xl md:text-3xl font-extrabold">Turn leads into revenue</h3>
+            <p class="opacity-90 mt-1">Respond instantly, route smartly, and keep data clean—so reps close more.</p>
           </div>
           <div class="flex gap-3">
             <a href="#plans" class="bg-white text-gray-900 font-semibold px-6 py-3 rounded-full">View Plans</a>
@@ -428,42 +400,42 @@
         <div class="space-y-3">
           <div class="faq-item">
             <button class="faq-toggle">
-              <span class="text-lg md:text-xl font-semibold">Which channels do you support?</span>
+              <span class="text-lg md:text-xl font-semibold">Which CRMs and tools do you support?</span>
               <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
             </button>
-            <div class="faq-panel text-gray-700">Core: Instagram and LinkedIn scheduling. Enhanced: + Facebook, X (Twitter), TikTok, and YouTube Shorts. Enterprise: global programs across major networks with region-specific calendars and governance.</div>
+            <div class="faq-panel text-gray-700">Core: Salesforce, HubSpot, or Pipedrive. Enhanced: adds Outreach/Close and booking tools. Enterprise: advanced Salesforce with custom middleware, warehouse events, and governance.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-toggle">
-              <span class="text-lg md:text-xl font-semibold">Who writes the content and captions?</span>
+              <span class="text-lg md:text-xl font-semibold">How do you handle data hygiene?</span>
               <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
             </button>
-            <div class="faq-panel text-gray-700">We draft on-brand captions using your voice guidelines and examples. Core includes calendar and drafts; Enhanced adds creative templates and video prompts; Enterprise layers legal/brand approvals and localization workflows.</div>
+            <div class="faq-panel text-gray-700">We enrich, de-duplicate, and standardize fields automatically. Activities and stages are logged consistently so reporting and handoffs stay accurate without manual effort.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-toggle">
-              <span class="text-lg md:text-xl font-semibold">How do you handle engagement and moderation?</span>
+              <span class="text-lg md:text-xl font-semibold">Will sequences match our brand and tone?</span>
               <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
             </button>
-            <div class="faq-panel text-gray-700">We define response windows, escalation rules, and moderation criteria. Enhanced adds social listening and competitor tracking; Enterprise includes crisis alerts, predefined responses, and audit-friendly logs with SSO/RBAC.</div>
+            <div class="faq-panel text-gray-700">Yes. We define guardrails, voice, and approvals. Enhanced includes monthly updates; Enterprise adds change control, RBAC, and audit trails.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-toggle">
-              <span class="text-lg md:text-xl font-semibold">Can you integrate with our CRM and analytics?</span>
+              <span class="text-lg md:text-xl font-semibold">Can you route leads and meetings automatically?</span>
               <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
             </button>
-            <div class="faq-panel text-gray-700">Yes. We tag links with UTM, push leads to HubSpot/Salesforce via Zapier/Make, and report in GA4. Enhanced & Enterprise include dashboards and KPI reviews tied to campaigns and content pillars.</div>
+            <div class="faq-panel text-gray-700">We qualify and route to the right owner in CRM/Slack and book with Chili Piper or Calendly. Enhanced supports advanced rules and queues across teams.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-toggle">
-              <span class="text-lg md:text-xl font-semibold">What about brand safety and compliance?</span>
-              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              <span class="text-lg md:text-xl font-semibold">What about security and compliance?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
             </button>
-            <div class="faq-panel text-gray-700">Core follows simple guidelines. Enterprise adds approval workflows, brand safety checks, records retention, regional permissions, and SSO (SAML/OIDC) with role-based controls for publishing.</div>
+            <div class="faq-panel text-gray-700">Core keeps things simple. Enterprise adds SSO (SAML/OIDC), RBAC, audit logs, DPA support, PII controls, and options for private networking and data residency.</div>
           </div>
         </div>
       </div>
@@ -603,11 +575,11 @@
   </div>
 
   <button type="submit" class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
-    <i class="fa-solid fa-paper-plane mr-2" aria-hidden="true"></i> Send Request
+    <i class="fa-solid fa-paper-plane mr-2"></i> Send Request
   </button>
 
   <p class="text-center text-gray-500 text-sm mt-3">
-    <i class="fa-solid fa-lock mr-1" aria-hidden="true"></i>Your information stays private.
+    <i class="fa-solid fa-lock mr-1"></i>Your information stays private.
   </p>
 </form>
         </div>

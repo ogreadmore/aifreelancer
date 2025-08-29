@@ -222,9 +222,9 @@
             box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.3);
         }
 
-        /* Add ~5px spacing between price and subtext (e.g. "$599/mo" and "+ one-time") */
-        .mb-6 > .text-5xl + .text-sm {
-            margin-top: 5px;
+        /* Spacing between large price and subtext (e.g., setup fee) */
+        .price-wrap > .text-5xl + .text-sm {
+            margin-top: 10px; /* match service page spacing */
         }
         
         /* Chatbot styles moved to `assets/css/chatbot.css` (centralized) */
@@ -439,12 +439,7 @@
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-1">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">Sales & CRM Automation</h3>
-                <p class="text-gray-600 mb-6 flex-grow">We automate your sales pipeline by integrating with your CRM to handle lead nurturing and follow-ups, freeing your sales team to focus on what they do best: closing deals.</p>
-                <div class="mb-6">
-                    <p class="text-sm text-gray-600">Starting at</p>
-                    <p class="text-5xl font-bold text-gray-900 -mb-1">$350<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                    <p class="text-sm text-gray-600">Setup: $3,500 one-time</p>
-                </div>
+                <p class="text-gray-600 mb-4">We automate your sales pipeline by integrating with your CRM to handle lead nurturing and follow-ups, freeing your sales team to focus on what they do best: closing deals.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-bolt gemini-gradient-text mt-1"></i><span>Close faster with instant speed‑to‑lead and routing</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-database gemini-gradient-text mt-1"></i><span>Clean, deduped CRM data that updates itself</span></li>
@@ -452,7 +447,14 @@
                     <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1"></i><span>Dashboards that show pipeline health and ROI</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-layer-group gemini-gradient-text mt-1"></i><span>Scales from quick wins to governed automations</span></li>
                 </ul>
-                <a href="/sales-crm-automation.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Boost Sales</a>
+                <div class="mt-auto">
+                    <div class="price-wrap mt-4 mb-3">
+                        <p class="text-sm text-gray-600">Starting at</p>
+                        <p class="text-5xl font-bold text-gray-900 -mb-1">$350<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                        <p class="text-sm text-gray-600">Setup: $3,500 one-time</p>
+                    </div>
+                    <a href="/sales-crm-automation.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Boost Sales</a>
+                </div>
                 </div>
             </div>
             
@@ -462,12 +464,7 @@
                         <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Most Popular</span>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-2">AI Website Chatbot</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">Our AI chatbot integrates with your site to capture leads and answer visitor questions instantly, ensuring you provide 24/7 support and never miss an opportunity.</p>
-                    <div class="mb-6">
-                        <p class="text-sm text-gray-600">Starting at</p>
-                        <p class="text-5xl font-bold text-gray-900 -mb-1">$150<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                        <p class="text-sm text-gray-600">Setup: $2,000 one-time</p>
-                    </div>
+                    <p class="text-gray-600 mb-4">Our AI chatbot integrates with your site to capture leads and answer visitor questions instantly, ensuring you provide 24/7 support and never miss an opportunity.</p>
                     <ul class="space-y-4 text-gray-700 mb-8">
                         <li class="flex gap-3"><i class="fa-solid fa-comments gemini-gradient-text mt-1"></i><span>24/7 answers grounded in your content</span></li>
                         <li class="flex gap-3"><i class="fa-solid fa-envelope-circle-check gemini-gradient-text mt-1"></i><span>Captures and routes qualified leads automatically</span></li>
@@ -475,19 +472,21 @@
                         <li class="flex gap-3"><i class="fa-solid fa-layer-group gemini-gradient-text mt-1"></i><span>Learns from FAQs, docs, and help articles</span></li>
                         <li class="flex gap-3"><i class="fa-solid fa-user-shield gemini-gradient-text mt-1"></i><span>Scales to live‑chat, SLAs, and enterprise controls</span></li>
                     </ul>
-                    <a href="/ai-website-chatbot.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Get Started</a>
+                    <div class="mt-auto">
+                        <div class="price-wrap mt-4 mb-3">
+                            <p class="text-sm text-gray-600">Starting at</p>
+                            <p class="text-5xl font-bold text-gray-900 -mb-1">$150<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                            <p class="text-sm text-gray-600">Setup: $2,000 one-time</p>
+                        </div>
+                        <a href="/ai-website-chatbot.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Get Started</a>
+                    </div>
                 </div>
             </div>
             
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-3">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">AI Data & Analytics</h3>
-                <p class="text-gray-600 mb-6 flex-grow">We transform your raw business data into a strategic asset. Our AI models uncover hidden trends, predict customer behavior, and provide actionable insights to guide your growth strategy.</p>
-                <div class="mb-6">
-                    <p class="text-sm text-gray-600">Starting at</p>
-                    <p class="text-5xl font-bold text-gray-900 -mb-1">$600<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                    <p class="text-sm text-gray-600">Setup: $3,500 one-time</p>
-                </div>
+                <p class="text-gray-600 mb-4">We transform your raw business data into a strategic asset. Our AI models uncover hidden trends, predict customer behavior, and provide actionable insights to guide your growth strategy.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-chart-simple gemini-gradient-text mt-1"></i><span>Executive KPIs your team actually trusts</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1"></i><span>Forecast revenue, demand, and retention</span></li>
@@ -495,19 +494,21 @@
                     <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1"></i><span>Modern ELT + modeled data you can build on</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-fingerprint gemini-gradient-text mt-1"></i><span>Governance and lineage when you’re ready to scale</span></li>
                 </ul>
-                <a href="/ai-data-analytics.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Unlock Insights</a>
+                <div class="mt-auto">
+                    <div class="price-wrap mt-4 mb-3">
+                        <p class="text-sm text-gray-600">Starting at</p>
+                        <p class="text-5xl font-bold text-gray-900 -mb-1">$600<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                        <p class="text-sm text-gray-600">Setup: $3,500 one-time</p>
+                    </div>
+                    <a href="/ai-data-analytics.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Unlock Insights</a>
+                </div>
                 </div>
             </div>
             
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-4">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">Automated Customer Support</h3>
-                <p class="text-gray-600 mb-6 flex-grow">We build an AI-powered support system that integrates with your helpdesk to provide instant answers, automate ticket routing, and improve customer satisfaction.</p>
-                <div class="mb-6">
-                    <p class="text-sm text-gray-600">Starting at</p>
-                    <p class="text-5xl font-bold text-gray-900 -mb-1">$200<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                    <p class="text-sm text-gray-600">Setup: $3,000 one-time</p>
-                </div>
+                <p class="text-gray-600 mb-4">We build an AI-powered support system that integrates with your helpdesk to provide instant answers, automate ticket routing, and improve customer satisfaction.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-circle-question gemini-gradient-text mt-1"></i><span>Deflect repetitive tickets with accurate answers</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-route gemini-gradient-text mt-1"></i><span>Route complex issues with the right context</span></li>
@@ -515,7 +516,14 @@
                     <li class="flex gap-3"><i class="fa-solid fa-language gemini-gradient-text mt-1"></i><span>Multilingual and on‑brand across channels</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1"></i><span>CSAT and deflection dashboards that improve over time</span></li>
                 </ul>
-                <a href="/automated-customer-support.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Automate Support</a>
+                <div class="mt-auto">
+                    <div class="price-wrap mt-4 mb-3">
+                        <p class="text-sm text-gray-600">Starting at</p>
+                        <p class="text-5xl font-bold text-gray-900 -mb-1">$200<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                        <p class="text-sm text-gray-600">Setup: $3,000 one-time</p>
+                    </div>
+                    <a href="/automated-customer-support.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Automate Support</a>
+                </div>
                 </div>
             </div>
             
@@ -525,12 +533,7 @@
                         <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Best Value</span>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-2">Fractional Chief AI Officer / Full-Scale Transformation</h3>
-                    <p class="text-gray-600 mb-6 flex-grow">Fractional AI leadership and delivery to embed AI across your business — from strategy &amp; governance to implementation &amp; optimization and ongoing support for measurable impact.</p>
-                    <div class="mb-6">
-                      <p class="text-sm text-gray-600">Starting at</p>
-                      <p class="text-5xl font-bold text-gray-900 -mb-1">$1,500<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                      <p class="text-sm text-gray-600">Setup: $5,000 one-time</p>
-                    </div>
+                    <p class="text-gray-600 mb-4">Fractional AI leadership and delivery to embed AI across your business — from strategy &amp; governance to implementation &amp; optimization and ongoing support for measurable impact.</p>
                     <ul class="space-y-4 text-gray-700 mb-8">
                        <li class="flex gap-3"><i class="fa-solid fa-flag-checkered gemini-gradient-text mt-1"></i><span>Practical AI roadmap tied to business outcomes</span></li>
                        <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1"></i><span>Cross‑function delivery with measurable milestones</span></li>
@@ -538,19 +541,21 @@
                        <li class="flex gap-3"><i class="fa-solid fa-chalkboard-user gemini-gradient-text mt-1"></i><span>Change management, enablement, and adoption support</span></li>
                        <li class="flex gap-3"><i class="fa-solid fa-user-shield gemini-gradient-text mt-1"></i><span>Right‑sized governance, security, and KPIs</span></li>
                     </ul>
-                    <a href="/full-scale-transformation.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Transformation</a>
+                    <div class="mt-auto">
+                      <div class="price-wrap mt-4 mb-3">
+                        <p class="text-sm text-gray-600">Starting at</p>
+                        <p class="text-5xl font-bold text-gray-900 -mb-1">$1,500<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                        <p class="text-sm text-gray-600">Setup: $5,000 one-time</p>
+                      </div>
+                      <a href="/full-scale-transformation.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Transformation</a>
+                    </div>
                 </div>
             </div>
 
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-6">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">AI Social Media Manager</h3>
-                <p class="text-gray-600 mb-6 flex-grow">Put your brand building on autopilot. Our AI system manages your social media presence, from creating and scheduling engaging posts to analyzing performance, allowing you to grow your audience without the daily time commitment.</p>
-                <div class="mb-6">
-                    <p class="text-sm text-gray-600">Starting at</p>
-                    <p class="text-5xl font-bold text-gray-900 -mb-1">$500<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                    <p class="text-sm text-gray-600">Setup: $1,500 one-time</p>
-                </div>
+                <p class="text-gray-600 mb-4">Put your brand building on autopilot. Our AI system manages your social media presence, from creating and scheduling engaging posts to analyzing performance, allowing you to grow your audience without the daily time commitment.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-calendar-days gemini-gradient-text mt-1"></i><span>Consistent on‑brand content without adding headcount</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-share-nodes gemini-gradient-text mt-1"></i><span>Plan once; publish across all key channels</span></li>
@@ -558,19 +563,21 @@
                     <li class="flex gap-3"><i class="fa-solid fa-comments gemini-gradient-text mt-1"></i><span>Community replies with clear escalation rules</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1"></i><span>Growth dashboards and experiments that compound</span></li>
                 </ul>
-                <a href="/ai-social-media-manager.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Grow Audience</a>
+                <div class="mt-auto">
+                    <div class="price-wrap mt-4 mb-3">
+                        <p class="text-sm text-gray-600">Starting at</p>
+                        <p class="text-5xl font-bold text-gray-900 -mb-1">$500<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                        <p class="text-sm text-gray-600">Setup: $1,500 one-time</p>
+                    </div>
+                    <a href="/ai-social-media-manager.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Grow Audience</a>
+                </div>
                 </div>
             </div>
 
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-7">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">Creative & Development</h3>
-                <p class="text-gray-600 mb-6 flex-grow">Bring your vision to life, faster. Whether you need compelling content, a stunning website, or a functional app, we leverage AI to accelerate the entire creative and development process, from initial idea to final launch.</p>
-                <div class="mb-6">
-                    <p class="text-sm text-gray-600">Starting at</p>
-                    <p class="text-5xl font-bold text-gray-900 -mb-1">$500<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                    <p class="text-sm text-gray-600">Setup: $1,000 one-time</p>
-                </div>
+                <p class="text-gray-600 mb-4">Bring your vision to life, faster. Whether you need compelling content, a stunning website, or a functional app, we leverage AI to accelerate the entire creative and development process, from initial idea to final launch.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-mobile-screen-button gemini-gradient-text mt-1"></i><span>Design‑faithful, responsive experiences that feel fast</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-wand-magic-sparkles gemini-gradient-text mt-1"></i><span>Tasteful motion and micro‑interactions</span></li>
@@ -578,19 +585,21 @@
                     <li class="flex gap-3"><i class="fa-solid fa-magnifying-glass gemini-gradient-text mt-1"></i><span>SEO, schema, and image optimization built‑in</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-gauge-high gemini-gradient-text mt-1"></i><span>Performance, accessibility, and best‑practice checks</span></li>
                 </ul>
-                <a href="/creative-development.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Build Your Vision</a>
+                <div class="mt-auto">
+                    <div class="price-wrap mt-4 mb-3">
+                        <p class="text-sm text-gray-600">Starting at</p>
+                        <p class="text-5xl font-bold text-gray-900 -mb-1">$500<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                        <p class="text-sm text-gray-600">Setup: $1,000 one-time</p>
+                    </div>
+                    <a href="/creative-development.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Build Your Vision</a>
+                </div>
                 </div>
             </div>
 
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-9">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">Internal Process Automation</h3>
-                <p class="text-gray-600 mb-6 flex-grow">We automate your core operations by building custom workflows that handle data entry and report generation, saving your team dozens of hours per week, guaranteed.</p>
-                <div class="mb-6">
-                    <p class="text-sm text-gray-600">Starting at</p>
-                    <p class="text-5xl font-bold text-gray-900 -mb-1">$400<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                    <p class="text-sm text-gray-600">Setup: $3,500 one-time</p>
-                </div>
+                <p class="text-gray-600 mb-4">We automate your core operations by building custom workflows that handle data entry and report generation, saving your team dozens of hours per week, guaranteed.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-right-left gemini-gradient-text mt-1"></i><span>Automate approvals and handoffs in Slack/Email</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-clipboard-check gemini-gradient-text mt-1"></i><span>Eliminate manual data entry with validated syncs</span></li>
@@ -598,7 +607,14 @@
                     <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1"></i><span>Cross‑app workflows with branching and retries</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1"></i><span>Monitoring, alerts, and run‑level traceability</span></li>
                 </ul>
-                <a href="/internal-process-automation.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Increase Efficiency</a>
+                <div class="mt-auto">
+                    <div class="price-wrap mt-4 mb-3">
+                        <p class="text-sm text-gray-600">Starting at</p>
+                        <p class="text-5xl font-bold text-gray-900 -mb-1">$400<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                        <p class="text-sm text-gray-600">Setup: $3,500 one-time</p>
+                    </div>
+                    <a href="/internal-process-automation.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Increase Efficiency</a>
+                </div>
                 </div>
             </div>
 
@@ -608,12 +624,7 @@
                         <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Popular</span>
                     </div>
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">AI-Powered Team Training</h3>
-                <p class="text-gray-600 mb-6 flex-grow">Scale your team without the growing pains. We transform your company documents, SOPs, and training materials into an intelligent AI knowledge base that onboards new hires and provides instant, accurate answers to employee questions 24/7.</p>
-                <div class="mb-6">
-                    <p class="text-sm text-gray-600">Starting at</p>
-                    <p class="text-5xl font-bold text-gray-900 -mb-1">$200<span class="text-lg font-medium text-gray-500">/mo</span></p>
-                    <p class="text-sm text-gray-600">Setup: $3,000 one-time</p>
-                </div>
+                <p class="text-gray-600 mb-4">Scale your team without the growing pains. We transform your company documents, SOPs, and training materials into an intelligent AI knowledge base that onboards new hires and provides instant, accurate answers to employee questions 24/7.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-book-open gemini-gradient-text mt-1"></i><span>Private assistant that answers from your docs</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-sitemap gemini-gradient-text mt-1"></i><span>Onboarding checklists and role‑based learning paths</span></li>
@@ -621,7 +632,14 @@
                     <li class="flex gap-3"><i class="fa-solid fa-shield-heart gemini-gradient-text mt-1"></i><span>Brand‑safe responses with light guardrails</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-chart-simple gemini-gradient-text mt-1"></i><span>Insights on top questions and content gaps</span></li>
                 </ul>
-                <a href="/ai-powered-team-training.html" class="w-full mt-auto text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Train Your Team</a>
+                <div class="mt-auto">
+                    <div class="price-wrap mt-4 mb-3">
+                        <p class="text-sm text-gray-600">Starting at</p>
+                        <p class="text-5xl font-bold text-gray-900 -mb-1">$200<span class="text-lg font-medium text-gray-500">/mo</span></p>
+                        <p class="text-sm text-gray-600">Setup: $3,000 one-time</p>
+                    </div>
+                    <a href="/ai-powered-team-training.html" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Train Your Team</a>
+                </div>
                 </div>
             </div>
 

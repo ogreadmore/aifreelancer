@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delivery Playbook — AI Data & Analytics | AI Freelancer</title>
-  <meta name="description" content="Practical delivery process for small‑business data analytics with AI: source audit, ELT, modeling, dashboards, forecasting, governance, and cadence." />
+  <title>Delivery Playbook — AI Data Analytics | AI Freelancer</title>
+  <meta name="description" content="Step-by-step delivery process for AI Data Analytics: capture, normalize, enrich, and route data into actionable dashboards. Includes checklists, KPIs, and templates." />
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style> body{font-family:'Inter',sans-serif} code,kbd{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:.375rem;padding:.125rem .375rem} .sec{scroll-margin-top:80px} </style>
+  <style> body{font-family:'Inter',sans-serif; line-height:1.5} .sec{scroll-margin-top:80px} </style>
   <style>
+    html { scroll-behavior: smooth; }
     /* Vibrant Indigo + Teal theme */
     :root{
       --teal: #0d9488;   /* teal-600 */
       --indigo: #4f46e5; /* indigo-600 */
-      --accent: var(--indigo);
+      --accent: var(--teal);
       --muted: #6b7280;
       --text: #0f172a;
       --card-bg: #ffffff;
@@ -44,10 +45,10 @@
     a{ color:var(--indigo); }
     a:hover{ color: #3730a3; text-decoration:underline; }
 
-    /* KPI card accents (indigo / amber / rose) */
+    /* KPI card accents (teal / amber / rose) */
     .kpi-grid > div{ padding-left:18px; overflow:hidden; }
     .kpi-grid > div::before{ content:''; position:absolute; left:0; top:12px; bottom:12px; width:6px; border-radius:6px; }
-    .kpi-grid > div:nth-child(1)::before{ background: linear-gradient(180deg,var(--indigo),var(--teal)); }
+    .kpi-grid > div:nth-child(1)::before{ background: linear-gradient(180deg,var(--teal),var(--indigo)); }
     .kpi-grid > div:nth-child(2)::before{ background: linear-gradient(180deg,#f59e0b,#f97316); }
     .kpi-grid > div:nth-child(3)::before{ background: linear-gradient(180deg,#fb7185,#ef4444); }
     .mt-6 .bg-white.p-4 p.text-xl{ color:#061126; }
@@ -62,23 +63,34 @@
     details summary{ cursor:pointer; }
     details[open] summary{ color:var(--indigo); }
 
-    /* Code and pre */
-    code,kbd{ background:#f1f5f9; border-color:#e6eef8; }
+    /* Code, kbd: single consolidated rule */
+    code,kbd{
+      background:#f1f5f9;
+      border:1px solid #e6eef8;
+      border-radius:.375rem;
+      padding:.125rem .375rem;
+    }
 
     /* Small helper */
     .muted { color: var(--muted); }
+
+    /* Minimal tip marker (non-functional now) */
+    .tip { border-bottom: 1px dotted rgba(14,20,24,0.06); cursor: default; }
   </style>
   <style>
     .toc .toc-divider { list-style: none; }
+    /* Active section highlight for sticky TOC */
+    #toc a.active { color: var(--indigo); font-weight: 800; text-decoration: underline; }
   </style>
   <meta name="robots" content="noindex, follow" />
+  
 </head>
 <body class="bg-gray-50 text-gray-900">
   <header class="bg-white border-b border-gray-200">
     <div class="container mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
       <nav class="text-sm text-gray-600">
-        <a href="index.html" class="hover:text-gray-900">Playbook index</a>
+        <a href="/index.html" class="hover:text-gray-900">Playbook index</a>
         <span class="mx-3">•</span>
         <a href="/ai-data-analytics.html" class="hover:text-gray-900">Service page</a>
       </nav>
@@ -88,16 +100,15 @@
   <main class="container mx-auto px-6 py-10 space-y-12">
     
     <section class="sec" id="overview">
-      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: AI Data &amp; Analytics</h1>
-      <p class="mt-4 text-lg text-gray-700">Turn raw data into decisions with a lean ELT pipeline, sensible modeling, and opinionated dashboards. Designed to be run by one person and scale later.</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">📊 Delivery Playbook: AI Data Analytics</h1>
+      <p class="mt-4 text-lg text-gray-700">Capture customer and revenue data, clean it, and turn it into decisions. This playbook focuses on reliable ingestion, normalization, enrichment, routing, and trustworthy dashboards.</p>
       <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
-        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Primary KPI</p><p class="text-xl font-bold">Time‑to‑insight &lt; 2 weeks</p></div>
-        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold">Data tests ≥ 95% pass</p></div>
-        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Adoption KPI</p><p class="text-xl font-bold">≥ 5 weekly active viewers</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Primary KPI</p><p class="text-xl font-bold">Data Freshness ≤ 1 hour</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold">Record Dedupe Accuracy ≥ 98%</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Outcome</p><p class="text-xl font-bold">Routing Accuracy ≥ 95%</p></div>
       </div>
     </section>
 
-    
     <section class="sec" id="intro">
       <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
         <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
@@ -109,787 +120,1234 @@
       </div>
     </section>
 
-    <section class="sec" id="toc">
-      <nav class="bg-white border rounded-xl p-5">
-        <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
-        <div class="toc grid md:grid-cols-2 gap-8">
-          <div>
-            <div class="text-xs font-semibold uppercase text-gray-500 mb-2">Part 1: What &amp; Why</div>
-            <ol class="list-decimal ml-5 space-y-1 text-sm">
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#glossary">Glossary (Newbie‑friendly)</a></li>
-            </ol>
-          </div>
-          <div>
-            <div class="text-xs font-semibold uppercase text-gray-500 mb-2">Part 2: Implementer's Guide</div>
-            <ol class="list-decimal ml-5 space-y-1 text-sm">
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#prereqs">Access & Prerequisites</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling Options</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Detailed Timeline</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#audit-monitoring">Audit & Monitoring (Ops)</a></li>
-            </ol>
-          </div>
-        </div>
-      </nav>
-    </section>
-
-    <section class="sec" id="part-1">
-      <h2 class="text-3xl font-bold tracking-tight">Part 1: What &amp; Why (Client &amp; Manager View)</h2>
-    </section>
-
-    <section class="sec" id="story-top">
-      <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Quick Story — What will happen</h2>
-        <p class="mt-3 text-sm text-gray-700">Overview: We will gather your messy, scattered data and turn it into clean, useful dashboards that help you make smart decisions. First, we'll figure out what questions you want to answer. Then, we'll connect to your data sources (like Google Analytics, your CRM, etc.) and pull everything into one central, organized place called a "warehouse." Next, we'll clean and model the data to create reliable metrics. Finally, we'll build a few key dashboards, test them to make sure they're accurate, and show you how to use them.</p>
-
-        <p class="mt-3 text-sm text-gray-700">What each step means (plain):</p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Define Metrics:</strong> We agree on the exact definitions for your key numbers (e.g., "What counts as an 'active user'?"). This is our "contract" for what the numbers mean.</li>
-          <li><strong>Connect Sources:</strong> We get safe, read-only access to your tools and set up automated pipelines to copy the data out.</li>
-          <li><strong>Build Warehouse:</strong> We create a central database. Think of it as a clean, organized library for all your business data.</li>
-          <li><strong>Model Data:</strong> We write code that takes the raw, messy data and transforms it into clean, reliable tables (e.g., a single `users` table or a `daily_sales` summary).</li>
-          <li><strong>Build Dashboards:</strong> We create the visual reports with charts and graphs that you'll use to see trends and answer questions.</li>
-          <li><strong>Test & Launch:</strong> We run checks to prove the numbers are correct and then give you and your team access.</li>
-        </ul>
-
-        <p class="mt-3 text-sm text-gray-700"><strong>For you — the person doing the work:</strong></p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li>Write metric contracts; collect safe, read‑only access; set up a clean warehouse.</li>
-          <li>Build dbt models with tests; publish 1–2 dashboards; prove accuracy.</li>
-          <li>Document refresh schedules and owners; create a small runbook.</li>
-        </ul>
-
-        <p class="mt-3 text-sm text-gray-700"><strong>For the client — what it should feel like:</strong></p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Easy:</strong> you approve definitions and grant access; we handle the build.</li>
-          <li><strong>Helpful:</strong> dashboards answer priority questions clearly.</li>
-          <li><strong>Safe:</strong> PII is minimized and protected; changes are tested.</li>
-          <li><strong>Clear:</strong> you see before/after and know when data refreshes.</li>
-        </ul>
-      </div>
-    </section>
-
-    
-
-    <!-- Simplified, newbie-friendly, interactive checklist -->
-    <section class="sec" id="simple-checklist">
-      <div class="bg-white border rounded-2xl p-6">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
-            <p class="text-gray-600 text-sm">A practical step list to run analytics from zero. Progress saves in this browser.</p>
-          </div>
-          <div class="text-right">
-            <div class="text-sm text-gray-600">Progress</div>
-            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false"><div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div></div>
-            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
-          </div>
-        </div>
-
-        <div class="mt-6 space-y-6" id="crm-checklist">
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 1 — Metrics & Sources</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="metrics"/> <span>Write metric contract (exact SQL, grain, filters, owner)</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="source-inventory"/> <span>Complete source inventory (GA4, CRM, billing, support) w/ sample exports</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="access-list"/> <span>Request access list + credentials; note PII fields and policy</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Why we start with metrics</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-2">
-                <p><strong>What is a metric contract?</strong> It's a simple document where we write down the exact definition of each key number before we build anything. For example: "Monthly Active Users (MAU) is the count of unique users who logged in at least once in the last 28 days."</p>
-                <p><strong>Analogy: It's like agreeing on the rules of a game before you play.</strong> If we don't agree on what a "goal" is, we can't keep score. This contract ensures everyone in the company is counting the same way and trusts the numbers.</p>
-              </div>
-            </details>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 2 — Warehouse</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="warehouse"/> <span>Provision Postgres/BigQuery; create raw/stg/int/mart schemas and roles</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="security"/> <span>Force SSL; store creds in secrets manager</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="backups"/> <span>Enable daily backups and budget alerts</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: What is a data warehouse?</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-2">
-                <p>A data warehouse is a central database designed specifically for analytics. It's where we bring all your data together from different sources (like your website, CRM, and payment system) to get a complete picture of the business.</p>
-                <p><strong>Analogy: It's the clean, organized library for your data.</strong> Instead of having books scattered in different rooms, we bring them all to one library, organize them by topic (the schemas: `raw`, `staging`, `marts`), and make them easy to find and use for reports.</p>
-              </div>
-            </details>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 3 — Connectors</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="crm-connector"/> <span>Set CRM connector; verify incremental key (<code>updated_at</code>)</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ga4-connector"/> <span>Load GA4 (BigQuery export or API); confirm event counts</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="row-counts"/> <span>Run row count checks vs. source exports</span></label>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 4 — dbt Staging</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="stg"/> <span>Create <code>stg_*</code> models; add not_null/unique tests</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="freshness"/> <span>Add freshness tests on raw tables; document SLA</span></label>
-             <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: What is dbt and staging?</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-2">
-                <p><strong>dbt</strong> is a tool that helps us transform data using simple SQL. It's the "T" (Transform) in our ELT (Extract, Load, Transform) process. <strong>Staging models</strong> are the first step in this transformation. They are simple models that do basic cleaning, like renaming columns or casting data types, to prepare the raw data for more complex joins later.</p>
-                <p><strong>Analogy: Staging is like the prep station in a kitchen (the *mise en place*).</strong> Before you start cooking the main dish, you wash the vegetables, chop the onions, and measure the spices. Staging models do this prep work for our data, ensuring everything is clean and ready before we start combining it.</p>
-              </div>
-            </details>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 5 — Core Models</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="int"/> <span>Build <code>int_funnel</code> (lead→mql→sql); track stage timestamps</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="mart"/> <span>Create <code>mart_kpis</code> daily snapshot for dashboards</span></label>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 6 — Dashboards</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="exec"/> <span>Publish Executive Overview; add channel/campaign/owner filters</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="pulse"/> <span>Schedule weekly pulse (Mon 9am); send test to stakeholders</span></label>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 7 — CI & QA</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ci"/> <span>Configure nightly <code>dbt build</code> in CI with failure alerts</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="anomaly"/> <span>Add simple z‑score anomaly checks to key KPIs</span></label>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 8 — Forecast & Cohorts</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="forecast"/> <span>Simple revenue forecast added (toggleable)</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="cohorts"/> <span>Cohort view by source/persona</span></label>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 9 — Docs & Handover</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="dictionary"/> <span>Data dictionary and lineage updated</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="training"/> <span>30‑min training delivered; questions answered</span></label>
-          </div>
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 10 — Ongoing Insights</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="weekly-insights"/> <span>Weekly insights note with 3–5 bullets</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="monthly-review"/> <span>Monthly deep‑dive and roadmap update</span></label>
-          </div>
-        </div>
-
-        <div class="mt-6 flex items-center gap-3">
-          <button id="da-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50">Reset checklist</button>
-          <span class="text-xs text-gray-500">Saved locally in this browser.</span>
-        </div>
-      </div>
-      <script>
-        // Canonical checklist progress with namespaced localStorage
-        (function(){
-          const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
-          const bar = document.getElementById('crm-progress-bar');
-          const txt = document.getElementById('crm-progress-text');
-          const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
-          const KEY = (id) => `aflp:${slug}:check:${id}`;
-          function update(){
-            const total = boxes.length || 1;
-            const done = Array.from(boxes).filter(b => b.checked).length;
-            const pct = Math.round((done/total)*100);
-            if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
-            if(txt){ txt.textContent = pct + '% complete'; }
-          }
-          function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
-          function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1':'0'); } catch(e){} update(); }
-          boxes.forEach(b => b.addEventListener('change', onChange));
-          if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
-        })();
-      </script>
-    </section>
-
-    <section class="sec" id="phases">
-      <h2 class="text-2xl font-bold mb-3">Delivery Phases</h2>
-      <div class="bg-white border rounded-xl overflow-hidden text-sm">
-        <table class="min-w-full">
-          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs / Done</th></tr></thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3 font-semibold">1) Discovery</td>
-              <td class="p-3">KPI definitions; source inventory; privacy & retention policy; access list</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">Metric contract; source map; access granted</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">2) Design</td>
-              <td class="p-3">Warehouse plan; schema naming; dbt project layout; dashboard list</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Design doc; approved scope</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">3) Build</td>
-              <td class="p-3">Connectors; staging models; intermediate models; marts; seeds</td>
-              <td class="p-3">You</td>
-              <td class="p-3">dbt build green; marts materialized</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">4) Test</td>
-              <td class="p-3">dbt tests; freshness checks; anomaly detection; cost/latency tuning</td>
-              <td class="p-3">You</td>
-              <td class="p-3">QA report; thresholds met</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">5) Launch</td>
-              <td class="p-3">Dashboards publish; CI schedule; alerts; stakeholder walkthrough</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">Dash v1 live; nightly runs stable</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">6) Optimize</td>
-              <td class="p-3">Forecast prototype; cohorts; documentation; training; backlog</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Insights cadence; roadmap</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="scope">
-      <h2 class="text-2xl font-bold mb-3">Scope Tiers</h2>
-      <div class="bg-white border rounded-xl p-5 text-sm">
-        <table class="min-w-full">
-          <thead><tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Coverage</th><th class="p-3 text-left">Notes</th></tr></thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">MVP</td><td class="p-3">1–2 sources; 2 KPIs; 1 dashboard</td><td class="p-3">Fast path; manual refresh OK</td></tr>
-            <tr><td class="p-3 font-semibold">Standard</td><td class="p-3">3–5 sources; 5+ KPIs; 2 dashboards</td><td class="p-3">Nightly refresh; alerts</td></tr>
-            <tr><td class="p-3 font-semibold">Plus</td><td class="p-3">6+ sources; forecasting</td><td class="p-3">CI, tests ≥ 95% pass</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="kpis">
-      <h2 class="text-2xl font-bold mb-3">KPIs & Reporting</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li><strong>Time‑to‑insight:</strong> ≤ 2 weeks from kickoff</li>
-        <li><strong>Test pass rate:</strong> ≥ 95% dbt tests green</li>
-        <li><strong>Adoption:</strong> ≥ 5 weekly active viewers</li>
-        <li><strong>Freshness:</strong> Meets defined SLAs per source</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="glossary">
-      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
-      <div class="bg-white border rounded-xl p-5 text-sm">
-        <p><strong>ELT:</strong> Extract, Load, Transform — copy data, then clean it in the warehouse.</p>
-        <p><strong>dbt:</strong> A tool to turn SQL into versioned, testable models.</p>
-        <p><strong>Freshness:</strong> How recent the data is compared to now.</p>
-      </div>
-    </section>
-
-  <div class="border-t pt-12">
-      <h2 class="text-3xl font-bold tracking-tight">Part 2: Implementer's Guide</h2>
-      <p class="mt-2 text-gray-600">This section contains the detailed, technical step-by-step procedures for execution.</p>
-    </div>
-
-    <section class="sec" id="initial-setup">
-      <h2 class="text-2xl font-bold mb-3">Initial Setup — Step‑by‑Step (SOP)</h2>
-      <div class="bg-white border rounded-xl p-5 space-y-6 text-sm">
-        <div>
-          <p class="font-semibold mb-2">0) Goals & Metric Contracts</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Define “north star” metrics (e.g., MQLs, SQLs, Revenue) and exact SQL definitions.</li>
-            <li>Create a 1‑pager: business questions, required cuts (channel, campaign, owner), refresh frequency.</li>
-            <li>Agree on data retention and privacy (which fields are PII and how they’re handled).</li>
+    <!-- Layout: sticky sidebar TOC + content -->
+    <div class="grid md:grid-cols-12 gap-8 items-start">
+      <!-- Sticky Sidebar TOC -->
+      <aside id="toc" class="hidden md:block md:col-span-3 md:sticky md:top-24 md:self-start">
+        <nav class="bg-white border rounded-xl p-4 md:sticky md:top-24 md:max-h-[78vh] md:overflow-auto text-sm">
+          <p class="text-xs font-semibold uppercase text-gray-500 mb-2">On this page</p>
+          <ul class="space-y-2">
+            <li><a class="hover:text-indigo-600" href="#tier-overview">Tier Overview</a></li>
           </ul>
-        </div>
+          <details class="mt-4" open>
+            <summary class="font-semibold cursor-pointer">Core Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#core-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#core-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#core-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#core-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#core-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#core-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#core-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#core-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#core-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#core-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#core-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#core-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#core-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#core-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#core-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enhanced Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enhanced-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enhanced-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enhanced-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enhanced-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enhanced-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enhanced-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enhanced-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enhanced-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enhanced-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enhanced-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enhanced-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enhanced-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enhanced-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enhanced-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enhanced-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enterprise Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enterprise-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enterprise-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enterprise-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enterprise-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enterprise-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enterprise-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enterprise-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enterprise-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enterprise-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enterprise-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enterprise-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enterprise-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enterprise-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enterprise-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enterprise-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+        </nav>
+      </aside>
 
-        <div>
-          <p class="font-semibold mb-2">1) Warehouse Setup</p>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="border rounded-lg p-4">
-              <p class="font-semibold">Postgres (managed) quick start</p>
-<pre class="whitespace-pre-wrap text-xs">-- Create roles
-CREATE ROLE analytics_reader NOINHERIT;
-CREATE ROLE analytics_writer NOINHERIT;
-CREATE USER etl_user WITH PASSWORD '…';
-GRANT analytics_writer TO etl_user;
-
--- Schemas
-CREATE SCHEMA raw;  -- unmodified loads
-CREATE SCHEMA stg;  -- cleaned
-CREATE SCHEMA int;  -- joined
-CREATE SCHEMA mart; -- dashboards
-
--- Least privilege
-GRANT USAGE ON SCHEMA raw,stg,int,mart TO analytics_reader;
-GRANT SELECT ON ALL TABLES IN SCHEMA mart TO analytics_reader;
-ALTER DEFAULT PRIVILEGES IN SCHEMA mart GRANT SELECT ON TABLES TO analytics_reader;</pre>
+      <!-- Main content column -->
+      <div class="md:col-span-9 space-y-10">
+        <!-- Tier Overview -->
+        <section class="sec" id="tier-overview">
+          <div class="bg-white border rounded-2xl p-6">
+            <h2 class="text-2xl font-bold">🧭 Tier Overview</h2>
+            <p class="mt-2 text-sm text-gray-700">Pick the tier that matches scope and risk. Each section below is a complete, standalone playbook. Use the buttons to jump directly to the tier you need.</p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <a href="#tier-core" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Core</a>
+              <a href="#tier-enhanced" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enhanced</a>
+              <a href="#tier-enterprise" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enterprise</a>
             </div>
-            <div class="border rounded-lg p-4">
-              <p class="font-semibold">Backup & Ops</p>
-              <ul class="list-disc list-inside">
-                <li>Enable daily automated backups; 7–30 days retention.</li>
-                <li>Force SSL; rotate credentials quarterly.</li>
-                <li>Tag costs and set monthly budget alerts.</li>
+            <div class="overflow-x-auto mt-6 bg-white border rounded-2xl">
+              <table class="min-w-full text-sm">
+                <thead class="bg-gray-50 text-gray-600">
+                  <tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Best For</th><th class="p-3 text-left">Includes (one‑line)</th><th class="p-3 text-left">Notable Differences</th></tr>
+                </thead>
+                <tbody class="divide-y">
+                  <tr>
+                    <td class="p-3 font-semibold">Core</td>
+                    <td class="p-3">Fast setup, lean teams</td>
+                    <td class="p-3">Capture → upsert; dedupe; normalize; UTM mapping; basic dashboards</td>
+                    <td class="p-3">Single workspace; simple alerts; no heavy governance</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-semibold">Enhanced</td>
+                    <td class="p-3">Routing + SLAs + enrichment</td>
+                    <td class="p-3">All Core + scoring, workflows, UAT, bi‑directional sync</td>
+                    <td class="p-3">Idempotency + retries; segment dashboards; approvals</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-semibold">Enterprise</td>
+                    <td class="p-3">Compliance, SSO, observability</td>
+                    <td class="p-3">All Enhanced + SSO/RBAC, lineage/DLP, canary + SLOs</td>
+                    <td class="p-3">Multi‑env, flags, audits, incident runbooks</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Core Tier -->
+        <section class="sec space-y-8" id="tier-core">
+          <h2 class="text-3xl font-bold tracking-tight">⚡ Core Tier — AI Data Analytics</h2>
+          <p class="mt-2 text-gray-600">Lean ingestion and analytics, minimal risk. Designed to capture customer data reliably and surface basic insights quickly.</p>
+
+          <section class="sec" id="core-story">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+              <p class="mt-3 text-sm text-gray-700">We connect your key sources, clean and merge records, and produce simple dashboards and alerts. You’ll approve a one‑page plan with metrics and sources before we build. We soft‑launch with a small audience, then roll out org‑wide.</p>
+              <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+                <li><strong>Capture → upsert:</strong> Pull new data and update existing rows safely.</li>
+                <li><strong>Normalize + dedupe:</strong> Emails/domains de‑duplicated; phones normalized to E.164.</li>
+                <li><strong>Map UTMs + owners:</strong> Consistent campaign UTMs; owner assignment rules.</li>
+                <li><strong>Alerts + logging:</strong> Speed‑to‑lead alerts; quiet hours; activity logging.</li>
+              </ul>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide: How this feels end‑to‑end</summary>
+                <div class="mt-2 text-sm text-gray-700 space-y-2">
+                  <p><strong>Story mode:</strong> You will connect a few tools, watch clean records appear in one place, and see alerts and dashboards turn on step by step.</p>
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Make a simple list of sources: “Website form → Google Sheet,” “CRM → Contacts,” “Ads → Leads.”</li>
+                    <li>Create read‑only API keys (or CSV exports) for each source and paste them into the connector forms.</li>
+                    <li>Run the first import. You should see rows in one table called “leads_raw”.</li>
+                    <li>Turn on cleaning: lowercase emails, format phone to +1…, and merge obvious duplicates by email/domain.</li>
+                    <li>Map UTM tags with a tiny table (email/paid/organic/referral) so you can trust the campaign labels.</li>
+                    <li>Set an alert: when a qualified lead appears, ping the owner — but pause pings at night (quiet hours).</li>
+                    <li>Publish a simple dashboard that shows daily signups, top sources, and leads by owner.</li>
+                    <li>Roll out to more users after two days of watching for issues (“hypercare”).</li>
+                  </ol>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="core-communication">
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+              <p>Weekly status email; 1‑page metrics contract; end‑of‑month KPI snapshot. Plain‑English, visual, and short.</p>
+              <ul class="list-disc list-inside space-y-1 mt-2">
+                <li><strong>Blueprint:</strong> Metrics definitions + source list; sign‑off gates build.</li>
+                <li><strong>Cadence:</strong> Weekly Done/Next/Risks via Slack/Email; shared Kanban.</li>
+                <li><strong>Reporting:</strong> Monthly: freshness, error rate, dedupe coverage, routing accuracy.</li>
+              </ul>
+              <details class="mt-2">
+                <summary class="font-semibold">Newbie guide: What do we report?</summary>
+                <div class="mt-2 text-sm text-gray-700 space-y-2">
+                  <p><strong>Story mode:</strong> Keep it short and visual. One page is enough.</p>
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Export three charts: freshness over time, duplicates removed, and alerts sent/responded.</li>
+                    <li>Add three bullets: 1) what improved, 2) what broke, 3) what we’ll do next.</li>
+                    <li>Share in Slack/Email every Friday. Keep the format the same each week.</li>
+                  </ol>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="core-simple-checklist">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+              <p class="text-gray-600 text-sm">Use this live checklist. Progress stores in your browser only.</p>
+              <div class="mt-3 h-2 bg-gray-100 rounded">
+                <div id="core-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="core-progress-text"></div>
+              </div>
+              <div id="core-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+              <div class="mt-6 space-y-6" id="core-checklist">
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 1 — Kickoff & Metrics</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-metrics"/> <span>Agree on KPI targets and metric definitions</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-sources"/> <span>List sources (forms, CRM, ads, web, billing)</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-access"/> <span>Collect read‑only API keys or exports</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Kickoff</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Write the rules and collect the keys.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Define the numbers: “Lead = contact with email,” “New lead = first seen date.”</li>
+                        <li>List sources: Website form, CRM, Ads, Web analytics, Billing.</li>
+                        <li>Ask for read‑only access (or CSV exports). Save them in a secure place.</li>
+                        <li>Agree on KPI targets for this phase (freshness, dedupe, routing accuracy).</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 2 — Ingest & Upsert</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-ingest"/> <span>Set capture jobs (hourly) for each source</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-upsert"/> <span>Use upserts to avoid duplicates on re‑runs</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-logs"/> <span>Log runs with durations and row counts</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Upserts</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Never duplicate a person — update them.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Pick your key: email (lowercased) and company domain.</li>
+                        <li>Schedule jobs hourly. First run does a full load; later runs only new/changed rows.</li>
+                        <li>After each run, check the log: start time, rows read, rows inserted, rows updated.</li>
+                        <li>If counts look strange, pause and compare against the source export before proceeding.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 3 — Normalize & Dedupe</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-e164"/> <span>Normalize phone numbers to E.164</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-dedupe"/> <span>Deduplicate by email and domain</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-utm"/> <span>Map UTM params to canonical campaign fields</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Cleaning data</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Make messy fields neat and consistent.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Phones: convert to E.164 (e.g., +14155552671). Reject obviously invalid numbers.</li>
+                        <li>Emails: lowercase and trim. Split domain part for company matching.</li>
+                        <li>Deduplicate: group by email and then by domain; keep the newest record; merge fields.</li>
+                        <li>UTMs: create a mapping table that converts messy values to a short list (email/paid/organic/referral).</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 4 — Owner & Alerts</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-owner"/> <span>Assign owners by simple round‑robin or region</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-speed"/> <span>Set speed‑to‑lead alerts (Slack/Email)</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-quiet"/> <span>Enable quiet hours and escalation rules</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Alerts</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Right person, right time, right message.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Pick the channel (Slack, Email). Add the team or owner users.</li>
+                        <li>Write a short template: name, email, source, assigned owner, and a link.</li>
+                        <li>Set quiet hours (e.g., 8pm–8am) and an escalation path for urgent items.</li>
+                        <li>Send one test alert and confirm the owner can click through to the record.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 5 — Email Auth & Sequences</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-spf"/> <span>Set SPF/DKIM/DMARC for sending domain</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-seq"/> <span>Short on‑brand sequences with opt‑out</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-activity"/> <span>Log outreach activity centrally</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Deliverability</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Set three DNS records and keep emails human.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Add SPF and DKIM records from your email provider to your domain’s DNS.</li>
+                        <li>Add DMARC with a conservative policy (p=none) to start; collect reports.</li>
+                        <li>Write 2–3 short, on‑brand templates and include an easy opt‑out.</li>
+                        <li>Send a test to yourself; check it lands in Inbox; adjust if needed.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 6 — Dashboards & Hypercare</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-dash"/> <span>Publish KPI dashboard (daily/weekly views)</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-tests"/> <span>Add 5–10 data tests for key metrics</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-rollout"/> <span>Roll out to a small group, then all</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Hypercare</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Launch small, watch closely, then expand.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Share the dashboard with 3–5 people first; collect comments.</li>
+                        <li>Watch freshness and row counts daily; fix any gaps immediately.</li>
+                        <li>When stable for 48 hours, roll out to the rest of the team.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 7 — Ongoing Optimization</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-weekly"/> <span>Weekly: review alerts and errors</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-monthly"/> <span>Monthly: KPI snapshot and improvements</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Keep it sharp</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Small weekly habits keep data trustworthy.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Pick 10 random records; confirm owner, UTM, and phone format are correct.</li>
+                        <li>Fix one rule per week (or confirm no change needed). Document the change.</li>
+                        <li>Once a month, post a 1‑page KPI snapshot and the top 3 improvements.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center gap-3">
+                <button id="core-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+                <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="sec" id="core-phases">
+            <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Metrics contract, sources, consent</td><td class="p-3">You + Client</td><td class="p-3">Charter, targets</td></tr>
+                  <tr><td class="p-3 font-semibold">Design</td><td class="p-3">Schema, dedupe, UTM mapping</td><td class="p-3">You</td><td class="p-3">Spec + ERD</td></tr>
+                  <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Connectors, upserts, logging</td><td class="p-3">You</td><td class="p-3">Pipelines + tables</td></tr>
+                  <tr><td class="p-3 font-semibold">Test</td><td class="p-3">Row counts, spot checks</td><td class="p-3">You + Client</td><td class="p-3">Test report</td></tr>
+                  <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Dashboards + alerts</td><td class="p-3">You</td><td class="p-3">Go‑live</td></tr>
+                  <tr><td class="p-3 font-semibold">Optimize</td><td class="p-3">Weekly/Monthly review</td><td class="p-3">You</td><td class="p-3">KPI snapshot</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="core-scope">
+            <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>2–5 sources, one workspace, basic models</li>
+              <li>Upsert ingestion, dedupe by email/domain, E.164 phone</li>
+              <li>UTM mapping, owner assignment, speed‑to‑lead alerts</li>
+              <li>SPF/DKIM/DMARC setup; quiet hours; activity logging</li>
+              <li>1–2 dashboards (KPI + funnel)</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="core-kpis">
+            <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3">Freshness</td><td class="p-3">≤ 1h</td><td class="p-3">From source to warehouse</td></tr>
+                  <tr><td class="p-3">Dedupe Coverage</td><td class="p-3">≥ 98%</td><td class="p-3">By email + domain</td></tr>
+                  <tr><td class="p-3">Routing Accuracy</td><td class="p-3">≥ 95%</td><td class="p-3">Owner rules correct</td></tr>
+                  <tr><td class="p-3">Logging Coverage</td><td class="p-3">≥ 95%</td><td class="p-3">Runs with metadata</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="core-glossary">
+            <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <p><strong>Upsert</strong>: Update a row if it exists; insert it if it doesn’t.</p>
+              <p><strong>E.164</strong>: A standard way to write phone numbers like +14155552671.</p>
+              <p><strong>UTM</strong>: Tags in URLs that mark the campaign/source of a visit.</p>
+              <p><strong>Quiet hours</strong>: Times when alerts pause so people aren’t pinged at night.</p>
+            </div>
+          </section>
+
+          <div class="border-t pt-10">
+            <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+            <p class="mt-2 text-gray-600 text-sm">Step‑by‑step SOPs for Core tier.</p>
+          </div>
+
+          <section class="sec" id="core-initial-setup">
+            <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-4">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Create folders: <code>/01_discovery</code> … <code>/05_launch</code>.</li>
+                <li>One‑page metrics contract; baseline KPIs; simple tracker.</li>
+              </ul>
+              <div class="border rounded p-4">
+                <p class="font-semibold">Upsert Pseudocode</p>
+<pre class="whitespace-pre-wrap text-xs">
+for rec in source_rows:
+  key = hash(lower(rec.email) || '|' || lower(domain(rec.email)))
+  rec.phone = to_e164(rec.phone)
+  rec.utm = normalize_utm(rec.utm)
+  warehouse.upsert(table='leads', key=key, record=rec)
+</pre>
+              </div>
+            </div>
+          </section>
+
+          <section class="sec" id="core-prereqs">
+            <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>Source API keys or exports; warehouse credentials.</li>
+              <li>Domains/DNS for SPF/DKIM/DMARC; Slack/Email for alerts.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="core-tooling">
+            <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+            <div class="bg-white border rounded-xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Warehouse</td><td class="p-3">BigQuery/Snowflake/PG (managed)</td><td class="p-3">Lean, hosted</td></tr>
+                  <tr><td class="p-3 font-semibold">ELT</td><td class="p-3">Fivetran/Stitch/Hevo or CSV jobs</td><td class="p-3">Small scale</td></tr>
+                  <tr><td class="p-3 font-semibold">Dashboards</td><td class="p-3">Looker Studio/Metabase</td><td class="p-3">Simple sharing</td></tr>
+                  <tr><td class="p-3 font-semibold">Alerts</td><td class="p-3">Slack/Email</td><td class="p-3">Speed‑to‑lead</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-3 text-xs text-gray-500">Tip: prefer managed tools; focus on clean data and usable dashboards first.</p>
+          </section>
+
+          <section class="sec" id="core-design">
+            <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Idempotent ingestion using stable keys (email+domain).</li>
+                <li>Normalization: E.164, lowercase emails, trimmed whitespace.</li>
+                <li>UTM canonicalization and campaign hierarchy.</li>
+                <li>Owner rules explicit, tested on sample data.</li>
+              </ul>
+              <details class="mt-2"><summary class="font-semibold">Newbie guide: Idempotency</summary>
+                <p><strong>Story mode:</strong> If the same file arrives twice, the result should be the same. We use a unique key so repeats don’t create duplicates.</p>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="core-security">
+            <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Read‑only source access; least privilege; rotate keys.</li>
+                <li>PII minimization; retention 90 days for logs; export on request.</li>
+                <li>Email auth: SPF/DKIM/DMARC; unsubscribe compliance.</li>
+              </ul>
+              <details class="mt-2"><summary class="font-semibold">Newbie guide: Keeping data safe</summary>
+                <p class="mt-1 text-gray-700"><strong>Story mode:</strong> We only take what we need, store it safely, and delete it on schedule. Email settings help messages land in inboxes, not spam.</p>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="core-timeline">
+            <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>Week 1: Metrics + schema + connectors.</li>
+              <li>Week 2: Normalize/dedupe; alerts; dashboards; launch.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="core-templates">
+            <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">Row quality checks (excerpt):
+[ ] No null emails on leads
+[ ] Phone numbers are E.164
+[ ] UTM source in {email, paid, organic, referral}
+</pre>
+<pre class="whitespace-pre-wrap text-xs">Alert example (Slack):
+New lead: {{name}} ({{email}}) — {{utm_source}}/{{utm_campaign}}
+Owner: {{owner}} | Open CRM: {{link}}
+</pre>
+            </div>
+          </section>
+
+          <section class="sec" id="core-audit-monitoring">
+            <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Daily: pipeline success rate; row counts vs source.</li>
+                <li>Weekly: duplicate trends; alert volume; errors.</li>
+                <li>Monthly: KPI pack; dedupe rules review.</li>
+              </ul>
+              <details class="mt-2"><summary class="font-semibold">Newbie guide: What to watch</summary>
+                <p>Look for missing data or big jumps. Check if alerts go to the right person and adjust rules.</p>
+              </details>
+            </div>
+          </section>
+        </section>
+
+        <!-- Enhanced Tier -->
+        <section class="sec space-y-8" id="tier-enhanced">
+          <h2 class="text-3xl font-bold tracking-tight">🚀 Enhanced Tier — AI Data Analytics</h2>
+          <p class="mt-2 text-gray-600">Workflow routing, enrichment, scoring, and stronger testing. Adds approvals and bi‑directional sync to keep systems in lockstep.</p>
+
+          <section class="sec" id="enhanced-story">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+              <p class="mt-3 text-sm text-gray-700">We add workflows that route records to the right team with SLA timers. We enrich leads/companies, score them, and push high‑score items to a fast lane. Syncs run both directions (CRM ⇄ warehouse) with idempotency keys and retries. UAT covers normal and error paths.</p>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide: End‑to‑end feel</summary>
+                <div class="mt-2 text-sm text-gray-700 space-y-2">
+                  <p><strong>Story mode:</strong> We add “traffic rules” so good records move quickly and nothing gets stuck.</p>
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>List 3–5 intents (Pricing, Book Demo, Support) and the team that owns each.</li>
+                    <li>Enrich a record (company size, industry) and give it points for good signs.</li>
+                    <li>If score ≥ threshold, mark it “fast lane” and alert the right team.</li>
+                    <li>Start a timer (SLA). If no action in X minutes, nudge or escalate.</li>
+                    <li>Sync notes back to the CRM and the warehouse, using a unique request key.</li>
+                    <li>Test the “busy server” case: we retry with backoff and don’t create duplicates.</li>
+                  </ol>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-communication">
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+              <ul class="list-disc list-inside space-y-1 mt-2">
+                <li><strong>Blueprint:</strong> Intent/routing rules; SLA matrix; approval steps.</li>
+                <li><strong>Reporting:</strong> Dashboard by segment/intent; SLA compliance; error rate.</li>
+              </ul>
+              <details class="mt-2"><summary class="font-semibold">Newbie guide: SLA</summary>
+                <div class="mt-2 text-sm text-gray-700">
+                  <p><strong>Story mode:</strong> Make the promise, set the timer, and choose the nudge.</p>
+                  <ol class="list-decimal list-inside space-y-1 mt-1">
+                    <li>Write SLAs: P1 leads reply in 1h; P2 in 4h.</li>
+                    <li>Add timers in your workflow tool and name owners.</li>
+                    <li>If a timer expires, send a nudge, then escalate to a manager.</li>
+                  </ol>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-simple-checklist">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+              <p class="text-gray-600 text-sm">Use this live checklist. Progress stores in your browser only.</p>
+              <div class="mt-3 h-2 bg-gray-100 rounded">
+                <div id="enhanced-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enhanced-progress-text"></div>
+              </div>
+              <div id="enhanced-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+              <div class="mt-6 space-y-6" id="enhanced-checklist">
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 1 — Workflow Design</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-routes"/> <span>Define routing rules and SLA timers</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-approvals"/> <span>Add human approvals for key steps</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enh-fastlane"/> <span>Set fast‑lane thresholds by score</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Routes</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Turn plain rules into a routing table.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>List intents and owners (Pricing → Sales, Support → CS).</li>
+                        <li>Add conditions: region, company size, product interest.</li>
+                        <li>Write a fallback row: if nothing matched, send to General queue.</li>
+                        <li>Test 20 sample records and confirm each goes to the right owner.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 2 — Enrichment & Scoring</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-enrich"/> <span>Time‑box enrichment (e.g., Clearbit 300ms budget)</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-score"/> <span>Build scoring model and thresholds</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enh-flag"/> <span>Flag records meeting fast‑lane criteria</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Scoring</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Add points and choose a “fast lane” threshold.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Pick features: work email, industry fit, page views, firmographic size.</li>
+                        <li>Assign points (e.g., work email +10, visited pricing +5).</li>
+                        <li>Choose a threshold (e.g., ≥ 20 points = fast lane).</li>
+                        <li>Spot‑check 10 records and adjust points until it feels right.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 3 — Copy & Approvals</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-ai"/> <span>AI‑drafted summaries/notes for humans to approve</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-seq"/> <span>On‑brand templates with placeholders</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enh-quiet"/> <span>Quiet hours + escalation</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Human‑in‑the‑loop</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Draft fast, approve before send.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Create short templates with placeholders: {{first_name}}, {{product}}, {{next_step}}.</li>
+                        <li>Let AI fill the placeholders from the record and activity.</li>
+                        <li>Require one human click to approve or edit before sending.</li>
+                        <li>Log who approved and when for audit.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 4 — Bi‑directional Sync</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-sync"/> <span>Set CRM ⇄ warehouse sync</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-idem"/> <span>Use idempotency keys; retries with backoff</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enh-logs"/> <span>Audit logs for every write</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Don’t double‑create</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Use a unique key so retries are safe.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Build the key from email+timestamp or a UUID on first send.</li>
+                        <li>On retry, send the same key. The server will ignore duplicates.</li>
+                        <li>Wait longer between retries: 1s, 2s, 4s (backoff).</li>
+                        <li>Write every request/response to an audit log for debugging.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 5 — UAT including Error Paths</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-uat"/> <span>Test happy paths + 5xx/429/timeouts</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-dash"/> <span>Dashboards by intent/segment</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enh-release"/> <span>Release notes; owners trained</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Error tests</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Break it on purpose to prove it’s safe.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Write 10 happy‑path tests and 10 error‑path tests (5xx, 429, timeout).</li>
+                        <li>Run in a sandbox. Confirm retries/backoff work and no duplicates are created.</li>
+                        <li>Get sign‑off from the team before launch.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center gap-3">
+                <button id="enhanced-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+                <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-phases">
+            <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Intents, routing, SLAs, scoring inputs</td><td class="p-3">You + Client</td><td class="p-3">Blueprint</td></tr>
+                  <tr><td class="p-3 font-semibold">Design</td><td class="p-3">Workflows, approvals, sync map</td><td class="p-3">You</td><td class="p-3">Spec</td></tr>
+                  <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Enrichment, scoring, bi‑dir sync</td><td class="p-3">You</td><td class="p-3">Working flows</td></tr>
+                  <tr><td class="p-3 font-semibold">Test</td><td class="p-3">UAT incl. error paths</td><td class="p-3">You + Client</td><td class="p-3">Sign‑off</td></tr>
+                  <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Go‑live + segment dashboards</td><td class="p-3">You</td><td class="p-3">KPI baseline</td></tr>
+                  <tr><td class="p-3 font-semibold">Optimize</td><td class="p-3">Monthly deck</td><td class="p-3">You</td><td class="p-3">Insights + actions</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-2 text-xs text-gray-500">Definitions: SLA = service level target for response times. Idempotency = unique keys prevent duplicates on retries.</p>
+          </section>
+
+          <section class="sec" id="enhanced-scope">
+            <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>All Core + enrichment and scoring</li>
+              <li>Workflows with routing and SLA timers</li>
+              <li>Bi‑directional sync; idempotency and retries/backoff</li>
+              <li>UAT including error paths; dashboards by segment/intent</li>
+              <li>AI‑drafted copy with human approvals</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enhanced-kpis">
+            <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3">Routing Accuracy</td><td class="p-3">≥ 97%</td><td class="p-3">Rule matches expected owner</td></tr>
+                  <tr><td class="p-3">SLA Compliance</td><td class="p-3">≥ 95%</td><td class="p-3">Within promised response time</td></tr>
+                  <tr><td class="p-3">CRM Error Rate</td><td class="p-3">&lt; 1%</td><td class="p-3">With retries/backoff</td></tr>
+                  <tr><td class="p-3">UAT Pass Rate</td><td class="p-3">≥ 90%</td><td class="p-3">Happy + error paths</td></tr>
+                  <tr><td class="p-3">Monthly Report</td><td class="p-3">Delivered</td><td class="p-3">Insights and actions</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-glossary">
+            <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <p><strong>Enrichment</strong>: Adding company/person info from a trusted source.</p>
+              <p><strong>Backoff</strong>: Wait longer between retries when a server is busy.</p>
+              <p><strong>Idempotency</strong>: A unique key ensures a repeated request doesn’t create duplicates.</p>
+              <p><strong>Bi‑directional sync</strong>: Keep two systems in agreement both ways.</p>
+            </div>
+          </section>
+
+          <div class="border-t pt-10">
+            <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+            <p class="mt-2 text-gray-600 text-sm">Technical SOPs for Enhanced tier.</p>
+          </div>
+
+          <section class="sec" id="enhanced-initial-setup">
+            <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>Blueprint; intents; routing table; SLA matrix.</li>
+              <li>Secrets handling; rate limits; webhook endpoints.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enhanced-prereqs">
+            <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>CRM/Marketing API keys; sandbox/test accounts.</li>
+              <li>Enrichment keys; scoring inputs; locales if messaging.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enhanced-tooling">
+            <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">iPaaS</td><td class="p-3">Zapier/Make/Workato</td><td class="p-3">Routing + timers</td></tr>
+                  <tr><td class="p-3 font-semibold">Enrichment</td><td class="p-3">Clearbit/PDL</td><td class="p-3">Time‑box lookups</td></tr>
+                  <tr><td class="p-3 font-semibold">Messaging</td><td class="p-3">Slack/Email/CRM tasks</td><td class="p-3">Approvals</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-design">
+            <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Deterministic routing; fallback owner; audit every handoff.</li>
+                <li>Scoring features versioned; thresholds tracked in config.</li>
+                <li>Locale‑aware copy; approvals capture approver + timestamp.</li>
+              </ul>
+              <details class="mt-2"><summary class="font-semibold">Newbie guide: Routing table</summary>
+                <p><strong>Story mode:</strong> Make a simple table: IF region = EU THEN owner = “A”; ELSE owner = “B”. Test on 20 sample records.</p>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-security">
+            <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Encrypt secrets; rotate tokens; 429 retry with backoff.</li>
+                <li>Retention: 60–90 days; export on request; DSR documented.</li>
+                <li>Access: least‑privilege; audit webhooks and writes.</li>
+              </ul>
+              <details class="mt-2"><summary class="font-semibold">Newbie guide: Data requests</summary>
+                <p class="mt-1">If someone asks for their data, we can export it or delete it following policy.</p>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-timeline">
+            <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>Week 1–2: Workflows + enrichment + scoring.</li>
+              <li>Week 3: UAT; fixes; launch + dashboards.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enhanced-templates">
+            <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">Idempotent webhook (conceptual):
+POST /sync HTTP/1.1
+Idempotency-Key: {{uuid}}
+Retry-After: 1, 2, 4s (max 3)
+</pre>
+<pre class="whitespace-pre-wrap text-xs">UAT checklist (excerpt):
+[ ] Routing table matches 20/20 samples
+[ ] 5xx, 429, timeout retry policies pass
+[ ] Dashboards by segment render and filter correctly
+</pre>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-audit-monitoring">
+            <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Daily: routing errors and retry volume; alert if &gt; 1%.</li>
+                <li>Weekly: SLA misses; enrichment latency; slow workflows.</li>
+                <li>Monthly: segment performance; quality acceptance; improvements.</li>
               </ul>
             </div>
-          </div>
-        </div>
+          </section>
+        </section>
 
-        <div>
-          <p class="font-semibold mb-2">2) Connectors & Ingestion</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Prefer managed connectors (Fivetran/Hevo/Stitch). Budget option: Airbyte or scheduled CSVs.</li>
-            <li>GA4: export via BigQuery (if available) or use a connector/API pulls for core events.</li>
-            <li>CRM: nightly export of leads/deals/activities; include <code>updated_at</code> for incremental loads.</li>
-          </ul>
-          <div class="border rounded-lg p-4 mt-2">
-            <p class="font-semibold">Airbyte/Airflow‑style schedule (pseudocode)</p>
-<pre class="whitespace-pre-wrap text-xs">daily 02:00: extract crm_leads → raw.crm_leads_yyyy_mm_dd
-daily 02:15: extract crm_deals  → raw.crm_deals_yyyy_mm_dd
-daily 02:30: extract ga4_events → raw.ga4_events_yyyy_mm_dd
-daily 03:00: transform dbt build (stg → int → mart)</pre>
-          </div>
-        </div>
+        <!-- Enterprise Tier -->
+        <section class="sec space-y-8" id="tier-enterprise">
+          <h2 class="text-3xl font-bold tracking-tight">🏢 Enterprise Tier — AI Data Analytics</h2>
+          <p class="mt-2 text-gray-600">Identity, governance, lineage, and observability. Treat data and automations like a product with safe rollouts and SLOs.</p>
 
-        <div>
-          <p class="font-semibold mb-2">3) dbt Project Bootstrap</p>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="border rounded-lg p-4">
-              <p class="font-semibold">Commands</p>
-<pre class="whitespace-pre-wrap text-xs">dbt init client_analytics
-cd client_analytics
-dbt run-operation generate_model --args '{name: stg_leads, schema: stg}'
-dbt run-operation generate_model --args '{name: stg_deals, schema: stg}'
-dbt run-operation generate_model --args '{name: int_funnel, schema: int}'
-dbt run-operation generate_model --args '{name: mart_kpis, schema: mart}'</pre>
+          <section class="sec" id="enterprise-story">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+              <p class="mt-3 text-sm text-gray-700">We add SSO/RBAC and SCIM for access, maker‑checker approvals for risky changes, and feature flags with canary rollouts for workflows. A warehouse‑centric stack with lineage, DLP, and retention keeps data safe. Observability covers logs, traces, costs; SLOs and error budgets guide releases. Monthly evaluation packs summarize health.</p>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide: End‑to‑end feel</summary>
+                <div class="mt-2 text-sm text-gray-700 space-y-2">
+                  <p><strong>Story mode:</strong> Add locks and dashboards, make changes slowly, and prove you can undo them.</p>
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Turn on SSO so one company login controls access.</li>
+                    <li>Write an RBAC matrix: who can view, edit, approve. Use SCIM to auto‑add/remove users.</li>
+                    <li>Add maker‑checker: one person proposes a change, another approves it.</li>
+                    <li>Wrap risky workflows in feature flags; roll out to 5%, then 25%, then 100%.</li>
+                    <li>Track every admin action in an audit log; send alerts on high‑risk actions.</li>
+                    <li>Watch logs, traces, and cost; set SLOs and respect error budgets.</li>
+                    <li>Each month, create an evidence pack with charts and key events.</li>
+                  </ol>
+                </div>
+              </details>
             </div>
-            <div class="border rounded-lg p-4">
-              <p class="font-semibold">Tests & Docs</p>
-<pre class="whitespace-pre-wrap text-xs">-- example in schema.yml
-models:
-  - name: stg_leads
-    columns:
-      - name: email
-        tests: [not_null, unique]
-      - name: first_seen_at
-        tests: [not_null]
-  - name: int_funnel
-    columns:
-      - name: stage
-        tests:
-          - accepted_values:
-              values: ['lead','mql','sql','won','lost']</pre>
+          </section>
+
+          <section class="sec" id="enterprise-communication">
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+              <ul class="list-disc list-inside space-y-1 mt-2">
+                <li><strong>Change calendar:</strong> Release notes, flags, canary plan.</li>
+                <li><strong>Governance:</strong> Approval records; audit trail; evidence archive.</li>
+                <li><strong>Executive deck:</strong> SLOs, cost, incidents, risk register.</li>
+              </ul>
             </div>
-          </div>
-        </div>
+          </section>
 
-        <div>
-          <p class="font-semibold mb-2">4) Dashboard Layer</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Use Metabase/Looker Studio/Toggle to warehouse. Create “Executive Overview” first.</li>
-            <li>Define filters: date range, channel, campaign, owner. Save default views for weekly review.</li>
-            <li>Enable email pulses each Monday 9am with prior week trends and anomalies.</li>
-          </ul>
-        </div>
+          <section class="sec" id="enterprise-simple-checklist">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+              <p class="text-gray-600 text-sm">Use this live checklist. Progress stores in your browser only.</p>
+              <div class="mt-3 h-2 bg-gray-100 rounded">
+                <div id="enterprise-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enterprise-progress-text"></div>
+              </div>
+              <div id="enterprise-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
 
-        <div>
-          <p class="font-semibold mb-2">5) Scheduling & CI</p>
-          <div class="border rounded-lg p-4">
-            <p class="font-semibold">GitHub Actions (example)</p>
-<pre class="whitespace-pre-wrap text-xs">name: nightly-analytics
-on:
-  schedule: [{ cron: '0 3 * * *' }]
-jobs:
-  run-dbt:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-      - run: pip install dbt-postgres
-      - run: dbt deps && dbt build --profiles-dir .
-        env:
-          DBT_USER: ${{ secrets.DBT_USER }}
-          DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}</pre>
-          </div>
-        </div>
+              <div class="mt-6 space-y-6" id="enterprise-checklist">
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 1 — Identity & Access</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-sso"/> <span>SSO/RBAC + SCIM user lifecycle</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-least"/> <span>Least‑privilege roles; service accounts</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ent-audit"/> <span>Central audit logs for admin actions</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Access</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Centralize login and keep roles tidy.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Integrate SSO (Okta/Azure AD) using SAML/OIDC; test login.</li>
+                        <li>Create roles: Viewer, Editor, Approver, Admin. Assign least privilege.</li>
+                        <li>Enable SCIM so new hires get the right role and leavers lose access automatically.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
 
-        <div>
-          <p class="font-semibold mb-2">6) Data Quality & Alerts</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>dbt tests must pass ≥ 95% before dashboards refresh; failing tests page ops.</li>
-            <li>Freshness checks: <code>raw.*</code> tables updated within 36h; alert if stale.</li>
-            <li>Anomaly detection: simple z‑score on daily KPIs; flag ±2.5σ deviations.</li>
-          </ul>
-        </div>
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 2 — Change Safety</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-maker"/> <span>Maker‑checker approvals for risky changes</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-flags"/> <span>Feature flags + canary 5%→25%→100%</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ent-rollback"/> <span>Rollback drills practiced quarterly</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Canary</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Roll out slowly with a safety rope.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Create a feature flag around the change.</li>
+                        <li>Stage 1: 5% of users for 2 hours. Watch error rate and freshness.</li>
+                        <li>Stage 2: 25% for 6 hours. Keep watching. Be ready to roll back.</li>
+                        <li>Stage 3: 100% when metrics stay green.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
 
-        <div>
-          <p class="font-semibold mb-2">7) Contingency Matrix</p>
-          <div class="overflow-x-auto border rounded-lg">
-            <table class="min-w-full">
-              <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Issue</th><th class="p-3 text-left">Symptom</th><th class="p-3 text-left">Immediate</th><th class="p-3 text-left">Long‑term</th></tr></thead>
-              <tbody class="divide-y">
-                <tr><td class="p-3">Connector down</td><td class="p-3">No new raw data</td><td class="p-3">Pause transforms; surface “data stale” banner</td><td class="p-3">Failover to CSV export; add status checks</td></tr>
-                <tr><td class="p-3">Schema drift</td><td class="p-3">dbt test failures</td><td class="p-3">Patch staging model; pin version</td><td class="p-3">Contract schemas; add drift alerts</td></tr>
-                <tr><td class="p-3">Cost spike</td><td class="p-3">Warehouse bill jumps</td><td class="p-3">Limit concurrency; cache dashboards</td><td class="p-3">Materialize marts; add query guards</td></tr>
-                <tr><td class="p-3">Slow queries</td><td class="p-3">Dashboards lag</td><td class="p-3">Add indexes; pre‑aggregate</td><td class="p-3">Review model design; partition by date</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 3 — Data Governance</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-lineage"/> <span>Lineage catalog; data contracts</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-dlp"/> <span>DLP scans; PII classification; retention windows</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ent-backfill"/> <span>Warehouse sync schedules + backfills</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Lineage</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Draw the map; set the rules.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Catalog sources → staging → models → dashboards.</li>
+                        <li>Add a short “data contract” for key tables: schema, owner, refresh time.</li>
+                        <li>Set retention windows (e.g., logs 90 days) and DLP rules (mask PII).</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 4 — Observability & SLOs</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-logs"/> <span>Logs, traces, and cost dashboards</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-slos"/> <span>Set SLOs + error budgets</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ent-runbooks"/> <span>Incident runbooks; on‑call roster</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: SLOs</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Promise stability and stick to it.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Pick SLOs: availability 99.5%, freshness ≤ 1h, error rate &lt; 1%.</li>
+                        <li>Create dashboards with red lines for each SLO and alerts above thresholds.</li>
+                        <li>Calculate an error budget; if it’s spent, freeze changes until you recover.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 5 — Monthly Eval Packs</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-pack"/> <span>Produce monthly health/evidence pack</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-share"/> <span>Share with execs + audit archive</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ent-review"/> <span>Review risks; plan next month</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Evidence</summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                      <p><strong>Story mode:</strong> Build a small monthly packet anyone can read.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Export key charts: availability, freshness, error rate, cost.</li>
+                        <li>List changes shipped (with flags), incidents (with time‑to‑resolve), and upcoming risks.</li>
+                        <li>Save the PDF and raw evidence (CSV/screenshots) in an “Evidence” folder.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center gap-3">
+                <button id="enterprise-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+                <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-phases">
+            <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Stakeholders, SLOs, governance map</td><td class="p-3">You + Client</td><td class="p-3">Charter + risks</td></tr>
+                  <tr><td class="p-3 font-semibold">Build</td><td class="p-3">SSO/RBAC, flags, observability</td><td class="p-3">You</td><td class="p-3">Admin + dashboards</td></tr>
+                  <tr><td class="p-3 font-semibold">Test</td><td class="p-3">UAT + rollback drills</td><td class="p-3">You + Client</td><td class="p-3">Sign‑off</td></tr>
+                  <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Canary rollout</td><td class="p-3">You</td><td class="p-3">SLOs met</td></tr>
+                  <tr><td class="p-3 font-semibold">Operate</td><td class="p-3">On‑call; monthly eval packs</td><td class="p-3">You</td><td class="p-3">Evidence archive</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-scope">
+            <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>All Enhanced + SSO/RBAC + SCIM</li>
+              <li>Maker‑checker approvals; feature flags + canary</li>
+              <li>Warehouse sync + lineage + DLP + retention</li>
+              <li>Observability (logs/traces/cost); SLOs + error budgets</li>
+              <li>Incident runbooks; monthly evaluation packs</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enterprise-kpis">
+            <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3">Availability</td><td class="p-3">≥ 99.5%</td><td class="p-3">Pipelines succeed</td></tr>
+                  <tr><td class="p-3">Error Rate</td><td class="p-3">&lt; 1%</td><td class="p-3">Retryable vs fatal</td></tr>
+                  <tr><td class="p-3">SLA Compliance</td><td class="p-3">≥ 98%</td><td class="p-3">By segment/region</td></tr>
+                  <tr><td class="p-3">Audit Coverage</td><td class="p-3">100%</td><td class="p-3">Admin actions logged</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-glossary">
+            <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <p><strong>SSO</strong>: Single Sign‑On; one login for many tools.</p>
+              <p><strong>RBAC</strong>: Role‑based access control; who can do what.</p>
+              <p><strong>SCIM</strong>: Standard for auto‑provisioning users across tools.</p>
+              <p><strong>DLP</strong>: Data Loss Prevention; stop sensitive data from leaking.</p>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-initial-setup">
+            <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>SSO integration; RBAC matrix; SCIM config.</li>
+              <li>Audit requirements; logging/tracing endpoints.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enterprise-tooling">
+            <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Identity</td><td class="p-3">Okta/Azure AD</td><td class="p-3">SSO + SCIM</td></tr>
+                  <tr><td class="p-3 font-semibold">Warehouse</td><td class="p-3">Snowflake/BigQuery</td><td class="p-3">Lineage + governance</td></tr>
+                  <tr><td class="p-3 font-semibold">iPaaS</td><td class="p-3">Workato/MuleSoft</td><td class="p-3">Enterprise workflows</td></tr>
+                  <tr><td class="p-3 font-semibold">Observability</td><td class="p-3">Logs/Traces/Cost</td><td class="p-3">Dashboards + alerts</td></tr>
+                  <tr><td class="p-3 font-semibold">Flags</td><td class="p-3">LaunchDarkly/Config</td><td class="p-3">Canary + rollback</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-3 text-xs text-gray-500">Tip: manage changes like code — approvals, flags, rollbacks, and dashboards.</p>
+          </section>
+
+          <section class="sec" id="enterprise-design">
+            <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Feature flags around risky workflows with safe defaults.</li>
+                <li>Data contracts between producers and consumers.</li>
+                <li>Dashboards: availability, latency (p95), error budgets, costs.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-security">
+            <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Compliance: SOC2/GDPR mapping; encryption in transit/at rest.</li>
+                <li>Incident response: runbooks; RTO/RPO; post‑incident RCAs.</li>
+                <li>Data governance: approvals; classification; retention schedules.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-timeline">
+            <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Week(s)</th><th class="p-3 text-left">Focus</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Exit Criteria</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr>
+                    <td class="p-3">1–2</td>
+                    <td class="p-3">Discovery & Design</td>
+                    <td class="p-3">SLOs; governance; data map; design spec</td>
+                    <td class="p-3">You + Client</td>
+                    <td class="p-3">Approved design + rollout plan</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3">3–5</td>
+                    <td class="p-3">Build & Observability</td>
+                    <td class="p-3">SSO; flags; logs/traces/cost dashboards</td>
+                    <td class="p-3">You</td>
+                    <td class="p-3">Stage demo; dashboards green</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3">6–7</td>
+                    <td class="p-3">Test & UAT</td>
+                    <td class="p-3">Eval packs; UAT; rollback drills</td>
+                    <td class="p-3">You + Client</td>
+                    <td class="p-3">UAT sign‑off; rollback validated</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3">8</td>
+                    <td class="p-3">Launch & SLOs</td>
+                    <td class="p-3">Canary 5%→25%→100%; on‑call; notes</td>
+                    <td class="p-3">You</td>
+                    <td class="p-3">SLOs met 24h; no critical incidents</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-templates">
+            <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">Release checklist:
+- Change ticket approved
+- Feature flag staged
+- Canary + rollback plan
+- Observability checks green
+</pre>
+<pre class="whitespace-pre-wrap text-xs">Canary rollout example (conceptual):
+flag: workflow_owner_rules_v3
+stages:
+  - percentage: 5
+    duration: 2h
+  - percentage: 25
+    duration: 6h
+  - percentage: 100
+    conditions: ["error_rate &lt; 1%", "freshness &lt;= 1h"]
+</pre>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-audit-monitoring">
+            <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Quarterly audit packs; evidence archive; change logs.</li>
+                <li>Operational reviews: SLO trends; cost per record; error budgets.</li>
+                <li>Security reviews: dependency updates; secrets rotation.</li>
+              </ul>
+              <details class="mt-2"><summary class="font-semibold">Executive dashboard (what to show)</summary>
+                <p>Availability, freshness, routing accuracy, costs, risks, change calendar, and last incident with time‑to‑resolve.</p>
+              </details>
+            </div>
+          </section>
+        </section>
+
       </div>
-    </section>
+    </div>
 
-    <section class="sec" id="audit-monitoring">
-      <h2 class="text-2xl font-bold mb-3">Audit & Monitoring (Ops)</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Freshness dashboard; warn if SLAs miss.</li>
-        <li>Error inbox for failed jobs; alert on spikes.</li>
-        <li>Monthly review: adoption, test pass rate, roadmap updates.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="prereqs">
-      <h2 class="text-2xl font-bold mb-3">Access & Prerequisites</h2>
-      <div class="bg-white border rounded-xl p-5 text-sm">
-        <ul class="list-disc ml-5 space-y-1">
-          <li>Read‑only access to GA4, CRM, billing, support tools; service users preferred.</li>
-          <li>Warehouse credentials; ability to create schemas and roles.</li>
-          <li>Approval for connectors and budget for storage/ETL.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="sec" id="tooling">
-      <h2 class="text-2xl font-bold mb-3">Tooling Options</h2>
-      <div class="bg-white border rounded-xl overflow-hidden text-sm">
-        <table class="min-w-full">
-          <thead><tr><th class="p-3 text-left">Layer</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">Warehouse</td><td class="p-3">Postgres, BigQuery</td><td class="p-3">Start simple; enforce roles/schemas</td></tr>
-            <tr><td class="p-3 font-semibold">Connectors</td><td class="p-3">Fivetran, Hevo, Airbyte</td><td class="p-3">Prefer managed; incremental loads</td></tr>
-            <tr><td class="p-3 font-semibold">Transform</td><td class="p-3">dbt</td><td class="p-3">Tests, docs, lineage</td></tr>
-            <tr><td class="p-3 font-semibold">Dashboards</td><td class="p-3">Metabase, Looker Studio</td><td class="p-3">Start with Executive Overview</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="design">
-      <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
-      <ul class="bg-white border rounded-xl p-5 text-sm space-y-2">
-        <li>Model naming: <code>raw</code>/<code>stg</code>/<code>int</code>/<code>mart</code>; one grain per model.</li>
-        <li>Tests: not_null, unique, accepted_values on critical fields.</li>
-        <li>Docs: metric definitions in repo; owners and refresh schedules visible.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="sources">
-      <h2 class="text-2xl font-bold mb-3">Source Audit &amp; Priorities</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Domain</th><th class="p-3 text-left">Typical Sources</th><th class="p-3 text-left">Notes</th></tr></thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">Marketing</td><td class="p-3">GA4, Ads (Google/Meta), website forms</td><td class="p-3">Ensure UTM hygiene; capture landing page, gclid/fbclid</td></tr>
-            <tr><td class="p-3 font-semibold">Sales</td><td class="p-3">CRM objects: leads, deals, activities</td><td class="p-3">Freeze schema during initial modeling</td></tr>
-            <tr><td class="p-3 font-semibold">Product/Service</td><td class="p-3">Billing, subscriptions, support tickets</td><td class="p-3">Map to lifecycle stages for funnels</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="elt">
-      <h2 class="text-2xl font-bold mb-3">Lean ELT Pipeline</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Extract via vendor exports or APIs (daily); prefer managed connectors when budget allows.</li>
-        <li>Load into a single warehouse (Postgres, BigQuery, or Snowflake); keep raw tables intact.</li>
-        <li>Transform with SQL models (dbt‑style folders): <code>stg_*</code> (clean), <code>int_*</code> (join), <code>mart_*</code> (dashboards).</li>
-        <li>Automate runs on a daily schedule; backfill initial 12–24 months where feasible.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="models">
-      <h2 class="text-2xl font-bold mb-3">Core Models</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Model</th><th class="p-3 text-left">Purpose</th><th class="p-3 text-left">Keys</th></tr></thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">stg_leads</td><td class="p-3">Normalized inbound leads with UTM and source</td><td class="p-3">email, first_seen_at, source, utm_*</td></tr>
-            <tr><td class="p-3 font-semibold">stg_deals</td><td class="p-3">Deals/opportunities with stage history</td><td class="p-3">deal_id, account_id, stage_changed_at</td></tr>
-            <tr><td class="p-3 font-semibold">int_funnel</td><td class="p-3">Lead → MQL → SQL → Closed‑won funnel</td><td class="p-3">lead_id, first_touch, last_touch</td></tr>
-            <tr><td class="p-3 font-semibold">mart_kpis</td><td class="p-3">Daily KPI snapshot for dashboards</td><td class="p-3">date, kpi_name, value</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="dashboards">
-      <h2 class="text-2xl font-bold mb-3">Dashboards &amp; Analytics</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Executive Overview: traffic → leads → opps → revenue; week‑over‑week and 28‑day trends.</li>
-        <li>Marketing: channel and campaign performance; CAC proxies; assisted conversions.</li>
-        <li>Sales: pipeline by stage/owner, speed‑to‑lead, activity coverage.</li>
-        <li>Cohorts: customer retention/repeat purchases; segmented by source and persona.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="ml">
-      <h2 class="text-2xl font-bold mb-3">Forecasting &amp; AI Enhancements</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Use‑Case</th><th class="p-3 text-left">Method</th><th class="p-3 text-left">Notes</th></tr></thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">Revenue forecast</td><td class="p-3">Time‑series (Prophet/ARIMA) with seasonality</td><td class="p-3">Start simple; compare to heuristic forecast</td></tr>
-            <tr><td class="p-3 font-semibold">Lead scoring</td><td class="p-3">Gradient boosting / logistic regression</td><td class="p-3">Bias for interpretability; monitor lift</td></tr>
-            <tr><td class="p-3 font-semibold">Segmentation</td><td class="p-3">K‑means / HDBSCAN on behavior features</td><td class="p-3">Use for messaging, not targeting alone</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="governance">
-      <h2 class="text-2xl font-bold mb-3">Governance &amp; Quality</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Data tests: null checks, uniqueness, referential integrity on keys.</li>
-        <li>Documentation: entity dictionary and metric definitions (single source of truth).</li>
-        <li>Access: principle of least privilege; separate read/write roles.</li>
-        <li>Change management: version models; batch releases; maintain a simple changelog.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="communication">
-      <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Communication & Reporting</h2>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Weekly sync:</strong> shipped models/dashboards, blockers, decisions.</li>
-          <li><strong>Changelog:</strong> note breaking changes and refresh schedules.</li>
-          <li><strong>KPIs:</strong> track time‑to‑insight, test pass rate, adoption.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="sec" id="kpis">
-      <h2 class="text-2xl font-bold mb-3">Operating Cadence &amp; KPIs</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Cadence</th><th class="p-3 text-left">Activities</th><th class="p-3 text-left">Outputs</th></tr></thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3 font-semibold">Weekly</td><td class="p-3">Pipeline run, data tests, KPI refresh, note anomalies</td><td class="p-3">Brief insights note (bullets)</td></tr>
-            <tr><td class="p-3 font-semibold">Monthly</td><td class="p-3">Deep‑dive on channels, cohort updates, forecast check</td><td class="p-3">Slide summary and actions</td></tr>
-            <tr><td class="p-3 font-semibold">Quarterly</td><td class="p-3">Model refresh, metric review, backlog grooming</td><td class="p-3">Roadmap update</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="timeline">
-      <h2 class="text-2xl font-bold mb-3">Detailed Timeline (2–3 weeks, solo operator)</h2>
-      <div class="bg-white border rounded-xl overflow-hidden text-sm">
-        <table class="min-w-full">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr>
-              <th class="p-3 text-left">Day</th>
-              <th class="p-3 text-left">Topic</th>
-              <th class="p-3 text-left">Key Tasks</th>
-              <th class="p-3 text-left">Output / Done</th>
-              <th class="p-3 text-left">Est.</th>
-              <th class="p-3 text-left">Owner</th>
-              <th class="p-3 text-left">Depends</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3">1</td>
-              <td class="p-3">Goals & Metrics</td>
-              <td class="p-3">Define KPIs + SQL definitions; confirm refresh SLA; identify PII policy</td>
-              <td class="p-3">Metric contract doc</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">—</td>
-            </tr>
-            <tr>
-              <td class="p-3">2</td>
-              <td class="p-3">Warehouse</td>
-              <td class="p-3">Provision Postgres/BigQuery; create schemas/roles; backups; budget alerts</td>
-              <td class="p-3">Warehouse live; access granted</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 1</td>
-            </tr>
-            <tr>
-              <td class="p-3">3</td>
-              <td class="p-3">Connectors</td>
-              <td class="p-3">Set up CRM + GA4 + billing connectors; incremental keys; test extracts</td>
-              <td class="p-3">Raw tables refreshed</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 2</td>
-            </tr>
-            <tr>
-              <td class="p-3">4</td>
-              <td class="p-3">dbt init</td>
-              <td class="p-3">Bootstrap project; create stg models; add tests; run first build</td>
-              <td class="p-3">stg_* models green</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 3</td>
-            </tr>
-            <tr>
-              <td class="p-3">5</td>
-              <td class="p-3">Intermediate</td>
-              <td class="p-3">Build <code>int_funnel</code>; stage history; dedupe; unit tests</td>
-              <td class="p-3">int_* models green</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 4</td>
-            </tr>
-            <tr>
-              <td class="p-3">6</td>
-              <td class="p-3">Marts</td>
-              <td class="p-3">Build <code>mart_kpis</code>; daily snapshot; add freshness tests</td>
-              <td class="p-3">mart_* models green</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 5</td>
-            </tr>
-            <tr>
-              <td class="p-3">7</td>
-              <td class="p-3">Dashboards</td>
-              <td class="p-3">Executive Overview; filters; saved views; email pulses</td>
-              <td class="p-3">Dash v1 published</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 6</td>
-            </tr>
-            <tr>
-              <td class="p-3">8</td>
-              <td class="p-3">CI & Schedules</td>
-              <td class="p-3">Nightly build job; secrets; notifications on failure</td>
-              <td class="p-3">CI green; cron set</td>
-              <td class="p-3">2h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Days 4–7</td>
-            </tr>
-            <tr>
-              <td class="p-3">9</td>
-              <td class="p-3">Quality</td>
-              <td class="p-3">Expand tests; anomaly z‑scores; stale data banners</td>
-              <td class="p-3">QA dashboards; alerts wired</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 8</td>
-            </tr>
-            <tr>
-              <td class="p-3">10</td>
-              <td class="p-3">Forecast</td>
-              <td class="p-3">Prototype time‑series forecast; compare to heuristic; add to dash</td>
-              <td class="p-3">Forecast v1; toggleable</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 7</td>
-            </tr>
-            <tr>
-              <td class="p-3">11</td>
-              <td class="p-3">Cohorts</td>
-              <td class="p-3">Retention/repeat purchase; segment by source/persona</td>
-              <td class="p-3">Cohort view live</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 6</td>
-            </tr>
-            <tr>
-              <td class="p-3">12</td>
-              <td class="p-3">Docs</td>
-              <td class="p-3">Data dictionary; model lineage; metric page</td>
-              <td class="p-3">Docs v1</td>
-              <td class="p-3">2h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">All prior</td>
-            </tr>
-            <tr>
-              <td class="p-3">13</td>
-              <td class="p-3">Review</td>
-              <td class="p-3">Stakeholder demo; capture feedback; backlog next improvements</td>
-              <td class="p-3">Sign‑off; roadmap</td>
-              <td class="p-3">1–2h</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">Day 12</td>
-            </tr>
-            <tr>
-              <td class="p-3">14–15</td>
-              <td class="p-3">Polish</td>
-              <td class="p-3">Performance tuning; materializations; training session</td>
-              <td class="p-3">Stable nightly runs; trained users</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Review</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div class="bg-white border rounded-xl p-4">
-          <p class="font-semibold mb-1">Fast‑Track (7–8 days)</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Limit sources to CRM + GA4; 90‑day backfill; skip forecast until week 2.</li>
-            <li>Single “Executive Overview” dashboard first; cohorts later.</li>
-            <li>Daily 30‑min check‑ins to remove blockers quickly.</li>
-          </ul>
-        </div>
-        <div class="bg-white border rounded-xl p-4">
-          <p class="font-semibold mb-1">If Connectors Fail</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Use vendor CSV exports on a temporary S3/GCS bucket + scheduled loads.</li>
-            <li>Clearly mark dashboards with a “data stale” banner until connectors recover.</li>
-            <li>Switch to weekly refresh if nightly costs spike unexpectedly.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec" id="templates">
-      <h2 class="text-2xl font-bold mb-3">Templates</h2>
-      <div class="bg-white border rounded-xl p-5 space-y-3 text-sm">
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <p class="font-semibold">Example SQL — mart_kpis</p>
-<pre class="whitespace-pre-wrap text-xs">with daily as (
-  select date_trunc('day', first_seen_at) as d, count(*) as leads
-  from int.int_funnel where stage = 'lead' group by 1
-), mql as (
-  select date_trunc('day', first_mql_at) as d, count(*) as mqls
-  from int.int_funnel where first_mql_at is not null group by 1
-)
-select d as date, 'leads' as kpi_name, leads as value from daily
-union all
-select d, 'mqls', mqls from mql;</pre>
-          </div>
-          <div>
-            <p class="font-semibold">Data Dictionary (starter)</p>
-<pre class="whitespace-pre-wrap text-xs">email: unique lowercased email address (primary key for leads)
-first_seen_at: timestamp when contact first appeared in any source
-utm_source/campaign: marketing attribution fields
-stage: normalized funnel stage (lead/mql/sql/won/lost)</pre>
-          </div>
-        </div>
-        <div>
-          <p class="font-semibold">Metric Definition (example)</p>
-<pre class="whitespace-pre-wrap">Name: Marketing Qualified Lead (MQL)
-Definition: Lead with score ≥ 60 OR requested demo.
-Owner: Growth
-Upstream: stg_leads, int_funnel
-Freshness: daily
-Used in: Executive Overview, Funnel dashboard</pre>
-        </div>
-        <div>
-          <p class="font-semibold">dbt‑style Folder Structure</p>
-<pre class="whitespace-pre-wrap">models/
-  staging/
-    stg_leads.sql
-    stg_deals.sql
-  intermediate/
-    int_funnel.sql
-  marts/
-    mart_kpis.sql</pre>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
-</body>
-</html>
+  <script>
+  // Checklist: Core tier
+  (function(){
+    const boxes = document.querySelectorAll('#core-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('core-progress-bar');
+    const txt = document.getElementById('core-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('core-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
+  <script>
+  // Sticky TOC: robust active section highlighting (scroll-position based)
+  (function(){
+    const toc = document.getElementById('toc');
+    if(!toc) return;
+    const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    const ids = links.map(a => a.getAttribute('href').slice(1));
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const byId = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+    const OFFSET = 140; // header + sticky nav offset
+    function clearActive(){ links.forEach(a => a.classList.remove('active')); }
+    function setActiveId(id){
+      const a = byId[id];
+      if(!a) return;
+      clearActive();
+      a.classList.add('active');
+      const details = a.closest('details');
+      if(details) details.open = true;
+    }
+    let ticking = false;
+    function updateActive(){
+      const y = window.scrollY + OFFSET;
+      let currentId = ids[0] || '';
+      for(let i=0;i<sections.length;i++){
+        const sec = sections[i];
+        if(sec && sec.offsetTop <= y) currentId = sec.id; else break;
+      }
+      if(currentId) setActiveId(currentId);
+    }
+    function onScroll(){
+      if(ticking) return; ticking = true;
+      requestAnimationFrame(()=>{ updateActive(); ticking = false; });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    // Sync on load/hashchange and link clicks
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', updateActive); else updateActive();
+    window.addEventListener('hashchange', ()=>{
+      const id = location.hash.replace('#',''); if(id) setActiveId(id);
+    });
+    links.forEach(a => a.addEventListener('click', ()=>{
+      const id = a.getAttribute('href').slice(1); setActiveId(id);
+    }));
+  })();
+  </script>
+
+  <script>
+  // Checklist: Enhanced tier
+  (function(){
+    const boxes = document.querySelectorAll('#enhanced-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enhanced-progress-bar');
+    const txt = document.getElementById('enhanced-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('enhanced-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
+  <script>
+  // Checklist: Enterprise tier
+  (function(){
+    const boxes = document.querySelectorAll('#enterprise-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enterprise-progress-bar');
+    const txt = document.getElementById('enterprise-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('enterprise-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
+  
+  </body>
+  </html>

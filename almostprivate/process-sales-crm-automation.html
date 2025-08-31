@@ -1,79 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Delivery Playbook — Sales & CRM Automation | AI Freelancer</title>
-  <meta name="description" content="Step-by-step delivery process for Sales & CRM Automation: discovery, design, build, test, launch, optimize. Includes checklists, KPIs, and templates." />
+  <meta name="description" content="Tiered delivery process for Sales & CRM Automation: Core, Enhanced, Enterprise. Includes best practices, tooling, SOPs, checklists, KPIs, security, and templates." />
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style> body{font-family:'Inter',sans-serif} code,kbd{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:.375rem;padding:.125rem .375rem} .sec{scroll-margin-top:80px} </style>
+  <style> body{font-family:'Inter',sans-serif; line-height:1.5} .sec{scroll-margin-top:80px} </style>
   <style>
-    /* Vibrant Indigo + Teal theme */
-    :root{
-      --teal: #0d9488;   /* teal-600 */
-      --indigo: #4f46e5; /* indigo-600 */
-      --accent: var(--teal);
-      --muted: #6b7280;
-      --text: #0f172a;
-      --card-bg: #ffffff;
-      --glass: rgba(79,70,229,0.06);
-    }
-
-    /* Energetic page background */
+    html { scroll-behavior: smooth; }
+    :root{ --teal:#0d9488; --indigo:#4f46e5; --muted:#6b7280; --text:#0f172a; }
     body{ background: linear-gradient(180deg, rgba(79,70,229,0.04) 0%, rgba(13,148,136,0.02) 60%), #fff; color:var(--text); }
-
-    /* Cards with subtle gradient and punch */
-    .bg-white.border.rounded-xl, .bg-white.border.rounded-2xl {
-      position:relative;
-      background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
-      border: 1px solid rgba(79,70,229,0.06);
-      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
-      transition: transform .16s cubic-bezier(.2,.9,.3,1), box-shadow .16s;
-    }
-    .bg-white.border.rounded-xl:hover, .bg-white.border.rounded-2xl:hover{ transform: translateY(-6px); box-shadow: 0 26px 60px rgba(15,23,42,0.12); }
-
-    /* Headings */
+    .bg-white.border.rounded-xl, .bg-white.border.rounded-2xl{ position:relative; background:linear-gradient(180deg,#ffffff 0%,#fbfdff 100%); border:1px solid rgba(79,70,229,0.06); box-shadow:0 10px 30px rgba(15,23,42,0.06); transition:transform .16s cubic-bezier(.2,.9,.3,1), box-shadow .16s; }
+    .bg-white.border.rounded-xl:hover, .bg-white.border.rounded-2xl:hover{ transform:translateY(-6px); box-shadow:0 26px 60px rgba(15,23,42,0.12); }
     h1{ color:var(--indigo); font-weight:900; font-size:2.4rem; }
     h2{ color:#061126; font-weight:800; }
-
-    /* Links */
-    a{ color:var(--indigo); }
-    a:hover{ color: #3730a3; text-decoration:underline; }
-
-    /* KPI card accents (teal / amber / rose) */
-    .kpi-grid > div{ padding-left:18px; overflow:hidden; }
-    .kpi-grid > div::before{ content:''; position:absolute; left:0; top:12px; bottom:12px; width:6px; border-radius:6px; }
-    .kpi-grid > div:nth-child(1)::before{ background: linear-gradient(180deg,var(--teal),var(--indigo)); }
-    .kpi-grid > div:nth-child(2)::before{ background: linear-gradient(180deg,#f59e0b,#f97316); }
-    .kpi-grid > div:nth-child(3)::before{ background: linear-gradient(180deg,#fb7185,#ef4444); }
-    .mt-6 .bg-white.p-4 p.text-xl{ color:#061126; }
-
-    /* Tables: polished header + sticky */
-    table.min-w-full thead th{ position: sticky; top:0; background: linear-gradient(180deg,#fbfdff,#f8fafc); color:var(--muted); font-weight:800; padding:12px 16px; z-index:2; }
+    a{ color:var(--indigo); } a:hover{ color:#3730a3; text-decoration:underline; }
+    .kpi-grid>div{ padding-left:18px; overflow:hidden; }
+    .kpi-grid>div::before{ content:''; position:absolute; left:0; top:12px; bottom:12px; width:6px; border-radius:6px; background:linear-gradient(180deg,var(--teal),var(--indigo)); }
+    table.min-w-full thead th{ position:sticky; top:0; background:linear-gradient(180deg,#fbfdff,#f8fafc); color:var(--muted); font-weight:800; padding:12px 16px; z-index:2; }
     table.min-w-full td{ padding:12px 16px; border-top:1px solid rgba(15,23,42,0.03); }
-    table.min-w-full tbody tr:nth-child(odd) td{ background: #ffffff; }
-    table.min-w-full tbody tr:nth-child(even) td{ background: #fbfdff; }
-
-    /* Details/summary */
-    details summary{ cursor:pointer; }
-    details[open] summary{ color:var(--indigo); }
-
-    /* Code and pre */
-    code,kbd{ background:#f1f5f9; border-color:#e6eef8; }
-
-    /* Small helper */
-    .muted { color: var(--muted); }
-
-    /* Minimal tip marker (non-functional now) */
-    .tip { border-bottom: 1px dotted rgba(14,20,24,0.06); cursor: default; }
-  </style>
-  <style>
-    .toc .toc-divider { list-style: none; text-indent: -1.25rem; padding-left: 1.25rem; }
+    details summary{ cursor:pointer; } details[open] summary{ color:var(--indigo); }
+    code,kbd{ background:#f1f5f9; border:1px solid #e6eef8; border-radius:.375rem; padding:.125rem .375rem; }
+    #toc a.active { color: var(--indigo); font-weight:800; text-decoration:underline; }
   </style>
   <meta name="robots" content="noindex, follow" />
 </head>
@@ -82,7 +35,7 @@
     <div class="container mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
       <nav class="text-sm text-gray-600">
-        <a href="index.html" class="hover:text-gray-900">Playbook index</a>
+        <a href="/index.html" class="hover:text-gray-900">Playbook index</a>
         <span class="mx-3">•</span>
         <a href="/sales-crm-automation.html" class="hover:text-gray-900">Service page</a>
       </nav>
@@ -90,998 +43,1043 @@
   </header>
 
   <main class="container mx-auto px-6 py-10 space-y-12">
-    
     <section class="sec" id="overview">
-      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: Sales &amp; CRM Automation</h1>
-      <p class="mt-4 text-lg text-gray-700">Automate lead capture, sequencing, and CRM hygiene. Built for a solo operator workflow that scales to a small team. This playbook follows proven RevOps best practices: document the pipeline, minimize manual entry, test in sandboxes, and measure speed‑to‑lead and conversion lift.</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">🧩 Delivery Playbook: Sales & CRM Automation</h1>
+      <p class="mt-4 text-lg text-gray-700">Automate lead capture, routing, outreach, and CRM hygiene. Three tiers—Core, Enhanced, Enterprise—aligned to your stack and risk profile, with sandboxes, safe rollouts, and measurable outcomes.</p>
       <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
-        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Primary KPI</p><p class="text-xl font-bold">Speed‑to‑lead &lt; 2 min</p></div>
-        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold">95% activity logging</p></div>
-        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Outcome</p><p class="text-xl font-bold">+10–25% opp conversion</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Primary KPI</p><p class="text-xl font-bold">Speed‑to‑Lead ≤ 2 min</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold">≥ 95% Activity Logging</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Outcome</p><p class="text-xl font-bold">+10–25% SQL→Opp Lift</p></div>
       </div>
     </section>
 
     <section class="sec" id="intro">
       <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 text-sm text-indigo-900">
         <h2 class="text-2xl font-bold text-indigo-900">How to Use This Playbook</h2>
-        <p class="mt-2">This is a transparent, internal document that clients are welcome to review. It's designed to be understood by everyone, from a 14-year-old beginner to a seasoned expert. It's divided into two parts:</p>
-        <ul class="list-disc list-inside mt-2 space-y-1">
-          <li><strong>Part 1: The "What & Why" (Client & Manager View):</strong> The big picture. It covers the project's story, goals, and a simplified checklist. Start here to understand the project at a high level.</li>
-          <li><strong>Part 2: The "How" (Implementer's Guide):</strong> The technical details. It includes the step-by-step SOPs, timelines, and contingency plans needed for execution. Dive in here for implementation specifics.</li>
-        </ul>
+        <p class="mt-2">Each tier below is a complete, standalone plan. Pick the one that matches scope and risk, or use Enhanced/Enterprise as a north star for growth. Client‑friendly and implementer‑ready.</p>
       </div>
     </section>
 
-    <!-- Simplified, newbie-friendly, interactive checklist -->
-    <section class="sec" id="toc">
-      <nav class="bg-white border rounded-xl p-5">
-        <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
-        <div class="toc grid md:grid-cols-2 gap-8">
-          <div>
-            <div class="text-xs font-semibold uppercase text-gray-500 mb-2">Part 1: What &amp; Why</div>
-            <ol class="list-decimal ml-5 space-y-1 text-sm">
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#glossary">Glossary (Newbie‑friendly)</a></li>
+    <div class="grid md:grid-cols-12 gap-8 items-start">
+      <aside id="toc" class="hidden md:block md:col-span-3 md:sticky md:top-24 md:self-start">
+        <nav class="bg-white border rounded-xl p-4 md:sticky md:top-24 md:max-h-[78vh] md:overflow-auto text-sm">
+          <p class="text-xs font-semibold uppercase text-gray-500 mb-2">On this page</p>
+          <ul class="space-y-2">
+            <li><a class="hover:text-indigo-600" href="#tier-overview">Tier Overview</a></li>
+          </ul>
+          <details class="mt-4" open>
+            <summary class="font-semibold cursor-pointer">Core Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#core-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#core-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#core-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#core-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#core-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#core-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#core-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#core-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#core-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#core-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#core-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#core-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#core-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#core-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#core-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
             </ol>
-          </div>
-          <div>
-            <div class="text-xs font-semibold uppercase text-gray-500 mb-2">Part 2: Implementer's Guide</div>
-            <ol class="list-decimal ml-5 space-y-1 text-sm">
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#prereqs">Access & Prerequisites</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling Options</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#security">Security & Compliance</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Detailed Timeline</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates & Snippets</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#audit-monitoring">Audit & Monitoring (Ops)</a></li>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enhanced Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enhanced-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enhanced-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enhanced-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enhanced-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enhanced-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enhanced-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enhanced-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enhanced-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enhanced-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enhanced-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enhanced-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enhanced-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enhanced-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enhanced-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enhanced-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
             </ol>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enterprise Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enterprise-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enterprise-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enterprise-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enterprise-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enterprise-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enterprise-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enterprise-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enterprise-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enterprise-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enterprise-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enterprise-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enterprise-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enterprise-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enterprise-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enterprise-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <div class="mt-4 border-t pt-3">
+            <a href="#overview" class="inline-block px-3 py-2 border rounded-lg hover:bg-gray-50">Back to top</a>
           </div>
-        </div>
-      </nav>
-    </section>
+        </nav>
+      </aside>
 
-    <section class="sec" id="part-1">
-      <h2 class="text-3xl font-bold tracking-tight">Part 1: What &amp; Why (Client &amp; Manager View)</h2>
-    </section>
-
-    <!-- Story section: short, human-friendly preview for both operator and client -->
-    <section class="sec" id="story-top">
-      <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Quick Story — What will happen</h2>
-        <p class="mt-3 text-sm text-gray-700">Overview: We will make sure people who show interest (called "leads") hear back fast. First, we look at how things work today so we have a starting point. Next, we connect the website and forms to the CRM (the place we store lead information). Then we create short automated messages that go out to new leads. After that we test everything in a safe place so real people are not bothered. Finally we turn the system on for real and watch for problems for a couple of days.</p>
-
-        <p class="mt-3 text-sm text-gray-700">What each step means (plain):</p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Export baseline:</strong> download current reports so we know what numbers look like now (this is the "before" picture).</li>
-          <li><strong>Give access:</strong> the person doing the work needs a safe account to the CRM and messaging tools; this keeps your real accounts safe.</li>
-          <li><strong>Wire intake:</strong> connect website forms to the CRM so leads arrive automatically (no copy-paste).</li>
-          <li><strong>Build messages:</strong> write 3–6 short replies (email or SMS) that sound friendly and include a calendar link so leads can book time.</li>
-          <li><strong>Test in sandbox:</strong> run everything with fake leads to check that messages send and that CRM records update correctly.</li>
-          <li><strong>Launch slowly:</strong> turn the system on for a small amount of traffic first, watch dashboards, and fix anything that breaks.</li>
-        </ul>
-
-        <p class="mt-3 text-sm text-gray-700"><strong>For you — the person doing the work:</strong> Think of this as a clear checklist. Do these simple actions in order:</p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Ask for access</strong> (give instructions to the client on exactly what to share).</li>
-          <li><strong>Export the baseline</strong> and save the CSV file in the project folder.</li>
-          <li><strong>Create fields and rules in the CRM</strong> (this decides who gets each lead).</li>
-          <li><strong>Write short message templates</strong> and add personalization (like the lead's name).</li>
-          <li><strong>Test end-to-end</strong> with a few fake leads so you can see exactly what happens in the CRM and messages.</li>
-          <li><strong>Go live small</strong> (25–50% traffic), monitor for 48 hours, then increase to 100% if stable.</li>
-          <li><strong>Report back</strong> with a short note that shows the starting numbers and early results.</li>
-        </ul>
-
-        <p class="mt-3 text-sm text-gray-700"><strong>For the client — what it should feel like:</strong></p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Easy:</strong> they only need to grant access and confirm the goals (you do the rest).</li>
-          <li><strong>Fast:</strong> new leads get a friendly reply automatically instead of waiting for someone to act.</li>
-          <li><strong>Safe:</strong> everything is tested first so real customers are not spammed.</li>
-          <li><strong>Clear:</strong> the client gets a short report showing the "before" numbers and early improvements.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="sec" id="simple-checklist">
-      <div class="bg-white border rounded-2xl p-6">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
-            <p class="text-gray-600 text-sm">Use this live checklist during client meetings. It saves progress in your browser. Expand any "Newbie guide" for detailed, step-by-step help written for a nontechnical sales rep.</p>
-          </div>
-          <div class="text-right">
-            <div class="text-sm text-gray-600">Progress</div>
-            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false">
-              <div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div>
+      <div class="md:col-span-9 space-y-12">
+        <section class="sec" id="tier-overview">
+          <div class="bg-white border rounded-2xl p-6">
+            <h2 class="text-2xl font-bold">🧭 Tier Overview</h2>
+            <p class="mt-2 text-sm text-gray-700">Mirrors the Sales service page: Core (lean setup), Enhanced (managed workflows), Enterprise (governed scale).</p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <a href="#tier-core" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Core</a>
+              <a href="#tier-enhanced" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enhanced</a>
+              <a href="#tier-enterprise" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enterprise</a>
             </div>
-            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+            <div class="overflow-x-auto mt-6 bg-white border rounded-2xl">
+              <table class="min-w-full text-sm">
+                <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Best For</th><th class="p-3 text-left">Includes (one‑line)</th><th class="p-3 text-left">Notable Differences</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Core</td><td class="p-3">Lean teams, fast basics</td><td class="p-3">CRM wiring, speed‑to‑lead, simple sequences, basic dedupe</td><td class="p-3">HubSpot Starter/Salesforce basics, Zapier, Calendly</td></tr>
+                  <tr><td class="p-3 font-semibold">Enhanced</td><td class="p-3">Scaling outreach + routing</td><td class="p-3">Workflows, enrichment, SLA timers, AI‑assisted copy</td><td class="p-3">Make/Workato, Apollo/Twilio, bi‑directional sync</td></tr>
+                  <tr><td class="p-3 font-semibold">Enterprise</td><td class="p-3">Governed, secure scale</td><td class="p-3">SSO/RBAC, audit logs, private AI, warehouse sync</td><td class="p-3">Okta, MuleSoft/Workato Ent., Snowflake/BigQuery</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div class="mt-6 space-y-6" id="crm-checklist">
+        <!-- Core Tier -->
+        <section class="sec space-y-8" id="tier-core">
+          <h2 class="text-3xl font-bold tracking-tight">⚡ Core Tier — Sales & CRM Automation</h2>
+          <p class="mt-2 text-gray-600">Lean setup to standardize capture, routing, and first‑touch sequencing with minimal tools.</p>
 
-          <!-- STEP 1 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 1 — Kickoff & Access</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="kickoff"/> <span>Hold kickoff; write 1‑page charter (goals, KPIs, risks, dates) and share</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="baseline"/> <span>Export KPI baseline (speed‑to‑lead, MQL→SQL, activity coverage)</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="access"/> <span>Grant sandbox/admin access: CRM, email/SMS provider, Zapier/Make (service user)</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="auth"/> <span>Start sender auth: SPF, DKIM, DMARC records created and propagating</span></label>
-            <ul class="mt-2 text-xs text-gray-500 list-disc list-inside">
-              <li>Example KPIs: speed‑to‑lead &lt; 2 min; MQL→SQL +15% in 60 days.</li>
+          <section class="sec" id="core-story">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+              <p class="mt-3 text-sm text-gray-700">We connect forms to your CRM, set up basic dedupe and field mapping, enable instant alerts, and launch simple on‑brand sequences. We start in a sandbox where possible, then soft‑launch and monitor.</p>
+              <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+                <li><strong>Wire capture:</strong> Website forms/webhooks flow into CRM (upsert by email).</li>
+                <li><strong>Fast response:</strong> Slack/email alerts to owners; calendar link in first two touches.</li>
+                <li><strong>Clean data:</strong> Basic dedupe (email+domain), normalized phone, UTM mapping.</li>
+                <li><strong>Safety:</strong> SPF/DKIM/DMARC before sending; test with sample leads first.</li>
+              </ul>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide: How this feels end‑to‑end</summary>
+                <div class="mt-2 text-sm text-gray-700 space-y-2">
+                  <p><strong>Story mode:</strong> You will first take a simple “before” snapshot so we know your starting point. Then you’ll connect your website form to the CRM so new leads show up automatically. Next, you’ll turn on quick alerts and add your calendar link to a short, friendly email. You’ll send a few test leads to make sure everything works. Finally, you’ll launch to a small slice of traffic, watch for problems, fix them, and then turn it on for everyone.</p>
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Take a “before picture”: export 30 days of leads and activities so we can prove improvement later.</li>
+                    <li>Connect your website form to the CRM so new leads appear automatically (no copy‑paste).</li>
+                    <li>Turn on instant alerts so someone reaches out fast. Add your calendar link to the first message.</li>
+                    <li>Send a few test leads from a test page to make sure records are created and messages send.</li>
+                    <li>Launch to a portion of traffic for 1–2 days (soft‑launch), fix issues, then turn it on for everyone.</li>
+                  </ol>
+                  <div class="border rounded p-3 bg-gray-50">
+                    <p class="font-semibold">Example first touch</p>
+<pre class="whitespace-pre-wrap text-xs">Subject: Thanks for reaching out — quick next step
+Hi {{first_name}}, thanks for your note. Here’s my calendar: {{calendar_link}}.
+Talk soon — {{owner_name}}</pre>
+                  </div>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Success:</strong> Median speed‑to‑lead ≤ 2 minutes; ≥95% of touches logged.</li>
+                    <li><strong>If something breaks:</strong> We pause, fix the flow, and resume. Your baseline export tells us what to correct.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="core-communication">
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+              <ul class="list-disc list-inside space-y-1 mt-2">
+                <li><strong>Blueprint:</strong> 1‑page plan (goals, KPIs, owners) after discovery.</li>
+                <li><strong>Cadence:</strong> Weekly updates (Done, Next, Risks/Needs) + sandbox demo.</li>
+                <li><strong>Reporting:</strong> Monthly snapshot: speed‑to‑lead, activity coverage, conversion lift.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="core-simple-checklist">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+              <p class="text-gray-600 text-sm">Use this live checklist. Progress stores in your browser only.</p>
+              <div class="mt-3 h-2 bg-gray-100 rounded">
+                <div id="core-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="core-progress-text"></div>
+              </div>
+              <div id="core-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+              <div class="mt-6 space-y-6" id="core-checklist">
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 1 — Kickoff & Baseline</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-kickoff"/> <span>1‑page charter with KPIs (speed‑to‑lead, MQL→SQL, logging)</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-baseline"/> <span>Export 30‑day baseline CSVs (leads, activities)</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-access"/> <span>Grant sandbox/admin access (CRM, email/SMS, Zapier/Make)</span></label>
+                  <details class="mt-3">
+                    <summary class="font-semibold">Newbie guide: Baseline and access</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will open your CRM reports, export the last 30 days to a CSV, and save it in the project folder. Then you’ll create a special “service user” in each tool (CRM and messaging) so automations don’t run under anyone’s personal login. You’ll copy the keys or tokens to a safe place (secrets manager).</p>
+                      <p><strong>Baseline = before photo.</strong> Export “Leads with activities (last 30 days)” from HubSpot/Salesforce as CSV and save it in <code>/01_discovery/baseline/</code>. This is your reference if you need to undo mistakes.</p>
+                      <p><strong>Access:</strong> Ask for a dedicated “service” user in the CRM and messaging tool. This keeps personal logins out of automations and makes offboarding easy.</p>
+                      <ol class="list-decimal list-inside">
+                        <li>HubSpot: create a Private App token with minimal scopes (CRM, Workflows, Webhooks).</li>
+                        <li>Salesforce: use a Sandbox if possible; create an Integration User + Connected App (OAuth).</li>
+                        <li>Email/SMS: collect API keys or SMTP creds; you’ll add sender authentication later.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 2 — Data Model & Dedupe</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-fields"/> <span>Field map (lead/contact, company, deal) with API names</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-dedupe"/> <span>Dedupe rules (email+domain), soft‑merge policy</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-sample"/> <span>Validate with sample CSV (20–50 rows)</span></label>
+                  <details class="mt-3">
+                    <summary class="font-semibold">Newbie guide: Mapping fields and avoiding duplicates</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will write a tiny table listing each piece of info you need (like email and name) and the exact property/API names in the CRM. Then you’ll decide how to avoid duplicates (match on email, maybe domain). You’ll test with a 20–50 row CSV to make sure new uploads update the same record instead of creating copies.</p>
+                      <p>Write a simple table with three columns: “What we track” → “HubSpot property / Salesforce API name” → “Example value”. Start with <code>email</code>, <code>first_name</code>, <code>utm_source</code>, and <code>consent</code>.</p>
+                      <p><strong>Dedupe rule:</strong> check by <code>email</code>; if you also sell to companies, include <code>domain</code>.</p>
+                      <p>Test by importing 20–50 rows. If imports create duplicates, adjust the rule and repeat.</p>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 3 — Capture & Routing</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-intake"/> <span>Webhooks/forms to CRM (upsert by email)</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-alerts"/> <span>Speed‑to‑lead alerting (Slack/email) with owner links</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-routing"/> <span>Owner assignment (round‑robin or simple rules)</span></label>
+                  <details class="mt-3">
+                    <summary class="font-semibold">Newbie guide: Connect the form and send alerts</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will create a simple automation: the form sends data to Zapier/Make, which creates or updates a contact in the CRM by email. Next, you’ll set owner assignment. Finally, you’ll post a Slack alert with the lead link so a human can reply fast.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Form → Zapier: “Catch Webhook” step; map fields to CRM upsert by <code>email</code>.</li>
+                        <li>Owner assignment: start with round‑robin (A, B, C, A…). Keep a <code>last_assigned_at</code> field.</li>
+                        <li>Slack alert: post “New lead” with record link, page URL, UTM source, and owner.</li>
+                      </ol>
+                      <p>If you’re lost, do one connection at a time. Verify a single test lead shows up in the CRM with the right owner before adding alerts.</p>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 4 — Sequences & Deliverability</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-auth"/> <span>SPF/DKIM/DMARC verified; quiet hours configured</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-templates"/> <span>3–6 on‑brand email/SMS templates with calendar link</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-logging"/> <span>Auto‑logging for touches (template_id, status)</span></label>
+                  <details class="mt-3">
+                    <summary class="font-semibold">Newbie guide: Don’t get flagged as spam</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will paste the SPF, DKIM, and DMARC DNS records your email tool gives you into your domain settings and wait for verification. Then you’ll set quiet hours so messages don’t send in the middle of the night. Finally, you’ll write short, on‑brand templates with one clear action (book time).</p>
+                      <ul class="list-disc list-inside space-y-1">
+                        <li><strong>SPF/DKIM/DMARC:</strong> your email provider shows DNS records to add; paste them in your domain host (GoDaddy/Cloudflare). Wait until they say “verified”.</li>
+                        <li><strong>Quiet hours:</strong> set “do not send” between 9pm–8am in the lead’s timezone.</li>
+                        <li><strong>Templates:</strong> short, friendly, one clear call‑to‑action (book a time).</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 5 — Test & Launch</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-uat"/> <span>UAT with fake leads; verify routing & logging</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-soft"/> <span>Soft‑launch at 25–50% traffic for 48h</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-rollout"/> <span>Full rollout after checks; share KPI snapshot</span></label>
+                  <details class="mt-3">
+                    <summary class="font-semibold">Newbie guide: Soft‑launch safely</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will turn the automation on for a small portion of leads (about a quarter to half). You’ll watch for duplicates, wrong owners, or missing logs. If anything looks off, you’ll flip the “pause” switch, fix it, and try again. Once it’s clean for two days, you’ll go to 100% and share a short results snapshot.</p>
+                      <p>Start small so mistakes affect few people. Watch for duplicates, wrong owners, or missing logs. Fix quickly, then increase to 100%.</p>
+                      <ul class="list-disc list-inside space-y-1">
+                        <li>Test cases: normal lead, duplicate email, missing phone, no consent (SMS blocked).</li>
+                        <li>Rollback: keep a toggle in Zapier to pause the Zap or revert to manual routing.</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center gap-3">
+                <button id="core-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+                <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="sec" id="core-phases">
+            <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Goals, KPIs, access</td><td class="p-3">You + Client</td><td class="p-3">Charter, baseline</td></tr>
+                  <tr><td class="p-3 font-semibold">Design</td><td class="p-3">Field map, routing, templates</td><td class="p-3">You</td><td class="p-3">Spec, templates</td></tr>
+                  <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Webhooks, alerts, logging</td><td class="p-3">You</td><td class="p-3">Working flows</td></tr>
+                  <tr><td class="p-3 font-semibold">Test</td><td class="p-3">UAT with sample leads</td><td class="p-3">You + Client</td><td class="p-3">UAT report</td></tr>
+                  <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Soft‑launch → sitewide</td><td class="p-3">You</td><td class="p-3">Go‑live</td></tr>
+                  <tr><td class="p-3 font-semibold">Optimize</td><td class="p-3">Monthly snapshot</td><td class="p-3">You</td><td class="p-3">Trends + fixes</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="core-scope">
+            <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>CRM wiring (forms/webhooks), basic dedupe, simple routing</li>
+              <li>Speed‑to‑lead alerts; 3–6 email/SMS templates; calendar link</li>
+              <li>Auto‑logging where supported; weekly health check</li>
             </ul>
+          </section>
 
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Why we export a baseline first</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-2">
-                <p><strong>What is a baseline?</strong> Before we make any changes, we export a report of the last 30 days of activity. This is the "baseline."</p>
-                <p><strong>Analogy: Think of it like taking "before" photos of a room you're about to renovate.</strong></p>
-                <p>You do this for two simple reasons:</p>
-                <ul class="list-disc list-inside ml-4">
-                    <li><strong>To see the transformation:</strong> The "before" photos let you prove how much better the room looks afterward. This baseline file does the same—it gives us the starting numbers so we can measure and celebrate the improvements we make.</li>
-                    <li><strong>As a "Correction Map":</strong> If the renovation goes wrong and you accidentally plaster over a light switch, the "before" photo shows you exactly where to find it. This file does the same for data.</li>
-                </ul>
-                <p><strong>Example:</strong> Imagine an automation bug accidentally assigns 50 new leads to the wrong sales team. The baseline file is our list of those 50 people and who their owner *should* have been. We can use that list to manually fix the errors.</p>
-                <p><strong>To be perfectly clear:</strong> This is NOT a system backup. You cannot press a button and "restore" the entire CRM from this file. It is a simple, powerful reference list for targeted corrections.</p>
-                <p><strong>How to Export the Baseline (Non-Technical Steps):</strong></p>
-                <ol class="list-decimal list-inside">
-                  <li>Open the CRM (HubSpot or Salesforce) and go to Reports.</li>
-                  <li>Find a report called "Contacts with Activities" or "Leads with Activities".</li>
-                  <li>Set the date range to the last 28–30 days (do not include today).</li>
-                  <li>Export → CSV and save it to <code>/01_discovery/baseline/</code> with a filename that includes the dates (e.g. <code>baseline_2025-07-01_to_2025-07-30.csv</code>).</li>
-                  <li>Upload this file to our shared project folder.</li>
-                </ol>
+          <section class="sec" id="core-kpis">
+            <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3">Speed‑to‑Lead</td><td class="p-3">≤ 2 min</td><td class="p-3">Submission → first touch</td></tr>
+                  <tr><td class="p-3">Activity Logging</td><td class="p-3">≥ 95%</td><td class="p-3">Touches logged with template_id</td></tr>
+                  <tr><td class="p-3">MQL→SQL</td><td class="p-3">+15% in 60 days</td><td class="p-3">Baseline vs. post‑launch</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="core-glossary">
+            <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <p><strong>Upsert</strong>: Update if exists, else insert, to avoid duplicates.</p>
+              <p><strong>Quiet hours</strong>: Time ranges when messages won’t send.</p>
+              <p><strong>UTM</strong>: Marketing tags telling us where a lead came from.</p>
+            </div>
+          </section>
+
+          <div class="border-t pt-10">
+            <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+            <p class="mt-2 text-gray-600 text-sm">Step‑by‑step SOPs for Core tier.</p>
+          </div>
+
+          <section class="sec" id="core-initial-setup">
+            <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-4">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Create folders: <code>/01_discovery</code> … <code>/06_optimize</code>.</li>
+                <li>Baseline exports; 1‑page charter; tracker (Notion/Trello).</li>
+              </ul>
+              <div class="border rounded p-4">
+                <p class="font-semibold">Zapier Speed‑to‑Lead (concept)</p>
+<pre class="whitespace-pre-wrap text-xs">trigger = new_form_submission()
+lead = enrich(trigger.payload, timeout_ms=2500)
+crm.upsert_contact(email=lead.email, fields=lead)
+owner = assign_owner(lead)
+notify_slack(owner, lead, link=crm.link(lead))
+log_activity(lead, template_id="t1", status="queued")
+</pre>
               </div>
-            </details>
-          </div>
+            </div>
+          </section>
 
-          <!-- STEP 2 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 2 — Pipeline & Fields</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="stages"/> <span>Define pipeline stages + exit criteria; freeze names</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="fields"/> <span>Complete field map (lead/contact, company, deal) with API names</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="dedupe"/> <span>Document dedupe rules (email + domain); choose soft‑merge policy</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="sample"/> <span>Pull sample CSV (20–50 rows) to validate mappings</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Mapping the sales process</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> In this step, we're creating a simple map of your sales process and defining the information we need to collect about each lead. Think of it like planning a road trip: we need to know the stops along the way and what information we need for each stop.</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Pipeline Stages:</strong> These are the main stops on your sales journey (e.g., "New Lead," "First Meeting Booked," "Proposal Sent," "Deal Won"). We'll give them clear, simple names.</li>
-                  <li><strong>Exit Criteria:</strong> For each stop, we'll write down the one single thing that has to happen to move to the next stop. For example, to move from "New Lead" to "First Meeting Booked," the exit criteria is "a meeting is booked on the calendar." This removes all guesswork.</li>
-                  <li><strong>Field Map:</strong> This is the list of information we need to collect, like a packing list for our trip. It includes basics like <code>email</code> and <code>first_name</code>, and maybe marketing info like <code>utm_source</code> (which tells us where the lead came from, e.g., Google or Facebook).</li>
-                  <li><strong>Dedupe Rules:</strong> This is our "no duplicates" rule. We'll tell the system to check for an existing person by their email address to avoid creating multiple records for the same person, which can be very confusing.</li>
-                </ul>
-                <p><strong>Why it matters:</strong> A clear map prevents confusion. If we don't define the stages and fields clearly, the automation might put leads in the wrong place or lose important information. This step ensures the whole system is built on a solid, logical foundation.</p>
-              </div>
-            </details>
-          </div>
+          <section class="sec" id="core-prereqs">
+            <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>CRM sandbox/admin; email/SMS provider; Zapier/Make account.</li>
+              <li>DNS access for SPF/DKIM/DMARC; calendar tool link.</li>
+            </ul>
+          </section>
 
-          <!-- STEP 3 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 3 — Design Sign‑off</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="routing-rules"/> <span>Draft routing rules (round‑robin/territory) incl. fallbacks and OOO policy</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="sequence-map"/> <span>Sequence matrix (touches, channels, timing, stop conditions)</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Agreeing on the plan</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> Before we start building, we create a simple, one-page document that summarizes the "rules of the road" for the automation. This is our blueprint. We then send this to the client for their approval.</p>
-                <p>This blueprint includes:</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Routing Rules:</strong> This decides who gets which lead. For example, a rule might be: "All leads from California go to Jane." Or, we could use a <strong>Round-Robin</strong> system, which is like dealing cards, where each new lead goes to the next person in line to ensure fairness.</li>
-                  <li><strong>Sequence Matrix:</strong> This is a simple timeline of the messages we'll send. For example:
-                    <ul>
-                      <li>Day 1, Minute 1: Send Welcome Email.</li>
-                      <li>Day 1, Minute 15: Send SMS (if they gave us a phone number).</li>
-                      <li>Day 3: Send Follow-up Email with a case study.</li>
-                    </ul>
-                  </li>
-                </ul>
-                <p><strong>Why it matters:</strong> Getting the client to say "Yes, this plan looks good" before we build is the most important step to ensure the project is a success. It makes sure we are all on the same page and avoids surprises or having to redo work later. It's like a homeowner approving the architect's blueprint before the construction crew starts building the house.</p>
-              </div>
-            </details>
-          </div>
+          <section class="sec" id="core-tooling">
+            <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+            <div class="bg-white border rounded-xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">CRM</td><td class="p-3">HubSpot Starter, Salesforce basics</td><td class="p-3">Use sandbox if available</td></tr>
+                  <tr><td class="p-3 font-semibold">Automation</td><td class="p-3">Zapier</td><td class="p-3">Rate limit controls</td></tr>
+                  <tr><td class="p-3 font-semibold">Messaging</td><td class="p-3">HubSpot email, Twilio SMS</td><td class="p-3">Quiet hours + auth</td></tr>
+                  <tr><td class="p-3 font-semibold">Calendar</td><td class="p-3">Calendly/HubSpot Meetings</td><td class="p-3">Owner routing</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-          <!-- STEP 4 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 4 — Build Core Flows</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="intake"/> <span>Implement intake (webhook/Zap); verify upsert by email (no dupes)</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enrich"/> <span>Configure enrichment (timeouts, retries, cost guardrails)</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Connecting the pipes</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> This is the "plumbing" phase. We're connecting the different systems together so that data can flow automatically.</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Intake / Webhook:</strong> When someone fills out a form on your website, the website sends out an instant, automatic alert. This alert is called a <strong>Webhook</strong>. We "catch" this alert using a tool like Zapier. This is the "intake" process—how we get leads into our system.</li>
-                  <li><strong>Upsert:</strong> This is a fancy word for a simple, smart action. When a new lead comes in, the system checks if that person's email is already in the CRM.
-                    <ul>
-                      <li>If it is, it <strong>UP</strong>dates their existing record with the new information.</li>
-                      <li>If it's not, it in<strong>SERT</strong>s them as a new contact.</li>
-                    </ul>
-                    This is the magic that prevents creating confusing duplicates.</li>
-                  <li><strong>Enrichment:</strong> This is where we can add extra, useful public information to a lead's record. For example, if a lead signs up with their work email, an enrichment tool can often find their company's size, industry, and location. This helps us understand the lead better without having to ask them 20 questions on the signup form.</li>
-                </ul>
-                <p><strong>Why it matters:</strong> This is the core of the automation. Getting this right means that leads arrive in the CRM instantly and reliably, without anyone having to do manual copy-and-paste, which is slow and prone to errors.</p>
-              </div>
-            </details>
-          </div>
+          <section class="sec" id="core-design">
+            <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Upsert by email; attach UTM; normalize phone (E.164).</li>
+                <li>Round‑robin or simple rules; alert with direct record links.</li>
+                <li>Templates: short, on‑brand, with clear call‑to‑action.</li>
+              </ul>
+            </div>
+          </section>
 
-          <!-- STEP 5 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 5 — Sequences & Routing</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="templates"/> <span>Import templates; replace tokens; brand/legal sign‑off</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Writing the messages</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> Now that the plumbing is connected, we write the actual messages that will be sent automatically. These are called <strong>Templates</strong>.</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Tokens:</strong> To make the messages feel personal, we use placeholders called <strong>Tokens</strong>. A token looks like <code>{{first_name}}</code>. When the email is sent, the system replaces the token with the actual lead's data. So, "Hi <code>{{first_name}}</code>," becomes "Hi Jane,".</li>
-                  <li><strong>STOP Handling:</strong> We must give people an easy way to opt out. We'll test to make sure that if someone replies "STOP" or "unsubscribe" to a message, they are immediately and automatically removed from all future automated messages. This is a legal requirement and also just good manners.</li>
-                </ul>
-                <p><strong>Why it matters:</strong> The messages must be friendly, helpful, and on-brand. This step ensures that the automated outreach feels human and makes a great first impression. We also confirm that the opt-out works perfectly to respect people's wishes and comply with anti-spam laws.</p>
-              </div>
-            </details>
-          </div>
+          <section class="sec" id="core-security">
+            <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Least‑privilege service users; rotate tokens; store in a secrets manager.</li>
+                <li>PII minimization: collect only needed fields; set retention window.</li>
+                <li>Email auth (SPF/DKIM/DMARC) before any scaled sending.</li>
+              </ul>
+            </div>
+          </section>
 
-          <!-- STEP 6 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 6 — Logging & Dashboards</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="activity-log"/> <span>Verify activities written with template_id + outcome</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Building the scoreboard</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> In this step, we set up the "scoreboard" (the <strong>Dashboard</strong>) so we can see if our automation is working and if we're winning. We also make sure every action is recorded.</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Activity Logging:</strong> We'll set up the system so that every time an automated email or SMS is sent, a note is automatically added to the lead's record in the CRM. This note will say something like, "Sequence Email #1 Sent." This is called <strong>Activity Logging</strong>. It creates a perfect history of every interaction.</li>
-                  <li><strong>Dashboard Tiles:</strong> A dashboard is a collection of "tiles," where each tile shows a key number. We'll create tiles for our main KPIs, like "Speed-to-Lead" and "Meetings Booked."</li>
-                </ul>
-                <p><strong>Why it matters:</strong> You can't improve what you don't measure. This scoreboard tells us at a glance if the automation is doing its job effectively. If Speed-to-Lead is slow, or if not enough meetings are being booked, the dashboard will show us, and we'll know we need to make adjustments.</p>
-              </div>
-            </details>
-          </div>
-
-          <!-- STEP 7 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 7 — QA & UAT</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="qa"/> <span>Run test plan (dedupe, opt‑out, routing fallbacks, failures)</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Test driving the system</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> This is our "test drive" phase. Before we let real customers interact with the system, we test it thoroughly to make sure everything works perfectly. This process has two parts:</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>QA (Quality Assurance):</strong> This is when the technical team runs a series of tests to try and "break" the system on purpose. We'll test things like:
-                    <ul>
-                      <li>What happens if someone submits the same email twice? (It shouldn't create a duplicate).</li>
-                      <li>What happens if someone replies "STOP"? (The sequence should end immediately).</li>
-                      <li>What happens if a lead comes in that doesn't match any of our routing rules? (It should go to a default person, not get lost).</li>
-                    </ul>
-                  </li>
-                  <li><strong>UAT (User Acceptance Testing):</strong> This is when we ask the client to do some test drives of their own. They'll get to use the system just like their team would, to make sure it feels right and works as they expect.</li>
-                </ul>
-                <p><strong>Why it matters:</strong> This is the most critical step for building a safe and reliable system. Just like you wouldn't want to fly on a plane that hasn't been tested, you don't want to run your customer-facing operations on untested automation. This step finds and fixes problems before they can affect real leads.</p>
-              </div>
-            </details>
-          </div>
-
-          <!-- STEP 8 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 8 — Launch & Hypercare</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="go-live"/> <span>Deploy to prod; feature flags and rollout plan</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Going live</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> This is the "Go-Live" day, when we turn the automation on for real leads. But we do it very carefully.</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Rollout Plan:</strong> We don't just flip a switch and turn it on for 100% of leads at once. That's too risky. Instead, we do a "phased rollout." We might start by turning it on for just 25% of new leads.</li>
-                  <li><strong>Hypercare:</strong> For the first 48 hours after we go live, we are in "hypercare" mode. This means we are watching the dashboards and error alerts like a hawk. We're ready to jump in and fix any unexpected issues immediately.</li>
-                </ul>
-                <p><strong>Why it matters:</strong> A slow and careful launch is a safe launch. By starting with a small percentage of leads and watching closely, we can ensure everything is running smoothly and fix any small problems before they become big problems. This protects the client's business and reputation.</p>
-              </div>
-            </details>
-          </div>
-
-          <!-- STEP 9 -->
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 9 — Ongoing Optimization</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="weekly"/> <span>Weekly review: speed‑to‑lead, coverage, reply rate</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Making it even better</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> The project doesn't end at launch. Now we move into a phase of continuous improvement, where we make small, smart tweaks to make the system even better over time.</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Weekly Review:</strong> Every week, we'll spend 15 minutes looking at the dashboard. Are the numbers good? Are there any new errors? It's a quick health check.</li>
-                  <li><strong>A/B Tests:</strong> This is a simple way to test ideas. We can try two different subject lines for an email and send them to different groups of new leads. The one that gets more opens and replies wins, and we use that one for everyone going forward. It's a scientific way to improve our messaging.</li>
-                </ul>
-                <p><strong>Why it matters:</strong> A good automation system is like a garden; it needs regular attention to flourish. By constantly monitoring and running small tests, we can ensure the system continues to produce better and better results for the business month after month.</p>
-              </div>
-            </details>
-          </div>
-
-        </div>
-
-        <div class="mt-6 flex items-center gap-3">
-          <button id="crm-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
-          <span class="text-xs text-gray-500">Saved locally in this browser.</span>
-        </div>
-      </div>
-    </section>
-
-        <section class="sec" id="phases">
-      <h2 class="text-2xl font-bold mb-3">Delivery Phases</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs / Done</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3 font-semibold">1) Discovery</td>
-              <td class="p-3">Pipeline mapping, source inventory, field audit, tone examples, KPIs</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">Process map, data dictionary, KPI baseline</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">2) Design</td>
-              <td class="p-3">Field mapping, routing rules, sequence matrix, logging plan</td>
-              <td class="p-3">You</td>
-              <td class="p-3">1-Page Blueprint approved</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">3) Build</td>
-              <td class="p-3">Integrations, triggers, enrichment, scoring, templates, calendars</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Configured sandbox with test data</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">4) Test</td>
-              <td class="p-3">Unit tests per trigger, end‑to‑end test runs, logging verification</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">Test log, defects resolved; UAT sign‑off</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">5) Launch</td>
-              <td class="p-3">Prod deploy, rate limits, enable sequences, observability alerts</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Go‑live checklist complete</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">6) Optimize</td>
-              <td class="p-3">A/B copy, cadence tuning, scoring thresholds, dashboard refinement</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Weekly insights + monthly report</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="communication">
-        <h2 class="text-2xl font-bold mb-3">Communication & Reporting</h2>
-        <div class="bg-white border rounded-xl p-5 text-sm space-y-3">
-          <p>We believe in clear, predictable communication so you always know the status of your project.</p>
-          <ul class="list-disc list-inside space-y-2">
-            <li><strong>The 1-Page Blueprint:</strong> After discovery, we'll distill everything into a single-page plan written in plain English. Your approval of this blueprint is the critical "green light" for us to start building.</li>
-            <li><strong>Weekly Updates:</strong> Every Friday, you'll receive a short email with three bullet points: 1. What we accomplished this week. 2. What's planned for next week. 3. Any questions we have for you.</li>
-            <li><strong>Final Report:</strong> At the end of the project, you will receive a summary report showing the "before" and "after" of your key KPIs, demonstrating the clear ROI of the work.</li>
-          </ul>
-        </div>
-    </section>
-
-    
-
-    <section class="sec" id="scope">
-      <h2 class="text-2xl font-bold mb-3">Scope Tiers (solo‑friendly)</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Includes</th><th class="p-3 text-left">When to choose</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3 font-semibold">MVP</td>
-              <td class="p-3">Lead intake &gt; instant email/SMS &gt; owner assignment &gt; basic dedupe &gt; activity logging</td>
-              <td class="p-3">"Let's get the foundation right. We'll stop leads from falling through the cracks and ensure every single one gets a fast reply."</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Standard</td>
-              <td class="p-3">All MVP + enrichment, scoring, multi‑step sequences, calendar hand‑off, reporting</td>
-              <td class="p-3">"Now let's get smart. We'll prioritize your best leads and automate follow-up to book more meetings."</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Advanced</td>
-              <td class="p-3">All Standard + routing rules, product‑led signals, territory/round‑robin, QA tests</td>
-              <td class="p-3">"Let's build a machine. We'll handle complex team structures and use data to optimize every step."</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="kpis">
-      <h2 class="text-2xl font-bold mb-3">KPIs &amp; Reporting</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3">Speed‑to‑lead</td><td class="p-3">&lt; 2 minutes</td><td class="p-3">From capture to first touch</td></tr>
-            <tr><td class="p-3">Activity logging coverage</td><td class="p-3">≥ 95%</td><td class="p-3">Automated + manual combined</td></tr>
-            <tr><td class="p-3">MQL → SQL conversion</td><td class="p-3">+10–25% lift</td><td class="p-3">Compare 4‑week pre/post windows</td></tr>
-            <tr><td class="p-3">Data quality (dedupe)</td><td class="p-3">&lt; 2% dupes</td><td class="p-3">By email + company domain</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="glossary">
-      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
-      <div class="bg-white border rounded-xl p-5 text-sm space-y-2">
-        <p><strong>Speed‑to‑lead</strong>: How fast you contact a new lead (lower is better).</p>
-        <p><strong>MQL / SQL</strong>: Marketing Qualified Lead (meets marketing criteria) / Sales Qualified Lead (sales believes it’s worth a call/demo).</p>
-        <p><strong>Upsert</strong>: Update if the record exists; insert if it doesn’t (prevents duplicates).</p>
-        <p><strong>Dedupe</strong>: Removing or merging duplicate records (often by matching email or company domain).</p>
-        <p><strong>Sequence</strong>: A pre‑planned series of touches (emails/SMS/calls) over days.</p>
-        <p><strong>Enrichment</strong>: Adding missing info (e.g., company size) from a data provider.</p>
-        <p><strong>Fast lane</strong>: High‑priority routing rule (e.g., high lead score) to assign immediately.</p>
-        <p><strong>SPF/DKIM/DMARC</strong>: DNS records that prove your emails are authorized; improves deliverability.</p>
-        <p><strong>Activity logging</strong>: Writing a note/event into the CRM for each automated touch so reporting is accurate.</p>
-      </div>
-    </section>
-
-    <div class="border-t pt-12">
-      <h2 class="text-3xl font-bold tracking-tight">Part 2: Implementer's Guide</h2>
-      <p class="mt-2 text-gray-600">This section contains the detailed, technical step-by-step procedures for execution.</p>
-    </div>
-
-    <section class="sec" id="initial-setup">
-      <h2 class="text-2xl font-bold mb-3">Initial Setup — Step‑by‑Step (SOP)</h2>
-      <div class="bg-white border rounded-xl p-5 space-y-6 text-sm">
-        <div>
-          <p class="font-semibold mb-2">0) Project Essentials</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Create shared folder structure: <code>/01_discovery</code>, <code>/02_design</code>, <code>/03_build</code>, <code>/04_test</code>, <code>/05_launch</code>, <code>/06_optimize</code>.</li>
-            <li>Create a one‑page charter (goals, KPIs, scope, risks, owner, dates) and get client sign‑off.</li>
-            <li>Stand up an issue tracker (Notion/Asana/Trello) with columns: Backlog, Doing, Waiting, Done.</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="font-semibold mb-2">1) Access & Environments</p>
-          <div class="overflow-x-auto border rounded-lg">
-            <table class="min-w-full">
-              <thead class="bg-gray-50 text-gray-600">
-                <tr><th class="p-3 text-left">Platform</th><th class="p-3 text-left">Actions</th><th class="p-3 text-left">Done</th></tr>
-              </thead>
-              <tbody class="divide-y">
-                <tr>
-                  <td class="p-3 font-semibold">HubSpot</td>
-                  <td class="p-3">
-                    Create sandbox/test account (or use client sandbox). Create service user with least‑privilege API access. Note Portal ID. Enable <em>CRM API</em>, <em>Workflows</em>, <em>Webhooks</em> scopes. Capture private app token.
-                  </td>
-                  <td class="p-3">[ ]</td>
-                </tr>
-                <tr>
-                  <td class="p-3 font-semibold">Salesforce</td>
-                  <td class="p-3">Ensure a full or partial Sandbox. Create Integration User, assign minimal profiles/permissions (API Enabled, Modify All Data only if needed). Generate Connected App (OAuth), capture Consumer Key/Secret; set callback for automation tool if applicable.</td>
-                  <td class="p-3">[ ]</td>
-                </tr>
-                <tr>
-                  <td class="p-3 font-semibold">Pipedrive</td>
-                  <td class="p-3">Create API token under a dedicated user; confirm rate limits (default 10 req/sec). Map default pipeline or create new.</td>
-                  <td class="p-3">[ ]</td>
-                </tr>
-                <tr>
-                  <td class="p-3 font-semibold">Email/SMS</td>
-                  <td class="p-3">Authenticate domains: add SPF, DKIM, DMARC. For SMS (Twilio/MessageBird), purchase number, set webhook URL, enable geo permissions. Configure quiet hours.</td>
-                  <td class="p-3">[ ]</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="mt-2 text-gray-600">Tip: Store credentials in a secrets manager (1Password/Vault). Never in docs.</p>
-        </div>
-
-        <div>
-          <p class="font-semibold mb-2">2) Data Model & Pipeline Stages</p>
-          <div class="overflow-x-auto border rounded-lg mb-3">
-            <table class="min-w-full">
-              <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Object</th><th class="p-3 text-left">Required Fields (name:type)</th><th class="p-3 text-left">Notes</th></tr></thead>
-              <tbody class="divide-y">
-                <tr><td class="p-3 font-semibold">Lead/Contact</td><td class="p-3"><code>email:string</code>, <code>first_name:string</code>, <code>last_name:string</code>, <code>phone:string</code>, <code>utm_source:string</code>, <code>utm_campaign:string</code>, <code>source:string</code>, <code>consent:boolean</code></td><td class="p-3">Normalize phone (E.164). Derive <code>lead_source_detail</code> from UTM.</td></tr>
-                <tr><td class="p-3 font-semibold">Company/Account</td><td class="p-3"><code>company_name:string</code>, <code>domain:string</code>, <code>industry:string</code>, <code>employee_count:int</code></td><td class="p-3">Enrich via Clearbit/Clay if allowed.</td></tr>
-                <tr><td class="p-3 font-semibold">Deal/Opportunity</td><td class="p-3"><code>stage:picklist</code>, <code>amount:number</code>, <code>close_date:date</code>, <code>owner:user</code></td><td class="p-3">Freeze stage names; capture stage timestamps.</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Define canonical pipeline: <code>New → Qualified → Demo/Meeting → Proposal → Negotiation → Closed Won/Lost</code>.</li>
-            <li>Document field mapping per platform (HubSpot property name, Salesforce API name).</li>
-            <li>Enable duplicate rules: email + domain; set soft‑merge policy; log merges.</li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="font-semibold mb-2">3) Integrations & Triggers</p>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="border rounded-lg p-4">
-              <p class="font-semibold">Example Zapier Flow (Speed‑to‑Lead)</p>
+          <section class="sec" id="core-timeline">
+            <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm">
               <ol class="list-decimal list-inside space-y-1">
-                <li>Trigger: New form submission (Webflow/WordPress/Formspree webhook).</li>
-                <li>Action: Enrich (Clearbit/Clay) — set timeouts and fallbacks.</li>
-                <li>Action: Create/Update Contact in CRM (upsert by email).</li>
-                <li>Action: Assign Owner (round‑robin or rules).</li>
-                <li>Action: Send email (native CRM template) + SMS (Twilio) if consent.</li>
-                <li>Action: Create Activity Log with template ID and status.</li>
-                <li>Action: Post to Slack #leads with summary + link.</li>
+                <li>W1: Discovery, baseline, access, field map.</li>
+                <li>W2: Capture, routing, templates, deliverability.</li>
+                <li>W3: UAT, soft‑launch, monitor 48h, rollout.</li>
+                <li>W4+: Weekly health checks; monthly KPIs.</li>
               </ol>
-              <p class="mt-2 text-gray-600">Rate limits: add <em>Delay</em> or <em>Queue</em> step on bursty sources.</p>
             </div>
-            <div class="border rounded-lg p-4">
-              <p class="font-semibold">Webhook Payload (example)</p>
-<pre class="whitespace-pre-wrap text-xs">{
-  "email":"sam@example.com",
-  "first_name":"Sam",
-  "last_name":"Rivera",
-  "phone":"+14405551212",
-  "company":"Rivera LLC",
-  "utm_source":"google",
-  "utm_campaign":"brand_terms_q1",
-  "page_url":"https://client.com/pricing",
-  "consent": true
-}</pre>
+          </section>
+
+          <section class="sec" id="core-templates">
+            <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-3">
+<pre class="whitespace-pre-wrap text-xs">Speed‑to‑lead Slack alert:
+:new: New lead {{email}} → {{owner}}
+Page: {{page_url}} | Source: {{utm_source}}
+Open: {{crm_link}}
+</pre>
+<pre class="whitespace-pre-wrap text-xs">Email template (first touch):
+Subject: Quick follow‑up from {{brand}}
+Hi {{first_name}} — thanks for reaching out! Here’s my calendar: {{calendar_link}}.
+Talk soon,
+{{owner_name}}
+</pre>
             </div>
+          </section>
+
+          <section class="sec" id="core-audit-monitoring">
+            <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Weekly: check error inbox; verify logging coverage ≥95%.</li>
+                <li>Monthly: snapshot trends for speed‑to‑lead, MQL→SQL, reply rates.</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- Enhanced Tier -->
+        <section class="sec space-y-8" id="tier-enhanced">
+          <h2 class="text-3xl font-bold tracking-tight">🚀 Enhanced Tier — Sales & CRM Automation</h2>
+          <p class="mt-2 text-gray-600">Adds enrichment, intelligent routing, AI‑assisted sequences, SLA timers, and dashboards.</p>
+
+          <section class="sec" id="enhanced-story">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+              <p class="mt-3 text-sm text-gray-700">We build stage‑driven workflows (MQL→SQL→Opp), enrich and score leads, validate contactability, add AI‑drafted outreach with approvals, and sync with sales tools. A UAT pack verifies routing, SLAs, and error handling.</p>
+              <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+                <li><strong>Workflows:</strong> owner routing by rules/territory; SLA timers + escalations.</li>
+                <li><strong>Enrichment:</strong> firmographics/intent; scoring for a fast lane.</li>
+                <li><strong>Sequences:</strong> AI‑drafted copy with human approval; tokenized variables.</li>
+                <li><strong>Sync:</strong> Outreach/Salesloft/Apollo; dedupe + idempotent webhooks.</li>
+              </ul>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide: What Enhanced adds beyond Core</summary>
+                <div class="mt-2 text-sm text-gray-700 space-y-2">
+                  <p><strong>Story mode:</strong> You will turn on enrichment so missing details fill in automatically. You’ll add a simple scoring rule so hot leads get handled first. You’ll create an SLA timer so if no one replies in time, a reminder or escalation happens. For messages, AI drafts the copy, and you (a human) click approve before anything sends. Finally, you’ll connect your sequence tool so activity stays in sync.</p>
+                  <p>Think “traffic rules” and “quality checks”. We send better data (enrichment), score it, route it to the right owner, and ensure fast responses (SLAs). Drafted messages get human approval before they go out.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Enrichment:</strong> fill in blanks like company size. If a tool is slow, skip it and continue.</li>
+                    <li><strong>Scoring:</strong> points for good fit (industry, employees) and behavior (pricing page visit).</li>
+                    <li><strong>Approvals:</strong> AI writes; you approve; the system sends.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-communication">
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Weekly updates; change log for workflows/templates; UAT schedule.</li>
+                <li>Monthly deck: conversion by segment/intent, SLA compliance, errors.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-simple-checklist">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+              <p class="text-gray-600 text-sm">Independent per tier. Progress saved locally.</p>
+              <div class="mt-3 h-2 bg-gray-100 rounded">
+                <div id="enhanced-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enhanced-progress-text"></div>
+              </div>
+              <div id="enhanced-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+              <div class="mt-6 space-y-6" id="enhanced-checklist">
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 1 — Discovery & CRM</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-kickoff"/> <span>Intents/segments, routing rules, approval workflow</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-access"/> <span>CRM + iPaaS (Make/Workato) + messaging keys</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-map"/> <span>Field mapping doc incl. tags/scores/owner logic</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Segments, rules, and approvals</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will list your lead groups (like “US”, “EU”, “Enterprise”) and write a one‑line routing rule for each. Then you’ll set up a simple approval step so AI‑drafted messages wait for a green‑light click before sending.</p>
+                      <p><strong>Segments</strong> are groups like “EU leads” or “Enterprise prospects”. Routing rules say who owns each group. Write them in plain English first.</p>
+                      <p><strong>Approval workflow:</strong> Create a simple process where AI drafts a message, a human clicks approve, then it sends. Start with 1 approver.</p>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 2 — Enrichment & Scoring</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-enrich"/> <span>Integrate enrichment (Apollo/Clearbit/Clay) with timeouts</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-score"/> <span>Score model + fast lane thresholds + SLA timers</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-dedupe"/> <span>Deterministic dedupe + fuzzy pass with review</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Safer enrichment and scoring</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will choose one enrichment source, set a short timeout so the flow never stalls, map the fields you care about (like company size), and calculate a score. If the score is high enough, you’ll route the lead immediately and ping Slack.</p>
+                      <ul class="list-disc list-inside space-y-1">
+                        <li>Set a timeout (e.g., 2.5s). If enrichment is slow, keep going with what you have.</li>
+                        <li>Score example: +20 if employee_count 50–500, +15 if pricing page visited, −20 if free email.</li>
+                        <li>Fast lane: score ≥ 70 → assign instantly and alert Slack.</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 3 — Workflows & Sequences</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-workflows"/> <span>Stage‑driven workflows with routes/escalations</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-seq"/> <span>AI‑drafted templates + approval gates</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-sync"/> <span>Bi‑directional sync (Outreach/Salesloft/Apollo)</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Build one workflow at a time</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will first build a tiny flow that assigns an owner and sends the first email. Then you’ll add an SLA reminder if no one replies. When that works, you’ll add an AI‑drafted follow‑up with approvals, and only then connect external tools like Outreach or Salesloft.</p>
+                      <ol class="list-decimal list-inside space-y-1">
+                        <li>Start with “New lead → Assign owner → Send first email”.</li>
+                        <li>Add SLA timer: if no reply within X hours, escalate to a manager or send a reminder.</li>
+                        <li>Only when stable, add sequences and the external sales tool sync.</li>
+                      </ol>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 4 — UAT & Launch</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-uat"/> <span>UAT (30–50 cases: rules, 5xx/429, timeouts)</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-guard"/> <span>Rate limiting; retries with backoff; idempotency keys</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-launch"/> <span>Launch + dashboard; monthly insights deck</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Test the bad paths too</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will purposely break things (like causing a 429 rate limit) to watch your retries and idempotency keep data clean. You’ll confirm duplicates aren’t created and that your dashboard shows the errors clearly.</p>
+                      <p>Don’t just test the happy path. Force errors and make sure your flows retry safely without duplication.</p>
+                      <ul class="list-disc list-inside space-y-1">
+                        <li><strong>Idempotency key:</strong> a unique ID on every request so repeats do not create duplicates.</li>
+                        <li><strong>Backoff:</strong> retry after 1s, then 2s, then 4s for 5xx/429. Stop after 3 tries.</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center gap-3">
+                <button id="enhanced-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+                <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-phases">
+            <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Segments, rules, SLAs</td><td class="p-3">You + Client</td><td class="p-3">Blueprint</td></tr>
+                  <tr><td class="p-3 font-semibold">Design</td><td class="p-3">Workflows, scores, templates</td><td class="p-3">You</td><td class="p-3">Spec</td></tr>
+                  <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Enrichment, sync, timers</td><td class="p-3">You</td><td class="p-3">Working flows</td></tr>
+                  <tr><td class="p-3 font-semibold">Test</td><td class="p-3">UAT pack + error paths</td><td class="p-3">You + Client</td><td class="p-3">Sign‑off</td></tr>
+                  <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Go‑live + dashboard</td><td class="p-3">You</td><td class="p-3">KPI baseline</td></tr>
+                  <tr><td class="p-3 font-semibold">Optimize</td><td class="p-3">Monthly deck</td><td class="p-3">You</td><td class="p-3">Insights</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-2 text-xs text-gray-500">Definitions: Speed‑to‑lead = submission→first touch; SLA = time to owner contact; Idempotency = safe retry without duplicates.</p>
+          </section>
+
+          <section class="sec" id="enhanced-scope">
+            <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>All Core + enrichment/scoring + SLA timers</li>
+              <li>Workflows with routing/escalations; AI‑drafted outreach with approvals</li>
+              <li>Bi‑directional sync with sales tools; conversion dashboards</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enhanced-kpis">
+            <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3">Routing Accuracy</td><td class="p-3">≥ 98%</td><td class="p-3">Matches rule/territory</td></tr>
+                  <tr><td class="p-3">SLA Compliance</td><td class="p-3">≥ 90%</td><td class="p-3">Within target window</td></tr>
+                  <tr><td class="p-3">Sequence Reply Rate</td><td class="p-3">Trend ↑</td><td class="p-3">By segment/intent</td></tr>
+                  <tr><td class="p-3">CRM Error Rate</td><td class="p-3">&lt; 1%</td><td class="p-3">Retries/backoff enabled</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-glossary">
+            <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <p><strong>Territory</strong>: Route rules by geo/industry/segment.</p>
+              <p><strong>SLA timer</strong>: Countdown to required first touch.</p>
+              <p><strong>Idempotency</strong>: Unique key so retries don’t duplicate.</p>
+            </div>
+          </section>
+
+          <div class="border-t pt-10">
+            <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+            <p class="mt-2 text-gray-600 text-sm">Technical SOPs for Enhanced tier.</p>
           </div>
-        </div>
 
-        <div>
-          <p class="font-semibold mb-2">4) Sequences & Templates</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Create <strong>MQL Sequence</strong> (HubSpot Sequences/Outreach/Apollo): 6–8 touches, 10 days, email/SMS/call mix.</li>
-            <li>Use personalization tokens: <code>{{first_name}}</code>, <code>{{company}}</code>, <code>{{last_page_viewed}}</code>.</li>
-            <li>Create calendar link (Calendly/HubSpot Meetings) and add to first two emails.</li>
-            <li>Define reply‑stop words to auto‑stop sequence on booking or negative reply.</li>
-          </ul>
-        </div>
+          <section class="sec" id="enhanced-initial-setup">
+            <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>Blueprint; routing matrix; approval flows; sandbox URLs.</li>
+              <li>Secrets handling; API quotas; webhook endpoints; retries.</li>
+            </ul>
+          </section>
 
-        <div>
-          <p class="font-semibold mb-2">5) Ownership & Routing</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Round‑robin: maintain <code>last_assigned_at</code>; skip out‑of‑office reps.</li>
-            <li>Territory rules: by country/state/domain; add fallback to general queue.</li>
-            <li>High‑intent fast lane: if <code>score ≥ 70</code> or “booked demo” → assign immediately and alert Slack.</li>
-          </ul>
-        </div>
+          <section class="sec" id="enhanced-prereqs">
+            <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>CRM admin, iPaaS (Make/Workato), messaging (Twilio/SendGrid), enrichment (Apollo/Clearbit/Clay).</li>
+              <li>Sequence tool (HubSpot/Outreach/Salesloft/Apollo) as needed.</li>
+            </ul>
+          </section>
 
-        <div>
-          <p class="font-semibold mb-2">6) Logging & Observability</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Every automated touch writes an activity/task with fields: <code>channel</code>, <code>template_id</code>, <code>status</code>, <code>error_code</code>.</li>
-            <li>Error inbox: centralize failed actions with retry button; send daily digest.</li>
-            <li>Dashboards: speed‑to‑lead, touches per lead, logging coverage, reply rates.</li>
-          </ul>
-        </div>
+          <section class="sec" id="enhanced-tooling">
+            <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">iPaaS</td><td class="p-3">Make, Workato</td><td class="p-3">Retries, rate limits</td></tr>
+                  <tr><td class="p-3 font-semibold">Enrichment</td><td class="p-3">Apollo, Clearbit, Clay</td><td class="p-3">Timeouts/fallbacks</td></tr>
+                  <tr><td class="p-3 font-semibold">Messaging</td><td class="p-3">Twilio, SendGrid</td><td class="p-3">Opt‑outs, quiet hours</td></tr>
+                  <tr><td class="p-3 font-semibold">Sequences</td><td class="p-3">HubSpot, Outreach, Salesloft, Apollo</td><td class="p-3">Approval gates</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-        <div>
-          <p class="font-semibold mb-2">7) QA Test Plan (execute in sandbox first)</p>
-          <div class="overflow-x-auto border rounded-lg">
-            <table class="min-w-full">
-              <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Case</th><th class="p-3 text-left">Input</th><th class="p-3 text-left">Expected</th></tr></thead>
-              <tbody class="divide-y">
-                <tr><td class="p-3">Speed‑to‑lead</td><td class="p-3">New form with consent</td><td class="p-3">Email within 2m, SMS within 3m, owner assigned</td></tr>
-                <tr><td class="p-3">Dedup</td><td class="p-3">Same email twice</td><td class="p-3">No new record; activity appended; no owner churn</td></tr>
-                <tr><td class="p-3">Opt‑out</td><td class="p-3">Reply “STOP”</td><td class="p-3">Contact unsubscribed; sequence ends; logged</td></tr>
-                <tr><td class="p-3">Enrichment fail</td><td class="p-3">Timeout on API</td><td class="p-3">Proceed without enrichment; flag for backfill</td></tr>
-                <tr><td class="p-3">Routing fallback</td><td class="p-3">No rule match</td><td class="p-3">Assign to general queue user</td></tr>
-              </tbody>
-            </table>
+          <section class="sec" id="enhanced-design">
+            <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Owner rules before sequences; stop on booking or negative reply.</li>
+                <li>Tagging for intent/segment; dashboard slices by tag.</li>
+                <li>Idempotency on all webhooks; retry 1s/2s/4s; cap at 3.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-security">
+            <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Least‑privilege scopes; rotate tokens; log failures with redaction.</li>
+                <li>Retention 60–90 days; export on request; DSR process.</li>
+                <li>Audit webhook failures; alert on sustained errors &gt; 1%.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-timeline">
+            <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>Week 1–2: Design + enrichment + routing + sequences.</li>
+              <li>Week 3: UAT; fixes; launch + dashboard.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enhanced-templates">
+            <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">Webhook with retries + idempotency (conceptual):
+POST /events HTTP/1.1
+Authorization: Bearer ***
+Idempotency-Key: {{uuid}}
+
+{ "email": "{{email}}", "intent": "demo", "score": 82 }
+
+// Retry: 1s, 2s, 4s; stop after 3; 5xx/429 retryable.
+</pre>
+<pre class="whitespace-pre-wrap text-xs">UAT checklist (excerpt):
+[ ] Route by territory and fast lane
+[ ] SLA timer starts/stops correctly
+[ ] Retry/backoff works; errors summarized daily
+</pre>
+            </div>
+          </section>
+
+          <section class="sec" id="enhanced-audit-monitoring">
+            <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Daily: SLAs and error rates; alert if &gt; 1% failures.</li>
+                <li>Weekly: top segments/intents; slow routes; copy tweaks.</li>
+                <li>Monthly: conversion trends by segment; next actions.</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- Enterprise Tier -->
+        <section class="sec space-y-8" id="tier-enterprise">
+          <h2 class="text-3xl font-bold tracking-tight">🏢 Enterprise Tier — Sales & CRM Automation</h2>
+          <p class="mt-2 text-gray-600">SSO/RBAC/audit, governed changes, private AI endpoints, warehouse sync, and scale testing.</p>
+
+          <section class="sec" id="enterprise-story">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+              <p class="mt-3 text-sm text-gray-700">We implement identity (SSO/RBAC), audit trails, change management, and private AI endpoints. We sync to a warehouse for BI and enforce SLAs with observability. Rollouts are gated behind flags with canary percentages and fast rollback.</p>
+              <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+                <li><strong>Identity:</strong> Okta SAML/OIDC; SCIM provisioning; admin RBAC.</li>
+                <li><strong>Governance:</strong> maker‑checker approvals; release calendar; change log.</li>
+                <li><strong>Data:</strong> Warehouse sync (Snowflake/BigQuery); lineage; DLP.</li>
+                <li><strong>AI:</strong> Private endpoints (Azure OpenAI) for sequence assistance.</li>
+              </ul>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide: Why Enterprise is different</summary>
+                <div class="mt-2 text-sm text-gray-700 space-y-2">
+                  <p><strong>Story mode:</strong> You will protect access with SSO, define who can change what (RBAC), and ship changes behind feature flags. You’ll roll out to a small percentage first (canary), watch dashboards, and only then go broad. Important events will sync to your data warehouse so leadership has trustworthy metrics.</p>
+                  <p>Enterprise isn’t “more features”, it’s “safer operation at scale”. We protect access (SSO), control changes (approvals), and watch health (observability) so nothing surprises executives or regulators.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Flags + canary:</strong> new changes go to 5% of traffic, then 25%, then 100%.</li>
+                    <li><strong>Warehouse sync:</strong> important events are copied to BI so leaders can see reliable metrics.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-communication">
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+              <ul class="list-disc list-inside space-y-1">
+                <li>SLO dashboards (availability, sync latency, error budgets) and on‑call rotations.</li>
+                <li>Quarterly audit packs and red‑team reviews; monthly evals.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-simple-checklist">
+            <div class="bg-white border rounded-2xl p-6">
+              <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+              <p class="text-gray-600 text-sm">Enterprise scope; separate progress tracking stored locally.</p>
+              <div class="mt-3 h-2 bg-gray-100 rounded">
+                <div id="enterprise-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enterprise-progress-text"></div>
+              </div>
+              <div id="enterprise-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+              <div class="mt-6 space-y-6" id="enterprise-checklist">
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 1 — Governance & Identity</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-ssO"/> <span>SSO (SAML/OIDC), RBAC matrix, SCIM provisioning</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-approvals"/> <span>Maker‑checker approvals; change calendar; audit log</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-slos"/> <span>SLOs for availability, latency, data quality; error budgets</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Getting access right</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will integrate Okta (or your IdP), set roles (who can view/edit/release), and turn on SCIM so users are added/removed automatically. You will also set up a small approval flow so risky changes need a second person’s OK.</p>
+                      <p><strong>SSO:</strong> one login to rule them all. Users sign in with your identity provider (Okta/Microsoft). RBAC makes sure only the right people can edit automations.</p>
+                      <p><strong>Approvals:</strong> risky changes need a second person to approve. This catches mistakes before users see them.</p>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 2 — Data & Safety</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-warehouse"/> <span>Warehouse sync (Snowflake/BigQuery) + lineage</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-dlp"/> <span>DLP rules; PII redaction; retention schedules</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-private-ai"/> <span>Private AI endpoints (Azure OpenAI) for copy assist</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Keep data clean and safe</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will connect the CRM to your warehouse, add simple labels that show where data came from (lineage), and turn on rules that block sensitive info from logs or prompts. You’ll also set automatic deletion windows for personal data.</p>
+                      <ul class="list-disc list-inside space-y-1">
+                        <li><strong>Lineage:</strong> keep a “came from” trail for each record so audits are easy.</li>
+                        <li><strong>DLP:</strong> block sensitive fields (SSN, credit card) from entering logs or prompts.</li>
+                        <li><strong>Retention:</strong> auto‑delete personal data after an agreed period unless needed.</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 3 — Observability & Scale</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-logs"/> <span>Logs, traces, cost dashboards; alerting policies</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-flags"/> <span>Feature flags; canary rollout 5%→25%→100%</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-scale"/> <span>Load testing; rate‑limit strategy; backpressure</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: See problems before users do</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will connect logging and tracing, add a few key alerts (error rate, latency, cost spikes), and test that they page the on‑call person. You will also set limits so the system slows down gracefully if downstream tools are overwhelmed.</p>
+                      <p><strong>Logs</strong> tell you what happened, <strong>traces</strong> tell you where time went, and <strong>metrics</strong> show trends. Alerts ping a human when thresholds are crossed.</p>
+                      <p><strong>Backpressure:</strong> if tools are overloaded, slow down safely instead of failing.</p>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="border rounded-xl p-4">
+                  <p class="font-semibold mb-2">Step 4 — UAT & Run</p>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-uat"/> <span>Multi‑env UAT; rollback drills; release notes</span></label>
+                  <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-oncall"/> <span>On‑call runbooks; paging; incident templates</span></label>
+                  <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-reviews"/> <span>Monthly evals; quarterly red‑team; exec dashboard</span></label>
+                  <details class="mt-3"><summary class="font-semibold">Newbie guide: Practicing rollbacks</summary>
+                    <div class="mt-2 text-sm text-gray-700 space-y-2">
+                      <p><strong>Story mode:</strong> You will pick an easy change, ship it behind a flag to 5%, and then flip the rollback switch to prove you can undo it fast. You’ll write short release notes and an incident template so everyone knows what changed and how to fix it if needed.</p>
+                      <p>Pick a small, reversible change and practice rolling it out and back. Time how long rollback takes. If it’s slow, simplify the process.</p>
+                      <ul class="list-disc list-inside space-y-1">
+                        <li>Keep a one‑page incident template: what happened, impact, fix, prevention.</li>
+                        <li>After launch, monitor SLOs for 24 hours before calling it “done”.</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center gap-3">
+                <button id="enterprise-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+                <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-phases">
+            <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Focus</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Exit</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Governance</td><td class="p-3">SLOs, identity, approvals</td><td class="p-3">Signed charter</td></tr>
+                  <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Platform</td><td class="p-3">SSO/RBAC, warehouse, flags, dashboards</td><td class="p-3">Stage demo</td></tr>
+                  <tr><td class="p-3 font-semibold">Test</td><td class="p-3">UAT</td><td class="p-3">Canary plan; rollback; load test</td><td class="p-3">Sign‑off</td></tr>
+                  <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">SLOs</td><td class="p-3">5%→25%→100%; on‑call</td><td class="p-3">SLO met 24h</td></tr>
+                  <tr><td class="p-3 font-semibold">Run</td><td class="p-3">Ops</td><td class="p-3">Incident mgmt; audits; cost</td><td class="p-3">Quarterly pack</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-scope">
+            <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>All Enhanced + SSO/RBAC, audit, change governance</li>
+              <li>Private AI endpoints; warehouse sync; observability</li>
+              <li>Release management; canary; rollback drills</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enterprise-kpis">
+            <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3">Availability SLO</td><td class="p-3">≥ 99.9%</td><td class="p-3">Core workflows</td></tr>
+                  <tr><td class="p-3">Sync Latency</td><td class="p-3">P95 ≤ target</td><td class="p-3">CRM↔warehouse/tools</td></tr>
+                  <tr><td class="p-3">Data Quality</td><td class="p-3">≥ 98%</td><td class="p-3">Dedupe/field validity</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-2 text-xs text-gray-500">Track cost per lead processed, change failure rate, and incident MTTR with post‑incident RCAs.</p>
+          </section>
+
+          <section class="sec" id="enterprise-glossary">
+            <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <p><strong>RBAC</strong>: Role‑based access control for admin actions.</p>
+              <p><strong>DLP</strong>: Rules that prevent sensitive data leakage.</p>
+              <p><strong>Error budget</strong>: Allowed failure within SLOs before freezes.</p>
+            </div>
+          </section>
+
+          <div class="border-t pt-10">
+            <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+            <p class="mt-2 text-gray-600 text-sm">Procedures for Enterprise with change control.</p>
           </div>
-        </div>
 
-        <div>
-          <p class="font-semibold mb-2">8) Contingency Matrix</p>
-          <div class="overflow-x-auto border rounded-lg">
-            <table class="min-w-full">
-              <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Failure</th><th class="p-3 text-left">Symptom</th><th class="p-3 text-left">Immediate Action</th><th class="p-3 text-left">Long‑term Fix</th></tr></thead>
-              <tbody class="divide-y">
-                <tr><td class="p-3">Email not authenticated</td><td class="p-3">Spam, bounces</td><td class="p-3">Pause sequences; send plain‑text via alternative domain</td><td class="p-3">Add SPF/DKIM/DMARC; warm domain 2–4 weeks</td></tr>
-                <tr><td class="p-3">CRM API outage</td><td class="p-3">Errors on create/update</td><td class="p-3">Queue events in Zapier/Make; alert Slack</td><td class="p-3">Add retry with exponential backoff; status checks</td></tr>
-                <tr><td class="p-3">Rate limits</td><td class="p-3">429 errors</td><td class="p-3">Throttle to 1 rps; batch writes</td><td class="p-3">Implement job queue; spread load</td></tr>
-                <tr><td class="p-3">PII policy breach</td><td class="p-3">Sensitive fields present</td><td class="p-3">Stop processing; redact; notify owner</td><td class="p-3">Add intake validation and field allowlist</td></tr>
-                <tr><td class="p-3">Duplicate surge</td><td class="p-3">Merge queue grows</td><td class="p-3">Run nightly dedupe; lock non‑unique fields</td><td class="p-3">Strengthen unique keys; enrich for domain match</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+          <section class="sec" id="enterprise-initial-setup">
+            <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>Envs (dev/stage/prod); approvals; secrets; cost guardrails.</li>
+              <li>Feature flags; release calendar; ownership map; audit log.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enterprise-prereqs">
+            <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+            <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <li>SSO integration details; RBAC matrix; data source credentials.</li>
+              <li>Warehouse access; logging/tracing endpoints.</li>
+            </ul>
+          </section>
+
+          <section class="sec" id="enterprise-tooling">
+            <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3 font-semibold">Identity</td><td class="p-3">Okta (SAML/OIDC), SCIM</td><td class="p-3">RBAC + audit</td></tr>
+                  <tr><td class="p-3 font-semibold">iPaaS</td><td class="p-3">MuleSoft, Workato Ent.</td><td class="p-3">Scale + governance</td></tr>
+                  <tr><td class="p-3 font-semibold">AI</td><td class="p-3">Azure OpenAI private</td><td class="p-3">Guardrails + approvals</td></tr>
+                  <tr><td class="p-3 font-semibold">Warehouse</td><td class="p-3">Snowflake, BigQuery</td><td class="p-3">Sync + BI feeds</td></tr>
+                  <tr><td class="p-3 font-semibold">Observability</td><td class="p-3">Logs/traces/cost</td><td class="p-3">Dashboards + alerts</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-design">
+            <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Flags for prompts/templates; reversible configs; audit every change.</li>
+                <li>Canary by segment; auto‑rollback on thresholds.</li>
+                <li>Data contracts for sync; unit tests on transforms.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-security">
+            <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+            <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Compliance mapping (SOC2/GDPR); encryption in transit/at rest.</li>
+                <li>Incident response: runbooks, RTO/RPO targets, post‑incident RCAs.</li>
+                <li>Data governance: classification, retention schedules, approval gates.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-timeline">
+            <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+            <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+              <table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Week(s)</th><th class="p-3 text-left">Focus</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Exit Criteria</th></tr></thead>
+                <tbody class="divide-y">
+                  <tr><td class="p-3">1–2</td><td class="p-3">Discovery & Design</td><td class="p-3">SLOs, identity, governance; warehouse plan; design spec</td><td class="p-3">Approved charter + rollout plan</td></tr>
+                  <tr><td class="p-3">3–5</td><td class="p-3">Build & Observability</td><td class="p-3">SSO/RBAC; flags; logs/traces/cost dashboards; warehouse sync</td><td class="p-3">Stage demo; dashboards green</td></tr>
+                  <tr><td class="p-3">6–7</td><td class="p-3">Test & UAT</td><td class="p-3">UAT; load tests; rollback drills; data quality checks</td><td class="p-3">Sign‑off; error budget respected</td></tr>
+                  <tr><td class="p-3">8</td><td class="p-3">Launch & SLOs</td><td class="p-3">Canary 5%→25%→100%; on‑call; incident runbook ready</td><td class="p-3">SLOs met 24h; no critical incidents</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-templates">
+            <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">Release checklist:
+- Change ticket approved
+- Feature flag staged
+- Rollout plan + rollback plan
+- Observability checks green
+</pre>
+<pre class="whitespace-pre-wrap text-xs">Canary example (conceptual):
+flag: sequences_v3
+stages:
+  - percentage: 5
+    duration: 2h
+  - percentage: 25
+    duration: 6h
+  - percentage: 100
+    conditions: ["error_rate &lt; 2%", "p95_sync_latency &lt; target"]
+</pre>
+            </div>
+          </section>
+
+          <section class="sec" id="enterprise-audit-monitoring">
+            <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+            <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Quarterly audit packs; evidence archive; change logs.</li>
+                <li>Operational reviews: SLO trends, cost per lead, error budgets.</li>
+                <li>Security reviews: dependency updates, secrets rotation, red‑team findings.</li>
+              </ul>
+            </div>
+          </section>
+        </section>
       </div>
-    </section>
+    </div>
+  </main>
 
-    <section class="sec" id="prereqs">
-      <h2 class="text-2xl font-bold mb-3">Access &amp; Prerequisites Checklist</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>CRM admin or sandbox access (HubSpot, Salesforce, Pipedrive).</li>
-        <li>Lead sources: site forms, chatbot, ads, CSV example, webhooks.</li>
-        <li>Sequencing tool (HubSpot sequences, Outreach, Apollo, or native).</li>
-        <li>Sender domains authenticated (SPF/DKIM/DMARC); SMS provider keys if used.</li>
-        <li>Template copy in client tone; calendar booking link; DNC/opt‑out policy.</li>
-        <li>Reporting baseline: current conversion, speed‑to‑lead, activity coverage.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="tooling">
-      <h2 class="text-2xl font-bold mb-3">Tooling Options</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Selection Guide</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3 font-semibold">CRM</td>
-              <td class="p-3">HubSpot, Salesforce, Pipedrive</td>
-              <td class="p-3">Choose existing; prefer native automation to reduce glue</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Integration</td>
-              <td class="p-3">Native, Zapier/Make, n8n, custom API</td>
-              <td class="p-3">Start with native; escalate to low‑code; custom last</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Sequencing</td>
-              <td class="p-3">HubSpot Sequences, Outreach, Apollo</td>
-              <td class="p-3">Keep data in CRM when possible</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Enrichment</td>
-              <td class="p-3">Clearbit, Apollo, Clay</td>
-              <td class="p-3">Ensure consent; control costs via caching</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Observability</td>
-              <td class="p-3">CRM audit logs, error inbox, Slack alerts</td>
-              <td class="p-3">Alert on failed actions, API errors, rate limits</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="design">
-      <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Field mapping: document IDs, types, picklists; freeze changes during build.</li>
-        <li>Routing: define ownership by territory, round‑robin, product, or score.</li>
-        <li>Scoring: start simple (fit + behavior); iterate with lift analysis.</li>
-        <li>Sequences: 6–10 touches, channel mix email/SMS/call, escalation to human.</li>
-        <li>Logging: all automated touches must write activity with template ID and outcome.</li>
-        <li>Sandboxes: test flows with obfuscated data; back up prod config before deploy.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="security">
-      <h2 class="text-2xl font-bold mb-3">Security, Privacy, Compliance</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Principle of least privilege; use service accounts where supported.</li>
-        <li>Respect do‑not‑contact lists; include opt‑out links; honor quiet hours.</li>
-        <li>Log consent fields; document processors; align with CAN‑SPAM/GDPR/CCPA as applicable.</li>
-        <li>Rate‑limit outbound; monitor hard bounces and spam complaints.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="timeline">
-      <h2 class="text-2xl font-bold mb-3">Detailed Timeline &amp; Cadence (solo operator)</h2>
-      <div class="bg-white border rounded-xl overflow-hidden text-sm">
-        <table class="min-w-full">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr>
-              <th class="p-3 text-left">Day</th>
-              <th class="p-3 text-left">Topic</th>
-              <th class="p-3 text-left">Key Tasks</th>
-              <th class="p-3 text-left">Output / Done</th>
-              <th class="p-3 text-left">Est.</th>
-              <th class="p-3 text-left">Owner</th>
-              <th class="p-3 text-left">Depends</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3">1</td>
-              <td class="p-3">Kickoff + Access</td>
-              <td class="p-3">Stakeholder kickoff; confirm goals/KPIs; collect accounts; verify sandbox availability; book design review</td>
-              <td class="p-3">Charter signed; access checklist 100%</td>
-              <td class="p-3">3–4h</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">—</td>
-            </tr>
-            <tr>
-              <td class="p-3">2</td>
-              <td class="p-3">Pipeline Map</td>
-              <td class="p-3">Workshop: current stages; identify handoffs; list lead sources; export field lists</td>
-              <td class="p-3">Pipeline map; data dictionary v0</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 1</td>
-            </tr>
-            <tr>
-              <td class="p-3">3</td>
-              <td class="p-3">Design Draft</td>
-              <td class="p-3">Routing rules; property mapping; sequence matrix; logging plan; risk log</td>
-              <td class="p-3">Solution design v1 (doc)</td>
-              <td class="p-3">5h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 2</td>
-            </tr>
-            <tr>
-              <td class="p-3">4</td>
-              <td class="p-3">Templates</td>
-              <td class="p-3">Draft email/SMS copy; set calendar links; legal/brand review request</td>
-              <td class="p-3">Template pack v1</td>
-              <td class="p-3">3–4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 3</td>
-            </tr>
-            <tr>
-              <td class="p-3">5</td>
-              <td class="p-3">Approval Gate</td>
-              <td class="p-3">Walkthrough; capture changes; freeze schema; confirm MVP scope</td>
-              <td class="p-3">Design sign‑off</td>
-              <td class="p-3">1–2h</td>
-              <td class="p-3">Client</td>
-              <td class="p-3">Days 3–4</td>
-            </tr>
-            <tr>
-              <td class="p-3">6</td>
-              <td class="p-3">Integrations</td>
-              <td class="p-3">Create properties; build intake webhook; upsert by email; Slack alerts</td>
-              <td class="p-3">Sandbox flow E2E</td>
-              <td class="p-3">5h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Sign‑off</td>
-            </tr>
-            <tr>
-              <td class="p-3">7</td>
-              <td class="p-3">Enrichment + Score</td>
-              <td class="p-3">Plug enrichment; set timeouts; compute score v1; log score reasons</td>
-              <td class="p-3">Score field live; tests green</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 6</td>
-            </tr>
-            <tr>
-              <td class="p-3">8</td>
-              <td class="p-3">Sequences</td>
-              <td class="p-3">Build MQL sequence; tokens; suppression lists; STOP handling</td>
-              <td class="p-3">Sequences enabled (sandbox)</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Days 4,7</td>
-            </tr>
-            <tr>
-              <td class="p-3">9</td>
-              <td class="p-3">Routing</td>
-              <td class="p-3">Round‑robin/territories; fast lane rules; queues; OOO skip</td>
-              <td class="p-3">Routing tests pass</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 7</td>
-            </tr>
-            <tr>
-              <td class="p-3">10</td>
-              <td class="p-3">Logging + Dash</td>
-              <td class="p-3">Activity fields; error inbox; speed‑to‑lead dashboard</td>
-              <td class="p-3">Dash v1; alerts wired</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 6</td>
-            </tr>
-            <tr>
-              <td class="p-3">11</td>
-              <td class="p-3">QA</td>
-              <td class="p-3">Run test plan; document defects; fix high severity</td>
-              <td class="p-3">Test log; zero Sev‑1</td>
-              <td class="p-3">4h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Days 6–10</td>
-            </tr>
-            <tr>
-              <td class="p-3">12</td>
-              <td class="p-3">UAT</td>
-              <td class="p-3">Client tests; capture changes; go/no‑go</td>
-              <td class="p-3">UAT sign‑off</td>
-              <td class="p-3">2h</td>
-              <td class="p-3">Client</td>
-              <td class="p-3">Day 11</td>
-            </tr>
-            <tr>
-              <td class="p-3">13</td>
-              <td class="p-3">Deploy</td>
-              <td class="p-3">Toggle features; rate limit; migrate templates to prod</td>
-              <td class="p-3">Prod live; rollback plan</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">UAT</td>
-            </tr>
-            <tr>
-              <td class="p-3">14</td>
-              <td class="p-3">Hypercare</td>
-              <td class="p-3">Monitor errors; tune throttles; fix Sev‑2/3; report</td>
-              <td class="p-3">Stability report</td>
-              <td class="p-3">3h</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Day 13</td>
-            </tr>
-            <tr>
-              <td class="p-3">15</td>
-              <td class="p-3">Handover</td>
-              <td class="p-3">1‑hr training; SOP docs; schedule weekly review</td>
-              <td class="p-3">Recorded training; docs shared</td>
-              <td class="p-3">2h</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">—</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
-        <div class="bg-white border rounded-xl p-4">
-          <p class="font-semibold mb-1">Fast‑Track (7 days)</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Collapse Days 1–3 into one extended workshop; use MVP scope only.</li>
-            <li>Skip enrichment/scoring v1; add in week 2; launch with basic routing + 1 sequence.</li>
-            <li>Deploy to 25–50% traffic first; expand after 48h stability.</li>
-          </ul>
-        </div>
-        <div class="bg-white border rounded-xl p-4">
-          <p class="font-semibold mb-1">If Client Approvals Lag</p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Proceed with sandbox build using neutral copy placeholders.</li>
-            <li>Book pre‑approved UAT slot; gate prod deploy on email auth + copy sign‑off.</li>
-            <li>Offer “soft‑launch” with internal recipients only to validate flows.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec" id="templates">
-      <h2 class="text-2xl font-bold mb-3">Templates &amp; Snippets</h2>
-      <div class="bg-white border rounded-xl p-5 space-y-3 text-sm">
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <p class="font-semibold">HubSpot Property Mapping (example)</p>
-<pre class="whitespace-pre-wrap text-xs">email → contact.email
-first_name → contact.firstname
-last_name → contact.lastname
-phone → contact.phone
-utm_source → contact.utm_source
-utm_campaign → contact.utm_campaign
-source → contact.lead_source_detail
-consent → contact.hs_email_optout (inverted semantics)</pre>
-          </div>
-          <div>
-            <p class="font-semibold">Salesforce Field API Names</p>
-<pre class="whitespace-pre-wrap text-xs">Lead.Email
-Lead.FirstName
-Lead.LastName
-Lead.Phone
-Lead.LeadSource
-Lead.Company
-Lead.HasOptedOutOfEmail (inverted)
-Task.Type ("Automated Email")
-Task.Subject ("Seq:template_id")</pre>
-          </div>
-        </div>
-        <div>
-          <p class="font-semibold">Field Mapping (CSV headers)</p>
-          <code>source,id,email,first_name,last_name,company,phone,utm_source,utm_campaign,owner,score</code>
-        </div>
-        <div>
-          <p class="font-semibold">Sequence Skeleton (speed‑to‑lead)</p>
-          <ol class="list-decimal list-inside">
-            <li>T+0m: Auto‑email with value prop + calendar link.</li>
-            <li>T+15m: SMS check‑in (if consent) with short question.</li>
-            <li>T+24h: Follow‑up email with 2 bullet use‑cases.</li>
-            <li>T+3d: Bump + case study link.</li>
-            <li>T+7d: Last touch; ask to keep in touch.</li>
-          </ol>
-        </div>
-        <div>
-          <p class="font-semibold">Go‑Live Checklist</p>
-          <ul class="list-disc list-inside">
-            <li>Backups exported; feature flags ready to toggle off.</li>
-            <li>Alerting to Slack/email on failure and rate‑limits.</li>
-            <li>Test lead flows from each source; confirm logging and ownership.</li>
-            <li>Confirm opt‑out links and suppression lists are active.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec" id="audit-monitoring">
-      <h2 class="text-2xl font-bold mb-3">Audit &amp; Monitoring (Ops)</h2>
-      <div class="bg-white border rounded-2xl p-6 text-sm space-y-4">
-        <div class="text-xs text-gray-500 mb-1">Operations & verification guidance — copy this section into your runbook</div>
-        <p class="font-semibold">Purpose</p>
-        <p class="muted">Verify the build matches the design, catch regressions early, and keep the automation healthy after launch.</p>
-
-        <p class="font-semibold">Immediate Audit (run at launch)</p>
-        <ul class="list-disc list-inside ml-4">
-          <li>Compare exported baseline CSV with live post-launch exports (same columns + counts).</li>
-          <li>Run synthetic leads from each source and confirm: arrival, upsert (no dupes), owner routing, activity logging (with <code>template_id</code>), and message delivery.</li>
-          <li>Test opt-out handling (reply STOP / click unsubscribe) and suppression lists.</li>
-          <li>Force enrichment timeout/failure and confirm intake does not block.</li>
-          <li>Verify SPF/DKIM/DMARC and check a delivered inbox for bounces/spam.</li>
-        </ul>
-
-        <p class="font-semibold">Key Metrics to Monitor (suggested tiles)</p>
-        <ul class="list-disc list-inside ml-4">
-          <li><strong>Median Speed‑to‑Lead (24h)</strong>: target &lt; 2 minutes.</li>
-          <li><strong>Activity Logging Coverage</strong>: % new leads with ≥1 activity in 24‑48h — target ≥ 95%.</li>
-          <li><strong>Error Rate</strong>: API/automation failures (5m avg) — alert if &gt; 1%.</li>
-          <li><strong>Bounce / Deliverability</strong>: hard bounces in 24h — alert if &gt; 2%.</li>
-          <li><strong>Duplicate Rate</strong> and <strong>Enrichment Failures</strong> (daily).</li>
-        </ul>
-
-        <p class="font-semibold">Alerts &amp; Runbook (short)</p>
-        <ul class="list-disc list-inside ml-4">
-          <li>Critical: Speed‑to‑lead median &gt; 5 min for 15m → page on‑call + Slack.</li>
-          <li>High: Activity logging &lt; 90% for two checks → Slack + create ticket.</li>
-          <li>Triage steps: reproduce with synthetic lead → check logs → disable offending template/flow → rollback if needed.</li>
-        </ul>
-
-        <p class="font-semibold">Synthetic Tests (low effort)</p>
-        <p class="muted">Run a scheduled lightweight script every 5–15 minutes that POSTs a test lead (with a fixed test email) for each intake path. Verify the lead appears, activity is logged, and sequence is triggered. Store results in a tiny status file or push metrics to your monitoring system.</p>
-
-        <p class="font-semibold">Quick Copy Checklist</p>
-        <pre class="whitespace-pre-wrap text-xs">Export baseline CSV
-Run E2E test for each source
-Confirm upsert/no-duplicate behavior
-Validate owner routing
-Send test email/SMS; confirm deliverability
-Test STOP/unsubscribe
-Confirm activity logging with template_id
-Verify SPF/DKIM/DMARC</pre>
-      </div>
-    </section>
-
-  <footer class="py-10 text-center text-sm text-gray-500">© 2025 AI Freelancer</footer>
   <script>
-  // Canonical checklist progress with namespaced localStorage
   (function(){
-    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
-    const bar = document.getElementById('crm-progress-bar');
-    const txt = document.getElementById('crm-progress-text');
+    const boxes = document.querySelectorAll('#core-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('core-progress-bar');
+    const txt = document.getElementById('core-progress-text');
     const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
     const KEY = (id) => `aflp:${slug}:check:${id}`;
-
-    function update(){
-      const total = boxes.length || 1;
-      const done = Array.from(boxes).filter(b => b.checked).length;
-      const pct = Math.round((done/total)*100);
-      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
-      if(txt){ txt.textContent = pct + '% complete'; }
-    }
-
-    function load(){
-      boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} });
-      update();
-    }
-
-    function onChange(e){
-      const id = e.target?.dataset?.id;
-      if(!id) return;
-      try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){}
-      update();
-    }
-
-    boxes.forEach(b => b.addEventListener('change', onChange));
-    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+    function update(){ const t=boxes.length||1, d=[...boxes].filter(b=>b.checked).length, p=Math.round((d/t)*100); if(bar){bar.style.width=p+'%'; bar.setAttribute('aria-valuenow', String(p));} if(txt){txt.textContent=p+'% complete';} }
+    function load(){ boxes.forEach(b=>{ try{ b.checked = localStorage.getItem(KEY(b.dataset.id))==='1'; }catch(e){} }); update(); }
+    function onChange(e){ const id=e.target?.dataset?.id; if(!id) return; try{ localStorage.setItem(KEY(id), e.target.checked?'1':'0'); }catch(e){} update(); }
+    boxes.forEach(b=>b.addEventListener('change', onChange));
+    const reset=document.getElementById('core-reset'); if(reset){ reset.addEventListener('click', ()=>{ boxes.forEach(b=>{ try{ localStorage.removeItem(KEY(b.dataset.id)); }catch(e){} b.checked=false; }); update(); }); }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', load); else load();
   })();
   </script>
+
+  <script>
+  (function(){
+    const toc = document.getElementById('toc'); if(!toc) return;
+    const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    const ids = links.map(a => a.getAttribute('href').slice(1));
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const byId = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+    const OFFSET = 140;
+    function clear(){ links.forEach(a=>a.classList.remove('active')); }
+    function setActive(id){ const a=byId[id]; if(!a) return; clear(); a.classList.add('active'); const d=a.closest('details'); if(d) d.open=true; }
+    let ticking=false; function update(){ const y=window.scrollY+OFFSET; let cur=ids[0]||''; for(let i=0;i<sections.length;i++){ const s=sections[i]; if(s && s.offsetTop<=y) cur=s.id; else break;} if(cur) setActive(cur);} 
+    function onScroll(){ if(ticking) return; ticking=true; requestAnimationFrame(()=>{ update(); ticking=false; }); }
+    window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', onScroll);
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', update); else update();
+    window.addEventListener('hashchange', ()=>{ const id=location.hash.replace('#',''); if(id) setActive(id); });
+    links.forEach(a=>a.addEventListener('click', ()=>{ const id=a.getAttribute('href').slice(1); setActive(id); }));
+  })();
+  </script>
+
+  <script>
+  (function(){
+    const boxes = document.querySelectorAll('#enhanced-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enhanced-progress-bar');
+    const txt = document.getElementById('enhanced-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+    function update(){ const t=boxes.length||1, d=[...boxes].filter(b=>b.checked).length, p=Math.round((d/t)*100); if(bar){bar.style.width=p+'%'; bar.setAttribute('aria-valuenow', String(p));} if(txt){txt.textContent=p+'% complete';} }
+    function load(){ boxes.forEach(b=>{ try{ b.checked = localStorage.getItem(KEY(b.dataset.id))==='1'; }catch(e){} }); update(); }
+    function onChange(e){ const id=e.target?.dataset?.id; if(!id) return; try{ localStorage.setItem(KEY(id), e.target.checked?'1':'0'); }catch(e){} update(); }
+    boxes.forEach(b=>b.addEventListener('change', onChange));
+    const reset=document.getElementById('enhanced-reset'); if(reset){ reset.addEventListener('click', ()=>{ boxes.forEach(b=>{ try{ localStorage.removeItem(KEY(b.dataset.id)); }catch(e){} b.checked=false; }); update(); }); }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
+  <script>
+  (function(){
+    const boxes = document.querySelectorAll('#enterprise-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enterprise-progress-bar');
+    const txt = document.getElementById('enterprise-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+    function update(){ const t=boxes.length||1, d=[...boxes].filter(b=>b.checked).length, p=Math.round((d/t)*100); if(bar){bar.style.width=p+'%'; bar.setAttribute('aria-valuenow', String(p));} if(txt){txt.textContent=p+'% complete';} }
+    function load(){ boxes.forEach(b=>{ try{ b.checked = localStorage.getItem(KEY(b.dataset.id))==='1'; }catch(e){} }); update(); }
+    function onChange(e){ const id=e.target?.dataset?.id; if(!id) return; try{ localStorage.setItem(KEY(id), e.target.checked?'1':'0'); }catch(e){} update(); }
+    boxes.forEach(b=>b.addEventListener('change', onChange));
+    const reset=document.getElementById('enterprise-reset'); if(reset){ reset.addEventListener('click', ()=>{ boxes.forEach(b=>{ try{ localStorage.removeItem(KEY(b.dataset.id)); }catch(e){} b.checked=false; }); update(); }); }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
 </body>
 </html>

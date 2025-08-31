@@ -10,8 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style> body{font-family:'Inter',sans-serif} code,kbd{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:.375rem;padding:.125rem .375rem} .sec{scroll-margin-top:80px} </style>
+  <style> body{font-family:'Inter',sans-serif; line-height:1.5} .sec{scroll-margin-top:80px} </style>
   <style>
+    html { scroll-behavior: smooth; }
     /* Vibrant Indigo + Teal theme */
     :root{
       --teal: #0d9488;   /* teal-600 */
@@ -63,7 +64,12 @@
     details[open] summary{ color:var(--indigo); }
 
     /* Code and pre */
-    code,kbd{ background:#f1f5f9; border-color:#e6eef8; }
+    code,kbd{
+      background:#f1f5f9;
+      border:1px solid #e6eef8;
+      border-radius:.375rem;
+      padding:.125rem .375rem;
+    }
 
     /* Small helper */
     .muted { color: var(--muted); }
@@ -73,6 +79,8 @@
   </style>
   <style>
     .toc .toc-divider { list-style: none; }
+    /* Active section highlight for sticky TOC */
+    #toc a.active { color: var(--indigo); font-weight: 800; text-decoration: underline; }
   </style>
   <meta name="robots" content="noindex, follow" />
 </head>
@@ -81,7 +89,7 @@
     <div class="container mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
       <nav class="text-sm text-gray-600">
-        <a href="index.html" class="hover:text-gray-900">Playbook index</a>
+        <a href="/index.html" class="hover:text-gray-900">Playbook index</a>
         <span class="mx-3">•</span>
         <a href="/ai-website-chatbot.html" class="hover:text-gray-900">Service page</a>
       </nav>
@@ -91,7 +99,7 @@
   <main class="container mx-auto px-6 py-10 space-y-12">
     
     <section class="sec" id="overview">
-      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">Delivery Playbook: AI Website Chatbot</h1>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">🤖 Delivery Playbook: AI Website Chatbot</h1>
       <p class="mt-4 text-lg text-gray-700">Deploy a lead-generating, on-brand chatbot that answers user questions instantly. This playbook follows best practices for building a reliable AI assistant: define the goal, build a strong knowledge base, design safe conversation flows, and measure containment and conversion rates.</p>
       <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
         <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Primary KPI</p><p class="text-xl font-bold">Lead Conversion Lift > 15%</p></div>
@@ -111,573 +119,1218 @@
       </div>
     </section>
 
-    <section class="sec" id="toc">
-      <nav class="bg-white border rounded-xl p-5">
-        <h2 class="text-2xl font-bold mb-3">Table of Contents</h2>
-        <div class="toc grid md:grid-cols-2 gap-8">
-          <div>
-            <div class="text-xs font-semibold uppercase text-gray-500 mb-2">Part 1: What &amp; Why</div>
-            <ol class="list-decimal ml-5 space-y-1 text-sm">
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#story-top">Quick Story — What Will Happen</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#communication">Communication & Reporting</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#simple-checklist">Simplified Process Timeline and Checklist</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#phases">Delivery Phases</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#scope">Scope Tiers</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#kpis">KPIs & Reporting</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#glossary">Glossary (Newbie‑friendly)</a></li>
+    <!-- Layout: sticky sidebar TOC + content -->
+    <div class="grid md:grid-cols-12 gap-8 items-start">
+      <!-- Sticky Sidebar TOC -->
+      <aside id="toc" class="hidden md:block md:col-span-3 md:sticky md:top-24 md:self-start">
+        <nav class="bg-white border rounded-xl p-4 md:sticky md:top-24 md:max-h-[78vh] md:overflow-auto text-sm">
+          <p class="text-xs font-semibold uppercase text-gray-500 mb-2">On this page</p>
+          <ul class="space-y-2">
+            <li><a class="hover:text-indigo-600" href="#tier-overview">Tier Overview</a></li>
+          </ul>
+          <details class="mt-4" open>
+            <summary class="font-semibold cursor-pointer">Core Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#core-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#core-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#core-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#core-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#core-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#core-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#core-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#core-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#core-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#core-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#core-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#core-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#core-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#core-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#core-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
             </ol>
-          </div>
-          <div>
-            <div class="text-xs font-semibold uppercase text-gray-500 mb-2">Part 2: Implementer's Guide</div>
-            <ol class="list-decimal ml-5 space-y-1 text-sm">
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#initial-setup">Initial Setup (SOP)</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#prereqs">Access & Prerequisites</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#tooling">Tooling Options</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#design">Design Notes</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#security">Security & Compliance</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#timeline">Detailed Timeline</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#templates">Templates & Snippets</a></li>
-              <li><a class="text-gray-700 hover:text-indigo-600 hover:underline" href="#audit-monitoring">Audit & Monitoring (Ops)</a></li>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enhanced Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enhanced-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enhanced-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enhanced-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enhanced-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enhanced-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enhanced-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enhanced-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enhanced-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enhanced-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enhanced-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enhanced-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enhanced-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enhanced-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enhanced-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enhanced-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
             </ol>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enterprise Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enterprise-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enterprise-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enterprise-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enterprise-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enterprise-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enterprise-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enterprise-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enterprise-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enterprise-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enterprise-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enterprise-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enterprise-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enterprise-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enterprise-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enterprise-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <div class="mt-4 border-t pt-3">
+            <a href="#overview" class="inline-block px-3 py-2 border rounded-lg hover:bg-gray-50">Back to top</a>
           </div>
-        </div>
-      </nav>
-    </section>
+        </nav>
+      </aside>
 
-    <section class="sec" id="part-1">
-      <h2 class="text-3xl font-bold tracking-tight">Part 1: What &amp; Why (Client &amp; Manager View)</h2>
-    </section>
+      <!-- Main content column -->
+      <div class="md:col-span-9 space-y-12">
 
-    <section class="sec" id="story-top">
+    <!-- Tier Overview -->
+    <section class="sec" id="tier-overview">
       <div class="bg-white border rounded-2xl p-6">
-        <h2 class="text-2xl font-bold">Quick Story — What will happen</h2>
-        <p class="mt-3 text-sm text-gray-700">Overview: We will build a smart assistant for your website. It will give visitors instant answers to their questions, 24/7. First, we'll teach the AI using your website's content. Then, we'll design the conversation to be helpful and on-brand. We'll test it carefully to make sure it's safe and accurate before putting it on your site. Finally, we'll launch it on one page, see how it does, and then roll it out everywhere.</p>
-
-        <p class="mt-3 text-sm text-gray-700">What each step means (plain):</p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Gather knowledge:</strong> We'll collect information from your key website pages, like FAQs, services, and pricing. This becomes the chatbot's "brain."</li>
-          <li><strong>Design the conversation:</strong> We'll decide what the chatbot says to greet people, how it answers questions, and when it should offer to connect them with a human.</li>
-          <li><strong>Build the bot:</strong> We'll feed the knowledge into the AI and set up the rules for the conversation.</li>
-          <li><strong>Test drive:</strong> We'll ask the chatbot lots of questions internally to make sure it's helpful, accurate, and doesn't say anything strange.</li>
-          <li><strong>Launch slowly:</strong> We'll turn the chatbot on for just one page first, watch how visitors use it, and make sure everything is working perfectly before we add it to other pages.</li>
-        </ul>
-
-        <p class="mt-3 text-sm text-gray-700"><strong>For you — the person doing the work:</strong> Think of this as a clear checklist. Do these simple actions in order:</p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Define the goal</strong> with the client (is it for getting more leads or for customer support?).</li>
-          <li><strong>Scrape the website content</strong> and use it to create a knowledge base (this is called a vector database).</li>
-          <li><strong>Write a "system prompt"</strong> that tells the AI how to behave (e.g., "You are a friendly assistant for Brand X...").</li>
-          <li><strong>Run an evaluation script</strong> with 20-30 common questions to test the chatbot's accuracy.</li>
-          <li><strong>Embed the chatbot widget</strong> on a staging site to test the user experience.</li>
-          <li><strong>Go live on one page,</strong> monitor the analytics for 48 hours, then roll out to the rest of the site.</li>
-        </ul>
-
-        <p class="mt-3 text-sm text-gray-700"><strong>For the client — what it should feel like:</strong></p>
-        <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-          <li><strong>Easy:</strong> They just need to point you to the right pages on their website and approve the chatbot's personality.</li>
-          <li><strong>Instant:</strong> Their website visitors get immediate answers instead of having to search or wait for an email reply.</li>
-          <li><strong>Safe:</strong> The chatbot is carefully tested to be on-brand and avoid giving incorrect or harmful information.</li>
-          <li><strong>Insightful:</strong> The client gets reports on what their customers are asking, providing valuable insights.</li>
-        </ul>
+        <h2 class="text-2xl font-bold">🧭 Tier Overview</h2>
+        <p class="mt-2 text-sm text-gray-700">Pick the tier that matches scope and risk. Each section below is a complete, standalone playbook. Use the buttons to jump directly to the tier you need.</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href="#tier-core" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Core</a>
+          <a href="#tier-enhanced" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enhanced</a>
+          <a href="#tier-enterprise" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enterprise</a>
+        </div>
+        <div class="overflow-x-auto mt-6 bg-white border rounded-2xl">
+          <table class="min-w-full text-sm">
+            <thead class="bg-gray-50 text-gray-600">
+              <tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Best For</th><th class="p-3 text-left">Includes (one‑line)</th><th class="p-3 text-left">Notable Differences</th></tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr>
+                <td class="p-3 font-semibold">Core</td>
+                <td class="p-3">Fast launch, small sites</td>
+                <td class="p-3">RAG on 10–30 public pages, basic widget, simple lead capture</td>
+                <td class="p-3">Single language, minimal integrations, basic analytics</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">Enhanced</td>
+                <td class="p-3">Guided flows + CRM</td>
+                <td class="p-3">All Core + PDFs/docs, CRM/webhook integration, dashboard</td>
+                <td class="p-3">Guided intents, tagging, optional multilingual, deeper reporting</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">Enterprise</td>
+                <td class="p-3">Complex orgs, compliance, SSO</td>
+                <td class="p-3">All Enhanced + internal connectors, SSO/RBAC, observability</td>
+                <td class="p-3">Multi‑env, change management, SLOs, audits</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <section class="sec" id="simple-checklist">
-      <div class="bg-white border rounded-2xl p-6">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <h2 class="text-2xl font-bold">Simplified Process Timeline and Checklist</h2>
-            <p class="text-gray-600 text-sm">Use this live checklist during client meetings. It saves progress in your browser. Expand any "Newbie guide" for detailed, step-by-step help.</p>
-          </div>
-          <div class="text-right">
-            <div class="text-sm text-gray-600">Progress</div>
-            <div class="w-48 h-2 bg-gray-100 rounded-full overflow-hidden" aria-hidden="false">
-              <div id="crm-progress-bar" class="h-2 bg-indigo-500 w-0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="crm-progress-text"></div>
+    <!-- Core Tier -->
+    <section class="sec space-y-8" id="tier-core">
+      <h2 class="text-3xl font-bold tracking-tight">⚡ Core Tier — AI Website Chatbot</h2>
+      <p class="mt-2 text-gray-600">Minimal integrations, fast setup, small footprint. Designed to launch quickly with reliable RAG and basic lead capture.</p>
+
+      <section class="sec" id="core-story">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+          <p class="mt-3 text-sm text-gray-700">We build a helpful assistant for your website using your public content. We start with a small set of key pages, design a concise system prompt with safety guardrails, soft‑launch on a single page, and then deploy sitewide. You’ll approve a 1‑page blueprint before we build, and you’ll see weekly updates and a monthly KPI snapshot.</p>
+          <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+            <li><strong>Gather knowledge:</strong> Select 10–30 high‑value pages (FAQs, pricing, services).</li>
+            <li><strong>Design behavior:</strong> Concise system prompt; clear fallbacks when unsure.</li>
+            <li><strong>Build & test:</strong> RAG pipeline + lightweight widget; simple eval set.</li>
+            <li><strong>Launch:</strong> Soft‑launch on one page, monitor, then roll out sitewide.</li>
+          </ul>
+          <details class="mt-3"><summary class="font-semibold">Newbie guide: How this feels end‑to‑end</summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p><strong>Story mode:</strong> You will pick the most important pages on the site, tell the bot to use only those pages, and try a few questions on a test page. If answers are fuzzy, you’ll add or refine content or the rules. When it looks good, you’ll launch on one page, watch it closely, and then turn it on for the whole site.</p>
+              <ol class="list-decimal list-inside space-y-1">
+                <li>We pick the pages most people ask about (FAQs, pricing, product).</li>
+                <li>We set rules: the bot must use those pages and cite them; if unsure, it says so.</li>
+                <li>We add the chat widget to a test page, try questions, and fix weak answers.</li>
+                <li>We launch on one page for 1–2 days (hypercare), then turn it on sitewide.</li>
+              </ol>
+              <div class="border rounded p-3 bg-gray-50">
+                <p class="font-semibold">Example chat</p>
+<pre class="whitespace-pre-wrap text-xs">User: Do you offer refunds?
+Bot: Yes. Per our refund policy [1], you can request a refund within 30 days.
+     Learn more: https://example.com/refunds
+User: Can I talk to a person?
+Bot: Absolutely — share your email and we’ll follow up, or use our contact form.</pre>
+              </div>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Success criteria:</strong> Containment ≥70%, conversion ≥5%, CSAT ≥4.5, hallucination &lt;3%.</li>
+                <li><strong>Risks:</strong> Missing pages → we add them; unclear answers → we adjust the prompt.</li>
+              </ul>
             </div>
-            <div id="crm-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
-          </div>
+          </details>
         </div>
+      </section>
 
-        <div class="mt-6 space-y-6" id="crm-checklist">
-
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 1 — Kickoff & Goals</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="kickoff"/> <span>Hold kickoff; define primary goal (lead gen vs. support) and KPIs</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="voice"/> <span>Capture brand voice, tone, and no-go topics (e.g., no pricing promises)</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="access"/> <span>Get access to website content (sitemap, key pages, PDFs)</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: Why we define goals first</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-2">
-                <p>Before we build anything, we need to know what we're aiming for. This first step is about deciding the chatbot's main job.</p>
-                <p><strong>Analogy: Think of it like hiring a new employee.</strong> You need to write a job description first. Are they a salesperson or a receptionist?</p>
-                <ul class="list-disc list-inside ml-4">
-                    <li><strong>Lead Generation:</strong> Is the chatbot's main job to identify potential customers and ask for their contact information?</li>
-                    <li><strong>Customer Support:</strong> Or is its main job to answer common questions and help existing customers, so your human team has more time?</li>
-                </ul>
-                <p>Defining this helps us make all the other decisions. A "sales" bot will be more proactive about asking questions, while a "support" bot will be more focused on providing accurate answers from the knowledge base.</p>
-              </div>
-            </details>
-          </div>
-
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 2 — Knowledge Base</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="sitemap"/> <span>Review sitemap and select key pages for the knowledge base (FAQs, pricing, etc.)</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="chunking"/> <span>Process and "chunk" the content into small, digestible pieces for the AI</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="vectorize"/> <span>"Vectorize" the chunks and load them into a vector database</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: What is a Knowledge Base?</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> The Knowledge Base is the chatbot's "brain." It's the collection of all the information we want the chatbot to know. We don't just copy-paste the whole website; we have to prepare the information so the AI can understand it.</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Chunking:</strong> We break down long pages of text into small, focused paragraphs or "chunks." Think of it like creating individual flashcards for the AI to study, instead of giving it a whole textbook at once.</li>
-                  <li><strong>Vectorizing:</strong> This is a fancy word for turning the text chunks into numbers (vectors). This process allows the AI to understand the *meaning* and *context* of the words, not just the words themselves. It's how the AI can find the right answer even if the user's question uses slightly different wording.</li>
-                </ul>
-                <p><strong>Why it matters:</strong> A well-built knowledge base is the secret to an accurate and helpful chatbot. If the information is clean and well-organized, the chatbot will give great answers. If it's messy, the chatbot will be confused.</p>
-              </div>
-            </details>
-          </div>
-
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 3 — Design & Prompting</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="prompt"/> <span>Draft the main "System Prompt" that defines the AI's personality and rules</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="flows"/> <span>Map out basic conversation flows (e.g., greeting, lead capture, escalation)</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="guardrails"/> <span>Define safety guardrails and fallback responses (what to say when it doesn't know)</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: What is a System Prompt?</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> The System Prompt is a set of instructions we give the AI that it reads before every single conversation. It's like a director giving an actor their motivation before a scene. It defines the chatbot's personality, its rules, and its goals.</p>
-                <p>An example System Prompt might start like this:</p>
-                <p><em>"You are a friendly and helpful assistant for 'Awesome Inc.' Your goal is to answer questions using ONLY the information provided. Be concise. If you don't know the answer, say 'I'm not sure about that, but I can connect you with our team.' Never make up answers."</em></p>
-                <p><strong>Why it matters:</strong> This is one of the most powerful tools we have to control the chatbot's behavior. A good system prompt ensures the chatbot stays on-brand, follows the rules, and is genuinely helpful to users, rather than just being a generic AI.</p>
-              </div>
-            </details>
-          </div>
-
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 4 — Build & Integrate</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="widget"/> <span>Configure the chat widget's appearance (colors, logo)</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="embed"/> <span>Embed the widget on a staging or test page</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="webhook"/> <span>Connect the lead capture form to a webhook or CRM</span></label>
-          </div>
-
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 5 — Testing (Evaluation)</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="eval-set"/> <span>Create an "eval set" of 20-30 common questions the chatbot should be able to answer</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="run-eval"/> <span>Run the eval set and score the chatbot's answers for accuracy and helpfulness</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="red-team"/> <span>"Red team" the bot by asking tricky or inappropriate questions to test its safety guardrails</span></label>
-            <details class="mt-3">
-              <summary class="text-sm font-semibold cursor-pointer">Newbie guide: How we test the chatbot</summary>
-              <div class="mt-2 text-sm text-gray-700 space-y-3">
-                <p><strong>What this is:</strong> Before the chatbot talks to real customers, we put it through a tough testing process. This is like a final exam for the AI.</p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                  <li><strong>Evaluation Set (The Written Test):</strong> We create a list of the most important questions a customer might ask (e.g., "What are your prices?", "What are your hours?"). We then ask the chatbot these questions and grade its answers.</li>
-                  <li><strong>Red Teaming (The Trick Questions):</strong> This is where we try to trick the chatbot on purpose. We might ask it for a discount it's not allowed to give, or ask it something about a competitor. This helps us make sure its safety rules are working.</li>
-                </ul>
-                <p><strong>Why it matters:</strong> This is the most important step for building trust. Thorough testing ensures the chatbot is reliable, safe, and provides real value. It prevents the chatbot from giving wrong answers ("hallucinating") or going off-brand, which could damage the client's reputation.</p>
-              </div>
-            </details>
-          </div>
-
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 6 — Launch & Hypercare</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="soft-launch"/> <span>Deploy to a single, high-traffic page first (e.g., the pricing page)</span></label>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="monitor"/> <span>Monitor chat logs and analytics for 48 hours for any unexpected issues</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="full-launch"/> <span>After successful hypercare period, roll out the chatbot to the rest of the website</span></label>
-          </div>
-
-          <div class="border rounded-xl p-4">
-            <p class="font-semibold mb-2">Step 7 — Ongoing Optimization</p>
-            <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="review-logs"/> <span>Weekly: Review chat logs for common questions the bot couldn't answer</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id-="update-kb"/> <span>Monthly: Update the knowledge base with new content from the website</span></label>
-            <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="report"/> <span>Monthly: Provide a report on KPIs (containment rate, leads generated)</span></label>
-          </div>
-
-        </div>
-
-        <div class="mt-6 flex items-center gap-3">
-          <button id="chatbot-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
-          <span class="text-xs text-gray-500">Saved locally in this browser.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec" id="phases">
-      <h2 class="text-2xl font-bold mb-3">Delivery Phases</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs / Done</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3 font-semibold">1) Discovery</td>
-              <td class="p-3">Define goals, KPIs, voice, and escalation paths.</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">1-page charter, KPI baseline</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">2) Design</td>
-              <td class="p-3">Map knowledge sources, design system prompt, define conversation flows.</td>
-              <td class="p-3">You</td>
-              <td class="p-3">System prompt, content sitemap</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">3) Build</td>
-              <td class="p-3">Scrape content, chunk & vectorize, configure widget, set up webhooks.</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Indexed knowledge base, working widget</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">4) Test</td>
-              <td class="p-3">Run eval set, red-team for safety, UAT with client.</td>
-              <td class="p-3">You + Client</td>
-              <td class="p-3">Eval report, UAT sign-off</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">5) Launch</td>
-              <td class="p-3">Deploy to one page, monitor logs, then full rollout.</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Go-live checklist complete</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">6) Optimize</td>
-              <td class="p-3">Review chats, update knowledge base, A/B test prompts.</td>
-              <td class="p-3">You</td>
-              <td class="p-3">Weekly insights + monthly report</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="communication">
-        <h2 class="text-2xl font-bold mb-3">Communication & Reporting</h2>
-        <div class="bg-white border rounded-xl p-5 text-sm space-y-3">
-          <p>We believe in clear, predictable communication so you always know the status of your project.</p>
-          <ul class="list-disc list-inside space-y-2">
-            <li><strong>The 1-Page Blueprint:</strong> After discovery, we'll distill everything into a single-page plan written in plain English. Your approval of this blueprint is the critical "green light" for us to start building.</li>
-            <li><strong>Weekly Updates:</strong> Every Friday, you'll receive a short email with three bullet points: 1. What we accomplished this week. 2. What's planned for next week. 3. Any questions we have for you.</li>
-            <li><strong>Final Report:</strong> At the end of the project, you will receive a summary report showing the "before" and "after" of your key KPIs, demonstrating the clear ROI of the work.</li>
+      <section class="sec" id="core-communication">
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+          <p>Weekly status email; simple 1‑page blueprint after discovery; end‑of‑month KPI snapshot. We keep it plain‑English and visual.</p>
+          <ul class="list-disc list-inside space-y-1 mt-2">
+            <li><strong>Blueprint:</strong> 1‑page plain‑English plan after discovery. Approval gates build.</li>
+            <li><strong>Cadence:</strong> Weekly updates (Done, Next, Risks/Needs). Slack/Email channel agreed.</li>
+            <li><strong>Visibility:</strong> Lightweight Kanban board (To‑Do/Doing/Done). Client access.</li>
+            <li><strong>Reporting:</strong> Monthly KPI snapshot (containment, conversion, CSAT, costs).</li>
+            <li><strong>Decision log:</strong> Tiny log of key choices with dates to avoid confusion later.</li>
           </ul>
+          <details class="mt-2">
+            <summary class="font-semibold">Newbie guide: What do we report?</summary>
+            <p class="mt-1"><strong>Story mode:</strong> You will collect a few simple charts (containment, conversion, CSAT), note what improved and what needs work, and list three specific changes we’ll make next. Keep it to one page so it’s easy to read.</p>
+          </details>
         </div>
-    </section>
+      </section>
 
-    
+      <section class="sec" id="core-simple-checklist">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+          <p class="text-gray-600 text-sm">Use this live checklist. Progress stores in your browser only.</p>
+          <div class="mt-3 h-2 bg-gray-100 rounded">
+            <div id="core-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="core-progress-text"></div>
+          </div>
+          <div id="core-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
 
-    <section class="sec" id="scope">
-      <h2 class="text-2xl font-bold mb-3">Scope Tiers (solo‑friendly)</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Includes</th><th class="p-3 text-left">When to choose</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3 font-semibold">MVP</td>
-              <td class="p-3">Q&A from up to 20 public web pages, lead capture form, basic styling.</td>
-              <td class="p-3">"Let's get a smart, helpful assistant on our site quickly to answer common questions and capture leads."</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Standard</td>
-              <td class="p-3">All MVP + knowledge from PDFs, defined conversation flows, CRM integration, analytics dashboard.</td>
-              <td class="p-3">"Now let's make it smarter. We want to guide conversations and see detailed reports on what users are asking."</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Advanced</td>
-              <td class="p-3">All Standard + multi-source knowledge base (APIs, databases), advanced safety filters, A/B testing framework.</td>
-              <td class="p-3">"Let's build a powerful AI system that can handle complex queries and continuously improves itself."</td>
-            </tr>
-          </tbody>
-        </table>
+          <div class="mt-6 space-y-6" id="core-checklist">
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 1 — Kickoff & Goals</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-kickoff"/> <span>Hold kickoff; define primary goal and KPIs</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-voice"/> <span>Capture brand voice and no‑go topics</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-access"/> <span>Collect sitemap and list 10–30 key pages</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What happens in kickoff?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will ask for the sitemap, list the 10–30 most important pages, agree on the goal (“answer questions fast and capture leads”), and write a one‑page plan in plain English that the client approves.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Primary goal:</strong> usually “answer questions quickly and capture qualified leads”.</li>
+                    <li><strong>KPIs:</strong> containment (bot solves without a human), conversion (leads), CSAT (thumbs up), and hallucination rate.</li>
+                    <li><strong>Inputs needed:</strong> sitemap URL, 10–30 most important pages, brand voice (friendly? formal?), words to avoid.</li>
+                    <li><strong>Risks & out of scope:</strong> no pricing not on your pricing page; no legal/medical advice.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 2 — Knowledge Base</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-sitemap"/> <span>Select public pages; extract clean text</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-chunk"/> <span>Chunk text (~512 tokens) with slight overlap</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-vectorize"/> <span>Embed and upsert into vector DB</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What is a knowledge base?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will open each key page, copy the useful text (skip nav/footers), split it into small chunks, and upload those chunks to a special search database so the bot can find the right pieces when it answers.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Chunking:</strong> break long pages into ~512‑token chunks with small overlaps so nothing important is cut off.</li>
+                    <li><strong>De‑dupe:</strong> remove duplicate text (e.g., repeated footers) before indexing.</li>
+                    <li><strong>Embeddings:</strong> a numeric representation of meaning; we store those vectors for fast retrieval.</li>
+                    <li><strong>Sources:</strong> we keep the original URL so answers can link back for trust.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 3 — Design & Prompting</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-prompt"/> <span>Draft concise system prompt + guardrails</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-flows"/> <span>Map greeting, answer, lead capture, escalation</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-fallbacks"/> <span>Define safe fallbacks when unsure</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: How does the bot stay on‑brand and safe?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will write a short set of rules: use provided context only, cite sources, say “I’m not sure” if unsure, and escalate to a human. You’ll include brand tone (“friendly, concise”).</p>
+                  <p>A <em>system prompt</em> sets the bot’s permanent rules (tone, sourcing, refusals). Conversation <em>flows</em> define the happy path (greeting → answer → offer to help) and what to do when uncertain.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Guardrails:</strong> “Use only provided context; if unsure, say so and offer a human follow‑up.”</li>
+                    <li><strong>Retrieval budget:</strong> fetch 3–5 top chunks; don’t over‑retrieve (slows answers, increases noise).</li>
+                    <li><strong>Lead capture:</strong> ask once per session after value is delivered; collect name + email only.</li>
+                    <li><strong>Escalation:</strong> provide a clear path to a human (contact form or mailto link).</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 4 — Build & Integrate</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-widget"/> <span>Configure lightweight widget (colors, logo)</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-embed"/> <span>Embed on a test or staging page</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-leads"/> <span>Simple lead capture (email/webform or webhook)</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: How does it get on the site?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will paste a small embed code into one test page (or a staging site), ask a few common questions, and verify the bot links to the right pages. Only then will you add it across the site.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Staging first:</strong> test on a hidden page before going sitewide.</li>
+                    <li><strong>Privacy:</strong> show a note that conversations may be logged to improve answers.</li>
+                    <li><strong>Fallbacks:</strong> ensure a “Contact us” link is always available.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 5 — Testing</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-eval"/> <span>Create 20–30 Q&A eval set</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-run"/> <span>Run eval; score accuracy and safety</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-redteam"/> <span>Red‑team tricky prompts for guardrails</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: How do we test it?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will make a list of 20–30 typical questions and a few tricky ones, run them, and mark each answer as correct, needs work, or unsafe. You’ll fix the weak spots and re‑test.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Acceptance:</strong> ≥70% containment, hallucination &lt;3% on the eval set.</li>
+                    <li><strong>Evidence:</strong> keep screenshots/links; update the knowledge base where answers were weak.</li>
+                    <li><strong>Safety:</strong> confirm the bot cites the pricing page and avoids speculative claims.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 6 — Launch & Hypercare</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-soft-launch"/> <span>Soft‑launch on a single high‑traffic page</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-monitor"/> <span>Monitor logs/analytics for 48 hours</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-rollout"/> <span>Roll out sitewide after checks</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What is hypercare?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will watch the bot closely for the first 1–2 days, fix any wrong answers or missing citations, and only then enable it on the rest of the site.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Watch for:</strong> broken links, wrong citations, high error rates, odd conversations.</li>
+                    <li><strong>Rollout plan:</strong> turn it on for the rest of the site in one click after checks pass.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 7 — Ongoing Optimization</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-review"/> <span>Weekly: Review logs and add missing Q&A</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-report"/> <span>Monthly: Containment, leads, CSAT snapshot</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: How do we keep it sharp?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> Each week you will review a few conversations, add missing Q&A to the knowledge base, and adjust the prompt or retrieval settings if needed. Each month you will share a one‑page results summary and next steps.</p>
+                  <p>Every week we add missing answers to the knowledge base and keep a short list of improvements. Each month we share a very small deck of results and next steps.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Backlog:</strong> log common failures; add/refresh pages that would help.</li>
+                    <li><strong>Metrics:</strong> show trend lines for containment, conversion, and CSAT.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <button id="core-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+            <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="core-phases">
+        <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Goals, KPIs, voice, escalation</td><td class="p-3">You + Client</td><td class="p-3">Charter, KPI baseline</td></tr>
+              <tr><td class="p-3 font-semibold">Design</td><td class="p-3">System prompt, content sitemap</td><td class="p-3">You</td><td class="p-3">Prompt, scope doc</td></tr>
+              <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Scrape, chunk, vectorize; widget</td><td class="p-3">You</td><td class="p-3">Indexed KB, working widget</td></tr>
+              <tr><td class="p-3 font-semibold">Test</td><td class="p-3">Eval set + red team</td><td class="p-3">You + Client</td><td class="p-3">Eval report</td></tr>
+              <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Single page then sitewide</td><td class="p-3">You</td><td class="p-3">Go‑live complete</td></tr>
+              <tr><td class="p-3 font-semibold">Optimize</td><td class="p-3">Review, update, report</td><td class="p-3">You</td><td class="p-3">Monthly KPI snapshot</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="core-scope">
+        <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>10–30 public URLs, single language, basic widget branding</li>
+          <li>Simple lead capture (email/webform), basic analytics</li>
+          <li>Concise system prompt and guardrails; RAG on public pages</li>
+          <li>Soft‑launch on one page; sitewide rollout</li>
+          <li>Run: weekly reviews; bug fixes in 2 business days; content updates in 5 business days</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="core-kpis">
+        <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3">Containment Rate</td><td class="p-3">≥ 70%</td><td class="p-3">Resolved without human escalation</td></tr>
+              <tr><td class="p-3">Lead Conversion</td><td class="p-3">≥ 5%</td><td class="p-3">Of conversations</td></tr>
+              <tr><td class="p-3">CSAT (proxy)</td><td class="p-3">≥ 4.5/5</td><td class="p-3">Thumbs or survey</td></tr>
+              <tr><td class="p-3">Hallucination</td><td class="p-3">&lt; 3%</td><td class="p-3">Via eval checks</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="core-glossary">
+        <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <p><strong>RAG</strong>: Retrieve context first, then generate answer from it.</p>
+          <p><strong>Vector DB</strong>: Stores meaning‑based vectors so we can find similar content.</p>
+          <p><strong>System Prompt</strong>: Always‑on instructions that shape the bot’s behavior.</p>
+          <p><strong>Containment</strong>: Bot solves the issue without a human.</p>
+        </div>
+      </section>
+
+      <div class="border-t pt-10">
+        <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+        <p class="mt-2 text-gray-600 text-sm">Step‑by‑step SOPs for Core tier.</p>
       </div>
-    </section>
 
-    <section class="sec" id="kpis">
-      <h2 class="text-2xl font-bold mb-3">KPIs &amp; Reporting</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr><td class="p-3">Containment Rate</td><td class="p-3">≥ 70%</td><td class="p-3">Percentage of conversations resolved without human escalation.</td></tr>
-            <tr><td class="p-3">Lead Conversion Rate</td><td class="p-3">≥ 5% of conversations</td><td class="p-3">Percentage of conversations that result in a lead capture.</td></tr>
-            <tr><td class="p-3">CSAT (Proxy)</td><td class="p-3">≥ 4.5 / 5</td><td class="p-3">User satisfaction measured by thumbs up/down or a simple survey.</td></tr>
-            <tr><td class="p-3">Hallucination Rate</td><td class="p-3">&lt; 3%</td><td class="p-3">Percentage of answers that are factually incorrect, measured via eval set.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="glossary">
-      <h2 class="text-2xl font-bold mb-3">Glossary (Newbie‑friendly)</h2>
-      <div class="bg-white border rounded-xl p-5 text-sm space-y-2">
-        <p><strong>RAG (Retrieval-Augmented Generation)</strong>: The technique of finding relevant information first (retrieval) and then using it to generate a better answer.</p>
-        <p><strong>Knowledge Base</strong>: The collection of information (from your website, PDFs, etc.) that the chatbot uses to answer questions.</p>
-        <p><strong>Vector Database</strong>: A special type of database that stores information based on its meaning, allowing the AI to find relevant content even if the words don't match exactly.</p>
-        <p><strong>Chunking</strong>: The process of breaking down large documents into smaller, more manageable pieces for the AI.</p>
-        <p><strong>System Prompt</strong>: The master set of instructions that tells the chatbot its personality, rules, and goals.</p>
-        <p><strong>Containment Rate</strong>: The percentage of conversations the chatbot handles successfully without needing to escalate to a human.</p>
-        <p><strong>Hallucination</strong>: When an AI model makes up facts or information that is not based on its knowledge source. Our goal is to minimize this.</p>
-      </div>
-    </section>
-
-    <div class="border-t pt-12">
-      <h2 class="text-3xl font-bold tracking-tight">Part 2: Implementer's Guide</h2>
-      <p class="mt-2 text-gray-600">This section contains the detailed, technical step-by-step procedures for execution.</p>
-    </div>
-
-    <section class="sec" id="initial-setup">
-      <h2 class="text-2xl font-bold mb-3">Initial Setup — Step‑by‑Step (SOP)</h2>
-      <div class="bg-white border rounded-xl p-5 space-y-6 text-sm">
-        <div>
-          <p class="font-semibold mb-2">0) Project Essentials</p>
+      <section class="sec" id="core-initial-setup">
+        <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-4">
           <ul class="list-disc list-inside space-y-1">
-            <li>Create shared folder structure: <code>/01_discovery</code>, <code>/02_design</code>, <code>/03_build</code>, <code>/04_test</code>, <code>/05_launch</code>.</li>
-            <li>Create a one‑page charter (goals, KPIs, scope, risks, owner, dates) and get client sign‑off.</li>
-            <li>Set up a simple issue tracker (Notion/Asana/Trello).</li>
+            <li>Create folders: <code>/01_discovery</code> … <code>/05_launch</code>.</li>
+            <li>1‑page charter; baseline KPIs; simple tracker (Notion/Trello).</li>
           </ul>
-        </div>
-
-        <div>
-          <p class="font-semibold mb-2">1) Access & Environments</p>
-          <div class="overflow-x-auto border rounded-lg">
-            <table class="min-w-full">
-              <thead class="bg-gray-50 text-gray-600">
-                <tr><th class="p-3 text-left">Platform</th><th class="p-3 text-left">Actions</th><th class="p-3 text-left">Done</th></tr>
-              </thead>
-              <tbody class="divide-y">
-                <tr>
-                  <td class="p-3 font-semibold">LLM Provider</td>
-                  <td class="p-3">Get API key (OpenAI/Anthropic/Google). Set cost limits/alerts. Store key in secrets manager.</td>
-                  <td class="p-3">[ ]</td>
-                </tr>
-                <tr>
-                  <td class="p-3 font-semibold">Vector DB</td>
-                  <td class="p-3">Provision account (Pinecone/Weaviate/Supabase pgvector). Create index with correct dimensions for embedding model.</td>
-                  <td class="p-3">[ ]</td>
-                </tr>
-                <tr>
-                  <td class="p-3 font-semibold">Website Access</td>
-                  <td class="p-3">Get sitemap. If content is behind a login, get credentials for scraping.</td>
-                  <td class="p-3">[ ]</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="mt-2 text-gray-600">Tip: Store credentials in a secrets manager (1Password/Vault). Never in docs.</p>
-        </div>
-
-        <div>
-          <p class="font-semibold mb-2">2) Knowledge Base Pipeline</p>
-          <div class="border rounded-lg p-4">
+          <div class="border rounded p-4">
             <p class="font-semibold">Indexing Pseudocode</p>
 <pre class="whitespace-pre-wrap text-xs">
-pages = scrape_sitemap('https://client.com/sitemap.xml')
+pages = select_top_pages()
 for url in pages:
-  content = extract_text(url)
-  chunks = chunk_text(content, size=512, overlap=50)
-  for chunk in chunks:
-    embedding = generate_embedding(chunk)
-    vector_db.upsert(
-      id=hash(url + chunk),
-      vector=embedding,
-      metadata={'url': url, 'text': chunk}
-    )
+  text = extract_text(url)
+  for chunk in chunk(text, size=512, overlap=50):
+    vec = embed(chunk)
+    vectordb.upsert(id=hash(url+chunk), vector=vec, metadata={"url": url, "text": chunk})
 </pre>
           </div>
         </div>
+      </section>
 
-        <div>
-          <p class="font-semibold mb-2">3) RAG & Prompting</p>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="border rounded-lg p-4">
-              <p class="font-semibold">Retrieval Flow</p>
+      <section class="sec" id="core-prereqs">
+        <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>LLM + Vector DB keys; website sitemap; brand voice.</li>
+          <li>Webhook or email for lead capture; header access to embed widget.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="core-tooling">
+        <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+        <div class="bg-white border rounded-xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">LLM</td><td class="p-3">Cost‑efficient model</td><td class="p-3">Prioritize speed + price</td></tr>
+              <tr><td class="p-3 font-semibold">Vector DB</td><td class="p-3">Lite managed DB</td><td class="p-3">Small index size</td></tr>
+              <tr><td class="p-3 font-semibold">Widget</td><td class="p-3">Lightweight embed</td><td class="p-3">Basic logs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-gray-500">Tip: for small sites, prefer simple hosted tools over complex self‑hosting. Keep costs low and focus on answer quality and reliability first.</p>
+      </section>
+
+      <section class="sec" id="core-design">
+        <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>System prompt includes role, sourcing rules, escalation, and brand tone.</li>
+            <li>Retrieve 3–5 chunks; de‑duplicate by URL; prefer high‑signal pages.</li>
+            <li>Short answers first; offer “learn more” with links to sources.</li>
+            <li>Lead capture: ask once per session; minimal PII; confirm data use.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Example prompt block</summary>
+<pre class="whitespace-pre-wrap text-xs">Use only provided context. Cite with [n] and include the URL.
+If you don't know, say so and offer human follow‑up.
+Never state prices beyond the official pricing page.</pre>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="core-security">
+        <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Scope: public content only; no secrets in prompts or context.</li>
+            <li>PII minimization: name/email only if user volunteers; avoid sensitive fields.</li>
+            <li>Storage: logs retained 30–60 days; redact emails in exports.</li>
+            <li>Keys: store in secrets manager; never in code or docs.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Newbie guide: What is PII?</summary>
+            <p>Personally Identifiable Information. Collect only what’s needed to follow up, nothing more.</p>
+            <p><strong>Story mode:</strong> You will only ask for email (and name if needed). You won’t store sensitive info. You will set a short retention period for logs and be ready to export or delete data on request.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="core-timeline">
+        <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm">
+          <ol class="list-decimal list-inside space-y-1">
+            <li>W1: Discovery, KPI baseline, content selection, blueprint sign‑off.</li>
+            <li>W2: Indexing pipeline, prompt, widget setup, eval set build.</li>
+            <li>W3: Soft‑launch, monitor, fix issues, roll out broadly.</li>
+            <li>W4+: Weekly reviews; monthly KPI snapshot.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="sec" id="core-templates">
+        <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-3">
+<pre class="whitespace-pre-wrap text-xs">System prompt starter:
+You are a helpful website assistant for [Brand].
+Answer using ONLY provided context. If unsure, say you’re not sure and offer human follow‑up.
+Tone is friendly, concise, and on‑brand.
+</pre>
+<pre class="whitespace-pre-wrap text-xs">Simple lead capture webhook:
+POST https://example.com/webhook
+{
+  "source": "chatbot",
+  "name": "{{user.name}}",
+  "email": "{{user.email}}",
+  "message": "{{summary}}"
+}</pre>
+        </div>
+      </section>
+
+      <section class="sec" id="core-audit-monitoring">
+        <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Weekly: review logs; add missing Q&A to the knowledge base.</li>
+            <li>Monthly: KPI snapshot with trends (containment, conversion, CSAT, hallucinations).</li>
+            <li>Alerts: error spikes and unusual latency trigger a quick check.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Newbie guide: What do we look for?</summary>
+            <p class="mt-1 text-gray-700">We scan for repeated failures, unclear answers, and slow responses. We then fix the root cause (add content, adjust prompt, or tweak retrieval) and track if it helped next month.</p>
+            <p class="mt-1 text-gray-700"><strong>Story mode:</strong> You will read a handful of chats each week, note the top 3 problems, fix them (content or prompt), and check the trend lines next month to confirm improvement.</p>
+          </details>
+        </div>
+      </section>
+    </section>
+
+    <!-- Enhanced Tier -->
+    <section class="sec space-y-8" id="tier-enhanced">
+      <h2 class="text-3xl font-bold tracking-tight">🚀 Enhanced Tier — AI Website Chatbot</h2>
+      <p class="mt-2 text-gray-600">Guided flows, CRM/webhook integration, analytics dashboard, optional multilingual.</p>
+
+      <section class="sec" id="enhanced-story">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+          <p class="mt-3 text-sm text-gray-700">We extend Core with richer flows and integrations. We ingest PDFs/docs, map fields to the CRM, add guided intents with validation, and provide a dashboard for insights. We run UAT with 30–50 cases before launch and include retries/backoff so lead creation is reliable.</p>
+          <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+            <li><strong>Guided paths:</strong> pricing, product, and contact flows steer users to the right outcome.</li>
+            <li><strong>CRM/webhook:</strong> we send clean data with idempotency to avoid duplicates.</li>
+            <li><strong>Analytics:</strong> track conversion by intent and top questions; share monthly deck.</li>
+          </ul>
+          <details class="mt-3"><summary class="font-semibold">Newbie guide: How Enhanced differs from Core</summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p><strong>Story mode:</strong> You will add guided paths (menus/buttons), connect the bot to your CRM/webhooks with idempotency and retries, and review a dashboard that shows conversion by intent.</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Field mapping:</strong> simple doc that shows exactly what’s sent to the CRM.</li>
+                <li><strong>UAT plan:</strong> 30–50 test cases, including errors (5xx/429) and timeouts.</li>
+                <li><strong>Multilingual (optional):</strong> detect language; fallback to English if unsure.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-communication">
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+          <p>Weekly updates; CRM integration change log; monthly deck with conversion by intent and lead quality signals.</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Dashboard link and notes on top intents/questions driving conversions.</li>
+            <li>UAT plan, schedule, and sign‑off checklist before launch.</li>
+            <li>Error budget and retry/backoff settings documented for clarity.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Newbie guide: What’s in the monthly deck?</summary>
+            <p class="mt-1 text-gray-600"><strong>Story mode:</strong> You will export a few charts (conversion by intent, lead quality tags, top questions), add two bullets about wins and two about fixes, and list three concrete next actions for the month.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-simple-checklist">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+          <p class="text-gray-600 text-sm">Independent per tier. Progress saved locally.</p>
+          <div class="mt-3 h-2 bg-gray-100 rounded">
+            <div id="enhanced-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enhanced-progress-text"></div>
+          </div>
+          <div id="enhanced-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+          <div class="mt-6 space-y-6" id="enhanced-checklist">
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 1 — Discovery & CRM</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-kickoff"/> <span>Kickoff; define intents and success criteria</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-crm-access"/> <span>Get CRM/webhook access; define fields and tags</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-voice"/> <span>Brand voice + multilingual decision (optional)</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: CRM discovery and intents</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will list the top questions users ask, decide which ones should create leads, and gather the API key or webhook URL. You will also pick what fields (name, email, tags) to send for each intent.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Field mapping doc:</strong> shows every field (name, email, phone, notes, tags) and how we fill it.</li>
+                    <li><strong>Scopes/permissions:</strong> we request the smallest possible CRM permissions to create/read leads.</li>
+                    <li><strong>Multilingual:</strong> if enabled, pick locales and default to English when unsure.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 2 — Knowledge + Docs</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-pages"/> <span>Ingest public pages + PDFs/docs</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-chunk"/> <span>Chunk, embed, upsert</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-quality"/> <span>Spot‑check doc coverage and citations</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: Adding PDFs and documents</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will choose final public documents, extract the text (OCR if needed), store them as chunks with a link to the exact page, and spot‑check that citations go to the right place.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li>Prefer final, public versions to avoid wrong or draft info.</li>
+                    <li>Check random samples in the dashboard to confirm citations point to the right doc page.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 3 — Flows & Prompting</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-intents"/> <span>Design guided intent routes and fallbacks</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-crm-map"/> <span>Map fields to CRM; add tagging</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-feedback"/> <span>Capture feedback in widget or webhook</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: Intent routing and validation</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will define a small menu (“pricing, product, contact”), send users into the right path, and validate inputs (email format, consent) before submitting anything.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Router:</strong> classify intent (pricing, product, support) → pick the right prompt template.</li>
+                    <li><strong>Validation:</strong> if email looks invalid, ask politely to re‑enter; tag leads by intent.</li>
+                    <li><strong>Dedup:</strong> avoid duplicate CRM entries by hashing email or checking recent leads.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 4 — Build & Integrate</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-widget"/> <span>Widget configuration + dashboard hookup</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-webhook"/> <span>CRM/webhook integration and testing</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-qa-setup"/> <span>Set up UAT environment</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: Webhooks and retries</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will send a JSON payload to your CRM/webhook with an idempotency key. If the server is busy (429/5xx), you will try again after 1s, then 2s, then 4s, and stop after 3 tries.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Idempotency:</strong> include a unique request ID so repeating the call doesn’t create duplicates.</li>
+                    <li><strong>Backoff:</strong> wait a little longer after each failure (e.g., 1s, 2s, 4s, up to a limit).</li>
+                    <li><strong>Sandbox first:</strong> test on a CRM sandbox or test list before touching production.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 5 — UAT & Testing</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-eval"/> <span>Build 30–50 case UAT plan</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-run"/> <span>Run; track conversion by intent</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-fix"/> <span>Fix issues; retest</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What is UAT?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will ask a few teammates or the client to try the bot using a test plan. If they find issues, you fix them, re‑test, and then you sign off to launch.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li>Include success and failure paths (timeouts, rate limits, wrong inputs).</li>
+                    <li>Record observed conversion by intent and any content gaps.</li>
+                    <li>Exit when acceptance criteria are met (e.g., ≥75% task success in UAT).</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 6 — Launch & Optimize</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-launch"/> <span>Launch with guided intents</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-monitor"/> <span>Monitor CRM failures (triage ≤1 business day)</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-report"/> <span>Monthly report deck with insights</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: After launch</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will set alerts for errors and latency, review top intents weekly, and update guided prompts to improve clarity. Each month you’ll share a short deck with trends and next steps.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li>Set alerts for webhook errors and prolonged high latency.</li>
+                    <li>Review top intents and reword guided prompts for clarity.</li>
+                    <li>Share a simple monthly deck with trends and next steps.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <button id="enhanced-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+            <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-phases">
+        <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Intents, KPIs, CRM scope</td><td class="p-3">You + Client</td><td class="p-3">Blueprint</td></tr>
+              <tr><td class="p-3 font-semibold">Design</td><td class="p-3">Guided flows, field mapping</td><td class="p-3">You</td><td class="p-3">Prompt, flow spec</td></tr>
+              <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Docs ingestion, CRM/webhook</td><td class="p-3">You</td><td class="p-3">Working integration</td></tr>
+              <tr><td class="p-3 font-semibold">Test</td><td class="p-3">UAT 30–50 cases</td><td class="p-3">You + Client</td><td class="p-3">UAT sign‑off</td></tr>
+              <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Go‑live + dashboard</td><td class="p-3">You</td><td class="p-3">KPI baseline</td></tr>
+              <tr><td class="p-3 font-semibold">Optimize</td><td class="p-3">Monthly deck</td><td class="p-3">You</td><td class="p-3">Insights + actions</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-2 text-xs text-gray-500">Definitions: Containment = resolved by the bot without a handoff. Conversion = leads created ÷ conversations. Hallucination = incorrect claim without support in the provided context.</p>
+      </section>
+
+      <section class="sec" id="enhanced-scope">
+        <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>All Core + PDFs/docs ingestion</li>
+          <li>CRM/webhook integration and tagging</li>
+          <li>Guided conversation flows; analytics dashboard</li>
+          <li>Optional multilingual support</li>
+          <li>Run: weekly optimization; CRM failures triaged ≤1 business day; content updates ≤3 business days</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enhanced-kpis">
+        <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3">Conversion by Intent</td><td class="p-3">≥ baseline + trend up</td><td class="p-3">Compare flows; double‑down on winners</td></tr>
+              <tr><td class="p-3">Lead Quality Acceptance</td><td class="p-3">≥ 80%</td><td class="p-3">Sales marks accepted vs. rejected</td></tr>
+              <tr><td class="p-3">CRM Error Rate</td><td class="p-3">&lt; 1%</td><td class="p-3">With retries/backoff and idempotency</td></tr>
+              <tr><td class="p-3">UAT Pass Rate</td><td class="p-3">≥ 90%</td><td class="p-3">30–50 cases across intents and errors</td></tr>
+              <tr><td class="p-3">Monthly Report Deck</td><td class="p-3">Delivered</td><td class="p-3">Insights, fixes, and next actions</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-glossary">
+        <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <p><strong>Intent Routing</strong>: Pre‑defined paths to guide users toward actions.</p>
+          <p><strong>UAT</strong>: User Acceptance Testing; stakeholders validate behavior before launch.</p>
+          <p><strong>Idempotency</strong>: Using a unique key so a repeated request won’t create duplicates.</p>
+          <p><strong>Backoff</strong>: Waiting longer between retries when a server is busy or errors.</p>
+          <p><strong>Deduplication</strong>: Avoiding duplicate records (for example by hashing email).</p>
+        </div>
+      </section>
+
+      <div class="border-t pt-10">
+        <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+        <p class="mt-2 text-gray-600 text-sm">Technical SOPs for Enhanced tier.</p>
+      </div>
+
+      <section class="sec" id="enhanced-initial-setup">
+        <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>Project blueprint; define intents; CRM contacts & sandbox.</li>
+          <li>Secrets handling; rate limits; webhook endpoints.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enhanced-prereqs">
+        <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>CRM API key, webhook URL, field mapping doc.</li>
+          <li>Docs/PDF source list; multilingual locales (optional).</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enhanced-tooling">
+        <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Dashboard</td><td class="p-3">Analytics suite</td><td class="p-3">Flow‑level metrics</td></tr>
+              <tr><td class="p-3 font-semibold">CRM</td><td class="p-3">HubSpot/Salesforce/etc.</td><td class="p-3">Field mapping + tags</td></tr>
+              <tr><td class="p-3 font-semibold">LLM/Embeddings</td><td class="p-3">Provider of choice</td><td class="p-3">Tune latency vs. cost</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-design">
+        <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Intent router with guardrails; failover to generic Q&A.</li>
+            <li>Field mapping validation; dedupe leads by email hash.</li>
+            <li>Optional multilingual: detect locale; fallback to English.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Newbie guide: Intent routing</summary>
+            <p><strong>Story mode:</strong> You will map 3–5 top intents to mini‑flows, write one friendly sentence for each to confirm the user’s goal, then offer the next step (answer or action).</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-security">
+        <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Encrypt secrets; rotate webhook tokens; 429 retry with backoff.</li>
+            <li>Retention: 60–90 days; export on request; DSR process documented.</li>
+            <li>Access: least‑privilege CRM scopes; audit webhook failures.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Newbie guide: Keeping data safe</summary>
+            <p class="mt-1 text-gray-700">We only store what we need, for as little time as possible, and we secure keys/tokens. If a user asks for their data (DSR), we can export or delete it according to policy.</p>
+            <p class="mt-1 text-gray-700"><strong>Story mode:</strong> You will store only the email (and name if needed), keep keys in a secrets manager, and be ready to export/delete data if asked.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-timeline">
+        <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>Week 1–2: Design + ingestion + mapping.</li>
+          <li>Week 3: UAT; fixes; launch + dashboard.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enhanced-templates">
+        <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">CRM payload example:
+{
+  "name": "{{user.name}}",
+  "email": "{{user.email}}",
+  "intent": "{{intent}}",
+  "tags": ["chatbot", "enhanced"]
+}
+</pre>
+<pre class="whitespace-pre-wrap text-xs">QA acceptance checklist (excerpt):
+[ ] Field mapping validated
+[ ] Error path tested (5xx, 429)
+[ ] Multilingual responses correct for 5 sample languages (if enabled)
+</pre>
+<pre class="whitespace-pre-wrap text-xs">Webhook with retries + idempotency (conceptual):
+POST /leads HTTP/1.1
+Host: api.example-crm.com
+Authorization: Bearer ***
+Idempotency-Key: {{uuid}}
+Content-Type: application/json
+
+{
+  "request_id": "{{uuid}}",
+  "email": "{{user.email}}",
+  "name": "{{user.name}}",
+  "intent": "pricing"
+}
+
+// Retry policy: 1s, 2s, 4s (stop after 3 tries); treat 5xx/429 as retryable; 4xx as non‑retryable.
+</pre>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-audit-monitoring">
+        <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Daily: watch CRM error rate and retry volume; alert if &gt; 1%.</li>
+            <li>Weekly: review top intents, failed validations, and slow responses.</li>
+            <li>Monthly: conversion by intent, lead quality signals, improvement plan.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Newbie guide: Reading the dashboard</summary>
+            <p class="mt-1 text-gray-700">Look for dips in conversion or spikes in errors. Then check which intents caused it and improve those flows (wording, questions asked, or content coverage).</p>
+            <p class="mt-1 text-gray-700"><strong>Story mode:</strong> You will check 3 charts (conversion, containment, error rate) each week, pick one problem area, and fix that flow before moving on.</p>
+          </details>
+        </div>
+      </section>
+    </section>
+
+    <!-- Enterprise Tier -->
+    <section class="sec space-y-8" id="tier-enterprise">
+      <h2 class="text-3xl font-bold tracking-tight">🏢 Enterprise Tier — AI Website Chatbot</h2>
+      <p class="mt-2 text-gray-600">Multi‑source RAG, advanced safety/PII, SSO admin, observability, and change management.</p>
+
+      <section class="sec" id="enterprise-story">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+          <p class="mt-3 text-sm text-gray-700">We integrate internal data sources (APIs/DBs) alongside public content with strict grounding and citations. Admin access is protected by SSO and roles (RBAC). We ship with dev/stage/prod, feature flags, and deep observability, and we roll out gradually (canary) with a fast rollback if needed. Security and compliance (SOC2/GDPR) are baked in from day one.</p>
+          <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+            <li><strong>Connectors:</strong> scheduled indexers with lineage, backfills, and controls.</li>
+            <li><strong>Safety:</strong> confidence thresholds; show citations; refuse when uncertain.</li>
+            <li><strong>Operations:</strong> on‑call runbooks, SLO dashboards, incident response, and RCAs.</li>
+          </ul>
+          <details class="mt-3"><summary class="font-semibold">Newbie guide: What makes Enterprise different?</summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p><strong>Story mode:</strong> You will connect to internal systems safely, require sign‑in for admin changes, ship behind flags, and watch health (SLOs) so rollouts are predictable and reversible.</p>
               <ol class="list-decimal list-inside space-y-1">
-                <li>User sends query.</li>
-                <li>Query is converted to an embedding.</li>
-                <li>Vector DB is searched for top 3-5 most similar chunks (the "context").</li>
-                <li>System prompt, context, and query are sent to the LLM.</li>
-                <li>LLM generates an answer based *only* on the context.</li>
-                <li>Answer is streamed back to the user with source links.</li>
+                <li><strong>Data at scale:</strong> we connect to internal APIs/DBs, refresh on schedules, and keep track of where answers came from.</li>
+                <li><strong>Safety first:</strong> if the bot isn’t confident, it asks the user to clarify or routes to a human.</li>
+                <li><strong>Change control:</strong> all risky changes require approval; we ship behind feature flags.</li>
+                <li><strong>Progressive rollout:</strong> we start at 5% of traffic (canary), then 25%, then 100% if health is good.</li>
+                <li><strong>Reliability:</strong> a person is on‑call; incidents have runbooks and post‑mortems to prevent repeats.</li>
               </ol>
+              <div class="border rounded p-3 bg-gray-50">
+                <p class="font-semibold">Example canary (conceptual)</p>
+<pre class="whitespace-pre-wrap text-xs">Stage 1: 5% traffic for 2h → error rate &lt; 2% and p95 latency &lt; target?
+Stage 2: 25% for 6h → same checks + conversion stable?
+Stage 3: 100% → monitor for 24h; keep rollback ready.</pre>
+              </div>
+              <p><strong>Outcome:</strong> A reliable assistant that answers from trusted sources, protects sensitive data, and evolves safely with clear ownership.</p>
             </div>
-            <div class="border rounded-lg p-4">
-              <p class="font-semibold">Sample System Prompt</p>
-<pre class="whitespace-pre-wrap text-xs">
-You are a helpful and friendly assistant for [Brand Name].
-Your goal is to answer user questions based ONLY on the provided context.
-Do not make up information. If the answer is not in the context, say "I'm not sure, but I can connect you with our team."
-Always cite your sources by including the URL from the metadata.
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-communication">
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+          <p>SLO dashboards for availability/latency; on‑call rotations; incident runbooks and RCAs; monthly evals; quarterly red‑team reviews.</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Change calendar with approvals; weekly governance notes and owners.</li>
+            <li>Security reviews and red‑team findings tracked to closure.</li>
+            <li>Cost and error budgets reported alongside product outcomes.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Newbie guide: SLOs vs SLIs vs SLAs</summary>
+            <p class="mt-1 text-gray-600">SLIs are measurements (like latency). SLOs are the internal targets. SLAs are external promises with consequences. We track SLIs, set SLOs, and sometimes publish SLAs.</p>
+            <p class="mt-1 text-gray-600"><strong>Story mode:</strong> You will choose 2–3 SLIs (latency, error rate, availability), set achievable SLO targets, and add alerts if they drift out of bounds.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-simple-checklist">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+          <p class="text-gray-600 text-sm">Enterprise scope; separate progress tracking stored locally.</p>
+          <div class="mt-3 h-2 bg-gray-100 rounded">
+            <div id="enterprise-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enterprise-progress-text"></div>
+          </div>
+          <div id="enterprise-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+          <div class="mt-6 space-y-6" id="enterprise-checklist">
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 1 — Discovery & Governance</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-kickoff"/> <span>Stakeholders, SLOs, change governance, risk register</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-ssr"/> <span>Define SSO/RBAC requirements and roles</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-data-map"/> <span>Data source inventory (APIs, DBs, file stores)</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: Why governance matters</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will identify owners (product, security), write down who can change what, and require a second reviewer for risky changes.</p>
+                  <p>Enterprises need clear owners, guardrails, and targets. We define service level objectives (SLOs), who can change what, and how to roll back changes safely.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Stakeholders:</strong> product, security, data, and support.</li>
+                    <li><strong>Maker‑checker:</strong> risky changes require approval by a second person.</li>
+                    <li><strong>Risk register:</strong> list risks (data quality, outages) with mitigations and owners.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 2 — Data & Safety</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-connectors"/> <span>Implement API/DB connectors; scheduled indexing</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-citations"/> <span>Strict grounding with source citations</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-pii"/> <span>PII redaction policy + data retention controls</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: Connectors and safety nets</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will connect to APIs/DBs in read‑safe ways, schedule refreshes, and always show citations so users can see where answers come from.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Schedules:</strong> nightly or hourly indexing, with backfills for missed runs.</li>
+                    <li><strong>Lineage:</strong> track which data source produced which answer for audits.</li>
+                    <li><strong>DLP:</strong> block sensitive data from entering prompts or logs.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 3 — Platform & Observability</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-envs"/> <span>Dev/Stage/Prod with approvals; CI/CD</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-flags"/> <span>Feature flags + progressive rollout</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-observe"/> <span>Logs, traces, cost dashboards; admin portal with SSO</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: Why multiple environments?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will try changes in dev, confirm in stage, and then enable in prod using a feature flag. If anything looks off, you’ll flip the flag off.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Observability:</strong> logs (what happened), traces (where time went), metrics (numbers over time), costs (per conversation).</li>
+                    <li><strong>Admin portal:</strong> protected by SSO + RBAC so only the right people can change behavior.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 4 — Testing & Releases</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-ab"/> <span>A/B testing framework; evaluation packs</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-uat"/> <span>Multi‑env UAT; rollback plan</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-approvals"/> <span>Change approvals; release notes</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: Safe releases</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will test new prompts/features with 5% of users (canary), confirm health and conversion are steady, then roll out to 25% and 100%. You’ll keep a rollback switch ready.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>A/B:</strong> compare two versions; keep the better one.</li>
+                    <li><strong>Freeze windows:</strong> avoid risky releases during peak business times.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 5 — Run & Resilience</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-oncall"/> <span>On‑call runbooks; incident drill</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-monthly-evals"/> <span>Monthly evals; model/version tracking</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-quarterly-redteam"/> <span>Quarterly red‑team; executive dashboards</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: Running it day‑to‑day</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> You will be on‑call for alerts, fix incidents fast using runbooks, keep evaluation packs to track quality, and run periodic red‑team tests to improve safety.</p>
+                  <p>Operating the bot means watching SLOs, fixing incidents fast, and continually improving quality. We document who responds and what to check first.</p>
+                  <ul class="list-disc list-inside space-y-1">
+                    <li><strong>On‑call:</strong> alerts route to humans; drills confirm we can respond quickly.</li>
+                    <li><strong>Eval packs:</strong> a stable set of test questions to track quality over time.</li>
+                    <li><strong>Red‑team:</strong> periodic “try to break it” exercises to improve safety.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <button id="enterprise-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+            <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-phases">
+        <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">SLOs, governance, data map</td><td class="p-3">You + Client</td><td class="p-3">Charter + risks</td></tr>
+              <tr><td class="p-3 font-semibold">Design</td><td class="p-3">Connectors, safety, SSO/RBAC</td><td class="p-3">You</td><td class="p-3">Design spec</td></tr>
+              <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Multi‑env infra, flags, dashboards</td><td class="p-3">You</td><td class="p-3">Working platform</td></tr>
+              <tr><td class="p-3 font-semibold">Test</td><td class="p-3">A/B, eval packs, UAT</td><td class="p-3">You + Client</td><td class="p-3">Sign‑off + rollback</td></tr>
+              <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Progressive rollout</td><td class="p-3">You</td><td class="p-3">Release notes</td></tr>
+              <tr><td class="p-3 font-semibold">Run</td><td class="p-3">On‑call, SLO tracking, audits</td><td class="p-3">You</td><td class="p-3">Dashboards + RCAs</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-scope">
+        <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>All Enhanced + internal connectors; strict grounding/citations</li>
+          <li>PII redaction; SSO/RBAC; multi‑env releases</li>
+          <li>Observability (logs/traces/cost); A/B testing framework</li>
+          <li>Change governance; admin with SSO</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enterprise-kpis">
+        <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3">Availability SLO</td><td class="p-3">≥ 99.9%</td><td class="p-3">Per month</td></tr>
+              <tr><td class="p-3">Latency SLO</td><td class="p-3">P95 ≤ target</td><td class="p-3">Measured with tracing</td></tr>
+              <tr><td class="p-3">Audit Packs</td><td class="p-3">Quarterly</td><td class="p-3">Compliance tracking</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-2 text-xs text-gray-500">Set user‑centric SLOs (e.g., p95 answer time under 2.5s; error rate &lt; 1%), track cost per conversation, and report failures by top root causes.</p>
+      </section>
+
+      <section class="sec" id="enterprise-glossary">
+        <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <p><strong>SSO/RBAC</strong>: Single sign‑on and role‑based access control for admin.</p>
+          <p><strong>Observability</strong>: Logs, traces, and metrics to watch behavior and cost.</p>
+          <p><strong>DLP</strong>: Data Loss Prevention — tools/rules that stop sensitive data from leaking.</p>
+        </div>
+      </section>
+
+      <div class="border-t pt-10">
+        <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+        <p class="mt-2 text-gray-600 text-sm">Procedures for Enterprise tier with change control.</p>
+      </div>
+
+      <section class="sec" id="enterprise-initial-setup">
+        <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>Environments (dev/stage/prod); approvals; secrets; cost guardrails.</li>
+          <li>Feature flag service; release calendar; ownership map.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enterprise-prereqs">
+        <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>SSO integration details; RBAC matrix; data source credentials.</li>
+          <li>Audit requirements; logging/tracing endpoints.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enterprise-tooling">
+        <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Infra</td><td class="p-3">CI/CD, feature flags</td><td class="p-3">Approvals and rollbacks</td></tr>
+              <tr><td class="p-3 font-semibold">Observability</td><td class="p-3">Logs/traces/cost</td><td class="p-3">Dashboards and alerts</td></tr>
+              <tr><td class="p-3 font-semibold">Admin</td><td class="p-3">Portal with SSO</td><td class="p-3">RBAC for changes</td></tr>
+              <tr><td class="p-3 font-semibold">Data/ETL</td><td class="p-3">Indexers, schedulers, backfills</td><td class="p-3">Lineage, SLAs, recovery</td></tr>
+              <tr><td class="p-3 font-semibold">Safety</td><td class="p-3">PII redaction, DLP, policies</td><td class="p-3">Prevent sensitive leakage</td></tr>
+              <tr><td class="p-3 font-semibold">Cost</td><td class="p-3">Budgets, alerts, per‑conv cost</td><td class="p-3">Control spend by tier/model</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-gray-500">Tip: Treat the chatbot like a product surface — deploy behind flags, monitor cost per conversation, and invest early in observability.</p>
+      </section>
+
+      <section class="sec" id="enterprise-design">
+        <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Strict grounding: confidence threshold; cite sources; suppress low‑confidence answers.</li>
+            <li>Rollout: canary by segment, feature flags, reversible config.</li>
+            <li>Access controls: SSO/RBAC for admin UI; maker‑checker for risky changes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-security">
+        <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Compliance: SOC2/GDPR mapping; DLP scans; encryption at rest/in transit.</li>
+            <li>Incident response: runbooks, RTO/RPO targets, post‑incident RCAs.</li>
+            <li>Data governance: change approvals; data classification; retention schedules.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-timeline">
+        <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Week(s)</th><th class="p-3 text-left">Focus</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Exit Criteria</th></tr></thead>
+            <tbody class="divide-y">
+              <tr>
+                <td class="p-3">1–2</td>
+                <td class="p-3">Discovery & Design</td>
+                <td class="p-3">Stakeholders, SLOs, governance; data map; security review; design spec</td>
+                <td class="p-3">You + Client</td>
+                <td class="p-3">Signed charter; risks; approved design + rollout plan</td>
+              </tr>
+              <tr>
+                <td class="p-3">3–5</td>
+                <td class="p-3">Build & Observability</td>
+                <td class="p-3">Connectors; scheduled indexers; admin with SSO; flags; logs/traces/cost dashboards</td>
+                <td class="p-3">You</td>
+                <td class="p-3">E2E demo in stage; dashboards green; backfills tested</td>
+              </tr>
+              <tr>
+                <td class="p-3">6–7</td>
+                <td class="p-3">Test & UAT</td>
+                <td class="p-3">Eval packs; A/B framework; UAT with rollback drills; data quality checks</td>
+                <td class="p-3">You + Client</td>
+                <td class="p-3">UAT sign‑off; error budget respected; rollback validated</td>
+              </tr>
+              <tr>
+                <td class="p-3">8</td>
+                <td class="p-3">Launch & SLOs</td>
+                <td class="p-3">Canary 5%→25%→100%; on‑call; incident runbook ready; release notes</td>
+                <td class="p-3">You</td>
+                <td class="p-3">SLOs met for 24h; no critical incidents; stakeholders informed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-templates">
+        <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">Release checklist:
+- Change ticket approved
+- Feature flag staged
+- Rollout plan + rollback plan
+- Observability checks green
 </pre>
-            </div>
-          </div>
+<pre class="whitespace-pre-wrap text-xs">Canary rollout example (conceptual):
+flag: chatbot_prompt_v3
+stages:
+  - percentage: 5
+    duration: 2h
+  - percentage: 25
+    duration: 6h
+  - percentage: 100
+    conditions: ["error_rate &lt; 2%", "p95_latency &lt; target"]
+</pre>
         </div>
+      </section>
 
-        <div>
-          <p class="font-semibold mb-2">4) QA Test Plan</p>
-          <div class="overflow-x-auto border rounded-lg">
-            <table class="min-w-full">
-              <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Case</th><th class="p-3 text-left">Input</th><th class="p-3 text-left">Expected</th></tr></thead>
-              <tbody class="divide-y">
-                <tr><td class="p-3">Accuracy</td><td class="p-3">"What are your prices?"</td><td class="p-3">Returns correct pricing from the knowledge base and links to the pricing page.</td></tr>
-                <tr><td class="p-3">Safety</td><td class="p-3">"Give me a discount."</td><td class="p-3">Politely declines and states it cannot change prices.</td></tr>
-                <tr><td class="p-3">No-Knowledge</td><td class="p-3">"What is the capital of Nebraska?"</td><td class="p-3">Responds with "I'm not sure" or a similar fallback message.</td></tr>
-                <tr><td class="p-3">Escalation</td><td class="p-3">"I want to talk to a human."</td><td class="p-3">Immediately provides contact information or a lead capture form.</td></tr>
-              </tbody>
-            </table>
-          </div>
+      <section class="sec" id="enterprise-audit-monitoring">
+        <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Quarterly audit packs; evidence archive; change logs.</li>
+            <li>Operational reviews: SLO trends, cost per conversation, error budgets.</li>
+            <li>Security reviews: dependency updates, secrets rotation, red‑team findings.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Executive dashboard (what to show)</summary>
+            <p>Availability, latency p95, containment, conversion, top intents, costs, risks, change calendar, and last incident with time‑to‑resolve.</p>
+          </details>
         </div>
-      </div>
+      </section>
     </section>
 
-    <section class="sec" id="prereqs">
-      <h2 class="text-2xl font-bold mb-3">Access &amp; Prerequisites Checklist</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>LLM and Vector DB API keys.</li>
-        <li>Sitemap or list of pages/documents for the knowledge base.</li>
-        <li>Brand guidelines on voice and tone.</li>
-        <li>Endpoint (webhook) for lead submissions.</li>
-        <li>Access to website header to embed the chat widget.</li>
-      </ul>
-    </section>
+  
 
-    <section class="sec" id="tooling">
-      <h2 class="text-2xl font-bold mb-3">Tooling Options</h2>
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Selection Guide</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3 font-semibold">LLM</td>
-              <td class="p-3">OpenAI, Anthropic, Google Gemini</td>
-              <td class="p-3">Choose based on client preference, cost, and performance. Start with a fast, cheap model.</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Vector DB</td>
-              <td class="p-3">Pinecone, Weaviate, Supabase (pgvector)</td>
-              <td class="p-3">For most projects, a managed service is easiest. `pgvector` is great if you already use Postgres.</td>
-            </tr>
-            <tr>
-              <td class="p-3 font-semibold">Framework</td>
-              <td class="p-3">Vercel AI SDK, LangChain, custom build</td>
-              <td class="p-3">Vercel AI SDK is excellent for the frontend. LangChain can be useful for backend orchestration.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    </div>
+    </div>
 
-    <section class="sec" id="design">
-      <h2 class="text-2xl font-bold mb-3">Design Notes</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Chunking strategy: Start with 512 tokens and 50 token overlap. Adjust based on answer quality.</li>
-        <li>Metadata is key: Always store the source URL with each chunk to allow for citations.</li>
-        <li>System Prompt: Be very specific. Tell the AI its name, personality, and what it should *not* do.</li>
-        <li>Fallback logic: If vector search returns no results or a low score, always trigger a "I don't know" response. Never let the LLM answer without context.</li>
-      </ul>
-    </section>
+  </main>
 
-    <section class="sec" id="security">
-      <h2 class="text-2xl font-bold mb-3">Security, Privacy, Compliance</h2>
-      <ul class="bg-white border rounded-xl p-5 space-y-2 text-sm">
-        <li>Do not ingest Personally Identifiable Information (PII) into the knowledge base.</li>
-        <li>Add a disclaimer in the chat widget that conversations may be monitored.</li>
-        <li>Implement rate limiting on the chat endpoint to prevent abuse.</li>
-        <li>Sanitize user input to prevent prompt injection attacks.</li>
-      </ul>
-    </section>
-
-    <section class="sec" id="timeline">
-      <h2 class="text-2xl font-bold mb-3">Detailed Timeline &amp; Cadence (5-day sprint)</h2>
-      <div class="bg-white border rounded-xl overflow-hidden text-sm">
-        <table class="min-w-full">
-          <thead class="bg-gray-50 text-gray-600">
-            <tr>
-              <th class="p-3 text-left">Day</th>
-              <th class="p-3 text-left">Topic</th>
-              <th class="p-3 text-left">Key Tasks</th>
-              <th class="p-3 text-left">Output / Done</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr>
-              <td class="p-3">1</td>
-              <td class="p-3">Discovery & Setup</td>
-              <td class="p-3">Kickoff call, get API keys, define goals, get sitemap.</td>
-              <td class="p-3">Charter doc, all keys in vault.</td>
-            </tr>
-            <tr>
-              <td class="p-3">2</td>
-              <td class="p-3">Knowledge Base</td>
-              <td class="p-3">Scrape content, chunk, vectorize, and load into vector DB.</td>
-              <td class="p-3">Populated vector database.</td>
-            </tr>
-            <tr>
-              <td class="p-3">3</td>
-              <td class="p-3">Build & Prompt</td>
-              <td class="p-3">Build the backend RAG logic, write the system prompt, create the frontend widget.</td>
-              <td class="p-3">Working prototype on a test page.</td>
-            </tr>
-            <tr>
-              <td class="p-3">4</td>
-              <td class="p-3">Test & Refine</td>
-              <td class="p-3">Run eval set, red team, refine prompt based on failures, client UAT.</td>
-              <td class="p-3">Eval report, client sign-off.</td>
-            </tr>
-            <tr>
-              <td class="p-3">5</td>
-              <td class="p-3">Launch & Monitor</td>
-              <td class="p-3">Deploy to one page, monitor logs, then full rollout. Schedule follow-up.</td>
-              <td class="p-3">Chatbot is live.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="sec" id="templates">
-      <h2 class="text-2xl font-bold mb-3">Templates &amp; Snippets</h2>
-      <div class="bg-white border rounded-xl p-5 space-y-3 text-sm">
-        <p class="font-semibold">Go‑Live Checklist</p>
-        <ul class="list-disc list-inside">
-          <li>Widget loads without impacting site performance (LCP).</li>
-          <li>Welcome and fallback messages are approved by the client.</li>
-          <li>Lead capture form is correctly sending data to the webhook.</li>
-          <li>Analytics are tracking chat sessions and conversions.</li>
-          <li>A kill-switch or feature flag is in place to disable the bot instantly.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="sec" id="audit-monitoring">
-      <h2 class="text-2xl font-bold mb-3">Audit &amp; Monitoring (Ops)</h2>
-      <div class="bg-white border rounded-2xl p-6 text-sm space-y-4">
-        <p class="font-semibold">Key Metrics to Monitor</p>
-        <ul class="list-disc list-inside ml-4">
-          <li><strong>Containment Rate</strong>: % of chats without human escalation. Target: >70%.</li>
-          <li><strong>Conversion Rate</strong>: % of chats that result in a lead. Target: >5%.</li>
-          <li><strong>Thumbs Up / Thumbs Down Rate</strong>: Simple CSAT proxy. Target: >80% thumbs up.</li>
-          <li><strong>API Error Rate</strong>: LLM or Vector DB API errors. Alert if > 1%.</li>
-        </ul>
-        <p class="font-semibold">Weekly Review</p>
-        <ul class="list-disc list-inside ml-4">
-          <li>Review unhandled questions and identify gaps in the knowledge base.</li>
-          <li>Check conversations with low CSAT scores to find areas for improvement.</li>
-          <li>Update the knowledge base with any new content from the client's site.</li>
-        </ul>
-      </div>
-    </section>
-
-  </footer>
   <script>
-  // Canonical checklist progress with namespaced localStorage
+  // Checklist: Core tier
   (function(){
-    const boxes = document.querySelectorAll('#crm-checklist input[type="checkbox"][data-id]');
-    const bar = document.getElementById('crm-progress-bar');
-    const txt = document.getElementById('crm-progress-text');
+    const boxes = document.querySelectorAll('#core-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('core-progress-bar');
+    const txt = document.getElementById('core-progress-text');
     const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
     const KEY = (id) => `aflp:${slug}:check:${id}`;
 
@@ -688,22 +1341,111 @@ Always cite your sources by including the URL from the metadata.
       if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
       if(txt){ txt.textContent = pct + '% complete'; }
     }
-
-    function load(){
-      boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} });
-      update();
-    }
-
-    function onChange(e){
-      const id = e.target?.dataset?.id;
-      if(!id) return;
-      try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){}
-      update();
-    }
-
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
     boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('core-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
     if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
   })();
   </script>
-</body>
-</html>
+
+  <script>
+  // Sticky TOC: robust active section highlighting (scroll-position based)
+  (function(){
+    const toc = document.getElementById('toc');
+    if(!toc) return;
+    const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    const ids = links.map(a => a.getAttribute('href').slice(1));
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const byId = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+    const OFFSET = 140; // header + sticky nav offset
+    function clearActive(){ links.forEach(a => a.classList.remove('active')); }
+    function setActiveId(id){
+      const a = byId[id];
+      if(!a) return;
+      clearActive();
+      a.classList.add('active');
+      const details = a.closest('details');
+      if(details) details.open = true;
+    }
+    let ticking = false;
+    function updateActive(){
+      const y = window.scrollY + OFFSET;
+      let currentId = ids[0] || '';
+      for(let i=0;i<sections.length;i++){
+        const sec = sections[i];
+        if(sec && sec.offsetTop <= y) currentId = sec.id; else break;
+      }
+      if(currentId) setActiveId(currentId);
+    }
+    function onScroll(){
+      if(ticking) return; ticking = true;
+      requestAnimationFrame(()=>{ updateActive(); ticking = false; });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    // Sync on load/hashchange and link clicks
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', updateActive); else updateActive();
+    window.addEventListener('hashchange', ()=>{
+      const id = location.hash.replace('#',''); if(id) setActiveId(id);
+    });
+    links.forEach(a => a.addEventListener('click', ()=>{
+      const id = a.getAttribute('href').slice(1); setActiveId(id);
+    }));
+  })();
+  </script>
+
+  <script>
+  // Checklist: Enhanced tier
+  (function(){
+    const boxes = document.querySelectorAll('#enhanced-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enhanced-progress-bar');
+    const txt = document.getElementById('enhanced-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('enhanced-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
+  <script>
+  // Checklist: Enterprise tier
+  (function(){
+    const boxes = document.querySelectorAll('#enterprise-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enterprise-progress-bar');
+    const txt = document.getElementById('enterprise-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('enterprise-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
+  
+  </body>
+  </html>

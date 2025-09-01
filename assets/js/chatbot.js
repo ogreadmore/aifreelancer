@@ -908,10 +908,14 @@ function afHeaderMobileEtc(){
   }
 
   if (header) {
-    window.addEventListener('scroll', () => {
+    const applyHeaderState = () => {
       if (window.scrollY > 50) header.classList.add('bg-white','backdrop-blur-sm','shadow-md');
       else header.classList.remove('bg-white','backdrop-blur-sm','shadow-md');
-    });
+    };
+    // Apply immediately on load (covers reloads when not at top)
+    applyHeaderState();
+    // Update on scroll
+    window.addEventListener('scroll', applyHeaderState, { passive: true });
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

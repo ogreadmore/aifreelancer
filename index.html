@@ -222,6 +222,16 @@
             box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.3);
         }
 
+        /* Uniform description height in solution cards */
+        .card-desc {
+            line-height: 1.5;
+            min-height: 6rem; /* ~4 lines at 1rem base */
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         /* Spacing between large price and subtext (e.g., setup fee) */
         .price-wrap > .text-5xl + .text-sm {
             margin-top: 10px; /* match service page spacing */
@@ -438,8 +448,8 @@
             
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-1">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
-                <h3 class="text-3xl font-bold text-gray-800 mb-2">Sales & CRM Automation</h3>
-                <p class="text-gray-600 mb-4">We automate your sales pipeline by integrating with your CRM to handle lead nurturing and follow-ups, freeing your sales team to focus on what they do best: closing deals. Expect faster speed‑to‑lead, consistent follow‑up, and a clean, self‑updating pipeline that books more meetings.</p>
+                <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">Sales & CRM Automation</h3>
+                <p class="text-gray-600 mb-4 card-desc">We automate your sales pipeline by integrating with your CRM to handle lead nurturing and follow-ups, freeing your sales team to focus on what they do best: closing deals. Expect faster speed‑to‑lead, consistent follow‑up, and a clean, self‑updating pipeline that books more meetings.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-bolt gemini-gradient-text mt-1"></i><span>Close faster with instant speed‑to‑lead and routing</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-database gemini-gradient-text mt-1"></i><span>Clean, deduped CRM data that updates itself</span></li>
@@ -463,8 +473,8 @@
                     <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
                         <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Most Popular</span>
                     </div>
-                    <h3 class="text-3xl font-bold text-gray-800 mb-2">AI Website Chatbot</h3>
-                    <p class="text-gray-600 mb-4">Our AI chatbot integrates with your site to capture leads and answer visitor questions instantly, ensuring you provide 24/7 support and never miss an opportunity. It converts more visitors by booking meetings, qualifying intent, and handing off complex issues to humans seamlessly.</p>
+                    <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">AI Website Chatbot</h3>
+                    <p class="text-gray-600 mb-4 card-desc">Our AI chatbot integrates with your site to capture leads and answer visitor questions instantly, ensuring you provide 24/7 support and never miss an opportunity. It converts more visitors by booking meetings, qualifying intent, and handing off complex issues to humans seamlessly.</p>
                     <ul class="space-y-4 text-gray-700 mb-8">
                         <li class="flex gap-3"><i class="fa-solid fa-comments gemini-gradient-text mt-1"></i><span>24/7 answers grounded in your content</span></li>
                         <li class="flex gap-3"><i class="fa-solid fa-envelope-circle-check gemini-gradient-text mt-1"></i><span>Captures and routes qualified leads automatically</span></li>
@@ -485,8 +495,8 @@
             
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-3">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
-                <h3 class="text-3xl font-bold text-gray-800 mb-2">AI Data & Analytics</h3>
-                <p class="text-gray-600 mb-4">We transform your raw business data into a strategic asset. Our AI models uncover hidden trends, predict customer behavior, and provide actionable insights to guide your growth strategy. You get trustworthy KPIs, automated alerts, and dashboards the team actually uses—without a heavy BI lift.</p>
+                <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">AI Data & Analytics</h3>
+                <p class="text-gray-600 mb-4 card-desc">We transform your raw business data into a strategic asset. Our AI models uncover hidden trends, predict customer behavior, and provide actionable insights to guide your growth strategy. You get trustworthy KPIs, automated alerts, and dashboards the team actually uses—without a heavy BI lift.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-chart-simple gemini-gradient-text mt-1"></i><span>Executive KPIs your team actually trusts</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1"></i><span>Forecast revenue, demand, and retention</span></li>
@@ -507,8 +517,8 @@
             
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-4">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
-                <h3 class="text-3xl font-bold text-gray-800 mb-2">Automated Support</h3>
-                <p class="text-gray-600 mb-4">We build an AI-powered support system that integrates with your helpdesk to provide instant answers, automate ticket routing, and improve customer satisfaction. Expect 35%+ deflection from day one, SLA‑aware triage with full context, and measurable CSAT improvements.</p>
+                <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">Automated Support</h3>
+                <p class="text-gray-600 mb-4 card-desc">We build an AI-powered support system that integrates with your helpdesk to provide instant answers, automate ticket routing, and improve customer satisfaction. Expect 35%+ deflection from day one, SLA‑aware triage with full context, and measurable CSAT improvements.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-circle-question gemini-gradient-text mt-1"></i><span>Deflect repetitive tickets with accurate answers</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-route gemini-gradient-text mt-1"></i><span>Route complex issues with the right context</span></li>
@@ -532,8 +542,8 @@
                     <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
                         <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Best Value</span>
                     </div>
-                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Fractional Chief AI Officer</h3>
-                    <p class="text-gray-600 mb-4">Fractional AI leadership and delivery to embed AI across your business — from strategy &amp; governance to implementation &amp; optimization and ongoing support for measurable impact, with clear, ROI‑tied outcomes delivered.</p>
+                    <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">Fractional Chief AI Officer</h3>
+                    <p class="text-gray-600 mb-4 card-desc">Fractional AI leadership and delivery to embed AI across your business — from strategy &amp; governance to implementation &amp; optimization and ongoing support for measurable impact, with clear, ROI‑tied outcomes delivered.</p>
                     <ul class="space-y-4 text-gray-700 mb-8">
                        <li class="flex gap-3"><i class="fa-solid fa-flag-checkered gemini-gradient-text mt-1"></i><span>Practical AI roadmap tied to business outcomes</span></li>
                        <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1"></i><span>Cross‑function delivery with measurable milestones</span></li>
@@ -554,8 +564,8 @@
 
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-6">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
-                <h3 class="text-3xl font-bold text-gray-800 mb-2">AI Social Media Manager</h3>
-                <p class="text-gray-600 mb-4">Put your brand building on autopilot. Our AI system manages your social media presence, from creating and scheduling engaging posts to analyzing performance, allowing you to grow your audience without the daily time commitment.</p>
+                <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">AI Social Media Manager</h3>
+                <p class="text-gray-600 mb-4 card-desc">Put your brand building on autopilot. Our AI system manages your social media presence, from creating and scheduling engaging posts to analyzing performance, allowing you to grow your audience without the daily time commitment.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-calendar-days gemini-gradient-text mt-1"></i><span>Consistent on‑brand content without adding headcount</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-share-nodes gemini-gradient-text mt-1"></i><span>Plan once; publish across all key channels</span></li>
@@ -576,8 +586,8 @@
 
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-7">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
-                <h3 class="text-3xl font-bold text-gray-800 mb-2">Creative & Development</h3>
-                <p class="text-gray-600 mb-4">Bring your vision to life, faster. Whether you need compelling content, a stunning website, or a functional app, we leverage AI to accelerate the entire creative and development process, from initial idea to final launch.</p>
+                <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">Creative & Development</h3>
+                <p class="text-gray-600 mb-4 card-desc">Bring your vision to life, faster. Whether you need compelling content, a stunning website, or a functional app, we leverage AI to accelerate the entire creative and development process, from initial idea to final launch.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-mobile-screen-button gemini-gradient-text mt-1"></i><span>Design‑faithful, responsive experiences that feel fast</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-wand-magic-sparkles gemini-gradient-text mt-1"></i><span>Tasteful motion and micro‑interactions</span></li>
@@ -598,8 +608,8 @@
 
             <div class="rounded-2xl gemini-gradient-bg p-0.5 shadow-2xl transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative lg:order-9">
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col h-full relative">
-                <h3 class="text-3xl font-bold text-gray-800 mb-2">Process Automation</h3>
-                <p class="text-gray-600 mb-4">We automate your core operations by building custom workflows that handle data entry and report generation, saving your team dozens of hours per week, guaranteed. We connect the tools you already use, add approvals and guardrails, and provide run‑level traceability so work flows reliably without babysitting.</p>
+                <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">Process Automation</h3>
+                <p class="text-gray-600 mb-4 card-desc">We automate your core operations by building custom workflows that handle data entry and report generation, saving your team dozens of hours per week, guaranteed. We connect the tools you already use, add approvals and guardrails, and provide run‑level traceability so work flows reliably without babysitting.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-right-left gemini-gradient-text mt-1"></i><span>Automate approvals and handoffs in Slack/Email</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-clipboard-check gemini-gradient-text mt-1"></i><span>Eliminate manual data entry with validated syncs</span></li>
@@ -623,8 +633,8 @@
                     <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
                         <span class="gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full">Popular</span>
                     </div>
-                <h3 class="text-3xl font-bold text-gray-800 mb-2">AI-Powered Team Training</h3>
-                <p class="text-gray-600 mb-4">Scale your team without the growing pains. We transform your company documents, SOPs, and training materials into an intelligent AI knowledge base that onboards new hires and provides instant, accurate answers to employee questions 24/7.</p>
+                <h3 class="text-xl md:text-2xl font-bold leading-snug text-gray-800 mb-2">AI-Powered Team Training</h3>
+                <p class="text-gray-600 mb-4 card-desc">Scale your team without the growing pains. We transform your company documents, SOPs, and training materials into an intelligent AI knowledge base that onboards new hires and provides instant, accurate answers to employee questions 24/7.</p>
                 <ul class="space-y-4 text-gray-700 mb-8">
                     <li class="flex gap-3"><i class="fa-solid fa-book-open gemini-gradient-text mt-1"></i><span>Private assistant that answers from your docs</span></li>
                     <li class="flex gap-3"><i class="fa-solid fa-sitemap gemini-gradient-text mt-1"></i><span>Onboarding checklists and role‑based learning paths</span></li>

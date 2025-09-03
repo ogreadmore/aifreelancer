@@ -314,101 +314,6 @@
               <p class="text-sm text-gray-500 mt-3">Best for enterprises with strict security and scale needs.</p>
             </div>
           </div>
-          
-          <!-- TalentLMS Package (clone of Core) -->
-          <div class="rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col h-full bg-white">
-            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Lean Setup</div>
-            <h3 class="text-2xl font-extrabold text-gray-900 mb-2">TalentLMS Package</h3>
-            <p class="text-gray-600 mb-5">Done-for-you setup that turns your key docs into a private Q&A assistant—great for small teams ramping quickly.</p>
-            
-            <ul class="text-gray-700 space-y-3 mb-8">
-              <li class="flex gap-3"><i class="fa-solid fa-rocket gemini-gradient-text mt-1" aria-hidden="true"></i><span>Basic imports from TalentLMS, Google Drive, and Confluence</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-circle-question gemini-gradient-text mt-1" aria-hidden="true"></i><span>Private Q&amp;A assistant for Slack or web</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-sitemap gemini-gradient-text mt-1" aria-hidden="true"></i><span>Starter taxonomy and naming conventions</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-list-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Onboarding checklists and quick-start guides</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-stethoscope gemini-gradient-text mt-1" aria-hidden="true"></i><span>Monthly health check &amp; light tuning</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-chart-simple gemini-gradient-text mt-1" aria-hidden="true"></i><span>Basic analytics: top questions &amp; gaps</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Light brand tone and response guardrails</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> TalentLMS, Google Drive, Confluence; Slack app</span></li>
-            </ul>
-            <div class="mt-auto">
-              <div class="mb-3">
-                <div class="flex items-baseline gap-2">
-                  <span class="text-5xl font-extrabold tracking-tight">$450</span>
-                  <span class="text-gray-500 font-semibold">/mo</span>
-                </div>
-                <div class="text-sm text-gray-600 mt-[10px]">
-                  <span class="font-semibold">Setup:</span> $4,500 one-time • <span class="font-semibold">Platform/usage:</span> Vendor fees billed directly (e.g., TalentLMS; Slack app).
-                </div>
-              </div>
-              <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Today</a>
-              <p class="text-sm text-gray-500 mt-3">Best for lean teams launching a private assistant fast.</p>
-            </div>
-          </div>
-
-          <!-- HowNow Package (clone of Enhanced) -->
-          <div class="gemini-gradient-bg p-0.5 rounded-2xl shadow-2xl">
-            <div class="bg-white rounded-2xl h-full p-7 flex flex-col border border-gray-100">
-              <div class="text-center -mt-8 mb-2">
-                <span class="inline-block gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">Most Popular</span>
-              </div>
-              <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Managed</div>
-              <h3 class="text-2xl font-extrabold text-gray-900 mb-2">HowNow Package</h3>
-              <p class="text-gray-600 mb-5">Role-based paths, deeper sources, and routing—what most orgs need for measurable onboarding and ongoing enablement.</p>
-              
-              <ul class="text-gray-700 space-y-3 mb-8">
-                <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1" aria-hidden="true"></i><span>Role-based learning paths and branching guidance</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-layer-group gemini-gradient-text mt-1" aria-hidden="true"></i><span>Multi-source ingestion: HowNow, SharePoint/OneDrive, Confluence</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-headset gemini-gradient-text mt-1" aria-hidden="true"></i><span>Slack/Teams routing to subject‑matter experts</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-clipboard-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Knowledge checks and progress insights</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-language gemini-gradient-text mt-1" aria-hidden="true"></i><span>Brand tone profiles + multilingual support</span></li>
-                <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Azure OpenAI, Anthropic Claude, Pinecone, HowNow; Slack/Teams</span></li>
-              </ul>
-              <div class="mt-auto">
-                <div class="mb-3">
-                  <div class="flex items-baseline gap-2">
-                    <span class="text-5xl font-extrabold tracking-tight">$2,200</span>
-                    <span class="text-gray-500 font-semibold">/mo</span>
-                  </div>
-                  <div class="text-sm text-gray-600 mt-[10px]">
-                    <span class="font-semibold">Setup:</span> $12,000 one-time • <span class="font-semibold">Platform/usage:</span> Vendor usage billed directly (e.g., HowNow, Azure OpenAI tokens, Pinecone).
-                  </div>
-                </div>
-                <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Today</a>
-                <p class="text-sm text-gray-500 mt-3">Best for growing teams standardizing onboarding & enablement.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 360Learning Package (clone of Enterprise) -->
-          <div class="rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col h-full bg-white">
-            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Scale & Governance</div>
-            <h3 class="text-2xl font-extrabold text-gray-900 mb-2">360Learning Package</h3>
-            <p class="text-gray-600 mb-5">Advanced security, privacy, and scale for larger orgs with strict controls and higher usage.</p>
-            
-            <ul class="text-gray-700 space-y-3 mb-8">
-              <li class="flex gap-3"><i class="fa-solid fa-user-shield gemini-gradient-text mt-1" aria-hidden="true"></i><span>SSO (SAML/OIDC), RBAC, audit logs; SCIM provisioning</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-shield-halved gemini-gradient-text mt-1" aria-hidden="true"></i><span>DLP rules, PII redaction, configurable retention; DPA support</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-cloud gemini-gradient-text mt-1" aria-hidden="true"></i><span>VPC/private networking; data residency options</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-screwdriver-wrench gemini-gradient-text mt-1" aria-hidden="true"></i><span>Change control workflows and approvals</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-gauge-high gemini-gradient-text mt-1" aria-hidden="true"></i><span>High‑volume readiness and load testing</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-clipboard-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Priority SLAs and dedicated environments</span></li>
-              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Azure OpenAI (VNet), 360Learning, Microsoft Purview DLP, Okta</span></li>
-            </ul>
-            <div class="mt-auto">
-              <div class="mb-3">
-                <div class="flex items-baseline gap-2">
-                  <span class="text-5xl font-extrabold tracking-tight">From $6,000</span>
-                  <span class="text-gray-500 font-semibold">/mo</span>
-                </div>
-                <div class="text-sm text-gray-600 mt-[10px]">
-                  <span class="font-semibold">Setup:</span> From $40,000 • <span class="font-semibold">Platform/usage:</span> Enterprise platforms billed directly (e.g., 360Learning or Amazon Bedrock)
-                </div>
-              </div>
-              <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Request Proposal</a>
-              <p class="text-sm text-gray-500 mt-3">Best for enterprises with strict security and scale needs.</p>
-            </div>
-          </div>
         </div>
 
         
@@ -562,30 +467,6 @@
               <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
             </button>
             <div class="faq-panel text-gray-700">Customers typically see faster ramp for new hires, fewer interruptions to senior staff, and more consistent execution. We track self‑service rate, top questions, time‑to‑answer, and content gaps to guide improvements.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-toggle">
-              <span class="text-lg md:text-xl font-semibold">Do you support TalentLMS?</span>
-              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-            </button>
-            <div class="faq-panel text-gray-700">Yes. TalentLMS package support is available with content sync and mapped permissions.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-toggle">
-              <span class="text-lg md:text-xl font-semibold">Do you support HowNow?</span>
-              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-            </button>
-            <div class="faq-panel text-gray-700">Yes. HowNow package integration includes ingestion, private Q&amp;A, and role-aware guidance.</div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-toggle">
-              <span class="text-lg md:text-xl font-semibold">Do you support 360Learning?</span>
-              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-            </button>
-            <div class="faq-panel text-gray-700">Yes. 360Learning package support is available with SSO, routing, and analytics.</div>
           </div>
         </div>
       </div>

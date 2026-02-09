@@ -142,7 +142,14 @@
       background-size: 180% 180%; animation: accentShift 9s ease infinite;
       transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
     }
-    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(10,10,10,.2); filter: saturate(1.06); }
+    .hero-cta:hover {
+      animation: accentShift 9s ease infinite, ctaPulse 1.2s ease-in-out infinite;
+      box-shadow: 0 12px 24px rgba(10,10,10,.2); filter: saturate(1.06);
+    }
+    @keyframes ctaPulse {
+      0%, 100% { transform: translateY(-2px) scale(1); }
+      50% { transform: translateY(-2px) scale(1.07); }
+    }
 
     .page-content { background: #fff; position: relative; z-index: 10; }
     .divider { border: none; border-top: 1px solid #E5E5E5; }
@@ -1312,9 +1319,9 @@
       const PX_PER_MS = 1.15; // default speed (smaller = slower)
 
       // Slower profile for deeper jumps (especially to #contact)
-      const CONTACT_MIN_MS = 2200;
-      const CONTACT_MAX_MS = 4800;
-      const CONTACT_PX_PER_MS = 0.75;
+      const CONTACT_MIN_MS = 4000;
+      const CONTACT_MAX_MS = 7500;
+      const CONTACT_PX_PER_MS = 0.38;
 
       let animFrame = 0;
 
@@ -1354,6 +1361,58 @@
         animFrame = requestAnimationFrame(step);
       };
 
+      // Two-phase scroll: slow through hero, then fast through content
+      const animateScrollTwoPhase = (targetY) => {
+        stopAnim();
+
+        const startY = window.scrollY || window.pageYOffset;
+        if (Math.abs(targetY - startY) < 2) return;
+
+        const trackEl = document.getElementById('track');
+        // The hero zone ends where the scroll-track ends
+        const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
+
+        const phase1Start = startY;
+        const phase1End = Math.min(heroEnd, targetY);
+        const phase1Dist = Math.max(0, phase1End - phase1Start);
+
+        const phase2Start = phase1End;
+        const phase2End = targetY;
+        const phase2Dist = Math.max(0, phase2End - phase2Start);
+
+        // Slow through hero, fast through content
+        const phase1Duration = phase1Dist > 0 ? Math.min(2920, Math.max(1540, phase1Dist / 0.585)) : 0;
+        const phase2Duration = phase2Dist > 0 ? Math.min(2200, Math.max(600, phase2Dist / 2.5)) : 0;
+        const totalDuration = phase1Duration + phase2Duration;
+        if (totalDuration < 1) return;
+
+        const phase1Frac = totalDuration > 0 ? phase1Duration / totalDuration : 0;
+        const start = performance.now();
+
+        const step = (now) => {
+          const elapsed = now - start;
+          const tGlobal = Math.min(1, elapsed / totalDuration);
+
+          let y;
+          if (tGlobal <= phase1Frac && phase1Frac > 0) {
+            // Phase 1: LINEAR scroll through hero (constant video speed)
+            const tLocal = tGlobal / phase1Frac;
+            y = phase1Start + phase1Dist * tLocal;
+          } else {
+            // Phase 2: eased scroll through content
+            const tLocal = phase1Frac < 1 ? (tGlobal - phase1Frac) / (1 - phase1Frac) : 1;
+            const eased = EASE(Math.min(1, tLocal));
+            y = phase2Start + phase2Dist * eased;
+          }
+
+          window.scrollTo(0, y);
+          if (tGlobal < 1) animFrame = requestAnimationFrame(step);
+          else animFrame = 0;
+        };
+
+        animFrame = requestAnimationFrame(step);
+      };
+
       const samePageHashLink = (a) => {
         if (!a || !a.getAttribute) return false;
         const href = a.getAttribute('href') || '';
@@ -1377,12 +1436,11 @@
         const targetY = Math.max(0, Math.round(rect.top + window.scrollY - offset));
 
         const toContact = hash === '#contact';
-        animateScrollTo(
-          targetY,
-          toContact
-            ? { minMs: CONTACT_MIN_MS, maxMs: CONTACT_MAX_MS, pxPerMs: CONTACT_PX_PER_MS }
-            : undefined
-        );
+        if (toContact) {
+          animateScrollTwoPhase(targetY);
+        } else {
+          animateScrollTo(targetY);
+        }
 
         try { if (history.pushState) history.pushState(null, '', hash); }
         catch { location.hash = hash; }

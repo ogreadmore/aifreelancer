@@ -1,10 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Freelancer — We Optimize Everything</title>
+  <meta name="description" content="AI Freelancer is a business optimization powerhouse based in Cleveland, OH. We optimize your marketing, website, SEO, workflows, and more — delivering real results in days, not months.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aifreelancer.co/">
+  <meta property="og:title" content="AI Freelancer — We Optimize Everything">
+  <meta property="og:description" content="We're not an AI agency. We're a business optimization powerhouse. Marketing, websites, SEO, workflows — optimized and launched fast.">
+  <meta property="og:image" content="https://aifreelancer.co/og-image.png">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Freelancer — We Optimize Everything">
+  <meta name="twitter:description" content="We're not an AI agency. We're a business optimization powerhouse.">
+  <meta name="twitter:image" content="https://aifreelancer.co/og-image.png">
+
+  <!-- Favicon: inline SVG with brand gradient -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234B88DA'/%3E%3Cstop offset='40%25' stop-color='%238A3BF1'/%3E%3Cstop offset='70%25' stop-color='%23D941A1'/%3E%3Cstop offset='100%25' stop-color='%23E5484D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='6' fill='url(%23g)'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='18' fill='white'%3EAi%3C/text%3E%3C/svg%3E">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -57,14 +75,27 @@
                   linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D) border-box;
       background-size: auto, 180% 180%;
       animation: accentShift 10s ease infinite;
-      transition: all .2s ease;
+      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease;
+      position: relative;
+      z-index: 1;
     }
     .nav-link:hover {
-      color: #fff;
-      background: linear-gradient(#0A0A0A,#0A0A0A) padding-box,
-                  linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D) border-box;
-      background-size: auto, 180% 180%;
-      box-shadow: 0 8px 22px rgba(10,10,10,.14);
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(138,59,241,.18), 0 0 12px rgba(217,65,161,.12);
+      filter: brightness(1.02);
+    }
+    .nav-link:active, .nav-link.pop {
+      transform: scale(1.18);
+      box-shadow: 0 8px 28px rgba(138,59,241,.24), 0 0 18px rgba(217,65,161,.16);
+    }
+
+    /* Sparkle + confetti canvas */
+    .nav-link-fx {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 101;
     }
 
     .scroll-track { height: 400vh; position: relative; }
@@ -261,7 +292,7 @@
     .metric-label { font-size: .75rem; color: #A3A3A3; font-weight: 500; }
 
     .quote { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 600; line-height: 1.5; letter-spacing: -.02em; margin-bottom: 2rem; max-width: 650px; }
-    .quote::before { content: '“'; } .quote::after { content: '”'; }
+    .quote::before { content: '\201C'; } .quote::after { content: '\201D'; }
     .attribution { font-size: .875rem; font-weight: 600; }
     .attribution-role { font-size: .8125rem; color: #737373; }
 
@@ -288,6 +319,30 @@
       color: #fff; padding: 1rem 1.25rem; border-radius: 8px; font-weight: 700;
       background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
       background-size: 180% 180%; animation: accentShift 9s ease infinite;
+      font-size: 1rem;
+      position: relative;
+      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease, opacity .2s ease;
+    }
+    .cta-button:hover:not(:disabled) {
+      transform: scale(1.045);
+      box-shadow: 0 8px 24px rgba(138,59,241,.22), 0 0 14px rgba(217,65,161,.14);
+      filter: brightness(1.04);
+    }
+    .cta-button:active:not(:disabled), .cta-button.pop {
+      transform: scale(1.07);
+      box-shadow: 0 10px 30px rgba(138,59,241,.28), 0 0 20px rgba(217,65,161,.18);
+    }
+    .cta-button:disabled { opacity: .6; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+    .form-status {
+      text-align: center; padding: 1rem; border-radius: 8px;
+      font-size: .9375rem; font-weight: 600; display: none;
+    }
+    .form-status.success {
+      display: block; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;
+    }
+    .form-status.error {
+      display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca;
     }
 
     footer { text-align: center; padding: 3rem 0; border-top: 1px solid #E5E5E5; color: #A3A3A3; font-size: .8125rem; }
@@ -359,7 +414,7 @@
   </div>
 
   <div class="page-content">
-    <section class="pitch" id="learn-more"><div class="container"><p class="pitch-text">We optimize everything. Your website. Your ads. Your workflows. Your team. <span>We sell success, not AI.</span></p></div></section>
+    <section class="pitch" id="learn-more"><div class="container"><p class="pitch-text">We can optimize everything. Your website. Your ads. Your workflows. Your team. <span>We sell success, not AI.</span></p></div></section>
 
     <!-- About video block: starts smaller, grows as you scroll -->
     <section class="about-video-wrap" aria-label="About video">
@@ -420,7 +475,7 @@
     <section class="approach"><div class="container"><div class="section-label">How We Work</div><div class="approach-grid"><div class="approach-step"><div class="step-number">01 — Listen</div><div class="step-title">Understand your business</div><p class="step-desc">We learn what you do, how you do it, and where you want to go. Every engagement starts with understanding, not assumptions.</p></div><div class="approach-step"><div class="step-number">02 — Optimize</div><div class="step-title">Make it better</div><p class="step-desc">We implement real improvements—faster processes, smarter marketing, better systems. No strategy decks that collect dust.</p></div><div class="approach-step"><div class="step-number">03 — Grow</div><div class="step-title">Scale what works</div><p class="step-desc">Once it's working, we help you do more of it. More efficiency, more revenue, more of what makes your business great.</p></div></div></div></section>
     <div class="container"><hr class="divider"></div>
 
-    <section class="cta-section" id="contact"><div class="container"><h2>Let's make it better.</h2><p class="cta-subtitle">Tell us what you're trying to improve. We'll follow up with practical next steps.</p><form class="contact-form" action="https://formspree.io/f/mldlebob" method="POST"><div class="form-row"><input type="text" name="name" placeholder="Your name" required><input type="email" name="email" placeholder="Your email" required></div><input type="text" name="company" placeholder="Company (optional)"><textarea name="message" rows="5" placeholder="What should we optimize first?" required></textarea><button type="submit" class="cta-button">Send Request</button></form></div></section>
+    <section class="cta-section" id="contact"><div class="container"><h2>Let's make it better.</h2><p class="cta-subtitle">We love business optimization, and we'd love to hear from you!</p><form class="contact-form" id="contactForm" action="https://formspree.io/f/mldlebob" method="POST"><div class="form-row"><input type="text" name="name" placeholder="Your name" required><input type="email" name="email" placeholder="Your email" required></div><input type="text" name="company" placeholder="Company (optional)"><textarea name="message" rows="5" placeholder="What should we optimize first?" required></textarea><button type="submit" class="cta-button" id="submitBtn">Send Request</button><div class="form-status" id="formStatus"></div></form></div></section>
 
     <footer><div class="container">AI Freelancer · AIFreelancer.co · Cleveland, OH</div></footer>
   </div>
@@ -461,6 +516,10 @@
       const END_SAFETY_SECONDS = 0.06;
       const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
+      // ── Video poster fallback for low-end devices ──
+      const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
+                    || (navigator.deviceMemory && navigator.deviceMemory <= 2);
+
       function setVideoSource(url) {
         video.pause();
         video.removeAttribute('src');
@@ -470,6 +529,21 @@
         video.preload = 'auto';
         video.load();
       }
+
+      // Generate a poster frame: a subtle gradient that matches the hero overlay
+      // so there's no jarring flash before the video loads
+      function applyPosterFallback() {
+        video.style.background = '#fff';
+      }
+      applyPosterFallback();
+
+      // On truly low-end devices, skip scroll-scrubbing entirely and just show the poster
+      if (LOW_END) {
+        video.removeAttribute('src');
+        video.style.background = '#fff';
+        // Still allow the rest of the page to function
+      }
+
       function getProgress() {
         const rect = track.getBoundingClientRect();
         const total = track.offsetHeight - window.innerHeight;
@@ -521,16 +595,19 @@
         }
       });
 
-      let scrollQueued = false;
-      window.addEventListener('scroll', () => {
-        if (scrollQueued) return;
-        scrollQueued = true;
-        requestAnimationFrame(() => { scrollQueued = false; scheduleTick(); });
-      }, { passive: true });
-      window.addEventListener('resize', scheduleTick, { passive: true });
-      window.addEventListener('wheel', scheduleTick, { passive: true });
-      window.addEventListener('touchmove', scheduleTick, { passive: true });
-      setVideoSource(SOURCES[sourceIndex]);
+      if (!LOW_END) {
+        let scrollQueued = false;
+        window.addEventListener('scroll', () => {
+          if (scrollQueued) return;
+          scrollQueued = true;
+          requestAnimationFrame(() => { scrollQueued = false; scheduleTick(); });
+        }, { passive: true });
+        window.addEventListener('resize', scheduleTick, { passive: true });
+        window.addEventListener('wheel', scheduleTick, { passive: true });
+        window.addEventListener('touchmove', scheduleTick, { passive: true });
+        setVideoSource(SOURCES[sourceIndex]);
+      }
+
       // ── About video: click-to-load + scroll-grow effect ──
       (() => {
         const shell = document.getElementById('aboutVideoShell');
@@ -599,16 +676,14 @@
           if (el.matches('.case-study, .quote')) el.classList.add('reveal-slow');
           el.style.transitionDelay = `${Math.min((i % 10) * 40, 240)}ms`;
         });
-        const io = new IntersectionObserver((entries, observer) => {
+        const io = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('reveal-in');
-              observer.unobserve(entry.target);
-            }
+            entry.target.classList.toggle('reveal-in', entry.isIntersecting);
           });
         }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
         revealTargets.forEach(el => io.observe(el));
       }
+
     // ── Results counters: tick up when in view ──
     (() => {
       const counters = Array.from(document.querySelectorAll('.stat-number[data-count-to], .metric-value[data-count-to]'));
@@ -669,13 +744,561 @@
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            entry.target.dataset.animated = 'false';
             animateCounter(entry.target);
-            io.unobserve(entry.target);
+          } else if (entry.target.dataset.animated === 'true') {
+            // Reset to zero so it ticks up fresh on next entry
+            entry.target.dataset.animated = 'false';
+            if (!prefersReduced) {
+              entry.target.textContent = formatValue(entry.target, 0);
+            }
           }
         });
       }, { threshold: 0.45, rootMargin: '0px 0px -8% 0px' });
 
       counters.forEach((el) => io.observe(el));
+    })();
+
+    // ── Contact form: AJAX submission with success/error states ──
+    (() => {
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('formStatus');
+      if (!form || !btn || !status) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        status.className = 'form-status';
+        status.style.display = 'none';
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            status.textContent = 'Thanks! We\u2019ll be in touch within 24 hours.';
+            status.className = 'form-status success';
+            form.reset();
+          } else {
+            const data = await res.json().catch(() => null);
+            const msg = (data && data.errors)
+              ? data.errors.map(err => err.message).join(', ')
+              : 'Something went wrong. Please try again.';
+            status.textContent = msg;
+            status.className = 'form-status error';
+          }
+        } catch {
+          status.textContent = 'Network error — please check your connection and try again.';
+          status.className = 'form-status error';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Send Request';
+        }
+      });
+    })();
+
+    // ── Send Request button: sparkles on hover, fireworks on click ──
+    (() => {
+      const submitBtn = document.getElementById('submitBtn');
+      if (!submitBtn) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      const canvas = document.createElement('canvas');
+      canvas.className = 'nav-link-fx';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      let dpr = window.devicePixelRatio || 1;
+
+      const resize = () => {
+        dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      };
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+
+      const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B', '#ffffff'];
+      const particles = [];
+      let animating = false;
+
+      function loop() {
+        if (!particles.length) { animating = false; ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+        animating = true;
+        ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.life -= p.decay;
+          if (p.life <= 0) { particles.splice(i, 1); continue; }
+
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.vx *= p.friction;
+          p.vy *= p.friction;
+          if (p.rotSpeed) p.rot += p.rotSpeed;
+
+          const alpha = Math.min(1, p.life * 2);
+          ctx.globalAlpha = alpha;
+
+          if (p.type === 'sparkle') {
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            const s = p.size * (0.5 + 0.5 * Math.sin(p.life * 8));
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            for (let j = 0; j < 4; j++) {
+              const angle = (j / 4) * Math.PI * 2 - Math.PI / 2;
+              const outerX = Math.cos(angle) * s;
+              const outerY = Math.sin(angle) * s;
+              const innerAngle = angle + Math.PI / 4;
+              const innerX = Math.cos(innerAngle) * s * 0.3;
+              const innerY = Math.sin(innerAngle) * s * 0.3;
+              if (j === 0) ctx.moveTo(outerX, outerY);
+              else ctx.lineTo(outerX, outerY);
+              ctx.lineTo(innerX, innerY);
+            }
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+
+          } else if (p.type === 'trail') {
+            // Rising firework trail
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+
+          } else if (p.type === 'burst') {
+            // Firework burst particle
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = p.color;
+            ctx.shadowColor = p.color;
+            ctx.shadowBlur = 6;
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size * Math.max(0.3, p.life), 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+            ctx.restore();
+          }
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(loop);
+      }
+
+      function ensureLoop() {
+        if (!animating) { animating = true; requestAnimationFrame(loop); }
+      }
+
+      // ── Sparkles on hover (more pronounced for gradient button) ──
+      let sparkleInterval = null;
+
+      const spawnSparkle = () => {
+        const rect = submitBtn.getBoundingClientRect();
+        // Spawn further out from the button edges so they're visible against the gradient
+        const spread = 14;
+        const edge = Math.random();
+        let x, y;
+        if (edge < 0.25) {
+          x = rect.left + Math.random() * rect.width; y = rect.top - spread + Math.random() * 6;
+        } else if (edge < 0.5) {
+          x = rect.left + Math.random() * rect.width; y = rect.bottom + spread * 0.5 - Math.random() * 6;
+        } else if (edge < 0.75) {
+          x = rect.left - spread + Math.random() * 6; y = rect.top + Math.random() * rect.height;
+        } else {
+          x = rect.right + spread * 0.5 - Math.random() * 6; y = rect.top + Math.random() * rect.height;
+        }
+        particles.push({
+          type: 'sparkle', x, y,
+          vx: (Math.random() - 0.5) * 1.8, vy: (Math.random() - 0.5) * 1.8 - 0.6,
+          gravity: 0, friction: 0.97,
+          size: 5 + Math.random() * 7,
+          rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.15,
+          color: Math.random() < 0.35 ? '#ffffff' : BRAND[Math.floor(Math.random() * BRAND.length)],
+          life: 1, decay: 0.014 + Math.random() * 0.01,
+        });
+        ensureLoop();
+      };
+
+      submitBtn.addEventListener('mouseenter', () => {
+        if (submitBtn.disabled) return;
+        sparkleInterval = setInterval(spawnSparkle, 40);
+        for (let i = 0; i < 8; i++) spawnSparkle();
+      });
+      submitBtn.addEventListener('mouseleave', () => {
+        clearInterval(sparkleInterval); sparkleInterval = null;
+      });
+
+      // ── Fireworks on click: symmetric fan from center, rapid-fire ──
+      const launchFirework = (originX, originY, targetX, targetY) => {
+        const color = BRAND[Math.floor(Math.random() * (BRAND.length - 1))];
+        const dx = targetX - originX;
+        const dy = targetY - originY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const travelFrames = Math.floor(dist / 7);
+        const vx = dx / travelFrames;
+        const vy = dy / travelFrames;
+
+        let frame = 0;
+        let tx = originX, ty = originY;
+
+        const rise = () => {
+          frame++;
+          tx += vx;
+          ty += vy;
+
+          // Trail sparks
+          for (let t = 0; t < 2; t++) {
+            particles.push({
+              type: 'trail',
+              x: tx + (Math.random() - 0.5) * 4,
+              y: ty + (Math.random() - 0.5) * 4,
+              vx: (Math.random() - 0.5) * 1.5,
+              vy: Math.random() * 1.5 + 0.5,
+              gravity: 0.03, friction: 0.96,
+              size: 1.5 + Math.random() * 1.5,
+              rot: 0, rotSpeed: 0,
+              color: color, life: 1,
+              decay: 0.04 + Math.random() * 0.03,
+            });
+          }
+          ensureLoop();
+
+          if (frame < travelFrames) {
+            requestAnimationFrame(rise);
+          } else {
+            const burstCount = 45 + Math.floor(Math.random() * 20);
+            for (let b = 0; b < burstCount; b++) {
+              const angle = Math.random() * Math.PI * 2;
+              const speed = 1.5 + Math.random() * 4;
+              const burstColor = Math.random() < 0.3
+                ? BRAND[Math.floor(Math.random() * (BRAND.length - 1))]
+                : color;
+              particles.push({
+                type: 'burst',
+                x: tx + (Math.random() - 0.5) * 6,
+                y: ty + (Math.random() - 0.5) * 6,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                gravity: 0.04 + Math.random() * 0.02,
+                friction: 0.975 + Math.random() * 0.015,
+                size: 2 + Math.random() * 3,
+                rot: Math.random() * Math.PI * 2,
+                rotSpeed: (Math.random() - 0.5) * 0.1,
+                color: burstColor, life: 1,
+                decay: 0.012 + Math.random() * 0.008,
+              });
+            }
+            ensureLoop();
+          }
+        };
+
+        requestAnimationFrame(rise);
+      };
+
+      submitBtn.addEventListener('click', () => {
+        if (submitBtn.disabled) return;
+        submitBtn.classList.add('pop');
+        setTimeout(() => submitBtn.classList.remove('pop'), 220);
+
+        const rect = submitBtn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top;
+        const vh = window.innerHeight;
+
+        // Symmetric fan: predefined angles radiating from center
+        const positions = [
+          { angle: -90, dist: 0.55 },  // straight up
+          { angle: -60, dist: 0.45 },  // upper right
+          { angle: -120, dist: 0.45 }, // upper left
+          { angle: -75, dist: 0.6 },   // slight right
+          { angle: -105, dist: 0.6 },  // slight left
+          { angle: -45, dist: 0.35 },  // wide right
+          { angle: -135, dist: 0.35 }, // wide left
+        ];
+
+        positions.forEach((pos, i) => {
+          const rad = pos.angle * Math.PI / 180;
+          const travel = vh * pos.dist;
+          const targetX = cx + Math.cos(rad) * travel * 0.7;
+          const targetY = cy + Math.sin(rad) * travel;
+
+          setTimeout(() => {
+            launchFirework(cx, cy, targetX, targetY);
+          }, i * 70);
+        });
+      });
+    })();
+
+    // ── "Learn More" button: toss brand-colored thumbs-up on click ──
+    (() => {
+      const btn = document.querySelector('.hero-cta');
+      if (!btn) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B'];
+      const COUNT = 20;
+      const thumbSVG = (c) => '<svg viewBox="0 0 24 24" fill="' + c + '" xmlns="http://www.w3.org/2000/svg"><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14Z"/></svg>';
+
+      btn.addEventListener('click', () => {
+        const rect = btn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        for (let i = 0; i < COUNT; i++) {
+          const color = BRAND[Math.floor(Math.random() * BRAND.length)];
+          const el = document.createElement('span');
+          el.innerHTML = thumbSVG(color);
+          el.setAttribute('aria-hidden', 'true');
+
+          const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.9;
+          const speed = 9 + Math.random() * 10;
+          let vx = Math.cos(angle) * speed;
+          let vy = Math.sin(angle) * speed;
+          const gravity = 0.14 + Math.random() * 0.06;
+          const rotSpeed = (Math.random() - 0.5) * 6;
+          const size = 34 + Math.random() * 20;
+          const delay = Math.random() * 140;
+
+          Object.assign(el.style, {
+            position: 'fixed',
+            left: (cx + (Math.random() - 0.5) * 30) + 'px',
+            top: (cy + (Math.random() - 0.5) * 14) + 'px',
+            width: size + 'px',
+            height: size + 'px',
+            lineHeight: '1',
+            pointerEvents: 'none',
+            zIndex: '101',
+            willChange: 'transform, opacity',
+            opacity: '0',
+            userSelect: 'none',
+          });
+
+          document.body.appendChild(el);
+
+          let x = 0, y = 0, rot = 0, opacity = 1, frame = 0;
+          let falling = false;
+          const maxFrames = 80 + Math.floor(Math.random() * 30);
+
+          const tick = () => {
+            frame++;
+            if (frame * 16 < delay) { requestAnimationFrame(tick); return; }
+
+            vy += gravity;
+            x += vx;
+            y += vy;
+            vx *= 0.99;
+
+            // Only start rotating once the thumb is falling
+            if (vy > 0) falling = true;
+            if (falling) rot += rotSpeed;
+
+            const progress = (frame * 16 - delay) / ((maxFrames * 16) - delay);
+            opacity = progress > 0.55 ? 1 - ((progress - 0.55) / 0.45) : 1;
+
+            el.style.opacity = Math.max(0, opacity);
+            el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)';
+
+            if (frame < maxFrames && opacity > 0) {
+              requestAnimationFrame(tick);
+            } else {
+              el.remove();
+            }
+          };
+
+          requestAnimationFrame(tick);
+        }
+      });
+    })();
+
+    // ── Nav "Let's Talk" button: sparkles on hover, confetti on click ──
+    (() => {
+      const link = document.querySelector('.nav-link');
+      if (!link) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      // Shared canvas for both effects
+      const canvas = document.createElement('canvas');
+      canvas.className = 'nav-link-fx';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      let dpr = window.devicePixelRatio || 1;
+
+      const resize = () => {
+        dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      };
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+
+      const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B', '#ffffff'];
+      const particles = [];
+      let animating = false;
+
+      function loop() {
+        if (!particles.length) { animating = false; ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+        animating = true;
+        ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.life -= p.decay;
+          if (p.life <= 0) { particles.splice(i, 1); continue; }
+
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.vx *= p.friction;
+          p.vy *= p.friction;
+          if (p.rotSpeed) p.rot += p.rotSpeed;
+
+          const alpha = Math.min(1, p.life * 2);
+          ctx.globalAlpha = alpha;
+
+          if (p.type === 'sparkle') {
+            // 4-point star
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            const s = p.size * (0.5 + 0.5 * Math.sin(p.life * 8));
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            for (let j = 0; j < 4; j++) {
+              const angle = (j / 4) * Math.PI * 2 - Math.PI / 2;
+              const outerX = Math.cos(angle) * s;
+              const outerY = Math.sin(angle) * s;
+              const innerAngle = angle + Math.PI / 4;
+              const innerX = Math.cos(innerAngle) * s * 0.3;
+              const innerY = Math.sin(innerAngle) * s * 0.3;
+              if (j === 0) ctx.moveTo(outerX, outerY);
+              else ctx.lineTo(outerX, outerY);
+              ctx.lineTo(innerX, innerY);
+            }
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+
+          } else if (p.type === 'confetti') {
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = p.color;
+            // Tumbling ribbon: squash X based on rotation
+            const scaleX = Math.cos(p.life * 6 + p.phase);
+            ctx.scale(scaleX, 1);
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          }
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(loop);
+      }
+
+      function ensureLoop() {
+        if (!animating) { animating = true; requestAnimationFrame(loop); }
+      }
+
+      // ── Sparkles on hover ──
+      let sparkleInterval = null;
+
+      const spawnSparkle = () => {
+        const rect = link.getBoundingClientRect();
+        // Spawn around the button edges with some spread
+        const edge = Math.random();
+        let x, y;
+        if (edge < 0.25) {
+          x = rect.left + Math.random() * rect.width;
+          y = rect.top - 4 + Math.random() * 8;
+        } else if (edge < 0.5) {
+          x = rect.left + Math.random() * rect.width;
+          y = rect.bottom - 4 + Math.random() * 8;
+        } else if (edge < 0.75) {
+          x = rect.left - 4 + Math.random() * 8;
+          y = rect.top + Math.random() * rect.height;
+        } else {
+          x = rect.right - 4 + Math.random() * 8;
+          y = rect.top + Math.random() * rect.height;
+        }
+
+        particles.push({
+          type: 'sparkle',
+          x, y,
+          vx: (Math.random() - 0.5) * 1.2,
+          vy: (Math.random() - 0.5) * 1.2 - 0.4,
+          gravity: 0,
+          friction: 0.98,
+          size: 3 + Math.random() * 5,
+          rot: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.1,
+          color: BRAND[Math.floor(Math.random() * BRAND.length)],
+          life: 1,
+          decay: 0.018 + Math.random() * 0.012,
+        });
+        ensureLoop();
+      };
+
+      link.addEventListener('mouseenter', () => {
+        sparkleInterval = setInterval(spawnSparkle, 60);
+        // Burst a few immediately
+        for (let i = 0; i < 4; i++) spawnSparkle();
+      });
+      link.addEventListener('mouseleave', () => {
+        clearInterval(sparkleInterval);
+        sparkleInterval = null;
+      });
+
+      // ── Confetti on click ──
+      link.addEventListener('click', (e) => {
+        // Pop animation
+        link.classList.add('pop');
+        setTimeout(() => link.classList.remove('pop'), 220);
+
+        // Spawn confetti from button center
+        const rect = link.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        for (let i = 0; i < 55; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 2.5 + Math.random() * 6;
+          particles.push({
+            type: 'confetti',
+            x: cx + (Math.random() - 0.5) * 20,
+            y: cy + (Math.random() - 0.5) * 10,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 2.5,
+            gravity: 0.12 + Math.random() * 0.06,
+            friction: 0.985,
+            w: 8 + Math.random() * 8,
+            h: 4 + Math.random() * 5,
+            rot: Math.random() * Math.PI * 2,
+            rotSpeed: (Math.random() - 0.5) * 0.25,
+            phase: Math.random() * Math.PI * 2,
+            color: BRAND[Math.floor(Math.random() * (BRAND.length - 1))], // skip white for confetti
+            life: 1,
+            decay: 0.008 + Math.random() * 0.006,
+          });
+        }
+        ensureLoop();
+      });
     })();
 
     // ── Slow, cinematic anchor scrolling (lets hero video play during travel) ──
@@ -761,8 +1384,8 @@
             : undefined
         );
 
-        if (history.pushState) history.pushState(null, '', hash);
-        else location.hash = hash;
+        try { if (history.pushState) history.pushState(null, '', hash); }
+        catch { location.hash = hash; }
       }, { passive: false });
 
       ['wheel', 'touchstart', 'keydown'].forEach((evt) => {

@@ -565,23 +565,37 @@
         return segmentStart + getProgress() * (segmentEnd - segmentStart);
       }
       let lastSeekTs = 0;
+      let smoothTime = 0; // smoothed video time that lerps toward targetTime
+      const LERP_SPEED = 0.12; // 0–1, lower = smoother (more dampening)
+      const LERP_SPEED_FF = 0.1;
+
       function tick(ts = performance.now()) {
         raf = 0;
         if (!ready || scrubPaused) return;
         targetTime = computeTargetTime();
+
+        // Lerp smoothTime toward targetTime for fluid motion regardless of scroll jank
+        const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
+        const diff = targetTime - smoothTime;
+        if (Math.abs(diff) > 0.001) {
+          smoothTime += diff * lerp;
+        } else {
+          smoothTime = targetTime;
+        }
+
         if (isFirefox) {
-          // Firefox: throttle seeks to ~30fps and use larger threshold to reduce CPU load
-          const snapped = Math.round(targetTime / (1 / 25)) * (1 / 25);
+          const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
           if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
             try { video.currentTime = snapped; } catch {}
             lastSeekTs = ts;
           }
         } else {
-          if (Math.abs(video.currentTime - targetTime) > 0.002) { try { video.currentTime = targetTime; } catch {} }
+          if (Math.abs(video.currentTime - smoothTime) > 0.002) { try { video.currentTime = smoothTime; } catch {} }
         }
         const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
         video.style.transform = `scale(1.04) translate3d(0, ${y.toFixed(2)}px, 0)`;
-        if ((ts - lastInputTs) < 140) raf = requestAnimationFrame(tick);
+        // Keep ticking while smoothTime hasn't caught up, even after scroll stops
+        if ((ts - lastInputTs) < 140 || Math.abs(targetTime - smoothTime) > 0.001) raf = requestAnimationFrame(tick);
       }
       function scheduleTick() {
         if (!ready || scrubPaused) return;
@@ -593,6 +607,7 @@
         if (!Number.isFinite(duration) || duration <= 0) return;
         ready = true;
         targetTime = computeTargetTime();
+        smoothTime = targetTime; // sync smooth time on init so there's no initial drift
         try { video.currentTime = targetTime; } catch {}
         video.pause();
         scheduleTick();
@@ -1322,9 +1337,13 @@
       const EASE = (t) => 1 - Math.pow(1 - t, 3);
       let animFrame = 0;
 
+      let fallbackTimer = 0;
+
       const stopAnim = () => {
         if (animFrame) cancelAnimationFrame(animFrame);
         animFrame = 0;
+        if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = 0; }
+        scrubPaused = false;
       };
 
       const getHeaderOffset = () => {
@@ -1350,9 +1369,10 @@
         const start = performance.now();
 
         // Safety fallback: if rAF somehow stalls, force-scroll after timeout
-        const fallbackTimer = setTimeout(() => {
+        fallbackTimer = setTimeout(() => {
           window.scrollTo(0, targetY);
           scrubPaused = false;
+          fallbackTimer = 0;
           if (doneCallback) doneCallback();
         }, duration + 500);
 
@@ -1362,7 +1382,7 @@
           if (t < 1) {
             animFrame = requestAnimationFrame(step);
           } else {
-            clearTimeout(fallbackTimer);
+            if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = 0; }
             animFrame = 0;
             scrubPaused = false;
             if (doneCallback) doneCallback();
@@ -1371,7 +1391,7 @@
         animFrame = requestAnimationFrame(step);
       };
 
-      // Native-play-then-scroll: play video via GPU, scroll through hero linearly, then fast-scroll to target
+      // Scroll through hero at cinematic pace (manually driving video), then fast-scroll the rest
       const playThenScroll = (targetY) => {
         stopAnim();
 
@@ -1379,38 +1399,47 @@
         const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
         const startY = window.scrollY || window.pageYOffset;
 
-        // Disable scroll-scrub so tick() doesn't fight with native playback
-        scrubPaused = true;
-
-        // Play the video natively (GPU-decoded, very cheap)
-        try {
-          video.playbackRate = 1.3;
-          video.play();
-        } catch {}
-
-        // Linear scroll through hero zone, matching the video segment duration
-        const heroDist = Math.max(0, heroEnd - startY);
-        // SEGMENT_DURATION_SECONDS is 4, at 1.3x playback that's ~3.08s
-        const heroDuration = heroDist > 0 ? 3080 : 0;
+        const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
+        const heroDuration = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
         const start = performance.now();
+
+        // Pause the regular scrub so we drive seeks ourselves without competition
+        scrubPaused = true;
+        smoothTime = computeTargetTime();
 
         const step = (now) => {
           const elapsed = now - start;
           const t = Math.min(1, heroDuration > 0 ? elapsed / heroDuration : 1);
 
-          // Linear scroll through hero
           const y = startY + heroDist * t;
           window.scrollTo(0, y);
+
+          // Drive video seeking directly each frame
+          targetTime = computeTargetTime();
+          const diff = targetTime - smoothTime;
+          if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
+          else smoothTime = targetTime;
+
+          if (isFirefox) {
+            const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
+            if (Math.abs(video.currentTime - snapped) > 0.02) { try { video.currentTime = snapped; } catch {} }
+          } else {
+            if (Math.abs(video.currentTime - smoothTime) > 0.002) { try { video.currentTime = smoothTime; } catch {} }
+          }
+
+          // Update parallax transform too since regular tick is paused
+          const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
+          video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
 
           if (t < 1) {
             animFrame = requestAnimationFrame(step);
           } else {
             animFrame = 0;
-            // Hero phase done — pause video, re-enable scrub, fast-scroll to destination
-            try { video.pause(); } catch {}
-            scrubPaused = false;
+            // scrubPaused stays true — fastScrollTo will handle it
             if (targetY > heroEnd + 2) {
               fastScrollTo(targetY);
+            } else {
+              scrubPaused = false;
             }
           }
         };
@@ -1418,8 +1447,6 @@
         if (heroDuration > 0) {
           animFrame = requestAnimationFrame(step);
         } else {
-          try { video.pause(); } catch {}
-          scrubPaused = false;
           fastScrollTo(targetY);
         }
       };
@@ -1441,17 +1468,20 @@
         e.preventDefault();
 
         const offset = getHeaderOffset();
-        const rect = target.getBoundingClientRect();
-        const targetY = Math.max(0, Math.round(rect.top + window.scrollY - offset));
-        const scrollY = window.scrollY || window.pageYOffset;
 
-        if (scrollY < 50 && ready) {
-          // At top with video ready: play natively then scroll
-          playThenScroll(targetY);
-        } else {
-          // Already scrolled: just fast-scroll directly
-          fastScrollTo(targetY);
-        }
+        const doScroll = () => {
+          const freshRect = target.getBoundingClientRect();
+          const freshTargetY = Math.max(0, Math.round(freshRect.top + (window.scrollY || window.pageYOffset) - offset));
+          const freshScrollY = window.scrollY || window.pageYOffset;
+
+          if (freshScrollY < 50 && ready) {
+            playThenScroll(freshTargetY);
+          } else {
+            fastScrollTo(freshTargetY);
+          }
+        };
+
+        doScroll();
 
         try { if (history.pushState) history.pushState(null, '', hash); }
         catch { location.hash = hash; }
@@ -1460,11 +1490,6 @@
       ['wheel', 'touchstart', 'keydown'].forEach((evt) => {
         window.addEventListener(evt, () => {
           stopAnim();
-          // If user interrupts during native playback, stop and re-enable scrub
-          if (scrubPaused) {
-            scrubPaused = false;
-            try { video.pause(); } catch {}
-          }
         }, { passive: true });
       });
     })();

@@ -1318,11 +1318,6 @@
       const MAX_MS = 3400;
       const PX_PER_MS = 1.15; // default speed (smaller = slower)
 
-      // Slower profile for deeper jumps (especially to #contact)
-      const CONTACT_MIN_MS = 4000;
-      const CONTACT_MAX_MS = 7500;
-      const CONTACT_PX_PER_MS = 0.38;
-
       let animFrame = 0;
 
       const stopAnim = () => {
@@ -1372,11 +1367,14 @@
         // The hero zone ends where the scroll-track ends
         const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
 
+        // If already scrolled into the hero video, skip the slow phase entirely
+        const alreadyInHero = startY > 50;
+
         const phase1Start = startY;
         const phase1End = Math.min(heroEnd, targetY);
-        const phase1Dist = Math.max(0, phase1End - phase1Start);
+        const phase1Dist = alreadyInHero ? 0 : Math.max(0, phase1End - phase1Start);
 
-        const phase2Start = phase1End;
+        const phase2Start = alreadyInHero ? startY : phase1End;
         const phase2End = targetY;
         const phase2Dist = Math.max(0, phase2End - phase2Start);
 
@@ -1435,12 +1433,7 @@
         const rect = target.getBoundingClientRect();
         const targetY = Math.max(0, Math.round(rect.top + window.scrollY - offset));
 
-        const toContact = hash === '#contact';
-        if (toContact) {
-          animateScrollTwoPhase(targetY);
-        } else {
-          animateScrollTo(targetY);
-        }
+        animateScrollTwoPhase(targetY);
 
         try { if (history.pushState) history.pushState(null, '', hash); }
         catch { location.hash = hash; }

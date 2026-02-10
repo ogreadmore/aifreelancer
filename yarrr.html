@@ -564,13 +564,18 @@
         const segmentEnd = clamp(START_AT_SECONDS + SEGMENT_DURATION_SECONDS, segmentStart, Math.max(segmentStart, duration - END_SAFETY_SECONDS));
         return segmentStart + getProgress() * (segmentEnd - segmentStart);
       }
+      let lastSeekTs = 0;
       function tick(ts = performance.now()) {
         raf = 0;
         if (!ready || scrubPaused) return;
         targetTime = computeTargetTime();
         if (isFirefox) {
+          // Firefox: throttle seeks to ~30fps and use larger threshold to reduce CPU load
           const snapped = Math.round(targetTime / (1 / 25)) * (1 / 25);
-          if (Math.abs(video.currentTime - snapped) > 0.004) { try { video.currentTime = snapped; } catch {} }
+          if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
+            try { video.currentTime = snapped; } catch {}
+            lastSeekTs = ts;
+          }
         } else {
           if (Math.abs(video.currentTime - targetTime) > 0.002) { try { video.currentTime = targetTime; } catch {} }
         }
@@ -1330,18 +1335,38 @@
       // Fast eased scroll (for content after hero, or when hero is already passed)
       const fastScrollTo = (targetY, doneCallback) => {
         stopAnim();
+        // Pause scrub during scroll animation so they don't compete for rAF on Firefox
+        scrubPaused = true;
+
         const startY = window.scrollY || window.pageYOffset;
         const distance = targetY - startY;
-        if (Math.abs(distance) < 2) { if (doneCallback) doneCallback(); return; }
+        if (Math.abs(distance) < 2) {
+          scrubPaused = false;
+          if (doneCallback) doneCallback();
+          return;
+        }
 
         const duration = Math.min(2200, Math.max(500, Math.abs(distance) / 2.8));
         const start = performance.now();
 
+        // Safety fallback: if rAF somehow stalls, force-scroll after timeout
+        const fallbackTimer = setTimeout(() => {
+          window.scrollTo(0, targetY);
+          scrubPaused = false;
+          if (doneCallback) doneCallback();
+        }, duration + 500);
+
         const step = (now) => {
           const t = Math.min(1, (now - start) / duration);
           window.scrollTo(0, startY + distance * EASE(t));
-          if (t < 1) { animFrame = requestAnimationFrame(step); }
-          else { animFrame = 0; if (doneCallback) doneCallback(); }
+          if (t < 1) {
+            animFrame = requestAnimationFrame(step);
+          } else {
+            clearTimeout(fallbackTimer);
+            animFrame = 0;
+            scrubPaused = false;
+            if (doneCallback) doneCallback();
+          }
         };
         animFrame = requestAnimationFrame(step);
       };

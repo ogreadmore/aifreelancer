@@ -159,6 +159,11 @@
     .pitch-text { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 700; line-height: 1.35; letter-spacing: -.03em; max-width: 700px; color: #A3A3A3; }
     .pitch-text span { color: #0A0A0A; }
 
+    /* Mobile-only fixed pitch (below sticky hero) */
+    .pitch-fixed {
+      display: none; /* hidden on desktop */
+    }
+
     /* About video block (inserted after pitch) */
     .about-video-wrap {
       padding: 1rem 0 5rem;
@@ -435,9 +440,25 @@
         object-position: center 30%;
       }
 
-      /* Pitch text visible immediately on mobile (no reveal fade-in) */
-      .pitch, .pitch .pitch-text {
-        opacity: 1 !important; transform: none !important; transition: none !important;
+      /* Pitch text visible immediately on mobile via fixed element */
+      .pitch-fixed {
+        display: block;
+        position: fixed;
+        top: 60svh;
+        left: 0; right: 0;
+        z-index: 5;
+        background: #fff;
+        padding: 2rem 0 1.5rem;
+        pointer-events: none;
+      }
+      .pitch-fixed .pitch-text {
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+      }
+      /* Hide original pitch in page-content on mobile since fixed clone handles it */
+      .pitch {
+        padding: 1rem 0 0;
+        visibility: hidden;
+        height: 0; overflow: hidden;
       }
 
       .stats { grid-template-columns: 1fr; gap: 1rem; }
@@ -495,6 +516,9 @@
       </div>
     </section>
   </div>
+
+  <!-- Mobile: pitch visible below hero immediately (hidden on desktop) -->
+  <div class="pitch-fixed" aria-hidden="true"><div class="container"><p class="pitch-text">We can optimize everything. Your website. Your ads. Your workflows. Your team. <span>We sell success, not AI.</span></p></div></div>
 
   <div class="page-content">
     <section class="pitch" id="learn-more"><div class="container"><p class="pitch-text">We can optimize everything. Your website. Your ads. Your workflows. Your team. <span>We sell success, not AI.</span></p></div></section>
@@ -693,8 +717,11 @@
       }
       let lastSeekTs = 0;
       let smoothTime = 0; // smoothed video time that lerps toward targetTime
-      const LERP_SPEED = 0.12; // 0–1, lower = smoother (more dampening)
-      const LERP_SPEED_FF = 0.1;
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const LERP_SPEED = isMobile ? 0.05 : 0.12; // mobile needs much heavier smoothing
+      const LERP_SPEED_FF = isMobile ? 0.04 : 0.1;
+      const SEEK_THRESHOLD = isMobile ? 0.03 : 0.002; // mobile: don't seek for tiny changes
+      const SEEK_COOLDOWN = isMobile ? 25 : 0; // mobile: min ms between seeks
 
       function tick(ts = performance.now()) {
         raf = 0;
@@ -717,7 +744,10 @@
             lastSeekTs = ts;
           }
         } else {
-          if (Math.abs(video.currentTime - smoothTime) > 0.002) { try { video.currentTime = smoothTime; } catch {} }
+          if (Math.abs(video.currentTime - smoothTime) > SEEK_THRESHOLD && (ts - lastSeekTs) > SEEK_COOLDOWN) {
+            try { video.currentTime = smoothTime; } catch {}
+            lastSeekTs = ts;
+          }
         }
         const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
         video.style.transform = `scale(1.04) translate3d(0, ${y.toFixed(2)}px, 0)`;

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,6 @@
   <title>AI Freelancer — We Optimize Everything</title>
   <meta name="description" content="AI Freelancer is a business optimization powerhouse based in Cleveland, OH. We optimize your marketing, website, SEO, workflows, and more — delivering real results in days, not months.">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aifreelancer.co/">
   <meta property="og:title" content="AI Freelancer — We Optimize Everything">
@@ -15,13 +13,11 @@
   <meta property="og:image" content="https://aifreelancer.co/og-image.png">
   <meta property="og:locale" content="en_US">
 
-  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Freelancer — We Optimize Everything">
   <meta name="twitter:description" content="We're not an AI agency. We're a business optimization powerhouse.">
   <meta name="twitter:image" content="https://aifreelancer.co/og-image.png">
 
-  <!-- Favicon: inline SVG with brand gradient -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234B88DA'/%3E%3Cstop offset='40%25' stop-color='%238A3BF1'/%3E%3Cstop offset='70%25' stop-color='%23D941A1'/%3E%3Cstop offset='100%25' stop-color='%23E5484D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='6' fill='url(%23g)'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='18' fill='white'%3EAi%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -420,13 +416,30 @@
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
 
+    /* === THE MOBILE PARALLAX SOLUTION === */
     @media (max-width: 768px) {
+      nav {
+        padding: 1rem 0;
+        background: rgba(255, 255, 255, 0.98); 
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+      }
+      
       .container, .nav-inner { padding: 0 1.25rem; }
       .hero-content { padding: 0 1.25rem 3rem; }
 
-      /* Mobile hero: shorter so people aren't cropped */
-      .scroll-track { height: 300vh; }
+      /* 1. Track acts as a 150svh invisible scroll area for JS to map */
+      .scroll-track { 
+        height: 150svh; 
+        padding-top: 75px; /* Account for nav height */
+        box-sizing: border-box; 
+      }
+      
+      /* 2. Hero stays EXACTLY at 60svh (no cropping) and sticks below the nav */
       .hero {
+        position: sticky;
+        top: 75px;
         height: 60svh;
         min-height: 420px;
         align-items: flex-end;
@@ -436,9 +449,22 @@
         object-position: center 30%;
       }
 
+      /* 3. Page Content gets pulled up perfectly flush with the bottom of the video */
+      .page-content {
+        /* Formula: negative (Track Height - Hero Height - Nav Offset) */
+        margin-top: calc(-150svh + max(60svh, 420px) + 75px);
+        position: relative;
+        z-index: 10;
+        background: #fff;
+        /* Slight styling so it looks like a premium sheet sliding over the video */
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+      }
+
       /* Pitch + about video: visible immediately, no reveal animation */
       .pitch {
-        padding: 3rem 0 1.5rem;
+        padding: 4rem 0 1.5rem; /* slight extra top padding due to rounded corners */
         opacity: 1 !important; transform: none !important; transition: none !important;
       }
       .about-video-wrap {
@@ -513,7 +539,6 @@
   <div class="page-content">
     <section class="pitch" id="learn-more"><div class="container"><p class="pitch-text">We can optimize everything. Your website. Your ads. Your workflows. Your team. <span>We sell success, not AI.</span></p></div></section>
 
-    <!-- About video block: starts smaller, grows as you scroll -->
     <section class="about-video-wrap" aria-label="About video">
       <div class="container">
         <div class="about-video-shell" id="aboutVideoShell">
@@ -659,13 +684,12 @@
       if (isFirefox) document.documentElement.classList.add('is-firefox');
 
       let sourceIndex = 0, ready = false, duration = 0, targetTime = 0, raf = 0, lastInputTs = 0;
-      let scrubPaused = false; // set true during native video playback to avoid CPU-heavy seeking
+      let scrubPaused = false; 
       const START_AT_SECONDS = 5;
       const SEGMENT_DURATION_SECONDS = 4;
       const END_SAFETY_SECONDS = 0.06;
       const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
-      // ── Video poster fallback for low-end devices ──
       const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
                     || (navigator.deviceMemory && navigator.deviceMemory <= 2);
 
@@ -679,46 +703,44 @@
         video.load();
       }
 
-      // Generate a poster frame: a subtle gradient that matches the hero overlay
-      // so there's no jarring flash before the video loads
       function applyPosterFallback() {
         video.style.background = '#fff';
       }
       applyPosterFallback();
 
-      // On truly low-end devices, skip scroll-scrubbing entirely and just show the poster
       if (LOW_END) {
         video.removeAttribute('src');
         video.style.background = '#fff';
-        // Still allow the rest of the page to function
       }
 
       function getProgress() {
+        if (!track) return 0;
         const rect = track.getBoundingClientRect();
         const total = track.offsetHeight - window.innerHeight;
         const scrolled = clamp(-rect.top, 0, total);
         return total > 0 ? scrolled / total : 0;
       }
+      
       function computeTargetTime() {
         if (!ready || duration <= 0) return 0;
         const segmentStart = clamp(START_AT_SECONDS, 0, Math.max(0, duration - END_SAFETY_SECONDS));
         const segmentEnd = clamp(START_AT_SECONDS + SEGMENT_DURATION_SECONDS, segmentStart, Math.max(segmentStart, duration - END_SAFETY_SECONDS));
         return segmentStart + getProgress() * (segmentEnd - segmentStart);
       }
+      
       let lastSeekTs = 0;
-      let smoothTime = 0; // smoothed video time that lerps toward targetTime
+      let smoothTime = 0; 
       const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      const LERP_SPEED = isMobile ? 0.05 : 0.12; // mobile needs much heavier smoothing
+      const LERP_SPEED = isMobile ? 0.05 : 0.12; 
       const LERP_SPEED_FF = isMobile ? 0.04 : 0.1;
-      const SEEK_THRESHOLD = isMobile ? 0.03 : 0.002; // mobile: don't seek for tiny changes
-      const SEEK_COOLDOWN = isMobile ? 25 : 0; // mobile: min ms between seeks
+      const SEEK_THRESHOLD = isMobile ? 0.03 : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? 25 : 0; 
 
       function tick(ts = performance.now()) {
         raf = 0;
         if (!ready || scrubPaused) return;
         targetTime = computeTargetTime();
 
-        // Lerp smoothTime toward targetTime for fluid motion regardless of scroll jank
         const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
         const diff = targetTime - smoothTime;
         if (Math.abs(diff) > 0.001) {
@@ -741,7 +763,6 @@
         }
         const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
         video.style.transform = `scale(1.04) translate3d(0, ${y.toFixed(2)}px, 0)`;
-        // Keep ticking while smoothTime hasn't caught up, even after scroll stops
         if ((ts - lastInputTs) < 140 || Math.abs(targetTime - smoothTime) > 0.001) raf = requestAnimationFrame(tick);
       }
       function scheduleTick() {
@@ -754,7 +775,7 @@
         if (!Number.isFinite(duration) || duration <= 0) return;
         ready = true;
         targetTime = computeTargetTime();
-        smoothTime = targetTime; // sync smooth time on init so there's no initial drift
+        smoothTime = targetTime; 
         try { video.currentTime = targetTime; } catch {}
         video.pause();
         scheduleTick();
@@ -811,7 +832,6 @@
           return;
         }
 
-        // Mobile: no scroll-grow, show at full scale immediately
         if (window.matchMedia('(max-width: 768px)').matches) {
           shell.style.transform = 'scale(1)';
           return;
@@ -824,7 +844,6 @@
           const rect = box.getBoundingClientRect();
           const vh = window.innerHeight || document.documentElement.clientHeight;
 
-          // progress starts when box enters bottom of viewport, ends near center
           const start = vh;
           const end = vh * 0.38;
           const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
@@ -853,7 +872,6 @@
         const revealTargets = Array.from(document.querySelectorAll('.page-content section, .page-content .divider, .page-content footer, .service-item, .stat, .case-study, .approach-step, .metric'));
         const isMobileReveal = window.matchMedia('(max-width: 768px)').matches;
         revealTargets.forEach((el, i) => {
-          // On mobile, skip reveal for about-video and pitch — they must be visible immediately
           if (isMobileReveal && (el.classList.contains('about-video-wrap') || el.classList.contains('pitch'))) return;
           el.classList.add('reveal');
           if (el.matches('.service-item, .metric, .stat')) el.classList.add('reveal-fast');
@@ -931,7 +949,6 @@
             entry.target.dataset.animated = 'false';
             animateCounter(entry.target);
           } else if (entry.target.dataset.animated === 'true') {
-            // Reset to zero so it ticks up fresh on next entry
             entry.target.dataset.animated = 'false';
             if (!prefersReduced) {
               entry.target.textContent = formatValue(entry.target, 0);
@@ -1057,14 +1074,12 @@
             ctx.restore();
 
           } else if (p.type === 'trail') {
-            // Rising firework trail
             ctx.fillStyle = p.color;
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
             ctx.fill();
 
           } else if (p.type === 'burst') {
-            // Firework burst particle
             ctx.save();
             ctx.translate(p.x, p.y);
             ctx.rotate(p.rot);
@@ -1086,12 +1101,10 @@
         if (!animating) { animating = true; requestAnimationFrame(loop); }
       }
 
-      // ── Sparkles on hover (more pronounced for gradient button) ──
       let sparkleInterval = null;
 
       const spawnSparkle = () => {
         const rect = submitBtn.getBoundingClientRect();
-        // Spawn further out from the button edges so they're visible against the gradient
         const spread = 14;
         const edge = Math.random();
         let x, y;
@@ -1124,7 +1137,6 @@
       submitBtn.addEventListener('mouseleave', () => {
         clearInterval(sparkleInterval); sparkleInterval = null;
       });
-      // Mobile: touchend/cancel don't fire mouseleave
       submitBtn.addEventListener('touchend', () => {
         clearInterval(sparkleInterval); sparkleInterval = null;
       }, { passive: true });
@@ -1132,7 +1144,6 @@
         clearInterval(sparkleInterval); sparkleInterval = null;
       }, { passive: true });
 
-      // ── Fireworks on click: symmetric fan from center, rapid-fire ──
       const launchFirework = (originX, originY, targetX, targetY) => {
         const color = BRAND[Math.floor(Math.random() * (BRAND.length - 1))];
         const dx = targetX - originX;
@@ -1150,7 +1161,6 @@
           tx += vx;
           ty += vy;
 
-          // Trail sparks
           for (let t = 0; t < 2; t++) {
             particles.push({
               type: 'trail',
@@ -1209,15 +1219,14 @@
         const cy = rect.top;
         const vh = window.innerHeight;
 
-        // Symmetric fan: predefined angles radiating from center
         const positions = [
-          { angle: -90, dist: 0.55 },  // straight up
-          { angle: -60, dist: 0.45 },  // upper right
-          { angle: -120, dist: 0.45 }, // upper left
-          { angle: -75, dist: 0.6 },   // slight right
-          { angle: -105, dist: 0.6 },  // slight left
-          { angle: -45, dist: 0.35 },  // wide right
-          { angle: -135, dist: 0.35 }, // wide left
+          { angle: -90, dist: 0.55 },  
+          { angle: -60, dist: 0.45 },  
+          { angle: -120, dist: 0.45 }, 
+          { angle: -75, dist: 0.6 },   
+          { angle: -105, dist: 0.6 },  
+          { angle: -45, dist: 0.35 },  
+          { angle: -135, dist: 0.35 }, 
         ];
 
         positions.forEach((pos, i) => {
@@ -1293,7 +1302,6 @@
             y += vy;
             vx *= 0.99;
 
-            // Only start rotating once the thumb is falling
             if (vy > 0) falling = true;
             if (falling) rot += rotSpeed;
 
@@ -1322,7 +1330,6 @@
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReduced) return;
 
-      // Shared canvas for both effects
       const canvas = document.createElement('canvas');
       canvas.className = 'nav-link-fx';
       document.body.appendChild(canvas);
@@ -1365,7 +1372,6 @@
           ctx.globalAlpha = alpha;
 
           if (p.type === 'sparkle') {
-            // 4-point star
             ctx.save();
             ctx.translate(p.x, p.y);
             ctx.rotate(p.rot);
@@ -1392,7 +1398,6 @@
             ctx.translate(p.x, p.y);
             ctx.rotate(p.rot);
             ctx.fillStyle = p.color;
-            // Tumbling ribbon: squash X based on rotation
             const scaleX = Math.cos(p.life * 6 + p.phase);
             ctx.scale(scaleX, 1);
             ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
@@ -1407,12 +1412,10 @@
         if (!animating) { animating = true; requestAnimationFrame(loop); }
       }
 
-      // ── Sparkles on hover ──
       let sparkleInterval = null;
 
       const spawnSparkle = () => {
         const rect = link.getBoundingClientRect();
-        // Spawn around the button edges with some spread
         const edge = Math.random();
         let x, y;
         if (edge < 0.25) {
@@ -1448,14 +1451,12 @@
 
       link.addEventListener('mouseenter', () => {
         sparkleInterval = setInterval(spawnSparkle, 60);
-        // Burst a few immediately
         for (let i = 0; i < 4; i++) spawnSparkle();
       });
       link.addEventListener('mouseleave', () => {
         clearInterval(sparkleInterval);
         sparkleInterval = null;
       });
-      // Mobile: touchend/cancel don't fire mouseleave
       link.addEventListener('touchend', () => {
         clearInterval(sparkleInterval); sparkleInterval = null;
       }, { passive: true });
@@ -1463,13 +1464,10 @@
         clearInterval(sparkleInterval); sparkleInterval = null;
       }, { passive: true });
 
-      // ── Confetti on click ──
       link.addEventListener('click', (e) => {
-        // Pop animation
         link.classList.add('pop');
         setTimeout(() => link.classList.remove('pop'), 220);
 
-        // Spawn confetti from button center
         const rect = link.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
@@ -1490,7 +1488,7 @@
             rot: Math.random() * Math.PI * 2,
             rotSpeed: (Math.random() - 0.5) * 0.25,
             phase: Math.random() * Math.PI * 2,
-            color: BRAND[Math.floor(Math.random() * (BRAND.length - 1))], // skip white for confetti
+            color: BRAND[Math.floor(Math.random() * (BRAND.length - 1))], 
             life: 1,
             decay: 0.008 + Math.random() * 0.006,
           });
@@ -1521,10 +1519,8 @@
         return navEl ? Math.max(0, Math.round(navEl.getBoundingClientRect().height + 8)) : 0;
       };
 
-      // Fast eased scroll (for content after hero, or when hero is already passed)
       const fastScrollTo = (targetY, doneCallback) => {
         stopAnim();
-        // Pause scrub during scroll animation so they don't compete for rAF on Firefox
         scrubPaused = true;
 
         const startY = window.scrollY || window.pageYOffset;
@@ -1538,7 +1534,6 @@
         const duration = Math.min(2200, Math.max(500, Math.abs(distance) / 2.8));
         const start = performance.now();
 
-        // Safety fallback: if rAF somehow stalls, force-scroll after timeout
         fallbackTimer = setTimeout(() => {
           window.scrollTo(0, targetY);
           scrubPaused = false;
@@ -1561,7 +1556,6 @@
         animFrame = requestAnimationFrame(step);
       };
 
-      // Scroll through hero at cinematic pace (manually driving video), then fast-scroll the rest
       const playThenScroll = (targetY) => {
         stopAnim();
 
@@ -1573,7 +1567,6 @@
         const heroDuration = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
         const start = performance.now();
 
-        // Pause the regular scrub so we drive seeks ourselves without competition
         scrubPaused = true;
         smoothTime = computeTargetTime();
 
@@ -1584,7 +1577,6 @@
           const y = startY + heroDist * t;
           window.scrollTo(0, y);
 
-          // Drive video seeking directly each frame
           targetTime = computeTargetTime();
           const diff = targetTime - smoothTime;
           if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
@@ -1597,7 +1589,6 @@
             if (Math.abs(video.currentTime - smoothTime) > 0.002) { try { video.currentTime = smoothTime; } catch {} }
           }
 
-          // Update parallax transform too since regular tick is paused
           const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
           video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
 
@@ -1605,7 +1596,6 @@
             animFrame = requestAnimationFrame(step);
           } else {
             animFrame = 0;
-            // scrubPaused stays true — fastScrollTo will handle it
             if (targetY > heroEnd + 2) {
               fastScrollTo(targetY);
             } else {
@@ -1653,8 +1643,6 @@
         };
 
         const scrollY = window.scrollY || window.pageYOffset;
-        // At top: thumbs + video play together (hero is sticky so button stays put)
-        // Scrolled down: delay scroll so thumbs finish before page moves
         if (isHeroCta && scrollY >= 50) {
           setTimeout(doScroll, 1200);
         } else {
@@ -1685,7 +1673,7 @@
           entry.target.classList.toggle('scroll-active', entry.isIntersecting);
         });
       }, {
-        rootMargin: '-35% 0px -35% 0px' // only active when near vertical center
+        rootMargin: '-35% 0px -35% 0px' 
       });
 
       items.forEach(item => observer.observe(item));
@@ -1701,7 +1689,6 @@
       const cards = rail.querySelectorAll('.testimonial-card');
       const cardCount = cards.length;
 
-      // Create progress dots
       cards.forEach((_, i) => {
         const dot = document.createElement('div');
         dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
@@ -1709,18 +1696,15 @@
       });
       const dots = dotsContainer.querySelectorAll('.testimonial-dot');
 
-      // Set section height to create scroll room
       const setHeight = () => {
         const railWidth = rail.scrollWidth;
         const viewWidth = window.innerWidth;
         const scrollDistance = Math.max(0, railWidth - viewWidth + 80);
-        // Map horizontal travel to vertical scroll: ~1px vertical = 1px horizontal
         section.style.height = (window.innerHeight + scrollDistance) + 'px';
       };
       setHeight();
       window.addEventListener('resize', setHeight);
 
-      // Drive horizontal position from scroll
       let ticking = false;
       const onScroll = () => {
         if (ticking) return;
@@ -1733,7 +1717,6 @@
           const scrollRange = sectionH - viewH;
           if (scrollRange <= 0) return;
 
-          // Progress: 0 when sticky starts, 1 when section ends
           const progress = Math.max(0, Math.min(1, -rect.top / scrollRange));
 
           const railWidth = rail.scrollWidth;
@@ -1743,7 +1726,6 @@
 
           rail.style.transform = 'translate3d(' + tx.toFixed(1) + 'px, 0, 0)';
 
-          // Update active dot
           const cardIndex = Math.min(cardCount - 1, Math.floor(progress * cardCount));
           dots.forEach((d, i) => d.classList.toggle('active', i === cardIndex));
         });

@@ -426,7 +426,7 @@
 
     @media (max-width: 768px) {
       .container, .nav-inner { padding: 0 1.25rem; }
-      .hero-content { padding: 0 1.25rem 3rem; }
+      .hero-content { padding: 0 1.25rem 4.5rem; }
 
       /* Mobile hero: shorter so people in video aren't cropped */
       .scroll-track { height: 300vh; }
@@ -439,6 +439,13 @@
         transform: scale(1.0);
         object-position: center 30%;
       }
+
+      /* About video: no scroll-grow, no whitespace, no reveal, visible immediately */
+      .about-video-wrap {
+        padding: 0 0 3rem;
+        opacity: 1 !important; transform: none !important; transition: none !important;
+      }
+      .about-video-shell { transform: scale(1) !important; transition: none !important; }
 
       /* Pitch text visible immediately on mobile via fixed element */
       .pitch-fixed {
@@ -454,11 +461,10 @@
       .pitch-fixed .pitch-text {
         font-size: clamp(1.25rem, 4vw, 1.75rem);
       }
-      /* Hide original pitch in page-content on mobile since fixed clone handles it */
+      /* Pitch in page-content: visible immediately, no reveal animation */
       .pitch {
-        padding: 1rem 0 0;
-        visibility: hidden;
-        height: 0; overflow: hidden;
+        padding: 2.5rem 0 1rem;
+        opacity: 1 !important; transform: none !important; transition: none !important;
       }
 
       .stats { grid-template-columns: 1fr; gap: 1rem; }
@@ -492,9 +498,16 @@
       .testimonial-rail { padding: 0 1.25rem; gap: 1.25rem; }
       .testimonial-card { flex: 0 0 300px; max-width: 300px; padding: 1.75rem; }
 
-      .about-video-wrap { padding: .5rem 0 4rem; }
-      .about-video-shell { transform: scale(.94); }
       .about-video-caption { font-size: .96rem; top: calc(50% + 52px); }
+    }
+
+    /* Extra small screens (original iPhone, SE, etc) */
+    @media (max-width: 375px) {
+      .hero-content { padding: 0 1.25rem 6.5rem; }
+      .hero { min-height: 380px; }
+    }
+    @media (max-height: 600px) {
+      .hero-content { padding: 0 1.25rem 6rem; }
     }
   </style>
 </head>
@@ -821,7 +834,13 @@
           return;
         }
 
-        const getMinScale = () => window.matchMedia('(max-width: 768px)').matches ? 0.9 : 0.78;
+        // Mobile: no scroll-grow, show at full scale immediately
+        if (window.matchMedia('(max-width: 768px)').matches) {
+          shell.style.transform = 'scale(1)';
+          return;
+        }
+
+        const getMinScale = () => 0.78;
         const maxScale = 1;
 
         const onScrollGrow = () => {
@@ -855,7 +874,10 @@
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!reducedMotion) {
         const revealTargets = Array.from(document.querySelectorAll('.page-content section, .page-content .divider, .page-content footer, .service-item, .stat, .case-study, .approach-step, .metric'));
+        const isMobileReveal = window.matchMedia('(max-width: 768px)').matches;
         revealTargets.forEach((el, i) => {
+          // On mobile, skip reveal for about-video and pitch — they must be visible immediately
+          if (isMobileReveal && (el.classList.contains('about-video-wrap') || el.classList.contains('pitch'))) return;
           el.classList.add('reveal');
           if (el.matches('.service-item, .metric, .stat')) el.classList.add('reveal-fast');
           if (el.matches('.case-study')) el.classList.add('reveal-slow');

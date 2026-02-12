@@ -1616,10 +1616,10 @@
         const startY = window.scrollY || window.pageYOffset;
 
         const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
-        // MOBILE OPTIMIZATION: Faster scroll speed with a 1s initial hold
+        // MOBILE OPTIMIZATION: Slower cinematic scroll with a 2.2s initial hold
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
         const heroDuration = heroDist > 0 
-          ? (isMobile ? 2750 : Math.min(3200, Math.max(1800, heroDist / 0.5))) 
+          ? (isMobile ? 5500 : Math.min(3200, Math.max(1800, heroDist / 0.5))) 
           : 0;
         const start = performance.now();
 
@@ -1645,7 +1645,7 @@
           // This ensures the video sequence plays fully while 100% visible.
           let scrollT = t;
           if (isMobile) {
-            const holdThreshold = 0.8; // ~2.2s of 2.75s total duration
+            const holdThreshold = 0.4; // ~2.2s of 5.5s total duration
             if (t < holdThreshold) {
               scrollT = 0;
             } else {

@@ -1641,11 +1641,11 @@
           const t = Math.min(1, heroDuration > 0 ? virtualElapsed / heroDuration : 1);
 
           // MOBILE OPTIMIZATION:
-          // We hold the scroll at the top (0) for the first 1 second of the duration.
-          // This ensures the video sequence starts while 100% visible.
+          // We hold the scroll at the top (0) for the first 2.2 seconds of the duration.
+          // This ensures the video sequence plays fully while 100% visible.
           let scrollT = t;
           if (isMobile) {
-            const holdThreshold = 0.363; // ~1s of 2.75s total duration
+            const holdThreshold = 0.8; // ~2.2s of 2.75s total duration
             if (t < holdThreshold) {
               scrollT = 0;
             } else {

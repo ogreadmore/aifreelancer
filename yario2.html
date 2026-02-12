@@ -427,6 +427,7 @@
        5) Mobile scrub is linear on a focused 6s segment (4.25s-10.25s)
        6) Mobile button taps add a 1s video pre-roll before hero scroll starts
        7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
+       8) Mobile progress uses stable scrollY metrics (no visualViewport jumps)
     */
     @media (max-width: 768px) {
       nav {
@@ -750,6 +751,7 @@
 
       let trackTop = 0;
       let trackScrollable = 0;
+      let lastViewportHeight = window.innerHeight || 0;
       function refreshTrackMetrics() {
         if (!track) { trackTop = 0; trackScrollable = 0; return; }
         const scrollY = window.scrollY || window.pageYOffset;
@@ -759,13 +761,6 @@
       }
       function getProgress() {
         if (!track) return 0;
-        if (isMobile) {
-          const rect = track.getBoundingClientRect();
-          const viewH = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-          const total = Math.max(0, track.offsetHeight - viewH);
-          const scrolled = clamp(-rect.top, 0, total);
-          return total > 0 ? scrolled / total : 0;
-        }
         const scrollY = window.scrollY || window.pageYOffset;
         const scrolled = clamp(scrollY - trackTop, 0, trackScrollable);
         return trackScrollable > 0 ? scrolled / trackScrollable : 0;
@@ -855,8 +850,16 @@
         ready = true;
         targetTime = computeTargetTime();
         if (isMobile) {
-          smoothTime = Number.isFinite(video.currentTime) ? video.currentTime : 0;
-          if (!Number.isFinite(smoothTime) || smoothTime < 0) smoothTime = 0;
+          const currentY = window.scrollY || window.pageYOffset;
+          // When starting near the top, initialize to the segment start so
+          // first finger scroll does not jump into the segment.
+          if (currentY < 60) {
+            smoothTime = targetTime;
+            try { video.currentTime = targetTime; } catch {}
+          } else {
+            smoothTime = Number.isFinite(video.currentTime) ? video.currentTime : targetTime;
+            if (!Number.isFinite(smoothTime) || smoothTime < 0) smoothTime = targetTime;
+          }
         } else {
           smoothTime = targetTime;
           try { video.currentTime = targetTime; } catch {}
@@ -877,11 +880,25 @@
 
       if (!LOW_END) {
         window.addEventListener('scroll', scheduleTick, { passive: true });
-        window.addEventListener('resize', () => { refreshTrackMetrics(); scheduleTick(); }, { passive: true });
+        window.addEventListener('resize', () => {
+          const nextH = window.innerHeight || 0;
+          // Ignore small mobile viewport chrome shifts to prevent progress jumps.
+          if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
+            scheduleTick();
+            return;
+          }
+          lastViewportHeight = nextH;
+          refreshTrackMetrics();
+          scheduleTick();
+        }, { passive: true });
         window.addEventListener('wheel', scheduleTick, { passive: true });
         window.addEventListener('touchstart', scheduleTick, { passive: true });
         window.addEventListener('touchmove', scheduleTick, { passive: true });
-        window.addEventListener('orientationchange', () => { refreshTrackMetrics(); scheduleTick(); }, { passive: true });
+        window.addEventListener('orientationchange', () => {
+          lastViewportHeight = window.innerHeight || 0;
+          refreshTrackMetrics();
+          scheduleTick();
+        }, { passive: true });
         window.addEventListener('load', refreshTrackMetrics, { passive: true });
         setVideoSource(SOURCES[sourceIndex]);
       }

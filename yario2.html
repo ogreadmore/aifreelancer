@@ -428,8 +428,16 @@
        5. FRONT-LOAD video playback curve (easeOut) so more video 
           plays in the early scroll while it's still clearly visible
        6. Mobile video segment: 6s starting at 4s (desktop: 4s starting at 5s)
-       7. 1500ms delay on mobile anchor taps ("Learn More" / "Let's Talk")
-          before scroll begins, letting the video play visibly first
+       7. On mobile button taps ("Learn More" / "Let's Talk"), a gentle
+          automated scroll traverses the entire hero over 2700ms with
+          scrubPaused=false. This reuses the exact same code path as
+          manual scrolling — tick() scrubs the video, onScrollFade fades
+          the text and overlay. Custom curve: first ~25% of hero distance
+          takes ~1500ms (slow reveal), remaining ~75% takes ~1200ms.
+          After hero transit, fastScrollTo jumps to the target section.
+          playThenScroll is NOT used on mobile (it sets scrubPaused=true
+          and only calls video.play(), which breaks scroll-driven scrub).
+          Touch interruption at any point cancels animation cleanly.
        
        SCROLL TIMELINE (iPhone 14, 844px viewport):
        scroll-range = 200svh - 100svh = 100svh ≈ 844px
@@ -445,10 +453,13 @@
            (front-loaded by easeOut curve, so most content shown).
        - ~844px (100%): Hero unsticks. Full 6s video segment played.
        
-       BUTTON TAP:
+       BUTTON TAP (mobile, from top):
        - User taps "Learn More" or "Let's Talk"
-       - 1500ms pause: video scrubs visibly while text fades + overlay clears
-       - Scroll animation begins, plays through hero then fast-scrolls
+       - 0-1500ms: gentle scroll through first ~25% of hero (slow reveal)
+         Video scrubs, text fades, overlay clears — same handlers as manual
+       - 1500-2700ms: faster scroll through remaining ~75%
+       - 2700ms+: fastScrollTo jumps to target (#learn-more or #contact)
+       - Touch at any point cancels animation cleanly (stopAnim)
        
        The video gets ~350px of CLEAR, unobstructed viewing.
        Before: 0px of clear viewing (always behind text + full overlay).
@@ -1152,7 +1163,62 @@
       const fastScrollTo = (targetY, doneCallback) => { stopAnim(); scrubPaused = true; const startY = window.scrollY || window.pageYOffset; const distance = targetY - startY; if (Math.abs(distance) < 2) { scrubPaused = false; if (doneCallback) doneCallback(); return; } const duration = Math.min(2200, Math.max(500, Math.abs(distance) / 2.8)); const start = performance.now(); fallbackTimer = setTimeout(() => { window.scrollTo(0, targetY); smoothTime = computeTargetTime(); scrubPaused = false; fallbackTimer = 0; if (doneCallback) doneCallback(); }, duration + 500); const step = (now) => { const t = Math.min(1, (now - start) / duration); window.scrollTo(0, startY + distance * EASE(t)); if (t < 1) { animFrame = requestAnimationFrame(step); } else { if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = 0; } animFrame = 0; smoothTime = computeTargetTime(); scrubPaused = false; if (doneCallback) doneCallback(); } }; animFrame = requestAnimationFrame(step); };
       const playThenScroll = (targetY) => { stopAnim(); const trackEl = document.getElementById('track'); const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0; const startY = window.scrollY || window.pageYOffset; const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY); const heroDuration = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0; const start = performance.now(); let lastFrameTime = start; let virtualElapsed = 0; const isMobile = window.matchMedia('(max-width: 768px)').matches; scrubPaused = true; smoothTime = computeTargetTime(); const step = (now) => { let delta = now - lastFrameTime; lastFrameTime = now; if (isMobile && delta > 33) delta = 16.6; virtualElapsed += delta; const t = Math.min(1, heroDuration > 0 ? virtualElapsed / heroDuration : 1); const y = startY + heroDist * t; window.scrollTo(0, y); targetTime = computeTargetTime(); if (isMobile) { if (video.paused) video.play().catch(() => {}); } else { const diff = targetTime - smoothTime; if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25; else smoothTime = targetTime; if (isFirefox) { const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25); if (Math.abs(video.currentTime - snapped) > 0.02) { try { video.currentTime = snapped; } catch {} } } else { if (Math.abs(video.currentTime - smoothTime) > 0.002) { try { video.currentTime = smoothTime; } catch {} } } } const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12); video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)'; if (t < 1) { animFrame = requestAnimationFrame(step); } else { animFrame = 0; if (isMobile) video.pause(); if (targetY > heroEnd + 2) fastScrollTo(targetY); else scrubPaused = false; } }; if (heroDuration > 0) animFrame = requestAnimationFrame(step); else fastScrollTo(targetY); };
       const samePageHashLink = (a) => { if (!a || !a.getAttribute) return false; const href = a.getAttribute('href') || ''; return href.startsWith('#') && href.length >= 2; };
-      document.addEventListener('click', (e) => { const link = e.target.closest('a[href^="#"]'); if (!samePageHashLink(link)) return; const hash = link.getAttribute('href'); const target = document.querySelector(hash); if (!target) return; e.preventDefault(); const offset = getHeaderOffset(); if (window.matchMedia('(max-width: 768px)').matches && video) { try { targetTime = computeTargetTime(); smoothTime = targetTime; video.currentTime = targetTime; } catch(e) {} } const doScroll = () => { const freshRect = target.getBoundingClientRect(); const freshTargetY = Math.max(0, Math.round(freshRect.top + (window.scrollY || window.pageYOffset) - offset)); const freshScrollY = window.scrollY || window.pageYOffset; if (freshScrollY < 50 && ready) playThenScroll(freshTargetY); else fastScrollTo(freshTargetY); }; const mobileDelay = window.matchMedia('(max-width: 768px)').matches ? 1500 : 0; setTimeout(() => { doScroll(); try { if (history.pushState) history.pushState(null, '', hash); } catch { location.hash = hash; } }, mobileDelay); }, { passive: false });
+      document.addEventListener('click', (e) => { const link = e.target.closest('a[href^="#"]'); if (!samePageHashLink(link)) return; const hash = link.getAttribute('href'); const target = document.querySelector(hash); if (!target) return; e.preventDefault(); const offset = getHeaderOffset(); const isMobileTap = window.matchMedia('(max-width: 768px)').matches; const startScrollY = window.scrollY || window.pageYOffset; const atTop = startScrollY < 50 && ready;
+        if (isMobileTap && atTop) {
+          /* MOBILE BUTTON TAP — GENTLE HERO TRANSIT
+             Instead of playThenScroll (which sets scrubPaused=true and just
+             calls video.play() on mobile), we do a continuous scroll through
+             the hero with scrubPaused=FALSE. This lets the existing scroll
+             handlers (tick, onScrollFade) drive video scrub + text fade +
+             overlay reveal — identical to manual scrolling, just automated.
+
+             Timing (custom curve — slow start, faster finish):
+             - 0-1500ms: scroll through first ~25% of hero (slow reveal)
+             - 1500-2700ms: scroll through remaining ~75% (faster)
+             - Then: fastScrollTo jumps to the target section
+          */
+          const trackEl = document.getElementById('track');
+          const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
+          const totalDuration = 2700;
+          stopAnim();
+          /* scrubPaused stays FALSE — normal scroll handlers drive video */
+          
+          /* Custom curve: slow for first 55% of time, fast for rest.
+             At t=0.55 (1485ms) we've scrolled ~25% of hero.
+             Remaining 75% happens in the last 45% of time (1215ms). */
+          const heroEase = (t) => {
+            if (t < 0.55) {
+              /* Slow phase: ease-in, covers ~25% of distance */
+              const p = t / 0.55;
+              return 0.25 * (p * p);
+            } else {
+              /* Fast phase: ease-out, covers remaining 75% */
+              const p = (t - 0.55) / 0.45;
+              return 0.25 + 0.75 * (1 - Math.pow(1 - p, 2));
+            }
+          };
+          
+          const heroStart = performance.now();
+          const heroStep = (now) => {
+            const t = Math.min(1, (now - heroStart) / totalDuration);
+            window.scrollTo(0, startScrollY + heroEnd * heroEase(t));
+            scheduleTick();
+            if (t < 1) { animFrame = requestAnimationFrame(heroStep); }
+            else {
+              animFrame = 0;
+              /* Hero fully traversed. Fast-scroll to the target section. */
+              const freshRect = target.getBoundingClientRect();
+              const freshTargetY = Math.max(0, Math.round(freshRect.top + (window.scrollY || window.pageYOffset) - offset));
+              if (freshTargetY > (window.scrollY || window.pageYOffset) + 2) fastScrollTo(freshTargetY);
+            }
+          };
+          animFrame = requestAnimationFrame(heroStep);
+        } else {
+          const doScroll = () => { const freshRect = target.getBoundingClientRect(); const freshTargetY = Math.max(0, Math.round(freshRect.top + (window.scrollY || window.pageYOffset) - offset)); const freshScrollY = window.scrollY || window.pageYOffset; if (freshScrollY < 50 && ready) playThenScroll(freshTargetY); else fastScrollTo(freshTargetY); };
+          doScroll();
+        }
+        try { if (history.pushState) history.pushState(null, '', hash); } catch { location.hash = hash; }
+      }, { passive: false });
       ['wheel', 'touchstart', 'keydown'].forEach((evt) => { window.addEventListener(evt, () => { stopAnim(); }, { passive: true }); });
     })();
 

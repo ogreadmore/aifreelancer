@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    /* 
+       DESIGN SYSTEM ARCHITECTURE:
+       - Layout: Centered 920px container for optimal readability (Inter/Archivo font pairing).
+       - Motion: Heavy use of cubic-bezier transitions for a "premium" feel.
+       - Theming: Gradient-based "Accent Shift" animation used across CTAs, logos, and counters.
+       - Performance: transform/opacity prioritized for 60fps; video scrubbing managed via JS.
+    */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -416,7 +424,14 @@
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
 
-    /* === THE MOBILE PARALLAX SOLUTION === */
+    /* 
+       === THE MOBILE PARALLAX SOLUTION === 
+       This architecture solves for smooth video-to-content transitions on mobile.
+       1. .scroll-track: Provides the height required for the scroll mapping.
+       2. .hero: Sticks below the nav, occupying a fixed portion of the viewport.
+       3. .page-content: Uses a calculated negative margin to pull the content "sheet" 
+          up over the video as the user scrolls, creating a high-end layering effect.
+    */
     @media (max-width: 768px) {
       nav {
         padding: 1rem 0;
@@ -443,6 +458,13 @@
         height: 60svh;
         min-height: 420px;
         align-items: flex-end;
+      }
+      /* Reduce blur and opacity on mobile to save CPU and increase video clarity */
+      .hero::after {
+        -webkit-backdrop-filter: blur(1px); backdrop-filter: blur(1px);
+        background:
+          linear-gradient(to bottom, rgba(255,255,255,.42), rgba(255,255,255,.62)),
+          radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.28), rgba(255,255,255,.08));
       }
       .hero video {
         transform: scale(1.0);
@@ -655,6 +677,13 @@
 
   <script>
     (() => {
+      /*
+         CORE INTERACTIVE ENGINES:
+         1. NAV STATE: Manages transparency/blur based on scroll depth relative to hero.
+         2. VIDEO SCRUBBING: Maps window scroll % to video.currentTime with LERP smoothing.
+         3. CANVAS FX: High-performance particle systems for buttons/links.
+         4. ANCHOR SCROLLING: Custom "play-then-scroll" logic for cinematic transitions.
+      */
       const nav = document.getElementById('mainNav');
       const track = document.getElementById('track');
       const video = document.getElementById('bgVideo');
@@ -736,6 +765,13 @@
       const SEEK_THRESHOLD = isMobile ? 0.03 : 0.002; 
       const SEEK_COOLDOWN = isMobile ? 25 : 0; 
 
+      /*
+         SCRUBBING ENGINE:
+         Computes a target timestamp based on scroll progress and 'smooths' the video seek 
+         using Linear Interpolation (LERP). This prevents the "stutter" common in native 
+         scroll-linked video. Firefox requires specific frame-snapping (1/25) to avoid 
+         decoder thrashing.
+      */
       function tick(ts = performance.now()) {
         raf = 0;
         if (!ready || scrubPaused) return;
@@ -761,6 +797,7 @@
             lastSeekTs = ts;
           }
         }
+        /* Parallax offset: subtle vertical translation to create depth behind the content sheet */
         const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
         video.style.transform = `scale(1.04) translate3d(0, ${y.toFixed(2)}px, 0)`;
         if ((ts - lastInputTs) < 140 || Math.abs(targetTime - smoothTime) > 0.001) raf = requestAnimationFrame(tick);
@@ -1004,6 +1041,14 @@
     })();
 
     // ── Send Request button: sparkles on hover, fireworks on click ──
+    /*
+       CANVAS FX SYSTEM:
+       Implements a high-performance particle engine using a single <canvas> overlaid 
+       on the viewport. Features unique physics for:
+       - Sparkles: Sinusoidal scaling + rotation for a "glimmer" effect.
+       - Fireworks: Two-stage animation (rise with trails -> burst with gravity).
+       - Confetti: 3D-simulated rotation using scaleX(cos).
+    */
     (() => {
       const submitBtn = document.getElementById('submitBtn');
       if (!submitBtn) return;
@@ -1556,6 +1601,12 @@
         animFrame = requestAnimationFrame(step);
       };
 
+      /*
+         PLAY-THEN-SCROLL LOGIC:
+         A cinematic navigation system. Instead of immediate jumping, it scrolls through 
+         the hero section at a controlled speed (syncing the video) before 'releasing' 
+         to a fast scroll for the remainder of the page.
+      */
       const playThenScroll = (targetY) => {
         stopAnim();
 
@@ -1629,6 +1680,7 @@
 
         const offset = getHeaderOffset();
         const isHeroCta = link.classList.contains('hero-cta');
+        const isNavLink = link.classList.contains('nav-link');
 
         const doScroll = () => {
           const freshRect = target.getBoundingClientRect();
@@ -1642,9 +1694,12 @@
           }
         };
 
-        const scrollY = window.scrollY || window.pageYOffset;
-        if (isHeroCta && scrollY >= 50) {
-          setTimeout(doScroll, 1200);
+        // PERFORMANCE OPTIMIZATION (Mobile Only):
+        // Delay scrolling on mobile to let CPU-intensive animations (thumbs/confetti) 
+        // finish before starting the heavy video scrubbing engine. Desktop remains immediate.
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if ((isHeroCta || isNavLink) && isMobile) {
+          setTimeout(doScroll, 1100);
         } else {
           doScroll();
         }
@@ -1680,6 +1735,13 @@
     })();
 
     // ── Horizontal scroll testimonials ──
+    /*
+       HORIZONTAL SCROLL MECHANISM:
+       Converts vertical scrolling into horizontal movement.
+       - The section height is dynamically set to (viewport + rail width).
+       - Sticky positioning keeps the rail visible.
+       - Intersection progress (0 to 1) is mapped to translateX of the rail.
+    */
     (() => {
       const section = document.getElementById('testimonial-scroll');
       const rail = document.getElementById('testimonialRail');

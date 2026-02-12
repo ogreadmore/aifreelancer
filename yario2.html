@@ -422,7 +422,7 @@
        2) 200svh track keeps extra scrub runway
        3) Nav + overlay blur are removed on mobile (opacity-only reveal)
        4) Hero text fade is opacity-only (no per-frame translate)
-       5) Mobile scrub maps linearly from video start to end (no half-jump)
+       5) Mobile scrub is linear on a focused 6s segment (4s-10s)
        6) Button tap transit still uses one continuous hero scroll, then jump
        7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
     */
@@ -450,12 +450,12 @@
         box-sizing: border-box; 
       }
       
-      /* 2. Hero: 60svh — good video aspect ratio, sticks below nav */
+      /* 2. Hero: 68svh — preserves framing while slowing content cover */
       .hero {
         position: sticky;
         top: 75px;
-        height: 60svh;
-        min-height: 420px;
+        height: 68svh;
+        min-height: 460px;
         align-items: flex-end;
         /* CSS custom property driven by JS for overlay fade */
         --overlay-opacity: 1;
@@ -484,7 +484,7 @@
 
       /* 3. Content: FLUSH with hero bottom — NO white space gap */
       .page-content {
-        margin-top: calc(-200svh + max(60svh, 420px) + 75px);
+        margin-top: calc(-200svh + max(68svh, 460px) + 75px);
         position: relative;
         z-index: 10;
         background: #fff;
@@ -757,6 +757,13 @@
       }
       function getProgress() {
         if (!track) return 0;
+        if (isMobile) {
+          const rect = track.getBoundingClientRect();
+          const viewH = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+          const total = Math.max(0, track.offsetHeight - viewH);
+          const scrolled = clamp(-rect.top, 0, total);
+          return total > 0 ? scrolled / total : 0;
+        }
         const scrollY = window.scrollY || window.pageYOffset;
         const scrolled = clamp(scrollY - trackTop, 0, trackScrollable);
         return trackScrollable > 0 ? scrolled / trackScrollable : 0;
@@ -764,8 +771,9 @@
       refreshTrackMetrics();
 
       /*
-         Mobile uses linear full-range playback to avoid time jumps.
-         Desktop keeps the curated segment behavior.
+         Mobile uses linear playback on a focused 6s segment (4s-10s) so
+         key action is visible before the content sheet advances.
+         Desktop keeps its curated 4s segment (5s-9s).
       */
       
       function computeTargetTime() {
@@ -774,8 +782,8 @@
         let segmentStart;
         let segmentEnd;
         if (isMobile) {
-          segmentStart = 0;
-          segmentEnd = maxEnd;
+          segmentStart = clamp(4, 0, maxEnd);
+          segmentEnd = clamp(segmentStart + 6, segmentStart, maxEnd);
         } else {
           segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
           segmentEnd = clamp(segmentStart + SEGMENT_DURATION_SECONDS, segmentStart, maxEnd);
@@ -786,10 +794,10 @@
       
       let lastSeekTs = 0;
       let smoothTime = 0; 
-      const LERP_SPEED = isMobile ? 0.16 : 0.12; 
-      const LERP_SPEED_FF = isMobile ? 0.14 : 0.1;
-      const SEEK_THRESHOLD = isMobile ? 0.01 : 0.002; 
-      const SEEK_COOLDOWN = isMobile ? 8 : 0; 
+      const LERP_SPEED = isMobile ? 0.11 : 0.12; 
+      const LERP_SPEED_FF = isMobile ? 0.1 : 0.1;
+      const SEEK_THRESHOLD = isMobile ? 0.015 : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? 14 : 0; 
 
       function tick(ts = performance.now()) {
         raf = 0;
@@ -1149,28 +1157,28 @@
              scroll-driven scrub path as manual finger scroll.
 
              Timing (custom curve — gentle start, faster finish):
-             - 0-1500ms: scroll through first ~25% of hero (slow reveal)
-             - 1500-2700ms: scroll through remaining ~75% (faster)
+             - 0-2340ms: scroll through first ~30% of hero (slow reveal)
+             - 2340-3600ms: scroll through remaining ~70% (faster)
              - Then: fastScrollTo jumps to the target section
           */
           const trackEl = document.getElementById('track');
           const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
-          const totalDuration = 2700;
+          const totalDuration = 3600;
           stopAnim();
           /* scrubPaused stays FALSE — normal scroll handlers drive video */
           
           /* Custom curve: controlled first phase, faster second phase.
-             At t=0.55 (1485ms) we've scrolled ~25% of hero.
-             Remaining 75% happens in the last 45% of time (1215ms). */
+             At t=0.65 (2340ms) we've scrolled ~30% of hero.
+             Remaining 70% happens in the last 35% of time (1260ms). */
           const heroEase = (t) => {
-            if (t < 0.55) {
-              /* Phase 1: immediate motion but capped to ~25% of distance */
-              const p = t / 0.55;
-              return 0.25 * (1 - Math.pow(1 - p, 1.8));
+            if (t < 0.65) {
+              /* Phase 1: immediate motion but capped to ~30% of distance */
+              const p = t / 0.65;
+              return 0.30 * (1 - Math.pow(1 - p, 1.8));
             } else {
-              /* Fast phase: ease-out, covers remaining 75% */
-              const p = (t - 0.55) / 0.45;
-              return 0.25 + 0.75 * (1 - Math.pow(1 - p, 2));
+              /* Fast phase: ease-out, covers remaining 70% */
+              const p = (t - 0.65) / 0.35;
+              return 0.30 + 0.70 * (1 - Math.pow(1 - p, 2));
             }
           };
           

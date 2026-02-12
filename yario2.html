@@ -428,7 +428,7 @@
        6) Mobile button taps add a 1s video pre-roll before hero scroll starts
        7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
        8) Mobile progress uses stable scrollY metrics (no visualViewport jumps)
-       9) Mobile finger scroll gets touch-responsive seek smoothing
+       9) Mobile finger scroll uses touch-only direct scrub
     */
     @media (max-width: 768px) {
       nav {
@@ -484,6 +484,13 @@
       /* Hero content: JS drives opacity-only fade (cheaper on mobile). */
       .hero-content {
         will-change: opacity;
+      }
+
+      /* Prevent sticky :hover pulse artifacts on mobile taps */
+      .hero-cta:hover {
+        animation: accentShift 9s ease infinite;
+        box-shadow: none;
+        filter: none;
       }
 
       /* 3. Content: FLUSH with hero bottom — NO white space gap */
@@ -806,8 +813,7 @@
       const LERP_SPEED_FF = isMobile ? 0.1 : 0.1;
       const SEEK_THRESHOLD = isMobile ? 0.015 : 0.002; 
       const SEEK_COOLDOWN = isMobile ? 14 : 0; 
-      const MOBILE_TOUCH_LERP = 0.22;
-      const MOBILE_TOUCH_THRESHOLD = 0.009;
+      const MOBILE_TOUCH_THRESHOLD = 0.004;
       const MOBILE_PREROLL_MS = 1000;
       const MOBILE_PREROLL_BOOST = 1 / 6; // ~1 second in a 6-second mobile segment
       let mobilePreRollBoost = 0;
@@ -820,9 +826,14 @@
 
         const diff = targetTime - smoothTime;
         const mobileFingerActive = isMobile && (ts - lastTouchInputTs) < 140;
-        const lerp = mobileFingerActive ? MOBILE_TOUCH_LERP : (isFirefox ? LERP_SPEED_FF : LERP_SPEED);
-        if (Math.abs(diff) > 0.001) smoothTime += diff * lerp;
-        else smoothTime = targetTime;
+        if (mobileFingerActive) {
+          // Only during manual finger input: track target time directly.
+          smoothTime = targetTime;
+        } else {
+          const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
+          if (Math.abs(diff) > 0.001) smoothTime += diff * lerp;
+          else smoothTime = targetTime;
+        }
 
         if (isFirefox) {
           const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
@@ -1338,12 +1349,15 @@
           */
           const trackEl = document.getElementById('track');
           const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
+          const isContactTarget = hash === '#contact';
           const startRect = target.getBoundingClientRect();
           const startTargetY = Math.max(0, Math.round(startRect.top + startScrollY - offset));
           const heroStopY = Math.max(startScrollY, Math.min(heroEnd, startTargetY));
           const heroDist = Math.max(0, heroStopY - startScrollY);
           const heroRatio = heroEnd > 0 ? heroDist / heroEnd : 0;
-          const totalDuration = Math.max(1200, 3600 * heroRatio);
+          const totalDuration = isContactTarget
+            ? Math.max(1500, 2600 * heroRatio)
+            : Math.max(1200, 3600 * heroRatio);
           stopAnim();
           if (heroDist < 2) {
             fastScrollTo(startTargetY);
@@ -1351,10 +1365,11 @@
           }
           /* scrubPaused stays FALSE — normal scroll handlers drive video */
           
-          /* Custom curve: controlled first phase, faster second phase.
-             At t=0.65 we've covered ~30% of distance.
-             Remaining 70% happens in the last 35% of time. */
+          /* Learn More: two-phase reveal curve. Let's Talk: single smooth pass. */
           const heroEase = (t) => {
+            if (isContactTarget) {
+              return 1 - Math.pow(1 - t, 1.55);
+            }
             if (t < 0.65) {
               /* Phase 1: immediate motion but capped to ~30% of distance */
               const p = t / 0.65;

@@ -422,7 +422,7 @@
        2) 200svh track keeps extra scrub runway
        3) Nav + overlay blur are removed on mobile (opacity-only reveal)
        4) Hero text fade is opacity-only (no per-frame translate)
-       5) Mobile seek smoothing is faster so scrub responds immediately
+       5) Mobile scrub maps linearly from video start to end (no half-jump)
        6) Button tap transit still uses one continuous hero scroll, then jump
        7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
     */
@@ -474,6 +474,7 @@
       .hero video {
         transform: scale(1.0);
         object-position: center 30%;
+        filter: none;
       }
 
       /* Hero content: JS drives opacity-only fade (cheaper on mobile). */
@@ -685,30 +686,34 @@
       const nav = document.getElementById('mainNav');
       const track = document.getElementById('track');
       const video = document.getElementById('bgVideo');
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
       function getNavThreshold() {
         if (!track) return 60;
         const maxScrollableInsideTrack = Math.max(0, track.offsetHeight - window.innerHeight);
         return Math.max(0, Math.floor(maxScrollableInsideTrack - 2));
       }
-      let navThreshold = getNavThreshold();
-      const applyNavState = () => nav.classList.toggle('scrolled', window.scrollY > navThreshold);
-      let navTicking = false;
-      window.addEventListener('scroll', () => {
-        if (navTicking) return;
-        navTicking = true;
-        requestAnimationFrame(() => { applyNavState(); navTicking = false; });
-      }, { passive: true });
-      window.addEventListener('resize', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); }, { passive: true });
-      window.addEventListener('load', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); });
-      applyNavState();
+      if (isMobile) {
+        nav.classList.add('scrolled');
+      } else {
+        let navThreshold = getNavThreshold();
+        const applyNavState = () => nav.classList.toggle('scrolled', window.scrollY > navThreshold);
+        let navTicking = false;
+        window.addEventListener('scroll', () => {
+          if (navTicking) return;
+          navTicking = true;
+          requestAnimationFrame(() => { applyNavState(); navTicking = false; });
+        }, { passive: true });
+        window.addEventListener('resize', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); }, { passive: true });
+        window.addEventListener('load', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); });
+        applyNavState();
+      }
 
       const SOURCES = [
         'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4',
         'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
       ];
       const isFirefox = /firefox/i.test(navigator.userAgent);
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
       if (isFirefox) document.documentElement.classList.add('is-firefox');
 
       let sourceIndex = 0, ready = false, duration = 0, targetTime = 0, raf = 0, lastInputTs = 0;
@@ -759,41 +764,32 @@
       refreshTrackMetrics();
 
       /*
-         MOBILE VIDEO CURVE: easeOut (fast start, slow end).
-         Maps linear scroll progress to front-loaded video progress.
-         At 30% scroll → ~50% of video has played (while still clearly visible).
-         At 60% scroll → ~80% of video has played (content covering lower hero).
-         At 100% scroll → 100% of video played.
-         
-         Mobile segment: 4s to 10s (6s total, vs desktop 5s to 9s / 4s total).
-         The easeOut curve ensures the video's key content plays while the text
-         is faded and the content sheet hasn't covered the important part yet.
+         Mobile uses linear full-range playback to avoid time jumps.
+         Desktop keeps the curated segment behavior.
       */
-      const mobileVideoEaseOut = (t) => 1 - Math.pow(1 - t, 2.2);
       
       function computeTargetTime() {
         if (!ready || duration <= 0) return 0;
-        
-        // Mobile: start 1s earlier and play 6s segment (vs 4s desktop at 5s-9s)
-        const mobileStartOffset = isMobile ? 1.0 : 0;
-        const segDuration = isMobile ? 6 : SEGMENT_DURATION_SECONDS;
-        
-        const segmentStart = clamp(START_AT_SECONDS - mobileStartOffset, 0, Math.max(0, duration - END_SAFETY_SECONDS));
-        const segmentEnd = clamp(segmentStart + segDuration, segmentStart, Math.max(segmentStart, duration - END_SAFETY_SECONDS));
-        
-        const rawProgress = getProgress();
-        // Apply easeOut curve on mobile so video front-loads
-        const videoProgress = isMobile ? mobileVideoEaseOut(rawProgress) : rawProgress;
-        
+        const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
+        let segmentStart;
+        let segmentEnd;
+        if (isMobile) {
+          segmentStart = 0;
+          segmentEnd = maxEnd;
+        } else {
+          segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
+          segmentEnd = clamp(segmentStart + SEGMENT_DURATION_SECONDS, segmentStart, maxEnd);
+        }
+        const videoProgress = getProgress();
         return segmentStart + videoProgress * (segmentEnd - segmentStart);
       }
       
       let lastSeekTs = 0;
       let smoothTime = 0; 
-      const LERP_SPEED = isMobile ? 0.24 : 0.12; 
-      const LERP_SPEED_FF = isMobile ? 0.2 : 0.1;
-      const SEEK_THRESHOLD = isMobile ? 0.012 : 0.002; 
-      const SEEK_COOLDOWN = isMobile ? 12 : 0; 
+      const LERP_SPEED = isMobile ? 0.16 : 0.12; 
+      const LERP_SPEED_FF = isMobile ? 0.14 : 0.1;
+      const SEEK_THRESHOLD = isMobile ? 0.01 : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? 8 : 0; 
 
       function tick(ts = performance.now()) {
         raf = 0;
@@ -802,9 +798,7 @@
 
         const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
         const diff = targetTime - smoothTime;
-        if (isMobile && Math.abs(diff) > 0.35) {
-          smoothTime += diff * 0.5;
-        } else if (Math.abs(diff) > 0.001) {
+        if (Math.abs(diff) > 0.001) {
           smoothTime += diff * lerp;
         } else {
           smoothTime = targetTime;
@@ -839,8 +833,13 @@
         refreshTrackMetrics();
         ready = true;
         targetTime = computeTargetTime();
-        smoothTime = targetTime; 
-        try { video.currentTime = targetTime; } catch {}
+        if (isMobile) {
+          smoothTime = Number.isFinite(video.currentTime) ? video.currentTime : 0;
+          if (!Number.isFinite(smoothTime) || smoothTime < 0) smoothTime = 0;
+        } else {
+          smoothTime = targetTime;
+          try { video.currentTime = targetTime; } catch {}
+        }
         video.pause();
         scheduleTick();
       }
@@ -1271,7 +1270,27 @@
       setHeight();
       window.addEventListener('resize', setHeight);
       let ticking = false;
-      const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { ticking = false; const rect = section.getBoundingClientRect(); const sectionH = section.offsetHeight; const viewH = window.innerHeight; const scrollRange = sectionH - viewH; if (scrollRange <= 0) return; const progress = Math.max(0, Math.min(1, -rect.top / scrollRange)); const railWidth = rail.scrollWidth; const viewWidth = window.innerWidth; const maxTranslate = Math.max(0, railWidth - viewWidth + 80); const tx = -progress * maxTranslate; rail.style.transform = 'translate3d(' + tx.toFixed(1) + 'px, 0, 0)'; const cardIndex = Math.min(cardCount - 1, Math.floor(progress * cardCount)); dots.forEach((d, i) => d.classList.toggle('active', i === cardIndex)); }); };
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          const viewH = window.innerHeight;
+          const rect = section.getBoundingClientRect();
+          if (rect.top > viewH || rect.bottom < 0) return;
+          const sectionH = section.offsetHeight;
+          const scrollRange = sectionH - viewH;
+          if (scrollRange <= 0) return;
+          const progress = Math.max(0, Math.min(1, -rect.top / scrollRange));
+          const railWidth = rail.scrollWidth;
+          const viewWidth = window.innerWidth;
+          const maxTranslate = Math.max(0, railWidth - viewWidth + 80);
+          const tx = -progress * maxTranslate;
+          rail.style.transform = 'translate3d(' + tx.toFixed(1) + 'px, 0, 0)';
+          const cardIndex = Math.min(cardCount - 1, Math.floor(progress * cardCount));
+          dots.forEach((d, i) => d.classList.toggle('active', i === cardIndex));
+        });
+      };
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     })();

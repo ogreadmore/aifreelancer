@@ -1618,12 +1618,24 @@
         const heroDuration = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
         const start = performance.now();
 
+        // Use virtual time to prevent 'lurching' on slow mobile devices.
+        // If a frame lags, we cap the delta so the animation waits rather than skipping ahead.
+        let lastFrameTime = start;
+        let virtualElapsed = 0;
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
         scrubPaused = true;
         smoothTime = computeTargetTime();
 
         const step = (now) => {
-          const elapsed = now - start;
-          const t = Math.min(1, heroDuration > 0 ? elapsed / heroDuration : 1);
+          let delta = now - lastFrameTime;
+          lastFrameTime = now;
+
+          // Cap delta at ~30fps equivalent to prevent jumping during processor lag
+          if (isMobile && delta > 33) delta = 16.6; 
+          
+          virtualElapsed += delta;
+          const t = Math.min(1, heroDuration > 0 ? virtualElapsed / heroDuration : 1);
 
           const y = startY + heroDist * t;
           window.scrollTo(0, y);
@@ -1694,15 +1706,8 @@
           }
         };
 
-        // PERFORMANCE OPTIMIZATION (Mobile Only):
-        // Delay scrolling on mobile to let CPU-intensive animations (thumbs/confetti) 
-        // finish before starting the heavy video scrubbing engine. Desktop remains immediate.
-        const isMobile = window.matchMedia('(max-width: 768px)').matches;
-        if ((isHeroCta || isNavLink) && isMobile) {
-          setTimeout(doScroll, 1100);
-        } else {
-          doScroll();
-        }
+        // Reverted to immediate scroll, as the delay didn't resolve the underlying lag lurch.
+        doScroll();
 
         try { if (history.pushState) history.pushState(null, '', hash); }
         catch { location.hash = hash; }

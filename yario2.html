@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -413,64 +414,30 @@
     }
 
     /* ======================================================
-       MOBILE HERO — "CINEMATIC REVEAL" ARCHITECTURE
+       MOBILE HERO — PERFORMANCE-TUNED REVEAL
        ======================================================
-       
-       PROBLEM: Video plays behind text+overlay, so it's always obscured.
-       Content starts flush below hero, immediately covers video on scroll.
-       The video was playing fine — you just couldn't SEE it.
-       
-       SOLUTION: Don't add white space. Instead:
-       1. Keep content flush (no gap, no white space)
-       2. Increase scroll-track to 200svh (more scroll before hero unsticks)
-       3. FADE OUT hero text early (~first 18% of scroll)
-       4. REDUCE overlay opacity (white wash + blur) to reveal vivid video
-       5. FRONT-LOAD video playback curve (easeOut) so more video 
-          plays in the early scroll while it's still clearly visible
-       6. Mobile video segment: 6s starting at 4s (desktop: 4s starting at 5s)
-       7. On mobile button taps ("Learn More" / "Let's Talk"), a gentle
-          automated scroll traverses the entire hero over 2700ms with
-          scrubPaused=false. This reuses the exact same code path as
-          manual scrolling — tick() scrubs the video, onScrollFade fades
-          the text and overlay. Custom curve: first ~25% of hero distance
-          takes ~1500ms (slow reveal), remaining ~75% takes ~1200ms.
-          After hero transit, fastScrollTo jumps to the target section.
-          playThenScroll is NOT used on mobile (it sets scrubPaused=true
-          and only calls video.play(), which breaks scroll-driven scrub).
-          Touch interruption at any point cancels animation cleanly.
-       
-       SCROLL TIMELINE (iPhone 14, 844px viewport):
-       scroll-range = 200svh - 100svh = 100svh ≈ 844px
-       
-       MANUAL SCROLL:
-       - 0px (0%): Hero with text, overlay, content flush below
-       - ~70px (8%): Hero text fading, video becoming visible
-       - ~150px (18%): Text fully gone. Overlay reduced. Video clear.
-       - ~150-500px: Video plays CLEARLY (no text, minimal overlay)
-           Content sheet sliding up from bottom, covering lower portion.
-           Video's important action (center/top) still fully visible.
-       - ~500px (60%): Content covers most of hero. Video ~82% played
-           (front-loaded by easeOut curve, so most content shown).
-       - ~844px (100%): Hero unsticks. Full 6s video segment played.
-       
-       BUTTON TAP (mobile, from top):
-       - User taps "Learn More" or "Let's Talk"
-       - 0-1500ms: gentle scroll through first ~25% of hero (slow reveal)
-         Video scrubs, text fades, overlay clears — same handlers as manual
-       - 1500-2700ms: faster scroll through remaining ~75%
-       - 2700ms+: fastScrollTo jumps to target (#learn-more or #contact)
-       - Touch at any point cancels animation cleanly (stopAnim)
-       
-       The video gets ~350px of CLEAR, unobstructed viewing.
-       Before: 0px of clear viewing (always behind text + full overlay).
+       Mobile keeps the same overall effect (scroll-scrub + reveal), but with
+       reduced GPU/paint pressure:
+       1) Content remains flush (no white gap)
+       2) 200svh track keeps extra scrub runway
+       3) Nav + overlay blur are removed on mobile (opacity-only reveal)
+       4) Hero text fade is opacity-only (no per-frame translate)
+       5) Mobile seek smoothing is faster so scrub responds immediately
+       6) Button tap transit still uses one continuous hero scroll, then jump
+       7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
     */
     @media (max-width: 768px) {
       nav {
         padding: 1rem 0;
         background: rgba(255, 255, 255, 0.98); 
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+      }
+      nav.scrolled {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.98);
       }
       
       .container, .nav-inner { padding: 0 1.25rem; }
@@ -495,10 +462,11 @@
       }
 
       .hero::after {
-        -webkit-backdrop-filter: blur(1px); backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
         background:
-          linear-gradient(to bottom, rgba(255,255,255,.32), rgba(255,255,255,.52)),
-          radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.22), rgba(255,255,255,.05));
+          linear-gradient(to bottom, rgba(255,255,255,.26), rgba(255,255,255,.45)),
+          radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.16), rgba(255,255,255,.04));
         /* JS drives this to fade the overlay, revealing the video */
         opacity: var(--overlay-opacity, 1);
       }
@@ -508,9 +476,9 @@
         object-position: center 30%;
       }
 
-      /* Hero content: JS will drive opacity/transform for fade effect */
+      /* Hero content: JS drives opacity-only fade (cheaper on mobile). */
       .hero-content {
-        will-change: opacity, transform;
+        will-change: opacity;
       }
 
       /* 3. Content: FLUSH with hero bottom — NO white space gap */
@@ -731,8 +699,8 @@
         navTicking = true;
         requestAnimationFrame(() => { applyNavState(); navTicking = false; });
       }, { passive: true });
-      window.addEventListener('resize', () => { navThreshold = getNavThreshold(); applyNavState(); }, { passive: true });
-      window.addEventListener('load', () => { navThreshold = getNavThreshold(); applyNavState(); });
+      window.addEventListener('resize', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); }, { passive: true });
+      window.addEventListener('load', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); });
       applyNavState();
 
       const SOURCES = [
@@ -740,6 +708,7 @@
         'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
       ];
       const isFirefox = /firefox/i.test(navigator.userAgent);
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
       if (isFirefox) document.documentElement.classList.add('is-firefox');
 
       let sourceIndex = 0, ready = false, duration = 0, targetTime = 0, raf = 0, lastInputTs = 0;
@@ -772,13 +741,22 @@
         video.style.background = '#fff';
       }
 
+      let trackTop = 0;
+      let trackScrollable = 0;
+      function refreshTrackMetrics() {
+        if (!track) { trackTop = 0; trackScrollable = 0; return; }
+        const scrollY = window.scrollY || window.pageYOffset;
+        const rect = track.getBoundingClientRect();
+        trackTop = scrollY + rect.top;
+        trackScrollable = Math.max(0, track.offsetHeight - window.innerHeight);
+      }
       function getProgress() {
         if (!track) return 0;
-        const rect = track.getBoundingClientRect();
-        const total = track.offsetHeight - window.innerHeight;
-        const scrolled = clamp(-rect.top, 0, total);
-        return total > 0 ? scrolled / total : 0;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const scrolled = clamp(scrollY - trackTop, 0, trackScrollable);
+        return trackScrollable > 0 ? scrolled / trackScrollable : 0;
       }
+      refreshTrackMetrics();
 
       /*
          MOBILE VIDEO CURVE: easeOut (fast start, slow end).
@@ -796,8 +774,6 @@
       function computeTargetTime() {
         if (!ready || duration <= 0) return 0;
         
-        const isMobile = window.matchMedia('(max-width: 768px)').matches;
-        
         // Mobile: start 1s earlier and play 6s segment (vs 4s desktop at 5s-9s)
         const mobileStartOffset = isMobile ? 1.0 : 0;
         const segDuration = isMobile ? 6 : SEGMENT_DURATION_SECONDS;
@@ -814,11 +790,10 @@
       
       let lastSeekTs = 0;
       let smoothTime = 0; 
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      const LERP_SPEED = isMobile ? 0.05 : 0.12; 
-      const LERP_SPEED_FF = isMobile ? 0.04 : 0.1;
-      const SEEK_THRESHOLD = isMobile ? 0.03 : 0.002; 
-      const SEEK_COOLDOWN = isMobile ? 25 : 0; 
+      const LERP_SPEED = isMobile ? 0.24 : 0.12; 
+      const LERP_SPEED_FF = isMobile ? 0.2 : 0.1;
+      const SEEK_THRESHOLD = isMobile ? 0.012 : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? 12 : 0; 
 
       function tick(ts = performance.now()) {
         raf = 0;
@@ -827,7 +802,9 @@
 
         const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
         const diff = targetTime - smoothTime;
-        if (Math.abs(diff) > 0.001) {
+        if (isMobile && Math.abs(diff) > 0.35) {
+          smoothTime += diff * 0.5;
+        } else if (Math.abs(diff) > 0.001) {
           smoothTime += diff * lerp;
         } else {
           smoothTime = targetTime;
@@ -845,8 +822,10 @@
             lastSeekTs = ts;
           }
         }
-        const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
-        video.style.transform = 'scale(1.04) translate3d(0, ' + y.toFixed(2) + 'px, 0)';
+        if (!isMobile) {
+          const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
+          video.style.transform = 'scale(1.04) translate3d(0, ' + y.toFixed(2) + 'px, 0)';
+        }
         if ((ts - lastInputTs) < 140 || Math.abs(targetTime - smoothTime) > 0.001) raf = requestAnimationFrame(tick);
       }
       function scheduleTick() {
@@ -857,6 +836,7 @@
       function initScrub() {
         duration = Number(video.duration) || 0;
         if (!Number.isFinite(duration) || duration <= 0) return;
+        refreshTrackMetrics();
         ready = true;
         targetTime = computeTargetTime();
         smoothTime = targetTime; 
@@ -876,15 +856,13 @@
       });
 
       if (!LOW_END) {
-        let scrollQueued = false;
-        window.addEventListener('scroll', () => {
-          if (scrollQueued) return;
-          scrollQueued = true;
-          requestAnimationFrame(() => { scrollQueued = false; scheduleTick(); });
-        }, { passive: true });
-        window.addEventListener('resize', scheduleTick, { passive: true });
+        window.addEventListener('scroll', scheduleTick, { passive: true });
+        window.addEventListener('resize', () => { refreshTrackMetrics(); scheduleTick(); }, { passive: true });
         window.addEventListener('wheel', scheduleTick, { passive: true });
+        window.addEventListener('touchstart', scheduleTick, { passive: true });
         window.addEventListener('touchmove', scheduleTick, { passive: true });
+        window.addEventListener('orientationchange', () => { refreshTrackMetrics(); scheduleTick(); }, { passive: true });
+        window.addEventListener('load', refreshTrackMetrics, { passive: true });
         setVideoSource(SOURCES[sourceIndex]);
       }
 
@@ -1087,24 +1065,24 @@
       submitBtn.addEventListener('click', () => { if (submitBtn.disabled) return; submitBtn.classList.add('pop'); setTimeout(() => submitBtn.classList.remove('pop'), 220); const rect = submitBtn.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top; const vh = window.innerHeight; [{ angle: -90, dist: 0.55 },{ angle: -60, dist: 0.45 },{ angle: -120, dist: 0.45 },{ angle: -75, dist: 0.6 },{ angle: -105, dist: 0.6 },{ angle: -45, dist: 0.35 },{ angle: -135, dist: 0.35 }].forEach((pos, i) => { const rad = pos.angle * Math.PI / 180; const travel = vh * pos.dist; const targetX = cx + Math.cos(rad) * travel * 0.7; const targetY = cy + Math.sin(rad) * travel; setTimeout(() => { launchFirework(cx, cy, targetX, targetY); }, i * 70); }); });
     })();
 
-    // ── "Learn More" button: thumbs-up on click ──
+    // ── "Learn More" button: desktop-only thumbs-up on click ──
     (() => {
       const btn = document.querySelector('.hero-cta');
       if (!btn) return;
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced) return;
+      if (prefersReduced || window.matchMedia('(max-width: 768px)').matches) return;
       const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B'];
       const COUNT = 20;
       const thumbSVG = (c) => '<svg viewBox="0 0 24 24" fill="' + c + '" xmlns="http://www.w3.org/2000/svg"><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14Z"/></svg>';
       btn.addEventListener('click', () => { const rect = btn.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; for (let i = 0; i < COUNT; i++) { const color = BRAND[Math.floor(Math.random() * BRAND.length)]; const el = document.createElement('span'); el.innerHTML = thumbSVG(color); el.setAttribute('aria-hidden', 'true'); const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.9; const speed = 9 + Math.random() * 10; let vx = Math.cos(angle) * speed; let vy = Math.sin(angle) * speed; const gravity = 0.14 + Math.random() * 0.06; const rotSpeed = (Math.random() - 0.5) * 6; const size = 34 + Math.random() * 20; const delay = Math.random() * 140; Object.assign(el.style, { position: 'fixed', left: (cx + (Math.random() - 0.5) * 30) + 'px', top: (cy + (Math.random() - 0.5) * 14) + 'px', width: size + 'px', height: size + 'px', lineHeight: '1', pointerEvents: 'none', zIndex: '101', willChange: 'transform, opacity', opacity: '0', userSelect: 'none', }); document.body.appendChild(el); let x = 0, y = 0, rot = 0, opacity = 1, frame = 0; let falling = false; const maxFrames = 80 + Math.floor(Math.random() * 30); const tick = () => { frame++; if (frame * 16 < delay) { requestAnimationFrame(tick); return; } vy += gravity; x += vx; y += vy; vx *= 0.99; if (vy > 0) falling = true; if (falling) rot += rotSpeed; const progress = (frame * 16 - delay) / ((maxFrames * 16) - delay); opacity = progress > 0.55 ? 1 - ((progress - 0.55) / 0.45) : 1; el.style.opacity = Math.max(0, opacity); el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)'; if (frame < maxFrames && opacity > 0) requestAnimationFrame(tick); else el.remove(); }; requestAnimationFrame(tick); } });
     })();
 
-    // ── Nav "Let's Talk" button: sparkles on hover, confetti on click ──
+    // ── Nav "Let's Talk" button: desktop-only sparkles/confetti ──
     (() => {
       const link = document.querySelector('.nav-link');
       if (!link) return;
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced) return;
+      if (prefersReduced || window.matchMedia('(max-width: 768px)').matches) return;
       const canvas = document.createElement('canvas');
       canvas.className = 'nav-link-fx';
       document.body.appendChild(canvas);
@@ -1163,16 +1141,15 @@
       const fastScrollTo = (targetY, doneCallback) => { stopAnim(); scrubPaused = true; const startY = window.scrollY || window.pageYOffset; const distance = targetY - startY; if (Math.abs(distance) < 2) { scrubPaused = false; if (doneCallback) doneCallback(); return; } const duration = Math.min(2200, Math.max(500, Math.abs(distance) / 2.8)); const start = performance.now(); fallbackTimer = setTimeout(() => { window.scrollTo(0, targetY); smoothTime = computeTargetTime(); scrubPaused = false; fallbackTimer = 0; if (doneCallback) doneCallback(); }, duration + 500); const step = (now) => { const t = Math.min(1, (now - start) / duration); window.scrollTo(0, startY + distance * EASE(t)); if (t < 1) { animFrame = requestAnimationFrame(step); } else { if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = 0; } animFrame = 0; smoothTime = computeTargetTime(); scrubPaused = false; if (doneCallback) doneCallback(); } }; animFrame = requestAnimationFrame(step); };
       const playThenScroll = (targetY) => { stopAnim(); const trackEl = document.getElementById('track'); const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0; const startY = window.scrollY || window.pageYOffset; const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY); const heroDuration = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0; const start = performance.now(); let lastFrameTime = start; let virtualElapsed = 0; const isMobile = window.matchMedia('(max-width: 768px)').matches; scrubPaused = true; smoothTime = computeTargetTime(); const step = (now) => { let delta = now - lastFrameTime; lastFrameTime = now; if (isMobile && delta > 33) delta = 16.6; virtualElapsed += delta; const t = Math.min(1, heroDuration > 0 ? virtualElapsed / heroDuration : 1); const y = startY + heroDist * t; window.scrollTo(0, y); targetTime = computeTargetTime(); if (isMobile) { if (video.paused) video.play().catch(() => {}); } else { const diff = targetTime - smoothTime; if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25; else smoothTime = targetTime; if (isFirefox) { const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25); if (Math.abs(video.currentTime - snapped) > 0.02) { try { video.currentTime = snapped; } catch {} } } else { if (Math.abs(video.currentTime - smoothTime) > 0.002) { try { video.currentTime = smoothTime; } catch {} } } } const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12); video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)'; if (t < 1) { animFrame = requestAnimationFrame(step); } else { animFrame = 0; if (isMobile) video.pause(); if (targetY > heroEnd + 2) fastScrollTo(targetY); else scrubPaused = false; } }; if (heroDuration > 0) animFrame = requestAnimationFrame(step); else fastScrollTo(targetY); };
       const samePageHashLink = (a) => { if (!a || !a.getAttribute) return false; const href = a.getAttribute('href') || ''; return href.startsWith('#') && href.length >= 2; };
-      document.addEventListener('click', (e) => { const link = e.target.closest('a[href^="#"]'); if (!samePageHashLink(link)) return; const hash = link.getAttribute('href'); const target = document.querySelector(hash); if (!target) return; e.preventDefault(); const offset = getHeaderOffset(); const isMobileTap = window.matchMedia('(max-width: 768px)').matches; const startScrollY = window.scrollY || window.pageYOffset; const atTop = startScrollY < 50 && ready;
+      document.addEventListener('click', (e) => { const link = e.target.closest('a[href^="#"]'); if (!samePageHashLink(link)) return; const hash = link.getAttribute('href'); const target = document.querySelector(hash); if (!target) return; e.preventDefault(); const offset = getHeaderOffset(); const isMobileTap = window.matchMedia('(max-width: 768px)').matches; const startScrollY = window.scrollY || window.pageYOffset; const atTop = startScrollY < 50;
         if (isMobileTap && atTop) {
           /* MOBILE BUTTON TAP — GENTLE HERO TRANSIT
              Instead of playThenScroll (which sets scrubPaused=true and just
              calls video.play() on mobile), we do a continuous scroll through
-             the hero with scrubPaused=FALSE. This lets the existing scroll
-             handlers (tick, onScrollFade) drive video scrub + text fade +
-             overlay reveal — identical to manual scrolling, just automated.
+             the hero with scrubPaused=FALSE. This keeps mobile on the same
+             scroll-driven scrub path as manual finger scroll.
 
-             Timing (custom curve — slow start, faster finish):
+             Timing (custom curve — gentle start, faster finish):
              - 0-1500ms: scroll through first ~25% of hero (slow reveal)
              - 1500-2700ms: scroll through remaining ~75% (faster)
              - Then: fastScrollTo jumps to the target section
@@ -1183,14 +1160,14 @@
           stopAnim();
           /* scrubPaused stays FALSE — normal scroll handlers drive video */
           
-          /* Custom curve: slow for first 55% of time, fast for rest.
+          /* Custom curve: controlled first phase, faster second phase.
              At t=0.55 (1485ms) we've scrolled ~25% of hero.
              Remaining 75% happens in the last 45% of time (1215ms). */
           const heroEase = (t) => {
             if (t < 0.55) {
-              /* Slow phase: ease-in, covers ~25% of distance */
+              /* Phase 1: immediate motion but capped to ~25% of distance */
               const p = t / 0.55;
-              return 0.25 * (p * p);
+              return 0.25 * (1 - Math.pow(1 - p, 1.8));
             } else {
               /* Fast phase: ease-out, covers remaining 75% */
               const p = (t - 0.55) / 0.45;
@@ -1202,7 +1179,6 @@
           const heroStep = (now) => {
             const t = Math.min(1, (now - heroStart) / totalDuration);
             window.scrollTo(0, startScrollY + heroEnd * heroEase(t));
-            scheduleTick();
             if (t < 1) { animFrame = requestAnimationFrame(heroStep); }
             else {
               animFrame = 0;
@@ -1233,21 +1209,10 @@
     })();
 
     /*
-       ═══════════════════════════════════════════════════════
-       MOBILE HERO CINEMATIC REVEAL
-       ═══════════════════════════════════════════════════════
-       
-       The video was always playing — you just couldn't see it.
-       Text + white overlay obscured it during the entire scroll.
-       
-       This system fades out the hero text and reduces the overlay
-       during the first portion of scroll, revealing the video 
-       underneath. Combined with the easeOut video curve (above),
-       most of the video's content plays while it's clearly visible.
-       
-       Phase 1 (0% → 18%): Hero text fades out + slides up
-       Phase 2 (0% → 28%): White overlay fades from 1.0 → 0.1
-       Result: ~350px of clear, vivid, unobstructed video viewing
+       MOBILE HERO REVEAL (PERF PATH)
+       - Fade text and overlay using opacity-only updates.
+       - Throttle updates to avoid saturating mobile CPUs.
+       - Keep reveal timing: text 0-18%, overlay 0-28%.
     */
     (() => {
       if (!window.matchMedia('(max-width: 768px)').matches) return;
@@ -1259,23 +1224,32 @@
       if (!heroContent || !heroEl) return;
 
       let fadeTicking = false;
+      let lastFadeTs = 0;
+      let lastTextFade = -1;
+      let lastOverlayFade = -1;
 
       const onScrollFade = () => {
         if (fadeTicking) return;
         fadeTicking = true;
-        requestAnimationFrame(() => {
+        requestAnimationFrame((ts) => {
           fadeTicking = false;
+          if ((ts - lastFadeTs) < 32) return;
+          lastFadeTs = ts;
           const progress = getProgress();
 
           // Phase 1: Fade hero text (0% → 18% scroll progress)
           const textFade = Math.max(0, 1 - (progress / 0.18));
-          const textSlide = -(progress * 40);
-          heroContent.style.opacity = textFade;
-          heroContent.style.transform = 'translateY(' + textSlide.toFixed(1) + 'px)';
+          if (Math.abs(textFade - lastTextFade) >= 0.015) {
+            heroContent.style.opacity = textFade.toFixed(3);
+            lastTextFade = textFade;
+          }
 
-          // Phase 2: Reduce overlay to reveal vivid video (0% → 28%)
-          const overlayFade = Math.max(0.1, 1 - (progress / 0.28));
-          heroEl.style.setProperty('--overlay-opacity', overlayFade);
+          // Phase 2: Reduce overlay to reveal video (0% → 28%)
+          const overlayFade = Math.max(0.12, 1 - (progress / 0.28));
+          if (Math.abs(overlayFade - lastOverlayFade) >= 0.02) {
+            heroEl.style.setProperty('--overlay-opacity', overlayFade.toFixed(3));
+            lastOverlayFade = overlayFade;
+          }
         });
       };
 

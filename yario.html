@@ -752,7 +752,12 @@
       
       function computeTargetTime() {
         if (!ready || duration <= 0) return 0;
-        const segmentStart = clamp(START_AT_SECONDS, 0, Math.max(0, duration - END_SAFETY_SECONDS));
+        
+        // MOBILE OPTIMIZATION: Start the video earlier on mobile to compensate for decoder lag.
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const mobileOffset = isMobile ? 1.5 : 0; 
+        
+        const segmentStart = clamp(START_AT_SECONDS - mobileOffset, 0, Math.max(0, duration - END_SAFETY_SECONDS));
         const segmentEnd = clamp(START_AT_SECONDS + SEGMENT_DURATION_SECONDS, segmentStart, Math.max(segmentStart, duration - END_SAFETY_SECONDS));
         return segmentStart + getProgress() * (segmentEnd - segmentStart);
       }
@@ -1693,6 +1698,14 @@
         const offset = getHeaderOffset();
         const isHeroCta = link.classList.contains('hero-cta');
         const isNavLink = link.classList.contains('nav-link');
+
+        // WARM UP DECODER: On mobile, force a seek to the start immediately to wake up the video engine
+        if (window.matchMedia('(max-width: 768px)').matches && video) {
+          try { 
+            targetTime = computeTargetTime();
+            video.currentTime = targetTime; 
+          } catch(e) {}
+        }
 
         const doScroll = () => {
           const freshRect = target.getBoundingClientRect();

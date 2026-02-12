@@ -428,7 +428,7 @@
        6) Mobile button taps add a 1s video pre-roll before hero scroll starts
        7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
        8) Mobile progress uses stable scrollY metrics (no visualViewport jumps)
-       9) Mobile finger scroll uses direct scrub updates (no hold-then-lurch)
+       9) Mobile finger scroll gets touch-responsive seek smoothing
     */
     @media (max-width: 768px) {
       nav {
@@ -804,11 +804,14 @@
       let smoothTime = 0; 
       const LERP_SPEED = isMobile ? 0.11 : 0.12; 
       const LERP_SPEED_FF = isMobile ? 0.1 : 0.1;
-      const SEEK_THRESHOLD = isMobile ? 0.006 : 0.002; 
-      const SEEK_COOLDOWN = isMobile ? 0 : 0; 
+      const SEEK_THRESHOLD = isMobile ? 0.015 : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? 14 : 0; 
+      const MOBILE_TOUCH_LERP = 0.22;
+      const MOBILE_TOUCH_THRESHOLD = 0.009;
       const MOBILE_PREROLL_MS = 1000;
       const MOBILE_PREROLL_BOOST = 1 / 6; // ~1 second in a 6-second mobile segment
       let mobilePreRollBoost = 0;
+      let lastTouchInputTs = -1;
 
       function tick(ts = performance.now()) {
         raf = 0;
@@ -816,14 +819,10 @@
         targetTime = computeTargetTime();
 
         const diff = targetTime - smoothTime;
-        if (isMobile) {
-          // Direct mobile scrub avoids the "stuck then jump" feel on touch scroll.
-          smoothTime = targetTime;
-        } else {
-          const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
-          if (Math.abs(diff) > 0.001) smoothTime += diff * lerp;
-          else smoothTime = targetTime;
-        }
+        const mobileFingerActive = isMobile && (ts - lastTouchInputTs) < 140;
+        const lerp = mobileFingerActive ? MOBILE_TOUCH_LERP : (isFirefox ? LERP_SPEED_FF : LERP_SPEED);
+        if (Math.abs(diff) > 0.001) smoothTime += diff * lerp;
+        else smoothTime = targetTime;
 
         if (isFirefox) {
           const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
@@ -832,7 +831,9 @@
             lastSeekTs = ts;
           }
         } else {
-          if (Math.abs(video.currentTime - smoothTime) > SEEK_THRESHOLD && (ts - lastSeekTs) > SEEK_COOLDOWN) {
+          const seekThreshold = mobileFingerActive ? MOBILE_TOUCH_THRESHOLD : SEEK_THRESHOLD;
+          const seekCooldown = mobileFingerActive ? 0 : SEEK_COOLDOWN;
+          if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (ts - lastSeekTs) > seekCooldown) {
             try { video.currentTime = smoothTime; } catch {}
             lastSeekTs = ts;
           }
@@ -897,8 +898,24 @@
           scheduleTick();
         }, { passive: true });
         window.addEventListener('wheel', scheduleTick, { passive: true });
-        window.addEventListener('touchstart', scheduleTick, { passive: true });
-        window.addEventListener('touchmove', scheduleTick, { passive: true });
+        window.addEventListener('touchstart', (evt) => {
+          if (isMobile) {
+            const touchTarget = evt.target;
+            const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
+            if (!isAnchorTap) lastTouchInputTs = performance.now();
+          }
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('touchmove', () => {
+          if (isMobile) lastTouchInputTs = performance.now();
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('touchend', () => {
+          if (isMobile) lastTouchInputTs = -1;
+        }, { passive: true });
+        window.addEventListener('touchcancel', () => {
+          if (isMobile) lastTouchInputTs = -1;
+        }, { passive: true });
         window.addEventListener('orientationchange', () => {
           lastViewportHeight = window.innerHeight || 0;
           refreshTrackMetrics();

@@ -1616,10 +1616,10 @@
         const startY = window.scrollY || window.pageYOffset;
 
         const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
-        // MOBILE OPTIMIZATION: Slow down the scroll duration to allow the video to finish its sequence
+        // MOBILE OPTIMIZATION: Faster scroll speed with a 1s initial hold
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
         const heroDuration = heroDist > 0 
-          ? (isMobile ? 5500 : Math.min(3200, Math.max(1800, heroDist / 0.5))) 
+          ? (isMobile ? 2750 : Math.min(3200, Math.max(1800, heroDist / 0.5))) 
           : 0;
         const start = performance.now();
 
@@ -1641,16 +1641,15 @@
           const t = Math.min(1, heroDuration > 0 ? virtualElapsed / heroDuration : 1);
 
           // MOBILE OPTIMIZATION:
-          // We hold the scroll at the top (0) for the first 40% of the duration.
-          // This ensures the video plays while 100% visible before the content sheet 
-          // starts its upward "cover" motion.
+          // We hold the scroll at the top (0) for the first 1 second of the duration.
+          // This ensures the video sequence starts while 100% visible.
           let scrollT = t;
           if (isMobile) {
-            const holdThreshold = 0.4;
+            const holdThreshold = 0.363; // ~1s of 2.75s total duration
             if (t < holdThreshold) {
               scrollT = 0;
             } else {
-              // Map the remaining 60% of time to the full scroll distance with smooth easing
+              // Map the remaining time to the full scroll distance with smooth easing
               const releaseT = (t - holdThreshold) / (1 - holdThreshold);
               scrollT = releaseT * releaseT * (3 - 2 * releaseT); // Ease-in-out
             }

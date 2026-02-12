@@ -429,6 +429,7 @@
        7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
        8) Mobile progress uses stable scrollY metrics (no visualViewport jumps)
        9) Mobile finger scroll uses touch-only direct scrub
+      10) Mobile Let's Talk tap uses one continuous hero->contact animation
     */
     @media (max-width: 768px) {
       nav {
@@ -1344,8 +1345,9 @@
              scroll-driven scrub path as manual finger scroll.
 
              Pre-roll: hold page position for 1000ms while video advances.
-             Then run the same hero transit curve, clamped to:
-             min(hero-end, targetY) to avoid overshooting #learn-more.
+             Learn More runs a hero-only curve clamped to min(hero-end,targetY).
+             Let's Talk continues in the same rAF run from hero to contact,
+             so there is no pause/restart handoff.
           */
           const trackEl = document.getElementById('track');
           const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
@@ -1355,9 +1357,11 @@
           const heroStopY = Math.max(startScrollY, Math.min(heroEnd, startTargetY));
           const heroDist = Math.max(0, heroStopY - startScrollY);
           const heroRatio = heroEnd > 0 ? heroDist / heroEnd : 0;
-          const totalDuration = isContactTarget
-            ? Math.max(1500, 2600 * heroRatio)
-            : Math.max(1200, 3600 * heroRatio);
+          const heroDuration = Math.max(1200, 3600 * heroRatio);
+          const contactTailDist = Math.max(0, startTargetY - heroStopY);
+          const contactTailDuration = contactTailDist > 0 ? Math.max(500, Math.min(1800, contactTailDist / 2.8)) : 0;
+          const contactTotalDuration = heroDuration + contactTailDuration;
+          const contactHeroPhase = contactTotalDuration > 0 ? (heroDuration / contactTotalDuration) : 1;
           stopAnim();
           if (heroDist < 2) {
             fastScrollTo(startTargetY);
@@ -1365,11 +1369,8 @@
           }
           /* scrubPaused stays FALSE — normal scroll handlers drive video */
           
-          /* Learn More: two-phase reveal curve. Let's Talk: single smooth pass. */
+          /* Learn More: cinematic two-phase curve for the hero region. */
           const heroEase = (t) => {
-            if (isContactTarget) {
-              return 1 - Math.pow(1 - t, 1.55);
-            }
             if (t < 0.65) {
               /* Phase 1: immediate motion but capped to ~30% of distance */
               const p = t / 0.65;
@@ -1384,19 +1385,39 @@
           const runHeroStep = () => {
             const heroStart = performance.now();
             const heroStep = (now) => {
-              const t = Math.min(1, (now - heroStart) / totalDuration);
-              window.scrollTo(0, startScrollY + heroDist * heroEase(t));
-              if (t < 1) { animFrame = requestAnimationFrame(heroStep); }
-              else {
-                animFrame = 0;
-                /* Hero fully traversed. Fast-scroll to the target section. */
-                const freshRect = target.getBoundingClientRect();
-                const currentY = window.scrollY || window.pageYOffset;
-                const freshTargetY = Math.max(0, Math.round(freshRect.top + currentY - offset));
-                /* Avoid reverse snap on mobile; only continue downward if needed. */
-                if (freshTargetY > currentY + 2) {
-                  fastScrollTo(freshTargetY);
+              if (isContactTarget) {
+                const t = Math.min(1, (now - heroStart) / contactTotalDuration);
+                let y;
+                if (t <= contactHeroPhase || contactTailDist < 2) {
+                  const p = contactHeroPhase > 0 ? Math.min(1, t / contactHeroPhase) : 1;
+                  y = startScrollY + heroDist * (p * (0.65 + 0.35 * p));
+                } else {
+                  const q = Math.min(1, (t - contactHeroPhase) / (1 - contactHeroPhase));
+                  y = heroStopY + contactTailDist * (q * (2 - q));
                 }
+                window.scrollTo(0, y);
+                scheduleTick();
+                if (t < 1) {
+                  animFrame = requestAnimationFrame(heroStep);
+                  return;
+                }
+                animFrame = 0;
+                window.scrollTo(0, startTargetY);
+                scheduleTick();
+                return;
+              }
+
+              const t = Math.min(1, (now - heroStart) / heroDuration);
+              window.scrollTo(0, startScrollY + heroDist * heroEase(t));
+              scheduleTick();
+              if (t < 1) {
+                animFrame = requestAnimationFrame(heroStep);
+              } else {
+                animFrame = 0;
+                const currentY = window.scrollY || window.pageYOffset;
+                const freshRect = target.getBoundingClientRect();
+                const freshTargetY = Math.max(0, Math.round(freshRect.top + currentY - offset));
+                if (freshTargetY > currentY + 2) fastScrollTo(freshTargetY);
               }
             };
             animFrame = requestAnimationFrame(heroStep);

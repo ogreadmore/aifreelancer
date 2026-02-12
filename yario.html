@@ -1180,7 +1180,7 @@
       };
 
       submitBtn.addEventListener('mouseenter', () => {
-        if (submitBtn.disabled) return;
+        if (submitBtn.disabled || window.matchMedia('(max-width: 768px)').matches) return;
         sparkleInterval = setInterval(spawnSparkle, 40);
         for (let i = 0; i < 8; i++) spawnSparkle();
       });
@@ -1500,6 +1500,7 @@
       };
 
       link.addEventListener('mouseenter', () => {
+        if (window.matchMedia('(max-width: 768px)').matches) return;
         sparkleInterval = setInterval(spawnSparkle, 60);
         for (let i = 0; i < 4; i++) spawnSparkle();
       });
@@ -1638,7 +1639,6 @@
           let delta = now - lastFrameTime;
           lastFrameTime = now;
 
-          // Cap delta at ~30fps equivalent to prevent jumping during processor lag
           if (isMobile && delta > 33) delta = 16.6; 
           
           virtualElapsed += delta;
@@ -1648,15 +1648,22 @@
           window.scrollTo(0, y);
 
           targetTime = computeTargetTime();
-          const diff = targetTime - smoothTime;
-          if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
-          else smoothTime = targetTime;
-
-          if (isFirefox) {
-            const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
-            if (Math.abs(video.currentTime - snapped) > 0.02) { try { video.currentTime = snapped; } catch {} }
+          
+          // MOBILE PERFORMANCE FIX: 
+          // Instead of seeking (which lags), we 'play' the video during the automated scroll.
+          if (isMobile) {
+            if (video.paused) video.play().catch(() => {});
           } else {
-            if (Math.abs(video.currentTime - smoothTime) > 0.002) { try { video.currentTime = smoothTime; } catch {} }
+            const diff = targetTime - smoothTime;
+            if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
+            else smoothTime = targetTime;
+
+            if (isFirefox) {
+              const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
+              if (Math.abs(video.currentTime - snapped) > 0.02) { try { video.currentTime = snapped; } catch {} }
+            } else {
+              if (Math.abs(video.currentTime - smoothTime) > 0.002) { try { video.currentTime = smoothTime; } catch {} }
+            }
           }
 
           const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
@@ -1666,6 +1673,7 @@
             animFrame = requestAnimationFrame(step);
           } else {
             animFrame = 0;
+            if (isMobile) video.pause(); // Stop playback when animation finishes
             if (targetY > heroEnd + 2) {
               fastScrollTo(targetY);
             } else {

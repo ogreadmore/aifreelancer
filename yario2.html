@@ -4,6 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Keep reload behavior deterministic for hero animation: always start at top.
+    (() => {
+      const nav = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]) || null;
+      const legacyNavType = performance.navigation ? performance.navigation.type : -1;
+      const navType = nav && typeof nav.type === 'string'
+        ? nav.type
+        : (legacyNavType === 1 ? 'reload' : '');
+      const isReload = navType === 'reload';
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch {}
+      if (!isReload) return;
+      const resetToTop = () => { window.scrollTo(0, 0); };
+      resetToTop();
+      window.addEventListener('pageshow', resetToTop, { once: true });
+      window.addEventListener('load', resetToTop, { once: true });
+    })();
+  </script>
   <title>AI Freelancer — We Optimize Everything</title>
   <meta name="description" content="AI Freelancer is a business optimization powerhouse based in Cleveland, OH. We optimize your marketing, website, SEO, workflows, and more — delivering real results in days, not months.">
 

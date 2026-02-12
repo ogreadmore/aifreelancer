@@ -428,7 +428,7 @@
        6) Mobile button taps add a 1s video pre-roll before hero scroll starts
        7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
        8) Mobile progress uses stable scrollY metrics (no visualViewport jumps)
-       9) Finger scroll gets a small top-of-hero video lead (smoother reveal)
+       9) Mobile finger scroll uses direct scrub updates (no hold-then-lurch)
     */
     @media (max-width: 768px) {
       nav {
@@ -789,14 +789,12 @@
 
         const rawProgress = getProgress();
         let videoProgress = rawProgress;
-        const combinedMobileBoost = mobilePreRollBoost + mobileTouchBoost;
-        if (isMobile && combinedMobileBoost > 0) {
+        if (isMobile && mobilePreRollBoost > 0) {
           // Boost is strongest near the top and fades out by mid-hero.
           const boostFade = Math.max(0, 1 - (rawProgress / 0.5));
-          videoProgress = clamp(rawProgress + combinedMobileBoost * boostFade, 0, 1);
+          videoProgress = clamp(rawProgress + mobilePreRollBoost * boostFade, 0, 1);
           if (rawProgress > 0.55) {
             mobilePreRollBoost = 0;
-            mobileTouchBoost = 0;
           }
         }
         return segmentStart + videoProgress * (segmentEnd - segmentStart);
@@ -806,26 +804,25 @@
       let smoothTime = 0; 
       const LERP_SPEED = isMobile ? 0.11 : 0.12; 
       const LERP_SPEED_FF = isMobile ? 0.1 : 0.1;
-      const SEEK_THRESHOLD = isMobile ? 0.015 : 0.002; 
-      const SEEK_COOLDOWN = isMobile ? 14 : 0; 
+      const SEEK_THRESHOLD = isMobile ? 0.006 : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? 0 : 0; 
       const MOBILE_PREROLL_MS = 1000;
       const MOBILE_PREROLL_BOOST = 1 / 6; // ~1 second in a 6-second mobile segment
-      const MOBILE_TOUCH_BOOST = 0.12;
       let mobilePreRollBoost = 0;
-      let mobileTouchBoost = 0;
-      let mobileTouchBoostUsed = false;
 
       function tick(ts = performance.now()) {
         raf = 0;
         if (!ready || scrubPaused) return;
         targetTime = computeTargetTime();
 
-        const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
         const diff = targetTime - smoothTime;
-        if (Math.abs(diff) > 0.001) {
-          smoothTime += diff * lerp;
-        } else {
+        if (isMobile) {
+          // Direct mobile scrub avoids the "stuck then jump" feel on touch scroll.
           smoothTime = targetTime;
+        } else {
+          const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
+          if (Math.abs(diff) > 0.001) smoothTime += diff * lerp;
+          else smoothTime = targetTime;
         }
 
         if (isFirefox) {
@@ -849,7 +846,6 @@
       function scheduleTick() {
         if (!ready || scrubPaused) return;
         lastInputTs = performance.now();
-        if (isMobile && getProgress() <= 0.03) mobileTouchBoostUsed = false;
         if (!raf) raf = requestAnimationFrame(tick);
       }
       function initScrub() {
@@ -901,19 +897,7 @@
           scheduleTick();
         }, { passive: true });
         window.addEventListener('wheel', scheduleTick, { passive: true });
-        window.addEventListener('touchstart', (evt) => {
-          if (isMobile) {
-            const touchTarget = evt.target;
-            const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
-            const progress = getProgress();
-            if (!isAnchorTap && !mobileTouchBoostUsed && progress <= 0.14) {
-              mobileTouchBoost = MOBILE_TOUCH_BOOST;
-              mobileTouchBoostUsed = true;
-            }
-            if (progress <= 0.03) mobileTouchBoostUsed = false;
-          }
-          scheduleTick();
-        }, { passive: true });
+        window.addEventListener('touchstart', scheduleTick, { passive: true });
         window.addEventListener('touchmove', scheduleTick, { passive: true });
         window.addEventListener('orientationchange', () => {
           lastViewportHeight = window.innerHeight || 0;
@@ -1202,7 +1186,6 @@
           fallbackTimer = 0;
         }
         mobilePreRollBoost = 0;
-        mobileTouchBoost = 0;
         scrubPaused = false;
       };
       const getHeaderOffset = () => { const navEl = document.getElementById('mainNav'); return navEl ? Math.max(0, Math.round(navEl.getBoundingClientRect().height + 8)) : 0; };

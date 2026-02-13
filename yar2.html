@@ -1749,6 +1749,20 @@
           if ((ts - lastFadeTs) < throttleMs) return;
           lastFadeTs = ts;
 
+          // Returning to the very top should always restore initial hero state.
+          const topY = window.scrollY || window.pageYOffset || 0;
+          if (topY <= 4) {
+            if (lastTextFade !== 1) {
+              heroContent.style.opacity = '1';
+              lastTextFade = 1;
+            }
+            if (lastOverlayFade !== 1) {
+              heroEl.style.setProperty('--overlay-opacity', '1');
+              lastOverlayFade = 1;
+            }
+            return;
+          }
+
           if (isLiteDesktopReveal) {
             if (lastTextFade !== 1) {
               heroContent.style.opacity = '1';

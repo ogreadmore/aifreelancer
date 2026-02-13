@@ -149,19 +149,6 @@
         linear-gradient(to bottom, rgba(255,255,255,.62), rgba(255,255,255,.8)),
         radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.4), rgba(255,255,255,.14));
     }
-    .is-low-end-desktop .hero video,
-    .is-low-end-desktop .hero-canvas {
-      filter: none;
-      transform: scale(1.01);
-      will-change: auto;
-    }
-    .is-low-end-desktop .hero::after {
-      -webkit-backdrop-filter: none;
-      backdrop-filter: none;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,.52), rgba(255,255,255,.72)),
-        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.3), rgba(255,255,255,.12));
-    }
     .hero-content { position: relative; z-index: 2; width: min(94vw, 800px); margin: 0 auto; padding: 0 2rem 5rem; }
     .hero h1 {
       font-family: 'Archivo','Inter',system-ui,sans-serif;
@@ -763,14 +750,12 @@
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
                   || (navigator.deviceMemory && navigator.deviceMemory <= 2);
-    const LOW_END_DESKTOP = LOW_END && !isMobile;
     const isIOS = /iP(ad|hone|od)/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
     // Mobile uses direct video scrubbing (no frame cache) for stability/smoothness.
     const MOBILE_FRAME_CACHE = false;
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
     if (isFirefox) document.documentElement.classList.add('is-firefox');
-    if (LOW_END_DESKTOP) document.documentElement.classList.add('is-low-end-desktop');
 
     // ── DOM refs ──
     const nav = document.getElementById('mainNav');
@@ -791,21 +776,15 @@
     const FALLBACK_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
     const VIDEO_SOURCES = isMobile
       ? [SD_URL, HD_URL, FALLBACK_URL]
-      : (LOW_END_DESKTOP ? [SD_URL, HD_URL, FALLBACK_URL] : [HD_URL, SD_URL, FALLBACK_URL]);
+      : [HD_URL, SD_URL, FALLBACK_URL];
     let sourceIndex = 0;
 
     // ── Scrub constants ──
     const START_AT = isMobile ? 4.75 : 5.25;
     const SEG_LEN = isMobile ? 6 : 4;
     const END_SAFETY = 0.06;
-    const LERP = isMobile ? 0.05 : (LOW_END_DESKTOP ? 0.085 : (isFirefox ? 0.1 : 0.12));
-    const LERP_FF = isMobile ? 0.04 : (LOW_END_DESKTOP ? 0.08 : 0.1);
-    const SEEK_THRESHOLD = isMobile ? 0.03 : (LOW_END_DESKTOP ? 0.028 : 0.002);
-    const SEEK_COOLDOWN = isMobile ? 25 : (LOW_END_DESKTOP ? 36 : 0);
-    const SEEK_SNAP_STEP = LOW_END_DESKTOP ? (1 / 20) : 0;
-    const SETTLE_EPSILON = LOW_END_DESKTOP ? 0.008 : 0.001;
-    const HERO_SETTLE_WINDOW = isMobile ? 200 : (LOW_END_DESKTOP ? 70 : 140);
-    const ENABLE_FRAME_CACHE = false;
+    const LERP = isMobile ? 0.05 : (isFirefox ? 0.1 : 0.12);
+    const LERP_FF = isMobile ? 0.04 : 0.1;
 
     /* ================================================================
        FRAME CACHE
@@ -827,12 +806,13 @@
 
     async function extractFrames() {
       if (fc.extracting || fc.ready || fc.error) return;
-      if (!ENABLE_FRAME_CACHE) { fc.error = true; return; }
       if (isMobile && !MOBILE_FRAME_CACHE) { fc.error = true; return; }
       fc.extracting = true;
 
-      const dur = video.duration;
+      const dur = scrub.duration || Number(video.duration) || 0;
       if (!dur || !Number.isFinite(dur) || dur <= 0) { fc.extracting = false; return; }
+      const decodeSrc = video.currentSrc || video.src;
+      if (!decodeSrc) { fc.extracting = false; return; }
 
       const maxEnd = Math.max(0, dur - END_SAFETY);
       const segStart = clamp(START_AT, 0, maxEnd);
@@ -851,33 +831,83 @@
 
       const hasCreateBitmap = typeof createImageBitmap === 'function' && !(isMobile && isIOS);
       const frames = [];
+      let decoder = null;
+
+      const cleanupDecoder = () => {
+        if (!decoder) return;
+        try { decoder.pause(); } catch {}
+        try {
+          decoder.removeAttribute('src');
+          decoder.load();
+        } catch {}
+        decoder = null;
+      };
+
+      const seekTo = (t) => new Promise((resolve, reject) => {
+        const onDone = () => {
+          decoder.removeEventListener('seeked', onDone);
+          decoder.removeEventListener('error', onErr);
+          resolve();
+        };
+        const onErr = () => {
+          decoder.removeEventListener('seeked', onDone);
+          decoder.removeEventListener('error', onErr);
+          reject(new Error('seek'));
+        };
+        decoder.addEventListener('seeked', onDone, { once: true });
+        decoder.addEventListener('error', onErr, { once: true });
+        try { decoder.currentTime = t; } catch (err) { reject(err); }
+      });
 
       try {
+        decoder = document.createElement('video');
+        decoder.muted = true;
+        decoder.playsInline = true;
+        decoder.preload = 'auto';
+        decoder.crossOrigin = 'anonymous';
+        decoder.src = decodeSrc;
+        await new Promise((resolve, reject) => {
+          let settled = false;
+          const done = () => {
+            if (settled) return;
+            settled = true;
+            decoder.removeEventListener('loadedmetadata', done);
+            decoder.removeEventListener('canplay', done);
+            decoder.removeEventListener('error', fail);
+            resolve();
+          };
+          const fail = () => {
+            if (settled) return;
+            settled = true;
+            decoder.removeEventListener('loadedmetadata', done);
+            decoder.removeEventListener('canplay', done);
+            decoder.removeEventListener('error', fail);
+            reject(new Error('decoder-load-failed'));
+          };
+          decoder.addEventListener('loadedmetadata', done, { once: true });
+          decoder.addEventListener('canplay', done, { once: true });
+          decoder.addEventListener('error', fail, { once: true });
+          try { decoder.load(); } catch { fail(); }
+        });
+
         for (let i = 0; i < FRAME_COUNT; i++) {
           const t = segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (segEnd - segStart);
-          video.currentTime = t;
-          await new Promise((resolve, reject) => {
-            const onDone = () => { video.removeEventListener('seeked', onDone); video.removeEventListener('error', onErr); resolve(); };
-            const onErr = () => { video.removeEventListener('seeked', onDone); video.removeEventListener('error', onErr); reject(new Error('seek')); };
-            video.addEventListener('seeked', onDone, { once: true });
-            video.addEventListener('error', onErr, { once: true });
-          });
-          offCtx.drawImage(video, 0, 0, cw, ch);
-          if (hasCreateBitmap) {
-            frames.push(await createImageBitmap(offscreen));
-          } else {
-            frames.push(offCtx.getImageData(0, 0, cw, ch));
-          }
+          await seekTo(t);
+          offCtx.drawImage(decoder, 0, 0, cw, ch);
+          if (hasCreateBitmap) frames.push(await createImageBitmap(offscreen));
+          else frames.push(offCtx.getImageData(0, 0, cw, ch));
+          if ((i & 7) === 7) await new Promise(resolve => setTimeout(resolve, 0));
         }
       } catch (e) {
         fc.error = true;
-        fc.extracting = false;
-        frames.forEach(f => { if (f.close) f.close(); });
+        frames.forEach((f) => { if (f && f.close) f.close(); });
         return;
+      } finally {
+        fc.extracting = false;
+        cleanupDecoder();
       }
 
       fc.frames = frames;
-      fc.extracting = false;
       fc.ready = true;
 
       heroCanvas.width = cw;
@@ -995,13 +1025,6 @@
       lastSeekTs: 0,
       paused: false,
     };
-    let hasUserInteracted = false;
-
-    function activateScrub() {
-      if (hasUserInteracted) return;
-      hasUserInteracted = true;
-      requestFrame();
-    }
 
     function computeTargetTime(progress, dur) {
       const maxEnd = Math.max(0, dur - END_SAFETY);
@@ -1025,11 +1048,10 @@
           scrub.lastSeekTs = ts;
         }
       } else {
-        const nextTime = SEEK_SNAP_STEP > 0
-          ? Math.round(scrub.smoothTime / SEEK_SNAP_STEP) * SEEK_SNAP_STEP
-          : scrub.smoothTime;
-        if (Math.abs(video.currentTime - nextTime) > SEEK_THRESHOLD && (ts - scrub.lastSeekTs) > SEEK_COOLDOWN) {
-          try { video.currentTime = nextTime; } catch {}
+        const threshold = isMobile ? 0.03 : 0.002;
+        const cooldown = isMobile ? 25 : 0;
+        if (Math.abs(video.currentTime - scrub.smoothTime) > threshold && (ts - scrub.lastSeekTs) > cooldown) {
+          try { video.currentTime = scrub.smoothTime; } catch {}
           scrub.lastSeekTs = ts;
         }
       }
@@ -1086,11 +1108,11 @@
 
       if (fc.ready) {
         displayFrame(progress);
-      } else if (hasUserInteracted && !fc.extracting && scrub.ready && !scrub.paused) {
+      } else if (scrub.ready && !scrub.paused) {
         seekVideo(ts, progress);
       }
 
-      if (!isMobile && !LOW_END_DESKTOP) {
+      if (!isMobile) {
         const py = (progress - 0.5) * (isFirefox ? 5 : 12);
         getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
       }
@@ -1105,7 +1127,7 @@
         }
       }
 
-      if (!isMobile && !LOW_END_DESKTOP && aboutShell && aboutBox) {
+      if (!isMobile && aboutShell && aboutBox) {
         const bt = layout.aboutBoxTop - sy;
         const start = layout.vh;
         const end = layout.vh * 0.38;
@@ -1113,8 +1135,9 @@
         aboutShell.style.transform = 'scale(' + (0.78 + 0.22 * ap).toFixed(4) + ')';
       }
 
-      if (!fc.ready && hasUserInteracted && scrub.ready && !scrub.paused) {
-        if (Math.abs(scrub.targetTime - scrub.smoothTime) > SETTLE_EPSILON || (ts - lastScrollTs) < HERO_SETTLE_WINDOW) {
+      if (!fc.ready && scrub.ready && !scrub.paused) {
+        const settleWindow = isMobile ? 200 : 140;
+        if (Math.abs(scrub.targetTime - scrub.smoothTime) > 0.001 || (ts - lastScrollTs) < settleWindow) {
           requestFrame();
         }
       }
@@ -1122,7 +1145,6 @@
 
     function onScroll() {
       lastScrollTs = performance.now();
-      activateScrub();
       if (layout.trackScrollable <= 0) recalcLayout();
       requestFrame();
     }
@@ -1176,16 +1198,21 @@
 
       recalcLayout();
 
-      if (!fc.ready && !fc.error && ENABLE_FRAME_CACHE && (!isMobile || MOBILE_FRAME_CACHE)) {
+      if (!fc.ready && !fc.error && (!isMobile || MOBILE_FRAME_CACHE)) {
         extractFrames();
       }
 
       if (!fc.ready) {
-        const stillTime = clamp(START_AT, 0, dur - END_SAFETY);
-        scrub.targetTime = stillTime;
-        scrub.smoothTime = stillTime;
-        try { video.currentTime = stillTime; } catch {}
-        video.pause();
+        const p = getProgress();
+        scrub.targetTime = computeTargetTime(p, dur);
+        scrub.smoothTime = scrub.targetTime;
+        if (!isMobile) {
+          try { video.currentTime = scrub.targetTime; } catch {}
+          video.pause();
+        } else {
+          try { video.currentTime = clamp(START_AT, 0, dur - END_SAFETY); } catch {}
+          video.pause();
+        }
         requestFrame();
       }
     }
@@ -1193,16 +1220,6 @@
     video.style.background = '#fff';
     video.addEventListener('loadedmetadata', initVideo);
     video.addEventListener('canplay', () => { if (!scrub.ready) initVideo(); });
-    video.addEventListener('play', () => {
-      // Prevent any spontaneous autoplay before first user interaction.
-      if (hasUserInteracted) return;
-      video.pause();
-      if (!scrub.ready) return;
-      const stillTime = clamp(START_AT, 0, scrub.duration - END_SAFETY);
-      scrub.targetTime = stillTime;
-      scrub.smoothTime = stillTime;
-      try { video.currentTime = stillTime; } catch {}
-    });
     video.addEventListener('error', () => {
       sourceIndex++;
       if (sourceIndex < VIDEO_SOURCES.length) {
@@ -1227,10 +1244,6 @@
       setTimeout(warmupLayout, 160);
     }, { passive: true });
     window.addEventListener('touchstart', warmupLayout, { passive: true, once: true });
-    window.addEventListener('pointerdown', activateScrub, { passive: true, once: true });
-    window.addEventListener('wheel', activateScrub, { passive: true, once: true });
-    window.addEventListener('touchstart', activateScrub, { passive: true, once: true });
-    window.addEventListener('keydown', activateScrub, { passive: true, once: true });
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', warmupLayout, { passive: true });
       window.visualViewport.addEventListener('scroll', warmupLayout, { passive: true });
@@ -1570,7 +1583,7 @@
 
       const playThenScroll = (targetY) => {
         stopAnim();
-        const heroEnd = layout.trackScrollable;
+        const heroEnd = track ? Math.max(0, track.offsetHeight - window.innerHeight) : layout.trackScrollable;
         const startY = window.scrollY || window.pageYOffset;
         const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
         const heroDur = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
@@ -1601,7 +1614,7 @@
             }
           }
 
-          if (!isMobile && !LOW_END_DESKTOP) {
+          if (!isMobile) {
             const py = (p - .5) * (isFirefox ? 5 : 12);
             getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
           }
@@ -1620,7 +1633,7 @@
 
       const mobileScroll = (targetY) => {
         stopAnim();
-        const heroEnd = layout.trackScrollable;
+        const heroEnd = track ? Math.max(0, track.offsetHeight - window.innerHeight) : layout.trackScrollable;
         const startY = window.scrollY || window.pageYOffset;
         const isContact = targetY > heroEnd + 100;
         const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
@@ -1687,7 +1700,6 @@
         if (!href.startsWith('#') || href.length < 2) return;
         const target = document.querySelector(href);
         if (!target) return;
-        activateScrub();
         e.preventDefault();
 
         recalcLayout();
@@ -1699,7 +1711,7 @@
 
         if (isMobile && atTop) {
           mobileScroll(targetY);
-        } else if (!isMobile && !LOW_END_DESKTOP && atTop && (scrub.ready || fc.ready)) {
+        } else if (!isMobile && atTop && (scrub.ready || fc.ready)) {
           playThenScroll(targetY);
         } else {
           fastScrollTo(targetY);

@@ -781,7 +781,10 @@
       const SD_VIDEO_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
       const HD_VIDEO_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
       const FALLBACK_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-      const MOBILE_VIDEO_SOURCES = [SD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      const longSide = Math.max(window.innerWidth || 0, window.innerHeight || 0);
+      const isTabletLikeMobile = isMobile && window.matchMedia('(pointer: coarse)').matches && longSide >= 1000;
+      const MOBILE_PHONE_VIDEO_SOURCES = [SD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      const MOBILE_TABLET_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const DESKTOP_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const DESKTOP_LITE_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const isFirefox = /firefox/i.test(navigator.userAgent);
@@ -805,7 +808,7 @@
       );
       if (desktopLiteMode) rootEl.classList.add('is-lite-desktop');
       let activeSources = isMobile
-        ? MOBILE_VIDEO_SOURCES
+        ? (isTabletLikeMobile ? MOBILE_TABLET_VIDEO_SOURCES : MOBILE_PHONE_VIDEO_SOURCES)
         : (desktopLiteMode ? DESKTOP_LITE_VIDEO_SOURCES : DESKTOP_VIDEO_SOURCES);
 
       let sourceIndex = 0, ready = false, duration = 0, targetTime = 0, raf = 0, lastInputTs = 0;

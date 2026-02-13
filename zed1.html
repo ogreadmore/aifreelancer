@@ -562,7 +562,7 @@
       : isTablet
         ? { count: 28, scale: 0.70, yieldEvery: 2 }
         : LOW_END
-          ? { count: 24, scale: 0.48, yieldEvery: 2 }
+          ? { count: 18, scale: 0.45, yieldEvery: 2 }
           : HIGH_END
             ? { count: 56, scale: 0.75, yieldEvery: 4 }
             : { count: 36, scale: 0.58, yieldEvery: 3 };
@@ -617,6 +617,7 @@
       error: false,
       ctx: null,        // drawing context for heroCanvas
       lastIdx: -1,      // last displayed frame index
+      lastTarget: -1,   // last requested frame index
       width: 0,
       height: 0,
       segStart: 0,
@@ -645,6 +646,7 @@
       fc.complete = false;
       fc.extracting = false;
       fc.lastIdx = -1;
+      fc.lastTarget = -1;
       fc.ctx = null;
       fc.width = 0;
       fc.height = 0;
@@ -674,7 +676,7 @@
       });
     }
 
-    function seekTo(videoEl, t, timeout = 2500) {
+    function seekTo(videoEl, t, timeout = (LOW_END ? 9000 : 3000)) {
       return new Promise((resolve, reject) => {
         let done = false;
         const finish = (ok) => {
@@ -695,6 +697,9 @@
     }
 
     function buildDecodeOrder(n) {
+      if (LOW_END || isMobile) {
+        return Array.from({ length: n }, (_, i) => i);
+      }
       const out = [];
       const seen = new Uint8Array(n);
       const push = (i) => {
@@ -735,14 +740,15 @@
       return !!fc.ctx;
     }
 
-    function nearestDecodedIndex(target) {
+    function nearestDecodedIndex(target, dir) {
       if (!fc.loaded.length) return -1;
       if (fc.loaded[target]) return target;
-      for (let d = 1; d < FRAME_COUNT; d++) {
-        const left = target - d;
-        const right = target + d;
-        if (left >= 0 && fc.loaded[left]) return left;
-        if (right < FRAME_COUNT && fc.loaded[right]) return right;
+      if (dir >= 0) {
+        for (let left = target - 1; left >= 0; left--) if (fc.loaded[left]) return left;
+        for (let right = target + 1; right < FRAME_COUNT; right++) if (fc.loaded[right]) return right;
+      } else {
+        for (let right = target + 1; right < FRAME_COUNT; right++) if (fc.loaded[right]) return right;
+        for (let left = target - 1; left >= 0; left--) if (fc.loaded[left]) return left;
       }
       return -1;
     }
@@ -755,7 +761,9 @@
         video.pause();
       }
       const target = Math.round(clamp(progress, 0, 1) * (FRAME_COUNT - 1));
-      const idx = nearestDecodedIndex(target);
+      const dir = (fc.lastTarget < 0 || target >= fc.lastTarget) ? 1 : -1;
+      fc.lastTarget = target;
+      const idx = nearestDecodedIndex(target, dir);
       if (idx < 0 || idx === fc.lastIdx) return;
       const frame = fc.frames[idx];
       if (!frame) return;
@@ -784,8 +792,13 @@
         extractScheduled = false;
         extractFrames();
       };
-      if ('requestIdleCallback' in window) window.requestIdleCallback(start, { timeout: 900 });
-      else setTimeout(start, 120);
+      if (LOW_END || isMobile) {
+        setTimeout(start, 0);
+      } else if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(start, { timeout: 900 });
+      } else {
+        setTimeout(start, 120);
+      }
     }
 
     function engageHeroAnimation() {
@@ -953,7 +966,10 @@
 
       // ── WRITE: hero text + overlay fade ──
       if (!reducedMotion && heroContent && heroEl) {
-        if (!heroEngaged || sy <= 4) {
+        if (LOW_END) {
+          if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
+          if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
+        } else if (!heroEngaged || sy <= 4) {
           if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
           if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
         } else {
@@ -1082,6 +1098,7 @@
       fc.decodedCount = 0;
       fc.complete = false;
       fc.lastIdx = -1;
+      fc.lastTarget = -1;
 
       recalcLayout();
       drawStartFrame();
@@ -1302,7 +1319,10 @@
           return;
         }
 
-        const heroDur = Math.min(2800, Math.max(900, heroDist / (isMobile ? 0.65 : 0.9)));
+        const heroPxPerMs = isTablet ? 0.34 : (isPhone ? 0.56 : 0.9);
+        const heroMinDur = isTablet ? 1400 : 900;
+        const heroMaxDur = isTablet ? 3600 : 2800;
+        const heroDur = Math.min(heroMaxDur, Math.max(heroMinDur, heroDist / heroPxPerMs));
         runScroll(heroStop, heroDur, null, () => {
           if (targetY > heroStop + 2) smoothScrollTo(targetY);
           else requestFrame();

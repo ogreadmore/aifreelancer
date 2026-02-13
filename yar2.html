@@ -760,10 +760,10 @@
       const FALLBACK_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
       const MOBILE_VIDEO_SOURCES = [SD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const DESKTOP_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
-      const DESKTOP_LITE_VIDEO_SOURCES = [SD_VIDEO_URL, HD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      const DESKTOP_LITE_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const isFirefox = /firefox/i.test(navigator.userAgent);
       if (isFirefox) document.documentElement.classList.add('is-firefox');
-      // Fallback: weaker desktops keep scroll-scrub, but with lighter styling/seek cadence.
+      // Fallback: weaker desktops use lighter styling and autoplay (not scroll-scrub).
       const ua = navigator.userAgent || '';
       const isWindowsDesktop = !isMobile && /Windows/i.test(ua);
       const desktopCoreCount = navigator.hardwareConcurrency || 0;
@@ -839,22 +839,20 @@
         video.style.transform = '';
         activeSources = DESKTOP_LITE_VIDEO_SOURCES;
         sourceIndex = 0;
-        // If we were on the HD desktop source, switch down to SD immediately.
-        if ((video.currentSrc || video.src || '').indexOf('8134766-sd_426_226_25fps.mp4') === -1) {
+        // If current source is not HD, switch to HD for lite desktop autoplay.
+        if ((video.currentSrc || video.src || '').indexOf('8134766-hd_1366_720_25fps.mp4') === -1) {
           ready = false;
           setVideoSource(activeSources[sourceIndex]);
           return;
         }
         if (!ready) return;
-        targetTime = computeTargetTime();
-        smoothTime = targetTime;
         try {
           video.pause();
-          video.loop = false;
+          video.loop = true;
           video.playbackRate = 1;
-          video.currentTime = targetTime;
+          if (video.currentTime < START_AT_SECONDS) video.currentTime = START_AT_SECONDS;
+          video.play().catch(() => {});
         } catch {}
-        scheduleTick();
       }
 
       /*
@@ -898,8 +896,6 @@
       const MOBILE_TOUCH_THRESHOLD = 0.004;
       const MOBILE_PREROLL_MS = 1000;
       const MOBILE_PREROLL_BOOST = 1 / 6; // ~1 second in a 6-second mobile segment
-      const DESKTOP_LITE_SEEK_THRESHOLD = 0.018;
-      const DESKTOP_LITE_SEEK_COOLDOWN = 22;
       let mobilePreRollBoost = 0;
       let lastTouchInputTs = -1;
       let perfSampleCount = 0;
@@ -909,6 +905,10 @@
       function tick(ts = performance.now()) {
         raf = 0;
         if (!ready || scrubPaused) return;
+        if (desktopLiteMode) {
+          if (video.paused) video.play().catch(() => {});
+          return;
+        }
 
         if (!isMobile) {
           if (prevTickTs > 0) {
@@ -946,12 +946,9 @@
             lastSeekTs = ts;
           }
         } else {
-          const desktopLiteActive = desktopLiteMode && !isMobile;
           const seekThreshold = mobileFingerActive ? MOBILE_TOUCH_THRESHOLD : SEEK_THRESHOLD;
           const seekCooldown = mobileFingerActive ? 0 : SEEK_COOLDOWN;
-          const activeSeekThreshold = desktopLiteActive ? DESKTOP_LITE_SEEK_THRESHOLD : seekThreshold;
-          const activeSeekCooldown = desktopLiteActive ? DESKTOP_LITE_SEEK_COOLDOWN : seekCooldown;
-          if (Math.abs(video.currentTime - smoothTime) > activeSeekThreshold && (ts - lastSeekTs) > activeSeekCooldown) {
+          if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (ts - lastSeekTs) > seekCooldown) {
             try { video.currentTime = smoothTime; } catch {}
             lastSeekTs = ts;
           }
@@ -964,6 +961,10 @@
       }
       function scheduleTick() {
         if (!ready || scrubPaused) return;
+        if (desktopLiteMode) {
+          if (video.paused) video.play().catch(() => {});
+          return;
+        }
         lastInputTs = performance.now();
         if (!raf) raf = requestAnimationFrame(tick);
       }
@@ -972,6 +973,20 @@
         if (!Number.isFinite(duration) || duration <= 0) return;
         refreshTrackMetrics();
         ready = true;
+
+        if (desktopLiteMode) {
+          const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
+          const segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
+          targetTime = segmentStart;
+          smoothTime = segmentStart;
+          try {
+            video.currentTime = segmentStart;
+            video.loop = true;
+            video.playbackRate = 1;
+            video.play().catch(() => {});
+          } catch {}
+          return;
+        }
 
         targetTime = computeTargetTime();
         if (isMobile) {
@@ -1459,8 +1474,11 @@
           if (!isMobilePlay && delta > 42) {
             desktopSlowFrameCount += 1;
             if (desktopSlowFrameCount >= 8) {
+              animFrame = 0;
+              scrubPaused = false;
               enableDesktopLiteMode();
-              desktopSlowFrameCount = -999;
+              fastScrollTo(targetY);
+              return;
             }
           }
           virtualElapsed += delta;
@@ -1473,23 +1491,18 @@
           if (isMobilePlay) {
             if (video.paused) video.play().catch(() => {});
           } else {
-            const desktopLiteActive = desktopLiteMode && !isMobilePlay;
             const diff = targetTime - smoothTime;
             if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
             else smoothTime = targetTime;
 
             if (isFirefox) {
               const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
-              const ffThreshold = desktopLiteActive ? 0.035 : 0.02;
-              if (Math.abs(video.currentTime - snapped) > ffThreshold) {
+              if (Math.abs(video.currentTime - snapped) > 0.02) {
                 try { video.currentTime = snapped; } catch {}
               }
             } else {
-              const seekThreshold = desktopLiteActive ? DESKTOP_LITE_SEEK_THRESHOLD : 0.002;
-              const seekCooldown = desktopLiteActive ? DESKTOP_LITE_SEEK_COOLDOWN : 0;
-              if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (now - lastSeekTs) > seekCooldown) {
+              if (Math.abs(video.currentTime - smoothTime) > 0.002) {
                 try { video.currentTime = smoothTime; } catch {}
-                lastSeekTs = now;
               }
             }
           }
@@ -1644,7 +1657,7 @@
             const freshRect = target.getBoundingClientRect();
             const freshScrollY = window.scrollY || window.pageYOffset;
             const freshTargetY = Math.max(0, Math.round(freshRect.top + freshScrollY - offset));
-            if (freshScrollY < 50 && ready) playThenScroll(freshTargetY);
+            if (freshScrollY < 50 && ready && !desktopLiteMode) playThenScroll(freshTargetY);
             else fastScrollTo(freshTargetY);
           };
           doScroll();

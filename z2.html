@@ -744,13 +744,12 @@
        Each seek forces the video decoder (CPU) to decompress a frame,
        taking 10-100ms on phones and old hardware.
 
-       FIX: Pre-decode video frames to ImageBitmaps with an off-DOM
-       extractor video, then display via canvas drawImage() during scroll.
-       A canvas blit of a pre-decoded bitmap is a <1ms GPU operation.
+       FIX: Pre-decode video frames to ImageBitmaps during page load,
+       then display via canvas drawImage() during scroll. A canvas blit
+       of a pre-decoded bitmap is a <1ms GPU operation.
 
-       The visible hero video stays paused on a deterministic still frame
-       while extraction runs. If extraction fails (CORS, etc.), we fall
-       back to direct video seeking.
+       A still frame is drawn into the hero canvas at startup so the
+       page does not appear to autoplay before interaction.
 
        Other optimizations:
        - Single scroll listener → single rAF → batched DOM writes
@@ -796,16 +795,17 @@
     const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
     const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
     const FALLBACK_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-    const VIDEO_SOURCES = isMobile
+    const PREFER_LIGHT_SOURCE = isMobile || LOW_END || isDesktopChromeWindows;
+    const VIDEO_SOURCES = PREFER_LIGHT_SOURCE
       ? [SD_URL, HD_URL, FALLBACK_URL]
       : [HD_URL, SD_URL, FALLBACK_URL];
     let sourceIndex = 0;
 
     // ── Scrub constants ──
-    const START_AT = isMobile ? 4.75 : 5.25;
+    const START_AT = isMobile ? 4.75 : (isDesktopChromeWindows ? 1.15 : 5.25);
     const SEG_LEN = isMobile ? 6 : 4;
     const END_SAFETY = 0.06;
-    const LERP = isMobile ? 0.05 : (isFirefox ? 0.1 : 0.12);
+    const LERP = isMobile ? 0.05 : (isFirefox ? 0.1 : (isDesktopChromeWindows ? 0.09 : 0.12));
     const LERP_FF = isMobile ? 0.04 : 0.1;
 
     /* ================================================================
@@ -818,187 +818,83 @@
       ready: false,
       extracting: false,
       error: false,
-      failCount: 0,
       ctx: null,
       lastA: -1,
       lastB: -1,
       lastMix: -1,
     };
-    const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : 48;
+    const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : ((LOW_END || isDesktopChromeWindows) ? 34 : 48);
     const FRAME_BLEND = !isFirefox && !isIOS;
-    const FRAME_CACHE_ALLOWED = (!isMobile || MOBILE_FRAME_CACHE);
-
-    function createExtractionVideo(src) {
-      return new Promise((resolve, reject) => {
-        const v = document.createElement('video');
-        v.muted = true;
-        v.playsInline = true;
-        v.crossOrigin = 'anonymous';
-        v.preload = 'auto';
-
-        let settled = false;
-        const cleanup = () => {
-          v.removeEventListener('loadedmetadata', onMeta);
-          v.removeEventListener('error', onErr);
-        };
-        const onMeta = () => {
-          if (settled) return;
-          settled = true;
-          cleanup();
-          resolve(v);
-        };
-        const onErr = () => {
-          if (settled) return;
-          settled = true;
-          cleanup();
-          reject(new Error('extract-load'));
-        };
-
-        v.addEventListener('loadedmetadata', onMeta, { once: true });
-        v.addEventListener('error', onErr, { once: true });
-        v.src = src;
-        try { v.load(); } catch {}
-
-        setTimeout(() => {
-          if (settled) return;
-          if (Number.isFinite(v.duration) && v.duration > 0) {
-            settled = true;
-            cleanup();
-            resolve(v);
-          } else {
-            settled = true;
-            cleanup();
-            reject(new Error('extract-timeout'));
-          }
-        }, 9000);
-      });
-    }
-
-    function destroyExtractionVideo(v) {
-      if (!v) return;
-      try { v.pause(); } catch {}
-      try {
-        v.removeAttribute('src');
-        v.load();
-      } catch {}
-    }
-
-    function seekMediaTime(media, timeSec, timeout = 3600) {
-      return new Promise((resolve, reject) => {
-        let settled = false;
-        const cleanup = () => {
-          media.removeEventListener('seeked', onDone);
-          media.removeEventListener('error', onErr);
-        };
-        const finish = (ok) => {
-          if (settled) return;
-          settled = true;
-          cleanup();
-          if (ok) resolve();
-          else reject(new Error('seek'));
-        };
-        const onDone = () => finish(true);
-        const onErr = () => finish(false);
-
-        media.addEventListener('seeked', onDone, { once: true });
-        media.addEventListener('error', onErr, { once: true });
-        try {
-          media.currentTime = timeSec;
-        } catch {
-          finish(false);
-          return;
-        }
-
-        setTimeout(() => {
-          if (settled) return;
-          const near = Math.abs((media.currentTime || 0) - timeSec) <= 0.08;
-          finish(near);
-        }, timeout);
-      });
-    }
 
     async function extractFrames() {
       if (fc.extracting || fc.ready || fc.error) return;
-      if (!FRAME_CACHE_ALLOWED) { fc.error = true; return; }
-
-      const src = video.currentSrc || video.src;
-      if (!src) { fc.error = true; return; }
+      if (isMobile && !MOBILE_FRAME_CACHE) { fc.error = true; return; }
       fc.extracting = true;
+
+      const dur = video.duration;
+      if (!dur || !Number.isFinite(dur) || dur <= 0) { fc.extracting = false; return; }
+
+      const maxEnd = Math.max(0, dur - END_SAFETY);
+      const segStart = clamp(START_AT, 0, maxEnd);
+      const segEnd = clamp(segStart + SEG_LEN, segStart, maxEnd);
+
+      const vw = video.videoWidth || 640;
+      const vh = video.videoHeight || 360;
+      const scale = isMobile ? 1 : 0.5;
+      const cw = Math.round(vw * scale);
+      const ch = Math.round(vh * scale);
+
+      const offscreen = document.createElement('canvas');
+      offscreen.width = cw;
+      offscreen.height = ch;
+      const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
 
       const hasCreateBitmap = typeof createImageBitmap === 'function' && !(isMobile && isIOS);
       const frames = [];
-      let extractionVideo = null;
 
       try {
-        extractionVideo = await createExtractionVideo(src);
-        const dur = extractionVideo.duration;
-        if (!dur || !Number.isFinite(dur) || dur <= 0) {
-          fc.extracting = false;
-          destroyExtractionVideo(extractionVideo);
-          return;
-        }
-
-        const maxEnd = Math.max(0, dur - END_SAFETY);
-        const segStart = clamp(START_AT, 0, maxEnd);
-        const segEnd = clamp(segStart + SEG_LEN, segStart, maxEnd);
-
-        const vw = extractionVideo.videoWidth || video.videoWidth || 640;
-        const vh = extractionVideo.videoHeight || video.videoHeight || 360;
-        const scale = isMobile ? 1 : 0.5;
-        const cw = Math.round(vw * scale);
-        const ch = Math.round(vh * scale);
-
-        const offscreen = document.createElement('canvas');
-        offscreen.width = cw;
-        offscreen.height = ch;
-        const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
-        if (!offCtx) throw new Error('no-offscreen-ctx');
-
         for (let i = 0; i < FRAME_COUNT; i++) {
           const t = segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (segEnd - segStart);
-          await seekMediaTime(extractionVideo, t);
-          offCtx.drawImage(extractionVideo, 0, 0, cw, ch);
+          video.currentTime = t;
+          await new Promise((resolve, reject) => {
+            const onDone = () => { video.removeEventListener('seeked', onDone); video.removeEventListener('error', onErr); resolve(); };
+            const onErr = () => { video.removeEventListener('seeked', onDone); video.removeEventListener('error', onErr); reject(new Error('seek')); };
+            video.addEventListener('seeked', onDone, { once: true });
+            video.addEventListener('error', onErr, { once: true });
+          });
+          offCtx.drawImage(video, 0, 0, cw, ch);
           if (hasCreateBitmap) {
             frames.push(await createImageBitmap(offscreen));
           } else {
             frames.push(offCtx.getImageData(0, 0, cw, ch));
           }
         }
-
-        fc.frames = frames;
-        fc.extracting = false;
-        fc.ready = true;
-        fc.failCount = 0;
-
-        heroCanvas.width = cw;
-        heroCanvas.height = ch;
-        fc.ctx = heroCanvas.getContext('2d', { alpha: false });
-        if (fc.ctx) {
-          fc.ctx.imageSmoothingEnabled = true;
-          if ('imageSmoothingQuality' in fc.ctx) {
-            fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
-          }
-        }
-
-        heroCanvas.style.display = 'block';
-        video.style.display = 'none';
-        video.pause();
-
-        displayFrame(getProgress());
       } catch (e) {
-        fc.extracting = false;
-        frames.forEach(f => { if (f && f.close) f.close(); });
-        fc.failCount += 1;
-        if (fc.failCount <= 2) {
-          setTimeout(() => {
-            if (!fc.ready) extractFrames();
-          }, 450 * fc.failCount);
-          return;
-        }
         fc.error = true;
-      } finally {
-        destroyExtractionVideo(extractionVideo);
+        fc.extracting = false;
+        frames.forEach(f => { if (f.close) f.close(); });
+        return;
       }
+
+      fc.frames = frames;
+      fc.extracting = false;
+      fc.ready = true;
+
+      heroCanvas.width = cw;
+      heroCanvas.height = ch;
+      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
+      if (fc.ctx) {
+        fc.ctx.imageSmoothingEnabled = true;
+        if ('imageSmoothingQuality' in fc.ctx) {
+          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
+        }
+      }
+
+      heroCanvas.style.display = 'block';
+      video.style.display = 'none';
+      video.pause();
+
+      displayFrame(getProgress());
     }
 
     function displayFrame(progress) {
@@ -1033,7 +929,7 @@
     }
 
     function getHeroVisual() {
-      return fc.ready ? heroCanvas : video;
+      return (fc.ready || bootStillActive) ? heroCanvas : video;
     }
 
     /* ================================================================
@@ -1105,86 +1001,53 @@
       lastSeekTs: 0,
       paused: false,
     };
-    const initFrame = {
-      primed: false,
-      tries: 0,
+    let bootStillActive = false;
+    const bootStill = {
       timer: 0,
+      attempts: 0,
+      maxAttempts: 6,
     };
 
-    function clearInitFrameTimer() {
-      if (initFrame.timer) {
-        clearTimeout(initFrame.timer);
-        initFrame.timer = 0;
-      }
+    function clearBootStillTimer() {
+      if (!bootStill.timer) return;
+      clearTimeout(bootStill.timer);
+      bootStill.timer = 0;
     }
 
-    function scheduleInitFramePrime(delay = 0) {
-      if (initFrame.primed || initFrame.timer || !scrub.ready) return;
-      initFrame.timer = setTimeout(() => {
-        initFrame.timer = 0;
-        primeInitialFrame();
-      }, delay);
+    function drawBootStill() {
+      const vw = video.videoWidth || 0;
+      const vh = video.videoHeight || 0;
+      if (vw <= 0 || vh <= 0) return false;
+
+      heroCanvas.width = vw;
+      heroCanvas.height = vh;
+      const ctx = heroCanvas.getContext('2d', { alpha: false });
+      if (!ctx) return false;
+
+      try { ctx.drawImage(video, 0, 0, vw, vh); } catch { return false; }
+
+      heroCanvas.style.display = 'block';
+      video.style.visibility = 'hidden';
+      bootStillActive = true;
+      return true;
     }
 
-    function markInitFramePrimed() {
-      if (initFrame.primed) return;
-      initFrame.primed = true;
-      initFrame.tries = 0;
-      const kick = () => requestFrame();
-      if (typeof video.requestVideoFrameCallback === 'function') {
-        try {
-          video.requestVideoFrameCallback(() => kick());
-          return;
-        } catch {}
-      }
-      requestAnimationFrame(kick);
+    function releaseBootStill() {
+      if (!bootStillActive) return;
+      bootStillActive = false;
+      video.style.visibility = 'visible';
+      if (!fc.ready) heroCanvas.style.display = 'none';
     }
 
-    function primeInitialFrame() {
-      if (initFrame.primed || !scrub.ready) return;
-      const maxEnd = Math.max(0, scrub.duration - END_SAFETY);
-      const desired = clamp(scrub.targetTime, 0, maxEnd);
-      let settled = false;
-
-      const cleanup = () => {
-        video.removeEventListener('seeked', onSeeked);
-        video.removeEventListener('error', onErr);
-      };
-      const finish = (ok) => {
-        if (settled) return;
-        settled = true;
-        cleanup();
-        try { video.pause(); } catch {}
-        if (ok) {
-          scrub.targetTime = desired;
-          scrub.smoothTime = desired;
-          markInitFramePrimed();
-          return;
-        }
-        initFrame.tries += 1;
-        if (initFrame.tries <= 8) {
-          scheduleInitFramePrime(Math.min(900, 120 * initFrame.tries));
-        }
-      };
-      const onSeeked = () => finish(true);
-      const onErr = () => finish(false);
-
-      video.addEventListener('seeked', onSeeked, { once: true });
-      video.addEventListener('error', onErr, { once: true });
-      try {
-        video.currentTime = desired;
-        video.pause();
-      } catch {
-        finish(false);
-        return;
-      }
-
-      const timeoutMs = 420 + Math.min(480, initFrame.tries * 90);
-      setTimeout(() => {
-        if (settled) return;
-        const near = Math.abs(video.currentTime - desired) <= 0.08;
-        finish(near);
-      }, timeoutMs);
+    function scheduleBootStill(attemptDelay = 120) {
+      if (bootStillActive || bootStill.attempts >= bootStill.maxAttempts) return;
+      clearBootStillTimer();
+      bootStill.timer = setTimeout(() => {
+        bootStill.timer = 0;
+        bootStill.attempts += 1;
+        if (drawBootStill()) return;
+        scheduleBootStill(Math.min(680, attemptDelay + 80));
+      }, attemptDelay);
     }
 
     function computeTargetTime(progress, dur) {
@@ -1209,8 +1072,8 @@
           scrub.lastSeekTs = ts;
         }
       } else {
-        const threshold = isMobile ? 0.03 : 0.002;
-        const cooldown = isMobile ? 25 : 0;
+        const threshold = isMobile ? 0.03 : (isDesktopChromeWindows ? 0.018 : 0.002);
+        const cooldown = isMobile ? 25 : (isDesktopChromeWindows ? 24 : 0);
         if (Math.abs(video.currentTime - scrub.smoothTime) > threshold && (ts - scrub.lastSeekTs) > cooldown) {
           try { video.currentTime = scrub.smoothTime; } catch {}
           scrub.lastSeekTs = ts;
@@ -1269,7 +1132,7 @@
 
       if (fc.ready) {
         displayFrame(progress);
-      } else if (!fc.extracting && scrub.ready && !scrub.paused) {
+      } else if (!bootStillActive && !fc.extracting && scrub.ready && !scrub.paused) {
         seekVideo(ts, progress);
       }
 
@@ -1307,9 +1170,7 @@
     function onScroll() {
       lastScrollTs = performance.now();
       if (layout.trackScrollable <= 0) recalcLayout();
-      if (FRAME_CACHE_ALLOWED && scrub.ready && !fc.ready && !fc.extracting && !fc.error) {
-        extractFrames();
-      }
+      if (bootStillActive) releaseBootStill();
       requestFrame();
     }
 
@@ -1338,16 +1199,16 @@
       fc.ready = false;
       fc.extracting = false;
       fc.error = false;
-      fc.failCount = 0;
       fc.ctx = null;
       fc.lastA = -1;
       fc.lastB = -1;
       fc.lastMix = -1;
-      clearInitFrameTimer();
-      initFrame.primed = false;
-      initFrame.tries = 0;
+      clearBootStillTimer();
+      bootStill.attempts = 0;
+      bootStillActive = false;
       heroCanvas.style.display = 'none';
       video.style.display = 'block';
+      video.style.visibility = 'visible';
 
       video.pause();
       video.removeAttribute('src');
@@ -1366,10 +1227,6 @@
 
       recalcLayout();
 
-      if (!fc.ready && !fc.error && FRAME_CACHE_ALLOWED) {
-        extractFrames();
-      }
-
       if (!fc.ready) {
         const p = getProgress();
         const initial = !isMobile
@@ -1379,21 +1236,31 @@
         scrub.smoothTime = initial;
         try { video.currentTime = initial; } catch {}
         video.pause();
-        scheduleInitFramePrime(0);
+
+        bootStill.attempts = 0;
+        if (!drawBootStill()) scheduleBootStill(70);
+
+        if (!fc.error && (!isMobile || MOBILE_FRAME_CACHE)) {
+          extractFrames();
+        }
         requestFrame();
       }
     }
 
     video.style.background = '#fff';
     video.addEventListener('loadedmetadata', initVideo);
-    video.addEventListener('loadeddata', () => { if (scrub.ready) scheduleInitFramePrime(0); });
+    video.addEventListener('loadeddata', () => {
+      if (!scrub.ready) return;
+      if (!bootStillActive && !fc.ready && (window.scrollY || window.pageYOffset) <= 2) {
+        if (!drawBootStill()) scheduleBootStill(80);
+      }
+    });
     video.addEventListener('canplay', () => { if (!scrub.ready) initVideo(); });
     video.addEventListener('seeked', () => {
-      if (!initFrame.primed && scrub.ready && Math.abs(video.currentTime - scrub.targetTime) <= 0.08) {
-        markInitFramePrimed();
-      } else {
-        requestFrame();
+      if (!bootStillActive && !fc.ready && scrub.ready && (window.scrollY || window.pageYOffset) <= 2) {
+        drawBootStill();
       }
+      requestFrame();
     });
     video.addEventListener('error', () => {
       sourceIndex++;
@@ -1409,10 +1276,15 @@
     const warmupLayout = () => { recalcLayout(); requestFrame(); };
     recalcLayout();
     requestFrame();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(warmupLayout).catch(() => {});
+    }
     window.addEventListener('load', () => {
       warmupLayout();
       setTimeout(warmupLayout, 120);
       setTimeout(warmupLayout, 420);
+      setTimeout(warmupLayout, 980);
+      setTimeout(warmupLayout, 1800);
     }, { passive: true });
     window.addEventListener('pageshow', () => {
       setTimeout(warmupLayout, 0);

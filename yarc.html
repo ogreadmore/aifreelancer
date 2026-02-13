@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
-    // Keep reload behavior deterministic for hero animation: always start at top.
     (() => {
       const nav = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]) || null;
       const legacyNavType = performance.navigation ? performance.navigation.type : -1;
@@ -24,21 +23,17 @@
   </script>
   <title>AI Freelancer — We Optimize Everything</title>
   <meta name="description" content="AI Freelancer is a business optimization powerhouse based in Cleveland, OH. We optimize your marketing, website, SEO, workflows, and more — delivering real results in days, not months.">
-
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aifreelancer.co/">
   <meta property="og:title" content="AI Freelancer — We Optimize Everything">
   <meta property="og:description" content="We're not an AI agency. We're a business optimization powerhouse. Marketing, websites, SEO, workflows — optimized and launched fast.">
   <meta property="og:image" content="https://aifreelancer.co/og-image.png">
   <meta property="og:locale" content="en_US">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Freelancer — We Optimize Everything">
   <meta name="twitter:description" content="We're not an AI agency. We're a business optimization powerhouse.">
   <meta name="twitter:image" content="https://aifreelancer.co/og-image.png">
-
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234B88DA'/%3E%3Cstop offset='40%25' stop-color='%238A3BF1'/%3E%3Cstop offset='70%25' stop-color='%23D941A1'/%3E%3Cstop offset='100%25' stop-color='%23E5484D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='6' fill='url(%23g)'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='18' fill='white'%3EAi%3C/text%3E%3C/svg%3E">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -46,12 +41,9 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #fff;
-      color: #0A0A0A;
-      line-height: 1.5;
+      background: #fff; color: #0A0A0A; line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
-
     .container { max-width: 920px; margin: 0 auto; padding: 0 2rem; }
 
     nav {
@@ -61,8 +53,7 @@
     }
     nav.scrolled {
       background: rgba(255,255,255,.92);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
       box-shadow: 0 1px 0 rgba(0,0,0,.08);
     }
     .nav-inner {
@@ -72,7 +63,6 @@
     .logo {
       font-size: clamp(1.2rem, 2.2vw, 1.75rem);
       font-weight: 800; letter-spacing: .02em; line-height: 1; white-space: nowrap;
-      text-transform: none;
     }
     .logo-ai {
       background: linear-gradient(105deg, #4B88DA, #8A3BF1, #D941A1, #E5484D);
@@ -92,8 +82,7 @@
       background-size: auto, 180% 180%;
       animation: accentShift 10s ease infinite;
       transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
     .nav-link:hover {
       transform: scale(1.1);
@@ -104,13 +93,9 @@
       transform: scale(1.18);
       box-shadow: 0 8px 28px rgba(138,59,241,.24), 0 0 18px rgba(217,65,161,.16);
     }
-
     .nav-link-fx {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 101;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 101;
     }
 
     .scroll-track { height: 400vh; position: relative; }
@@ -119,10 +104,18 @@
       display: flex; align-items: flex-end; background: #f2f2f2;
       --overlay-opacity: 1;
     }
-    .hero video {
+    .hero video, .hero-canvas {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      pointer-events: none;
+    }
+    .hero video {
       transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
-      will-change: transform; pointer-events: none;
+      will-change: transform;
+    }
+    .hero-canvas {
+      transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
+      will-change: transform;
+      display: none; /* shown once frames are ready */
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
@@ -176,73 +169,36 @@
     .pitch-text { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 700; line-height: 1.35; letter-spacing: -.03em; max-width: 700px; color: #A3A3A3; }
     .pitch-text span { color: #0A0A0A; }
 
-    .about-video-wrap {
-      padding: 1rem 0 5rem;
-    }
+    .about-video-wrap { padding: 1rem 0 5rem; }
     .about-video-shell {
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-      transform: scale(.84);
-      transform-origin: center top;
-      will-change: transform;
-      transition: transform .15s linear;
+      width: 100%; max-width: 100%; margin: 0 auto;
+      transform: scale(.84); transform-origin: center top;
+      will-change: transform; transition: transform .15s linear;
     }
     .about-video-box {
-      position: relative;
-      background: #f3f4f6;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 18px 50px rgba(10,10,10,.12);
-      aspect-ratio: 16 / 9;
+      position: relative; background: #f3f4f6; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 18px 50px rgba(10,10,10,.12); aspect-ratio: 16 / 9;
     }
-    .about-video-box iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+    .about-video-box iframe { width: 100%; height: 100%; border: 0; }
     .about-video-overlay {
-      position: absolute;
-      inset: 0;
-      background: #f3f4f6;
-      display: block;
-      cursor: pointer;
-      transition: opacity .28s ease;
-      z-index: 2;
+      position: absolute; inset: 0; background: #f3f4f6;
+      display: block; cursor: pointer; transition: opacity .28s ease; z-index: 2;
     }
-    .about-video-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
+    .about-video-overlay.hidden { opacity: 0; pointer-events: none; }
     .about-video-cta {
-      width: 78px;
-      height: 78px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
+      width: 78px; height: 78px; border-radius: 999px; display: grid; place-items: center;
       color: #fff;
       background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
-      background-size: 180% 180%;
-      animation: accentShift 9s ease infinite;
+      background-size: 180% 180%; animation: accentShift 9s ease infinite;
       box-shadow: 0 10px 28px rgba(138,59,241,.28);
-      margin-bottom: 0;
     }
     .about-video-caption {
-      position: absolute;
-      left: 50%;
-      top: calc(50% + 56px);
-      transform: translateX(-50%);
-      margin-top: 0;
-      text-align: center;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #111827;
-      width: calc(100% - 2rem);
-      pointer-events: none;
-      line-height: 1.2;
+      position: absolute; left: 50%; top: calc(50% + 56px); transform: translateX(-50%);
+      text-align: center; font-size: 1.05rem; font-weight: 700; color: #111827;
+      width: calc(100% - 2rem); pointer-events: none; line-height: 1.2;
     }
 
-    /* PERF: content-visibility lets browser skip layout/paint for offscreen sections */
+    /* PERF: content-visibility on below-fold sections */
     .proof, .services, .case-studies, .approach, .cta-section {
       content-visibility: auto;
       contain-intrinsic-size: auto 600px;
@@ -252,18 +208,12 @@
     .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
     .stat { padding: 2rem; background: #F9F9F9; border-radius: 8px; }
     .stat-number {
-      font-size: 2.75rem;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: .5rem;
-      letter-spacing: -.03em;
+      font-size: 2.75rem; font-weight: 800; line-height: 1; margin-bottom: .5rem; letter-spacing: -.03em;
       background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
-      background-size: 200% 200%;
-      background-position: 30% 50%;
-      -webkit-background-clip: text;
-      background-clip: text;
+      background-size: 200% 200%; background-position: 30% 50%;
+      -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
-      /* PERF: static gradient — no per-frame repaint */
+      /* PERF: static gradient position — no animation, no repaints */
     }
     .stat-label { font-size: .8125rem; color: #737373; font-weight: 500; }
 
@@ -288,17 +238,12 @@
     .service-item:hover .service-name,
     .service-item:focus-visible .service-name {
       background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
-      background-size: 180% 180%;
-      background-position: 30% 50%;
-      -webkit-background-clip: text;
-      background-clip: text;
+      background-size: 180% 180%; background-position: 30% 50%;
+      -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
-      /* PERF: static gradient on hover — no animation */
     }
     .service-item:hover .service-desc,
-    .service-item:focus-visible .service-desc {
-      color: #6b7280;
-    }
+    .service-item:focus-visible .service-desc { color: #6b7280; }
     .service-name { font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; }
     .service-desc { font-size: .8125rem; color: #A3A3A3; font-weight: 500; text-align: right; max-width: 340px; padding-left: 1rem; }
 
@@ -308,38 +253,22 @@
     .case-study-desc { font-size: 1rem; color: #525252; margin-bottom: 2rem; line-height: 1.6; }
     .case-study-metrics { display: flex; gap: 2.5rem; flex-wrap: wrap; }
     .metric-value {
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: -.03em;
-      line-height: 1;
-      margin-bottom: .25rem;
+      font-size: 1.75rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; margin-bottom: .25rem;
       background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
-      background-size: 200% 200%;
-      background-position: 30% 50%;
-      -webkit-background-clip: text;
-      background-clip: text;
+      background-size: 200% 200%; background-position: 30% 50%;
+      -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
-      /* PERF: static gradient — no per-frame repaint */
     }
     .metric-label { font-size: .75rem; color: #A3A3A3; font-weight: 500; }
-
-    .quote { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 600; line-height: 1.5; letter-spacing: -.02em; margin-bottom: 2rem; max-width: 650px; }
-    .quote::before { content: '\201C'; } .quote::after { content: '\201D'; }
-    .attribution { font-size: .875rem; font-weight: 600; }
-    .attribution-role { font-size: .8125rem; color: #737373; }
 
     .testimonial-scroll { position: relative; }
     .testimonial-sticky {
       position: sticky; top: 0; height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center; overflow: hidden;
     }
-    .testimonial-header {
-      padding: 0 4rem; margin-bottom: 2.5rem;
-    }
+    .testimonial-header { padding: 0 4rem; margin-bottom: 2.5rem; }
     .testimonial-rail {
-      display: flex; gap: 2rem;
-      padding: 0 4rem;
+      display: flex; gap: 2rem; padding: 0 4rem;
       will-change: transform;
     }
     .testimonial-card {
@@ -353,26 +282,17 @@
     }
     .testimonial-card .tc-quote::before { content: '\201C'; }
     .testimonial-card .tc-quote::after { content: '\201D'; }
-    .testimonial-card .tc-stars {
-      display: flex; gap: 3px; margin-bottom: 1.25rem;
-    }
-    .testimonial-card .tc-stars svg {
-      width: 18px; height: 18px;
-    }
+    .testimonial-card .tc-stars { display: flex; gap: 3px; margin-bottom: 1.25rem; }
+    .testimonial-card .tc-stars svg { width: 18px; height: 18px; }
     .testimonial-card .tc-author { display: flex; align-items: center; gap: .75rem; }
     .testimonial-card .tc-name { font-size: .875rem; font-weight: 600; color: #0A0A0A; }
     .testimonial-card .tc-role { font-size: .75rem; color: #737373; }
-
-    .testimonial-progress {
-      display: flex; gap: .5rem; justify-content: center; margin-top: 2rem;
-    }
+    .testimonial-progress { display: flex; gap: .5rem; justify-content: center; margin-top: 2rem; }
     .testimonial-dot {
       width: 8px; height: 8px; border-radius: 50%;
       background: #D4D4D4; transition: background .3s, transform .3s;
     }
-    .testimonial-dot.active {
-      background: #8A3BF1; transform: scale(1.3);
-    }
+    .testimonial-dot.active { background: #8A3BF1; transform: scale(1.3); }
 
     .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
     .step-number { font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #A3A3A3; margin-bottom: 1rem; }
@@ -382,7 +302,6 @@
     .cta-section { padding: 6rem 0; text-align: center; }
     .cta-section h2 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin-bottom: 1.5rem; }
     .cta-subtitle { font-size: 1.125rem; color: #737373; margin-bottom: 2.5rem; max-width: 560px; margin-inline: auto; }
-
     .contact-form { max-width: 760px; margin: 0 auto; display: grid; gap: .9rem; text-align: left; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
     .contact-form input, .contact-form textarea {
@@ -397,8 +316,7 @@
       color: #fff; padding: 1rem 1.25rem; border-radius: 8px; font-weight: 700;
       background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
       background-size: 180% 180%; animation: accentShift 9s ease infinite;
-      font-size: 1rem;
-      position: relative;
+      font-size: 1rem; position: relative;
       transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease, opacity .2s ease;
     }
     .cta-button:hover:not(:disabled) {
@@ -411,17 +329,12 @@
       box-shadow: 0 10px 30px rgba(138,59,241,.28), 0 0 20px rgba(217,65,161,.18);
     }
     .cta-button:disabled { opacity: .6; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
-
     .form-status {
       text-align: center; padding: 1rem; border-radius: 8px;
       font-size: .9375rem; font-weight: 600; display: none;
     }
-    .form-status.success {
-      display: block; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;
-    }
-    .form-status.error {
-      display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca;
-    }
+    .form-status.success { display: block; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .form-status.error { display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
 
     footer { text-align: center; padding: 3rem 0; border-top: 1px solid #E5E5E5; color: #A3A3A3; font-size: .8125rem; }
 
@@ -442,128 +355,74 @@
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
 
-    /* ======================================================
-       MOBILE — PERFORMANCE-TUNED
-       ====================================================== */
+    /* ── MOBILE ── */
     @media (max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px) {
       nav {
-        padding: 1rem 0;
-        background: transparent;
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-        box-shadow: none;
+        padding: 1rem 0; background: transparent;
+        -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none;
       }
       nav.scrolled {
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+        -webkit-backdrop-filter: none; backdrop-filter: none;
+        background: rgba(255,255,255,.98);
+        box-shadow: 0 1px 0 rgba(0,0,0,.08);
       }
-      
       .container, .nav-inner { padding: 0 1.25rem; }
       .hero-content { padding: 0 1.25rem 3rem; }
-
-      .scroll-track { 
-        height: 200svh; 
-        padding-top: 75px;
-        box-sizing: border-box; 
-      }
-      
+      .scroll-track { height: 200svh; padding-top: 75px; box-sizing: border-box; }
       .hero {
-        position: sticky;
-        top: 75px;
-        height: 68svh;
-        min-height: 460px;
-        align-items: flex-end;
-        --overlay-opacity: 1;
+        position: sticky; top: 75px; height: 68svh; min-height: 460px;
+        align-items: flex-end; --overlay-opacity: 1;
       }
-
       .hero::after {
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
+        -webkit-backdrop-filter: none; backdrop-filter: none;
         background:
           linear-gradient(to bottom, rgba(255,255,255,.40), rgba(255,255,255,.64)),
           radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.28), rgba(255,255,255,.10));
         opacity: var(--overlay-opacity, 1);
       }
-
-      .hero video {
-        transform: scale(1.0);
-        object-position: center 30%;
-        filter: none;
-        will-change: auto;
+      .hero video, .hero-canvas {
+        transform: scale(1.0); object-position: center 30%;
+        filter: none; will-change: auto;
       }
-
-      .hero-content {
-        will-change: opacity;
-      }
-
-      .hero-cta:hover {
-        animation: accentShift 9s ease infinite;
-        box-shadow: none;
-        filter: none;
-      }
-
+      .hero-content { will-change: opacity; }
+      .hero-cta:hover { animation: accentShift 9s ease infinite; box-shadow: none; filter: none; }
       .page-content {
         margin-top: calc(-200svh + max(68svh, 460px) + 75px);
-        position: relative;
-        z-index: 10;
-        background: #fff;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
+        position: relative; z-index: 10; background: #fff;
+        border-top-left-radius: 20px; border-top-right-radius: 20px;
         box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
       }
-
-      .pitch {
-        padding: 4rem 0 1.5rem;
-        opacity: 1 !important; transform: none !important; transition: none !important;
-      }
-      .about-video-wrap {
-        padding: 0 0 3rem;
-        opacity: 1 !important; transform: none !important; transition: none !important;
-      }
+      .pitch { padding: 4rem 0 1.5rem; opacity: 1 !important; transform: none !important; transition: none !important; }
+      .about-video-wrap { padding: 0 0 3rem; opacity: 1 !important; transform: none !important; transition: none !important; }
       .about-video-shell { transform: scale(1) !important; transition: none !important; }
-
       .stats { grid-template-columns: 1fr; gap: 1rem; }
-      .service-item { flex-direction: column; align-items: flex-start; gap: .5rem; padding: 1rem 1rem; }
+      .service-item { flex-direction: column; align-items: flex-start; gap: .5rem; padding: 1rem; }
       .service-desc { text-align: left; max-width: 100%; padding-left: 0; }
-
       .service-item.scroll-active {
         background:
           linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)) padding-box,
           linear-gradient(105deg, rgba(75,136,218,.48), rgba(138,59,241,.48), rgba(217,65,161,.48), rgba(229,72,77,.48)) border-box;
-        border: 1px solid transparent;
-        transform: translateY(-1px);
+        border: 1px solid transparent; transform: translateY(-1px);
         box-shadow: 0 10px 24px rgba(138,59,241,.12), 0 2px 8px rgba(10,10,10,.05);
       }
       .service-item.scroll-active .service-name {
         background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
-        background-size: 180% 180%;
-        background-position: 30% 50%;
+        background-size: 180% 180%; background-position: 30% 50%;
         -webkit-background-clip: text; background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .service-item.scroll-active .service-desc { color: #6b7280; }
-
       .case-study { padding: 2rem; }
       .case-study-metrics { gap: 1.5rem; }
       .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .form-row { grid-template-columns: 1fr; }
-
       .testimonial-header { padding: 0 1.25rem; }
       .testimonial-rail { padding: 0 1.25rem; gap: 1.25rem; }
       .testimonial-card { flex: 0 0 300px; max-width: 300px; padding: 1.75rem; }
-
       .about-video-caption { font-size: .96rem; top: calc(50% + 52px); }
     }
-
-    @media (max-width: 375px) {
-      .hero-content { padding: 0 1.25rem 3.5rem; }
-    }
-    @media (max-height: 600px) {
-      .hero-content { padding: 0 1.25rem 3rem; }
-      .hero { min-height: 360px; }
-    }
+    @media (max-width: 375px) { .hero-content { padding: 0 1.25rem 3.5rem; } }
+    @media (max-height: 600px) { .hero-content { padding: 0 1.25rem 3rem; } .hero { min-height: 360px; } }
   </style>
 </head>
 <body>
@@ -577,6 +436,7 @@
   <div class="scroll-track" id="track">
     <section class="hero">
       <video id="bgVideo" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="heroCanvas" class="hero-canvas"></canvas>
       <div class="hero-content">
         <h1>We love optimization.</h1>
         <p class="subtitle">We're not an AI agency. We're a business optimization powerhouse.</p>
@@ -592,14 +452,10 @@
       <div class="container">
         <div class="about-video-shell" id="aboutVideoShell">
           <div class="about-video-box" id="aboutVideoBox">
-            <iframe
-              id="aboutVideoFrame"
-              title="AI Freelancer Intro"
-              loading="lazy"
+            <iframe id="aboutVideoFrame" title="AI Freelancer Intro" loading="lazy"
               data-src="https://www.youtube.com/embed/4UZaMDg3GZk?rel=0&showinfo=0&autoplay=1&mute=1"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+              allowfullscreen></iframe>
             <div class="about-video-overlay" id="aboutVideoOverlay" role="button" tabindex="0" aria-label="Play intro video">
               <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
                 <div class="about-video-cta"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
@@ -612,10 +468,8 @@
     </section>
 
     <div class="container"><hr class="divider"></div>
-
     <section class="proof"><div class="container"><div class="section-label">Results We've Delivered</div><div class="stats"><div class="stat"><div class="stat-number" data-count-to="4" data-prefix="" data-suffix="x" data-format="int">4x</div><div class="stat-label">Google Ads ROI</div></div><div class="stat"><div class="stat-number" data-count-to="500" data-prefix="" data-suffix="%" data-format="int">500%</div><div class="stat-label">Traffic increase</div></div><div class="stat"><div class="stat-number" data-count-to="100" data-prefix="$" data-suffix="K+" data-format="int">$100K+</div><div class="stat-label">Raised for non-profits</div></div></div></div></section>
     <div class="container"><hr class="divider"></div>
-
     <section class="services"><div class="container"><div class="section-label">We Optimize Everything</div><div class="service-grid">
       <a class="service-item" href="#contact"><div class="service-name">Optimize Your Marketing</div><div class="service-desc">Google Ads, PPC, content, campaigns</div></a>
       <a class="service-item" href="#contact"><div class="service-name">Optimize Your Website</div><div class="service-desc">Conversions, e-commerce, speed, UX</div></a>
@@ -633,7 +487,6 @@
     </div></div></section>
 
     <div class="container"><hr class="divider"></div>
-
     <section class="case-studies"><div class="container"><div class="section-label">Case Studies</div>
       <div class="case-study"><div class="case-study-eyebrow">Veterinary E-Commerce · Cleveland, OH</div><h3>Medica Veterinary</h3><p class="case-study-desc">A veterinary practice needed to move from in-office sales to e-commerce. We built a complete Shopify store in one month with entirely AI-generated product photography, driving a 2x increase in sales.</p><div class="case-study-metrics"><div class="metric"><div class="metric-value" data-count-to="2" data-prefix="" data-suffix="x" data-format="int">2x</div><div class="metric-label">Increase in sales</div></div><div class="metric"><div class="metric-value" data-count-to="500" data-prefix="" data-suffix="%" data-format="int">500%</div><div class="metric-label">More site traffic</div></div><div class="metric"><div class="metric-value" data-count-to="1" data-prefix="" data-suffix=" mo" data-format="int">1 mo</div><div class="metric-label">From zero to live</div></div></div></div>
       <div class="case-study"><div class="case-study-eyebrow">Functional Medicine · Wellness Clinic</div><h3>Inspire Wellness</h3><p class="case-study-desc">A functional medicine clinic needed a steady stream of new patients. We built a new WordPress site and launched a Google Ads campaign that was profitable within the first week.</p><div class="case-study-metrics"><div class="metric"><div class="metric-value" data-count-to="4" data-prefix="" data-suffix="x" data-format="int">4x</div><div class="metric-label">Google Ads ROI</div></div><div class="metric"><div class="metric-value" data-count-to="20" data-prefix="" data-suffix="%" data-format="int">20%</div><div class="metric-label">More new signups</div></div><div class="metric"><div class="metric-value" data-count-to="15" data-prefix="" data-suffix="%" data-format="int">15%</div><div class="metric-label">Visitor-to-call rate</div></div></div></div>
@@ -646,996 +499,956 @@
         <div class="testimonial-header"><div class="container"><div class="section-label">Client Feedback</div></div></div>
         <div class="testimonial-rail" id="testimonialRail">
           <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4B88DA"/><stop offset="35%" stop-color="#8A3BF1"/><stop offset="70%" stop-color="#D941A1"/><stop offset="100%" stop-color="#E5484D"/></linearGradient><symbol id="star" viewBox="0 0 24 24"><path fill="url(#starGrad)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol></defs></svg>
-          <div class="testimonial-card">
-            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
-            <p class="tc-quote">Taylor quickly understood our mission and used automation to help us reach the right audiences. His insights and attention to detail brought measurable results from day one.</p>
-            <div class="tc-author">
-              <div><div class="tc-name">Vlad Khaykin</div><div class="tc-role">Thought Leader, Nonprofit Management</div></div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
-            <p class="tc-quote">The AI-powered analytics dashboard gives us insights we never had before. We can now make data-driven decisions with confidence, which has been a game-changer for our marketing campaigns.</p>
-            <div class="tc-author">
-              <div><div class="tc-name">Jessica Williams</div><div class="tc-role">Founder, Creative Co.</div></div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
-            <p class="tc-quote">Dependable, sharp, and trustworthy. AI Freelancer delivered the automation solution we needed&mdash;on time and with zero surprises. Highly recommended for any business or project.</p>
-            <div class="tc-author">
-              <div><div class="tc-name">JC Hansen</div><div class="tc-role">Project Manager, Earthtone Construction</div></div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
-            <p class="tc-quote">We were skeptical about AI, but the team at AI Freelancer made the process seamless. Their automation of our invoicing and reporting has saved us countless hours and reduced errors significantly.</p>
-            <div class="tc-author">
-              <div><div class="tc-name">Linda Kim</div><div class="tc-role">CFO, Blue Bear</div></div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
-            <p class="tc-quote">Taylor brings a rare blend of technical skill and business strategy. The automation tools he built for us saved time and made our workflows run smoother than ever.</p>
-            <div class="tc-author">
-              <div><div class="tc-name">Gregory Taylor</div><div class="tc-role">President, GCT Group LLC</div></div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
-            <p class="tc-quote">Working with Taylor was a breeze. He delivered an automation solution that fit perfectly with my tech stack and requirements. Excellent communication and outstanding results.</p>
-            <div class="tc-author">
-              <div><div class="tc-name">Jon Coleman</div><div class="tc-role">IT Support, Ohio State University</div></div>
-            </div>
-          </div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">Taylor quickly understood our mission and used automation to help us reach the right audiences. His insights and attention to detail brought measurable results from day one.</p><div class="tc-author"><div><div class="tc-name">Vlad Khaykin</div><div class="tc-role">Thought Leader, Nonprofit Management</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">The AI-powered analytics dashboard gives us insights we never had before. We can now make data-driven decisions with confidence, which has been a game-changer for our marketing campaigns.</p><div class="tc-author"><div><div class="tc-name">Jessica Williams</div><div class="tc-role">Founder, Creative Co.</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">Dependable, sharp, and trustworthy. AI Freelancer delivered the automation solution we needed&mdash;on time and with zero surprises. Highly recommended for any business or project.</p><div class="tc-author"><div><div class="tc-name">JC Hansen</div><div class="tc-role">Project Manager, Earthtone Construction</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">We were skeptical about AI, but the team at AI Freelancer made the process seamless. Their automation of our invoicing and reporting has saved us countless hours and reduced errors significantly.</p><div class="tc-author"><div><div class="tc-name">Linda Kim</div><div class="tc-role">CFO, Blue Bear</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">Taylor brings a rare blend of technical skill and business strategy. The automation tools he built for us saved time and made our workflows run smoother than ever.</p><div class="tc-author"><div><div class="tc-name">Gregory Taylor</div><div class="tc-role">President, GCT Group LLC</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">Working with Taylor was a breeze. He delivered an automation solution that fit perfectly with my tech stack and requirements. Excellent communication and outstanding results.</p><div class="tc-author"><div><div class="tc-name">Jon Coleman</div><div class="tc-role">IT Support, Ohio State University</div></div></div></div>
         </div>
         <div class="testimonial-progress" id="testimonialDots"></div>
       </div>
     </section>
     <div class="container"><hr class="divider"></div>
-
     <section class="approach"><div class="container"><div class="section-label">How We Work</div><div class="approach-grid"><div class="approach-step"><div class="step-number">01 — Listen</div><div class="step-title">Understand your business</div><p class="step-desc">We learn what you do, how you do it, and where you want to go. Every engagement starts with understanding, not assumptions.</p></div><div class="approach-step"><div class="step-number">02 — Optimize</div><div class="step-title">Make it better</div><p class="step-desc">We implement real improvements—faster processes, smarter marketing, better systems. No strategy decks that collect dust.</p></div><div class="approach-step"><div class="step-number">03 — Grow</div><div class="step-title">Scale what works</div><p class="step-desc">Once it's working, we help you do more of it. More efficiency, more revenue, more of what makes your business great.</p></div></div></div></section>
     <div class="container"><hr class="divider"></div>
-
     <section class="cta-section" id="contact"><div class="container"><h2>Let's make it better.</h2><p class="cta-subtitle">We love business optimization, and we'd love to hear from you!</p><form class="contact-form" id="contactForm" action="https://formspree.io/f/mldlebob" method="POST"><div class="form-row"><input type="text" name="name" placeholder="Your name" required><input type="email" name="email" placeholder="Your email" required></div><input type="text" name="company" placeholder="Company (optional)"><textarea name="message" rows="5" placeholder="What should we optimize first?" required></textarea><button type="submit" class="cta-button" id="submitBtn">Send Request</button><div class="form-status" id="formStatus"></div></form></div></section>
-
     <footer><div class="container">AI Freelancer · AIFreelancer.co · Cleveland, OH</div></footer>
   </div>
 
   <script>
-    (() => {
-      /* ================================================================
-         PERFORMANCE-OPTIMIZED JS
-         ================================================================
-         Key architectural changes from original:
-         1. SINGLE scroll listener → single rAF → batched reads/writes
-         2. Mobile: video autoplays normally, NO seeking (biggest mobile win)
-         3. Cached layout positions (recalc only on resize)
-         4. Shared particle canvas (one instead of two)
-         5. Removed desktopLiteMode entirely
-         6. Static gradients on stat/metric numbers (no accentShift animation)
-         ================================================================ */
+  (() => {
+    /* ================================================================
+       PERFORMANCE ARCHITECTURE
+       ================================================================
+       The #1 bottleneck was video.currentTime seeking in the scroll path.
+       Each seek forces the video decoder (CPU) to decompress a frame,
+       taking 10-100ms on phones and old hardware.
 
-      // ── Constants & detection ──
-      const MOBILE_MQ = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
-      const isMobile = window.matchMedia(MOBILE_MQ).matches;
-      const isFirefox = /firefox/i.test(navigator.userAgent);
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
-                    || (navigator.deviceMemory && navigator.deviceMemory <= 2);
-      const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+       FIX: Pre-decode video frames to ImageBitmaps during page load,
+       then display via canvas drawImage() during scroll. A canvas blit
+       of a pre-decoded bitmap is a <1ms GPU operation.
 
-      if (isFirefox) document.documentElement.classList.add('is-firefox');
+       During the 2-5s extraction phase, the white hero overlay hides
+       the video. Once frames are cached, the canvas replaces the video.
+       If extraction fails (CORS, etc.), we fall back to video seeking.
 
-      // ── DOM refs ──
-      const nav = document.getElementById('mainNav');
-      const track = document.getElementById('track');
-      const video = document.getElementById('bgVideo');
-      const heroContent = document.querySelector('.hero-content');
-      const heroEl = document.querySelector('.hero');
-      const testimonialSection = document.getElementById('testimonial-scroll');
-      const testimonialRail = document.getElementById('testimonialRail');
-      const testimonialDots = document.getElementById('testimonialDots');
-      const aboutShell = document.getElementById('aboutVideoShell');
-      const aboutBox = document.getElementById('aboutVideoBox');
+       Other optimizations:
+       - Single scroll listener → single rAF → batched DOM writes
+       - Cached layout positions (recalc on resize only)
+       - Static gradients on stat/metric numbers (no animation repaints)
+       - Shared particle canvas (one instead of two)
+       - content-visibility on below-fold sections
+       ================================================================ */
 
-      // ── Video sources ──
-      const SD_VIDEO_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
-      const HD_VIDEO_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
-      const FALLBACK_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-      const VIDEO_SOURCES = isMobile
-        ? [SD_VIDEO_URL, FALLBACK_VIDEO_URL]
-        : [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
+    const MOBILE_MQ = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
+    const isMobile = window.matchMedia(MOBILE_MQ).matches;
+    const isMobileViewport = () => window.matchMedia(MOBILE_MQ).matches;
+    const isFirefox = /firefox/i.test(navigator.userAgent);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
+                  || (navigator.deviceMemory && navigator.deviceMemory <= 2);
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
-      // ── Shared layout state (cached, recalculated on resize) ──
-      const layout = {
-        viewportH: window.innerHeight || 0,
-        trackTop: 0,
-        trackScrollable: 0,
-        testimonialTop: 0,
-        testimonialH: 0,
-        aboutBoxTop: 0,
-        navThreshold: 10,
-      };
+    if (isFirefox) document.documentElement.classList.add('is-firefox');
 
-      function recalcLayout() {
-        layout.viewportH = window.innerHeight || 0;
-        const scrollY = window.scrollY || window.pageYOffset;
+    // ── DOM refs ──
+    const nav = document.getElementById('mainNav');
+    const track = document.getElementById('track');
+    const video = document.getElementById('bgVideo');
+    const heroCanvas = document.getElementById('heroCanvas');
+    const heroContent = document.querySelector('.hero-content');
+    const heroEl = document.querySelector('.hero');
+    const testimonialSection = document.getElementById('testimonial-scroll');
+    const testimonialRail = document.getElementById('testimonialRail');
+    const testimonialDotsEl = document.getElementById('testimonialDots');
+    const aboutShell = document.getElementById('aboutVideoShell');
+    const aboutBox = document.getElementById('aboutVideoBox');
 
-        if (track) {
-          const rect = track.getBoundingClientRect();
-          layout.trackTop = scrollY + rect.top;
-          layout.trackScrollable = Math.max(0, track.offsetHeight - layout.viewportH);
-          layout.navThreshold = isMobile ? 10 : Math.max(0, Math.floor(layout.trackScrollable - 2));
-        }
+    // ── Video sources ──
+    const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
+    const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
+    const FALLBACK_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+    const VIDEO_SOURCES = isMobile ? [SD_URL, FALLBACK_URL] : [HD_URL, SD_URL, FALLBACK_URL];
+    let sourceIndex = 0;
 
-        if (testimonialSection) {
-          const rect = testimonialSection.getBoundingClientRect();
-          layout.testimonialTop = scrollY + rect.top;
-          layout.testimonialH = testimonialSection.offsetHeight;
-        }
+    // ── Scrub constants ──
+    const START_AT = isMobile ? 4.75 : 5.25;
+    const SEG_LEN = isMobile ? 6 : 4;
+    const END_SAFETY = 0.06;
+    const LERP = isFirefox ? 0.1 : 0.12;
 
-        if (aboutBox && !isMobile) {
-          const rect = aboutBox.getBoundingClientRect();
-          layout.aboutBoxTop = scrollY + rect.top;
-        }
+    /* ================================================================
+       FRAME CACHE
+       Pre-decodes video frames to ImageBitmaps / ImageData for
+       instant display during scroll.
+       ================================================================ */
+    const fc = {
+      frames: [],
+      ready: false,
+      extracting: false,
+      error: false,
+      ctx: null,        // drawing context for heroCanvas
+      lastIdx: -1,      // last displayed frame index
+    };
+    const FRAME_COUNT = isMobile ? 30 : 48;
 
-        // Update testimonial section height
-        if (testimonialSection && testimonialRail) {
-          const railWidth = testimonialRail.scrollWidth;
-          const viewWidth = window.innerWidth;
-          const scrollDistance = Math.max(0, railWidth - viewWidth + 80);
-          testimonialSection.style.height = (layout.viewportH + scrollDistance) + 'px';
-          // Recalc after height change
-          const rect2 = testimonialSection.getBoundingClientRect();
-          layout.testimonialTop = scrollY + rect2.top;
-          layout.testimonialH = testimonialSection.offsetHeight;
-        }
-      }
+    async function extractFrames() {
+      if (fc.extracting || fc.ready || fc.error) return;
+      fc.extracting = true;
 
-      function getHeroProgress(scrollY) {
-        if (!track) return 0;
-        const scrolled = clamp(scrollY - layout.trackTop, 0, layout.trackScrollable);
-        return layout.trackScrollable > 0 ? scrolled / layout.trackScrollable : 0;
-      }
+      const dur = video.duration;
+      if (!dur || !Number.isFinite(dur) || dur <= 0) { fc.extracting = false; return; }
 
-      // ── Video scrub state (desktop only) ──
-      const scrub = {
-        ready: false,
-        duration: 0,
-        targetTime: 0,
-        smoothTime: 0,
-        lastSeekTs: 0,
-        paused: false,  // true during programmatic anchor scrolling
-      };
-      const START_AT = 5.25;
-      const SEGMENT_LEN = 4;
-      const END_SAFETY = 0.06;
-      const LERP = isFirefox ? 0.1 : 0.12;
-      const SEEK_THRESH = 0.002;
+      const maxEnd = Math.max(0, dur - END_SAFETY);
+      const segStart = clamp(START_AT, 0, maxEnd);
+      const segEnd = clamp(segStart + SEG_LEN, segStart, maxEnd);
 
-      function computeTargetTime(progress) {
-        if (!scrub.ready || scrub.duration <= 0) return 0;
-        const maxEnd = Math.max(0, scrub.duration - END_SAFETY);
-        const segStart = clamp(START_AT, 0, maxEnd);
-        const segEnd = clamp(segStart + SEGMENT_LEN, segStart, maxEnd);
-        return segStart + progress * (segEnd - segStart);
-      }
+      const vw = video.videoWidth || 640;
+      const vh = video.videoHeight || 360;
+      // Desktop: capture at half resolution to save memory
+      // Mobile: SD video is already small, capture at full res
+      const scale = isMobile ? 1 : 0.5;
+      const cw = Math.round(vw * scale);
+      const ch = Math.round(vh * scale);
 
-      // ── Hero fade state ──
-      let lastTextFade = -1;
-      let lastOverlayFade = -1;
+      const offscreen = document.createElement('canvas');
+      offscreen.width = cw;
+      offscreen.height = ch;
+      const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
 
-      // ── Testimonial state ──
-      let testimonialCards = [];
-      let testimonialDotEls = [];
-      if (testimonialRail) {
-        testimonialCards = testimonialRail.querySelectorAll('.testimonial-card');
-        if (testimonialDots) {
-          testimonialCards.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
-            testimonialDots.appendChild(dot);
+      const hasCreateBitmap = typeof createImageBitmap === 'function';
+      const frames = [];
+
+      try {
+        for (let i = 0; i < FRAME_COUNT; i++) {
+          const t = segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (segEnd - segStart);
+          video.currentTime = t;
+          await new Promise((resolve, reject) => {
+            const onDone = () => { video.removeEventListener('seeked', onDone); video.removeEventListener('error', onErr); resolve(); };
+            const onErr = () => { video.removeEventListener('seeked', onDone); video.removeEventListener('error', onErr); reject(new Error('seek')); };
+            video.addEventListener('seeked', onDone, { once: true });
+            video.addEventListener('error', onErr, { once: true });
           });
-          testimonialDotEls = testimonialDots.querySelectorAll('.testimonial-dot');
-        }
-      }
-
-      /* ================================================================
-         UNIFIED FRAME LOOP
-         One scroll listener → one rAF → batched layout reads → batched writes.
-         The video scrub lerp may keep the loop alive after scrolling stops.
-         ================================================================ */
-      let frameId = 0;
-      let needsFrame = false;
-      let lastScrollInputTs = 0;
-
-      function requestFrame() {
-        if (!frameId) frameId = requestAnimationFrame(frame);
-      }
-
-      function frame(ts) {
-        frameId = 0;
-
-        // ── READ (one batch) ──
-        const scrollY = window.scrollY || window.pageYOffset;
-        const heroProgress = getHeroProgress(scrollY);
-
-        // ── WRITE: Nav state ──
-        nav.classList.toggle('scrolled', scrollY > layout.navThreshold);
-
-        // ── WRITE: Hero text + overlay fade ──
-        if (!reducedMotion && heroContent && heroEl) {
-          if (scrollY <= 4) {
-            if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
-            if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
+          offCtx.drawImage(video, 0, 0, cw, ch);
+          // createImageBitmap is GPU-friendly; ImageData fallback for old Safari
+          if (hasCreateBitmap) {
+            frames.push(await createImageBitmap(offscreen));
           } else {
-            const textEnd = isMobile ? 0.18 : 0.42;
-            const textFade = Math.max(0, 1 - (heroProgress / textEnd));
-            if (Math.abs(textFade - lastTextFade) >= 0.01) {
-              heroContent.style.opacity = textFade.toFixed(3);
-              lastTextFade = textFade;
-            }
-            const overlayEnd = isMobile ? 0.28 : 1;
-            const overlayFloor = isMobile ? 0.12 : 0;
-            const overlayFade = Math.max(overlayFloor, 1 - (heroProgress / overlayEnd));
-            if (Math.abs(overlayFade - lastOverlayFade) >= 0.01) {
-              heroEl.style.setProperty('--overlay-opacity', overlayFade.toFixed(3));
-              lastOverlayFade = overlayFade;
-            }
+            frames.push(offCtx.getImageData(0, 0, cw, ch));
           }
         }
-
-        // ── WRITE: Video scrub (desktop only) ──
-        if (!isMobile && scrub.ready && !scrub.paused) {
-          scrub.targetTime = computeTargetTime(heroProgress);
-          const diff = scrub.targetTime - scrub.smoothTime;
-          if (Math.abs(diff) > 0.001) scrub.smoothTime += diff * LERP;
-          else scrub.smoothTime = scrub.targetTime;
-
-          if (isFirefox) {
-            const snapped = Math.round(scrub.smoothTime / (1 / 25)) * (1 / 25);
-            if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - scrub.lastSeekTs) > 33) {
-              try { video.currentTime = snapped; } catch {}
-              scrub.lastSeekTs = ts;
-            }
-          } else {
-            if (Math.abs(video.currentTime - scrub.smoothTime) > SEEK_THRESH && (ts - scrub.lastSeekTs) > 0) {
-              try { video.currentTime = scrub.smoothTime; } catch {}
-              scrub.lastSeekTs = ts;
-            }
-          }
-
-          // Parallax
-          const py = (heroProgress - 0.5) * (isFirefox ? 5 : 12);
-          video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
-        }
-
-        // ── WRITE: Testimonial horizontal scroll (using cached positions) ──
-        if (testimonialSection && testimonialRail) {
-          const sectionRectTop = layout.testimonialTop - scrollY;
-          const sectionH = layout.testimonialH;
-          const vh = layout.viewportH;
-
-          if (sectionRectTop <= vh && (sectionRectTop + sectionH) >= 0) {
-            const scrollRange = sectionH - vh;
-            if (scrollRange > 0) {
-              const progress = clamp(-sectionRectTop / scrollRange, 0, 1);
-              const railWidth = testimonialRail.scrollWidth;
-              const viewWidth = window.innerWidth;
-              const maxTx = Math.max(0, railWidth - viewWidth + 80);
-              testimonialRail.style.transform = 'translate3d(' + (-progress * maxTx).toFixed(1) + 'px,0,0)';
-              const cardIdx = Math.min(testimonialCards.length - 1, Math.floor(progress * testimonialCards.length));
-              testimonialDotEls.forEach((d, i) => d.classList.toggle('active', i === cardIdx));
-            }
-          }
-        }
-
-        // ── WRITE: About video scroll-grow (desktop only, using cached position) ──
-        if (!isMobile && aboutShell && aboutBox) {
-          const boxTop = layout.aboutBoxTop - scrollY;
-          const vh = layout.viewportH;
-          const start = vh;
-          const end = vh * 0.38;
-          const progress = clamp((start - boxTop) / (start - end), 0, 1);
-          const scale = 0.78 + 0.22 * progress;
-          aboutShell.style.transform = 'scale(' + scale.toFixed(4) + ')';
-        }
-
-        // ── Continue loop if video lerp still active ──
-        if (!isMobile && scrub.ready && !scrub.paused) {
-          if (Math.abs(scrub.targetTime - scrub.smoothTime) > 0.001 || (ts - lastScrollInputTs) < 140) {
-            requestFrame();
-          }
-        }
+      } catch (e) {
+        // CORS block or seek failure — fall back to video seeking
+        fc.error = true;
+        fc.extracting = false;
+        // Clean up partial frames
+        frames.forEach(f => { if (f.close) f.close(); });
+        return;
       }
 
-      // ── Scroll / input listeners (all feed into the single frame loop) ──
-      function onScrollInput() {
-        lastScrollInputTs = performance.now();
-        requestFrame();
+      fc.frames = frames;
+      fc.extracting = false;
+      fc.ready = true;
+
+      // Set up the display canvas
+      heroCanvas.width = cw;
+      heroCanvas.height = ch;
+      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
+
+      // Show canvas, hide video
+      heroCanvas.style.display = 'block';
+      video.style.display = 'none';
+      video.pause();
+
+      // Display the correct frame for current scroll position
+      displayFrame(getProgress());
+    }
+
+    function displayFrame(progress) {
+      if (!fc.ready || !fc.ctx) return;
+      const idx = Math.round(clamp(progress, 0, 1) * (fc.frames.length - 1));
+      if (idx === fc.lastIdx) return;
+      fc.lastIdx = idx;
+      const frame = fc.frames[idx];
+      if (frame instanceof ImageBitmap) {
+        fc.ctx.drawImage(frame, 0, 0);
+      } else if (frame instanceof ImageData) {
+        fc.ctx.putImageData(frame, 0, 0);
+      }
+    }
+
+    // The element that gets parallax transforms (canvas when ready, video as fallback)
+    function getHeroVisual() {
+      return fc.ready ? heroCanvas : video;
+    }
+
+    /* ================================================================
+       LAYOUT CACHE — recalculated on resize only, not per-frame
+       ================================================================ */
+    const layout = {
+      vh: window.innerHeight || 0,
+      trackTop: 0,
+      trackScrollable: 0,
+      testimonialTop: 0,
+      testimonialScrollRange: 0,
+      testimonialMaxTx: 0,
+      aboutBoxTop: 0,
+      navThreshold: 10,
+    };
+
+    function recalcLayout() {
+      layout.vh = window.innerHeight || 0;
+      const sy = window.scrollY || window.pageYOffset;
+
+      if (track) {
+        const r = track.getBoundingClientRect();
+        layout.trackTop = sy + r.top;
+        layout.trackScrollable = Math.max(0, track.offsetHeight - layout.vh);
+        layout.navThreshold = isMobile ? 10 : Math.max(0, Math.floor(layout.trackScrollable - 2));
       }
 
-      window.addEventListener('scroll', onScrollInput, { passive: true });
-      window.addEventListener('wheel', onScrollInput, { passive: true });
-      window.addEventListener('touchstart', onScrollInput, { passive: true });
-      window.addEventListener('touchmove', onScrollInput, { passive: true });
+      if (testimonialSection && testimonialRail) {
+        // Set section height first, then measure
+        const railW = testimonialRail.scrollWidth;
+        const viewW = window.innerWidth;
+        const scrollDist = Math.max(0, railW - viewW + 80);
+        testimonialSection.style.height = (layout.vh + scrollDist) + 'px';
 
-      let resizeTimer = 0;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-          recalcLayout();
-          requestFrame();
-        }, 100);
-      }, { passive: true });
-
-      window.addEventListener('orientationchange', () => {
-        setTimeout(() => { recalcLayout(); requestFrame(); }, 200);
-      }, { passive: true });
-
-      // ── Video setup ──
-      let sourceIndex = 0;
-
-      function setVideoSource(url) {
-        video.pause();
-        video.removeAttribute('src');
-        video.load();
-        video.src = url;
-        video.crossOrigin = 'anonymous';
-        video.preload = 'auto';
-        video.load();
+        const r = testimonialSection.getBoundingClientRect();
+        layout.testimonialTop = sy + r.top;
+        layout.testimonialScrollRange = Math.max(0, testimonialSection.offsetHeight - layout.vh);
+        layout.testimonialMaxTx = Math.max(0, railW - viewW + 80);
       }
 
-      function initScrub() {
-        scrub.duration = Number(video.duration) || 0;
-        if (!Number.isFinite(scrub.duration) || scrub.duration <= 0) return;
-        recalcLayout();
-        scrub.ready = true;
+      if (aboutBox && !isMobile) {
+        const r = aboutBox.getBoundingClientRect();
+        layout.aboutBoxTop = sy + r.top;
+      }
+    }
 
-        if (isMobile) {
-          // PERF: Mobile just autoplays — no seeking at all
-          video.loop = true;
-          video.playbackRate = 1;
-          video.play().catch(() => {});
+    function getProgress() {
+      if (!track || layout.trackScrollable <= 0) return 0;
+      const sy = window.scrollY || window.pageYOffset;
+      return clamp((sy - layout.trackTop) / layout.trackScrollable, 0, 1);
+    }
+
+    /* ================================================================
+       VIDEO SEEK FALLBACK (used only if frame extraction fails)
+       ================================================================ */
+    const scrub = {
+      ready: false,
+      duration: 0,
+      smoothTime: 0,
+      targetTime: 0,
+      lastSeekTs: 0,
+      paused: false,
+    };
+
+    function computeTargetTime(progress, dur) {
+      const maxEnd = Math.max(0, dur - END_SAFETY);
+      const s = clamp(START_AT, 0, maxEnd);
+      const e = clamp(s + SEG_LEN, s, maxEnd);
+      return s + progress * (e - s);
+    }
+
+    function seekVideo(ts, progress) {
+      // Only called when frame cache is NOT ready
+      if (!scrub.ready || scrub.paused) return;
+      scrub.targetTime = computeTargetTime(progress, scrub.duration);
+      const diff = scrub.targetTime - scrub.smoothTime;
+      if (Math.abs(diff) > 0.001) scrub.smoothTime += diff * LERP;
+      else scrub.smoothTime = scrub.targetTime;
+
+      if (isFirefox) {
+        const snapped = Math.round(scrub.smoothTime * 25) / 25;
+        if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - scrub.lastSeekTs) > 33) {
+          try { video.currentTime = snapped; } catch {}
+          scrub.lastSeekTs = ts;
+        }
+      } else {
+        if (Math.abs(video.currentTime - scrub.smoothTime) > 0.002) {
+          try { video.currentTime = scrub.smoothTime; } catch {}
+          scrub.lastSeekTs = ts;
+        }
+      }
+    }
+
+    /* ================================================================
+       UNIFIED SCROLL FRAME LOOP
+       One scroll listener → one rAF → all reads first → all writes.
+       ================================================================ */
+    let frameId = 0;
+    let lastScrollTs = 0;
+    let lastTextFade = -1;
+    let lastOverlayFade = -1;
+
+    // Testimonial state
+    let tCards = [];
+    let tDots = [];
+    if (testimonialRail && testimonialDotsEl) {
+      tCards = testimonialRail.querySelectorAll('.testimonial-card');
+      tCards.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
+        testimonialDotsEl.appendChild(d);
+      });
+      tDots = testimonialDotsEl.querySelectorAll('.testimonial-dot');
+    }
+
+    function requestFrame() {
+      if (!frameId) frameId = requestAnimationFrame(frame);
+    }
+
+    function frame(ts) {
+      frameId = 0;
+
+      // ── READS ──
+      const sy = window.scrollY || window.pageYOffset;
+      const progress = getProgress();
+
+      // ── WRITE: nav ──
+      nav.classList.toggle('scrolled', sy > layout.navThreshold);
+
+      // ── WRITE: hero text + overlay fade ──
+      if (!reducedMotion && heroContent && heroEl) {
+        if (sy <= 4) {
+          if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
+          if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
         } else {
-          // Desktop: initialize scrub position
-          scrub.targetTime = computeTargetTime(getHeroProgress(window.scrollY || 0));
-          scrub.smoothTime = scrub.targetTime;
+          const textEnd = isMobile ? 0.18 : 0.42;
+          const tf = Math.max(0, 1 - (progress / textEnd));
+          if (Math.abs(tf - lastTextFade) >= 0.01) { heroContent.style.opacity = tf.toFixed(3); lastTextFade = tf; }
+
+          const olEnd = isMobile ? 0.28 : 1;
+          const olFloor = isMobile ? 0.12 : 0;
+          const ol = Math.max(olFloor, 1 - (progress / olEnd));
+          if (Math.abs(ol - lastOverlayFade) >= 0.01) { heroEl.style.setProperty('--overlay-opacity', ol.toFixed(3)); lastOverlayFade = ol; }
+        }
+      }
+
+      // ── WRITE: hero visual (canvas frames or video seek fallback) ──
+      if (fc.ready) {
+        displayFrame(progress);
+      } else if (!fc.extracting && !isMobile && scrub.ready && !scrub.paused) {
+        seekVideo(ts, progress);
+      }
+
+      // ── WRITE: parallax (desktop only) ──
+      if (!isMobile) {
+        const py = (progress - 0.5) * (isFirefox ? 5 : 12);
+        getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+      }
+
+      // ── WRITE: testimonial horizontal scroll ──
+      if (testimonialSection && testimonialRail && layout.testimonialScrollRange > 0) {
+        const tTop = layout.testimonialTop - sy;
+        if (tTop <= layout.vh && (tTop + layout.testimonialScrollRange + layout.vh) >= 0) {
+          const tp = clamp(-tTop / layout.testimonialScrollRange, 0, 1);
+          testimonialRail.style.transform = 'translate3d(' + (-tp * layout.testimonialMaxTx).toFixed(1) + 'px,0,0)';
+          const ci = Math.min(tCards.length - 1, Math.floor(tp * tCards.length));
+          tDots.forEach((d, i) => d.classList.toggle('active', i === ci));
+        }
+      }
+
+      // ── WRITE: about video scroll-grow (desktop only) ──
+      if (!isMobile && aboutShell && aboutBox) {
+        const bt = layout.aboutBoxTop - sy;
+        const start = layout.vh;
+        const end = layout.vh * 0.38;
+        const ap = clamp((start - bt) / (start - end), 0, 1);
+        aboutShell.style.transform = 'scale(' + (0.78 + 0.22 * ap).toFixed(4) + ')';
+      }
+
+      // ── Continue loop while lerp settling (video fallback only) ──
+      if (!fc.ready && !isMobile && scrub.ready && !scrub.paused) {
+        if (Math.abs(scrub.targetTime - scrub.smoothTime) > 0.001 || (ts - lastScrollTs) < 140) {
+          requestFrame();
+        }
+      }
+    }
+
+    function onScroll() {
+      lastScrollTs = performance.now();
+      requestFrame();
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('wheel', onScroll, { passive: true });
+    window.addEventListener('touchstart', onScroll, { passive: true });
+    window.addEventListener('touchmove', onScroll, { passive: true });
+
+    let resizeTimer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { recalcLayout(); requestFrame(); }, 80);
+    }, { passive: true });
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => { recalcLayout(); requestFrame(); }, 200);
+    }, { passive: true });
+
+    /* ================================================================
+       VIDEO LOAD + FRAME EXTRACTION
+       ================================================================ */
+    function setVideoSource(url) {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      video.src = url;
+      video.crossOrigin = 'anonymous';
+      video.preload = 'auto';
+      video.load();
+    }
+
+    function initVideo() {
+      const dur = Number(video.duration) || 0;
+      if (!Number.isFinite(dur) || dur <= 0) return;
+      scrub.duration = dur;
+      scrub.ready = true;
+
+      recalcLayout();
+
+      // Start frame extraction immediately
+      // The hero overlay (opacity 1) hides the video during extraction
+      if (!fc.ready && !fc.error) {
+        extractFrames();
+      }
+
+      if (!fc.ready) {
+        // Video seek fallback until frames are ready
+        const p = getProgress();
+        scrub.targetTime = computeTargetTime(p, dur);
+        scrub.smoothTime = scrub.targetTime;
+        if (!isMobile) {
           try { video.currentTime = scrub.targetTime; } catch {}
           video.pause();
-          requestFrame();
+        } else {
+          // Mobile fallback: just show the start frame statically
+          try { video.currentTime = clamp(START_AT, 0, dur - END_SAFETY); } catch {}
+          video.pause();
         }
+        requestFrame();
       }
+    }
 
+    video.style.background = '#fff';
+    video.addEventListener('loadedmetadata', initVideo);
+    video.addEventListener('canplay', () => { if (!scrub.ready) initVideo(); });
+    video.addEventListener('error', () => {
+      sourceIndex++;
+      if (sourceIndex < VIDEO_SOURCES.length) {
+        scrub.ready = false;
+        fc.error = false; // retry extraction with next source
+        setVideoSource(VIDEO_SOURCES[sourceIndex]);
+      }
+    });
+
+    if (!LOW_END) {
+      setVideoSource(VIDEO_SOURCES[0]);
+    } else {
       video.style.background = '#fff';
-      video.addEventListener('loadedmetadata', initScrub);
-      video.addEventListener('canplay', () => { if (!scrub.ready) initScrub(); });
-      video.addEventListener('error', () => {
-        sourceIndex += 1;
-        if (sourceIndex < VIDEO_SOURCES.length) {
-          scrub.ready = false;
-          setVideoSource(VIDEO_SOURCES[sourceIndex]);
-        }
+    }
+
+    // Init
+    recalcLayout();
+    requestFrame();
+    window.addEventListener('load', () => { recalcLayout(); requestFrame(); });
+
+    /* ================================================================
+       ABOUT VIDEO: click-to-load + scroll-grow
+       ================================================================ */
+    (() => {
+      const overlay = document.getElementById('aboutVideoOverlay');
+      const iframe = document.getElementById('aboutVideoFrame');
+      if (!overlay || !iframe) return;
+
+      const loadAndPlay = () => {
+        if (!iframe.src) iframe.src = iframe.dataset.src || '';
+        overlay.classList.add('hidden');
+      };
+      overlay.addEventListener('click', loadAndPlay);
+      overlay.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadAndPlay(); }
       });
 
-      if (!LOW_END) {
-        setVideoSource(VIDEO_SOURCES[sourceIndex]);
-      } else {
-        video.removeAttribute('src');
-        video.style.background = '#fff';
+      if (isMobile || reducedMotion) {
+        if (aboutShell) aboutShell.style.transform = 'scale(1)';
       }
+    })();
 
-      // Initial layout calc + first frame
-      window.addEventListener('load', () => { recalcLayout(); requestFrame(); });
-      recalcLayout();
-      requestFrame();
+    /* ================================================================
+       REVEAL ANIMATIONS (IntersectionObserver — zero scroll cost)
+       ================================================================ */
+    if (!reducedMotion) {
+      const revealTargets = Array.from(document.querySelectorAll('.page-content section, .page-content .divider, .page-content footer, .service-item, .stat, .case-study, .approach-step, .metric'));
+      revealTargets.forEach((el, i) => {
+        if (isMobile && (el.classList.contains('about-video-wrap') || el.classList.contains('pitch'))) return;
+        el.classList.add('reveal');
+        if (el.matches('.service-item, .metric, .stat')) el.classList.add('reveal-fast');
+        if (el.matches('.case-study')) el.classList.add('reveal-slow');
+        el.style.transitionDelay = Math.min((i % 10) * 40, 240) + 'ms';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => entry.target.classList.toggle('reveal-in', entry.isIntersecting));
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revealTargets.forEach(el => io.observe(el));
+    }
 
-      // ── About video: click-to-load ──
-      (() => {
-        const overlay = document.getElementById('aboutVideoOverlay');
-        const iframe = document.getElementById('aboutVideoFrame');
-        if (!overlay || !iframe) return;
-
-        const loadAndPlay = () => {
-          if (!iframe.src) iframe.src = iframe.dataset.src || '';
-          overlay.classList.add('hidden');
+    /* ================================================================
+       RESULTS COUNTERS (IntersectionObserver)
+       ================================================================ */
+    (() => {
+      const counters = Array.from(document.querySelectorAll('.stat-number[data-count-to], .metric-value[data-count-to]'));
+      if (!counters.length) return;
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      const formatValue = (el, value) => {
+        const fmt = el.dataset.format || 'int';
+        const pre = el.dataset.prefix || '';
+        const suf = el.dataset.suffix || '';
+        if (fmt === 'compact') return pre + new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: value >= 10000 ? 0 : 1 }).format(value) + suf;
+        if (fmt === 'decimal1') return pre + (Math.round(value * 10) / 10).toFixed(1) + suf;
+        return pre + Math.round(value).toLocaleString('en-US') + suf;
+      };
+      const animateCounter = (el) => {
+        if (el.dataset.animated === 'true') return;
+        el.dataset.animated = 'true';
+        const target = Number(el.dataset.countTo || 0);
+        if (!Number.isFinite(target)) return;
+        if (reducedMotion) { el.textContent = formatValue(el, target); return; }
+        const dur = 1300, start = performance.now();
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / dur);
+          el.textContent = formatValue(el, target * easeOutCubic(t));
+          if (t < 1) requestAnimationFrame(tick);
+          else el.textContent = formatValue(el, target);
         };
-        overlay.addEventListener('click', loadAndPlay);
-        overlay.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadAndPlay(); }
-        });
-
-        // Mobile: no scroll-grow, shell already scale(1) via CSS
-        if (isMobile || reducedMotion) {
-          if (aboutShell) aboutShell.style.transform = 'scale(1)';
-        }
-      })();
-
-      // ── Reveal animations (IntersectionObserver — no scroll handler needed) ──
-      if (!reducedMotion) {
-        const revealTargets = Array.from(document.querySelectorAll('.page-content section, .page-content .divider, .page-content footer, .service-item, .stat, .case-study, .approach-step, .metric'));
-        revealTargets.forEach((el, i) => {
-          if (isMobile && (el.classList.contains('about-video-wrap') || el.classList.contains('pitch'))) return;
-          el.classList.add('reveal');
-          if (el.matches('.service-item, .metric, .stat')) el.classList.add('reveal-fast');
-          if (el.matches('.case-study')) el.classList.add('reveal-slow');
-          el.style.transitionDelay = Math.min((i % 10) * 40, 240) + 'ms';
-        });
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            entry.target.classList.toggle('reveal-in', entry.isIntersecting);
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-        revealTargets.forEach(el => io.observe(el));
-      }
-
-      // ── Results counters ──
-      (() => {
-        const counters = Array.from(document.querySelectorAll('.stat-number[data-count-to], .metric-value[data-count-to]'));
-        if (!counters.length) return;
-        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-        const formatValue = (el, value) => {
-          const fmt = el.dataset.format || 'int';
-          const prefix = el.dataset.prefix || '';
-          const suffix = el.dataset.suffix || '';
-          if (fmt === 'compact') {
-            return prefix + new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: value >= 10000 ? 0 : 1 }).format(value) + suffix;
+        requestAnimationFrame(tick);
+      };
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.dataset.animated = 'false'; animateCounter(entry.target); }
+          else if (entry.target.dataset.animated === 'true') {
+            entry.target.dataset.animated = 'false';
+            if (!reducedMotion) entry.target.textContent = formatValue(entry.target, 0);
           }
-          if (fmt === 'decimal1') return prefix + (Math.round(value * 10) / 10).toFixed(1) + suffix;
-          return prefix + Math.round(value).toLocaleString('en-US') + suffix;
+        });
+      }, { threshold: 0.45, rootMargin: '0px 0px -8% 0px' });
+      counters.forEach(el => io.observe(el));
+    })();
+
+    /* ================================================================
+       CONTACT FORM
+       ================================================================ */
+    (() => {
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('formStatus');
+      if (!form || !btn || !status) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true; btn.textContent = 'Sending\u2026';
+        status.className = 'form-status'; status.style.display = 'none';
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+          if (res.ok) { status.textContent = 'Thanks! We\u2019ll be in touch within 24 hours.'; status.className = 'form-status success'; form.reset(); }
+          else { const data = await res.json().catch(() => null); status.textContent = (data && data.errors) ? data.errors.map(err => err.message).join(', ') : 'Something went wrong. Please try again.'; status.className = 'form-status error'; }
+        } catch { status.textContent = 'Network error \u2014 please check your connection and try again.'; status.className = 'form-status error'; }
+        finally { btn.disabled = false; btn.textContent = 'Send Request'; }
+      });
+    })();
+
+    /* ================================================================
+       SHARED PARTICLE CANVAS (one canvas for all effects, lazy init)
+       Desktop only — skipped on mobile.
+       ================================================================ */
+    const particles = [];
+    let pCanvas = null, pCtx = null, pAnimating = false, pDpr = 1;
+    const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B', '#ffffff'];
+
+    function initPCanvas() {
+      if (pCanvas) return;
+      pCanvas = document.createElement('canvas');
+      pCanvas.className = 'nav-link-fx';
+      document.body.appendChild(pCanvas);
+      pCtx = pCanvas.getContext('2d');
+      resizePCanvas();
+      window.addEventListener('resize', resizePCanvas, { passive: true });
+    }
+    function resizePCanvas() {
+      if (!pCanvas) return;
+      pDpr = window.devicePixelRatio || 1;
+      pCanvas.width = window.innerWidth * pDpr;
+      pCanvas.height = window.innerHeight * pDpr;
+      pCanvas.style.width = window.innerWidth + 'px';
+      pCanvas.style.height = window.innerHeight + 'px';
+      pCtx.setTransform(pDpr, 0, 0, pDpr, 0, 0);
+    }
+    function pLoop() {
+      if (!particles.length) { pAnimating = false; pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height); return; }
+      pAnimating = true;
+      const w = pCanvas.width / pDpr, h = pCanvas.height / pDpr;
+      pCtx.clearRect(0, 0, w, h);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i]; p.life -= p.decay;
+        if (p.life <= 0) { particles.splice(i, 1); continue; }
+        p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.vx *= p.friction; p.vy *= p.friction;
+        if (p.rotSpeed) p.rot += p.rotSpeed;
+        pCtx.globalAlpha = Math.min(1, p.life * 2);
+        if (p.type === 'sparkle') {
+          pCtx.save(); pCtx.translate(p.x, p.y); pCtx.rotate(p.rot);
+          const s = p.size * (0.5 + 0.5 * Math.sin(p.life * 8));
+          pCtx.fillStyle = p.color; pCtx.beginPath();
+          for (let j = 0; j < 4; j++) {
+            const a = (j / 4) * Math.PI * 2 - Math.PI / 2;
+            const ox = Math.cos(a) * s, oy = Math.sin(a) * s;
+            const ia = a + Math.PI / 4, ix = Math.cos(ia) * s * 0.3, iy = Math.sin(ia) * s * 0.3;
+            if (j === 0) pCtx.moveTo(ox, oy); else pCtx.lineTo(ox, oy);
+            pCtx.lineTo(ix, iy);
+          }
+          pCtx.closePath(); pCtx.fill(); pCtx.restore();
+        } else if (p.type === 'confetti') {
+          pCtx.save(); pCtx.translate(p.x, p.y); pCtx.rotate(p.rot);
+          pCtx.fillStyle = p.color; const sx = Math.cos(p.life * 6 + p.phase); pCtx.scale(sx, 1);
+          pCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); pCtx.restore();
+        } else if (p.type === 'trail') {
+          pCtx.fillStyle = p.color; pCtx.beginPath(); pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2); pCtx.fill();
+        } else if (p.type === 'burst') {
+          pCtx.save(); pCtx.translate(p.x, p.y); pCtx.rotate(p.rot);
+          pCtx.fillStyle = p.color; pCtx.shadowColor = p.color; pCtx.shadowBlur = 6;
+          pCtx.beginPath(); pCtx.arc(0, 0, p.size * Math.max(0.3, p.life), 0, Math.PI * 2);
+          pCtx.fill(); pCtx.shadowBlur = 0; pCtx.restore();
+        }
+      }
+      pCtx.globalAlpha = 1;
+      requestAnimationFrame(pLoop);
+    }
+    function ensurePLoop() { if (!pAnimating) { pAnimating = true; requestAnimationFrame(pLoop); } }
+
+    /* ── Submit button: sparkles on hover, fireworks on click ── */
+    (() => {
+      const btn = document.getElementById('submitBtn');
+      if (!btn || reducedMotion || isMobile) return;
+      let si = null;
+      const spawn = () => {
+        initPCanvas();
+        const r = btn.getBoundingClientRect(); const sp = 14; const e = Math.random();
+        let x, y;
+        if (e < 0.25) { x = r.left + Math.random() * r.width; y = r.top - sp + Math.random() * 6; }
+        else if (e < 0.5) { x = r.left + Math.random() * r.width; y = r.bottom + sp * 0.5 - Math.random() * 6; }
+        else if (e < 0.75) { x = r.left - sp + Math.random() * 6; y = r.top + Math.random() * r.height; }
+        else { x = r.right + sp * 0.5 - Math.random() * 6; y = r.top + Math.random() * r.height; }
+        particles.push({ type:'sparkle', x, y, vx:(Math.random()-.5)*1.8, vy:(Math.random()-.5)*1.8-.6, gravity:0, friction:.97, size:5+Math.random()*7, rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-.5)*.15, color:Math.random()<.35?'#ffffff':BRAND[Math.floor(Math.random()*BRAND.length)], life:1, decay:.014+Math.random()*.01 });
+        ensurePLoop();
+      };
+      btn.addEventListener('mouseenter', () => { if (btn.disabled) return; si = setInterval(spawn, 40); for (let i = 0; i < 8; i++) spawn(); });
+      btn.addEventListener('mouseleave', () => { clearInterval(si); si = null; });
+
+      const firework = (ox, oy, tx, ty) => {
+        initPCanvas();
+        const c = BRAND[Math.floor(Math.random() * (BRAND.length - 1))];
+        const dx = tx - ox, dy = ty - oy, dist = Math.sqrt(dx * dx + dy * dy);
+        const tf = Math.floor(dist / 7), vx = dx / tf, vy = dy / tf;
+        let fr = 0, rx = ox, ry = oy;
+        const rise = () => {
+          fr++; rx += vx; ry += vy;
+          for (let t = 0; t < 2; t++) particles.push({ type:'trail', x:rx+(Math.random()-.5)*4, y:ry+(Math.random()-.5)*4, vx:(Math.random()-.5)*1.5, vy:Math.random()*1.5+.5, gravity:.03, friction:.96, size:1.5+Math.random()*1.5, rot:0, rotSpeed:0, color:c, life:1, decay:.04+Math.random()*.03 });
+          ensurePLoop();
+          if (fr < tf) { requestAnimationFrame(rise); return; }
+          const bc = 45 + Math.floor(Math.random() * 20);
+          for (let b = 0; b < bc; b++) {
+            const a = Math.random() * Math.PI * 2, sp = 1.5 + Math.random() * 4;
+            const bc2 = Math.random() < .3 ? BRAND[Math.floor(Math.random() * (BRAND.length - 1))] : c;
+            particles.push({ type:'burst', x:rx+(Math.random()-.5)*6, y:ry+(Math.random()-.5)*6, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp, gravity:.04+Math.random()*.02, friction:.975+Math.random()*.015, size:2+Math.random()*3, rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-.5)*.1, color:bc2, life:1, decay:.012+Math.random()*.008 });
+          }
+          ensurePLoop();
         };
-        const animateCounter = (el) => {
-          if (el.dataset.animated === 'true') return;
-          el.dataset.animated = 'true';
-          const target = Number(el.dataset.countTo || 0);
-          if (!Number.isFinite(target)) return;
-          if (reducedMotion) { el.textContent = formatValue(el, target); return; }
-          const duration = 1300;
-          const start = performance.now();
-          const tick = (now) => {
-            const t = Math.min(1, (now - start) / duration);
-            el.textContent = formatValue(el, target * easeOutCubic(t));
-            if (t < 1) requestAnimationFrame(tick);
-            else el.textContent = formatValue(el, target);
+        requestAnimationFrame(rise);
+      };
+
+      btn.addEventListener('click', () => {
+        if (btn.disabled) return;
+        btn.classList.add('pop'); setTimeout(() => btn.classList.remove('pop'), 220);
+        const r = btn.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top, vh = window.innerHeight;
+        [{a:-90,d:.55},{a:-60,d:.45},{a:-120,d:.45},{a:-75,d:.6},{a:-105,d:.6},{a:-45,d:.35},{a:-135,d:.35}].forEach((p, i) => {
+          const rad = p.a * Math.PI / 180, travel = vh * p.d;
+          setTimeout(() => firework(cx, cy, cx + Math.cos(rad) * travel * .7, cy + Math.sin(rad) * travel), i * 70);
+        });
+      });
+    })();
+
+    /* ── "Learn More" thumbs-up burst (desktop only) ── */
+    (() => {
+      const btn = document.querySelector('.hero-cta');
+      if (!btn || reducedMotion || isMobile) return;
+      const BC = ['#4B88DA','#8A3BF1','#D941A1','#E5484D','#F59E0B'];
+      const svg = (c) => '<svg viewBox="0 0 24 24" fill="'+c+'" xmlns="http://www.w3.org/2000/svg"><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14Z"/></svg>';
+      btn.addEventListener('click', () => {
+        if ((window.scrollY || window.pageYOffset) >= 50) return;
+        const r = btn.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        for (let i = 0; i < 20; i++) {
+          const c = BC[Math.floor(Math.random() * BC.length)];
+          const el = document.createElement('span');
+          el.innerHTML = svg(c); el.setAttribute('aria-hidden', 'true');
+          const a = -Math.PI / 2 + (Math.random() - .5) * Math.PI * .9, sp = 9 + Math.random() * 10;
+          let vx = Math.cos(a) * sp, vy = Math.sin(a) * sp;
+          const g = .14 + Math.random() * .06, rs = (Math.random() - .5) * 6, sz = 34 + Math.random() * 20, dl = Math.random() * 140;
+          Object.assign(el.style, { position:'fixed', left:(cx+(Math.random()-.5)*30)+'px', top:(cy+(Math.random()-.5)*14)+'px', width:sz+'px', height:sz+'px', lineHeight:'1', pointerEvents:'none', zIndex:'101', willChange:'transform,opacity', opacity:'0', userSelect:'none' });
+          document.body.appendChild(el);
+          let x=0,y=0,rot=0,op=1,fr=0,fall=false;
+          const mf = 80+Math.floor(Math.random()*30);
+          const tick = () => {
+            fr++; if (fr*16 < dl) { requestAnimationFrame(tick); return; }
+            vy += g; x += vx; y += vy; vx *= .99; if (vy > 0) fall = true; if (fall) rot += rs;
+            const pr = (fr*16-dl)/((mf*16)-dl); op = pr>.55 ? 1-((pr-.55)/.45) : 1;
+            el.style.opacity = Math.max(0, op);
+            el.style.transform = 'translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+rot.toFixed(1)+'deg)';
+            if (fr < mf && op > 0) requestAnimationFrame(tick); else el.remove();
           };
           requestAnimationFrame(tick);
-        };
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) { entry.target.dataset.animated = 'false'; animateCounter(entry.target); }
-            else if (entry.target.dataset.animated === 'true') {
-              entry.target.dataset.animated = 'false';
-              if (!reducedMotion) entry.target.textContent = formatValue(entry.target, 0);
-            }
-          });
-        }, { threshold: 0.45, rootMargin: '0px 0px -8% 0px' });
-        counters.forEach(el => io.observe(el));
-      })();
-
-      // ── Contact form ──
-      (() => {
-        const form = document.getElementById('contactForm');
-        const btn = document.getElementById('submitBtn');
-        const status = document.getElementById('formStatus');
-        if (!form || !btn || !status) return;
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          btn.disabled = true;
-          btn.textContent = 'Sending\u2026';
-          status.className = 'form-status';
-          status.style.display = 'none';
-          try {
-            const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-            if (res.ok) { status.textContent = 'Thanks! We\u2019ll be in touch within 24 hours.'; status.className = 'form-status success'; form.reset(); }
-            else { const data = await res.json().catch(() => null); status.textContent = (data && data.errors) ? data.errors.map(err => err.message).join(', ') : 'Something went wrong. Please try again.'; status.className = 'form-status error'; }
-          } catch { status.textContent = 'Network error \u2014 please check your connection and try again.'; status.className = 'form-status error'; }
-          finally { btn.disabled = false; btn.textContent = 'Send Request'; }
-        });
-      })();
-
-      /* ================================================================
-         SHARED PARTICLE CANVAS
-         One canvas for all particle effects (nav sparkles, submit fireworks).
-         Desktop-only — skipped entirely on mobile.
-         ================================================================ */
-      const particles = [];
-      let particleCanvas = null;
-      let particleCtx = null;
-      let particleAnimating = false;
-      let particleDpr = 1;
-      const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B', '#ffffff'];
-
-      function initParticleCanvas() {
-        if (particleCanvas) return;
-        particleCanvas = document.createElement('canvas');
-        particleCanvas.className = 'nav-link-fx';
-        document.body.appendChild(particleCanvas);
-        particleCtx = particleCanvas.getContext('2d');
-        resizeParticleCanvas();
-        window.addEventListener('resize', resizeParticleCanvas, { passive: true });
-      }
-
-      function resizeParticleCanvas() {
-        if (!particleCanvas) return;
-        particleDpr = window.devicePixelRatio || 1;
-        particleCanvas.width = window.innerWidth * particleDpr;
-        particleCanvas.height = window.innerHeight * particleDpr;
-        particleCanvas.style.width = window.innerWidth + 'px';
-        particleCanvas.style.height = window.innerHeight + 'px';
-        particleCtx.setTransform(particleDpr, 0, 0, particleDpr, 0, 0);
-      }
-
-      function particleLoop() {
-        if (!particles.length) {
-          particleAnimating = false;
-          particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
-          return;
         }
-        particleAnimating = true;
-        const ctx = particleCtx;
-        const w = particleCanvas.width / particleDpr;
-        const h = particleCanvas.height / particleDpr;
-        ctx.clearRect(0, 0, w, h);
-
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-          p.life -= p.decay;
-          if (p.life <= 0) { particles.splice(i, 1); continue; }
-          p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.vx *= p.friction; p.vy *= p.friction;
-          if (p.rotSpeed) p.rot += p.rotSpeed;
-          ctx.globalAlpha = Math.min(1, p.life * 2);
-
-          if (p.type === 'sparkle') {
-            ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
-            const s = p.size * (0.5 + 0.5 * Math.sin(p.life * 8));
-            ctx.fillStyle = p.color; ctx.beginPath();
-            for (let j = 0; j < 4; j++) {
-              const angle = (j / 4) * Math.PI * 2 - Math.PI / 2;
-              const ox = Math.cos(angle) * s; const oy = Math.sin(angle) * s;
-              const ia = angle + Math.PI / 4;
-              const ix = Math.cos(ia) * s * 0.3; const iy = Math.sin(ia) * s * 0.3;
-              if (j === 0) ctx.moveTo(ox, oy); else ctx.lineTo(ox, oy);
-              ctx.lineTo(ix, iy);
-            }
-            ctx.closePath(); ctx.fill(); ctx.restore();
-          } else if (p.type === 'confetti') {
-            ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
-            ctx.fillStyle = p.color;
-            const scaleX = Math.cos(p.life * 6 + p.phase); ctx.scale(scaleX, 1);
-            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore();
-          } else if (p.type === 'trail') {
-            ctx.fillStyle = p.color; ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-          } else if (p.type === 'burst') {
-            ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
-            ctx.fillStyle = p.color; ctx.shadowColor = p.color; ctx.shadowBlur = 6;
-            ctx.beginPath(); ctx.arc(0, 0, p.size * Math.max(0.3, p.life), 0, Math.PI * 2);
-            ctx.fill(); ctx.shadowBlur = 0; ctx.restore();
-          }
-        }
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(particleLoop);
-      }
-
-      function ensureParticleLoop() {
-        if (!particleAnimating) { particleAnimating = true; requestAnimationFrame(particleLoop); }
-      }
-
-      // ── Submit button sparkles + fireworks ──
-      (() => {
-        const submitBtn = document.getElementById('submitBtn');
-        if (!submitBtn || reducedMotion || isMobile) return;
-
-        let sparkleInterval = null;
-        const spawnSparkle = () => {
-          initParticleCanvas();
-          const rect = submitBtn.getBoundingClientRect();
-          const spread = 14;
-          const edge = Math.random();
-          let x, y;
-          if (edge < 0.25) { x = rect.left + Math.random() * rect.width; y = rect.top - spread + Math.random() * 6; }
-          else if (edge < 0.5) { x = rect.left + Math.random() * rect.width; y = rect.bottom + spread * 0.5 - Math.random() * 6; }
-          else if (edge < 0.75) { x = rect.left - spread + Math.random() * 6; y = rect.top + Math.random() * rect.height; }
-          else { x = rect.right + spread * 0.5 - Math.random() * 6; y = rect.top + Math.random() * rect.height; }
-          particles.push({
-            type: 'sparkle', x, y,
-            vx: (Math.random() - 0.5) * 1.8, vy: (Math.random() - 0.5) * 1.8 - 0.6,
-            gravity: 0, friction: 0.97,
-            size: 5 + Math.random() * 7, rot: Math.random() * Math.PI * 2,
-            rotSpeed: (Math.random() - 0.5) * 0.15,
-            color: Math.random() < 0.35 ? '#ffffff' : BRAND[Math.floor(Math.random() * BRAND.length)],
-            life: 1, decay: 0.014 + Math.random() * 0.01,
-          });
-          ensureParticleLoop();
-        };
-
-        submitBtn.addEventListener('mouseenter', () => {
-          if (submitBtn.disabled) return;
-          sparkleInterval = setInterval(spawnSparkle, 40);
-          for (let i = 0; i < 8; i++) spawnSparkle();
-        });
-        submitBtn.addEventListener('mouseleave', () => { clearInterval(sparkleInterval); sparkleInterval = null; });
-
-        const launchFirework = (originX, originY, targetX, targetY) => {
-          initParticleCanvas();
-          const color = BRAND[Math.floor(Math.random() * (BRAND.length - 1))];
-          const dx = targetX - originX; const dy = targetY - originY;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const travelFrames = Math.floor(dist / 7);
-          const vx = dx / travelFrames; const vy = dy / travelFrames;
-          let frame = 0; let tx = originX, ty = originY;
-          const rise = () => {
-            frame++; tx += vx; ty += vy;
-            for (let t = 0; t < 2; t++) {
-              particles.push({
-                type: 'trail',
-                x: tx + (Math.random() - 0.5) * 4, y: ty + (Math.random() - 0.5) * 4,
-                vx: (Math.random() - 0.5) * 1.5, vy: Math.random() * 1.5 + 0.5,
-                gravity: 0.03, friction: 0.96,
-                size: 1.5 + Math.random() * 1.5, rot: 0, rotSpeed: 0,
-                color: color, life: 1, decay: 0.04 + Math.random() * 0.03,
-              });
-            }
-            ensureParticleLoop();
-            if (frame < travelFrames) { requestAnimationFrame(rise); }
-            else {
-              const burstCount = 45 + Math.floor(Math.random() * 20);
-              for (let b = 0; b < burstCount; b++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = 1.5 + Math.random() * 4;
-                const burstColor = Math.random() < 0.3 ? BRAND[Math.floor(Math.random() * (BRAND.length - 1))] : color;
-                particles.push({
-                  type: 'burst',
-                  x: tx + (Math.random() - 0.5) * 6, y: ty + (Math.random() - 0.5) * 6,
-                  vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-                  gravity: 0.04 + Math.random() * 0.02, friction: 0.975 + Math.random() * 0.015,
-                  size: 2 + Math.random() * 3, rot: Math.random() * Math.PI * 2,
-                  rotSpeed: (Math.random() - 0.5) * 0.1,
-                  color: burstColor, life: 1, decay: 0.012 + Math.random() * 0.008,
-                });
-              }
-              ensureParticleLoop();
-            }
-          };
-          requestAnimationFrame(rise);
-        };
-
-        submitBtn.addEventListener('click', () => {
-          if (submitBtn.disabled) return;
-          submitBtn.classList.add('pop');
-          setTimeout(() => submitBtn.classList.remove('pop'), 220);
-          const rect = submitBtn.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2; const cy = rect.top;
-          const vh = window.innerHeight;
-          [{ angle: -90, dist: 0.55 },{ angle: -60, dist: 0.45 },{ angle: -120, dist: 0.45 },
-           { angle: -75, dist: 0.6 },{ angle: -105, dist: 0.6 },{ angle: -45, dist: 0.35 },
-           { angle: -135, dist: 0.35 }].forEach((pos, i) => {
-            const rad = pos.angle * Math.PI / 180;
-            const travel = vh * pos.dist;
-            const targetX = cx + Math.cos(rad) * travel * 0.7;
-            const targetY = cy + Math.sin(rad) * travel;
-            setTimeout(() => launchFirework(cx, cy, targetX, targetY), i * 70);
-          });
-        });
-      })();
-
-      // ── "Learn More" thumbs-up burst (desktop only) ──
-      (() => {
-        const btn = document.querySelector('.hero-cta');
-        if (!btn || reducedMotion || isMobile) return;
-
-        const BRAND_COLORS = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B'];
-        const COUNT = 20;
-        const TOP_THRESHOLD = 50;
-        const thumbSVG = (c) => '<svg viewBox="0 0 24 24" fill="' + c + '" xmlns="http://www.w3.org/2000/svg"><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14Z"/></svg>';
-
-        btn.addEventListener('click', () => {
-          const scrollY = window.scrollY || window.pageYOffset;
-          if (scrollY >= TOP_THRESHOLD) return;
-          const rect = btn.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
-          for (let i = 0; i < COUNT; i++) {
-            const color = BRAND_COLORS[Math.floor(Math.random() * BRAND_COLORS.length)];
-            const el = document.createElement('span');
-            el.innerHTML = thumbSVG(color);
-            el.setAttribute('aria-hidden', 'true');
-            const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.9;
-            const speed = 9 + Math.random() * 10;
-            let vx = Math.cos(angle) * speed;
-            let vy = Math.sin(angle) * speed;
-            const gravity = 0.14 + Math.random() * 0.06;
-            const rotSpeed = (Math.random() - 0.5) * 6;
-            const size = 34 + Math.random() * 20;
-            const delay = Math.random() * 140;
-            Object.assign(el.style, {
-              position: 'fixed', left: (cx + (Math.random() - 0.5) * 30) + 'px',
-              top: (cy + (Math.random() - 0.5) * 14) + 'px',
-              width: size + 'px', height: size + 'px', lineHeight: '1',
-              pointerEvents: 'none', zIndex: '101',
-              willChange: 'transform, opacity', opacity: '0', userSelect: 'none',
-            });
-            document.body.appendChild(el);
-            let x = 0, y = 0, rot = 0, opacity = 1, fr = 0, falling = false;
-            const maxFrames = 80 + Math.floor(Math.random() * 30);
-            const tick = () => {
-              fr++;
-              if (fr * 16 < delay) { requestAnimationFrame(tick); return; }
-              vy += gravity; x += vx; y += vy; vx *= 0.99;
-              if (vy > 0) falling = true;
-              if (falling) rot += rotSpeed;
-              const progress = (fr * 16 - delay) / ((maxFrames * 16) - delay);
-              opacity = progress > 0.55 ? 1 - ((progress - 0.55) / 0.45) : 1;
-              el.style.opacity = Math.max(0, opacity);
-              el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)';
-              if (fr < maxFrames && opacity > 0) requestAnimationFrame(tick);
-              else el.remove();
-            };
-            requestAnimationFrame(tick);
-          }
-        });
-      })();
-
-      // ── Nav "Let's Talk" sparkles + confetti (desktop only) ──
-      (() => {
-        const link = document.querySelector('.nav-link');
-        if (!link || reducedMotion || isMobile) return;
-
-        let sparkleInterval = null;
-        const spawnSparkle = () => {
-          initParticleCanvas();
-          const rect = link.getBoundingClientRect();
-          const edge = Math.random();
-          let x, y;
-          if (edge < 0.25) { x = rect.left + Math.random() * rect.width; y = rect.top - 4 + Math.random() * 8; }
-          else if (edge < 0.5) { x = rect.left + Math.random() * rect.width; y = rect.bottom - 4 + Math.random() * 8; }
-          else if (edge < 0.75) { x = rect.left - 4 + Math.random() * 8; y = rect.top + Math.random() * rect.height; }
-          else { x = rect.right - 4 + Math.random() * 8; y = rect.top + Math.random() * rect.height; }
-          particles.push({
-            type: 'sparkle', x, y,
-            vx: (Math.random() - 0.5) * 1.2, vy: (Math.random() - 0.5) * 1.2 - 0.4,
-            gravity: 0, friction: 0.98,
-            size: 3 + Math.random() * 5, rot: Math.random() * Math.PI * 2,
-            rotSpeed: (Math.random() - 0.5) * 0.1,
-            color: BRAND[Math.floor(Math.random() * BRAND.length)],
-            life: 1, decay: 0.018 + Math.random() * 0.012,
-          });
-          ensureParticleLoop();
-        };
-
-        link.addEventListener('mouseenter', () => {
-          sparkleInterval = setInterval(spawnSparkle, 60);
-          for (let i = 0; i < 4; i++) spawnSparkle();
-        });
-        link.addEventListener('mouseleave', () => { clearInterval(sparkleInterval); sparkleInterval = null; });
-        link.addEventListener('touchend', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
-        link.addEventListener('touchcancel', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
-
-        link.addEventListener('click', () => {
-          initParticleCanvas();
-          link.classList.add('pop');
-          setTimeout(() => link.classList.remove('pop'), 220);
-          const rect = link.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2;
-          for (let i = 0; i < 55; i++) {
-            const angle = Math.random() * Math.PI * 2;
-            const speed = 2.5 + Math.random() * 6;
-            particles.push({
-              type: 'confetti',
-              x: cx + (Math.random() - 0.5) * 20, y: cy + (Math.random() - 0.5) * 10,
-              vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed - 2.5,
-              gravity: 0.12 + Math.random() * 0.06, friction: 0.985,
-              w: 8 + Math.random() * 8, h: 4 + Math.random() * 5,
-              rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.25,
-              phase: Math.random() * Math.PI * 2,
-              color: BRAND[Math.floor(Math.random() * (BRAND.length - 1))],
-              life: 1, decay: 0.008 + Math.random() * 0.006,
-            });
-          }
-          ensureParticleLoop();
-        });
-      })();
-
-      // ── Anchor scrolling ──
-      (() => {
-        if (reducedMotion) return;
-        const EASE = (t) => 1 - Math.pow(1 - t, 3);
-        let animFrame = 0;
-        let fallbackTimer = 0;
-
-        const stopAnim = () => {
-          if (animFrame) cancelAnimationFrame(animFrame);
-          animFrame = 0;
-          if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = 0; }
-          scrub.paused = false;
-        };
-
-        const getHeaderOffset = () => {
-          const navEl = document.getElementById('mainNav');
-          return navEl ? Math.max(0, Math.round(navEl.getBoundingClientRect().height + 8)) : 0;
-        };
-
-        const fastScrollTo = (targetY, doneCallback) => {
-          stopAnim();
-          scrub.paused = true;
-          const startY = window.scrollY || window.pageYOffset;
-          const distance = targetY - startY;
-          if (Math.abs(distance) < 2) {
-            scrub.paused = false;
-            if (doneCallback) doneCallback();
-            return;
-          }
-          const duration = Math.min(2200, Math.max(500, Math.abs(distance) / 2.8));
-          const start = performance.now();
-          let completed = false;
-          const finish = () => {
-            if (completed) return;
-            completed = true;
-            if (animFrame) cancelAnimationFrame(animFrame);
-            animFrame = 0;
-            if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = 0; }
-            scrub.paused = false;
-            requestFrame(); // Resume unified loop
-            if (doneCallback) doneCallback();
-          };
-          fallbackTimer = setTimeout(() => { window.scrollTo(0, targetY); finish(); }, duration + 500);
-          const step = (now) => {
-            if (completed) return;
-            const t = Math.min(1, (now - start) / duration);
-            window.scrollTo(0, startY + distance * EASE(t));
-            requestFrame(); // Keep unified loop in sync during scroll
-            if (t < 1) animFrame = requestAnimationFrame(step);
-            else finish();
-          };
-          animFrame = requestAnimationFrame(step);
-        };
-
-        // Desktop: play-then-scroll drives hero scrub smoothly
-        const playThenScroll = (targetY) => {
-          stopAnim();
-          const heroEnd = layout.trackScrollable;
-          const startY = window.scrollY || window.pageYOffset;
-          const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
-          const heroDuration = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
-          const start = performance.now();
-
-          scrub.paused = true;
-          scrub.smoothTime = computeTargetTime(getHeroProgress(startY));
-
-          const step = (now) => {
-            const t = Math.min(1, heroDuration > 0 ? (now - start) / heroDuration : 1);
-            const y = startY + heroDist * t;
-            window.scrollTo(0, y);
-
-            // Drive video scrub during programmatic scroll
-            const progress = getHeroProgress(y);
-            scrub.targetTime = computeTargetTime(progress);
-            const diff = scrub.targetTime - scrub.smoothTime;
-            if (Math.abs(diff) > 0.001) scrub.smoothTime += diff * 0.25;
-            else scrub.smoothTime = scrub.targetTime;
-
-            if (isFirefox) {
-              const snapped = Math.round(scrub.smoothTime / (1 / 25)) * (1 / 25);
-              if (Math.abs(video.currentTime - snapped) > 0.02) {
-                try { video.currentTime = snapped; } catch {}
-              }
-            } else {
-              if (Math.abs(video.currentTime - scrub.smoothTime) > 0.002) {
-                try { video.currentTime = scrub.smoothTime; } catch {}
-              }
-            }
-
-            // Parallax + hero fade during programmatic scroll
-            const py = (progress - 0.5) * (isFirefox ? 5 : 12);
-            video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
-
-            // Hero fade writes
-            const textEnd = 0.42;
-            const textFade = Math.max(0, 1 - (progress / textEnd));
-            heroContent.style.opacity = textFade.toFixed(3);
-            heroEl.style.setProperty('--overlay-opacity', Math.max(0, 1 - progress).toFixed(3));
-
-            if (t < 1) { animFrame = requestAnimationFrame(step); return; }
-            animFrame = 0;
-            if (targetY > heroEnd + 2) fastScrollTo(targetY);
-            else { scrub.paused = false; requestFrame(); }
-          };
-
-          if (heroDuration > 0) animFrame = requestAnimationFrame(step);
-          else fastScrollTo(targetY);
-        };
-
-        // Mobile: simple smooth scroll (video autoplays independently)
-        const mobileScrollTo = (targetY) => {
-          stopAnim();
-          const startY = window.scrollY || window.pageYOffset;
-          const distance = targetY - startY;
-          if (Math.abs(distance) < 2) return;
-
-          // Two-phase ease: gentle start then accelerate
-          const heroEnd = layout.trackScrollable;
-          const isLongScroll = targetY > heroEnd + 100;
-          const duration = isLongScroll
-            ? Math.min(2800, Math.max(1200, Math.abs(distance) / 2))
-            : Math.min(2200, Math.max(800, Math.abs(distance) / 2.8));
-
-          const heroEase = (t) => {
-            if (t < 0.65) return 0.30 * (1 - Math.pow(1 - (t / 0.65), 1.8));
-            return 0.30 + 0.70 * (1 - Math.pow(1 - ((t - 0.65) / 0.35), 2));
-          };
-
-          const start = performance.now();
-          let completed = false;
-          const finish = () => {
-            if (completed) return;
-            completed = true;
-            if (animFrame) cancelAnimationFrame(animFrame);
-            animFrame = 0;
-          };
-
-          fallbackTimer = setTimeout(() => { window.scrollTo(0, targetY); finish(); }, duration + 500);
-
-          const step = (now) => {
-            if (completed) return;
-            const t = Math.min(1, (now - start) / duration);
-            const easedT = isLongScroll ? heroEase(t) : EASE(t);
-            window.scrollTo(0, startY + distance * easedT);
-            requestFrame();
-            if (t < 1) animFrame = requestAnimationFrame(step);
-            else finish();
-          };
-          animFrame = requestAnimationFrame(step);
-        };
-
-        document.addEventListener('click', (e) => {
-          const link = e.target.closest('a[href^="#"]');
-          if (!link) return;
-          const href = link.getAttribute('href') || '';
-          if (!href.startsWith('#') || href.length < 2) return;
-          const target = document.querySelector(href);
-          if (!target) return;
-          e.preventDefault();
-
-          const offset = getHeaderOffset();
-          const startScrollY = window.scrollY || window.pageYOffset;
-          const atTop = startScrollY < 50;
-
-          // Recalc layout for accurate target position
-          recalcLayout();
-          const freshRect = target.getBoundingClientRect();
-          const freshScrollY = window.scrollY || window.pageYOffset;
-          const targetY = Math.max(0, Math.round(freshRect.top + freshScrollY - offset));
-
-          if (isMobile) {
-            mobileScrollTo(targetY);
-          } else if (atTop && scrub.ready) {
-            playThenScroll(targetY);
-          } else {
-            fastScrollTo(targetY);
-          }
-
-          try { if (history.pushState) history.pushState(null, '', href); } catch { location.hash = href; }
-        }, { passive: false });
-
-        // Cancel programmatic scroll on user input
-        ['wheel', 'touchstart', 'keydown'].forEach((evt) => {
-          window.addEventListener(evt, stopAnim, { passive: true });
-        });
-      })();
-
-      // ── Mobile: highlight service items (IntersectionObserver, not scroll) ──
-      if (isMobile) {
-        const items = document.querySelectorAll('.service-item');
-        if (items.length) {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => entry.target.classList.toggle('scroll-active', entry.isIntersecting));
-          }, { rootMargin: '-35% 0px -35% 0px' });
-          items.forEach(item => observer.observe(item));
-        }
-      }
-
+      });
     })();
+
+    /* ── Nav "Let's Talk" sparkles + confetti (desktop only) ── */
+    (() => {
+      const link = document.querySelector('.nav-link');
+      if (!link || reducedMotion || isMobile) return;
+      let si = null;
+      const spawn = () => {
+        initPCanvas();
+        const r = link.getBoundingClientRect(); const e = Math.random();
+        let x, y;
+        if (e < .25) { x = r.left + Math.random() * r.width; y = r.top - 4 + Math.random() * 8; }
+        else if (e < .5) { x = r.left + Math.random() * r.width; y = r.bottom - 4 + Math.random() * 8; }
+        else if (e < .75) { x = r.left - 4 + Math.random() * 8; y = r.top + Math.random() * r.height; }
+        else { x = r.right - 4 + Math.random() * 8; y = r.top + Math.random() * r.height; }
+        particles.push({ type:'sparkle', x, y, vx:(Math.random()-.5)*1.2, vy:(Math.random()-.5)*1.2-.4, gravity:0, friction:.98, size:3+Math.random()*5, rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-.5)*.1, color:BRAND[Math.floor(Math.random()*BRAND.length)], life:1, decay:.018+Math.random()*.012 });
+        ensurePLoop();
+      };
+      link.addEventListener('mouseenter', () => { if (isMobileViewport()) return; si = setInterval(spawn, 60); for (let i = 0; i < 4; i++) spawn(); });
+      link.addEventListener('mouseleave', () => { clearInterval(si); si = null; });
+      link.addEventListener('touchend', () => { clearInterval(si); si = null; }, { passive: true });
+      link.addEventListener('touchcancel', () => { clearInterval(si); si = null; }, { passive: true });
+      link.addEventListener('click', () => {
+        initPCanvas();
+        link.classList.add('pop'); setTimeout(() => link.classList.remove('pop'), 220);
+        const r = link.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        for (let i = 0; i < 55; i++) {
+          const a = Math.random() * Math.PI * 2, sp = 2.5 + Math.random() * 6;
+          particles.push({ type:'confetti', x:cx+(Math.random()-.5)*20, y:cy+(Math.random()-.5)*10, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp-2.5, gravity:.12+Math.random()*.06, friction:.985, w:8+Math.random()*8, h:4+Math.random()*5, rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-.5)*.25, phase:Math.random()*Math.PI*2, color:BRAND[Math.floor(Math.random()*(BRAND.length-1))], life:1, decay:.008+Math.random()*.006 });
+        }
+        ensurePLoop();
+      });
+    })();
+
+    /* ================================================================
+       ANCHOR SCROLLING
+       Preserves original two-phase ease, cinematic hero scroll,
+       and mobile cadence. Video scrub replaced with frame display.
+       ================================================================ */
+    (() => {
+      if (reducedMotion) return;
+      const EASE = (t) => 1 - Math.pow(1 - t, 3);
+      let af = 0, ft = 0;
+
+      const stopAnim = () => {
+        if (af) cancelAnimationFrame(af); af = 0;
+        if (ft) { clearTimeout(ft); ft = 0; }
+        scrub.paused = false;
+      };
+
+      const navH = () => {
+        const n = document.getElementById('mainNav');
+        return n ? Math.max(0, Math.round(n.getBoundingClientRect().height + 8)) : 0;
+      };
+
+      const fastScrollTo = (targetY, cb) => {
+        stopAnim();
+        scrub.paused = true;
+        const startY = window.scrollY || window.pageYOffset;
+        const dist = targetY - startY;
+        if (Math.abs(dist) < 2) { scrub.paused = false; if (cb) cb(); return; }
+        const dur = Math.min(2200, Math.max(500, Math.abs(dist) / 2.8));
+        const start = performance.now();
+        let done = false;
+        const finish = () => {
+          if (done) return; done = true;
+          if (af) cancelAnimationFrame(af); af = 0;
+          if (ft) { clearTimeout(ft); ft = 0; }
+          scrub.paused = false; requestFrame();
+          if (cb) cb();
+        };
+        ft = setTimeout(() => { window.scrollTo(0, targetY); finish(); }, dur + 500);
+        const step = (now) => {
+          if (done) return;
+          const t = Math.min(1, (now - start) / dur);
+          window.scrollTo(0, startY + dist * EASE(t));
+          requestFrame();
+          if (t < 1) af = requestAnimationFrame(step); else finish();
+        };
+        af = requestAnimationFrame(step);
+      };
+
+      // Desktop: cinematic play-through-hero scroll
+      const playThenScroll = (targetY) => {
+        stopAnim();
+        const heroEnd = layout.trackScrollable;
+        const startY = window.scrollY || window.pageYOffset;
+        const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
+        const heroDur = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
+        const start = performance.now();
+
+        scrub.paused = true;
+        if (!fc.ready) scrub.smoothTime = computeTargetTime(getProgress(), scrub.duration);
+
+        const step = (now) => {
+          const t = Math.min(1, heroDur > 0 ? (now - start) / heroDur : 1);
+          const y = startY + heroDist * t;
+          window.scrollTo(0, y);
+
+          const p = getProgress();
+
+          // Display frame or seek video
+          if (fc.ready) {
+            displayFrame(p);
+          } else if (scrub.ready) {
+            scrub.targetTime = computeTargetTime(p, scrub.duration);
+            const d = scrub.targetTime - scrub.smoothTime;
+            if (Math.abs(d) > .001) scrub.smoothTime += d * .25;
+            else scrub.smoothTime = scrub.targetTime;
+            if (isFirefox) {
+              const sn = Math.round(scrub.smoothTime * 25) / 25;
+              if (Math.abs(video.currentTime - sn) > .02) try { video.currentTime = sn; } catch {}
+            } else {
+              if (Math.abs(video.currentTime - scrub.smoothTime) > .002) try { video.currentTime = scrub.smoothTime; } catch {}
+            }
+          }
+
+          // Parallax + fade during programmatic scroll
+          if (!isMobile) {
+            const py = (p - .5) * (isFirefox ? 5 : 12);
+            getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+          }
+          if (heroContent) heroContent.style.opacity = Math.max(0, 1 - (p / 0.42)).toFixed(3);
+          if (heroEl) heroEl.style.setProperty('--overlay-opacity', Math.max(0, 1 - p).toFixed(3));
+
+          if (t < 1) { af = requestAnimationFrame(step); return; }
+          af = 0;
+          if (targetY > heroEnd + 2) fastScrollTo(targetY);
+          else { scrub.paused = false; requestFrame(); }
+        };
+
+        if (heroDur > 0) af = requestAnimationFrame(step);
+        else fastScrollTo(targetY);
+      };
+
+      // Mobile: two-phase ease (gentle hero opener → fast tail to target)
+      const mobileScroll = (targetY) => {
+        stopAnim();
+        const heroEnd = layout.trackScrollable;
+        const startY = window.scrollY || window.pageYOffset;
+        const isContact = targetY > heroEnd + 100;
+        const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
+        const heroRatio = heroEnd > 0 ? heroDist / heroEnd : 0;
+        const heroDur = Math.max(1200, 3600 * heroRatio);
+
+        const contactLeadDist = heroDist * 0.30;
+        const contactLeadDur = heroDur * 0.65;
+        const contactLeadEndY = startY + contactLeadDist;
+        const contactTailDist = Math.max(0, targetY - contactLeadEndY);
+        const contactTailDur = (isContact && contactTailDist > 0)
+          ? Math.max(380, Math.min(1050, contactTailDist / 6.2)) : 0;
+        const contactTotalDur = contactLeadDur + contactTailDur;
+        const contactLeadPhase = contactTotalDur > 0 ? contactLeadDur / contactTotalDur : 1;
+
+        if (heroDist < 2) { fastScrollTo(targetY); return; }
+
+        const heroEase = (t) => {
+          if (t < 0.65) return 0.30 * (1 - Math.pow(1 - (t / 0.65), 1.8));
+          return 0.30 + 0.70 * (1 - Math.pow(1 - ((t - 0.65) / 0.35), 2));
+        };
+
+        const heroStart = performance.now();
+        const step = (now) => {
+          if (isContact && contactTailDist > 2) {
+            const tAll = Math.min(1, (now - heroStart) / contactTotalDur);
+            let y;
+            if (tAll <= contactLeadPhase) {
+              const p = contactLeadPhase > 0 ? Math.min(1, tAll / contactLeadPhase) : 1;
+              y = startY + contactLeadDist * (1 - Math.pow(1 - p, 1.8));
+            } else {
+              const q = Math.min(1, (tAll - contactLeadPhase) / (1 - contactLeadPhase));
+              y = contactLeadEndY + contactTailDist * q;
+            }
+            window.scrollTo(0, y);
+            requestFrame();
+            if (tAll < 1) { af = requestAnimationFrame(step); return; }
+            af = 0; window.scrollTo(0, targetY); requestFrame(); return;
+          }
+
+          const t = Math.min(1, (now - heroStart) / heroDur);
+          window.scrollTo(0, startY + heroDist * heroEase(t));
+          requestFrame();
+          if (t < 1) { af = requestAnimationFrame(step); }
+          else {
+            af = 0;
+            recalcLayout();
+            const freshRect = document.querySelector(location.hash || '#learn-more');
+            if (freshRect) {
+              const sy = window.scrollY || window.pageYOffset;
+              const fr = freshRect.getBoundingClientRect();
+              const fy = Math.max(0, Math.round(fr.top + sy - navH()));
+              if (fy > sy + 2) fastScrollTo(fy);
+            }
+          }
+        };
+        af = requestAnimationFrame(step);
+      };
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        if (!href.startsWith('#') || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+
+        recalcLayout();
+        const offset = navH();
+        const sy = window.scrollY || window.pageYOffset;
+        const atTop = sy < 50;
+        const r = target.getBoundingClientRect();
+        const targetY = Math.max(0, Math.round(r.top + sy - offset));
+
+        if (isMobile && atTop) {
+          mobileScroll(targetY);
+        } else if (!isMobile && atTop && (scrub.ready || fc.ready)) {
+          playThenScroll(targetY);
+        } else {
+          fastScrollTo(targetY);
+        }
+
+        try { if (history.pushState) history.pushState(null, '', href); } catch { location.hash = href; }
+      }, { passive: false });
+
+      ['wheel', 'touchstart', 'keydown'].forEach(evt => {
+        window.addEventListener(evt, stopAnim, { passive: true });
+      });
+    })();
+
+    /* ── Mobile: highlight service items (IntersectionObserver) ── */
+    if (isMobile) {
+      const items = document.querySelectorAll('.service-item');
+      if (items.length) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => e.target.classList.toggle('scroll-active', e.isIntersecting));
+        }, { rootMargin: '-35% 0px -35% 0px' });
+        items.forEach(item => obs.observe(item));
+      }
+    }
+
+  })();
   </script>
 </body>
 </html>

@@ -747,6 +747,7 @@
     const isMobile = window.matchMedia(MOBILE_MQ).matches;
     const isMobileViewport = () => window.matchMedia(MOBILE_MQ).matches;
     const isFirefox = /firefox/i.test(ua);
+    const isWindowsChrome = /Windows/i.test(ua) && /Chrome/i.test(ua) && !/Edg|OPR/i.test(ua);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
                   || (navigator.deviceMemory && navigator.deviceMemory <= 2);
@@ -801,7 +802,7 @@
       lastB: -1,
       lastMix: -1,
     };
-    const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : 48;
+    const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : (LOW_END ? 28 : 48);
     const FRAME_BLEND = !isFirefox && !isIOS;
 
     async function extractFrames() {
@@ -820,7 +821,7 @@
 
       const vw = video.videoWidth || 640;
       const vh = video.videoHeight || 360;
-      const scale = isMobile ? 1 : 0.5;
+      const scale = isMobile ? 1 : (LOW_END ? 0.44 : 0.5);
       const cw = Math.round(vw * scale);
       const ch = Math.round(vh * scale);
 
@@ -1048,8 +1049,9 @@
           scrub.lastSeekTs = ts;
         }
       } else {
-        const threshold = isMobile ? 0.03 : 0.002;
-        const cooldown = isMobile ? 25 : 0;
+        const extractionSeekGuard = isWindowsChrome && !isMobile && fc.extracting && !fc.ready;
+        const threshold = extractionSeekGuard ? 0.022 : (isMobile ? 0.03 : 0.002);
+        const cooldown = extractionSeekGuard ? 28 : (isMobile ? 25 : 0);
         if (Math.abs(video.currentTime - scrub.smoothTime) > threshold && (ts - scrub.lastSeekTs) > cooldown) {
           try { video.currentTime = scrub.smoothTime; } catch {}
           scrub.lastSeekTs = ts;

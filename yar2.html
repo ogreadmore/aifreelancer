@@ -480,18 +480,19 @@
        9) Mobile finger scroll uses touch-only direct scrub
       10) Mobile Let's Talk tap uses one continuous hero->contact animation
     */
-    @media (max-width: 768px) {
+    @media (max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px) {
       nav {
         padding: 1rem 0;
-        background: rgba(255, 255, 255, 0.98); 
+        background: transparent;
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+        box-shadow: none;
       }
       nav.scrolled {
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
         background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
       }
       
       .container, .nav-inner { padding: 0 1.25rem; }
@@ -748,7 +749,7 @@
       const track = document.getElementById('track');
       const video = document.getElementById('bgVideo');
       const rootEl = document.documentElement;
-      const MOBILE_VIEWPORT_QUERY = '(max-width: 768px), (max-height: 500px) and (orientation: landscape)';
+      const MOBILE_VIEWPORT_QUERY = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
       const isMobileViewport = () => window.matchMedia(MOBILE_VIEWPORT_QUERY).matches;
       const isMobile = isMobileViewport();
 
@@ -757,21 +758,25 @@
         const maxScrollableInsideTrack = Math.max(0, track.offsetHeight - window.innerHeight);
         return Math.max(0, Math.floor(maxScrollableInsideTrack - 2));
       }
-      if (isMobile) {
-        nav.classList.add('scrolled');
-      } else {
-        let navThreshold = getNavThreshold();
-        const applyNavState = () => nav.classList.toggle('scrolled', window.scrollY > navThreshold);
-        let navTicking = false;
-        window.addEventListener('scroll', () => {
-          if (navTicking) return;
-          navTicking = true;
-          requestAnimationFrame(() => { applyNavState(); navTicking = false; });
-        }, { passive: true });
-        window.addEventListener('resize', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); }, { passive: true });
-        window.addEventListener('load', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); });
+      let navThreshold = isMobile ? 10 : getNavThreshold();
+      const applyNavState = () => nav.classList.toggle('scrolled', (window.scrollY || window.pageYOffset) > navThreshold);
+      let navTicking = false;
+      window.addEventListener('scroll', () => {
+        if (navTicking) return;
+        navTicking = true;
+        requestAnimationFrame(() => { applyNavState(); navTicking = false; });
+      }, { passive: true });
+      window.addEventListener('resize', () => {
+        navThreshold = isMobileViewport() ? 10 : getNavThreshold();
         applyNavState();
-      }
+        refreshTrackMetrics();
+      }, { passive: true });
+      window.addEventListener('load', () => {
+        navThreshold = isMobileViewport() ? 10 : getNavThreshold();
+        applyNavState();
+        refreshTrackMetrics();
+      });
+      applyNavState();
 
       const SD_VIDEO_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
       const HD_VIDEO_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';

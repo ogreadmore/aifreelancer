@@ -550,23 +550,10 @@
     const isMobile = window.matchMedia(MOBILE_MQ).matches;
     const isPhone = window.matchMedia(PHONE_MQ).matches;
     const isFirefox = /firefox/i.test(navigator.userAgent);
-    const isChrome = /chrome|chromium|crios/i.test(navigator.userAgent) && !/edg|opr/i.test(navigator.userAgent);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const CORES = Number(navigator.hardwareConcurrency) || 0;
-    const MEM_GB = Number(navigator.deviceMemory) || 0;
-    const isTablet = isMobile && !isPhone;
-    const LOW_END = (CORES > 0 && CORES <= 4) || (MEM_GB > 0 && MEM_GB <= 4);
-    const HIGH_END = (CORES >= 8) || (MEM_GB >= 8) || (!MEM_GB && CORES >= 6);
-    const ENABLE_PARALLAX = !isMobile && HIGH_END && !reducedMotion;
-    const FRAME_PROFILE = isPhone
-      ? { count: 30, scale: 1, yieldEvery: 2 }
-      : isTablet
-        ? { count: 40, scale: 0.70, yieldEvery: 2 }
-        : LOW_END
-          ? { count: 22, scale: 0.45, yieldEvery: 2 }
-          : HIGH_END
-            ? { count: 56, scale: 0.75, yieldEvery: 4 }
-            : { count: 36, scale: 0.58, yieldEvery: 3 };
+    const LOW_END = true;
+    const ENABLE_PARALLAX = false;
+    const FRAME_PROFILE = { count: 24, scale: 1, yieldEvery: 2 };
     const ENABLE_FRAME_CACHE = !reducedMotion;
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
@@ -594,7 +581,7 @@
     // ── Video sources ──
     const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
     const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
-    const PREFER_SD = isPhone || (!isMobile && !HIGH_END);
+    const PREFER_SD = true;
     const VIDEO_SOURCES = PREFER_SD ? [SD_URL, HD_URL] : [HD_URL, SD_URL];
     let sourceIndex = 0;
 
@@ -700,51 +687,7 @@
     }
 
     function buildDecodeOrder(n) {
-      if (isMobile) {
-        return Array.from({ length: n }, (_, i) => i);
-      }
-      if (LOW_END) {
-        const warmCount = Math.min(8, n);
-        const warm = Array.from({ length: warmCount }, (_, i) => i);
-        const rest = [];
-        const seen = new Uint8Array(n);
-        warm.forEach(i => { seen[i] = 1; });
-        const push = (i) => {
-          if (i < 0 || i >= n || seen[i]) return;
-          seen[i] = 1;
-          rest.push(i);
-        };
-        push(n - 1);
-        const q = [[warmCount - 1, n - 1]];
-        while (q.length) {
-          const [a, b] = q.shift();
-          if ((b - a) <= 1) continue;
-          const mid = Math.floor((a + b) / 2);
-          push(mid);
-          q.push([a, mid], [mid, b]);
-        }
-        for (let i = warmCount; i < n; i++) push(i);
-        return warm.concat(rest);
-      }
-      const out = [];
-      const seen = new Uint8Array(n);
-      const push = (i) => {
-        if (i < 0 || i >= n || seen[i]) return;
-        seen[i] = 1;
-        out.push(i);
-      };
-      push(0);
-      push(n - 1);
-      const q = [[0, n - 1]];
-      while (q.length) {
-        const [a, b] = q.shift();
-        if ((b - a) <= 1) continue;
-        const mid = Math.floor((a + b) / 2);
-        push(mid);
-        q.push([a, mid], [mid, b]);
-      }
-      for (let i = 0; i < n; i++) push(i);
-      return out;
+      return Array.from({ length: n }, (_, i) => i);
     }
 
     function getHeroVisual() {
@@ -862,7 +805,7 @@
       const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
       if (!offCtx) { fc.extracting = false; fc.error = true; return; }
 
-      const useBitmapFrames = (typeof createImageBitmap === 'function') && !(isChrome && (isMobile || LOW_END));
+      const useBitmapFrames = false;
       const order = buildDecodeOrder(FRAME_COUNT);
 
       try {
@@ -1350,9 +1293,9 @@
           return;
         }
 
-        const heroPxPerMs = isTablet ? 0.25 : (isPhone ? 0.20 : 0.9);
-        const heroMinDur = isTablet ? 1900 : (isPhone ? 2200 : 900);
-        const heroMaxDur = isTablet ? 4600 : (isPhone ? 5200 : 2800);
+        const heroPxPerMs = isPhone ? 0.20 : 0.26;
+        const heroMinDur = isPhone ? 2200 : 1800;
+        const heroMaxDur = isPhone ? 5200 : 4600;
         const heroDur = Math.min(heroMaxDur, Math.max(heroMinDur, heroDist / heroPxPerMs));
         runScroll(heroStop, heroDur, null, () => {
           if (targetY > heroStop + 2) smoothScrollTo(targetY);

@@ -763,13 +763,14 @@
     const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
                   || (navigator.deviceMemory && navigator.deviceMemory <= 2);
     const LOW_END_DESKTOP = LOW_END && !isMobile;
+    const DESKTOP_CHROME_STATIC_OVERLAY = !isMobile && isWindowsChrome;
     const isIOS = /iP(ad|hone|od)/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
     // Mobile uses direct video scrubbing (no frame cache) for stability/smoothness.
     const MOBILE_FRAME_CACHE = false;
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
     if (isFirefox) document.documentElement.classList.add('is-firefox');
-    if (LOW_END_DESKTOP) {
+    if (LOW_END_DESKTOP && !DESKTOP_CHROME_STATIC_OVERLAY) {
       document.documentElement.classList.add('no-hero-blur');
     }
 
@@ -1154,7 +1155,7 @@
       nav.classList.toggle('scrolled', sy > layout.navThreshold);
 
       if (!reducedMotion && heroContent && heroEl) {
-        if (LOW_END_DESKTOP) {
+        if (LOW_END_DESKTOP || DESKTOP_CHROME_STATIC_OVERLAY) {
           if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
           if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
         } else if (sy <= 4) {
@@ -1684,7 +1685,7 @@
             const py = (p - .5) * (isFirefox ? 5 : 12);
             getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
           }
-          if (LOW_END_DESKTOP) {
+          if (LOW_END_DESKTOP || DESKTOP_CHROME_STATIC_OVERLAY) {
             if (heroContent) heroContent.style.opacity = '1';
             if (heroEl) heroEl.style.setProperty('--overlay-opacity', '1');
           } else {

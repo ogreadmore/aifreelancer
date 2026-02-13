@@ -831,8 +831,46 @@
       const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
 
       const hasCreateBitmap = typeof createImageBitmap === 'function' && !(isMobile && isIOS);
-      const frames = [];
       let decoder = null;
+
+      const closeFrames = () => {
+        if (!fc.frames.length) return;
+        fc.frames.forEach((frame) => { if (frame && frame.close) frame.close(); });
+        fc.frames = [];
+      };
+      const ensureCanvas = () => {
+        if (fc.ctx) return true;
+        heroCanvas.width = cw;
+        heroCanvas.height = ch;
+        fc.ctx = heroCanvas.getContext('2d', { alpha: false });
+        if (!fc.ctx) return false;
+        fc.ctx.imageSmoothingEnabled = true;
+        if ('imageSmoothingQuality' in fc.ctx) {
+          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
+        }
+        return true;
+      };
+      const promoteFrames = () => {
+        if (fc.ready || fc.frames.length < 2) return;
+        if (!ensureCanvas()) {
+          closeFrames();
+          fc.error = true;
+          fc.extracting = false;
+          return;
+        }
+        fc.ready = true;
+        heroCanvas.style.display = 'block';
+        video.style.display = 'none';
+        video.pause();
+        displayFrame(getProgress());
+        requestFrame();
+      };
+
+      closeFrames();
+      fc.ready = false;
+      fc.lastA = -1;
+      fc.lastB = -1;
+      fc.lastMix = -1;
 
       const cleanupDecoder = () => {
         if (!decoder) return;
@@ -895,44 +933,43 @@
           const t = segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (segEnd - segStart);
           await seekTo(t);
           offCtx.drawImage(decoder, 0, 0, cw, ch);
-          if (hasCreateBitmap) frames.push(await createImageBitmap(offscreen));
-          else frames.push(offCtx.getImageData(0, 0, cw, ch));
+          if (hasCreateBitmap) fc.frames.push(await createImageBitmap(offscreen));
+          else fc.frames.push(offCtx.getImageData(0, 0, cw, ch));
+          if (fc.frames.length === 2) promoteFrames();
           if ((i & 7) === 7) await new Promise(resolve => setTimeout(resolve, 0));
         }
       } catch (e) {
-        fc.error = true;
-        frames.forEach((f) => { if (f && f.close) f.close(); });
+        if (!fc.ready) {
+          closeFrames();
+          fc.error = true;
+        }
         return;
       } finally {
         fc.extracting = false;
         cleanupDecoder();
       }
 
-      fc.frames = frames;
-      fc.ready = true;
-
-      heroCanvas.width = cw;
-      heroCanvas.height = ch;
-      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
-      if (fc.ctx) {
-        fc.ctx.imageSmoothingEnabled = true;
-        if ('imageSmoothingQuality' in fc.ctx) {
-          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
-        }
+      promoteFrames();
+      if (!fc.ready) {
+        closeFrames();
+        fc.error = true;
+        return;
       }
-
-      heroCanvas.style.display = 'block';
-      video.style.display = 'none';
-      video.pause();
-
       displayFrame(getProgress());
     }
 
     function displayFrame(progress) {
       if (!fc.ready || !fc.ctx) return;
-      const scaled = clamp(progress, 0, 1) * (fc.frames.length - 1);
+      const frameCount = fc.frames.length;
+      if (frameCount < 2) return;
+      let mapped = clamp(progress, 0, 1);
+      if (frameCount < FRAME_COUNT) {
+        const coverage = (frameCount - 1) / Math.max(1, FRAME_COUNT - 1);
+        mapped = coverage > 0 ? Math.min(mapped, coverage) / coverage : 0;
+      }
+      const scaled = mapped * (frameCount - 1);
       const a = Math.floor(scaled);
-      const b = Math.min(fc.frames.length - 1, a + 1);
+      const b = Math.min(frameCount - 1, a + 1);
       const mix = scaled - a;
       if (a === fc.lastA && b === fc.lastB && Math.abs(mix - fc.lastMix) < 0.006) return;
       fc.lastA = a;

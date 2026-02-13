@@ -94,10 +94,6 @@
       transform: scale(1.18);
       box-shadow: 0 8px 28px rgba(138,59,241,.24), 0 0 18px rgba(217,65,161,.16);
     }
-    .nav-link-fx {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 101;
-    }
 
     .scroll-track { height: 400vh; position: relative; }
     .hero {
@@ -355,6 +351,16 @@
       .service-item, .service-item:hover, .service-item:focus-visible { transform: none !important; box-shadow: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
+    .is-low-end .logo-ai,
+    .is-low-end .nav-link,
+    .is-low-end .hero-cta,
+    .is-low-end .cta-button {
+      animation: none !important;
+    }
+    .is-low-end .hero-cta:hover,
+    .is-low-end .cta-button:hover {
+      animation: none !important;
+    }
 
     /* ── MOBILE ── */
     @media (max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px) {
@@ -526,19 +532,16 @@
        Each seek forces the video decoder (CPU) to decompress a frame,
        taking 10-100ms on phones and old hardware.
 
-       FIX: Keep hero static at load, then pre-decode frames only after
-       user engagement. Frames are extracted with a hidden video element,
-       so the visible hero never "cycles" during startup.
-
-       Once cached, the canvas replaces the visible video for scroll
-       playback. If extraction fails or is disabled, we fall back to
-       direct video seeking on desktop.
+       FIX: Decode a fixed set of video frames to ImageBitmaps using a
+       hidden extractor video, then render those bitmaps on a hero canvas.
+       Scroll and programmatic anchor movement only choose which decoded
+       frame to blit. No live currentTime scrubbing in the scroll path.
 
        Other optimizations:
        - Single scroll listener → single rAF → batched DOM writes
        - Cached layout positions (recalc on resize only)
        - Static gradients on stat/metric numbers (no animation repaints)
-       - Shared particle canvas (one instead of two)
+       - Removed heavy click/hover particle effects from primary flow
        - content-visibility on below-fold sections
        ================================================================ */
 
@@ -546,19 +549,28 @@
     const PHONE_MQ = '(max-width: 767px), (max-height: 500px) and (pointer: coarse)';
     const isMobile = window.matchMedia(MOBILE_MQ).matches;
     const isPhone = window.matchMedia(PHONE_MQ).matches;
-    const isMobileViewport = () => window.matchMedia(MOBILE_MQ).matches;
     const isFirefox = /firefox/i.test(navigator.userAgent);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const CORES = Number(navigator.hardwareConcurrency) || 0;
     const MEM_GB = Number(navigator.deviceMemory) || 0;
+    const isTablet = isMobile && !isPhone;
     const LOW_END = (CORES > 0 && CORES <= 4) || (MEM_GB > 0 && MEM_GB <= 4);
-    const HIGH_END_DESKTOP = !isMobile && !isFirefox && !reducedMotion
-      && ((CORES >= 8) || (MEM_GB >= 8) || (!MEM_GB && CORES >= 6));
-    const ENABLE_FRAME_CACHE = HIGH_END_DESKTOP;
-    const ENABLE_PARALLAX = !isMobile && !LOW_END;
+    const HIGH_END = (CORES >= 8) || (MEM_GB >= 8) || (!MEM_GB && CORES >= 6);
+    const ENABLE_PARALLAX = !isMobile && HIGH_END && !reducedMotion;
+    const FRAME_PROFILE = isPhone
+      ? { count: 20, scale: 1, yieldEvery: 2 }
+      : isTablet
+        ? { count: 28, scale: 0.70, yieldEvery: 2 }
+        : LOW_END
+          ? { count: 24, scale: 0.48, yieldEvery: 2 }
+          : HIGH_END
+            ? { count: 56, scale: 0.75, yieldEvery: 4 }
+            : { count: 36, scale: 0.58, yieldEvery: 3 };
+    const ENABLE_FRAME_CACHE = !reducedMotion;
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
     if (isFirefox) document.documentElement.classList.add('is-firefox');
+    if (LOW_END) document.documentElement.classList.add('is-low-end');
 
     // ── DOM refs ──
     const nav = document.getElementById('mainNav');
@@ -581,17 +593,14 @@
     // ── Video sources ──
     const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
     const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
-    const PREFER_SD = isPhone || (!isMobile && (LOW_END || isFirefox));
+    const PREFER_SD = isPhone || (!isMobile && !HIGH_END);
     const VIDEO_SOURCES = PREFER_SD ? [SD_URL, HD_URL] : [HD_URL, SD_URL];
     let sourceIndex = 0;
 
-    // ── Scrub constants ──
+    // ── Hero segment constants ──
     const START_AT = isMobile ? 4.75 : 5.25;
     const SEG_LEN = isMobile ? 6 : 4;
     const END_SAFETY = 0.06;
-    const SEEK_FPS = isPhone ? 10 : (isMobile ? 12 : (LOW_END ? 12 : (isFirefox ? 12 : 24)));
-    const SEEK_INTERVAL_MS = Math.round(1000 / SEEK_FPS);
-    const SEEK_EPSILON = 0.45 / SEEK_FPS;
 
     /* ================================================================
        FRAME CACHE
@@ -599,34 +608,51 @@
        instant display during scroll.
        ================================================================ */
     const fc = {
+      frameTimes: [],
       frames: [],
-      ready: false,
+      loaded: [],
+      decodedCount: 0,
+      complete: false,
       extracting: false,
       error: false,
       ctx: null,        // drawing context for heroCanvas
       lastIdx: -1,      // last displayed frame index
+      width: 0,
+      height: 0,
+      segStart: 0,
+      segEnd: 0,
+      duration: 0,
     };
-    const FRAME_COUNT = 36;
+    const FRAME_COUNT = FRAME_PROFILE.count;
+    const FRAME_SCALE = FRAME_PROFILE.scale;
+    const DECODE_YIELD_EVERY = FRAME_PROFILE.yieldEvery;
     let heroEngaged = false;
     let extractScheduled = false;
     let extractGen = 0;
 
     const rafTick = () => new Promise(resolve => requestAnimationFrame(() => resolve()));
 
+    function closeFrame(frame) {
+      if (frame && typeof frame.close === 'function') frame.close();
+    }
+
     function releaseFrameCache() {
-      if (fc.frames.length) {
-        fc.frames.forEach(f => { if (f && typeof f.close === 'function') f.close(); });
-      }
+      if (fc.frames.length) fc.frames.forEach(closeFrame);
+      fc.frameTimes = [];
       fc.frames = [];
-      fc.ready = false;
+      fc.loaded = [];
+      fc.decodedCount = 0;
+      fc.complete = false;
       fc.extracting = false;
-      fc.ctx = null;
       fc.lastIdx = -1;
+      fc.ctx = null;
+      fc.width = 0;
+      fc.height = 0;
       heroCanvas.style.display = 'none';
       video.style.display = 'block';
     }
 
-    function waitForVideoReady(el, timeout = 5000) {
+    function waitForVideoReady(el, timeout = 7000) {
       if (el.readyState >= 1 && Number(el.duration) > 0) return Promise.resolve(true);
       return new Promise((resolve) => {
         let done = false;
@@ -648,23 +674,118 @@
       });
     }
 
+    function seekTo(videoEl, t, timeout = 2500) {
+      return new Promise((resolve, reject) => {
+        let done = false;
+        const finish = (ok) => {
+          if (done) return;
+          done = true;
+          clearTimeout(timer);
+          videoEl.removeEventListener('seeked', onSeeked);
+          videoEl.removeEventListener('error', onErr);
+          ok ? resolve() : reject(new Error('seek'));
+        };
+        const onSeeked = () => finish(true);
+        const onErr = () => finish(false);
+        const timer = setTimeout(() => finish(false), timeout);
+        videoEl.addEventListener('seeked', onSeeked, { once: true });
+        videoEl.addEventListener('error', onErr, { once: true });
+        try { videoEl.currentTime = t; } catch { finish(false); }
+      });
+    }
+
+    function buildDecodeOrder(n) {
+      const out = [];
+      const seen = new Uint8Array(n);
+      const push = (i) => {
+        if (i < 0 || i >= n || seen[i]) return;
+        seen[i] = 1;
+        out.push(i);
+      };
+      push(0);
+      push(n - 1);
+      const q = [[0, n - 1]];
+      while (q.length) {
+        const [a, b] = q.shift();
+        if ((b - a) <= 1) continue;
+        const mid = Math.floor((a + b) / 2);
+        push(mid);
+        q.push([a, mid], [mid, b]);
+      }
+      for (let i = 0; i < n; i++) push(i);
+      return out;
+    }
+
+    function getHeroVisual() {
+      return heroCanvas.style.display !== 'none' ? heroCanvas : video;
+    }
+
+    function configureHeroCanvas(vw, vh) {
+      const scale = (vw <= 640 || vh <= 360) ? 1 : FRAME_SCALE;
+      const cw = Math.max(1, Math.round(vw * scale));
+      const ch = Math.max(1, Math.round(vh * scale));
+      fc.width = cw;
+      fc.height = ch;
+      heroCanvas.width = cw;
+      heroCanvas.height = ch;
+      fc.ctx = heroCanvas.getContext('2d', { alpha: false, desynchronized: true });
+      if (fc.ctx) {
+        try { fc.ctx.imageSmoothingEnabled = true; fc.ctx.imageSmoothingQuality = 'high'; } catch {}
+      }
+      return !!fc.ctx;
+    }
+
+    function nearestDecodedIndex(target) {
+      if (!fc.loaded.length) return -1;
+      if (fc.loaded[target]) return target;
+      for (let d = 1; d < FRAME_COUNT; d++) {
+        const left = target - d;
+        const right = target + d;
+        if (left >= 0 && fc.loaded[left]) return left;
+        if (right < FRAME_COUNT && fc.loaded[right]) return right;
+      }
+      return -1;
+    }
+
+    function displayFrame(progress) {
+      if (!fc.ctx || !fc.decodedCount) return;
+      if (heroCanvas.style.display === 'none') {
+        heroCanvas.style.display = 'block';
+        video.style.display = 'none';
+        video.pause();
+      }
+      const target = Math.round(clamp(progress, 0, 1) * (FRAME_COUNT - 1));
+      const idx = nearestDecodedIndex(target);
+      if (idx < 0 || idx === fc.lastIdx) return;
+      const frame = fc.frames[idx];
+      if (!frame) return;
+      fc.lastIdx = idx;
+      if (frame instanceof ImageData) fc.ctx.putImageData(frame, 0, 0);
+      else fc.ctx.drawImage(frame, 0, 0, fc.width, fc.height);
+    }
+
+    async function drawStartFrame() {
+      if (!fc.ctx || !fc.duration) return;
+      try {
+        await seekTo(video, fc.segStart);
+        video.pause();
+        fc.ctx.drawImage(video, 0, 0, fc.width, fc.height);
+        heroCanvas.style.display = 'block';
+        video.style.display = 'none';
+      } catch {
+        video.pause();
+      }
+    }
+
     function scheduleFrameExtraction() {
-      if (!ENABLE_FRAME_CACHE || extractScheduled || fc.ready || fc.extracting || fc.error || !scrub.ready) return;
+      if (!ENABLE_FRAME_CACHE || extractScheduled || fc.extracting || fc.complete || fc.error || !fc.duration) return;
       extractScheduled = true;
       const start = () => {
         extractScheduled = false;
-        const now = performance.now();
-        if ((now - lastScrollTs) < 220) {
-          setTimeout(scheduleFrameExtraction, 260);
-          return;
-        }
         extractFrames();
       };
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(start, { timeout: 1200 });
-      } else {
-        setTimeout(start, 200);
-      }
+      if ('requestIdleCallback' in window) window.requestIdleCallback(start, { timeout: 900 });
+      else setTimeout(start, 120);
     }
 
     function engageHeroAnimation() {
@@ -675,7 +796,7 @@
     }
 
     async function extractFrames() {
-      if (!ENABLE_FRAME_CACHE || fc.extracting || fc.ready || fc.error) return;
+      if (!ENABLE_FRAME_CACHE || fc.extracting || fc.complete || fc.error || !fc.duration) return;
       const runId = extractGen;
       fc.extracting = true;
 
@@ -690,103 +811,57 @@
       }
 
       const ready = await waitForVideoReady(extractorVideo);
-      if (!ready) {
-        fc.error = true;
-        fc.extracting = false;
-        return;
-      }
-
-      const dur = extractorVideo.duration;
-      if (!dur || !Number.isFinite(dur) || dur <= 0) { fc.extracting = false; return; }
-
-      const maxEnd = Math.max(0, dur - END_SAFETY);
-      const segStart = clamp(START_AT, 0, maxEnd);
-      const segEnd = clamp(segStart + SEG_LEN, segStart, maxEnd);
-
-      const vw = extractorVideo.videoWidth || 640;
-      const vh = extractorVideo.videoHeight || 360;
-      const scale = isPhone ? 1 : 0.5;
-      const cw = Math.max(1, Math.round(vw * scale));
-      const ch = Math.max(1, Math.round(vh * scale));
+      if (!ready) { fc.extracting = false; fc.error = true; return; }
 
       const offscreen = document.createElement('canvas');
-      offscreen.width = cw;
-      offscreen.height = ch;
+      offscreen.width = fc.width;
+      offscreen.height = fc.height;
       const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
-      if (!offCtx) {
-        fc.error = true;
-        fc.extracting = false;
-        return;
-      }
+      if (!offCtx) { fc.extracting = false; fc.error = true; return; }
 
       const hasCreateBitmap = typeof createImageBitmap === 'function';
-      const frames = [];
+      const order = buildDecodeOrder(FRAME_COUNT);
 
       try {
-        for (let i = 0; i < FRAME_COUNT; i++) {
-          if (runId !== extractGen) {
-            frames.forEach(f => { if (f && typeof f.close === 'function') f.close(); });
-            fc.extracting = false;
-            return;
+        for (let i = 0; i < order.length; i++) {
+          if (runId !== extractGen) { fc.extracting = false; return; }
+          const idx = order[i];
+          if (fc.loaded[idx]) continue;
+
+          await seekTo(extractorVideo, fc.frameTimes[idx]);
+          if (runId !== extractGen) { fc.extracting = false; return; }
+          offCtx.drawImage(extractorVideo, 0, 0, fc.width, fc.height);
+          let frame;
+          if (hasCreateBitmap) {
+            frame = await createImageBitmap(offscreen);
+          } else {
+            const snap = document.createElement('canvas');
+            snap.width = fc.width;
+            snap.height = fc.height;
+            const snapCtx = snap.getContext('2d');
+            if (!snapCtx) throw new Error('snap-canvas');
+            snapCtx.drawImage(offscreen, 0, 0, fc.width, fc.height);
+            frame = snap;
           }
-          const t = segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (segEnd - segStart);
-          extractorVideo.currentTime = t;
-          await new Promise((resolve, reject) => {
-            const onDone = () => { extractorVideo.removeEventListener('seeked', onDone); extractorVideo.removeEventListener('error', onErr); resolve(); };
-            const onErr = () => { extractorVideo.removeEventListener('seeked', onDone); extractorVideo.removeEventListener('error', onErr); reject(new Error('seek')); };
-            extractorVideo.addEventListener('seeked', onDone, { once: true });
-            extractorVideo.addEventListener('error', onErr, { once: true });
-          });
-          offCtx.drawImage(extractorVideo, 0, 0, cw, ch);
-          if (hasCreateBitmap) frames.push(await createImageBitmap(offscreen));
-          else frames.push(offCtx.getImageData(0, 0, cw, ch));
-          if (i % 4 === 3) await rafTick();
+          if (runId !== extractGen) { closeFrame(frame); fc.extracting = false; return; }
+
+          fc.frames[idx] = frame;
+          fc.loaded[idx] = 1;
+          fc.decodedCount++;
+
+          if (heroEngaged) requestFrame();
+          if (i % DECODE_YIELD_EVERY === (DECODE_YIELD_EVERY - 1)) await rafTick();
         }
-      } catch (e) {
+      } catch {
         fc.error = true;
+      } finally {
         fc.extracting = false;
-        frames.forEach(f => { if (f && typeof f.close === 'function') f.close(); });
-        return;
       }
 
-      fc.extracting = false;
-      if (runId !== extractGen) {
-        frames.forEach(f => { if (f && typeof f.close === 'function') f.close(); });
-        return;
+      if (!fc.error && runId === extractGen) {
+        fc.complete = true;
+        requestFrame();
       }
-      fc.frames = frames;
-      fc.ready = true;
-      heroCanvas.width = cw;
-      heroCanvas.height = ch;
-      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
-      if (!fc.ctx) {
-        releaseFrameCache();
-        fc.error = true;
-        return;
-      }
-
-      heroCanvas.style.display = 'block';
-      video.style.display = 'none';
-      video.pause();
-      displayFrame(heroEngaged ? getProgress() : 0);
-    }
-
-    function displayFrame(progress) {
-      if (!fc.ready || !fc.ctx) return;
-      const idx = Math.round(clamp(progress, 0, 1) * (fc.frames.length - 1));
-      if (idx === fc.lastIdx) return;
-      fc.lastIdx = idx;
-      const frame = fc.frames[idx];
-      if (frame instanceof ImageBitmap) {
-        fc.ctx.drawImage(frame, 0, 0);
-      } else if (frame instanceof ImageData) {
-        fc.ctx.putImageData(frame, 0, 0);
-      }
-    }
-
-    // The element that gets parallax transforms (canvas when ready, video as fallback)
-    function getHeroVisual() {
-      return fc.ready ? heroCanvas : video;
     }
 
     /* ================================================================
@@ -840,45 +915,11 @@
     }
 
     /* ================================================================
-       VIDEO SEEK FALLBACK (used only if frame extraction fails)
-       ================================================================ */
-    const scrub = {
-      ready: false,
-      duration: 0,
-      smoothTime: 0,
-      targetTime: 0,
-      lastSeekTs: 0,
-      paused: false,
-    };
-
-    function computeTargetTime(progress, dur) {
-      const maxEnd = Math.max(0, dur - END_SAFETY);
-      const s = clamp(START_AT, 0, maxEnd);
-      const e = clamp(s + SEG_LEN, s, maxEnd);
-      return s + progress * (e - s);
-    }
-
-    function seekVideo(ts, progress) {
-      // Fallback scrubbing: quantized direct seek (no long trailing lerp).
-      if (!scrub.ready || scrub.paused) return;
-      scrub.targetTime = computeTargetTime(progress, scrub.duration);
-      const maxEnd = Math.max(0, scrub.duration - END_SAFETY);
-      const snapped = clamp(Math.round(scrub.targetTime * SEEK_FPS) / SEEK_FPS, 0, maxEnd);
-      scrub.smoothTime = snapped;
-      if ((ts - scrub.lastSeekTs) < SEEK_INTERVAL_MS) return;
-      if (Math.abs(video.currentTime - snapped) <= SEEK_EPSILON) return;
-      try {
-        video.currentTime = snapped;
-        scrub.lastSeekTs = ts;
-      } catch {}
-    }
-
-    /* ================================================================
        UNIFIED SCROLL FRAME LOOP
        One scroll listener → one rAF → all reads first → all writes.
        ================================================================ */
     let frameId = 0;
-    let lastScrollTs = 0;
+    let lastScrollTs = -1e9;
     let lastTextFade = -1;
     let lastOverlayFade = -1;
 
@@ -927,14 +968,8 @@
         }
       }
 
-      // ── WRITE: hero visual (canvas frames or video seek fallback) ──
-      if (!heroEngaged) {
-        // Keep hero static at initial frame until user engages the page.
-      } else if (fc.ready) {
-        displayFrame(progress);
-      } else if (scrub.ready && !scrub.paused) {
-        seekVideo(ts, progress);
-      }
+      // ── WRITE: hero visual (decoded frame canvas) ──
+      displayFrame(progress);
 
       // ── WRITE: parallax (desktop only) ──
       if (ENABLE_PARALLAX) {
@@ -965,9 +1000,7 @@
       }
 
       // ── Continue short burst while user is actively scrolling ──
-      if (heroEngaged && !fc.ready && scrub.ready && !scrub.paused) {
-        if ((ts - lastScrollTs) < 120) requestFrame();
-      }
+      if ((ts - lastScrollTs) < 140) requestFrame();
     }
 
     function onScroll() {
@@ -998,47 +1031,72 @@
     /* ================================================================
        VIDEO LOAD + FRAME EXTRACTION
        ================================================================ */
+    let activeVideoSrc = '';
+
     function setVideoSource(url) {
       extractGen++;
       releaseFrameCache();
-      fc.error = false;
+      activeVideoSrc = '';
       extractScheduled = false;
-      scrub.ready = false;
+      fc.error = false;
+      fc.duration = 0;
+      fc.segStart = 0;
+      fc.segEnd = 0;
+      extractorVideo.pause();
+      extractorVideo.removeAttribute('src');
+      extractorVideo.load();
 
       video.pause();
       video.crossOrigin = 'anonymous';
       video.preload = 'auto';
       video.src = url;
       video.load();
+
+      extractorVideo.crossOrigin = 'anonymous';
+      extractorVideo.preload = 'auto';
+      extractorVideo.src = url;
+      extractorVideo.load();
     }
 
     function initVideo() {
+      const src = video.currentSrc || video.src || '';
+      if (!src || activeVideoSrc === src) return;
       const dur = Number(video.duration) || 0;
       if (!Number.isFinite(dur) || dur <= 0) return;
-      scrub.duration = dur;
-      scrub.ready = true;
+      activeVideoSrc = src;
+      fc.duration = dur;
+      const maxEnd = Math.max(0, dur - END_SAFETY);
+      fc.segStart = clamp(START_AT, 0, maxEnd);
+      fc.segEnd = clamp(fc.segStart + SEG_LEN, fc.segStart, maxEnd);
+
+      if (!configureHeroCanvas(video.videoWidth || 640, video.videoHeight || 360)) {
+        fc.error = true;
+        return;
+      }
+
+      fc.frameTimes = Array.from({ length: FRAME_COUNT }, (_, i) =>
+        fc.segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (fc.segEnd - fc.segStart)
+      );
+      fc.frames = new Array(FRAME_COUNT);
+      fc.loaded = new Uint8Array(FRAME_COUNT);
+      fc.decodedCount = 0;
+      fc.complete = false;
+      fc.lastIdx = -1;
 
       recalcLayout();
-      const p = heroEngaged ? getProgress() : 0;
-      scrub.targetTime = computeTargetTime(p, dur);
-      scrub.smoothTime = scrub.targetTime;
-
-      try { video.currentTime = scrub.targetTime; } catch {}
-      video.pause();
-
-      if (heroEngaged) scheduleFrameExtraction();
+      drawStartFrame();
+      scheduleFrameExtraction();
       requestFrame();
     }
 
     video.style.background = '#fff';
     video.addEventListener('loadedmetadata', initVideo);
-    video.addEventListener('canplay', () => { if (!scrub.ready) initVideo(); });
+    video.addEventListener('canplay', initVideo);
     video.addEventListener('error', () => {
       sourceIndex++;
       if (sourceIndex < VIDEO_SOURCES.length) {
         setVideoSource(VIDEO_SOURCES[sourceIndex]);
       } else {
-        scrub.ready = false;
         fc.error = true;
         releaseFrameCache();
         video.style.display = 'none';
@@ -1156,203 +1214,22 @@
     })();
 
     /* ================================================================
-       SHARED PARTICLE CANVAS (one canvas for all effects, lazy init)
-       Desktop only — skipped on mobile.
-       ================================================================ */
-    const particles = [];
-    let pCanvas = null, pCtx = null, pAnimating = false, pDpr = 1;
-    const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B', '#ffffff'];
-
-    function initPCanvas() {
-      if (pCanvas) return;
-      pCanvas = document.createElement('canvas');
-      pCanvas.className = 'nav-link-fx';
-      document.body.appendChild(pCanvas);
-      pCtx = pCanvas.getContext('2d');
-      resizePCanvas();
-      window.addEventListener('resize', resizePCanvas, { passive: true });
-    }
-    function resizePCanvas() {
-      if (!pCanvas) return;
-      pDpr = window.devicePixelRatio || 1;
-      pCanvas.width = window.innerWidth * pDpr;
-      pCanvas.height = window.innerHeight * pDpr;
-      pCanvas.style.width = window.innerWidth + 'px';
-      pCanvas.style.height = window.innerHeight + 'px';
-      pCtx.setTransform(pDpr, 0, 0, pDpr, 0, 0);
-    }
-    function pLoop() {
-      if (!particles.length) { pAnimating = false; pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height); return; }
-      pAnimating = true;
-      const w = pCanvas.width / pDpr, h = pCanvas.height / pDpr;
-      pCtx.clearRect(0, 0, w, h);
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i]; p.life -= p.decay;
-        if (p.life <= 0) { particles.splice(i, 1); continue; }
-        p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.vx *= p.friction; p.vy *= p.friction;
-        if (p.rotSpeed) p.rot += p.rotSpeed;
-        pCtx.globalAlpha = Math.min(1, p.life * 2);
-        if (p.type === 'sparkle') {
-          pCtx.save(); pCtx.translate(p.x, p.y); pCtx.rotate(p.rot);
-          const s = p.size * (0.5 + 0.5 * Math.sin(p.life * 8));
-          pCtx.fillStyle = p.color; pCtx.beginPath();
-          for (let j = 0; j < 4; j++) {
-            const a = (j / 4) * Math.PI * 2 - Math.PI / 2;
-            const ox = Math.cos(a) * s, oy = Math.sin(a) * s;
-            const ia = a + Math.PI / 4, ix = Math.cos(ia) * s * 0.3, iy = Math.sin(ia) * s * 0.3;
-            if (j === 0) pCtx.moveTo(ox, oy); else pCtx.lineTo(ox, oy);
-            pCtx.lineTo(ix, iy);
-          }
-          pCtx.closePath(); pCtx.fill(); pCtx.restore();
-        } else if (p.type === 'confetti') {
-          pCtx.save(); pCtx.translate(p.x, p.y); pCtx.rotate(p.rot);
-          pCtx.fillStyle = p.color; const sx = Math.cos(p.life * 6 + p.phase); pCtx.scale(sx, 1);
-          pCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); pCtx.restore();
-        } else if (p.type === 'trail') {
-          pCtx.fillStyle = p.color; pCtx.beginPath(); pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2); pCtx.fill();
-        } else if (p.type === 'burst') {
-          pCtx.save(); pCtx.translate(p.x, p.y); pCtx.rotate(p.rot);
-          pCtx.fillStyle = p.color; pCtx.shadowColor = p.color; pCtx.shadowBlur = 6;
-          pCtx.beginPath(); pCtx.arc(0, 0, p.size * Math.max(0.3, p.life), 0, Math.PI * 2);
-          pCtx.fill(); pCtx.shadowBlur = 0; pCtx.restore();
-        }
-      }
-      pCtx.globalAlpha = 1;
-      requestAnimationFrame(pLoop);
-    }
-    function ensurePLoop() { if (!pAnimating) { pAnimating = true; requestAnimationFrame(pLoop); } }
-
-    /* ── Submit button: sparkles on hover, fireworks on click ── */
-    (() => {
-      const btn = document.getElementById('submitBtn');
-      if (!btn || reducedMotion || isMobile) return;
-      let si = null;
-      const spawn = () => {
-        initPCanvas();
-        const r = btn.getBoundingClientRect(); const sp = 14; const e = Math.random();
-        let x, y;
-        if (e < 0.25) { x = r.left + Math.random() * r.width; y = r.top - sp + Math.random() * 6; }
-        else if (e < 0.5) { x = r.left + Math.random() * r.width; y = r.bottom + sp * 0.5 - Math.random() * 6; }
-        else if (e < 0.75) { x = r.left - sp + Math.random() * 6; y = r.top + Math.random() * r.height; }
-        else { x = r.right + sp * 0.5 - Math.random() * 6; y = r.top + Math.random() * r.height; }
-        particles.push({ type:'sparkle', x, y, vx:(Math.random()-.5)*1.8, vy:(Math.random()-.5)*1.8-.6, gravity:0, friction:.97, size:5+Math.random()*7, rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-.5)*.15, color:Math.random()<.35?'#ffffff':BRAND[Math.floor(Math.random()*BRAND.length)], life:1, decay:.014+Math.random()*.01 });
-        ensurePLoop();
-      };
-      btn.addEventListener('mouseenter', () => { if (btn.disabled) return; si = setInterval(spawn, 40); for (let i = 0; i < 8; i++) spawn(); });
-      btn.addEventListener('mouseleave', () => { clearInterval(si); si = null; });
-
-      const firework = (ox, oy, tx, ty) => {
-        initPCanvas();
-        const c = BRAND[Math.floor(Math.random() * (BRAND.length - 1))];
-        const dx = tx - ox, dy = ty - oy, dist = Math.sqrt(dx * dx + dy * dy);
-        const tf = Math.floor(dist / 7), vx = dx / tf, vy = dy / tf;
-        let fr = 0, rx = ox, ry = oy;
-        const rise = () => {
-          fr++; rx += vx; ry += vy;
-          for (let t = 0; t < 2; t++) particles.push({ type:'trail', x:rx+(Math.random()-.5)*4, y:ry+(Math.random()-.5)*4, vx:(Math.random()-.5)*1.5, vy:Math.random()*1.5+.5, gravity:.03, friction:.96, size:1.5+Math.random()*1.5, rot:0, rotSpeed:0, color:c, life:1, decay:.04+Math.random()*.03 });
-          ensurePLoop();
-          if (fr < tf) { requestAnimationFrame(rise); return; }
-          const bc = 45 + Math.floor(Math.random() * 20);
-          for (let b = 0; b < bc; b++) {
-            const a = Math.random() * Math.PI * 2, sp = 1.5 + Math.random() * 4;
-            const bc2 = Math.random() < .3 ? BRAND[Math.floor(Math.random() * (BRAND.length - 1))] : c;
-            particles.push({ type:'burst', x:rx+(Math.random()-.5)*6, y:ry+(Math.random()-.5)*6, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp, gravity:.04+Math.random()*.02, friction:.975+Math.random()*.015, size:2+Math.random()*3, rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-.5)*.1, color:bc2, life:1, decay:.012+Math.random()*.008 });
-          }
-          ensurePLoop();
-        };
-        requestAnimationFrame(rise);
-      };
-
-      btn.addEventListener('click', () => {
-        if (btn.disabled) return;
-        btn.classList.add('pop'); setTimeout(() => btn.classList.remove('pop'), 220);
-        const r = btn.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top, vh = window.innerHeight;
-        [{a:-90,d:.55},{a:-60,d:.45},{a:-120,d:.45},{a:-75,d:.6},{a:-105,d:.6},{a:-45,d:.35},{a:-135,d:.35}].forEach((p, i) => {
-          const rad = p.a * Math.PI / 180, travel = vh * p.d;
-          setTimeout(() => firework(cx, cy, cx + Math.cos(rad) * travel * .7, cy + Math.sin(rad) * travel), i * 70);
-        });
-      });
-    })();
-
-    /* ── "Learn More" thumbs-up burst (desktop only) ── */
-    (() => {
-      const btn = document.querySelector('.hero-cta');
-      if (!btn || reducedMotion || isMobile) return;
-      const BC = ['#4B88DA','#8A3BF1','#D941A1','#E5484D','#F59E0B'];
-      const svg = (c) => '<svg viewBox="0 0 24 24" fill="'+c+'" xmlns="http://www.w3.org/2000/svg"><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14Z"/></svg>';
-      btn.addEventListener('click', () => {
-        if ((window.scrollY || window.pageYOffset) >= 50) return;
-        const r = btn.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        for (let i = 0; i < 20; i++) {
-          const c = BC[Math.floor(Math.random() * BC.length)];
-          const el = document.createElement('span');
-          el.innerHTML = svg(c); el.setAttribute('aria-hidden', 'true');
-          const a = -Math.PI / 2 + (Math.random() - .5) * Math.PI * .9, sp = 9 + Math.random() * 10;
-          let vx = Math.cos(a) * sp, vy = Math.sin(a) * sp;
-          const g = .14 + Math.random() * .06, rs = (Math.random() - .5) * 6, sz = 34 + Math.random() * 20, dl = Math.random() * 140;
-          Object.assign(el.style, { position:'fixed', left:(cx+(Math.random()-.5)*30)+'px', top:(cy+(Math.random()-.5)*14)+'px', width:sz+'px', height:sz+'px', lineHeight:'1', pointerEvents:'none', zIndex:'101', willChange:'transform,opacity', opacity:'0', userSelect:'none' });
-          document.body.appendChild(el);
-          let x=0,y=0,rot=0,op=1,fr=0,fall=false;
-          const mf = 80+Math.floor(Math.random()*30);
-          const tick = () => {
-            fr++; if (fr*16 < dl) { requestAnimationFrame(tick); return; }
-            vy += g; x += vx; y += vy; vx *= .99; if (vy > 0) fall = true; if (fall) rot += rs;
-            const pr = (fr*16-dl)/((mf*16)-dl); op = pr>.55 ? 1-((pr-.55)/.45) : 1;
-            el.style.opacity = Math.max(0, op);
-            el.style.transform = 'translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+rot.toFixed(1)+'deg)';
-            if (fr < mf && op > 0) requestAnimationFrame(tick); else el.remove();
-          };
-          requestAnimationFrame(tick);
-        }
-      });
-    })();
-
-    /* ── Nav "Let's Talk" sparkles + confetti (desktop only) ── */
-    (() => {
-      const link = document.querySelector('.nav-link');
-      if (!link || reducedMotion || isMobile) return;
-      let si = null;
-      const spawn = () => {
-        initPCanvas();
-        const r = link.getBoundingClientRect(); const e = Math.random();
-        let x, y;
-        if (e < .25) { x = r.left + Math.random() * r.width; y = r.top - 4 + Math.random() * 8; }
-        else if (e < .5) { x = r.left + Math.random() * r.width; y = r.bottom - 4 + Math.random() * 8; }
-        else if (e < .75) { x = r.left - 4 + Math.random() * 8; y = r.top + Math.random() * r.height; }
-        else { x = r.right - 4 + Math.random() * 8; y = r.top + Math.random() * r.height; }
-        particles.push({ type:'sparkle', x, y, vx:(Math.random()-.5)*1.2, vy:(Math.random()-.5)*1.2-.4, gravity:0, friction:.98, size:3+Math.random()*5, rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-.5)*.1, color:BRAND[Math.floor(Math.random()*BRAND.length)], life:1, decay:.018+Math.random()*.012 });
-        ensurePLoop();
-      };
-      link.addEventListener('mouseenter', () => { if (isMobileViewport()) return; si = setInterval(spawn, 60); for (let i = 0; i < 4; i++) spawn(); });
-      link.addEventListener('mouseleave', () => { clearInterval(si); si = null; });
-      link.addEventListener('touchend', () => { clearInterval(si); si = null; }, { passive: true });
-      link.addEventListener('touchcancel', () => { clearInterval(si); si = null; }, { passive: true });
-      link.addEventListener('click', () => {
-        initPCanvas();
-        link.classList.add('pop'); setTimeout(() => link.classList.remove('pop'), 220);
-        const r = link.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        for (let i = 0; i < 55; i++) {
-          const a = Math.random() * Math.PI * 2, sp = 2.5 + Math.random() * 6;
-          particles.push({ type:'confetti', x:cx+(Math.random()-.5)*20, y:cy+(Math.random()-.5)*10, vx:Math.cos(a)*sp, vy:Math.sin(a)*sp-2.5, gravity:.12+Math.random()*.06, friction:.985, w:8+Math.random()*8, h:4+Math.random()*5, rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-.5)*.25, phase:Math.random()*Math.PI*2, color:BRAND[Math.floor(Math.random()*(BRAND.length-1))], life:1, decay:.008+Math.random()*.006 });
-        }
-        ensurePLoop();
-      });
-    })();
-
-    /* ================================================================
        ANCHOR SCROLLING
-       Preserves original two-phase ease, cinematic hero scroll,
-       and mobile cadence. Video scrub replaced with frame display.
+       Canvas frame display is driven by scroll position only.
        ================================================================ */
     (() => {
       if (reducedMotion) return;
+
       const EASE = (t) => 1 - Math.pow(1 - t, 3);
-      let af = 0, ft = 0;
+      let af = 0;
+      let ft = 0;
 
       const stopAnim = () => {
-        if (af) cancelAnimationFrame(af); af = 0;
-        if (ft) { clearTimeout(ft); ft = 0; }
-        scrub.paused = false;
+        if (af) cancelAnimationFrame(af);
+        if (ft) clearTimeout(ft);
+        af = 0;
+        ft = 0;
+        requestFrame();
       };
 
       const navH = () => {
@@ -1360,142 +1237,76 @@
         return n ? Math.max(0, Math.round(n.getBoundingClientRect().height + 8)) : 0;
       };
 
-      const fastScrollTo = (targetY, cb) => {
-        stopAnim();
-        scrub.paused = true;
+      const runScroll = (targetY, dur, onStep, onDone) => {
         const startY = window.scrollY || window.pageYOffset;
         const dist = targetY - startY;
-        if (Math.abs(dist) < 2) { scrub.paused = false; if (cb) cb(); return; }
-        const dur = Math.min(2200, Math.max(500, Math.abs(dist) / 2.8));
+        if (Math.abs(dist) < 2) {
+          window.scrollTo(0, targetY);
+          if (onStep) onStep(1);
+          requestFrame();
+          if (onDone) onDone();
+          return;
+        }
+
         const start = performance.now();
         let done = false;
         const finish = () => {
-          if (done) return; done = true;
-          if (af) cancelAnimationFrame(af); af = 0;
-          if (ft) { clearTimeout(ft); ft = 0; }
-          scrub.paused = false; requestFrame();
-          if (cb) cb();
+          if (done) return;
+          done = true;
+          if (af) cancelAnimationFrame(af);
+          if (ft) clearTimeout(ft);
+          af = 0;
+          ft = 0;
+          if (onDone) onDone();
         };
-        ft = setTimeout(() => { window.scrollTo(0, targetY); finish(); }, dur + 500);
+
+        ft = setTimeout(() => {
+          window.scrollTo(0, targetY);
+          if (onStep) onStep(1);
+          requestFrame();
+          finish();
+        }, dur + 600);
+
         const step = (now) => {
           if (done) return;
           const t = Math.min(1, (now - start) / dur);
           window.scrollTo(0, startY + dist * EASE(t));
+          if (onStep) onStep(t);
           requestFrame();
-          if (t < 1) af = requestAnimationFrame(step); else finish();
+          if (t < 1) af = requestAnimationFrame(step);
+          else finish();
         };
         af = requestAnimationFrame(step);
       };
 
-      // Desktop: cinematic play-through-hero scroll
-      const playThenScroll = (targetY) => {
-        engageHeroAnimation();
+      const smoothScrollTo = (targetY, cb) => {
         stopAnim();
-        const heroEnd = layout.trackScrollable;
-        const startY = window.scrollY || window.pageYOffset;
-        const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
-        const heroDur = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
-        const start = performance.now();
-
-        scrub.paused = true;
-        if (!fc.ready) scrub.smoothTime = computeTargetTime(getProgress(), scrub.duration);
-
-        const step = (now) => {
-          const t = Math.min(1, heroDur > 0 ? (now - start) / heroDur : 1);
-          const y = startY + heroDist * t;
-          window.scrollTo(0, y);
-
-          const p = getProgress();
-
-          // Display frame or seek video
-          if (fc.ready) {
-            displayFrame(p);
-          } else if (scrub.ready) {
-            seekVideo(now, p);
-          }
-
-          // Parallax + fade during programmatic scroll
-          if (ENABLE_PARALLAX) {
-            const py = (p - .5) * (isFirefox ? 5 : 12);
-            getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
-          } else {
-            getHeroVisual().style.transform = 'scale(1.04) translate3d(0,0,0)';
-          }
-          if (heroContent) heroContent.style.opacity = Math.max(0, 1 - (p / 0.42)).toFixed(3);
-          if (heroEl) heroEl.style.setProperty('--overlay-opacity', Math.max(0, 1 - p).toFixed(3));
-
-          if (t < 1) { af = requestAnimationFrame(step); return; }
-          af = 0;
-          if (targetY > heroEnd + 2) fastScrollTo(targetY);
-          else { scrub.paused = false; requestFrame(); }
-        };
-
-        if (heroDur > 0) af = requestAnimationFrame(step);
-        else fastScrollTo(targetY);
+        const sy = window.scrollY || window.pageYOffset;
+        const dist = Math.abs(targetY - sy);
+        const dur = Math.min(1800, Math.max(420, dist / 2.8));
+        runScroll(targetY, dur, null, cb);
       };
 
-      // Mobile: two-phase ease (gentle hero opener → fast tail to target)
-      const mobileScroll = (targetY) => {
-        engageHeroAnimation();
+      const playHeroThenScroll = (targetY) => {
         stopAnim();
+        engageHeroAnimation();
+        recalcLayout();
+
+        const sy = window.scrollY || window.pageYOffset;
         const heroEnd = layout.trackScrollable;
-        const startY = window.scrollY || window.pageYOffset;
-        const isContact = targetY > heroEnd + 100;
-        const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
-        const heroRatio = heroEnd > 0 ? heroDist / heroEnd : 0;
-        const heroDur = Math.max(1200, 3600 * heroRatio);
+        const heroStop = Math.max(sy, Math.min(heroEnd, targetY));
+        const heroDist = Math.max(0, heroStop - sy);
 
-        const contactLeadDist = heroDist * 0.30;
-        const contactLeadDur = heroDur * 0.65;
-        const contactLeadEndY = startY + contactLeadDist;
-        const contactTailDist = Math.max(0, targetY - contactLeadEndY);
-        const contactTailDur = (isContact && contactTailDist > 0)
-          ? Math.max(380, Math.min(1050, contactTailDist / 6.2)) : 0;
-        const contactTotalDur = contactLeadDur + contactTailDur;
-        const contactLeadPhase = contactTotalDur > 0 ? contactLeadDur / contactTotalDur : 1;
+        if (heroDist < 2) {
+          smoothScrollTo(targetY);
+          return;
+        }
 
-        if (heroDist < 2) { fastScrollTo(targetY); return; }
-
-        const heroEase = (t) => {
-          if (t < 0.65) return 0.30 * (1 - Math.pow(1 - (t / 0.65), 1.8));
-          return 0.30 + 0.70 * (1 - Math.pow(1 - ((t - 0.65) / 0.35), 2));
-        };
-
-        const heroStart = performance.now();
-        const step = (now) => {
-          if (isContact && contactTailDist > 2) {
-            const tAll = Math.min(1, (now - heroStart) / contactTotalDur);
-            let y;
-            if (tAll <= contactLeadPhase) {
-              const p = contactLeadPhase > 0 ? Math.min(1, tAll / contactLeadPhase) : 1;
-              y = startY + contactLeadDist * (1 - Math.pow(1 - p, 1.8));
-            } else {
-              const q = Math.min(1, (tAll - contactLeadPhase) / (1 - contactLeadPhase));
-              y = contactLeadEndY + contactTailDist * q;
-            }
-            window.scrollTo(0, y);
-            requestFrame();
-            if (tAll < 1) { af = requestAnimationFrame(step); return; }
-            af = 0; window.scrollTo(0, targetY); requestFrame(); return;
-          }
-
-          const t = Math.min(1, (now - heroStart) / heroDur);
-          window.scrollTo(0, startY + heroDist * heroEase(t));
-          requestFrame();
-          if (t < 1) { af = requestAnimationFrame(step); }
-          else {
-            af = 0;
-            recalcLayout();
-            const freshRect = document.querySelector(location.hash || '#learn-more');
-            if (freshRect) {
-              const sy = window.scrollY || window.pageYOffset;
-              const fr = freshRect.getBoundingClientRect();
-              const fy = Math.max(0, Math.round(fr.top + sy - navH()));
-              if (fy > sy + 2) fastScrollTo(fy);
-            }
-          }
-        };
-        af = requestAnimationFrame(step);
+        const heroDur = Math.min(2800, Math.max(900, heroDist / (isMobile ? 0.65 : 0.9)));
+        runScroll(heroStop, heroDur, null, () => {
+          if (targetY > heroStop + 2) smoothScrollTo(targetY);
+          else requestFrame();
+        });
       };
 
       document.addEventListener('click', (e) => {
@@ -1508,25 +1319,19 @@
         e.preventDefault();
 
         recalcLayout();
-        const offset = navH();
         const sy = window.scrollY || window.pageYOffset;
         const atTop = sy < 50;
+        const offset = navH();
         const r = target.getBoundingClientRect();
         const targetY = Math.max(0, Math.round(r.top + sy - offset));
 
-        if (isMobile && atTop) {
-          mobileScroll(targetY);
-        } else if (!isMobile && atTop && (scrub.ready || fc.ready)) {
-          playThenScroll(targetY);
-        } else {
-          if (atTop && !heroEngaged) engageHeroAnimation();
-          fastScrollTo(targetY);
-        }
+        if (atTop) playHeroThenScroll(targetY);
+        else smoothScrollTo(targetY);
 
         try { if (history.pushState) history.pushState(null, '', href); } catch { location.hash = href; }
       }, { passive: false });
 
-      ['wheel', 'touchstart', 'keydown'].forEach(evt => {
+      ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(evt => {
         window.addEventListener(evt, stopAnim, { passive: true });
       });
     })();

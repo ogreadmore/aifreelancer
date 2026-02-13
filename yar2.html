@@ -748,7 +748,9 @@
       const track = document.getElementById('track');
       const video = document.getElementById('bgVideo');
       const rootEl = document.documentElement;
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const MOBILE_VIEWPORT_QUERY = '(max-width: 768px), (max-height: 500px) and (orientation: landscape)';
+      const isMobileViewport = () => window.matchMedia(MOBILE_VIEWPORT_QUERY).matches;
+      const isMobile = isMobileViewport();
 
       function getNavThreshold() {
         if (!track) return 60;
@@ -779,9 +781,10 @@
       const DESKTOP_LITE_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const isFirefox = /firefox/i.test(navigator.userAgent);
       if (isFirefox) rootEl.classList.add('is-firefox');
-      // Fallback: weaker desktops use lighter styling and autoplay (not scroll-scrub).
+      // Fallback: weaker non-touch desktops use lighter styling and autoplay.
       const ua = navigator.userAgent || '';
       const isWindowsDesktop = !isMobile && /Windows/i.test(ua);
+      const hasTouchLikeInput = (navigator.maxTouchPoints || 0) > 0 || window.matchMedia('(pointer: coarse)').matches;
       const desktopCoreCount = navigator.hardwareConcurrency || 0;
       const desktopMemoryGb = navigator.deviceMemory || 0;
       const hasKnownLowDesktop = (
@@ -791,7 +794,7 @@
       const hasClearlyStrongDesktop = (
         desktopMemoryGb >= 16 || desktopCoreCount >= 12
       );
-      let desktopLiteMode = !isMobile && (
+      let desktopLiteMode = !isMobile && !hasTouchLikeInput && (
         hasKnownLowDesktop ||
         (isWindowsDesktop && !hasClearlyStrongDesktop)
       );
@@ -1126,7 +1129,7 @@
           return;
         }
 
-        if (window.matchMedia('(max-width: 768px)').matches) {
+        if (isMobileViewport()) {
           shell.style.transform = 'scale(1)';
           return;
         }
@@ -1164,7 +1167,7 @@
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!reducedMotion) {
         const revealTargets = Array.from(document.querySelectorAll('.page-content section, .page-content .divider, .page-content footer, .service-item, .stat, .case-study, .approach-step, .metric'));
-        const isMobileReveal = window.matchMedia('(max-width: 768px)').matches;
+        const isMobileReveal = isMobileViewport();
         revealTargets.forEach((el, i) => {
           if (isMobileReveal && (el.classList.contains('about-video-wrap') || el.classList.contains('pitch'))) return;
           el.classList.add('reveal');
@@ -1289,7 +1292,7 @@
       function ensureLoop() { if (!animating) { animating = true; requestAnimationFrame(loop); } }
       let sparkleInterval = null;
       const spawnSparkle = () => { const rect = submitBtn.getBoundingClientRect(); const spread = 14; const edge = Math.random(); let x, y; if (edge < 0.25) { x = rect.left + Math.random() * rect.width; y = rect.top - spread + Math.random() * 6; } else if (edge < 0.5) { x = rect.left + Math.random() * rect.width; y = rect.bottom + spread * 0.5 - Math.random() * 6; } else if (edge < 0.75) { x = rect.left - spread + Math.random() * 6; y = rect.top + Math.random() * rect.height; } else { x = rect.right + spread * 0.5 - Math.random() * 6; y = rect.top + Math.random() * rect.height; } particles.push({ type: 'sparkle', x, y, vx: (Math.random() - 0.5) * 1.8, vy: (Math.random() - 0.5) * 1.8 - 0.6, gravity: 0, friction: 0.97, size: 5 + Math.random() * 7, rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.15, color: Math.random() < 0.35 ? '#ffffff' : BRAND[Math.floor(Math.random() * BRAND.length)], life: 1, decay: 0.014 + Math.random() * 0.01, }); ensureLoop(); };
-      submitBtn.addEventListener('mouseenter', () => { if (submitBtn.disabled || window.matchMedia('(max-width: 768px)').matches) return; sparkleInterval = setInterval(spawnSparkle, 40); for (let i = 0; i < 8; i++) spawnSparkle(); });
+      submitBtn.addEventListener('mouseenter', () => { if (submitBtn.disabled || isMobileViewport()) return; sparkleInterval = setInterval(spawnSparkle, 40); for (let i = 0; i < 8; i++) spawnSparkle(); });
       submitBtn.addEventListener('mouseleave', () => { clearInterval(sparkleInterval); sparkleInterval = null; });
       submitBtn.addEventListener('touchend', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
       submitBtn.addEventListener('touchcancel', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
@@ -1302,7 +1305,7 @@
       const btn = document.querySelector('.hero-cta');
       if (!btn) return;
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced || window.matchMedia('(max-width: 768px)').matches) return;
+      if (prefersReduced || isMobileViewport()) return;
 
       const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B'];
       const COUNT = 20;
@@ -1384,7 +1387,7 @@
       const link = document.querySelector('.nav-link');
       if (!link) return;
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced || window.matchMedia('(max-width: 768px)').matches) return;
+      if (prefersReduced || isMobileViewport()) return;
       const canvas = document.createElement('canvas');
       canvas.className = 'nav-link-fx';
       document.body.appendChild(canvas);
@@ -1424,7 +1427,7 @@
       function ensureLoop() { if (!animating) { animating = true; requestAnimationFrame(loop); } }
       let sparkleInterval = null;
       const spawnSparkle = () => { const rect = link.getBoundingClientRect(); const edge = Math.random(); let x, y; if (edge < 0.25) { x = rect.left + Math.random() * rect.width; y = rect.top - 4 + Math.random() * 8; } else if (edge < 0.5) { x = rect.left + Math.random() * rect.width; y = rect.bottom - 4 + Math.random() * 8; } else if (edge < 0.75) { x = rect.left - 4 + Math.random() * 8; y = rect.top + Math.random() * rect.height; } else { x = rect.right - 4 + Math.random() * 8; y = rect.top + Math.random() * rect.height; } particles.push({ type: 'sparkle', x, y, vx: (Math.random() - 0.5) * 1.2, vy: (Math.random() - 0.5) * 1.2 - 0.4, gravity: 0, friction: 0.98, size: 3 + Math.random() * 5, rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.1, color: BRAND[Math.floor(Math.random() * BRAND.length)], life: 1, decay: 0.018 + Math.random() * 0.012, }); ensureLoop(); };
-      link.addEventListener('mouseenter', () => { if (window.matchMedia('(max-width: 768px)').matches) return; sparkleInterval = setInterval(spawnSparkle, 60); for (let i = 0; i < 4; i++) spawnSparkle(); });
+      link.addEventListener('mouseenter', () => { if (isMobileViewport()) return; sparkleInterval = setInterval(spawnSparkle, 60); for (let i = 0; i < 4; i++) spawnSparkle(); });
       link.addEventListener('mouseleave', () => { clearInterval(sparkleInterval); sparkleInterval = null; });
       link.addEventListener('touchend', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
       link.addEventListener('touchcancel', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
@@ -1501,7 +1504,7 @@
         const start = performance.now();
         let lastFrameTime = start;
         let virtualElapsed = 0;
-        const isMobilePlay = window.matchMedia('(max-width: 768px)').matches;
+        const isMobilePlay = isMobileViewport();
         let desktopSlowFrameCount = 0;
         scrubPaused = true;
         smoothTime = computeTargetTime();
@@ -1580,7 +1583,7 @@
         e.preventDefault();
 
         const offset = getHeaderOffset();
-        const isMobileTap = window.matchMedia('(max-width: 768px)').matches;
+        const isMobileTap = isMobileViewport();
         const startScrollY = window.scrollY || window.pageYOffset;
         const atTop = startScrollY < 50;
         if (isMobileTap && atTop) {
@@ -1709,7 +1712,7 @@
 
     // ── Mobile: highlight service items ──
     (() => {
-      const isMobile = window.matchMedia('(max-width: 768px)');
+      const isMobile = window.matchMedia(MOBILE_VIEWPORT_QUERY);
       if (!isMobile.matches) return;
       const items = document.querySelectorAll('.service-item');
       if (!items.length) return;
@@ -1727,7 +1730,7 @@
     (() => {
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReduced) return;
-      const mobileRevealMQ = window.matchMedia('(max-width: 768px)');
+      const mobileRevealMQ = window.matchMedia(MOBILE_VIEWPORT_QUERY);
 
       const heroContent = document.querySelector('.hero-content');
       const heroEl = document.querySelector('.hero');

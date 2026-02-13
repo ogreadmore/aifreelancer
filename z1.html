@@ -150,9 +150,11 @@
     .is-lite-desktop .hero {
       position: relative;
       top: 0;
-      height: min(92vh, 760px);
-      min-height: 460px;
+      height: 100vh;
+      height: 100svh;
+      min-height: 100vh;
       background: #fff;
+      --lite-overlay-boost: 0;
     }
     .is-lite-desktop .hero video {
       transform: scale(1.01);
@@ -160,6 +162,17 @@
       will-change: auto;
       opacity: 1;
       transition: opacity .7s ease;
+      z-index: 0;
+    }
+    .is-lite-desktop .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: #fff;
+      opacity: var(--lite-overlay-boost, 0);
+      transition: opacity .28s linear;
+      z-index: 1;
     }
     .is-lite-desktop #bgVideo {
       opacity: 1;
@@ -170,8 +183,9 @@
     .is-lite-desktop .hero::after {
       -webkit-backdrop-filter: none; backdrop-filter: none;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,.52), rgba(255,255,255,.72)),
-        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.34), rgba(255,255,255,.12));
+        linear-gradient(to bottom, rgba(255,255,255,.62), rgba(255,255,255,.84)),
+        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.44), rgba(255,255,255,.18));
+      z-index: 1;
     }
     .is-lite-desktop.lite-video-faded #bgVideo {
       opacity: 0;
@@ -757,8 +771,11 @@
       const video = document.getElementById('bgVideo');
       const liteLoopVideo = document.getElementById('bgVideoLiteLoop');
       const rootEl = document.documentElement;
+      const ua = navigator.userAgent || '';
       const MOBILE_VIEWPORT_QUERY = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
-      const isMobileViewport = () => window.matchMedia(MOBILE_VIEWPORT_QUERY).matches;
+      // Keep desktop OS devices out of mobile mode even when they report coarse input.
+      const isDesktopOsUa = /Windows NT|Macintosh|Mac OS X|X11|CrOS|Linux x86_64/i.test(ua) && !/Android|iPhone|iPad|iPod/i.test(ua);
+      const isMobileViewport = () => window.matchMedia(MOBILE_VIEWPORT_QUERY).matches && !isDesktopOsUa;
       const isMobile = isMobileViewport();
 
       function getNavThreshold() {
@@ -786,22 +803,17 @@
       });
       applyNavState();
 
-      const SD_VIDEO_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
       const HD_VIDEO_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
       const FALLBACK_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
       const LITE_LOOP_VIDEO_URL = 'https://aifreelancer.co/vidbg1.mp4';
-      const shortSide = Math.min(window.innerWidth || 0, window.innerHeight || 0);
-      const isPhoneLikeMobile = isMobile && shortSide < 768;
-      const MOBILE_PHONE_VIDEO_SOURCES = [SD_VIDEO_URL, FALLBACK_VIDEO_URL];
-      const MOBILE_TABLET_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
-      const DESKTOP_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
-      const DESKTOP_LITE_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      // No low-res hero source on any device.
+      const MOBILE_VIDEO_SOURCES = [HD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      const DESKTOP_VIDEO_SOURCES = [HD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      const DESKTOP_LITE_VIDEO_SOURCES = [HD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const isFirefox = /firefox/i.test(navigator.userAgent);
       if (isFirefox) rootEl.classList.add('is-firefox');
-      // Fallback: weaker non-touch desktops use lighter styling and autoplay.
-      const ua = navigator.userAgent || '';
+      // Fallback: weaker desktops use lighter styling and autoplay.
       const isWindowsDesktop = !isMobile && /Windows/i.test(ua);
-      const hasTouchLikeInput = (navigator.maxTouchPoints || 0) > 0 || window.matchMedia('(pointer: coarse)').matches;
       const desktopCoreCount = navigator.hardwareConcurrency || 0;
       const desktopMemoryGb = navigator.deviceMemory || 0;
       const hasKnownLowDesktop = (
@@ -811,13 +823,13 @@
       const hasClearlyStrongDesktop = (
         desktopMemoryGb >= 16 || desktopCoreCount >= 12
       );
-      let desktopLiteMode = !isMobile && !hasTouchLikeInput && (
+      let desktopLiteMode = !isMobile && (
         hasKnownLowDesktop ||
         (isWindowsDesktop && !hasClearlyStrongDesktop)
       );
       if (desktopLiteMode) rootEl.classList.add('is-lite-desktop');
       let activeSources = isMobile
-        ? (isPhoneLikeMobile ? MOBILE_PHONE_VIDEO_SOURCES : MOBILE_TABLET_VIDEO_SOURCES)
+        ? MOBILE_VIDEO_SOURCES
         : (desktopLiteMode ? DESKTOP_LITE_VIDEO_SOURCES : DESKTOP_VIDEO_SOURCES);
 
       let sourceIndex = 0, ready = false, duration = 0, targetTime = 0, raf = 0, lastInputTs = 0;
@@ -833,6 +845,7 @@
       const LITE_CROSSFADE_SECONDS = 0.9;
       const LITE_LOOP_EDGE_FADE_SECONDS = 0.22;
       const LITE_LOOP_FADE_MS = Math.round(LITE_LOOP_EDGE_FADE_SECONDS * 1000);
+      const LITE_OVERLAY_BOOST_MAX = 0.44;
       let liteLoopFailed = false;
       let liteLoopSourceSet = false;
       let liteLoopStarted = false;
@@ -846,6 +859,12 @@
       function setLiteLoopOpacity(value) {
         if (!liteLoopVideo) return;
         liteLoopVideo.style.opacity = clamp(value, 0, 1).toFixed(3);
+      }
+
+      function setLiteOverlayBoost(value) {
+        const heroEl = document.querySelector('.hero');
+        if (!heroEl) return;
+        heroEl.style.setProperty('--lite-overlay-boost', clamp(value, 0, LITE_OVERLAY_BOOST_MAX).toFixed(3));
       }
 
       function prepareLiteLoopVideo() {
@@ -871,6 +890,7 @@
         liteLoopFadeLockUntil = 0;
         setLiteMainOpacity(1);
         setLiteLoopOpacity(0);
+        setLiteOverlayBoost(0);
         rootEl.classList.remove('lite-video-faded');
         if (!liteLoopVideo) return;
         try {
@@ -925,9 +945,12 @@
         prepareLiteLoopVideo();
       }
 
-      if (LOW_END) {
-        video.removeAttribute('src');
-        video.style.background = '#fff';
+      // Keep low-end desktops on lite mode; do not blank the hero video.
+      if (LOW_END && !isMobile) {
+        desktopLiteMode = true;
+        rootEl.classList.add('is-lite-desktop');
+        activeSources = DESKTOP_LITE_VIDEO_SOURCES;
+        prepareLiteLoopVideo();
       }
 
       let trackTop = 0;
@@ -956,13 +979,20 @@
       function updateLiteVideoFade() {
         if (!desktopLiteMode) return;
         if (!liteLoopVideo || liteLoopFailed) {
-          if (isLiteVideoNearEnd()) rootEl.classList.add('lite-video-faded');
-          else rootEl.classList.remove('lite-video-faded');
+          if (isLiteVideoNearEnd()) {
+            rootEl.classList.add('lite-video-faded');
+            setLiteOverlayBoost(LITE_OVERLAY_BOOST_MAX);
+          } else {
+            rootEl.classList.remove('lite-video-faded');
+            setLiteOverlayBoost(0);
+          }
           return;
         }
+
         const remaining = Math.max(0, duration - (video.currentTime || 0));
         const crossfadeProgress = clamp(1 - (remaining / LITE_CROSSFADE_SECONDS), 0, 1);
         if (crossfadeProgress > 0.02) startLiteLoopPlayback();
+        setLiteOverlayBoost(crossfadeProgress * LITE_OVERLAY_BOOST_MAX);
 
         if (!liteMainCrossfaded) {
           setLiteMainOpacity(1 - crossfadeProgress);
@@ -971,6 +1001,7 @@
             liteMainCrossfaded = true;
             rootEl.classList.add('lite-video-faded');
             setLiteMainOpacity(0);
+            setLiteOverlayBoost(LITE_OVERLAY_BOOST_MAX);
             if (performance.now() > liteLoopFadeLockUntil) setLiteLoopOpacity(1);
           } else {
             rootEl.classList.remove('lite-video-faded');
@@ -980,6 +1011,7 @@
 
         rootEl.classList.add('lite-video-faded');
         setLiteMainOpacity(0);
+        setLiteOverlayBoost(LITE_OVERLAY_BOOST_MAX);
         if (performance.now() > liteLoopFadeLockUntil) setLiteLoopOpacity(1);
       }
 
@@ -1175,6 +1207,7 @@
         liteMainCrossfaded = true;
         rootEl.classList.add('lite-video-faded');
         setLiteMainOpacity(0);
+        setLiteOverlayBoost(LITE_OVERLAY_BOOST_MAX);
         startLiteLoopPlayback();
       });
       video.addEventListener('error', () => {
@@ -1204,49 +1237,48 @@
         liteLoopVideo.addEventListener('error', () => {
           liteLoopFailed = true;
           liteLoopSourceSet = false;
+          setLiteLoopOpacity(0);
         });
       }
 
-      if (!LOW_END) {
-        window.addEventListener('scroll', scheduleTick, { passive: true });
-        window.addEventListener('resize', () => {
-          const nextH = window.innerHeight || 0;
-          // Ignore small mobile viewport chrome shifts to prevent progress jumps.
-          if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
-            scheduleTick();
-            return;
-          }
-          lastViewportHeight = nextH;
-          refreshTrackMetrics();
+      window.addEventListener('scroll', scheduleTick, { passive: true });
+      window.addEventListener('resize', () => {
+        const nextH = window.innerHeight || 0;
+        // Ignore small mobile viewport chrome shifts to prevent progress jumps.
+        if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
           scheduleTick();
-        }, { passive: true });
-        window.addEventListener('wheel', scheduleTick, { passive: true });
-        window.addEventListener('touchstart', (evt) => {
-          if (isMobile) {
-            const touchTarget = evt.target;
-            const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
-            if (!isAnchorTap) lastTouchInputTs = performance.now();
-          }
-          scheduleTick();
-        }, { passive: true });
-        window.addEventListener('touchmove', () => {
-          if (isMobile) lastTouchInputTs = performance.now();
-          scheduleTick();
-        }, { passive: true });
-        window.addEventListener('touchend', () => {
-          if (isMobile) lastTouchInputTs = -1;
-        }, { passive: true });
-        window.addEventListener('touchcancel', () => {
-          if (isMobile) lastTouchInputTs = -1;
-        }, { passive: true });
-        window.addEventListener('orientationchange', () => {
-          lastViewportHeight = window.innerHeight || 0;
-          refreshTrackMetrics();
-          scheduleTick();
-        }, { passive: true });
-        window.addEventListener('load', refreshTrackMetrics, { passive: true });
-        setVideoSource(activeSources[sourceIndex]);
-      }
+          return;
+        }
+        lastViewportHeight = nextH;
+        refreshTrackMetrics();
+        scheduleTick();
+      }, { passive: true });
+      window.addEventListener('wheel', scheduleTick, { passive: true });
+      window.addEventListener('touchstart', (evt) => {
+        if (isMobile) {
+          const touchTarget = evt.target;
+          const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
+          if (!isAnchorTap) lastTouchInputTs = performance.now();
+        }
+        scheduleTick();
+      }, { passive: true });
+      window.addEventListener('touchmove', () => {
+        if (isMobile) lastTouchInputTs = performance.now();
+        scheduleTick();
+      }, { passive: true });
+      window.addEventListener('touchend', () => {
+        if (isMobile) lastTouchInputTs = -1;
+      }, { passive: true });
+      window.addEventListener('touchcancel', () => {
+        if (isMobile) lastTouchInputTs = -1;
+      }, { passive: true });
+      window.addEventListener('orientationchange', () => {
+        lastViewportHeight = window.innerHeight || 0;
+        refreshTrackMetrics();
+        scheduleTick();
+      }, { passive: true });
+      window.addEventListener('load', refreshTrackMetrics, { passive: true });
+      setVideoSource(activeSources[sourceIndex]);
 
       // ── About video: click-to-load + scroll-grow effect ──
       (() => {

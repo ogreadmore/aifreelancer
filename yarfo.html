@@ -120,10 +120,14 @@
       display: flex; align-items: flex-end; background: #f2f2f2;
       --overlay-opacity: 1;
     }
-    .hero video {
+    .hero video,
+    .hero-canvas {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
       transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
       will-change: transform; pointer-events: none;
+    }
+    .hero-canvas {
+      display: none;
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
@@ -140,37 +144,6 @@
         linear-gradient(to bottom, rgba(255,255,255,.62), rgba(255,255,255,.8)),
         radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.4), rgba(255,255,255,.14));
     }
-    .is-lite-desktop nav.scrolled {
-      -webkit-backdrop-filter: none; backdrop-filter: none;
-      background: rgba(255,255,255,.96);
-    }
-    .is-lite-desktop .scroll-track {
-      height: auto;
-    }
-    .is-lite-desktop .hero {
-      position: relative;
-      top: 0;
-      height: min(92vh, 760px);
-      min-height: 460px;
-      background: #fff;
-    }
-    .is-lite-desktop .hero video {
-      transform: scale(1.01);
-      filter: none;
-      will-change: auto;
-      opacity: 1;
-      transition: opacity .7s ease;
-    }
-    .is-lite-desktop .hero::after {
-      -webkit-backdrop-filter: none; backdrop-filter: none;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,.52), rgba(255,255,255,.72)),
-        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.34), rgba(255,255,255,.12));
-    }
-    .is-lite-desktop.lite-video-faded .hero video {
-      opacity: 0;
-    }
-
     .hero-content { position: relative; z-index: 2; width: min(94vw, 800px); margin: 0 auto; padding: 0 2rem 5rem; }
     .hero h1 {
       font-family: 'Archivo','Inter',system-ui,sans-serif;
@@ -526,7 +499,8 @@
         opacity: var(--overlay-opacity, 1);
       }
 
-      .hero video {
+      .hero video,
+      .hero-canvas {
         transform: scale(1.0);
         object-position: center 30%;
         filter: none;
@@ -618,6 +592,7 @@
   <div class="scroll-track" id="track">
     <section class="hero">
       <video id="bgVideo" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="heroCanvas" class="hero-canvas"></canvas>
       <div class="hero-content">
         <h1>We love optimization.</h1>
         <p class="subtitle">We're not an AI agency. We're a business optimization powerhouse.</p>
@@ -748,6 +723,7 @@
       const nav = document.getElementById('mainNav');
       const track = document.getElementById('track');
       const video = document.getElementById('bgVideo');
+      const heroCanvas = document.getElementById('heroCanvas');
       const rootEl = document.documentElement;
       const MOBILE_VIEWPORT_QUERY = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
       const isMobileViewport = () => window.matchMedia(MOBILE_VIEWPORT_QUERY).matches;
@@ -778,53 +754,119 @@
       });
       applyNavState();
 
-      const SD_VIDEO_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
       const HD_VIDEO_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
-      const FALLBACK_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-      const longSide = Math.max(window.innerWidth || 0, window.innerHeight || 0);
-      const isTabletLikeMobile = isMobile && window.matchMedia('(pointer: coarse)').matches && longSide >= 1000;
-      const MOBILE_PHONE_VIDEO_SOURCES = [SD_VIDEO_URL, FALLBACK_VIDEO_URL];
-      const MOBILE_TABLET_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
-      const DESKTOP_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
-      const DESKTOP_LITE_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      const VIDEO_SOURCES = [HD_VIDEO_URL];
       const isFirefox = /firefox/i.test(navigator.userAgent);
       if (isFirefox) rootEl.classList.add('is-firefox');
-      // Fallback: weaker non-touch desktops use lighter styling and autoplay.
-      const ua = navigator.userAgent || '';
-      const isWindowsDesktop = !isMobile && /Windows/i.test(ua);
-      const hasTouchLikeInput = (navigator.maxTouchPoints || 0) > 0 || window.matchMedia('(pointer: coarse)').matches;
-      const desktopCoreCount = navigator.hardwareConcurrency || 0;
-      const desktopMemoryGb = navigator.deviceMemory || 0;
-      const hasKnownLowDesktop = (
-        (desktopCoreCount > 0 && desktopCoreCount <= 4) ||
-        (desktopMemoryGb > 0 && desktopMemoryGb <= 4)
-      );
-      const hasClearlyStrongDesktop = (
-        desktopMemoryGb >= 16 || desktopCoreCount >= 12
-      );
-      let desktopLiteMode = !isMobile && !hasTouchLikeInput && (
-        hasKnownLowDesktop ||
-        (isWindowsDesktop && !hasClearlyStrongDesktop)
-      );
-      if (desktopLiteMode) rootEl.classList.add('is-lite-desktop');
-      let activeSources = isMobile
-        ? (isTabletLikeMobile ? MOBILE_TABLET_VIDEO_SOURCES : MOBILE_PHONE_VIDEO_SOURCES)
-        : (desktopLiteMode ? DESKTOP_LITE_VIDEO_SOURCES : DESKTOP_VIDEO_SOURCES);
+      const activeSources = VIDEO_SOURCES;
 
       let sourceIndex = 0, ready = false, duration = 0, targetTime = 0, raf = 0, lastInputTs = 0;
       let scrubPaused = false; 
       const START_AT_SECONDS = 5.25;
       const MOBILE_START_AT_SECONDS = 4.75;
+      const MOBILE_SEGMENT_DURATION_SECONDS = 6;
       const SEGMENT_DURATION_SECONDS = 4;
       const END_SAFETY_SECONDS = 0.06;
       const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
-      const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
-                    || (navigator.deviceMemory && navigator.deviceMemory <= 2);
+      const HW_CORES = navigator.hardwareConcurrency || 0;
+      const HW_MEM_GB = navigator.deviceMemory || 0;
+      const LOW_END = (HW_CORES > 0 && HW_CORES <= 2) || (HW_MEM_GB > 0 && HW_MEM_GB <= 2);
+      const SLOW_DEVICE = (HW_CORES > 0 && HW_CORES <= 4) || (HW_MEM_GB > 0 && HW_MEM_GB <= 4);
+      const FAST_DEVICE = !SLOW_DEVICE && ((HW_CORES >= 8) || (HW_MEM_GB >= 8));
+
+      const MOBILE_FPS_TARGET = SLOW_DEVICE ? 7 : (FAST_DEVICE ? 12 : 9);
+      const DESKTOP_FPS_TARGET = SLOW_DEVICE ? 10 : (FAST_DEVICE ? 16 : 13);
+      const MOBILE_FRAME_COUNT = Math.round(MOBILE_SEGMENT_DURATION_SECONDS * MOBILE_FPS_TARGET);
+      const DESKTOP_FRAME_COUNT = Math.round(SEGMENT_DURATION_SECONDS * DESKTOP_FPS_TARGET);
+      const FRAME_COUNT = isMobile ? MOBILE_FRAME_COUNT : DESKTOP_FRAME_COUNT;
+      const FRAME_LERP_SPEED = isMobile ? (SLOW_DEVICE ? 0.32 : 0.4) : (SLOW_DEVICE ? 0.24 : 0.27);
+      const FRAME_BLEND = !isFirefox;
+      const FRAME_MIX_EPSILON = isMobile ? (SLOW_DEVICE ? 0.0038 : 0.0018) : 0.006;
+      const FRAME_RENDER_EPSILON = 0.0008;
+
+      const fc = {
+        frames: [],
+        ready: false,
+        extracting: false,
+        error: false,
+        token: 0,
+        deferSwap: false,
+        ctx: null,
+        lastA: -1,
+        lastB: -1,
+        lastMix: -1,
+        targetTime: 0,
+        renderTime: 0,
+      };
+      let frameExtractTimer = 0;
+      const EXTRACTION_START_DELAY_MS = isMobile ? 520 : 0;
+      const EXTRACTION_IDLE_MS = isMobile ? 260 : 0;
+
+      function resetFrameCache(resetError = true) {
+        if (frameExtractTimer) {
+          clearTimeout(frameExtractTimer);
+          frameExtractTimer = 0;
+        }
+        fc.token += 1;
+        if (fc.frames.length) {
+          fc.frames.forEach((frame) => {
+            if (frame && typeof frame.close === 'function') {
+              try { frame.close(); } catch {}
+            }
+          });
+        }
+        fc.frames = [];
+        fc.ready = false;
+        fc.extracting = false;
+        fc.deferSwap = false;
+        fc.ctx = null;
+        fc.lastA = -1;
+        fc.lastB = -1;
+        fc.lastMix = -1;
+        fc.targetTime = 0;
+        fc.renderTime = 0;
+        if (resetError) fc.error = false;
+        if (heroCanvas) {
+          heroCanvas.style.display = 'none';
+          heroCanvas.width = 0;
+          heroCanvas.height = 0;
+        }
+        video.style.display = 'block';
+      }
+
+      const getHeroVisual = () => ((fc.ready && !fc.deferSwap) ? heroCanvas : video);
+
+      function maybeActivateCachedCanvas(nowTs = performance.now()) {
+        if (!fc.ready || !fc.deferSwap || !heroCanvas) return;
+        if (isMobile && (nowTs - lastInputTs) < 180) return;
+        fc.deferSwap = false;
+        heroCanvas.style.display = 'block';
+        video.style.display = 'none';
+        video.pause();
+        displayCachedFrameByTime(fc.renderTime);
+      }
+
+      function queueFrameExtraction(delayMs = EXTRACTION_START_DELAY_MS) {
+        if (fc.ready || fc.error || fc.extracting) return;
+        if (frameExtractTimer) clearTimeout(frameExtractTimer);
+        frameExtractTimer = setTimeout(() => {
+          frameExtractTimer = 0;
+          if (fc.ready || fc.error || fc.extracting) return;
+          if (isMobile) {
+            const idleFor = performance.now() - lastInputTs;
+            if (idleFor < EXTRACTION_IDLE_MS) {
+              queueFrameExtraction((EXTRACTION_IDLE_MS - idleFor) + 80);
+              return;
+            }
+          }
+          extractFrames();
+        }, Math.max(0, delayMs));
+      }
 
       function setVideoSource(url) {
+        resetFrameCache();
         video.pause();
-        rootEl.classList.remove('lite-video-faded');
         video.removeAttribute('src');
         video.load();
         video.src = url;
@@ -837,11 +879,6 @@
         video.style.background = '#fff';
       }
       applyPosterFallback();
-
-      if (LOW_END) {
-        video.removeAttribute('src');
-        video.style.background = '#fff';
-      }
 
       let trackTop = 0;
       let trackScrollable = 0;
@@ -861,59 +898,25 @@
       }
       refreshTrackMetrics();
 
-      function isLiteVideoNearEnd() {
-        if (!desktopLiteMode || !ready || !Number.isFinite(duration) || duration <= 0) return false;
-        return video.currentTime >= (duration - 0.35);
-      }
-
-      function updateLiteVideoFade() {
-        if (!desktopLiteMode) return;
-        if (isLiteVideoNearEnd()) rootEl.classList.add('lite-video-faded');
-        else rootEl.classList.remove('lite-video-faded');
-      }
-
-      function enableDesktopLiteMode() {
-        if (isMobile || desktopLiteMode) return;
-        desktopLiteMode = true;
-        rootEl.classList.add('is-lite-desktop');
-        video.style.transform = '';
-        activeSources = DESKTOP_LITE_VIDEO_SOURCES;
-        sourceIndex = 0;
-        // If current source is not HD, switch to HD for lite desktop autoplay.
-        if ((video.currentSrc || video.src || '').indexOf('8134766-hd_1366_720_25fps.mp4') === -1) {
-          ready = false;
-          setVideoSource(activeSources[sourceIndex]);
-          return;
-        }
-        if (!ready) return;
-        try {
-          video.pause();
-          video.loop = false;
-          video.playbackRate = 1;
-          if (video.currentTime >= duration - 0.35) video.currentTime = 0;
-          rootEl.classList.remove('lite-video-faded');
-          video.play().catch(() => {});
-        } catch {}
-      }
-
       /*
          Mobile uses linear playback on a focused 6s segment (4.75s-10.75s) so
          key action is visible before the content sheet advances.
          Desktop keeps its curated 4s segment (5.25s-9.25s).
       */
-      
+
+      function getSegmentBounds() {
+        const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
+        const segmentStart = isMobile
+          ? clamp(MOBILE_START_AT_SECONDS, 0, maxEnd)
+          : clamp(START_AT_SECONDS, 0, maxEnd);
+        const baseSpan = isMobile ? MOBILE_SEGMENT_DURATION_SECONDS : SEGMENT_DURATION_SECONDS;
+        const segmentEnd = clamp(segmentStart + baseSpan, segmentStart, maxEnd);
+        return { segmentStart, segmentEnd };
+      }
+
       function computeTargetTime() {
         if (!ready || duration <= 0) return 0;
-        const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
-        let segmentStart;
-        let segmentEnd;
-        if (isMobile) {
-          segmentStart = clamp(MOBILE_START_AT_SECONDS, 0, maxEnd);
-          segmentEnd = clamp(segmentStart + 6, segmentStart, maxEnd);
-        } else {
-          segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
-          segmentEnd = clamp(segmentStart + SEGMENT_DURATION_SECONDS, segmentStart, maxEnd);
-        }
+        const { segmentStart, segmentEnd } = getSegmentBounds();
 
         const rawProgress = getProgress();
         let videoProgress = rawProgress;
@@ -927,88 +930,308 @@
         }
         return segmentStart + videoProgress * (segmentEnd - segmentStart);
       }
-      
+
+      function drawCachedFrame(frame, alpha = 1) {
+        if (!fc.ctx || !frame) return;
+        if (frame instanceof ImageBitmap) {
+          if (alpha !== 1) fc.ctx.globalAlpha = alpha;
+          fc.ctx.drawImage(frame, 0, 0);
+          return;
+        }
+        if (frame instanceof ImageData) {
+          fc.ctx.putImageData(frame, 0, 0);
+        }
+      }
+
+      function displayCachedFrameByTime(time) {
+        if (!fc.ready || !fc.ctx || fc.frames.length < 2) return;
+        const { segmentStart, segmentEnd } = getSegmentBounds();
+        const span = Math.max(0.0001, segmentEnd - segmentStart);
+        const scaled = clamp((time - segmentStart) / span, 0, 1) * (fc.frames.length - 1);
+        const a = Math.floor(scaled);
+        const b = Math.min(fc.frames.length - 1, a + 1);
+        const mix = scaled - a;
+        if (a === fc.lastA && b === fc.lastB && Math.abs(mix - fc.lastMix) < FRAME_MIX_EPSILON) return;
+        fc.lastA = a;
+        fc.lastB = b;
+        fc.lastMix = mix;
+
+        const frameA = fc.frames[a];
+        const frameB = fc.frames[b];
+        if (frameA instanceof ImageData) {
+          fc.ctx.putImageData(frameA, 0, 0);
+          return;
+        }
+
+        fc.ctx.globalCompositeOperation = 'copy';
+        fc.ctx.globalAlpha = 1;
+        drawCachedFrame(frameA, 1);
+
+        if (FRAME_BLEND && mix > 0.001 && b !== a && frameB instanceof ImageBitmap) {
+          fc.ctx.globalCompositeOperation = 'source-over';
+          drawCachedFrame(frameB, mix);
+        }
+
+        fc.ctx.globalAlpha = 1;
+        fc.ctx.globalCompositeOperation = 'source-over';
+      }
+
+      async function extractFrames() {
+        if (fc.extracting || fc.ready || fc.error) return;
+        if (!ready || duration <= 0) return;
+        const { segmentStart, segmentEnd } = getSegmentBounds();
+        const span = segmentEnd - segmentStart;
+        if (span <= 0.01) return;
+        const decodeSrc = video.currentSrc || video.src;
+        if (!decodeSrc) return;
+
+        const token = fc.token + 1;
+        fc.token = token;
+        fc.extracting = true;
+        const videoW = video.videoWidth || 640;
+        const videoH = video.videoHeight || 360;
+        const scale = 1;
+        const cacheW = Math.max(2, Math.round(videoW * scale));
+        const cacheH = Math.max(2, Math.round(videoH * scale));
+        const buffer = document.createElement('canvas');
+        buffer.width = cacheW;
+        buffer.height = cacheH;
+        const bufferCtx = buffer.getContext('2d', { willReadFrequently: false });
+        if (!bufferCtx) {
+          fc.extracting = false;
+          fc.error = true;
+          return;
+        }
+        const canBitmap = typeof createImageBitmap === 'function';
+        const frames = [];
+        let decoder = null;
+
+        const cleanupDecoder = () => {
+          if (!decoder) return;
+          try { decoder.pause(); } catch {}
+          try {
+            decoder.removeAttribute('src');
+            decoder.load();
+          } catch {}
+          decoder = null;
+        };
+
+        try {
+          decoder = document.createElement('video');
+          decoder.muted = true;
+          decoder.playsInline = true;
+          decoder.preload = 'auto';
+          decoder.crossOrigin = 'anonymous';
+          decoder.src = decodeSrc;
+          await new Promise((resolve, reject) => {
+            let settled = false;
+            const done = () => {
+              if (settled) return;
+              settled = true;
+              decoder.removeEventListener('loadedmetadata', done);
+              decoder.removeEventListener('canplay', done);
+              decoder.removeEventListener('error', fail);
+              resolve();
+            };
+            const fail = () => {
+              if (settled) return;
+              settled = true;
+              decoder.removeEventListener('loadedmetadata', done);
+              decoder.removeEventListener('canplay', done);
+              decoder.removeEventListener('error', fail);
+              reject(new Error('decoder-load-failed'));
+            };
+            decoder.addEventListener('loadedmetadata', done, { once: true });
+            decoder.addEventListener('canplay', done, { once: true });
+            decoder.addEventListener('error', fail, { once: true });
+            try { decoder.load(); } catch { fail(); }
+          });
+        } catch (err) {
+          cleanupDecoder();
+          if (token === fc.token) {
+            fc.error = true;
+            fc.extracting = false;
+          }
+          return;
+        }
+
+        const seekTo = (t) => new Promise((resolve, reject) => {
+          const done = () => {
+            decoder.removeEventListener('seeked', done);
+            decoder.removeEventListener('error', fail);
+            resolve();
+          };
+          const fail = () => {
+            decoder.removeEventListener('seeked', done);
+            decoder.removeEventListener('error', fail);
+            reject(new Error('seek-failed'));
+          };
+          decoder.addEventListener('seeked', done, { once: true });
+          decoder.addEventListener('error', fail, { once: true });
+          try {
+            decoder.currentTime = t;
+          } catch (err) {
+            reject(err);
+          }
+        });
+
+        try {
+          for (let i = 0; i < FRAME_COUNT; i += 1) {
+            if (token !== fc.token) throw new Error('stale-cache');
+            const t = segmentStart + (i / Math.max(1, FRAME_COUNT - 1)) * span;
+            await seekTo(t);
+            if (token !== fc.token) throw new Error('stale-cache');
+            bufferCtx.drawImage(decoder, 0, 0, cacheW, cacheH);
+            if (canBitmap) {
+              frames.push(await createImageBitmap(buffer));
+            } else {
+              frames.push(bufferCtx.getImageData(0, 0, cacheW, cacheH));
+            }
+            if ((i & 7) === 7) {
+              await new Promise((resolve) => setTimeout(resolve, 0));
+            }
+          }
+        } catch (err) {
+          frames.forEach((frame) => {
+            if (frame && typeof frame.close === 'function') {
+              try { frame.close(); } catch {}
+            }
+          });
+          if (token === fc.token && (!err || err.message !== 'stale-cache')) {
+            fc.error = true;
+            fc.extracting = false;
+          }
+          return;
+        } finally {
+          cleanupDecoder();
+        }
+
+        if (token !== fc.token) {
+          frames.forEach((frame) => {
+            if (frame && typeof frame.close === 'function') {
+              try { frame.close(); } catch {}
+            }
+          });
+          return;
+        }
+
+        fc.frames = frames;
+        fc.ready = frames.length > 1;
+        fc.extracting = false;
+        fc.error = !fc.ready;
+        if (!fc.ready) return;
+
+        if (!heroCanvas) {
+          fc.ready = false;
+          fc.error = true;
+          resetFrameCache(false);
+          return;
+        }
+
+        heroCanvas.width = cacheW;
+        heroCanvas.height = cacheH;
+        fc.ctx = heroCanvas.getContext('2d', { alpha: false });
+        if (!fc.ctx) {
+          resetFrameCache(false);
+          fc.error = true;
+          return;
+        }
+        fc.ctx.imageSmoothingEnabled = true;
+        if ('imageSmoothingQuality' in fc.ctx) {
+          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'medium';
+        }
+        const { segmentStart: s, segmentEnd: e } = getSegmentBounds();
+        const synced = clamp(
+          Number.isFinite(video.currentTime) ? video.currentTime : (Number.isFinite(smoothTime) ? smoothTime : targetTime),
+          s,
+          e
+        );
+        fc.targetTime = synced;
+        fc.renderTime = synced;
+        if (isMobile && (performance.now() - lastInputTs) < 180) {
+          fc.deferSwap = true;
+          heroCanvas.style.display = 'none';
+          video.style.display = 'block';
+        } else {
+          fc.deferSwap = false;
+          heroCanvas.style.display = 'block';
+          video.style.display = 'none';
+          video.pause();
+          displayCachedFrameByTime(fc.renderTime);
+        }
+      }
+
       let lastSeekTs = 0;
       let smoothTime = 0; 
       const LERP_SPEED = isMobile ? 0.11 : 0.12; 
       const LERP_SPEED_FF = isMobile ? 0.1 : 0.1;
-      const SEEK_THRESHOLD = isMobile ? 0.015 : 0.002; 
-      const SEEK_COOLDOWN = isMobile ? 14 : 0; 
-      const MOBILE_TOUCH_THRESHOLD = 0.004;
+      const SEEK_THRESHOLD = isMobile ? (SLOW_DEVICE ? 0.01 : 0.006) : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? (SLOW_DEVICE ? 8 : 0) : 0; 
+      const MOBILE_TOUCH_THRESHOLD = 0.003;
       const MOBILE_PREROLL_MS = 1000;
       const MOBILE_PREROLL_BOOST = 1 / 6; // ~1 second in a 6-second mobile segment
       let mobilePreRollBoost = 0;
       let lastTouchInputTs = -1;
-      let perfSampleCount = 0;
-      let perfDroppedFrameCount = 0;
-      let prevTickTs = 0;
 
       function tick(ts = performance.now()) {
         raf = 0;
         if (!ready || scrubPaused) return;
-        if (desktopLiteMode) {
-          updateLiteVideoFade();
-          if (!isLiteVideoNearEnd() && video.paused) video.play().catch(() => {});
-          return;
-        }
-
-        if (!isMobile) {
-          if (prevTickTs > 0) {
-            const frameDelta = ts - prevTickTs;
-            perfSampleCount += 1;
-            if (frameDelta > 42) perfDroppedFrameCount += 1;
-            if (perfSampleCount >= 28) {
-              if (perfDroppedFrameCount >= 10) {
-                enableDesktopLiteMode();
-              }
-              perfSampleCount = 0;
-              perfDroppedFrameCount = 0;
-            }
-          }
-          prevTickTs = ts;
-        }
 
         targetTime = computeTargetTime();
 
         const diff = targetTime - smoothTime;
         const mobileFingerActive = isMobile && (ts - lastTouchInputTs) < 140;
-        if (mobileFingerActive) {
-          // Only during manual finger input: track target time directly.
+        if (mobileFingerActive && !fc.ready) {
           smoothTime = targetTime;
         } else {
-          const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
+          const baseLerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
+          const lerp = mobileFingerActive ? Math.max(baseLerp, 0.4) : baseLerp;
           if (Math.abs(diff) > 0.001) smoothTime += diff * lerp;
           else smoothTime = targetTime;
         }
 
-        if (isFirefox) {
-          const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
-          if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
-            try { video.currentTime = snapped; } catch {}
-            lastSeekTs = ts;
+        maybeActivateCachedCanvas(ts);
+
+        if (fc.ready && !fc.deferSwap) {
+          fc.targetTime = smoothTime;
+          const frameDiff = fc.targetTime - fc.renderTime;
+          if (Math.abs(frameDiff) > FRAME_RENDER_EPSILON) {
+            fc.renderTime += frameDiff * FRAME_LERP_SPEED;
+          } else {
+            fc.renderTime = fc.targetTime;
           }
+          displayCachedFrameByTime(fc.renderTime);
         } else {
-          const seekThreshold = mobileFingerActive ? MOBILE_TOUCH_THRESHOLD : SEEK_THRESHOLD;
-          const seekCooldown = mobileFingerActive ? 0 : SEEK_COOLDOWN;
-          if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (ts - lastSeekTs) > seekCooldown) {
-            try { video.currentTime = smoothTime; } catch {}
-            lastSeekTs = ts;
+          if (isFirefox) {
+            const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
+            if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
+              try { video.currentTime = snapped; } catch {}
+              lastSeekTs = ts;
+            }
+          } else {
+            const seekThreshold = mobileFingerActive ? MOBILE_TOUCH_THRESHOLD : SEEK_THRESHOLD;
+            const seekCooldown = mobileFingerActive ? 0 : SEEK_COOLDOWN;
+            if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (ts - lastSeekTs) > seekCooldown) {
+              try { video.currentTime = smoothTime; } catch {}
+              lastSeekTs = ts;
+            }
           }
         }
-        if (!isMobile && !desktopLiteMode) {
+        if (!isMobile) {
           const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
-          video.style.transform = 'scale(1.04) translate3d(0, ' + y.toFixed(2) + 'px, 0)';
+          getHeroVisual().style.transform = 'scale(1.04) translate3d(0, ' + y.toFixed(2) + 'px, 0)';
         }
-        if ((ts - lastInputTs) < 140 || Math.abs(targetTime - smoothTime) > 0.001) raf = requestAnimationFrame(tick);
+        const frameSettling = fc.ready && Math.abs(fc.targetTime - fc.renderTime) > FRAME_RENDER_EPSILON;
+        if ((ts - lastInputTs) < 160 || Math.abs(targetTime - smoothTime) > 0.001 || frameSettling) {
+          raf = requestAnimationFrame(tick);
+        }
       }
       function scheduleTick() {
         if (!ready || scrubPaused) return;
-        if (desktopLiteMode) {
-          updateLiteVideoFade();
-          if (!isLiteVideoNearEnd() && video.paused) video.play().catch(() => {});
-          return;
-        }
         lastInputTs = performance.now();
+        if (!fc.ready && !fc.extracting && !fc.error) {
+          queueFrameExtraction(isMobile ? 420 : 0);
+        }
         if (!raf) raf = requestAnimationFrame(tick);
       }
       function initScrub() {
@@ -1016,19 +1239,6 @@
         if (!Number.isFinite(duration) || duration <= 0) return;
         refreshTrackMetrics();
         ready = true;
-
-        if (desktopLiteMode) {
-          targetTime = 0;
-          smoothTime = 0;
-          try {
-            rootEl.classList.remove('lite-video-faded');
-            video.currentTime = 0;
-            video.loop = false;
-            video.playbackRate = 1;
-            video.play().catch(() => {});
-          } catch {}
-          return;
-        }
 
         targetTime = computeTargetTime();
         if (isMobile) {
@@ -1046,20 +1256,19 @@
           smoothTime = targetTime;
           try { video.currentTime = targetTime; } catch {}
         }
+        fc.targetTime = targetTime;
+        fc.renderTime = smoothTime;
         video.pause();
+        if (!fc.ready && !fc.extracting && !fc.error) {
+          queueFrameExtraction();
+        } else if (fc.ready) {
+          displayCachedFrameByTime(fc.renderTime);
+        }
         scheduleTick();
       }
 
       video.addEventListener('loadedmetadata', initScrub);
       video.addEventListener('canplay', () => { if (!ready) initScrub(); });
-      video.addEventListener('timeupdate', () => {
-        if (!desktopLiteMode) return;
-        updateLiteVideoFade();
-      });
-      video.addEventListener('ended', () => {
-        if (!desktopLiteMode) return;
-        rootEl.classList.add('lite-video-faded');
-      });
       video.addEventListener('error', () => {
         sourceIndex += 1;
         if (sourceIndex < activeSources.length) {
@@ -1068,46 +1277,44 @@
         }
       });
 
-      if (!LOW_END) {
-        window.addEventListener('scroll', scheduleTick, { passive: true });
-        window.addEventListener('resize', () => {
-          const nextH = window.innerHeight || 0;
-          // Ignore small mobile viewport chrome shifts to prevent progress jumps.
-          if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
-            scheduleTick();
-            return;
-          }
-          lastViewportHeight = nextH;
-          refreshTrackMetrics();
+      window.addEventListener('scroll', scheduleTick, { passive: true });
+      window.addEventListener('resize', () => {
+        const nextH = window.innerHeight || 0;
+        // Ignore small mobile viewport chrome shifts to prevent progress jumps.
+        if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
           scheduleTick();
-        }, { passive: true });
-        window.addEventListener('wheel', scheduleTick, { passive: true });
-        window.addEventListener('touchstart', (evt) => {
-          if (isMobile) {
-            const touchTarget = evt.target;
-            const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
-            if (!isAnchorTap) lastTouchInputTs = performance.now();
-          }
-          scheduleTick();
-        }, { passive: true });
-        window.addEventListener('touchmove', () => {
-          if (isMobile) lastTouchInputTs = performance.now();
-          scheduleTick();
-        }, { passive: true });
-        window.addEventListener('touchend', () => {
-          if (isMobile) lastTouchInputTs = -1;
-        }, { passive: true });
-        window.addEventListener('touchcancel', () => {
-          if (isMobile) lastTouchInputTs = -1;
-        }, { passive: true });
-        window.addEventListener('orientationchange', () => {
-          lastViewportHeight = window.innerHeight || 0;
-          refreshTrackMetrics();
-          scheduleTick();
-        }, { passive: true });
-        window.addEventListener('load', refreshTrackMetrics, { passive: true });
-        setVideoSource(activeSources[sourceIndex]);
-      }
+          return;
+        }
+        lastViewportHeight = nextH;
+        refreshTrackMetrics();
+        scheduleTick();
+      }, { passive: true });
+      window.addEventListener('wheel', scheduleTick, { passive: true });
+      window.addEventListener('touchstart', (evt) => {
+        if (isMobile) {
+          const touchTarget = evt.target;
+          const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
+          if (!isAnchorTap) lastTouchInputTs = performance.now();
+        }
+        scheduleTick();
+      }, { passive: true });
+      window.addEventListener('touchmove', () => {
+        if (isMobile) lastTouchInputTs = performance.now();
+        scheduleTick();
+      }, { passive: true });
+      window.addEventListener('touchend', () => {
+        if (isMobile) lastTouchInputTs = -1;
+      }, { passive: true });
+      window.addEventListener('touchcancel', () => {
+        if (isMobile) lastTouchInputTs = -1;
+      }, { passive: true });
+      window.addEventListener('orientationchange', () => {
+        lastViewportHeight = window.innerHeight || 0;
+        refreshTrackMetrics();
+        scheduleTick();
+      }, { passive: true });
+      window.addEventListener('load', refreshTrackMetrics, { passive: true });
+      setVideoSource(activeSources[sourceIndex]);
 
       // ── About video: click-to-load + scroll-grow effect ──
       (() => {
@@ -1484,6 +1691,11 @@
             fallbackTimer = 0;
           }
           smoothTime = computeTargetTime();
+          if (fc.ready) {
+            fc.targetTime = smoothTime;
+            fc.renderTime = smoothTime;
+            displayCachedFrameByTime(fc.renderTime);
+          }
           scrubPaused = false;
           if (doneCallback) doneCallback();
         };
@@ -1513,7 +1725,6 @@
         let lastFrameTime = start;
         let virtualElapsed = 0;
         const isMobilePlay = isMobileViewport();
-        let desktopSlowFrameCount = 0;
         scrubPaused = true;
         smoothTime = computeTargetTime();
 
@@ -1521,16 +1732,6 @@
           let delta = now - lastFrameTime;
           lastFrameTime = now;
           if (isMobilePlay && delta > 33) delta = 16.6;
-          if (!isMobilePlay && delta > 42) {
-            desktopSlowFrameCount += 1;
-            if (desktopSlowFrameCount >= 8) {
-              animFrame = 0;
-              scrubPaused = false;
-              enableDesktopLiteMode();
-              fastScrollTo(targetY);
-              return;
-            }
-          }
           virtualElapsed += delta;
 
           const t = Math.min(1, heroDuration > 0 ? virtualElapsed / heroDuration : 1);
@@ -1539,13 +1740,23 @@
           targetTime = computeTargetTime();
 
           if (isMobilePlay) {
-            if (video.paused) video.play().catch(() => {});
+            if (fc.ready) {
+              fc.targetTime = targetTime;
+              fc.renderTime = targetTime;
+              displayCachedFrameByTime(fc.renderTime);
+            } else if (video.paused) {
+              video.play().catch(() => {});
+            }
           } else {
             const diff = targetTime - smoothTime;
             if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
             else smoothTime = targetTime;
 
-            if (isFirefox) {
+            if (fc.ready) {
+              fc.targetTime = smoothTime;
+              fc.renderTime = smoothTime;
+              displayCachedFrameByTime(fc.renderTime);
+            } else if (isFirefox) {
               const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
               if (Math.abs(video.currentTime - snapped) > 0.02) {
                 try { video.currentTime = snapped; } catch {}
@@ -1557,10 +1768,8 @@
             }
           }
 
-          if (!desktopLiteMode) {
-            const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
-            video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
-          }
+          const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
+          getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
 
           if (t < 1) {
             animFrame = requestAnimationFrame(step);
@@ -1568,7 +1777,7 @@
           }
 
           animFrame = 0;
-          if (isMobilePlay) video.pause();
+          if (isMobilePlay && !fc.ready) video.pause();
           if (targetY > heroEnd + 2) fastScrollTo(targetY);
           else scrubPaused = false;
         };
@@ -1708,7 +1917,7 @@
             const freshRect = target.getBoundingClientRect();
             const freshScrollY = window.scrollY || window.pageYOffset;
             const freshTargetY = Math.max(0, Math.round(freshRect.top + freshScrollY - offset));
-            if (freshScrollY < 50 && ready && !desktopLiteMode) playThenScroll(freshTargetY);
+            if (freshScrollY < 50 && ready) playThenScroll(freshTargetY);
             else fastScrollTo(freshTargetY);
           };
           doScroll();
@@ -1733,7 +1942,6 @@
        - Fade text and overlay with scroll progress.
        - Mobile: quicker reveal for performance and clarity.
        - Desktop: smoother fade so overlay/text are clear by hero end.
-       - Lite desktop fallback: keep text/overlay fixed (no fade work).
     */
     (() => {
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1755,7 +1963,6 @@
         requestAnimationFrame((ts) => {
           fadeTicking = false;
           const isMobileReveal = mobileRevealMQ.matches;
-          const isLiteDesktopReveal = !isMobileReveal && document.documentElement.classList.contains('is-lite-desktop');
           const throttleMs = isMobileReveal ? 32 : 16;
           if ((ts - lastFadeTs) < throttleMs) return;
           lastFadeTs = ts;
@@ -1763,18 +1970,6 @@
           // Returning to the very top should always restore initial hero state.
           const topY = window.scrollY || window.pageYOffset || 0;
           if (topY <= 4) {
-            if (lastTextFade !== 1) {
-              heroContent.style.opacity = '1';
-              lastTextFade = 1;
-            }
-            if (lastOverlayFade !== 1) {
-              heroEl.style.setProperty('--overlay-opacity', '1');
-              lastOverlayFade = 1;
-            }
-            return;
-          }
-
-          if (isLiteDesktopReveal) {
             if (lastTextFade !== 1) {
               heroContent.style.opacity = '1';
               lastTextFade = 1;

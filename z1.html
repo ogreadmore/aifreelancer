@@ -785,6 +785,7 @@
     const END_SAFETY = 0.06;
     const LERP = isMobile ? 0.05 : (isFirefox ? 0.1 : 0.12);
     const LERP_FF = isMobile ? 0.04 : 0.1;
+    const ENABLE_FRAME_CACHE = false;
 
     /* ================================================================
        FRAME CACHE
@@ -806,6 +807,7 @@
 
     async function extractFrames() {
       if (fc.extracting || fc.ready || fc.error) return;
+      if (!ENABLE_FRAME_CACHE) { fc.error = true; return; }
       if (isMobile && !MOBILE_FRAME_CACHE) { fc.error = true; return; }
       fc.extracting = true;
 
@@ -955,17 +957,11 @@
 
     function getProgress() {
       if (!track) return 0;
-      if (isMobile) {
-        // Mobile keeps progress tied to live geometry (more robust with toolbar/viewport shifts).
-        const rect = track.getBoundingClientRect();
-        const total = Math.max(0, track.offsetHeight - window.innerHeight);
-        const scrolled = clamp(-rect.top, 0, total);
-        return total > 0 ? scrolled / total : 0;
-      }
-      if (layout.trackScrollable <= 0) recalcLayout();
-      if (layout.trackScrollable <= 0) return 0;
-      const sy = window.scrollY || window.pageYOffset;
-      return clamp((sy - layout.trackTop) / layout.trackScrollable, 0, 1);
+      // Live geometry avoids stale cached offsets and fixes "needs bottom-scroll first" behavior.
+      const rect = track.getBoundingClientRect();
+      const total = Math.max(0, track.offsetHeight - window.innerHeight);
+      const scrolled = clamp(-rect.top, 0, total);
+      return total > 0 ? scrolled / total : 0;
     }
 
     /* ================================================================
@@ -979,6 +975,13 @@
       lastSeekTs: 0,
       paused: false,
     };
+    let hasUserInteracted = false;
+
+    function activateScrub() {
+      if (hasUserInteracted) return;
+      hasUserInteracted = true;
+      requestFrame();
+    }
 
     function computeTargetTime(progress, dur) {
       const maxEnd = Math.max(0, dur - END_SAFETY);
@@ -1062,7 +1065,7 @@
 
       if (fc.ready) {
         displayFrame(progress);
-      } else if (!fc.extracting && scrub.ready && !scrub.paused) {
+      } else if (hasUserInteracted && !fc.extracting && scrub.ready && !scrub.paused) {
         seekVideo(ts, progress);
       }
 
@@ -1089,7 +1092,7 @@
         aboutShell.style.transform = 'scale(' + (0.78 + 0.22 * ap).toFixed(4) + ')';
       }
 
-      if (!fc.ready && scrub.ready && !scrub.paused) {
+      if (!fc.ready && hasUserInteracted && scrub.ready && !scrub.paused) {
         const settleWindow = isMobile ? 200 : 140;
         if (Math.abs(scrub.targetTime - scrub.smoothTime) > 0.001 || (ts - lastScrollTs) < settleWindow) {
           requestFrame();
@@ -1099,6 +1102,7 @@
 
     function onScroll() {
       lastScrollTs = performance.now();
+      activateScrub();
       if (layout.trackScrollable <= 0) recalcLayout();
       requestFrame();
     }
@@ -1152,21 +1156,16 @@
 
       recalcLayout();
 
-      if (!fc.ready && !fc.error && (!isMobile || MOBILE_FRAME_CACHE)) {
+      if (!fc.ready && !fc.error && ENABLE_FRAME_CACHE && (!isMobile || MOBILE_FRAME_CACHE)) {
         extractFrames();
       }
 
       if (!fc.ready) {
-        const p = getProgress();
-        scrub.targetTime = computeTargetTime(p, dur);
-        scrub.smoothTime = scrub.targetTime;
-        if (!isMobile) {
-          try { video.currentTime = scrub.targetTime; } catch {}
-          video.pause();
-        } else {
-          try { video.currentTime = clamp(START_AT, 0, dur - END_SAFETY); } catch {}
-          video.pause();
-        }
+        const stillTime = clamp(START_AT, 0, dur - END_SAFETY);
+        scrub.targetTime = stillTime;
+        scrub.smoothTime = stillTime;
+        try { video.currentTime = stillTime; } catch {}
+        video.pause();
         requestFrame();
       }
     }
@@ -1198,6 +1197,10 @@
       setTimeout(warmupLayout, 160);
     }, { passive: true });
     window.addEventListener('touchstart', warmupLayout, { passive: true, once: true });
+    window.addEventListener('pointerdown', activateScrub, { passive: true, once: true });
+    window.addEventListener('wheel', activateScrub, { passive: true, once: true });
+    window.addEventListener('touchstart', activateScrub, { passive: true, once: true });
+    window.addEventListener('keydown', activateScrub, { passive: true, once: true });
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', warmupLayout, { passive: true });
       window.visualViewport.addEventListener('scroll', warmupLayout, { passive: true });
@@ -1654,6 +1657,7 @@
         if (!href.startsWith('#') || href.length < 2) return;
         const target = document.querySelector(href);
         if (!target) return;
+        activateScrub();
         e.preventDefault();
 
         recalcLayout();

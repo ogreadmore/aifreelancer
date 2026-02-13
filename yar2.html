@@ -768,11 +768,20 @@
       const isFirefox = /firefox/i.test(navigator.userAgent);
       if (isFirefox) document.documentElement.classList.add('is-firefox');
       // Fallback: weaker desktops switch from seek-scrub to normal playback.
+      const ua = navigator.userAgent || '';
+      const isWindowsDesktop = !isMobile && /Windows/i.test(ua);
       const desktopCoreCount = navigator.hardwareConcurrency || 0;
       const desktopMemoryGb = navigator.deviceMemory || 0;
-      let desktopLiteMode = !isMobile && (
+      const hasKnownLowDesktop = (
         (desktopCoreCount > 0 && desktopCoreCount <= 4) ||
         (desktopMemoryGb > 0 && desktopMemoryGb <= 4)
+      );
+      const hasStrongDesktop = (
+        desktopMemoryGb >= 8 || desktopCoreCount >= 12
+      );
+      let desktopLiteMode = !isMobile && (
+        hasKnownLowDesktop ||
+        (isWindowsDesktop && !hasStrongDesktop)
       );
       if (desktopLiteMode) document.documentElement.classList.add('is-lite-desktop');
 

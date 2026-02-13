@@ -1662,7 +1662,7 @@
        - Fade text and overlay with scroll progress.
        - Mobile: quicker reveal for performance and clarity.
        - Desktop: smoother fade so overlay/text are clear by hero end.
-       - Lite desktop fallback: throttled fade updates to lower CPU cost.
+       - Lite desktop fallback: keep text/overlay fixed (no fade work).
     */
     (() => {
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1685,15 +1685,28 @@
           fadeTicking = false;
           const isMobileReveal = mobileRevealMQ.matches;
           const isLiteDesktopReveal = !isMobileReveal && document.documentElement.classList.contains('is-lite-desktop');
-          const throttleMs = isMobileReveal ? 32 : (isLiteDesktopReveal ? 40 : 16);
+          const throttleMs = isMobileReveal ? 32 : 16;
           if ((ts - lastFadeTs) < throttleMs) return;
           lastFadeTs = ts;
+
+          if (isLiteDesktopReveal) {
+            if (lastTextFade !== 1) {
+              heroContent.style.opacity = '1';
+              lastTextFade = 1;
+            }
+            if (lastOverlayFade !== 1) {
+              heroEl.style.setProperty('--overlay-opacity', '1');
+              lastOverlayFade = 1;
+            }
+            return;
+          }
+
           const progress = getProgress();
 
           // Fade hero text with different pace on mobile vs desktop.
           const textFadeEnd = isMobileReveal ? 0.18 : 0.42;
           const textFade = Math.max(0, 1 - (progress / textFadeEnd));
-          const textDelta = isMobileReveal ? 0.015 : (isLiteDesktopReveal ? 0.03 : 0.01);
+          const textDelta = isMobileReveal ? 0.015 : 0.01;
           if (Math.abs(textFade - lastTextFade) >= textDelta) {
             heroContent.style.opacity = textFade.toFixed(3);
             lastTextFade = textFade;
@@ -1703,7 +1716,7 @@
           const overlayFadeEnd = isMobileReveal ? 0.28 : 1;
           const overlayFloor = isMobileReveal ? 0.12 : 0;
           const overlayFade = Math.max(overlayFloor, 1 - (progress / overlayFadeEnd));
-          const overlayDelta = isMobileReveal ? 0.02 : (isLiteDesktopReveal ? 0.03 : 0.01);
+          const overlayDelta = isMobileReveal ? 0.02 : 0.01;
           if (Math.abs(overlayFade - lastOverlayFade) >= overlayDelta) {
             heroEl.style.setProperty('--overlay-opacity', overlayFade.toFixed(3));
             lastOverlayFade = overlayFade;

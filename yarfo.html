@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,14 +120,10 @@
       display: flex; align-items: flex-end; background: #f2f2f2;
       --overlay-opacity: 1;
     }
-    .hero video,
-    .hero-canvas {
+    .hero video {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
       transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
       will-change: transform; pointer-events: none;
-    }
-    .hero-canvas {
-      display: none;
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
@@ -157,8 +154,7 @@
       min-height: 460px;
       background: #fff;
     }
-    .is-lite-desktop .hero video,
-    .is-lite-desktop .hero-canvas {
+    .is-lite-desktop .hero video {
       transform: scale(1.01);
       filter: none;
       will-change: auto;
@@ -171,8 +167,7 @@
         linear-gradient(to bottom, rgba(255,255,255,.52), rgba(255,255,255,.72)),
         radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.34), rgba(255,255,255,.12));
     }
-    .is-lite-desktop.lite-video-faded .hero video,
-    .is-lite-desktop.lite-video-faded .hero-canvas {
+    .is-lite-desktop.lite-video-faded .hero video {
       opacity: 0;
     }
 
@@ -531,8 +526,7 @@
         opacity: var(--overlay-opacity, 1);
       }
 
-      .hero video,
-      .hero-canvas {
+      .hero video {
         transform: scale(1.0);
         object-position: center 30%;
         filter: none;
@@ -624,7 +618,6 @@
   <div class="scroll-track" id="track">
     <section class="hero">
       <video id="bgVideo" muted playsinline preload="auto" crossorigin="anonymous"></video>
-      <canvas id="heroCanvas" class="hero-canvas"></canvas>
       <div class="hero-content">
         <h1>We love optimization.</h1>
         <p class="subtitle">We're not an AI agency. We're a business optimization powerhouse.</p>
@@ -755,7 +748,6 @@
       const nav = document.getElementById('mainNav');
       const track = document.getElementById('track');
       const video = document.getElementById('bgVideo');
-      const heroCanvas = document.getElementById('heroCanvas');
       const rootEl = document.documentElement;
       const MOBILE_VIEWPORT_QUERY = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
       const isMobileViewport = () => window.matchMedia(MOBILE_VIEWPORT_QUERY).matches;
@@ -829,62 +821,8 @@
 
       const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
                     || (navigator.deviceMemory && navigator.deviceMemory <= 2);
-      if (LOW_END) {
-        activeSources = [SD_VIDEO_URL, FALLBACK_VIDEO_URL];
-      }
-
-      const FRAME_COUNT = LOW_END
-        ? (isMobile ? 30 : 40)
-        : (isMobile ? 46 : 68);
-      const FRAME_LERP_SPEED = isMobile ? 0.34 : 0.27;
-      const FRAME_BLEND = !isFirefox;
-      const FRAME_RENDER_EPSILON = 0.0008;
-
-      const fc = {
-        frames: [],
-        ready: false,
-        extracting: false,
-        error: false,
-        token: 0,
-        ctx: null,
-        lastA: -1,
-        lastB: -1,
-        lastMix: -1,
-        targetTime: 0,
-        renderTime: 0,
-      };
-
-      function resetFrameCache(resetError = true) {
-        fc.token += 1;
-        if (fc.frames.length) {
-          fc.frames.forEach((frame) => {
-            if (frame && typeof frame.close === 'function') {
-              try { frame.close(); } catch {}
-            }
-          });
-        }
-        fc.frames = [];
-        fc.ready = false;
-        fc.extracting = false;
-        fc.ctx = null;
-        fc.lastA = -1;
-        fc.lastB = -1;
-        fc.lastMix = -1;
-        fc.targetTime = 0;
-        fc.renderTime = 0;
-        if (resetError) fc.error = false;
-        if (heroCanvas) {
-          heroCanvas.style.display = 'none';
-          heroCanvas.width = 0;
-          heroCanvas.height = 0;
-        }
-        video.style.display = 'block';
-      }
-
-      const getHeroVisual = () => (fc.ready ? heroCanvas : video);
 
       function setVideoSource(url) {
-        resetFrameCache();
         video.pause();
         rootEl.classList.remove('lite-video-faded');
         video.removeAttribute('src');
@@ -899,6 +837,11 @@
         video.style.background = '#fff';
       }
       applyPosterFallback();
+
+      if (LOW_END) {
+        video.removeAttribute('src');
+        video.style.background = '#fff';
+      }
 
       let trackTop = 0;
       let trackScrollable = 0;
@@ -933,9 +876,6 @@
         if (isMobile || desktopLiteMode) return;
         desktopLiteMode = true;
         rootEl.classList.add('is-lite-desktop');
-        if (fc.ready || fc.extracting) {
-          resetFrameCache(false);
-        }
         video.style.transform = '';
         activeSources = DESKTOP_LITE_VIDEO_SOURCES;
         sourceIndex = 0;
@@ -961,20 +901,19 @@
          key action is visible before the content sheet advances.
          Desktop keeps its curated 4s segment (5.25s-9.25s).
       */
-
-      function getSegmentBounds() {
-        const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
-        const segmentStart = isMobile
-          ? clamp(MOBILE_START_AT_SECONDS, 0, maxEnd)
-          : clamp(START_AT_SECONDS, 0, maxEnd);
-        const baseSpan = isMobile ? 6 : SEGMENT_DURATION_SECONDS;
-        const segmentEnd = clamp(segmentStart + baseSpan, segmentStart, maxEnd);
-        return { segmentStart, segmentEnd };
-      }
-
+      
       function computeTargetTime() {
         if (!ready || duration <= 0) return 0;
-        const { segmentStart, segmentEnd } = getSegmentBounds();
+        const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
+        let segmentStart;
+        let segmentEnd;
+        if (isMobile) {
+          segmentStart = clamp(MOBILE_START_AT_SECONDS, 0, maxEnd);
+          segmentEnd = clamp(segmentStart + 6, segmentStart, maxEnd);
+        } else {
+          segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
+          segmentEnd = clamp(segmentStart + SEGMENT_DURATION_SECONDS, segmentStart, maxEnd);
+        }
 
         const rawProgress = getProgress();
         let videoProgress = rawProgress;
@@ -988,175 +927,7 @@
         }
         return segmentStart + videoProgress * (segmentEnd - segmentStart);
       }
-
-      function drawCachedFrame(frame, alpha = 1) {
-        if (!fc.ctx || !frame) return;
-        if (frame instanceof ImageBitmap) {
-          if (alpha !== 1) fc.ctx.globalAlpha = alpha;
-          fc.ctx.drawImage(frame, 0, 0);
-          return;
-        }
-        if (frame instanceof ImageData) {
-          fc.ctx.putImageData(frame, 0, 0);
-        }
-      }
-
-      function displayCachedFrameByTime(time) {
-        if (!fc.ready || !fc.ctx || fc.frames.length < 2) return;
-        const { segmentStart, segmentEnd } = getSegmentBounds();
-        const span = Math.max(0.0001, segmentEnd - segmentStart);
-        const scaled = clamp((time - segmentStart) / span, 0, 1) * (fc.frames.length - 1);
-        const a = Math.floor(scaled);
-        const b = Math.min(fc.frames.length - 1, a + 1);
-        const mix = scaled - a;
-        if (a === fc.lastA && b === fc.lastB && Math.abs(mix - fc.lastMix) < 0.006) return;
-        fc.lastA = a;
-        fc.lastB = b;
-        fc.lastMix = mix;
-
-        const frameA = fc.frames[a];
-        const frameB = fc.frames[b];
-        if (frameA instanceof ImageData) {
-          fc.ctx.putImageData(frameA, 0, 0);
-          return;
-        }
-
-        fc.ctx.globalCompositeOperation = 'copy';
-        fc.ctx.globalAlpha = 1;
-        drawCachedFrame(frameA, 1);
-
-        if (FRAME_BLEND && mix > 0.001 && b !== a && frameB instanceof ImageBitmap) {
-          fc.ctx.globalCompositeOperation = 'source-over';
-          drawCachedFrame(frameB, mix);
-        }
-
-        fc.ctx.globalAlpha = 1;
-        fc.ctx.globalCompositeOperation = 'source-over';
-      }
-
-      async function extractFrames() {
-        if (fc.extracting || fc.ready || fc.error || desktopLiteMode) return;
-        if (!ready || duration <= 0) return;
-        const { segmentStart, segmentEnd } = getSegmentBounds();
-        const span = segmentEnd - segmentStart;
-        if (span <= 0.01) return;
-
-        const token = fc.token + 1;
-        fc.token = token;
-        fc.extracting = true;
-        const originalTime = Number.isFinite(video.currentTime) ? video.currentTime : segmentStart;
-        const videoW = video.videoWidth || 640;
-        const videoH = video.videoHeight || 360;
-        const scale = isMobile ? 1 : (LOW_END ? 0.42 : 0.5);
-        const cacheW = Math.max(2, Math.round(videoW * scale));
-        const cacheH = Math.max(2, Math.round(videoH * scale));
-        const buffer = document.createElement('canvas');
-        buffer.width = cacheW;
-        buffer.height = cacheH;
-        const bufferCtx = buffer.getContext('2d', { willReadFrequently: false });
-        if (!bufferCtx) {
-          fc.extracting = false;
-          fc.error = true;
-          return;
-        }
-        const canBitmap = typeof createImageBitmap === 'function';
-        const frames = [];
-
-        const seekTo = (t) => new Promise((resolve, reject) => {
-          const done = () => {
-            video.removeEventListener('seeked', done);
-            video.removeEventListener('error', fail);
-            resolve();
-          };
-          const fail = () => {
-            video.removeEventListener('seeked', done);
-            video.removeEventListener('error', fail);
-            reject(new Error('seek-failed'));
-          };
-          video.addEventListener('seeked', done, { once: true });
-          video.addEventListener('error', fail, { once: true });
-          try {
-            video.currentTime = t;
-          } catch (err) {
-            reject(err);
-          }
-        });
-
-        try {
-          for (let i = 0; i < FRAME_COUNT; i += 1) {
-            if (token !== fc.token) throw new Error('stale-cache');
-            const t = segmentStart + (i / Math.max(1, FRAME_COUNT - 1)) * span;
-            await seekTo(t);
-            if (token !== fc.token) throw new Error('stale-cache');
-            bufferCtx.drawImage(video, 0, 0, cacheW, cacheH);
-            if (canBitmap) {
-              frames.push(await createImageBitmap(buffer));
-            } else {
-              frames.push(bufferCtx.getImageData(0, 0, cacheW, cacheH));
-            }
-            if ((i & 7) === 7) {
-              await new Promise((resolve) => setTimeout(resolve, 0));
-            }
-          }
-        } catch (err) {
-          frames.forEach((frame) => {
-            if (frame && typeof frame.close === 'function') {
-              try { frame.close(); } catch {}
-            }
-          });
-          if (token === fc.token && (!err || err.message !== 'stale-cache')) {
-            fc.error = true;
-            fc.extracting = false;
-          }
-          return;
-        } finally {
-          try {
-            video.currentTime = clamp(originalTime, 0, Math.max(0, duration - END_SAFETY_SECONDS));
-          } catch {}
-        }
-
-        if (token !== fc.token) {
-          frames.forEach((frame) => {
-            if (frame && typeof frame.close === 'function') {
-              try { frame.close(); } catch {}
-            }
-          });
-          return;
-        }
-
-        fc.frames = frames;
-        fc.ready = frames.length > 1;
-        fc.extracting = false;
-        fc.error = !fc.ready;
-        if (!fc.ready) return;
-
-        if (!heroCanvas) {
-          fc.ready = false;
-          fc.error = true;
-          resetFrameCache(false);
-          return;
-        }
-
-        heroCanvas.width = cacheW;
-        heroCanvas.height = cacheH;
-        fc.ctx = heroCanvas.getContext('2d', { alpha: false });
-        if (!fc.ctx) {
-          resetFrameCache(false);
-          fc.error = true;
-          return;
-        }
-        fc.ctx.imageSmoothingEnabled = true;
-        if ('imageSmoothingQuality' in fc.ctx) {
-          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'medium';
-        }
-        fc.targetTime = targetTime;
-        fc.renderTime = targetTime;
-        heroCanvas.style.display = 'block';
-        video.style.display = 'none';
-        video.pause();
-        displayCachedFrameByTime(fc.renderTime);
-      }
-
+      
       let lastSeekTs = 0;
       let smoothTime = 0; 
       const LERP_SPEED = isMobile ? 0.11 : 0.12; 
@@ -1210,39 +981,25 @@
           else smoothTime = targetTime;
         }
 
-        if (!fc.extracting && fc.ready) {
-          fc.targetTime = smoothTime;
-          const frameDiff = fc.targetTime - fc.renderTime;
-          if (Math.abs(frameDiff) > FRAME_RENDER_EPSILON) {
-            fc.renderTime += frameDiff * FRAME_LERP_SPEED;
-          } else {
-            fc.renderTime = fc.targetTime;
+        if (isFirefox) {
+          const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
+          if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
+            try { video.currentTime = snapped; } catch {}
+            lastSeekTs = ts;
           }
-          displayCachedFrameByTime(fc.renderTime);
-        } else if (!fc.extracting) {
-          if (isFirefox) {
-            const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
-            if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
-              try { video.currentTime = snapped; } catch {}
-              lastSeekTs = ts;
-            }
-          } else {
-            const seekThreshold = mobileFingerActive ? MOBILE_TOUCH_THRESHOLD : SEEK_THRESHOLD;
-            const seekCooldown = mobileFingerActive ? 0 : SEEK_COOLDOWN;
-            if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (ts - lastSeekTs) > seekCooldown) {
-              try { video.currentTime = smoothTime; } catch {}
-              lastSeekTs = ts;
-            }
+        } else {
+          const seekThreshold = mobileFingerActive ? MOBILE_TOUCH_THRESHOLD : SEEK_THRESHOLD;
+          const seekCooldown = mobileFingerActive ? 0 : SEEK_COOLDOWN;
+          if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (ts - lastSeekTs) > seekCooldown) {
+            try { video.currentTime = smoothTime; } catch {}
+            lastSeekTs = ts;
           }
         }
         if (!isMobile && !desktopLiteMode) {
           const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
-          getHeroVisual().style.transform = 'scale(1.04) translate3d(0, ' + y.toFixed(2) + 'px, 0)';
+          video.style.transform = 'scale(1.04) translate3d(0, ' + y.toFixed(2) + 'px, 0)';
         }
-        const frameSettling = fc.ready && Math.abs(fc.targetTime - fc.renderTime) > FRAME_RENDER_EPSILON;
-        if ((ts - lastInputTs) < 160 || Math.abs(targetTime - smoothTime) > 0.001 || frameSettling) {
-          raf = requestAnimationFrame(tick);
-        }
+        if ((ts - lastInputTs) < 140 || Math.abs(targetTime - smoothTime) > 0.001) raf = requestAnimationFrame(tick);
       }
       function scheduleTick() {
         if (!ready || scrubPaused) return;
@@ -1261,7 +1018,6 @@
         ready = true;
 
         if (desktopLiteMode) {
-          resetFrameCache(false);
           targetTime = 0;
           smoothTime = 0;
           try {
@@ -1290,14 +1046,7 @@
           smoothTime = targetTime;
           try { video.currentTime = targetTime; } catch {}
         }
-        fc.targetTime = targetTime;
-        fc.renderTime = smoothTime;
         video.pause();
-        if (!fc.ready && !fc.extracting && !fc.error) {
-          extractFrames();
-        } else if (fc.ready) {
-          displayCachedFrameByTime(fc.renderTime);
-        }
         scheduleTick();
       }
 
@@ -1319,44 +1068,46 @@
         }
       });
 
-      window.addEventListener('scroll', scheduleTick, { passive: true });
-      window.addEventListener('resize', () => {
-        const nextH = window.innerHeight || 0;
-        // Ignore small mobile viewport chrome shifts to prevent progress jumps.
-        if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
+      if (!LOW_END) {
+        window.addEventListener('scroll', scheduleTick, { passive: true });
+        window.addEventListener('resize', () => {
+          const nextH = window.innerHeight || 0;
+          // Ignore small mobile viewport chrome shifts to prevent progress jumps.
+          if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
+            scheduleTick();
+            return;
+          }
+          lastViewportHeight = nextH;
+          refreshTrackMetrics();
           scheduleTick();
-          return;
-        }
-        lastViewportHeight = nextH;
-        refreshTrackMetrics();
-        scheduleTick();
-      }, { passive: true });
-      window.addEventListener('wheel', scheduleTick, { passive: true });
-      window.addEventListener('touchstart', (evt) => {
-        if (isMobile) {
-          const touchTarget = evt.target;
-          const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
-          if (!isAnchorTap) lastTouchInputTs = performance.now();
-        }
-        scheduleTick();
-      }, { passive: true });
-      window.addEventListener('touchmove', () => {
-        if (isMobile) lastTouchInputTs = performance.now();
-        scheduleTick();
-      }, { passive: true });
-      window.addEventListener('touchend', () => {
-        if (isMobile) lastTouchInputTs = -1;
-      }, { passive: true });
-      window.addEventListener('touchcancel', () => {
-        if (isMobile) lastTouchInputTs = -1;
-      }, { passive: true });
-      window.addEventListener('orientationchange', () => {
-        lastViewportHeight = window.innerHeight || 0;
-        refreshTrackMetrics();
-        scheduleTick();
-      }, { passive: true });
-      window.addEventListener('load', refreshTrackMetrics, { passive: true });
-      setVideoSource(activeSources[sourceIndex]);
+        }, { passive: true });
+        window.addEventListener('wheel', scheduleTick, { passive: true });
+        window.addEventListener('touchstart', (evt) => {
+          if (isMobile) {
+            const touchTarget = evt.target;
+            const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
+            if (!isAnchorTap) lastTouchInputTs = performance.now();
+          }
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('touchmove', () => {
+          if (isMobile) lastTouchInputTs = performance.now();
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('touchend', () => {
+          if (isMobile) lastTouchInputTs = -1;
+        }, { passive: true });
+        window.addEventListener('touchcancel', () => {
+          if (isMobile) lastTouchInputTs = -1;
+        }, { passive: true });
+        window.addEventListener('orientationchange', () => {
+          lastViewportHeight = window.innerHeight || 0;
+          refreshTrackMetrics();
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('load', refreshTrackMetrics, { passive: true });
+        setVideoSource(activeSources[sourceIndex]);
+      }
 
       // ── About video: click-to-load + scroll-grow effect ──
       (() => {
@@ -1733,11 +1484,6 @@
             fallbackTimer = 0;
           }
           smoothTime = computeTargetTime();
-          if (fc.ready) {
-            fc.targetTime = smoothTime;
-            fc.renderTime = smoothTime;
-            displayCachedFrameByTime(fc.renderTime);
-          }
           scrubPaused = false;
           if (doneCallback) doneCallback();
         };
@@ -1793,23 +1539,13 @@
           targetTime = computeTargetTime();
 
           if (isMobilePlay) {
-            if (fc.ready) {
-              fc.targetTime = targetTime;
-              fc.renderTime = targetTime;
-              displayCachedFrameByTime(fc.renderTime);
-            } else if (video.paused) {
-              video.play().catch(() => {});
-            }
+            if (video.paused) video.play().catch(() => {});
           } else {
             const diff = targetTime - smoothTime;
             if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
             else smoothTime = targetTime;
 
-            if (fc.ready) {
-              fc.targetTime = smoothTime;
-              fc.renderTime = smoothTime;
-              displayCachedFrameByTime(fc.renderTime);
-            } else if (isFirefox) {
+            if (isFirefox) {
               const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
               if (Math.abs(video.currentTime - snapped) > 0.02) {
                 try { video.currentTime = snapped; } catch {}
@@ -1823,7 +1559,7 @@
 
           if (!desktopLiteMode) {
             const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
-            getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+            video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
           }
 
           if (t < 1) {
@@ -1832,7 +1568,7 @@
           }
 
           animFrame = 0;
-          if (isMobilePlay && !fc.ready) video.pause();
+          if (isMobilePlay) video.pause();
           if (targetY > heroEnd + 2) fastScrollTo(targetY);
           else scrubPaused = false;
         };

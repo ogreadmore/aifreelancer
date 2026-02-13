@@ -767,7 +767,7 @@
       const SOURCES = isMobile ? MOBILE_VIDEO_SOURCES : DESKTOP_VIDEO_SOURCES;
       const isFirefox = /firefox/i.test(navigator.userAgent);
       if (isFirefox) document.documentElement.classList.add('is-firefox');
-      // Fallback: weaker desktops switch from seek-scrub to normal playback.
+      // Fallback: weaker desktops keep scroll-scrub, but with lighter styling/seek cadence.
       const ua = navigator.userAgent || '';
       const isWindowsDesktop = !isMobile && /Windows/i.test(ua);
       const desktopCoreCount = navigator.hardwareConcurrency || 0;
@@ -776,12 +776,12 @@
         (desktopCoreCount > 0 && desktopCoreCount <= 4) ||
         (desktopMemoryGb > 0 && desktopMemoryGb <= 4)
       );
-      const hasStrongDesktop = (
-        desktopMemoryGb >= 8 || desktopCoreCount >= 12
+      const hasClearlyStrongDesktop = (
+        desktopMemoryGb >= 16 || desktopCoreCount >= 12
       );
       let desktopLiteMode = !isMobile && (
         hasKnownLowDesktop ||
-        (isWindowsDesktop && !hasStrongDesktop)
+        (isWindowsDesktop && !hasClearlyStrongDesktop)
       );
       if (desktopLiteMode) document.documentElement.classList.add('is-lite-desktop');
 
@@ -833,30 +833,21 @@
       }
       refreshTrackMetrics();
 
-      function syncLiteDesktopPlayback() {
-        if (!desktopLiteMode || !ready) return;
-        const progress = getProgress();
-        const heroStillVisible = progress < 0.995;
-        if (heroStillVisible) {
-          if (video.paused) video.play().catch(() => {});
-        } else if (!video.paused) {
-          video.pause();
-        }
-      }
-
       function enableDesktopLiteMode() {
         if (isMobile || desktopLiteMode) return;
         desktopLiteMode = true;
         document.documentElement.classList.add('is-lite-desktop');
+        video.style.transform = '';
         if (!ready) return;
-        const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
-        const segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
-        smoothTime = segmentStart;
-        targetTime = segmentStart;
-        try { video.currentTime = segmentStart; } catch {}
-        video.loop = true;
-        video.playbackRate = 1;
-        syncLiteDesktopPlayback();
+        targetTime = computeTargetTime();
+        smoothTime = targetTime;
+        try {
+          video.pause();
+          video.loop = false;
+          video.playbackRate = 1;
+          video.currentTime = targetTime;
+        } catch {}
+        scheduleTick();
       }
 
       /*
@@ -900,6 +891,8 @@
       const MOBILE_TOUCH_THRESHOLD = 0.004;
       const MOBILE_PREROLL_MS = 1000;
       const MOBILE_PREROLL_BOOST = 1 / 6; // ~1 second in a 6-second mobile segment
+      const DESKTOP_LITE_SEEK_THRESHOLD = 0.018;
+      const DESKTOP_LITE_SEEK_COOLDOWN = 22;
       let mobilePreRollBoost = 0;
       let lastTouchInputTs = -1;
       let perfSampleCount = 0;
@@ -909,10 +902,6 @@
       function tick(ts = performance.now()) {
         raf = 0;
         if (!ready || scrubPaused) return;
-        if (desktopLiteMode) {
-          syncLiteDesktopPlayback();
-          return;
-        }
 
         if (!isMobile) {
           if (prevTickTs > 0) {
@@ -922,8 +911,6 @@
             if (perfSampleCount >= 28) {
               if (perfDroppedFrameCount >= 10) {
                 enableDesktopLiteMode();
-                syncLiteDesktopPlayback();
-                return;
               }
               perfSampleCount = 0;
               perfDroppedFrameCount = 0;
@@ -952,14 +939,17 @@
             lastSeekTs = ts;
           }
         } else {
+          const desktopLiteActive = desktopLiteMode && !isMobile;
           const seekThreshold = mobileFingerActive ? MOBILE_TOUCH_THRESHOLD : SEEK_THRESHOLD;
           const seekCooldown = mobileFingerActive ? 0 : SEEK_COOLDOWN;
-          if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (ts - lastSeekTs) > seekCooldown) {
+          const activeSeekThreshold = desktopLiteActive ? DESKTOP_LITE_SEEK_THRESHOLD : seekThreshold;
+          const activeSeekCooldown = desktopLiteActive ? DESKTOP_LITE_SEEK_COOLDOWN : seekCooldown;
+          if (Math.abs(video.currentTime - smoothTime) > activeSeekThreshold && (ts - lastSeekTs) > activeSeekCooldown) {
             try { video.currentTime = smoothTime; } catch {}
             lastSeekTs = ts;
           }
         }
-        if (!isMobile) {
+        if (!isMobile && !desktopLiteMode) {
           const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
           video.style.transform = 'scale(1.04) translate3d(0, ' + y.toFixed(2) + 'px, 0)';
         }
@@ -968,10 +958,6 @@
       function scheduleTick() {
         if (!ready || scrubPaused) return;
         lastInputTs = performance.now();
-        if (desktopLiteMode) {
-          syncLiteDesktopPlayback();
-          return;
-        }
         if (!raf) raf = requestAnimationFrame(tick);
       }
       function initScrub() {
@@ -979,18 +965,6 @@
         if (!Number.isFinite(duration) || duration <= 0) return;
         refreshTrackMetrics();
         ready = true;
-
-        if (desktopLiteMode) {
-          const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
-          const segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
-          smoothTime = segmentStart;
-          targetTime = segmentStart;
-          try { video.currentTime = segmentStart; } catch {}
-          video.loop = true;
-          video.playbackRate = 1;
-          syncLiteDesktopPlayback();
-          return;
-        }
 
         targetTime = computeTargetTime();
         if (isMobile) {
@@ -1478,11 +1452,8 @@
           if (!isMobilePlay && delta > 42) {
             desktopSlowFrameCount += 1;
             if (desktopSlowFrameCount >= 8) {
-              animFrame = 0;
-              scrubPaused = false;
               enableDesktopLiteMode();
-              fastScrollTo(targetY);
-              return;
+              desktopSlowFrameCount = -999;
             }
           }
           virtualElapsed += delta;
@@ -1495,22 +1466,31 @@
           if (isMobilePlay) {
             if (video.paused) video.play().catch(() => {});
           } else {
+            const desktopLiteActive = desktopLiteMode && !isMobilePlay;
             const diff = targetTime - smoothTime;
             if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
             else smoothTime = targetTime;
 
             if (isFirefox) {
               const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
-              if (Math.abs(video.currentTime - snapped) > 0.02) {
+              const ffThreshold = desktopLiteActive ? 0.035 : 0.02;
+              if (Math.abs(video.currentTime - snapped) > ffThreshold) {
                 try { video.currentTime = snapped; } catch {}
               }
-            } else if (Math.abs(video.currentTime - smoothTime) > 0.002) {
-              try { video.currentTime = smoothTime; } catch {}
+            } else {
+              const seekThreshold = desktopLiteActive ? DESKTOP_LITE_SEEK_THRESHOLD : 0.002;
+              const seekCooldown = desktopLiteActive ? DESKTOP_LITE_SEEK_COOLDOWN : 0;
+              if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (now - lastSeekTs) > seekCooldown) {
+                try { video.currentTime = smoothTime; } catch {}
+                lastSeekTs = now;
+              }
             }
           }
 
-          const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
-          video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+          if (!desktopLiteMode) {
+            const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
+            video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+          }
 
           if (t < 1) {
             animFrame = requestAnimationFrame(step);
@@ -1657,7 +1637,7 @@
             const freshRect = target.getBoundingClientRect();
             const freshScrollY = window.scrollY || window.pageYOffset;
             const freshTargetY = Math.max(0, Math.round(freshRect.top + freshScrollY - offset));
-            if (freshScrollY < 50 && ready && !desktopLiteMode) playThenScroll(freshTargetY);
+            if (freshScrollY < 50 && ready) playThenScroll(freshTargetY);
             else fastScrollTo(freshTargetY);
           };
           doScroll();

@@ -549,9 +549,13 @@
     const isMobileViewport = () => window.matchMedia(MOBILE_MQ).matches;
     const isFirefox = /firefox/i.test(navigator.userAgent);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
-                  || (navigator.deviceMemory && navigator.deviceMemory <= 2);
-    const ENABLE_FRAME_CACHE = !isPhone && !isFirefox && !LOW_END && !reducedMotion;
+    const CORES = Number(navigator.hardwareConcurrency) || 0;
+    const MEM_GB = Number(navigator.deviceMemory) || 0;
+    const LOW_END = (CORES > 0 && CORES <= 4) || (MEM_GB > 0 && MEM_GB <= 4);
+    const HIGH_END_DESKTOP = !isMobile && !isFirefox && !reducedMotion
+      && ((CORES >= 8) || (MEM_GB >= 8) || (!MEM_GB && CORES >= 6));
+    const ENABLE_FRAME_CACHE = HIGH_END_DESKTOP;
+    const ENABLE_PARALLAX = !isMobile && !LOW_END;
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
     if (isFirefox) document.documentElement.classList.add('is-firefox');
@@ -577,16 +581,17 @@
     // ── Video sources ──
     const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
     const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
-    const VIDEO_SOURCES = isPhone ? [SD_URL, HD_URL] : [HD_URL, SD_URL];
+    const PREFER_SD = isPhone || (!isMobile && (LOW_END || isFirefox));
+    const VIDEO_SOURCES = PREFER_SD ? [SD_URL, HD_URL] : [HD_URL, SD_URL];
     let sourceIndex = 0;
 
     // ── Scrub constants ──
     const START_AT = isMobile ? 4.75 : 5.25;
     const SEG_LEN = isMobile ? 6 : 4;
     const END_SAFETY = 0.06;
-    const SEEK_FPS = isPhone ? 8 : (isMobile ? 10 : (isFirefox ? 12 : 18));
+    const SEEK_FPS = isPhone ? 10 : (isMobile ? 12 : (LOW_END ? 12 : (isFirefox ? 12 : 24)));
     const SEEK_INTERVAL_MS = Math.round(1000 / SEEK_FPS);
-    const SEEK_EPSILON = 0.65 / SEEK_FPS;
+    const SEEK_EPSILON = 0.45 / SEEK_FPS;
 
     /* ================================================================
        FRAME CACHE
@@ -601,7 +606,7 @@
       ctx: null,        // drawing context for heroCanvas
       lastIdx: -1,      // last displayed frame index
     };
-    const FRAME_COUNT = isPhone ? 16 : (isMobile ? 24 : 36);
+    const FRAME_COUNT = 36;
     let heroEngaged = false;
     let extractScheduled = false;
     let extractGen = 0;
@@ -648,6 +653,11 @@
       extractScheduled = true;
       const start = () => {
         extractScheduled = false;
+        const now = performance.now();
+        if ((now - lastScrollTs) < 220) {
+          setTimeout(scheduleFrameExtraction, 260);
+          return;
+        }
         extractFrames();
       };
       if ('requestIdleCallback' in window) {
@@ -922,14 +932,16 @@
         // Keep hero static at initial frame until user engages the page.
       } else if (fc.ready) {
         displayFrame(progress);
-      } else if (scrub.ready && !scrub.paused && (!ENABLE_FRAME_CACHE || fc.error || (!extractScheduled && !fc.extracting))) {
+      } else if (scrub.ready && !scrub.paused) {
         seekVideo(ts, progress);
       }
 
       // ── WRITE: parallax (desktop only) ──
-      if (!isMobile) {
+      if (ENABLE_PARALLAX) {
         const py = heroEngaged ? (progress - 0.5) * (isFirefox ? 5 : 12) : 0;
         getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+      } else {
+        getHeroVisual().style.transform = 'scale(1.04) translate3d(0,0,0)';
       }
 
       // ── WRITE: testimonial horizontal scroll ──
@@ -966,15 +978,13 @@
       requestFrame();
     }
 
-    function onEngageInput() {
-      if (!heroEngaged) engageHeroAnimation();
-      onScroll();
-    }
+    function onEngageInput() { if (!heroEngaged) engageHeroAnimation(); }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('wheel', onEngageInput, { passive: true });
-    window.addEventListener('touchstart', onEngageInput, { passive: true });
-    window.addEventListener('touchmove', onEngageInput, { passive: true });
+    window.addEventListener('wheel', onEngageInput, { passive: true, once: true });
+    window.addEventListener('touchstart', onEngageInput, { passive: true, once: true });
+    window.addEventListener('pointerdown', onEngageInput, { passive: true, once: true });
+    window.addEventListener('keydown', onEngageInput, { passive: true, once: true });
 
     let resizeTimer = 0;
     window.addEventListener('resize', () => {
@@ -1405,9 +1415,11 @@
           }
 
           // Parallax + fade during programmatic scroll
-          if (!isMobile) {
+          if (ENABLE_PARALLAX) {
             const py = (p - .5) * (isFirefox ? 5 : 12);
             getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+          } else {
+            getHeroVisual().style.transform = 'scale(1.04) translate3d(0,0,0)';
           }
           if (heroContent) heroContent.style.opacity = Math.max(0, 1 - (p / 0.42)).toFixed(3);
           if (heroEl) heroEl.style.setProperty('--overlay-opacity', Math.max(0, 1 - p).toFixed(3));

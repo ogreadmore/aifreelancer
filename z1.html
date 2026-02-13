@@ -125,6 +125,22 @@
       transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
       will-change: transform; pointer-events: none;
     }
+    .hero-bitmap-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity .22s ease;
+    }
+    .is-mobile-bitmap-ready #heroBitmapCanvas {
+      opacity: 1;
+    }
+    .is-mobile-bitmap-ready #bgVideo {
+      opacity: 0;
+    }
     .hero::after {
       content: ""; position: absolute; inset: 0;
       -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
@@ -639,6 +655,7 @@
     <section class="hero">
       <video id="bgVideo" muted playsinline preload="auto" crossorigin="anonymous"></video>
       <video id="bgVideoLiteLoop" muted playsinline preload="none" crossorigin="anonymous" aria-hidden="true"></video>
+      <canvas id="heroBitmapCanvas" class="hero-bitmap-canvas" aria-hidden="true"></canvas>
       <div class="hero-content">
         <h1>We love optimization.</h1>
         <p class="subtitle">We're not an AI agency. We're a business optimization powerhouse.</p>
@@ -770,6 +787,10 @@
       const track = document.getElementById('track');
       const video = document.getElementById('bgVideo');
       const liteLoopVideo = document.getElementById('bgVideoLiteLoop');
+      const heroCanvas = document.getElementById('heroBitmapCanvas');
+      const heroCanvasCtx = heroCanvas
+        ? heroCanvas.getContext('2d', { alpha: false, desynchronized: true })
+        : null;
       const rootEl = document.documentElement;
       const ua = navigator.userAgent || '';
       const MOBILE_VIEWPORT_QUERY = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
@@ -852,6 +873,268 @@
       let liteMainCrossfaded = false;
       let liteLoopFadeLockUntil = 0;
 
+      /*
+         Mobile bitmap scrub pipeline:
+         - Decode a bounded frame set once into ImageBitmaps.
+         - During scroll, render frames via canvas drawImage() instead of video seeks.
+         - Keep normal video scrub as fallback if decode fails/unsupported.
+      */
+      const mobileBitmapSupported = isMobile && !!heroCanvas && !!heroCanvasCtx && typeof window.createImageBitmap === 'function';
+      const MOBILE_BITMAP_DECODE_TIMEOUT_MS = 2200;
+      let mobileBitmapFrames = [];
+      let mobileBitmapReady = false;
+      let mobileBitmapDecoding = false;
+      let mobileBitmapBlocked = false;
+      let mobileBitmapDecodeToken = 0;
+      let mobileBitmapLastIndex = -1;
+      let mobileBitmapRangeStart = 0;
+      let mobileBitmapRangeEnd = 0;
+
+      const closeBitmap = (bitmap) => {
+        if (bitmap && typeof bitmap.close === 'function') {
+          try { bitmap.close(); } catch {}
+        }
+      };
+
+      function clearMobileBitmapFrames() {
+        if (!mobileBitmapFrames.length) return;
+        mobileBitmapFrames.forEach(closeBitmap);
+        mobileBitmapFrames = [];
+      }
+
+      function resetMobileBitmapState() {
+        mobileBitmapDecodeToken += 1;
+        mobileBitmapDecoding = false;
+        mobileBitmapReady = false;
+        mobileBitmapBlocked = false;
+        mobileBitmapLastIndex = -1;
+        mobileBitmapRangeStart = 0;
+        mobileBitmapRangeEnd = 0;
+        clearMobileBitmapFrames();
+        rootEl.classList.remove('is-mobile-bitmap-ready');
+        if (heroCanvasCtx && heroCanvas && heroCanvas.width > 0 && heroCanvas.height > 0) {
+          heroCanvasCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+        }
+      }
+
+      function isUsingMobileBitmapMode() {
+        return mobileBitmapSupported && mobileBitmapReady && !desktopLiteMode;
+      }
+
+      function getMobileBitmapFrameCount() {
+        const mem = navigator.deviceMemory || 0;
+        const cores = navigator.hardwareConcurrency || 0;
+        if ((mem > 0 && mem <= 2) || (cores > 0 && cores <= 4)) return 24;
+        if ((mem > 0 && mem <= 4) || (cores > 0 && cores <= 6)) return 30;
+        return 36;
+      }
+
+      function getMobileBitmapDecodeWidth(nativeWidth) {
+        const mem = navigator.deviceMemory || 0;
+        const cores = navigator.hardwareConcurrency || 0;
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        const viewportBased = Math.max(320, Math.round((window.innerWidth || 360) * dpr));
+        let decodeCap = viewportBased;
+        if ((mem > 0 && mem <= 2) || (cores > 0 && cores <= 4)) decodeCap = Math.min(decodeCap, 480);
+        else if ((mem > 0 && mem <= 4) || (cores > 0 && cores <= 6)) decodeCap = Math.min(decodeCap, 640);
+        else decodeCap = Math.min(decodeCap, 768);
+        return Math.max(320, Math.min(nativeWidth || decodeCap, decodeCap));
+      }
+
+      function getMobileBitmapSegmentRange() {
+        const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
+        const segmentStart = clamp(MOBILE_START_AT_SECONDS, 0, maxEnd);
+        const segmentEnd = clamp(segmentStart + 6, segmentStart, maxEnd);
+        return { segmentStart, segmentEnd };
+      }
+
+      function waitForVideoReadyState(videoEl, minReadyState = 1, timeoutMs = MOBILE_BITMAP_DECODE_TIMEOUT_MS) {
+        return new Promise((resolve, reject) => {
+          if (!videoEl) { reject(new Error('missing video element')); return; }
+          if ((videoEl.readyState || 0) >= minReadyState) { resolve(); return; }
+          let done = false;
+          const cleanup = () => {
+            videoEl.removeEventListener('loadedmetadata', onReady);
+            videoEl.removeEventListener('canplay', onReady);
+            videoEl.removeEventListener('error', onError);
+            clearTimeout(timer);
+          };
+          const finish = (fn) => {
+            if (done) return;
+            done = true;
+            cleanup();
+            fn();
+          };
+          const onReady = () => finish(resolve);
+          const onError = () => finish(() => reject(new Error('video decode source failed')));
+          const timer = setTimeout(() => finish(() => reject(new Error('video decode source timeout'))), timeoutMs);
+          videoEl.addEventListener('loadedmetadata', onReady);
+          videoEl.addEventListener('canplay', onReady);
+          videoEl.addEventListener('error', onError);
+        });
+      }
+
+      function seekVideoForFrameDecode(videoEl, timeSec, timeoutMs = MOBILE_BITMAP_DECODE_TIMEOUT_MS) {
+        return new Promise((resolve, reject) => {
+          if (!videoEl) { reject(new Error('missing decode video')); return; }
+          const target = Math.max(0, timeSec);
+          if (Math.abs((videoEl.currentTime || 0) - target) <= 0.001) {
+            resolve();
+            return;
+          }
+          let done = false;
+          const cleanup = () => {
+            videoEl.removeEventListener('seeked', onSeeked);
+            videoEl.removeEventListener('error', onError);
+            clearTimeout(timer);
+          };
+          const finish = (fn) => {
+            if (done) return;
+            done = true;
+            cleanup();
+            fn();
+          };
+          const onSeeked = () => finish(resolve);
+          const onError = () => finish(() => reject(new Error('frame seek failed')));
+          const timer = setTimeout(() => finish(() => reject(new Error('frame seek timeout'))), timeoutMs);
+          videoEl.addEventListener('seeked', onSeeked);
+          videoEl.addEventListener('error', onError);
+          try { videoEl.currentTime = target; }
+          catch (err) { finish(() => reject(err)); }
+        });
+      }
+
+      function resizeMobileBitmapCanvas() {
+        if (!mobileBitmapSupported || !heroCanvas || !heroCanvasCtx) return;
+        const rect = heroCanvas.getBoundingClientRect();
+        const cssWidth = Math.max(1, Math.round(rect.width || window.innerWidth || 1));
+        const cssHeight = Math.max(1, Math.round(rect.height || window.innerHeight || 1));
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        const renderWidth = Math.max(1, Math.round(cssWidth * dpr));
+        const renderHeight = Math.max(1, Math.round(cssHeight * dpr));
+        if (heroCanvas.width !== renderWidth || heroCanvas.height !== renderHeight) {
+          heroCanvas.width = renderWidth;
+          heroCanvas.height = renderHeight;
+          mobileBitmapLastIndex = -1;
+        }
+      }
+
+      function drawMobileBitmapFrame(timeSec, forceDraw = false) {
+        if (!isUsingMobileBitmapMode() || !heroCanvas || !heroCanvasCtx || !mobileBitmapFrames.length) return false;
+        if (!heroCanvas.width || !heroCanvas.height) resizeMobileBitmapCanvas();
+        if (!heroCanvas.width || !heroCanvas.height) return false;
+        const span = Math.max(0.001, mobileBitmapRangeEnd - mobileBitmapRangeStart);
+        const normalized = clamp((timeSec - mobileBitmapRangeStart) / span, 0, 1);
+        const frameIndex = clamp(Math.round(normalized * (mobileBitmapFrames.length - 1)), 0, mobileBitmapFrames.length - 1);
+        if (!forceDraw && frameIndex === mobileBitmapLastIndex) return true;
+        const bitmap = mobileBitmapFrames[frameIndex];
+        if (!bitmap) return false;
+        const canvasW = heroCanvas.width;
+        const canvasH = heroCanvas.height;
+        const scale = Math.max(canvasW / bitmap.width, canvasH / bitmap.height);
+        const drawW = bitmap.width * scale;
+        const drawH = bitmap.height * scale;
+        const drawX = (canvasW - drawW) * 0.5;
+        // Match mobile hero object-position: center 30%.
+        const drawY = (canvasH - drawH) * 0.3;
+        heroCanvasCtx.imageSmoothingEnabled = true;
+        heroCanvasCtx.imageSmoothingQuality = 'high';
+        heroCanvasCtx.clearRect(0, 0, canvasW, canvasH);
+        heroCanvasCtx.drawImage(bitmap, drawX, drawY, drawW, drawH);
+        mobileBitmapLastIndex = frameIndex;
+        return true;
+      }
+
+      async function startMobileBitmapDecode() {
+        if (!mobileBitmapSupported || mobileBitmapReady || mobileBitmapDecoding || mobileBitmapBlocked) return;
+        if (!ready || duration <= 0 || desktopLiteMode) return;
+
+        mobileBitmapDecoding = true;
+        const decodeToken = ++mobileBitmapDecodeToken;
+        const decodeVideo = document.createElement('video');
+        const decodeCanvas = document.createElement('canvas');
+        const sourceUrl = video.currentSrc || video.src || activeSources[sourceIndex];
+        const { segmentStart, segmentEnd } = getMobileBitmapSegmentRange();
+        const segmentSpan = Math.max(0, segmentEnd - segmentStart);
+        if (segmentSpan <= 0) {
+          mobileBitmapDecoding = false;
+          return;
+        }
+
+        try {
+          decodeVideo.muted = true;
+          decodeVideo.playsInline = true;
+          decodeVideo.preload = 'auto';
+          decodeVideo.crossOrigin = 'anonymous';
+          decodeVideo.src = sourceUrl;
+          decodeVideo.load();
+          await waitForVideoReadyState(decodeVideo);
+          if (decodeToken !== mobileBitmapDecodeToken) return;
+
+          const nativeWidth = decodeVideo.videoWidth || video.videoWidth || 1280;
+          const nativeHeight = decodeVideo.videoHeight || video.videoHeight || 720;
+          const decodeWidth = getMobileBitmapDecodeWidth(nativeWidth);
+          const decodeHeight = Math.max(180, Math.round((nativeHeight / nativeWidth) * decodeWidth));
+          decodeCanvas.width = decodeWidth;
+          decodeCanvas.height = decodeHeight;
+          const decodeCtx = decodeCanvas.getContext('2d', { alpha: false });
+          if (!decodeCtx) throw new Error('decode canvas unavailable');
+
+          const frameCount = getMobileBitmapFrameCount();
+          const decodedFrames = [];
+
+          for (let i = 0; i < frameCount; i++) {
+            if (decodeToken !== mobileBitmapDecodeToken) {
+              decodedFrames.forEach(closeBitmap);
+              return;
+            }
+            const t = segmentStart + ((i / (frameCount - 1)) * segmentSpan);
+            await seekVideoForFrameDecode(decodeVideo, t);
+            decodeCtx.drawImage(decodeVideo, 0, 0, decodeWidth, decodeHeight);
+            const bitmap = await createImageBitmap(decodeCanvas);
+            decodedFrames.push(bitmap);
+            if ((i % 4) === 3) await new Promise((resolve) => setTimeout(resolve, 0));
+          }
+
+          if (decodeToken !== mobileBitmapDecodeToken) {
+            decodedFrames.forEach(closeBitmap);
+            return;
+          }
+          clearMobileBitmapFrames();
+          mobileBitmapFrames = decodedFrames;
+          mobileBitmapRangeStart = segmentStart;
+          mobileBitmapRangeEnd = segmentEnd;
+          mobileBitmapLastIndex = -1;
+          mobileBitmapReady = mobileBitmapFrames.length > 1;
+          if (!mobileBitmapReady) {
+            clearMobileBitmapFrames();
+            return;
+          }
+
+          rootEl.classList.add('is-mobile-bitmap-ready');
+          resizeMobileBitmapCanvas();
+          drawMobileBitmapFrame(smoothTime || computeTargetTime(), true);
+          try { video.pause(); } catch {}
+        } catch {
+          // Keep normal video scrub path when bitmap decode is not viable.
+          if (decodeToken === mobileBitmapDecodeToken) {
+            mobileBitmapReady = false;
+            mobileBitmapBlocked = true;
+            clearMobileBitmapFrames();
+            rootEl.classList.remove('is-mobile-bitmap-ready');
+          }
+        } finally {
+          try {
+            decodeVideo.pause();
+            decodeVideo.removeAttribute('src');
+            decodeVideo.load();
+          } catch {}
+          if (decodeToken === mobileBitmapDecodeToken) {
+            mobileBitmapDecoding = false;
+          }
+        }
+      }
+
       function setLiteMainOpacity(value) {
         video.style.opacity = clamp(value, 0, 1).toFixed(3);
       }
@@ -928,6 +1211,7 @@
       function setVideoSource(url) {
         video.pause();
         resetLiteLoopState();
+        resetMobileBitmapState();
         video.removeAttribute('src');
         video.load();
         video.src = url;
@@ -1126,7 +1410,10 @@
           else smoothTime = targetTime;
         }
 
-        if (isFirefox) {
+        const usingMobileBitmap = isMobile && isUsingMobileBitmapMode();
+        if (usingMobileBitmap) {
+          drawMobileBitmapFrame(smoothTime);
+        } else if (isFirefox) {
           const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
           if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
             try { video.currentTime = snapped; } catch {}
@@ -1163,6 +1450,7 @@
         ready = true;
 
         if (desktopLiteMode) {
+          resetMobileBitmapState();
           targetTime = 0;
           smoothTime = 0;
           try {
@@ -1178,6 +1466,7 @@
 
         targetTime = computeTargetTime();
         if (isMobile) {
+          resizeMobileBitmapCanvas();
           const currentY = window.scrollY || window.pageYOffset;
           // When starting near the top, initialize to the segment start so
           // first finger scroll does not jump into the segment.
@@ -1194,10 +1483,14 @@
         }
         video.pause();
         scheduleTick();
+        if (isMobile) startMobileBitmapDecode();
       }
 
       video.addEventListener('loadedmetadata', initScrub);
-      video.addEventListener('canplay', () => { if (!ready) initScrub(); });
+      video.addEventListener('canplay', () => {
+        if (!ready) initScrub();
+        else if (isMobile && !desktopLiteMode && !mobileBitmapReady && !mobileBitmapDecoding) startMobileBitmapDecode();
+      });
       video.addEventListener('timeupdate', () => {
         if (!desktopLiteMode) return;
         updateLiteVideoFade();
@@ -1244,6 +1537,10 @@
       window.addEventListener('scroll', scheduleTick, { passive: true });
       window.addEventListener('resize', () => {
         const nextH = window.innerHeight || 0;
+        if (isMobile) {
+          resizeMobileBitmapCanvas();
+          if (isUsingMobileBitmapMode()) drawMobileBitmapFrame(smoothTime || computeTargetTime(), true);
+        }
         // Ignore small mobile viewport chrome shifts to prevent progress jumps.
         if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
           scheduleTick();
@@ -1274,10 +1571,16 @@
       }, { passive: true });
       window.addEventListener('orientationchange', () => {
         lastViewportHeight = window.innerHeight || 0;
+        resizeMobileBitmapCanvas();
+        if (isUsingMobileBitmapMode()) drawMobileBitmapFrame(smoothTime || computeTargetTime(), true);
         refreshTrackMetrics();
         scheduleTick();
       }, { passive: true });
-      window.addEventListener('load', refreshTrackMetrics, { passive: true });
+      window.addEventListener('load', () => {
+        resizeMobileBitmapCanvas();
+        if (isUsingMobileBitmapMode()) drawMobileBitmapFrame(smoothTime || computeTargetTime(), true);
+        refreshTrackMetrics();
+      }, { passive: true });
       setVideoSource(activeSources[sourceIndex]);
 
       // ── About video: click-to-load + scroll-grow effect ──
@@ -1708,9 +2011,15 @@
           const y = startY + heroDist * t;
           window.scrollTo(0, y);
           targetTime = computeTargetTime();
+          const useBitmapRender = isMobilePlay && isUsingMobileBitmapMode();
 
           if (isMobilePlay) {
-            if (video.paused) video.play().catch(() => {});
+            if (useBitmapRender) {
+              smoothTime = targetTime;
+              drawMobileBitmapFrame(smoothTime);
+            } else if (video.paused) {
+              video.play().catch(() => {});
+            }
           } else {
             const diff = targetTime - smoothTime;
             if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
@@ -1739,7 +2048,7 @@
           }
 
           animFrame = 0;
-          if (isMobilePlay) video.pause();
+          if (isMobilePlay && !useBitmapRender) video.pause();
           if (targetY > heroEnd + 2) fastScrollTo(targetY);
           else scrubPaused = false;
         };

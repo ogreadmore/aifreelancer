@@ -603,6 +603,7 @@
       complete: false,
       extracting: false,
       error: false,
+      retries: 0,
       ctx: null,        // drawing context for heroCanvas
       lastIdx: -1,      // last displayed frame index
       lastTarget: -1,   // last requested frame index
@@ -634,6 +635,8 @@
       fc.decodedCount = 0;
       fc.complete = false;
       fc.extracting = false;
+      fc.error = false;
+      fc.retries = 0;
       fc.lastIdx = -1;
       fc.lastTarget = -1;
       fc.lastDir = 1;
@@ -644,7 +647,7 @@
       video.style.display = 'block';
     }
 
-    function waitForVideoReady(el, timeout = 7000) {
+    function waitForVideoReady(el, timeout = 20000) {
       if (el.readyState >= 1 && Number(el.duration) > 0) return Promise.resolve(true);
       return new Promise((resolve) => {
         let done = false;
@@ -684,6 +687,27 @@
         videoEl.addEventListener('error', onErr, { once: true });
         try { videoEl.currentTime = t; } catch { finish(false); }
       });
+    }
+
+    function waitForDecodedFrame(videoEl, timeout = 1200) {
+      if (typeof videoEl.requestVideoFrameCallback === 'function') {
+        return new Promise((resolve) => {
+          let done = false;
+          const finish = () => {
+            if (done) return;
+            done = true;
+            clearTimeout(timer);
+            resolve();
+          };
+          const timer = setTimeout(finish, timeout);
+          try {
+            videoEl.requestVideoFrameCallback(() => finish());
+          } catch {
+            finish();
+          }
+        });
+      }
+      return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     }
 
     function buildDecodeOrder(n) {
@@ -749,6 +773,7 @@
       if (!fc.ctx || !fc.duration) return;
       try {
         await seekTo(video, fc.segStart);
+        await waitForDecodedFrame(video);
         video.pause();
         fc.ctx.drawImage(video, 0, 0, fc.width, fc.height);
         heroCanvas.style.display = 'block';
@@ -797,7 +822,13 @@
       }
 
       const ready = await waitForVideoReady(extractorVideo);
-      if (!ready) { fc.extracting = false; fc.error = true; return; }
+      if (!ready) {
+        fc.extracting = false;
+        fc.retries++;
+        if (fc.retries <= 4) setTimeout(scheduleFrameExtraction, 250);
+        else fc.error = true;
+        return;
+      }
 
       const offscreen = document.createElement('canvas');
       offscreen.width = fc.width;
@@ -808,13 +839,14 @@
       const useBitmapFrames = false;
       const order = buildDecodeOrder(FRAME_COUNT);
 
-      try {
-        for (let i = 0; i < order.length; i++) {
-          if (runId !== extractGen) { fc.extracting = false; return; }
-          const idx = order[i];
-          if (fc.loaded[idx]) continue;
+      for (let i = 0; i < order.length; i++) {
+        if (runId !== extractGen) { fc.extracting = false; return; }
+        const idx = order[i];
+        if (fc.loaded[idx]) continue;
 
+        try {
           await seekTo(extractorVideo, fc.frameTimes[idx]);
+          await waitForDecodedFrame(extractorVideo);
           if (runId !== extractGen) { fc.extracting = false; return; }
           offCtx.drawImage(extractorVideo, 0, 0, fc.width, fc.height);
           let frame;
@@ -830,23 +862,26 @@
             frame = snap;
           }
           if (runId !== extractGen) { closeFrame(frame); fc.extracting = false; return; }
-
           fc.frames[idx] = frame;
           fc.loaded[idx] = 1;
           fc.decodedCount++;
+        } catch {}
 
-          if (heroEngaged) requestFrame();
-          if (i % DECODE_YIELD_EVERY === (DECODE_YIELD_EVERY - 1)) await rafTick();
-        }
-      } catch {
-        fc.error = true;
-      } finally {
-        fc.extracting = false;
+        if (heroEngaged) requestFrame();
+        if (i % DECODE_YIELD_EVERY === (DECODE_YIELD_EVERY - 1)) await rafTick();
       }
 
-      if (!fc.error && runId === extractGen) {
-        fc.complete = true;
+      fc.extracting = false;
+      if (runId !== extractGen) return;
+      if (fc.decodedCount > 0) {
+        fc.retries = 0;
+        fc.complete = fc.decodedCount >= FRAME_COUNT;
+        if (!fc.complete) setTimeout(scheduleFrameExtraction, 100);
         requestFrame();
+      } else {
+        fc.retries++;
+        if (fc.retries <= 4) setTimeout(scheduleFrameExtraction, 280);
+        else fc.error = true;
       }
     }
 

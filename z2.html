@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,16 +150,22 @@
         linear-gradient(to bottom, rgba(255,255,255,.62), rgba(255,255,255,.8)),
         radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.4), rgba(255,255,255,.14));
     }
-    .no-hero-blur .hero::after {
-      -webkit-backdrop-filter: none !important;
-      backdrop-filter: none !important;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,.52), rgba(255,255,255,.72)),
-        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.30), rgba(255,255,255,.12));
+    /* Chrome/Windows compositor fallback: avoid blur-over-video instability on slower GPUs. */
+    .is-win-chrome nav.scrolled {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background: rgba(255,255,255,.98);
     }
-    .no-hero-blur .hero video,
-    .no-hero-blur .hero-canvas {
-      filter: none;
+    .is-win-chrome .hero::after {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.62), rgba(255,255,255,.8)),
+        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.4), rgba(255,255,255,.14));
+    }
+    .is-win-chrome .hero video,
+    .is-win-chrome .hero-canvas {
+      will-change: auto;
     }
     .hero-content { position: relative; z-index: 2; width: min(94vw, 800px); margin: 0 auto; padding: 0 2rem 5rem; }
     .hero h1 {
@@ -601,7 +608,7 @@
 
   <div class="scroll-track" id="track">
     <section class="hero">
-      <video id="bgVideo" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <video id="bgVideo" muted playsinline preload="metadata" crossorigin="anonymous"></video>
       <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-content">
         <h1>We love optimization.</h1>
@@ -737,13 +744,13 @@
        Each seek forces the video decoder (CPU) to decompress a frame,
        taking 10-100ms on phones and old hardware.
 
-       FIX: Pre-decode video frames to ImageBitmaps during page load,
-       then display via canvas drawImage() during scroll. A canvas blit
-       of a pre-decoded bitmap is a <1ms GPU operation.
+       FIX: Pre-decode video frames to ImageBitmaps with an off-DOM
+       extractor video, then display via canvas drawImage() during scroll.
+       A canvas blit of a pre-decoded bitmap is a <1ms GPU operation.
 
-       During the 2-5s extraction phase, the white hero overlay hides
-       the video. Once frames are cached, the canvas replaces the video.
-       If extraction fails (CORS, etc.), we fall back to video seeking.
+       The visible hero video stays paused on a deterministic still frame
+       while extraction runs. If extraction fails (CORS, etc.), we fall
+       back to direct video seeking.
 
        Other optimizations:
        - Single scroll listener → single rAF → batched DOM writes
@@ -758,21 +765,19 @@
     const isMobile = window.matchMedia(MOBILE_MQ).matches;
     const isMobileViewport = () => window.matchMedia(MOBILE_MQ).matches;
     const isFirefox = /firefox/i.test(ua);
-    const isWindowsChrome = /Windows/i.test(ua) && /Chrome/i.test(ua) && !/Edg|OPR/i.test(ua);
+    const isChromium = /chrome|chromium|crios/i.test(ua) && !/edg|opr|opera|vivaldi|brave/i.test(ua);
+    const isWindows = /windows/i.test(ua);
+    const isDesktopChromeWindows = isChromium && isWindows && !isMobile;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
                   || (navigator.deviceMemory && navigator.deviceMemory <= 2);
-    const LOW_END_DESKTOP = LOW_END && !isMobile;
-    const DESKTOP_CHROME_STATIC_OVERLAY = !isMobile && isWindowsChrome;
     const isIOS = /iP(ad|hone|od)/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
     // Mobile uses direct video scrubbing (no frame cache) for stability/smoothness.
     const MOBILE_FRAME_CACHE = false;
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 
     if (isFirefox) document.documentElement.classList.add('is-firefox');
-    if (LOW_END_DESKTOP && !DESKTOP_CHROME_STATIC_OVERLAY) {
-      document.documentElement.classList.add('no-hero-blur');
-    }
+    if (isDesktopChromeWindows) document.documentElement.classList.add('is-win-chrome');
 
     // ── DOM refs ──
     const nav = document.getElementById('mainNav');
@@ -818,174 +823,181 @@
       lastB: -1,
       lastMix: -1,
     };
-    const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : (LOW_END ? 28 : 48);
+    const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : 48;
     const FRAME_BLEND = !isFirefox && !isIOS;
+    // Keep frame-cache off on Windows desktop Chrome to avoid known startup/compositor instability.
+    const FRAME_CACHE_ALLOWED = (!isMobile || MOBILE_FRAME_CACHE) && !isDesktopChromeWindows;
+
+    function createExtractionVideo(src) {
+      return new Promise((resolve, reject) => {
+        const v = document.createElement('video');
+        v.muted = true;
+        v.playsInline = true;
+        v.crossOrigin = 'anonymous';
+        v.preload = 'auto';
+
+        let settled = false;
+        const cleanup = () => {
+          v.removeEventListener('loadedmetadata', onMeta);
+          v.removeEventListener('error', onErr);
+        };
+        const onMeta = () => {
+          if (settled) return;
+          settled = true;
+          cleanup();
+          resolve(v);
+        };
+        const onErr = () => {
+          if (settled) return;
+          settled = true;
+          cleanup();
+          reject(new Error('extract-load'));
+        };
+
+        v.addEventListener('loadedmetadata', onMeta, { once: true });
+        v.addEventListener('error', onErr, { once: true });
+        v.src = src;
+        try { v.load(); } catch {}
+
+        setTimeout(() => {
+          if (settled) return;
+          if (Number.isFinite(v.duration) && v.duration > 0) {
+            settled = true;
+            cleanup();
+            resolve(v);
+          } else {
+            settled = true;
+            cleanup();
+            reject(new Error('extract-timeout'));
+          }
+        }, 1800);
+      });
+    }
+
+    function destroyExtractionVideo(v) {
+      if (!v) return;
+      try { v.pause(); } catch {}
+      try {
+        v.removeAttribute('src');
+        v.load();
+      } catch {}
+    }
+
+    function seekMediaTime(media, timeSec, timeout = 900) {
+      return new Promise((resolve, reject) => {
+        let settled = false;
+        const cleanup = () => {
+          media.removeEventListener('seeked', onDone);
+          media.removeEventListener('error', onErr);
+        };
+        const finish = (ok) => {
+          if (settled) return;
+          settled = true;
+          cleanup();
+          if (ok) resolve();
+          else reject(new Error('seek'));
+        };
+        const onDone = () => finish(true);
+        const onErr = () => finish(false);
+
+        media.addEventListener('seeked', onDone, { once: true });
+        media.addEventListener('error', onErr, { once: true });
+        try {
+          media.currentTime = timeSec;
+        } catch {
+          finish(false);
+          return;
+        }
+
+        setTimeout(() => {
+          if (settled) return;
+          const near = Math.abs((media.currentTime || 0) - timeSec) <= 0.08;
+          finish(near);
+        }, timeout);
+      });
+    }
 
     async function extractFrames() {
       if (fc.extracting || fc.ready || fc.error) return;
-      if (isMobile && !MOBILE_FRAME_CACHE) { fc.error = true; return; }
+      if (!FRAME_CACHE_ALLOWED) { fc.error = true; return; }
+
+      const src = video.currentSrc || video.src;
+      if (!src) { fc.error = true; return; }
       fc.extracting = true;
 
-      const dur = scrub.duration || Number(video.duration) || 0;
-      if (!dur || !Number.isFinite(dur) || dur <= 0) { fc.extracting = false; return; }
-      const decodeSrc = video.currentSrc || video.src;
-      if (!decodeSrc) { fc.extracting = false; return; }
-
-      const maxEnd = Math.max(0, dur - END_SAFETY);
-      const segStart = clamp(START_AT, 0, maxEnd);
-      const segEnd = clamp(segStart + SEG_LEN, segStart, maxEnd);
-
-      const vw = video.videoWidth || 640;
-      const vh = video.videoHeight || 360;
-      const scale = isMobile ? 1 : (LOW_END ? 0.44 : 0.5);
-      const cw = Math.round(vw * scale);
-      const ch = Math.round(vh * scale);
-
-      const offscreen = document.createElement('canvas');
-      offscreen.width = cw;
-      offscreen.height = ch;
-      const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
-
       const hasCreateBitmap = typeof createImageBitmap === 'function' && !(isMobile && isIOS);
-      let decoder = null;
-
-      const closeFrames = () => {
-        if (!fc.frames.length) return;
-        fc.frames.forEach((frame) => { if (frame && frame.close) frame.close(); });
-        fc.frames = [];
-      };
-      const ensureCanvas = () => {
-        if (fc.ctx) return true;
-        heroCanvas.width = cw;
-        heroCanvas.height = ch;
-        fc.ctx = heroCanvas.getContext('2d', { alpha: false });
-        if (!fc.ctx) return false;
-        fc.ctx.imageSmoothingEnabled = true;
-        if ('imageSmoothingQuality' in fc.ctx) {
-          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
-        }
-        return true;
-      };
-      const promoteFrames = () => {
-        if (fc.ready || fc.frames.length < 2) return;
-        if (!ensureCanvas()) {
-          closeFrames();
-          fc.error = true;
-          fc.extracting = false;
-          return;
-        }
-        fc.ready = true;
-        heroCanvas.style.display = 'block';
-        video.style.display = 'none';
-        video.pause();
-        displayFrame(getProgress());
-        requestFrame();
-      };
-
-      closeFrames();
-      fc.ready = false;
-      fc.lastA = -1;
-      fc.lastB = -1;
-      fc.lastMix = -1;
-
-      const cleanupDecoder = () => {
-        if (!decoder) return;
-        try { decoder.pause(); } catch {}
-        try {
-          decoder.removeAttribute('src');
-          decoder.load();
-        } catch {}
-        decoder = null;
-      };
-
-      const seekTo = (t) => new Promise((resolve, reject) => {
-        const onDone = () => {
-          decoder.removeEventListener('seeked', onDone);
-          decoder.removeEventListener('error', onErr);
-          resolve();
-        };
-        const onErr = () => {
-          decoder.removeEventListener('seeked', onDone);
-          decoder.removeEventListener('error', onErr);
-          reject(new Error('seek'));
-        };
-        decoder.addEventListener('seeked', onDone, { once: true });
-        decoder.addEventListener('error', onErr, { once: true });
-        try { decoder.currentTime = t; } catch (err) { reject(err); }
-      });
+      const frames = [];
+      let extractionVideo = null;
 
       try {
-        decoder = document.createElement('video');
-        decoder.muted = true;
-        decoder.playsInline = true;
-        decoder.preload = 'auto';
-        decoder.crossOrigin = 'anonymous';
-        decoder.src = decodeSrc;
-        await new Promise((resolve, reject) => {
-          let settled = false;
-          const done = () => {
-            if (settled) return;
-            settled = true;
-            decoder.removeEventListener('loadedmetadata', done);
-            decoder.removeEventListener('canplay', done);
-            decoder.removeEventListener('error', fail);
-            resolve();
-          };
-          const fail = () => {
-            if (settled) return;
-            settled = true;
-            decoder.removeEventListener('loadedmetadata', done);
-            decoder.removeEventListener('canplay', done);
-            decoder.removeEventListener('error', fail);
-            reject(new Error('decoder-load-failed'));
-          };
-          decoder.addEventListener('loadedmetadata', done, { once: true });
-          decoder.addEventListener('canplay', done, { once: true });
-          decoder.addEventListener('error', fail, { once: true });
-          try { decoder.load(); } catch { fail(); }
-        });
+        extractionVideo = await createExtractionVideo(src);
+        const dur = extractionVideo.duration;
+        if (!dur || !Number.isFinite(dur) || dur <= 0) {
+          fc.extracting = false;
+          destroyExtractionVideo(extractionVideo);
+          return;
+        }
+
+        const maxEnd = Math.max(0, dur - END_SAFETY);
+        const segStart = clamp(START_AT, 0, maxEnd);
+        const segEnd = clamp(segStart + SEG_LEN, segStart, maxEnd);
+
+        const vw = extractionVideo.videoWidth || video.videoWidth || 640;
+        const vh = extractionVideo.videoHeight || video.videoHeight || 360;
+        const scale = isMobile ? 1 : 0.5;
+        const cw = Math.round(vw * scale);
+        const ch = Math.round(vh * scale);
+
+        const offscreen = document.createElement('canvas');
+        offscreen.width = cw;
+        offscreen.height = ch;
+        const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
+        if (!offCtx) throw new Error('no-offscreen-ctx');
 
         for (let i = 0; i < FRAME_COUNT; i++) {
           const t = segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (segEnd - segStart);
-          await seekTo(t);
-          offCtx.drawImage(decoder, 0, 0, cw, ch);
-          if (hasCreateBitmap) fc.frames.push(await createImageBitmap(offscreen));
-          else fc.frames.push(offCtx.getImageData(0, 0, cw, ch));
-          if (fc.frames.length === 2) promoteFrames();
-          if ((i & 7) === 7) await new Promise(resolve => setTimeout(resolve, 0));
+          await seekMediaTime(extractionVideo, t);
+          offCtx.drawImage(extractionVideo, 0, 0, cw, ch);
+          if (hasCreateBitmap) {
+            frames.push(await createImageBitmap(offscreen));
+          } else {
+            frames.push(offCtx.getImageData(0, 0, cw, ch));
+          }
         }
-      } catch (e) {
-        if (!fc.ready) {
-          closeFrames();
-          fc.error = true;
-        }
-        return;
-      } finally {
-        fc.extracting = false;
-        cleanupDecoder();
-      }
 
-      promoteFrames();
-      if (!fc.ready) {
-        closeFrames();
+        fc.frames = frames;
+        fc.extracting = false;
+        fc.ready = true;
+
+        heroCanvas.width = cw;
+        heroCanvas.height = ch;
+        fc.ctx = heroCanvas.getContext('2d', { alpha: false });
+        if (fc.ctx) {
+          fc.ctx.imageSmoothingEnabled = true;
+          if ('imageSmoothingQuality' in fc.ctx) {
+            fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
+          }
+        }
+
+        heroCanvas.style.display = 'block';
+        video.style.display = 'none';
+        video.pause();
+
+        displayFrame(getProgress());
+      } catch (e) {
         fc.error = true;
-        return;
+        fc.extracting = false;
+        frames.forEach(f => { if (f && f.close) f.close(); });
+      } finally {
+        destroyExtractionVideo(extractionVideo);
       }
-      displayFrame(getProgress());
     }
 
     function displayFrame(progress) {
       if (!fc.ready || !fc.ctx) return;
-      const frameCount = fc.frames.length;
-      if (frameCount < 2) return;
-      let mapped = clamp(progress, 0, 1);
-      if (frameCount < FRAME_COUNT) {
-        const coverage = (frameCount - 1) / Math.max(1, FRAME_COUNT - 1);
-        mapped = coverage > 0 ? Math.min(mapped, coverage) / coverage : 0;
-      }
-      const scaled = mapped * (frameCount - 1);
+      const scaled = clamp(progress, 0, 1) * (fc.frames.length - 1);
       const a = Math.floor(scaled);
-      const b = Math.min(frameCount - 1, a + 1);
+      const b = Math.min(fc.frames.length - 1, a + 1);
       const mix = scaled - a;
       if (a === fc.lastA && b === fc.lastB && Math.abs(mix - fc.lastMix) < 0.006) return;
       fc.lastA = a;
@@ -1059,22 +1071,19 @@
       }
     }
 
-    function maybeStartExtraction() {
-      if (fc.ready || fc.error || fc.extracting || !scrub.ready) return;
-      if (isMobile && !MOBILE_FRAME_CACHE) return;
-      const sy = window.scrollY || window.pageYOffset;
-      const heroEnd = track ? Math.max(0, track.offsetHeight - window.innerHeight) : layout.trackScrollable;
-      if (sy <= heroEnd + 24) return;
-      extractFrames();
-    }
-
     function getProgress() {
       if (!track) return 0;
-      // Live geometry avoids stale cached offsets and fixes "needs bottom-scroll first" behavior.
-      const rect = track.getBoundingClientRect();
-      const total = Math.max(0, track.offsetHeight - window.innerHeight);
-      const scrolled = clamp(-rect.top, 0, total);
-      return total > 0 ? scrolled / total : 0;
+      if (isMobile) {
+        // Mobile keeps progress tied to live geometry (more robust with toolbar/viewport shifts).
+        const rect = track.getBoundingClientRect();
+        const total = Math.max(0, track.offsetHeight - window.innerHeight);
+        const scrolled = clamp(-rect.top, 0, total);
+        return total > 0 ? scrolled / total : 0;
+      }
+      if (layout.trackScrollable <= 0) recalcLayout();
+      if (layout.trackScrollable <= 0) return 0;
+      const sy = window.scrollY || window.pageYOffset;
+      return clamp((sy - layout.trackTop) / layout.trackScrollable, 0, 1);
     }
 
     /* ================================================================
@@ -1088,6 +1097,87 @@
       lastSeekTs: 0,
       paused: false,
     };
+    const initFrame = {
+      primed: false,
+      tries: 0,
+      timer: 0,
+    };
+
+    function clearInitFrameTimer() {
+      if (initFrame.timer) {
+        clearTimeout(initFrame.timer);
+        initFrame.timer = 0;
+      }
+    }
+
+    function scheduleInitFramePrime(delay = 0) {
+      if (initFrame.primed || initFrame.timer || !scrub.ready) return;
+      initFrame.timer = setTimeout(() => {
+        initFrame.timer = 0;
+        primeInitialFrame();
+      }, delay);
+    }
+
+    function markInitFramePrimed() {
+      if (initFrame.primed) return;
+      initFrame.primed = true;
+      initFrame.tries = 0;
+      const kick = () => requestFrame();
+      if (typeof video.requestVideoFrameCallback === 'function') {
+        try {
+          video.requestVideoFrameCallback(() => kick());
+          return;
+        } catch {}
+      }
+      requestAnimationFrame(kick);
+    }
+
+    function primeInitialFrame() {
+      if (initFrame.primed || !scrub.ready) return;
+      const maxEnd = Math.max(0, scrub.duration - END_SAFETY);
+      const desired = clamp(scrub.targetTime, 0, maxEnd);
+      let settled = false;
+
+      const cleanup = () => {
+        video.removeEventListener('seeked', onSeeked);
+        video.removeEventListener('error', onErr);
+      };
+      const finish = (ok) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        try { video.pause(); } catch {}
+        if (ok) {
+          scrub.targetTime = desired;
+          scrub.smoothTime = desired;
+          markInitFramePrimed();
+          return;
+        }
+        initFrame.tries += 1;
+        if (initFrame.tries <= 8) {
+          scheduleInitFramePrime(Math.min(900, 120 * initFrame.tries));
+        }
+      };
+      const onSeeked = () => finish(true);
+      const onErr = () => finish(false);
+
+      video.addEventListener('seeked', onSeeked, { once: true });
+      video.addEventListener('error', onErr, { once: true });
+      try {
+        video.currentTime = desired;
+        video.pause();
+      } catch {
+        finish(false);
+        return;
+      }
+
+      const timeoutMs = 420 + Math.min(480, initFrame.tries * 90);
+      setTimeout(() => {
+        if (settled) return;
+        const near = Math.abs(video.currentTime - desired) <= 0.08;
+        finish(near);
+      }, timeoutMs);
+    }
 
     function computeTargetTime(progress, dur) {
       const maxEnd = Math.max(0, dur - END_SAFETY);
@@ -1111,9 +1201,8 @@
           scrub.lastSeekTs = ts;
         }
       } else {
-        const extractionSeekGuard = isWindowsChrome && !isMobile && fc.extracting && !fc.ready;
-        const threshold = extractionSeekGuard ? 0.022 : (isMobile ? 0.03 : 0.002);
-        const cooldown = extractionSeekGuard ? 28 : (isMobile ? 25 : 0);
+        const threshold = isMobile ? 0.03 : 0.002;
+        const cooldown = isMobile ? 25 : 0;
         if (Math.abs(video.currentTime - scrub.smoothTime) > threshold && (ts - scrub.lastSeekTs) > cooldown) {
           try { video.currentTime = scrub.smoothTime; } catch {}
           scrub.lastSeekTs = ts;
@@ -1155,10 +1244,7 @@
       nav.classList.toggle('scrolled', sy > layout.navThreshold);
 
       if (!reducedMotion && heroContent && heroEl) {
-        if (LOW_END_DESKTOP || DESKTOP_CHROME_STATIC_OVERLAY) {
-          if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
-          if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
-        } else if (sy <= 4) {
+        if (sy <= 4) {
           if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
           if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
         } else {
@@ -1175,7 +1261,7 @@
 
       if (fc.ready) {
         displayFrame(progress);
-      } else if (scrub.ready && !scrub.paused) {
+      } else if (!fc.extracting && scrub.ready && !scrub.paused) {
         seekVideo(ts, progress);
       }
 
@@ -1213,7 +1299,9 @@
     function onScroll() {
       lastScrollTs = performance.now();
       if (layout.trackScrollable <= 0) recalcLayout();
-      maybeStartExtraction();
+      if (FRAME_CACHE_ALLOWED && scrub.ready && !fc.ready && !fc.extracting && !fc.error) {
+        extractFrames();
+      }
       requestFrame();
     }
 
@@ -1246,6 +1334,9 @@
       fc.lastA = -1;
       fc.lastB = -1;
       fc.lastMix = -1;
+      clearInitFrameTimer();
+      initFrame.primed = false;
+      initFrame.tries = 0;
       heroCanvas.style.display = 'none';
       video.style.display = 'block';
 
@@ -1254,7 +1345,7 @@
       video.load();
       video.src = url;
       video.crossOrigin = 'anonymous';
-      video.preload = 'auto';
+      video.preload = 'metadata';
       video.load();
     }
 
@@ -1266,27 +1357,35 @@
 
       recalcLayout();
 
-      // Defer heavy frame extraction until after user is past the hero region.
-      maybeStartExtraction();
+      if (!fc.ready && !fc.error && FRAME_CACHE_ALLOWED) {
+        extractFrames();
+      }
 
       if (!fc.ready) {
         const p = getProgress();
-        scrub.targetTime = computeTargetTime(p, dur);
-        scrub.smoothTime = scrub.targetTime;
-        if (!isMobile) {
-          try { video.currentTime = scrub.targetTime; } catch {}
-          video.pause();
-        } else {
-          try { video.currentTime = clamp(START_AT, 0, dur - END_SAFETY); } catch {}
-          video.pause();
-        }
+        const initial = !isMobile
+          ? computeTargetTime(p, dur)
+          : clamp(START_AT, 0, dur - END_SAFETY);
+        scrub.targetTime = initial;
+        scrub.smoothTime = initial;
+        try { video.currentTime = initial; } catch {}
+        video.pause();
+        scheduleInitFramePrime(0);
         requestFrame();
       }
     }
 
     video.style.background = '#fff';
     video.addEventListener('loadedmetadata', initVideo);
+    video.addEventListener('loadeddata', () => { if (scrub.ready) scheduleInitFramePrime(0); });
     video.addEventListener('canplay', () => { if (!scrub.ready) initVideo(); });
+    video.addEventListener('seeked', () => {
+      if (!initFrame.primed && scrub.ready && Math.abs(video.currentTime - scrub.targetTime) <= 0.08) {
+        markInitFramePrimed();
+      } else {
+        requestFrame();
+      }
+    });
     video.addEventListener('error', () => {
       sourceIndex++;
       if (sourceIndex < VIDEO_SOURCES.length) {
@@ -1298,7 +1397,7 @@
 
     setVideoSource(VIDEO_SOURCES[0]);
 
-    const warmupLayout = () => { recalcLayout(); maybeStartExtraction(); requestFrame(); };
+    const warmupLayout = () => { recalcLayout(); requestFrame(); };
     recalcLayout();
     requestFrame();
     window.addEventListener('load', () => {
@@ -1650,7 +1749,7 @@
 
       const playThenScroll = (targetY) => {
         stopAnim();
-        const heroEnd = track ? Math.max(0, track.offsetHeight - window.innerHeight) : layout.trackScrollable;
+        const heroEnd = layout.trackScrollable;
         const startY = window.scrollY || window.pageYOffset;
         const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
         const heroDur = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
@@ -1685,13 +1784,8 @@
             const py = (p - .5) * (isFirefox ? 5 : 12);
             getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
           }
-          if (LOW_END_DESKTOP || DESKTOP_CHROME_STATIC_OVERLAY) {
-            if (heroContent) heroContent.style.opacity = '1';
-            if (heroEl) heroEl.style.setProperty('--overlay-opacity', '1');
-          } else {
-            if (heroContent) heroContent.style.opacity = Math.max(0, 1 - (p / 0.42)).toFixed(3);
-            if (heroEl) heroEl.style.setProperty('--overlay-opacity', Math.max(0, 1 - p).toFixed(3));
-          }
+          if (heroContent) heroContent.style.opacity = Math.max(0, 1 - (p / 0.42)).toFixed(3);
+          if (heroEl) heroEl.style.setProperty('--overlay-opacity', Math.max(0, 1 - p).toFixed(3));
 
           if (t < 1) { af = requestAnimationFrame(step); return; }
           af = 0;
@@ -1705,7 +1799,7 @@
 
       const mobileScroll = (targetY) => {
         stopAnim();
-        const heroEnd = track ? Math.max(0, track.offsetHeight - window.innerHeight) : layout.trackScrollable;
+        const heroEnd = layout.trackScrollable;
         const startY = window.scrollY || window.pageYOffset;
         const isContact = targetY > heroEnd + 100;
         const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);

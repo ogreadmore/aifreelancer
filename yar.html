@@ -1,0 +1,1597 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Keep reload behavior deterministic for hero animation: always start at top.
+    (() => {
+      const nav = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]) || null;
+      const legacyNavType = performance.navigation ? performance.navigation.type : -1;
+      const navType = nav && typeof nav.type === 'string'
+        ? nav.type
+        : (legacyNavType === 1 ? 'reload' : '');
+      const isReload = navType === 'reload';
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch {}
+      if (!isReload) return;
+      const resetToTop = () => { window.scrollTo(0, 0); };
+      resetToTop();
+      window.addEventListener('pageshow', resetToTop, { once: true });
+      window.addEventListener('load', resetToTop, { once: true });
+    })();
+  </script>
+  <title>AI Freelancer — We Optimize Everything</title>
+  <meta name="description" content="AI Freelancer is a business optimization powerhouse based in Cleveland, OH. We optimize your marketing, website, SEO, workflows, and more — delivering real results in days, not months.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aifreelancer.co/">
+  <meta property="og:title" content="AI Freelancer — We Optimize Everything">
+  <meta property="og:description" content="We're not an AI agency. We're a business optimization powerhouse. Marketing, websites, SEO, workflows — optimized and launched fast.">
+  <meta property="og:image" content="https://aifreelancer.co/og-image.png">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Freelancer — We Optimize Everything">
+  <meta name="twitter:description" content="We're not an AI agency. We're a business optimization powerhouse.">
+  <meta name="twitter:image" content="https://aifreelancer.co/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234B88DA'/%3E%3Cstop offset='40%25' stop-color='%238A3BF1'/%3E%3Cstop offset='70%25' stop-color='%23D941A1'/%3E%3Cstop offset='100%25' stop-color='%23E5484D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='6' fill='url(%23g)'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='18' fill='white'%3EAi%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: #0A0A0A;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 920px; margin: 0 auto; padding: 0 2rem; }
+
+    nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      padding: 1.5rem 0;
+      transition: background .3s ease, box-shadow .3s ease;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,.92);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    }
+    .nav-inner {
+      max-width: 920px; margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+      font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+      font-weight: 800; letter-spacing: .02em; line-height: 1; white-space: nowrap;
+      text-transform: none;
+    }
+    .logo-ai {
+      background: linear-gradient(105deg, #4B88DA, #8A3BF1, #D941A1, #E5484D);
+      background-size: 180% 180%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 10s ease infinite;
+      display: inline-block; margin-right: .2em;
+    }
+    .logo-freelancer { color: #0A0A0A; }
+
+    .nav-link {
+      font-size: .875rem; font-weight: 600; color: #0A0A0A; text-decoration: none;
+      padding: .75rem 1.5rem; border: 1.5px solid transparent; border-radius: 6px;
+      background: linear-gradient(#fff,#fff) padding-box,
+                  linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D) border-box;
+      background-size: auto, 180% 180%;
+      animation: accentShift 10s ease infinite;
+      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .nav-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(138,59,241,.18), 0 0 12px rgba(217,65,161,.12);
+      filter: brightness(1.02);
+    }
+    .nav-link:active, .nav-link.pop {
+      transform: scale(1.18);
+      box-shadow: 0 8px 28px rgba(138,59,241,.24), 0 0 18px rgba(217,65,161,.16);
+    }
+
+    .nav-link-fx {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 101;
+    }
+
+    .scroll-track { height: 400vh; position: relative; }
+    .hero {
+      position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden;
+      display: flex; align-items: flex-end; background: #f2f2f2;
+      --overlay-opacity: 1;
+    }
+    .hero video {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
+      will-change: transform; pointer-events: none;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.40), rgba(255,255,255,.60)),
+        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.24), rgba(255,255,255,.06));
+      opacity: var(--overlay-opacity, 1);
+      pointer-events: none;
+    }
+    .is-firefox .hero::after {
+      -webkit-backdrop-filter: none; backdrop-filter: none;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.62), rgba(255,255,255,.8)),
+        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.4), rgba(255,255,255,.14));
+    }
+
+    .hero-content { position: relative; z-index: 2; width: min(94vw, 800px); margin: 0 auto; padding: 0 2rem 5rem; }
+    .hero h1 {
+      font-family: 'Archivo','Inter',system-ui,sans-serif;
+      font-size: clamp(2.75rem, 8vw, 5.5rem);
+      font-weight: 900; line-height: .92; letter-spacing: -.045em;
+      margin-bottom: 1.5rem; color: #050505; max-width: 16ch; text-wrap: balance;
+    }
+    .subtitle {
+      font-size: clamp(1.05rem,1.9vw,1.4rem);
+      color: rgba(0,0,0,.6); margin-bottom: 2.5rem; font-weight: 500; line-height: 1.4; max-width: 480px;
+    }
+    .hero-cta {
+      display: inline-block; color: #fff; text-decoration: none;
+      padding: 1.25rem 3rem; font-size: 1rem; font-weight: 700; border-radius: 6px;
+      letter-spacing: -.01em;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 180% 180%; animation: accentShift 9s ease infinite;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .hero-cta:hover {
+      animation: accentShift 9s ease infinite, ctaPulse 1.2s ease-in-out infinite;
+      box-shadow: 0 12px 24px rgba(10,10,10,.2); filter: saturate(1.06);
+    }
+    @keyframes ctaPulse {
+      0%, 100% { transform: translateY(-2px) scale(1); }
+      50% { transform: translateY(-2px) scale(1.07); }
+    }
+
+    .page-content { background: #fff; position: relative; z-index: 10; }
+    .divider { border: none; border-top: 1px solid #E5E5E5; }
+    .section-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #737373; margin-bottom: 3rem; }
+
+    .pitch { padding: 6rem 0 3rem; }
+    .pitch-text { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 700; line-height: 1.35; letter-spacing: -.03em; max-width: 700px; color: #A3A3A3; }
+    .pitch-text span { color: #0A0A0A; }
+
+    .about-video-wrap {
+      padding: 1rem 0 5rem;
+    }
+    .about-video-shell {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      transform: scale(.84);
+      transform-origin: center top;
+      will-change: transform;
+      transition: transform .15s linear;
+    }
+    .about-video-box {
+      position: relative;
+      background: #f3f4f6;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(10,10,10,.12);
+      aspect-ratio: 16 / 9;
+    }
+    .about-video-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .about-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: #f3f4f6;
+      display: block;
+      cursor: pointer;
+      transition: opacity .28s ease;
+      z-index: 2;
+    }
+    .about-video-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .about-video-cta {
+      width: 78px;
+      height: 78px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 180% 180%;
+      animation: accentShift 9s ease infinite;
+      box-shadow: 0 10px 28px rgba(138,59,241,.28);
+      margin-bottom: 0;
+    }
+    .about-video-caption {
+      position: absolute;
+      left: 50%;
+      top: calc(50% + 56px);
+      transform: translateX(-50%);
+      margin-top: 0;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #111827;
+      width: calc(100% - 2rem);
+      pointer-events: none;
+      line-height: 1.2;
+    }
+
+    .proof, .services, .case-studies, .approach { padding: 5rem 0; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .stat { padding: 2rem; background: #F9F9F9; border-radius: 8px; }
+    .stat-number {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: .5rem;
+      letter-spacing: -.03em;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 9s ease infinite;
+    }
+    .stat-label { font-size: .8125rem; color: #737373; font-weight: 500; }
+
+    .service-grid { display: grid; gap: 0; }
+    .service-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 1.15rem 1.5rem; gap: 1.5rem;
+      border-bottom: 1px solid #E5E5E5; text-decoration: none;
+      color: inherit; border-radius: 10px;
+      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .service-item:first-child { border-top: 1px solid #E5E5E5; }
+    .service-item:hover, .service-item:focus-visible {
+      background:
+        linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)) padding-box,
+        linear-gradient(105deg, rgba(75,136,218,.48), rgba(138,59,241,.48), rgba(217,65,161,.48), rgba(229,72,77,.48)) border-box;
+      border: 1px solid transparent;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(138,59,241,.12), 0 2px 8px rgba(10,10,10,.05);
+      outline: none;
+    }
+    .service-item:hover .service-name,
+    .service-item:focus-visible .service-name {
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 180% 180%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 9s ease infinite;
+    }
+    .service-item:hover .service-desc,
+    .service-item:focus-visible .service-desc {
+      color: #6b7280;
+    }
+    .service-name { font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; }
+    .service-desc { font-size: .8125rem; color: #A3A3A3; font-weight: 500; text-align: right; max-width: 340px; padding-left: 1rem; }
+
+    .case-study { background: #F9F9F9; border-radius: 8px; padding: 3rem; margin-bottom: 1.5rem; }
+    .case-study-eyebrow { font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #A3A3A3; margin-bottom: 1rem; }
+    .case-study h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -.03em; margin-bottom: .75rem; }
+    .case-study-desc { font-size: 1rem; color: #525252; margin-bottom: 2rem; line-height: 1.6; }
+    .case-study-metrics { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .metric-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1;
+      margin-bottom: .25rem;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 9s ease infinite;
+    }
+    .metric-label { font-size: .75rem; color: #A3A3A3; font-weight: 500; }
+
+    .quote { font-size: clamp(1.25rem,3vw,1.75rem); font-weight: 600; line-height: 1.5; letter-spacing: -.02em; margin-bottom: 2rem; max-width: 650px; }
+    .quote::before { content: '\201C'; } .quote::after { content: '\201D'; }
+    .attribution { font-size: .875rem; font-weight: 600; }
+    .attribution-role { font-size: .8125rem; color: #737373; }
+
+    .testimonial-scroll { position: relative; }
+    .testimonial-sticky {
+      position: sticky; top: 0; height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden;
+    }
+    .testimonial-header {
+      padding: 0 4rem; margin-bottom: 2.5rem;
+    }
+    .testimonial-rail {
+      display: flex; gap: 2rem;
+      padding: 0 4rem;
+      will-change: transform;
+    }
+    .testimonial-card {
+      flex: 0 0 420px; max-width: 420px;
+      background: #F9F9F9; border-radius: 12px; padding: 2.5rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .testimonial-card .tc-quote {
+      font-size: 1.05rem; font-weight: 500; line-height: 1.65;
+      color: #262626; margin-bottom: 1.5rem; flex: 1;
+    }
+    .testimonial-card .tc-quote::before { content: '\201C'; }
+    .testimonial-card .tc-quote::after { content: '\201D'; }
+    .testimonial-card .tc-stars {
+      display: flex; gap: 3px; margin-bottom: 1.25rem;
+    }
+    .testimonial-card .tc-stars svg {
+      width: 18px; height: 18px;
+    }
+    .testimonial-card .tc-author { display: flex; align-items: center; gap: .75rem; }
+    .testimonial-card .tc-name { font-size: .875rem; font-weight: 600; color: #0A0A0A; }
+    .testimonial-card .tc-role { font-size: .75rem; color: #737373; }
+
+    .testimonial-progress {
+      display: flex; gap: .5rem; justify-content: center; margin-top: 2rem;
+    }
+    .testimonial-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #D4D4D4; transition: background .3s, transform .3s;
+    }
+    .testimonial-dot.active {
+      background: #8A3BF1; transform: scale(1.3);
+    }
+
+    .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .step-number { font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #A3A3A3; margin-bottom: 1rem; }
+    .step-title { font-size: 1.125rem; font-weight: 700; margin-bottom: .75rem; letter-spacing: -.02em; }
+    .step-desc { font-size: .875rem; color: #737373; line-height: 1.6; }
+
+    .cta-section { padding: 6rem 0; text-align: center; }
+    .cta-section h2 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin-bottom: 1.5rem; }
+    .cta-subtitle { font-size: 1.125rem; color: #737373; margin-bottom: 2.5rem; max-width: 560px; margin-inline: auto; }
+
+    .contact-form { max-width: 760px; margin: 0 auto; display: grid; gap: .9rem; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .contact-form input, .contact-form textarea {
+      width: 100%; border: 1px solid #E5E5E5; border-radius: 8px;
+      padding: .9rem 1rem; font: inherit; color: #0A0A0A; background: #fff;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none; border-color: #8A3BF1; box-shadow: 0 0 0 3px rgba(138,59,241,.14);
+    }
+    .cta-button {
+      width: 100%; border: 0; cursor: pointer;
+      color: #fff; padding: 1rem 1.25rem; border-radius: 8px; font-weight: 700;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 180% 180%; animation: accentShift 9s ease infinite;
+      font-size: 1rem;
+      position: relative;
+      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease, opacity .2s ease;
+    }
+    .cta-button:hover:not(:disabled) {
+      transform: scale(1.045);
+      box-shadow: 0 8px 24px rgba(138,59,241,.22), 0 0 14px rgba(217,65,161,.14);
+      filter: brightness(1.04);
+    }
+    .cta-button:active:not(:disabled), .cta-button.pop {
+      transform: scale(1.07);
+      box-shadow: 0 10px 30px rgba(138,59,241,.28), 0 0 20px rgba(217,65,161,.18);
+    }
+    .cta-button:disabled { opacity: .6; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+    .form-status {
+      text-align: center; padding: 1rem; border-radius: 8px;
+      font-size: .9375rem; font-weight: 600; display: none;
+    }
+    .form-status.success {
+      display: block; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;
+    }
+    .form-status.error {
+      display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca;
+    }
+
+    footer { text-align: center; padding: 3rem 0; border-top: 1px solid #E5E5E5; color: #A3A3A3; font-size: .8125rem; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.reveal-in { opacity: 1; transform: translateY(0); }
+    .reveal-fast { transition-duration: .45s; }
+    .reveal-slow { transition-duration: .75s; }
+
+    @keyframes accentShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-ai, .nav-link, .hero-cta, .stat-number, .cta-button { animation: none !important; }
+      .service-item, .service-item:hover, .service-item:focus-visible { transform: none !important; box-shadow: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ======================================================
+       MOBILE HERO — PERFORMANCE-TUNED REVEAL
+       ======================================================
+       Mobile keeps the same overall effect (scroll-scrub + reveal), but with
+       reduced GPU/paint pressure:
+       1) Content remains flush (no white gap)
+       2) 200svh track keeps extra scrub runway
+       3) Nav + overlay blur are removed on mobile (opacity-only reveal)
+       4) Hero text fade is opacity-only (no per-frame translate)
+       5) Mobile scrub is linear on a focused 6s segment (4.25s-10.25s)
+       6) Mobile button taps add a 1s video pre-roll before hero scroll starts
+       7) Hero/nav tap particle effects run desktop-only to avoid mobile jank
+       8) Mobile progress uses stable scrollY metrics (no visualViewport jumps)
+       9) Mobile finger scroll uses touch-only direct scrub
+      10) Mobile Let's Talk tap uses one continuous hero->contact animation
+    */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 0;
+        background: rgba(255, 255, 255, 0.98); 
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+      }
+      nav.scrolled {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.98);
+      }
+      
+      .container, .nav-inner { padding: 0 1.25rem; }
+      .hero-content { padding: 0 1.25rem 3rem; }
+
+      /* 1. Scroll track: 200svh gives 100svh of scroll runway */
+      .scroll-track { 
+        height: 200svh; 
+        padding-top: 75px;
+        box-sizing: border-box; 
+      }
+      
+      /* 2. Hero: 68svh — preserves framing while slowing content cover */
+      .hero {
+        position: sticky;
+        top: 75px;
+        height: 68svh;
+        min-height: 460px;
+        align-items: flex-end;
+        /* CSS custom property driven by JS for overlay fade */
+        --overlay-opacity: 1;
+      }
+
+      .hero::after {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background:
+          linear-gradient(to bottom, rgba(255,255,255,.40), rgba(255,255,255,.64)),
+          radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.28), rgba(255,255,255,.10));
+        /* JS drives this to fade the overlay, revealing the video */
+        opacity: var(--overlay-opacity, 1);
+      }
+
+      .hero video {
+        transform: scale(1.0);
+        object-position: center 30%;
+        filter: none;
+      }
+
+      /* Hero content: JS drives opacity-only fade (cheaper on mobile). */
+      .hero-content {
+        will-change: opacity;
+      }
+
+      /* Prevent sticky :hover pulse artifacts on mobile taps */
+      .hero-cta:hover {
+        animation: accentShift 9s ease infinite;
+        box-shadow: none;
+        filter: none;
+      }
+
+      /* 3. Content: FLUSH with hero bottom — NO white space gap */
+      .page-content {
+        margin-top: calc(-200svh + max(68svh, 460px) + 75px);
+        position: relative;
+        z-index: 10;
+        background: #fff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+      }
+
+      .pitch {
+        padding: 4rem 0 1.5rem;
+        opacity: 1 !important; transform: none !important; transition: none !important;
+      }
+      .about-video-wrap {
+        padding: 0 0 3rem;
+        opacity: 1 !important; transform: none !important; transition: none !important;
+      }
+      .about-video-shell { transform: scale(1) !important; transition: none !important; }
+
+      .stats { grid-template-columns: 1fr; gap: 1rem; }
+      .service-item { flex-direction: column; align-items: flex-start; gap: .5rem; padding: 1rem 1rem; }
+      .service-desc { text-align: left; max-width: 100%; padding-left: 0; }
+
+      .service-item.scroll-active {
+        background:
+          linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)) padding-box,
+          linear-gradient(105deg, rgba(75,136,218,.48), rgba(138,59,241,.48), rgba(217,65,161,.48), rgba(229,72,77,.48)) border-box;
+        border: 1px solid transparent;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(138,59,241,.12), 0 2px 8px rgba(10,10,10,.05);
+      }
+      .service-item.scroll-active .service-name {
+        background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+        background-size: 180% 180%;
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: accentShift 9s ease infinite;
+      }
+      .service-item.scroll-active .service-desc { color: #6b7280; }
+
+      .case-study { padding: 2rem; }
+      .case-study-metrics { gap: 1.5rem; }
+      .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .testimonial-header { padding: 0 1.25rem; }
+      .testimonial-rail { padding: 0 1.25rem; gap: 1.25rem; }
+      .testimonial-card { flex: 0 0 300px; max-width: 300px; padding: 1.75rem; }
+
+      .about-video-caption { font-size: .96rem; top: calc(50% + 52px); }
+    }
+
+    @media (max-width: 375px) {
+      .hero-content { padding: 0 1.25rem 3.5rem; }
+    }
+    @media (max-height: 600px) {
+      .hero-content { padding: 0 1.25rem 3rem; }
+      .hero { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <div class="logo"><span class="logo-ai">AI</span><span class="logo-freelancer"> Freelancer</span></div>
+      <a href="#contact" class="nav-link">Let's Talk</a>
+    </div>
+  </nav>
+
+  <div class="scroll-track" id="track">
+    <section class="hero">
+      <video id="bgVideo" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <div class="hero-content">
+        <h1>We love optimization.</h1>
+        <p class="subtitle">We're not an AI agency. We're a business optimization powerhouse.</p>
+        <a href="#learn-more" class="hero-cta">Learn More</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="page-content">
+    <section class="pitch" id="learn-more"><div class="container"><p class="pitch-text">We can optimize everything. Your website. Your ads. Your workflows. Your team. <span>We sell success, not AI.</span></p></div></section>
+
+    <section class="about-video-wrap" aria-label="About video">
+      <div class="container">
+        <div class="about-video-shell" id="aboutVideoShell">
+          <div class="about-video-box" id="aboutVideoBox">
+            <iframe
+              id="aboutVideoFrame"
+              title="AI Freelancer Intro"
+              loading="lazy"
+              data-src="https://www.youtube.com/embed/4UZaMDg3GZk?rel=0&showinfo=0&autoplay=1&mute=1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+            <div class="about-video-overlay" id="aboutVideoOverlay" role="button" tabindex="0" aria-label="Play intro video">
+              <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+                <div class="about-video-cta"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+              <p class="about-video-caption">Watch Our 2-Minute Intro</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><hr class="divider"></div>
+
+    <section class="proof"><div class="container"><div class="section-label">Results We've Delivered</div><div class="stats"><div class="stat"><div class="stat-number" data-count-to="4" data-prefix="" data-suffix="x" data-format="int">4x</div><div class="stat-label">Google Ads ROI</div></div><div class="stat"><div class="stat-number" data-count-to="500" data-prefix="" data-suffix="%" data-format="int">500%</div><div class="stat-label">Traffic increase</div></div><div class="stat"><div class="stat-number" data-count-to="100" data-prefix="$" data-suffix="K+" data-format="int">$100K+</div><div class="stat-label">Raised for non-profits</div></div></div></div></section>
+    <div class="container"><hr class="divider"></div>
+
+    <section class="services"><div class="container"><div class="section-label">We Optimize Everything</div><div class="service-grid">
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Marketing</div><div class="service-desc">Google Ads, PPC, content, campaigns</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Website</div><div class="service-desc">Conversions, e-commerce, speed, UX</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your SEO</div><div class="service-desc">Search rankings, local SEO, visibility</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Business Processes</div><div class="service-desc">Automation, workflows, operations</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Customer Support</div><div class="service-desc">AI support, response time, satisfaction</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Employee Training</div><div class="service-desc">Onboarding, knowledge bases, SOPs</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Supply Chain</div><div class="service-desc">Logistics, vendors, inventory</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Online Security</div><div class="service-desc">Protection, compliance, monitoring</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your App Development</div><div class="service-desc">Custom tools, integrations, MVPs</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your AI Skills</div><div class="service-desc">Training, workshops, implementation</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Agentic Engineering</div><div class="service-desc">AI agents, autonomous workflows</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your HR Systems</div><div class="service-desc">Hiring, retention, people operations</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Accounting &amp; Tax Prep</div><div class="service-desc">Bookkeeping systems, tax optimization</div></a>
+    </div></div></section>
+
+    <div class="container"><hr class="divider"></div>
+
+    <section class="case-studies"><div class="container"><div class="section-label">Case Studies</div>
+      <div class="case-study"><div class="case-study-eyebrow">Veterinary E-Commerce · Cleveland, OH</div><h3>Medica Veterinary</h3><p class="case-study-desc">A veterinary practice needed to move from in-office sales to e-commerce. We built a complete Shopify store in one month with entirely AI-generated product photography, driving a 2x increase in sales.</p><div class="case-study-metrics"><div class="metric"><div class="metric-value" data-count-to="2" data-prefix="" data-suffix="x" data-format="int">2x</div><div class="metric-label">Increase in sales</div></div><div class="metric"><div class="metric-value" data-count-to="500" data-prefix="" data-suffix="%" data-format="int">500%</div><div class="metric-label">More site traffic</div></div><div class="metric"><div class="metric-value" data-count-to="1" data-prefix="" data-suffix=" mo" data-format="int">1 mo</div><div class="metric-label">From zero to live</div></div></div></div>
+      <div class="case-study"><div class="case-study-eyebrow">Functional Medicine · Wellness Clinic</div><h3>Inspire Wellness</h3><p class="case-study-desc">A functional medicine clinic needed a steady stream of new patients. We built a new WordPress site and launched a Google Ads campaign that was profitable within the first week.</p><div class="case-study-metrics"><div class="metric"><div class="metric-value" data-count-to="4" data-prefix="" data-suffix="x" data-format="int">4x</div><div class="metric-label">Google Ads ROI</div></div><div class="metric"><div class="metric-value" data-count-to="20" data-prefix="" data-suffix="%" data-format="int">20%</div><div class="metric-label">More new signups</div></div><div class="metric"><div class="metric-value" data-count-to="15" data-prefix="" data-suffix="%" data-format="int">15%</div><div class="metric-label">Visitor-to-call rate</div></div></div></div>
+      <div class="case-study"><div class="case-study-eyebrow">Digital Strategy · Multiple Organizations</div><h3>Non-Profit Organizations</h3><p class="case-study-desc">Several non-profit organizations needed help with fundraising, audience growth, and digital presence. We delivered measurable results across every engagement.</p><div class="case-study-metrics"><div class="metric"><div class="metric-value" data-count-to="100" data-prefix="$" data-suffix="K+" data-format="int">$100K+</div><div class="metric-label">Raised in campaigns</div></div><div class="metric"><div class="metric-value" data-count-to="2000" data-prefix="" data-suffix="%" data-format="int">2000%</div><div class="metric-label">Social media growth</div></div><div class="metric"><div class="metric-value" data-count-to="50" data-prefix="" data-suffix="+" data-format="int">50+</div><div class="metric-label">Countries benefited</div></div></div></div>
+    </div></section>
+
+    <div class="container"><hr class="divider"></div>
+    <section class="testimonial-scroll" id="testimonial-scroll">
+      <div class="testimonial-sticky">
+        <div class="testimonial-header"><div class="container"><div class="section-label">Client Feedback</div></div></div>
+        <div class="testimonial-rail" id="testimonialRail">
+          <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4B88DA"/><stop offset="35%" stop-color="#8A3BF1"/><stop offset="70%" stop-color="#D941A1"/><stop offset="100%" stop-color="#E5484D"/></linearGradient><symbol id="star" viewBox="0 0 24 24"><path fill="url(#starGrad)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol></defs></svg>
+          <div class="testimonial-card">
+            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
+            <p class="tc-quote">Taylor quickly understood our mission and used automation to help us reach the right audiences. His insights and attention to detail brought measurable results from day one.</p>
+            <div class="tc-author">
+              <div><div class="tc-name">Vlad Khaykin</div><div class="tc-role">Thought Leader, Nonprofit Management</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
+            <p class="tc-quote">The AI-powered analytics dashboard gives us insights we never had before. We can now make data-driven decisions with confidence, which has been a game-changer for our marketing campaigns.</p>
+            <div class="tc-author">
+              <div><div class="tc-name">Jessica Williams</div><div class="tc-role">Founder, Creative Co.</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
+            <p class="tc-quote">Dependable, sharp, and trustworthy. AI Freelancer delivered the automation solution we needed&mdash;on time and with zero surprises. Highly recommended for any business or project.</p>
+            <div class="tc-author">
+              <div><div class="tc-name">JC Hansen</div><div class="tc-role">Project Manager, Earthtone Construction</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
+            <p class="tc-quote">We were skeptical about AI, but the team at AI Freelancer made the process seamless. Their automation of our invoicing and reporting has saved us countless hours and reduced errors significantly.</p>
+            <div class="tc-author">
+              <div><div class="tc-name">Linda Kim</div><div class="tc-role">CFO, Blue Bear</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
+            <p class="tc-quote">Taylor brings a rare blend of technical skill and business strategy. The automation tools he built for us saved time and made our workflows run smoother than ever.</p>
+            <div class="tc-author">
+              <div><div class="tc-name">Gregory Taylor</div><div class="tc-role">President, GCT Group LLC</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div>
+            <p class="tc-quote">Working with Taylor was a breeze. He delivered an automation solution that fit perfectly with my tech stack and requirements. Excellent communication and outstanding results.</p>
+            <div class="tc-author">
+              <div><div class="tc-name">Jon Coleman</div><div class="tc-role">IT Support, Ohio State University</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-progress" id="testimonialDots"></div>
+      </div>
+    </section>
+    <div class="container"><hr class="divider"></div>
+
+    <section class="approach"><div class="container"><div class="section-label">How We Work</div><div class="approach-grid"><div class="approach-step"><div class="step-number">01 — Listen</div><div class="step-title">Understand your business</div><p class="step-desc">We learn what you do, how you do it, and where you want to go. Every engagement starts with understanding, not assumptions.</p></div><div class="approach-step"><div class="step-number">02 — Optimize</div><div class="step-title">Make it better</div><p class="step-desc">We implement real improvements—faster processes, smarter marketing, better systems. No strategy decks that collect dust.</p></div><div class="approach-step"><div class="step-number">03 — Grow</div><div class="step-title">Scale what works</div><p class="step-desc">Once it's working, we help you do more of it. More efficiency, more revenue, more of what makes your business great.</p></div></div></div></section>
+    <div class="container"><hr class="divider"></div>
+
+    <section class="cta-section" id="contact"><div class="container"><h2>Let's make it better.</h2><p class="cta-subtitle">We love business optimization, and we'd love to hear from you!</p><form class="contact-form" id="contactForm" action="https://formspree.io/f/mldlebob" method="POST"><div class="form-row"><input type="text" name="name" placeholder="Your name" required><input type="email" name="email" placeholder="Your email" required></div><input type="text" name="company" placeholder="Company (optional)"><textarea name="message" rows="5" placeholder="What should we optimize first?" required></textarea><button type="submit" class="cta-button" id="submitBtn">Send Request</button><div class="form-status" id="formStatus"></div></form></div></section>
+
+    <footer><div class="container">AI Freelancer · AIFreelancer.co · Cleveland, OH</div></footer>
+  </div>
+
+  <script>
+    (() => {
+      const nav = document.getElementById('mainNav');
+      const track = document.getElementById('track');
+      const video = document.getElementById('bgVideo');
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+      function getNavThreshold() {
+        if (!track) return 60;
+        const maxScrollableInsideTrack = Math.max(0, track.offsetHeight - window.innerHeight);
+        return Math.max(0, Math.floor(maxScrollableInsideTrack - 2));
+      }
+      if (isMobile) {
+        nav.classList.add('scrolled');
+      } else {
+        let navThreshold = getNavThreshold();
+        const applyNavState = () => nav.classList.toggle('scrolled', window.scrollY > navThreshold);
+        let navTicking = false;
+        window.addEventListener('scroll', () => {
+          if (navTicking) return;
+          navTicking = true;
+          requestAnimationFrame(() => { applyNavState(); navTicking = false; });
+        }, { passive: true });
+        window.addEventListener('resize', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); }, { passive: true });
+        window.addEventListener('load', () => { navThreshold = getNavThreshold(); applyNavState(); refreshTrackMetrics(); });
+        applyNavState();
+      }
+
+      const MOBILE_VIDEO_SOURCES = [
+        'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4',
+        'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
+      ];
+      const DESKTOP_VIDEO_SOURCES = [
+        'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4',
+        'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4',
+        'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
+      ];
+      const SOURCES = isMobile ? MOBILE_VIDEO_SOURCES : DESKTOP_VIDEO_SOURCES;
+      const isFirefox = /firefox/i.test(navigator.userAgent);
+      if (isFirefox) document.documentElement.classList.add('is-firefox');
+
+      let sourceIndex = 0, ready = false, duration = 0, targetTime = 0, raf = 0, lastInputTs = 0;
+      let scrubPaused = false; 
+      const START_AT_SECONDS = 5.25;
+      const SEGMENT_DURATION_SECONDS = 4;
+      const END_SAFETY_SECONDS = 0.06;
+      const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+
+      const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
+                    || (navigator.deviceMemory && navigator.deviceMemory <= 2);
+
+      function setVideoSource(url) {
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+        video.src = url;
+        video.crossOrigin = 'anonymous';
+        video.preload = 'auto';
+        video.load();
+      }
+
+      function applyPosterFallback() {
+        video.style.background = '#fff';
+      }
+      applyPosterFallback();
+
+      if (LOW_END) {
+        video.removeAttribute('src');
+        video.style.background = '#fff';
+      }
+
+      let trackTop = 0;
+      let trackScrollable = 0;
+      let lastViewportHeight = window.innerHeight || 0;
+      function refreshTrackMetrics() {
+        if (!track) { trackTop = 0; trackScrollable = 0; return; }
+        const scrollY = window.scrollY || window.pageYOffset;
+        const rect = track.getBoundingClientRect();
+        trackTop = scrollY + rect.top;
+        trackScrollable = Math.max(0, track.offsetHeight - window.innerHeight);
+      }
+      function getProgress() {
+        if (!track) return 0;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const scrolled = clamp(scrollY - trackTop, 0, trackScrollable);
+        return trackScrollable > 0 ? scrolled / trackScrollable : 0;
+      }
+      refreshTrackMetrics();
+
+      /*
+         Mobile uses linear playback on a focused 6s segment (4.25s-10.25s) so
+         key action is visible before the content sheet advances.
+         Desktop keeps its curated 4s segment (5.25s-9.25s).
+      */
+      
+      function computeTargetTime() {
+        if (!ready || duration <= 0) return 0;
+        const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
+        let segmentStart;
+        let segmentEnd;
+        if (isMobile) {
+          segmentStart = clamp(4.25, 0, maxEnd);
+          segmentEnd = clamp(segmentStart + 6, segmentStart, maxEnd);
+        } else {
+          segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
+          segmentEnd = clamp(segmentStart + SEGMENT_DURATION_SECONDS, segmentStart, maxEnd);
+        }
+
+        const rawProgress = getProgress();
+        let videoProgress = rawProgress;
+        if (isMobile && mobilePreRollBoost > 0) {
+          // Boost is strongest near the top and fades out by mid-hero.
+          const boostFade = Math.max(0, 1 - (rawProgress / 0.5));
+          videoProgress = clamp(rawProgress + mobilePreRollBoost * boostFade, 0, 1);
+          if (rawProgress > 0.55) {
+            mobilePreRollBoost = 0;
+          }
+        }
+        return segmentStart + videoProgress * (segmentEnd - segmentStart);
+      }
+      
+      let lastSeekTs = 0;
+      let smoothTime = 0; 
+      const LERP_SPEED = isMobile ? 0.11 : 0.12; 
+      const LERP_SPEED_FF = isMobile ? 0.1 : 0.1;
+      const SEEK_THRESHOLD = isMobile ? 0.015 : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? 14 : 0; 
+      const MOBILE_TOUCH_THRESHOLD = 0.004;
+      const MOBILE_PREROLL_MS = 1000;
+      const MOBILE_PREROLL_BOOST = 1 / 6; // ~1 second in a 6-second mobile segment
+      let mobilePreRollBoost = 0;
+      let lastTouchInputTs = -1;
+
+      function tick(ts = performance.now()) {
+        raf = 0;
+        if (!ready || scrubPaused) return;
+        targetTime = computeTargetTime();
+
+        const diff = targetTime - smoothTime;
+        const mobileFingerActive = isMobile && (ts - lastTouchInputTs) < 140;
+        if (mobileFingerActive) {
+          // Only during manual finger input: track target time directly.
+          smoothTime = targetTime;
+        } else {
+          const lerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
+          if (Math.abs(diff) > 0.001) smoothTime += diff * lerp;
+          else smoothTime = targetTime;
+        }
+
+        if (isFirefox) {
+          const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
+          if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
+            try { video.currentTime = snapped; } catch {}
+            lastSeekTs = ts;
+          }
+        } else {
+          const seekThreshold = mobileFingerActive ? MOBILE_TOUCH_THRESHOLD : SEEK_THRESHOLD;
+          const seekCooldown = mobileFingerActive ? 0 : SEEK_COOLDOWN;
+          if (Math.abs(video.currentTime - smoothTime) > seekThreshold && (ts - lastSeekTs) > seekCooldown) {
+            try { video.currentTime = smoothTime; } catch {}
+            lastSeekTs = ts;
+          }
+        }
+        if (!isMobile) {
+          const y = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
+          video.style.transform = 'scale(1.04) translate3d(0, ' + y.toFixed(2) + 'px, 0)';
+        }
+        if ((ts - lastInputTs) < 140 || Math.abs(targetTime - smoothTime) > 0.001) raf = requestAnimationFrame(tick);
+      }
+      function scheduleTick() {
+        if (!ready || scrubPaused) return;
+        lastInputTs = performance.now();
+        if (!raf) raf = requestAnimationFrame(tick);
+      }
+      function initScrub() {
+        duration = Number(video.duration) || 0;
+        if (!Number.isFinite(duration) || duration <= 0) return;
+        refreshTrackMetrics();
+        ready = true;
+        targetTime = computeTargetTime();
+        if (isMobile) {
+          const currentY = window.scrollY || window.pageYOffset;
+          // When starting near the top, initialize to the segment start so
+          // first finger scroll does not jump into the segment.
+          if (currentY < 60) {
+            smoothTime = targetTime;
+            try { video.currentTime = targetTime; } catch {}
+          } else {
+            smoothTime = Number.isFinite(video.currentTime) ? video.currentTime : targetTime;
+            if (!Number.isFinite(smoothTime) || smoothTime < 0) smoothTime = targetTime;
+          }
+        } else {
+          smoothTime = targetTime;
+          try { video.currentTime = targetTime; } catch {}
+        }
+        video.pause();
+        scheduleTick();
+      }
+
+      video.addEventListener('loadedmetadata', initScrub);
+      video.addEventListener('canplay', () => { if (!ready) initScrub(); });
+      video.addEventListener('error', () => {
+        sourceIndex += 1;
+        if (sourceIndex < SOURCES.length) {
+          ready = false;
+          setVideoSource(SOURCES[sourceIndex]);
+        }
+      });
+
+      if (!LOW_END) {
+        window.addEventListener('scroll', scheduleTick, { passive: true });
+        window.addEventListener('resize', () => {
+          const nextH = window.innerHeight || 0;
+          // Ignore small mobile viewport chrome shifts to prevent progress jumps.
+          if (isMobile && Math.abs(nextH - lastViewportHeight) < 120) {
+            scheduleTick();
+            return;
+          }
+          lastViewportHeight = nextH;
+          refreshTrackMetrics();
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('wheel', scheduleTick, { passive: true });
+        window.addEventListener('touchstart', (evt) => {
+          if (isMobile) {
+            const touchTarget = evt.target;
+            const isAnchorTap = !!(touchTarget && touchTarget.closest && touchTarget.closest('a[href^="#"]'));
+            if (!isAnchorTap) lastTouchInputTs = performance.now();
+          }
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('touchmove', () => {
+          if (isMobile) lastTouchInputTs = performance.now();
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('touchend', () => {
+          if (isMobile) lastTouchInputTs = -1;
+        }, { passive: true });
+        window.addEventListener('touchcancel', () => {
+          if (isMobile) lastTouchInputTs = -1;
+        }, { passive: true });
+        window.addEventListener('orientationchange', () => {
+          lastViewportHeight = window.innerHeight || 0;
+          refreshTrackMetrics();
+          scheduleTick();
+        }, { passive: true });
+        window.addEventListener('load', refreshTrackMetrics, { passive: true });
+        setVideoSource(SOURCES[sourceIndex]);
+      }
+
+      // ── About video: click-to-load + scroll-grow effect ──
+      (() => {
+        const shell = document.getElementById('aboutVideoShell');
+        const box = document.getElementById('aboutVideoBox');
+        const overlay = document.getElementById('aboutVideoOverlay');
+        const frame = document.getElementById('aboutVideoFrame');
+        if (!shell || !box || !overlay || !frame) return;
+
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const loadAndPlay = () => {
+          if (!frame.src) frame.src = frame.dataset.src || '';
+          overlay.classList.add('hidden');
+        };
+
+        overlay.addEventListener('click', loadAndPlay);
+        overlay.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            loadAndPlay();
+          }
+        });
+
+        if (prefersReduced) {
+          shell.style.transform = 'scale(1)';
+          return;
+        }
+
+        if (window.matchMedia('(max-width: 768px)').matches) {
+          shell.style.transform = 'scale(1)';
+          return;
+        }
+
+        const getMinScale = () => 0.78;
+        const maxScale = 1;
+
+        const onScrollGrow = () => {
+          const rect = box.getBoundingClientRect();
+          const vh = window.innerHeight || document.documentElement.clientHeight;
+
+          const start = vh;
+          const end = vh * 0.38;
+          const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+          const minScale = getMinScale();
+          const scale = minScale + (maxScale - minScale) * progress;
+          shell.style.transform = 'scale(' + scale.toFixed(4) + ')';
+        };
+
+        let ticking = false;
+        const req = () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            ticking = false;
+            onScrollGrow();
+          });
+        };
+
+        onScrollGrow();
+        window.addEventListener('scroll', req, { passive: true });
+        window.addEventListener('resize', req, { passive: true });
+      })();
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reducedMotion) {
+        const revealTargets = Array.from(document.querySelectorAll('.page-content section, .page-content .divider, .page-content footer, .service-item, .stat, .case-study, .approach-step, .metric'));
+        const isMobileReveal = window.matchMedia('(max-width: 768px)').matches;
+        revealTargets.forEach((el, i) => {
+          if (isMobileReveal && (el.classList.contains('about-video-wrap') || el.classList.contains('pitch'))) return;
+          el.classList.add('reveal');
+          if (el.matches('.service-item, .metric, .stat')) el.classList.add('reveal-fast');
+          if (el.matches('.case-study')) el.classList.add('reveal-slow');
+          el.style.transitionDelay = Math.min((i % 10) * 40, 240) + 'ms';
+        });
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            entry.target.classList.toggle('reveal-in', entry.isIntersecting);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        revealTargets.forEach(el => io.observe(el));
+      }
+
+    // ── Results counters ──
+    (() => {
+      const counters = Array.from(document.querySelectorAll('.stat-number[data-count-to], .metric-value[data-count-to]'));
+      if (!counters.length) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      const formatValue = (el, value) => {
+        const fmt = el.dataset.format || 'int';
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        if (fmt === 'compact') {
+          const compact = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: value >= 10000 ? 0 : 1 }).format(value);
+          return prefix + compact + suffix;
+        }
+        if (fmt === 'decimal1') {
+          const fixed = (Math.round(value * 10) / 10).toFixed(1);
+          return prefix + fixed + suffix;
+        }
+        const intVal = Math.round(value);
+        return prefix + intVal.toLocaleString('en-US') + suffix;
+      };
+      const animateCounter = (el) => {
+        if (el.dataset.animated === 'true') return;
+        el.dataset.animated = 'true';
+        const target = Number(el.dataset.countTo || 0);
+        if (!Number.isFinite(target)) return;
+        if (prefersReduced) { el.textContent = formatValue(el, target); return; }
+        const duration = 1300;
+        const start = performance.now();
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / duration);
+          el.textContent = formatValue(el, target * easeOutCubic(t));
+          if (t < 1) requestAnimationFrame(tick);
+          else el.textContent = formatValue(el, target);
+        };
+        requestAnimationFrame(tick);
+      };
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.dataset.animated = 'false'; animateCounter(entry.target); }
+          else if (entry.target.dataset.animated === 'true') { entry.target.dataset.animated = 'false'; if (!prefersReduced) entry.target.textContent = formatValue(entry.target, 0); }
+        });
+      }, { threshold: 0.45, rootMargin: '0px 0px -8% 0px' });
+      counters.forEach((el) => io.observe(el));
+    })();
+
+    // ── Contact form ──
+    (() => {
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('formStatus');
+      if (!form || !btn || !status) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = 'Sending\u2026';
+        status.className = 'form-status';
+        status.style.display = 'none';
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+          if (res.ok) { status.textContent = 'Thanks! We\u2019ll be in touch within 24 hours.'; status.className = 'form-status success'; form.reset(); }
+          else { const data = await res.json().catch(() => null); status.textContent = (data && data.errors) ? data.errors.map(err => err.message).join(', ') : 'Something went wrong. Please try again.'; status.className = 'form-status error'; }
+        } catch { status.textContent = 'Network error \u2014 please check your connection and try again.'; status.className = 'form-status error'; }
+        finally { btn.disabled = false; btn.textContent = 'Send Request'; }
+      });
+    })();
+
+    // ── Send Request button: sparkles on hover, fireworks on click ──
+    (() => {
+      const submitBtn = document.getElementById('submitBtn');
+      if (!submitBtn) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+      const canvas = document.createElement('canvas');
+      canvas.className = 'nav-link-fx';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      let dpr = window.devicePixelRatio || 1;
+      const resize = () => { dpr = window.devicePixelRatio || 1; canvas.width = window.innerWidth * dpr; canvas.height = window.innerHeight * dpr; canvas.style.width = window.innerWidth + 'px'; canvas.style.height = window.innerHeight + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+      const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B', '#ffffff'];
+      const particles = [];
+      let animating = false;
+      function loop() {
+        if (!particles.length) { animating = false; ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+        animating = true;
+        ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i]; p.life -= p.decay;
+          if (p.life <= 0) { particles.splice(i, 1); continue; }
+          p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.vx *= p.friction; p.vy *= p.friction;
+          if (p.rotSpeed) p.rot += p.rotSpeed;
+          ctx.globalAlpha = Math.min(1, p.life * 2);
+          if (p.type === 'sparkle') {
+            ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+            const s = p.size * (0.5 + 0.5 * Math.sin(p.life * 8));
+            ctx.fillStyle = p.color; ctx.beginPath();
+            for (let j = 0; j < 4; j++) { const angle = (j / 4) * Math.PI * 2 - Math.PI / 2; const ox = Math.cos(angle) * s; const oy = Math.sin(angle) * s; const ia = angle + Math.PI / 4; const ix = Math.cos(ia) * s * 0.3; const iy = Math.sin(ia) * s * 0.3; if (j === 0) ctx.moveTo(ox, oy); else ctx.lineTo(ox, oy); ctx.lineTo(ix, iy); }
+            ctx.closePath(); ctx.fill(); ctx.restore();
+          } else if (p.type === 'trail') { ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill(); }
+          else if (p.type === 'burst') { ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.color; ctx.shadowColor = p.color; ctx.shadowBlur = 6; ctx.beginPath(); ctx.arc(0, 0, p.size * Math.max(0.3, p.life), 0, Math.PI * 2); ctx.fill(); ctx.shadowBlur = 0; ctx.restore(); }
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(loop);
+      }
+      function ensureLoop() { if (!animating) { animating = true; requestAnimationFrame(loop); } }
+      let sparkleInterval = null;
+      const spawnSparkle = () => { const rect = submitBtn.getBoundingClientRect(); const spread = 14; const edge = Math.random(); let x, y; if (edge < 0.25) { x = rect.left + Math.random() * rect.width; y = rect.top - spread + Math.random() * 6; } else if (edge < 0.5) { x = rect.left + Math.random() * rect.width; y = rect.bottom + spread * 0.5 - Math.random() * 6; } else if (edge < 0.75) { x = rect.left - spread + Math.random() * 6; y = rect.top + Math.random() * rect.height; } else { x = rect.right + spread * 0.5 - Math.random() * 6; y = rect.top + Math.random() * rect.height; } particles.push({ type: 'sparkle', x, y, vx: (Math.random() - 0.5) * 1.8, vy: (Math.random() - 0.5) * 1.8 - 0.6, gravity: 0, friction: 0.97, size: 5 + Math.random() * 7, rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.15, color: Math.random() < 0.35 ? '#ffffff' : BRAND[Math.floor(Math.random() * BRAND.length)], life: 1, decay: 0.014 + Math.random() * 0.01, }); ensureLoop(); };
+      submitBtn.addEventListener('mouseenter', () => { if (submitBtn.disabled || window.matchMedia('(max-width: 768px)').matches) return; sparkleInterval = setInterval(spawnSparkle, 40); for (let i = 0; i < 8; i++) spawnSparkle(); });
+      submitBtn.addEventListener('mouseleave', () => { clearInterval(sparkleInterval); sparkleInterval = null; });
+      submitBtn.addEventListener('touchend', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
+      submitBtn.addEventListener('touchcancel', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
+      const launchFirework = (originX, originY, targetX, targetY) => { const color = BRAND[Math.floor(Math.random() * (BRAND.length - 1))]; const dx = targetX - originX; const dy = targetY - originY; const dist = Math.sqrt(dx * dx + dy * dy); const travelFrames = Math.floor(dist / 7); const vx = dx / travelFrames; const vy = dy / travelFrames; let frame = 0; let tx = originX, ty = originY; const rise = () => { frame++; tx += vx; ty += vy; for (let t = 0; t < 2; t++) { particles.push({ type: 'trail', x: tx + (Math.random() - 0.5) * 4, y: ty + (Math.random() - 0.5) * 4, vx: (Math.random() - 0.5) * 1.5, vy: Math.random() * 1.5 + 0.5, gravity: 0.03, friction: 0.96, size: 1.5 + Math.random() * 1.5, rot: 0, rotSpeed: 0, color: color, life: 1, decay: 0.04 + Math.random() * 0.03, }); } ensureLoop(); if (frame < travelFrames) { requestAnimationFrame(rise); } else { const burstCount = 45 + Math.floor(Math.random() * 20); for (let b = 0; b < burstCount; b++) { const angle = Math.random() * Math.PI * 2; const speed = 1.5 + Math.random() * 4; const burstColor = Math.random() < 0.3 ? BRAND[Math.floor(Math.random() * (BRAND.length - 1))] : color; particles.push({ type: 'burst', x: tx + (Math.random() - 0.5) * 6, y: ty + (Math.random() - 0.5) * 6, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, gravity: 0.04 + Math.random() * 0.02, friction: 0.975 + Math.random() * 0.015, size: 2 + Math.random() * 3, rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.1, color: burstColor, life: 1, decay: 0.012 + Math.random() * 0.008, }); } ensureLoop(); } }; requestAnimationFrame(rise); };
+      submitBtn.addEventListener('click', () => { if (submitBtn.disabled) return; submitBtn.classList.add('pop'); setTimeout(() => submitBtn.classList.remove('pop'), 220); const rect = submitBtn.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top; const vh = window.innerHeight; [{ angle: -90, dist: 0.55 },{ angle: -60, dist: 0.45 },{ angle: -120, dist: 0.45 },{ angle: -75, dist: 0.6 },{ angle: -105, dist: 0.6 },{ angle: -45, dist: 0.35 },{ angle: -135, dist: 0.35 }].forEach((pos, i) => { const rad = pos.angle * Math.PI / 180; const travel = vh * pos.dist; const targetX = cx + Math.cos(rad) * travel * 0.7; const targetY = cy + Math.sin(rad) * travel; setTimeout(() => { launchFirework(cx, cy, targetX, targetY); }, i * 70); }); });
+    })();
+
+    // ── "Learn More" button: desktop-only thumbs-up on click ──
+    (() => {
+      const btn = document.querySelector('.hero-cta');
+      if (!btn) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced || window.matchMedia('(max-width: 768px)').matches) return;
+      const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B'];
+      const COUNT = 20;
+      const thumbSVG = (c) => '<svg viewBox="0 0 24 24" fill="' + c + '" xmlns="http://www.w3.org/2000/svg"><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14Z"/></svg>';
+      btn.addEventListener('click', () => { const rect = btn.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; for (let i = 0; i < COUNT; i++) { const color = BRAND[Math.floor(Math.random() * BRAND.length)]; const el = document.createElement('span'); el.innerHTML = thumbSVG(color); el.setAttribute('aria-hidden', 'true'); const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.9; const speed = 9 + Math.random() * 10; let vx = Math.cos(angle) * speed; let vy = Math.sin(angle) * speed; const gravity = 0.14 + Math.random() * 0.06; const rotSpeed = (Math.random() - 0.5) * 6; const size = 34 + Math.random() * 20; const delay = Math.random() * 140; Object.assign(el.style, { position: 'fixed', left: (cx + (Math.random() - 0.5) * 30) + 'px', top: (cy + (Math.random() - 0.5) * 14) + 'px', width: size + 'px', height: size + 'px', lineHeight: '1', pointerEvents: 'none', zIndex: '101', willChange: 'transform, opacity', opacity: '0', userSelect: 'none', }); document.body.appendChild(el); let x = 0, y = 0, rot = 0, opacity = 1, frame = 0; let falling = false; const maxFrames = 80 + Math.floor(Math.random() * 30); const tick = () => { frame++; if (frame * 16 < delay) { requestAnimationFrame(tick); return; } vy += gravity; x += vx; y += vy; vx *= 0.99; if (vy > 0) falling = true; if (falling) rot += rotSpeed; const progress = (frame * 16 - delay) / ((maxFrames * 16) - delay); opacity = progress > 0.55 ? 1 - ((progress - 0.55) / 0.45) : 1; el.style.opacity = Math.max(0, opacity); el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)'; if (frame < maxFrames && opacity > 0) requestAnimationFrame(tick); else el.remove(); }; requestAnimationFrame(tick); } });
+    })();
+
+    // ── Nav "Let's Talk" button: desktop-only sparkles/confetti ──
+    (() => {
+      const link = document.querySelector('.nav-link');
+      if (!link) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced || window.matchMedia('(max-width: 768px)').matches) return;
+      const canvas = document.createElement('canvas');
+      canvas.className = 'nav-link-fx';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      let dpr = window.devicePixelRatio || 1;
+      const resize = () => { dpr = window.devicePixelRatio || 1; canvas.width = window.innerWidth * dpr; canvas.height = window.innerHeight * dpr; canvas.style.width = window.innerWidth + 'px'; canvas.style.height = window.innerHeight + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+      const BRAND = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B', '#ffffff'];
+      const particles = [];
+      let animating = false;
+      function loop() {
+        if (!particles.length) { animating = false; ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+        animating = true;
+        ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i]; p.life -= p.decay;
+          if (p.life <= 0) { particles.splice(i, 1); continue; }
+          p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.vx *= p.friction; p.vy *= p.friction;
+          if (p.rotSpeed) p.rot += p.rotSpeed;
+          ctx.globalAlpha = Math.min(1, p.life * 2);
+          if (p.type === 'sparkle') {
+            ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+            const s = p.size * (0.5 + 0.5 * Math.sin(p.life * 8));
+            ctx.fillStyle = p.color; ctx.beginPath();
+            for (let j = 0; j < 4; j++) { const angle = (j / 4) * Math.PI * 2 - Math.PI / 2; const ox = Math.cos(angle) * s; const oy = Math.sin(angle) * s; const ia = angle + Math.PI / 4; const ix = Math.cos(ia) * s * 0.3; const iy = Math.sin(ia) * s * 0.3; if (j === 0) ctx.moveTo(ox, oy); else ctx.lineTo(ox, oy); ctx.lineTo(ix, iy); }
+            ctx.closePath(); ctx.fill(); ctx.restore();
+          } else if (p.type === 'confetti') {
+            ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.color;
+            const scaleX = Math.cos(p.life * 6 + p.phase); ctx.scale(scaleX, 1);
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore();
+          }
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(loop);
+      }
+      function ensureLoop() { if (!animating) { animating = true; requestAnimationFrame(loop); } }
+      let sparkleInterval = null;
+      const spawnSparkle = () => { const rect = link.getBoundingClientRect(); const edge = Math.random(); let x, y; if (edge < 0.25) { x = rect.left + Math.random() * rect.width; y = rect.top - 4 + Math.random() * 8; } else if (edge < 0.5) { x = rect.left + Math.random() * rect.width; y = rect.bottom - 4 + Math.random() * 8; } else if (edge < 0.75) { x = rect.left - 4 + Math.random() * 8; y = rect.top + Math.random() * rect.height; } else { x = rect.right - 4 + Math.random() * 8; y = rect.top + Math.random() * rect.height; } particles.push({ type: 'sparkle', x, y, vx: (Math.random() - 0.5) * 1.2, vy: (Math.random() - 0.5) * 1.2 - 0.4, gravity: 0, friction: 0.98, size: 3 + Math.random() * 5, rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.1, color: BRAND[Math.floor(Math.random() * BRAND.length)], life: 1, decay: 0.018 + Math.random() * 0.012, }); ensureLoop(); };
+      link.addEventListener('mouseenter', () => { if (window.matchMedia('(max-width: 768px)').matches) return; sparkleInterval = setInterval(spawnSparkle, 60); for (let i = 0; i < 4; i++) spawnSparkle(); });
+      link.addEventListener('mouseleave', () => { clearInterval(sparkleInterval); sparkleInterval = null; });
+      link.addEventListener('touchend', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
+      link.addEventListener('touchcancel', () => { clearInterval(sparkleInterval); sparkleInterval = null; }, { passive: true });
+      link.addEventListener('click', (e) => { link.classList.add('pop'); setTimeout(() => link.classList.remove('pop'), 220); const rect = link.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; for (let i = 0; i < 55; i++) { const angle = Math.random() * Math.PI * 2; const speed = 2.5 + Math.random() * 6; particles.push({ type: 'confetti', x: cx + (Math.random() - 0.5) * 20, y: cy + (Math.random() - 0.5) * 10, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed - 2.5, gravity: 0.12 + Math.random() * 0.06, friction: 0.985, w: 8 + Math.random() * 8, h: 4 + Math.random() * 5, rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.25, phase: Math.random() * Math.PI * 2, color: BRAND[Math.floor(Math.random() * (BRAND.length - 1))], life: 1, decay: 0.008 + Math.random() * 0.006, }); } ensureLoop(); });
+    })();
+
+    // ── Anchor scrolling ──
+    (() => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+      const EASE = (t) => 1 - Math.pow(1 - t, 3);
+      let animFrame = 0;
+      let fallbackTimer = 0;
+      const stopAnim = () => {
+        if (animFrame) cancelAnimationFrame(animFrame);
+        animFrame = 0;
+        if (fallbackTimer) {
+          clearTimeout(fallbackTimer);
+          fallbackTimer = 0;
+        }
+        mobilePreRollBoost = 0;
+        scrubPaused = false;
+      };
+      const getHeaderOffset = () => { const navEl = document.getElementById('mainNav'); return navEl ? Math.max(0, Math.round(navEl.getBoundingClientRect().height + 8)) : 0; };
+      const fastScrollTo = (targetY, doneCallback) => {
+        stopAnim();
+        scrubPaused = true;
+        const startY = window.scrollY || window.pageYOffset;
+        const distance = targetY - startY;
+        if (Math.abs(distance) < 2) {
+          scrubPaused = false;
+          if (doneCallback) doneCallback();
+          return;
+        }
+
+        const duration = Math.min(2200, Math.max(500, Math.abs(distance) / 2.8));
+        const start = performance.now();
+        let completed = false;
+        const finish = () => {
+          if (completed) return;
+          completed = true;
+          if (animFrame) cancelAnimationFrame(animFrame);
+          animFrame = 0;
+          if (fallbackTimer) {
+            clearTimeout(fallbackTimer);
+            fallbackTimer = 0;
+          }
+          smoothTime = computeTargetTime();
+          scrubPaused = false;
+          if (doneCallback) doneCallback();
+        };
+
+        fallbackTimer = setTimeout(() => {
+          window.scrollTo(0, targetY);
+          finish();
+        }, duration + 500);
+
+        const step = (now) => {
+          if (completed) return;
+          const t = Math.min(1, (now - start) / duration);
+          window.scrollTo(0, startY + distance * EASE(t));
+          if (t < 1) animFrame = requestAnimationFrame(step);
+          else finish();
+        };
+        animFrame = requestAnimationFrame(step);
+      };
+      const playThenScroll = (targetY) => {
+        stopAnim();
+        const trackEl = document.getElementById('track');
+        const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
+        const startY = window.scrollY || window.pageYOffset;
+        const heroDist = Math.max(0, Math.min(heroEnd, targetY) - startY);
+        const heroDuration = heroDist > 0 ? Math.min(3200, Math.max(1800, heroDist / 0.5)) : 0;
+        const start = performance.now();
+        let lastFrameTime = start;
+        let virtualElapsed = 0;
+        const isMobilePlay = window.matchMedia('(max-width: 768px)').matches;
+        scrubPaused = true;
+        smoothTime = computeTargetTime();
+
+        const step = (now) => {
+          let delta = now - lastFrameTime;
+          lastFrameTime = now;
+          if (isMobilePlay && delta > 33) delta = 16.6;
+          virtualElapsed += delta;
+
+          const t = Math.min(1, heroDuration > 0 ? virtualElapsed / heroDuration : 1);
+          const y = startY + heroDist * t;
+          window.scrollTo(0, y);
+          targetTime = computeTargetTime();
+
+          if (isMobilePlay) {
+            if (video.paused) video.play().catch(() => {});
+          } else {
+            const diff = targetTime - smoothTime;
+            if (Math.abs(diff) > 0.001) smoothTime += diff * 0.25;
+            else smoothTime = targetTime;
+
+            if (isFirefox) {
+              const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
+              if (Math.abs(video.currentTime - snapped) > 0.02) {
+                try { video.currentTime = snapped; } catch {}
+              }
+            } else if (Math.abs(video.currentTime - smoothTime) > 0.002) {
+              try { video.currentTime = smoothTime; } catch {}
+            }
+          }
+
+          const py = (getProgress() - 0.5) * (isFirefox ? 5 : 12);
+          video.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+
+          if (t < 1) {
+            animFrame = requestAnimationFrame(step);
+            return;
+          }
+
+          animFrame = 0;
+          if (isMobilePlay) video.pause();
+          if (targetY > heroEnd + 2) fastScrollTo(targetY);
+          else scrubPaused = false;
+        };
+
+        if (heroDuration > 0) animFrame = requestAnimationFrame(step);
+        else fastScrollTo(targetY);
+      };
+      const samePageHashLink = (a) => {
+        if (!a || !a.getAttribute) return false;
+        const href = a.getAttribute('href') || '';
+        return href.startsWith('#') && href.length >= 2;
+      };
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!samePageHashLink(link)) return;
+        const hash = link.getAttribute('href');
+        const target = document.querySelector(hash);
+        if (!target) return;
+        e.preventDefault();
+
+        const offset = getHeaderOffset();
+        const isMobileTap = window.matchMedia('(max-width: 768px)').matches;
+        const startScrollY = window.scrollY || window.pageYOffset;
+        const atTop = startScrollY < 50;
+        if (isMobileTap && atTop) {
+          /* MOBILE BUTTON TAP — GENTLE HERO TRANSIT
+             Instead of playThenScroll (which sets scrubPaused=true and just
+             calls video.play() on mobile), we do a continuous scroll through
+             the hero with scrubPaused=FALSE. This keeps mobile on the same
+             scroll-driven scrub path as manual finger scroll.
+
+             Pre-roll: hold page position for 1000ms while video advances.
+             Learn More runs a hero-only curve clamped to min(hero-end,targetY).
+             Let's Talk continues in the same rAF run from hero to contact,
+             so there is no pause/restart handoff.
+          */
+          const trackEl = document.getElementById('track');
+          const heroEnd = trackEl ? Math.max(0, trackEl.offsetHeight - window.innerHeight) : 0;
+          const isContactTarget = hash === '#contact';
+          const startRect = target.getBoundingClientRect();
+          const startTargetY = Math.max(0, Math.round(startRect.top + startScrollY - offset));
+          const heroStopY = Math.max(startScrollY, Math.min(heroEnd, startTargetY));
+          const heroDist = Math.max(0, heroStopY - startScrollY);
+          const heroRatio = heroEnd > 0 ? heroDist / heroEnd : 0;
+          const heroDuration = Math.max(1200, 3600 * heroRatio);
+          // For #contact on mobile, keep the first ~80% hero travel gentle, then accelerate.
+          const contactSlowStopY = startScrollY + (heroDist * 0.8);
+          const contactSlowDist = Math.max(0, contactSlowStopY - startScrollY);
+          const contactFastDist = Math.max(0, startTargetY - contactSlowStopY);
+          const contactSlowDuration = Math.max(950, heroDuration * 0.82);
+          const contactFastDuration = contactFastDist > 0 ? Math.max(500, Math.min(1600, contactFastDist / 3.4)) : 0;
+          const contactTotalDuration = contactSlowDuration + contactFastDuration;
+          const contactSlowPhase = contactTotalDuration > 0 ? (contactSlowDuration / contactTotalDuration) : 1;
+          stopAnim();
+          if (heroDist < 2) {
+            fastScrollTo(startTargetY);
+            return;
+          }
+          /* scrubPaused stays FALSE — normal scroll handlers drive video */
+          
+          /* Learn More: cinematic two-phase curve for the hero region. */
+          const heroEase = (t) => {
+            if (t < 0.65) {
+              /* Phase 1: immediate motion but capped to ~30% of distance */
+              const p = t / 0.65;
+              return 0.30 * (1 - Math.pow(1 - p, 1.8));
+            } else {
+              /* Fast phase: ease-out, covers remaining 70% */
+              const p = (t - 0.65) / 0.35;
+              return 0.30 + 0.70 * (1 - Math.pow(1 - p, 2));
+            }
+          };
+          
+          const runHeroStep = () => {
+            const heroStart = performance.now();
+            const heroStep = (now) => {
+              if (isContactTarget) {
+                const t = Math.min(1, (now - heroStart) / contactTotalDuration);
+                let y;
+                if (t <= contactSlowPhase || contactFastDist < 2) {
+                  const p = contactSlowPhase > 0 ? Math.min(1, t / contactSlowPhase) : 1;
+                  y = startScrollY + contactSlowDist * (1 - Math.pow(1 - p, 1.75));
+                } else {
+                  const q = Math.min(1, (t - contactSlowPhase) / (1 - contactSlowPhase));
+                  y = contactSlowStopY + contactFastDist * (q * (1.8 - 0.8 * q));
+                }
+                window.scrollTo(0, y);
+                scheduleTick();
+                if (t < 1) {
+                  animFrame = requestAnimationFrame(heroStep);
+                  return;
+                }
+                animFrame = 0;
+                window.scrollTo(0, startTargetY);
+                scheduleTick();
+                return;
+              }
+
+              const t = Math.min(1, (now - heroStart) / heroDuration);
+              window.scrollTo(0, startScrollY + heroDist * heroEase(t));
+              scheduleTick();
+              if (t < 1) {
+                animFrame = requestAnimationFrame(heroStep);
+              } else {
+                animFrame = 0;
+                const currentY = window.scrollY || window.pageYOffset;
+                const freshRect = target.getBoundingClientRect();
+                const freshTargetY = Math.max(0, Math.round(freshRect.top + currentY - offset));
+                if (freshTargetY > currentY + 2) fastScrollTo(freshTargetY);
+              }
+            };
+            animFrame = requestAnimationFrame(heroStep);
+          };
+
+          if (!ready) {
+            runHeroStep();
+            return;
+          }
+
+          mobilePreRollBoost = 0;
+          const preRollStart = performance.now();
+          const preRollStep = (now) => {
+            const t = Math.min(1, (now - preRollStart) / MOBILE_PREROLL_MS);
+            mobilePreRollBoost = MOBILE_PREROLL_BOOST * t;
+            scheduleTick();
+            if (t < 1) {
+              animFrame = requestAnimationFrame(preRollStep);
+              return;
+            }
+            runHeroStep();
+          };
+          animFrame = requestAnimationFrame(preRollStep);
+        } else {
+          const doScroll = () => {
+            const freshRect = target.getBoundingClientRect();
+            const freshScrollY = window.scrollY || window.pageYOffset;
+            const freshTargetY = Math.max(0, Math.round(freshRect.top + freshScrollY - offset));
+            if (freshScrollY < 50 && ready) playThenScroll(freshTargetY);
+            else fastScrollTo(freshTargetY);
+          };
+          doScroll();
+        }
+        try { if (history.pushState) history.pushState(null, '', hash); } catch { location.hash = hash; }
+      }, { passive: false });
+      ['wheel', 'touchstart', 'keydown'].forEach((evt) => { window.addEventListener(evt, () => { stopAnim(); }, { passive: true }); });
+    })();
+
+    // ── Mobile: highlight service items ──
+    (() => {
+      const isMobile = window.matchMedia('(max-width: 768px)');
+      if (!isMobile.matches) return;
+      const items = document.querySelectorAll('.service-item');
+      if (!items.length) return;
+      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { entry.target.classList.toggle('scroll-active', entry.isIntersecting); }); }, { rootMargin: '-35% 0px -35% 0px' });
+      items.forEach(item => observer.observe(item));
+    })();
+
+    /*
+       HERO REVEAL (MOBILE + DESKTOP)
+       - Fade text and overlay with scroll progress.
+       - Mobile: quicker reveal for performance and clarity.
+       - Desktop: smoother fade so overlay/text are clear by hero end.
+    */
+    (() => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+      const mobileRevealMQ = window.matchMedia('(max-width: 768px)');
+
+      const heroContent = document.querySelector('.hero-content');
+      const heroEl = document.querySelector('.hero');
+      if (!heroContent || !heroEl) return;
+
+      let fadeTicking = false;
+      let lastFadeTs = 0;
+      let lastTextFade = -1;
+      let lastOverlayFade = -1;
+
+      const onScrollFade = () => {
+        if (fadeTicking) return;
+        fadeTicking = true;
+        requestAnimationFrame((ts) => {
+          fadeTicking = false;
+          const isMobileReveal = mobileRevealMQ.matches;
+          const throttleMs = isMobileReveal ? 32 : 16;
+          if ((ts - lastFadeTs) < throttleMs) return;
+          lastFadeTs = ts;
+          const progress = getProgress();
+
+          // Fade hero text with different pace on mobile vs desktop.
+          const textFadeEnd = isMobileReveal ? 0.18 : 0.42;
+          const textFade = Math.max(0, 1 - (progress / textFadeEnd));
+          const textDelta = isMobileReveal ? 0.015 : 0.01;
+          if (Math.abs(textFade - lastTextFade) >= textDelta) {
+            heroContent.style.opacity = textFade.toFixed(3);
+            lastTextFade = textFade;
+          }
+
+          // Fade white overlay; desktop clears to 0 by hero end.
+          const overlayFadeEnd = isMobileReveal ? 0.28 : 1;
+          const overlayFloor = isMobileReveal ? 0.12 : 0;
+          const overlayFade = Math.max(overlayFloor, 1 - (progress / overlayFadeEnd));
+          const overlayDelta = isMobileReveal ? 0.02 : 0.01;
+          if (Math.abs(overlayFade - lastOverlayFade) >= overlayDelta) {
+            heroEl.style.setProperty('--overlay-opacity', overlayFade.toFixed(3));
+            lastOverlayFade = overlayFade;
+          }
+        });
+      };
+
+      window.addEventListener('scroll', onScrollFade, { passive: true });
+      window.addEventListener('resize', onScrollFade, { passive: true });
+      onScrollFade();
+    })();
+
+    // ── Horizontal scroll testimonials ──
+    (() => {
+      const section = document.getElementById('testimonial-scroll');
+      const rail = document.getElementById('testimonialRail');
+      const dotsContainer = document.getElementById('testimonialDots');
+      if (!section || !rail) return;
+      const cards = rail.querySelectorAll('.testimonial-card');
+      const cardCount = cards.length;
+      cards.forEach((_, i) => { const dot = document.createElement('div'); dot.className = 'testimonial-dot' + (i === 0 ? ' active' : ''); dotsContainer.appendChild(dot); });
+      const dots = dotsContainer.querySelectorAll('.testimonial-dot');
+      const setHeight = () => { const railWidth = rail.scrollWidth; const viewWidth = window.innerWidth; const scrollDistance = Math.max(0, railWidth - viewWidth + 80); section.style.height = (window.innerHeight + scrollDistance) + 'px'; };
+      setHeight();
+      window.addEventListener('resize', setHeight);
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          const viewH = window.innerHeight;
+          const rect = section.getBoundingClientRect();
+          if (rect.top > viewH || rect.bottom < 0) return;
+          const sectionH = section.offsetHeight;
+          const scrollRange = sectionH - viewH;
+          if (scrollRange <= 0) return;
+          const progress = Math.max(0, Math.min(1, -rect.top / scrollRange));
+          const railWidth = rail.scrollWidth;
+          const viewWidth = window.innerWidth;
+          const maxTranslate = Math.max(0, railWidth - viewWidth + 80);
+          const tx = -progress * maxTranslate;
+          rail.style.transform = 'translate3d(' + tx.toFixed(1) + 'px, 0, 0)';
+          const cardIndex = Math.min(cardCount - 1, Math.floor(progress * cardCount));
+          dots.forEach((d, i) => d.classList.toggle('active', i === cardIndex));
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+  })();
+</script>
+</body>
+</html>

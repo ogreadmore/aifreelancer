@@ -1043,6 +1043,15 @@
       }
     }
 
+    function maybeStartExtraction() {
+      if (fc.ready || fc.error || fc.extracting || !scrub.ready) return;
+      if (isMobile && !MOBILE_FRAME_CACHE) return;
+      const sy = window.scrollY || window.pageYOffset;
+      const heroEnd = track ? Math.max(0, track.offsetHeight - window.innerHeight) : layout.trackScrollable;
+      if (sy <= heroEnd + 24) return;
+      extractFrames();
+    }
+
     function getProgress() {
       if (!track) return 0;
       // Live geometry avoids stale cached offsets and fixes "needs bottom-scroll first" behavior.
@@ -1185,6 +1194,7 @@
     function onScroll() {
       lastScrollTs = performance.now();
       if (layout.trackScrollable <= 0) recalcLayout();
+      maybeStartExtraction();
       requestFrame();
     }
 
@@ -1237,9 +1247,8 @@
 
       recalcLayout();
 
-      if (!fc.ready && !fc.error && (!isMobile || MOBILE_FRAME_CACHE)) {
-        extractFrames();
-      }
+      // Defer heavy frame extraction until after user is past the hero region.
+      maybeStartExtraction();
 
       if (!fc.ready) {
         const p = getProgress();
@@ -1270,7 +1279,7 @@
 
     setVideoSource(VIDEO_SOURCES[0]);
 
-    const warmupLayout = () => { recalcLayout(); requestFrame(); };
+    const warmupLayout = () => { recalcLayout(); maybeStartExtraction(); requestFrame(); };
     recalcLayout();
     requestFrame();
     window.addEventListener('load', () => {

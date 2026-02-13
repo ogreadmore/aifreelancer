@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -795,7 +792,7 @@
     const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
     const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
     const FALLBACK_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-    const PREFER_LIGHT_SOURCE = isMobile || LOW_END || isDesktopChromeWindows;
+    const PREFER_LIGHT_SOURCE = isMobile || LOW_END;
     const VIDEO_SOURCES = PREFER_LIGHT_SOURCE
       ? [SD_URL, HD_URL, FALLBACK_URL]
       : [HD_URL, SD_URL, FALLBACK_URL];
@@ -840,7 +837,8 @@
 
       const vw = video.videoWidth || 640;
       const vh = video.videoHeight || 360;
-      const scale = isMobile ? 1 : 0.5;
+      const isLowResSource = vw <= 640 || vh <= 360;
+      const scale = isMobile ? 1 : (isLowResSource ? 1 : 0.5);
       const cw = Math.round(vw * scale);
       const ch = Math.round(vh * scale);
 

@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -792,7 +795,7 @@
     const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
     const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
     const FALLBACK_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-    const PREFER_LIGHT_SOURCE = isMobile || LOW_END;
+    const PREFER_LIGHT_SOURCE = isMobile || LOW_END || isDesktopChromeWindows;
     const VIDEO_SOURCES = PREFER_LIGHT_SOURCE
       ? [SD_URL, HD_URL, FALLBACK_URL]
       : [HD_URL, SD_URL, FALLBACK_URL];
@@ -822,6 +825,211 @@
     };
     const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : ((LOW_END || isDesktopChromeWindows) ? 34 : 48);
     const FRAME_BLEND = !isFirefox && !isIOS;
+    const HD_UPGRADE_FRAME_COUNT = LOW_END ? 18 : 24;
+    const HD_UPGRADE_SCALE = LOW_END ? 0.55 : 0.72;
+    const hqUpgrade = {
+      started: false,
+      done: false,
+      failed: false,
+    };
+
+    const closeFrame = (f) => { if (f && f.close) f.close(); };
+    const closeFrames = (arr) => {
+      if (!arr || !arr.length) return;
+      arr.forEach(closeFrame);
+    };
+    function resetFrameCachePointers() {
+      fc.lastA = -1;
+      fc.lastB = -1;
+      fc.lastMix = -1;
+    }
+
+    function applyFrameCache(frames, cw, ch) {
+      if (!frames || !frames.length || !cw || !ch) return false;
+      const prev = fc.frames;
+      fc.frames = frames;
+      fc.ready = true;
+      fc.extracting = false;
+      fc.error = false;
+      resetFrameCachePointers();
+
+      heroCanvas.width = cw;
+      heroCanvas.height = ch;
+      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
+      if (fc.ctx) {
+        fc.ctx.imageSmoothingEnabled = true;
+        if ('imageSmoothingQuality' in fc.ctx) {
+          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
+        }
+      }
+
+      if (prev && prev !== frames) closeFrames(prev);
+
+      clearBootStillTimer();
+      releaseBootStill();
+      heroCanvas.style.display = 'block';
+      video.style.visibility = 'visible';
+      video.style.display = 'none';
+      video.pause();
+      displayFrame(getProgress());
+      return true;
+    }
+
+    function sourceLooksSD(src) {
+      return /-sd_|\/sd_|_sd/i.test(src || '');
+    }
+
+    function createExtractionVideo(src) {
+      return new Promise((resolve, reject) => {
+        const v = document.createElement('video');
+        v.muted = true;
+        v.playsInline = true;
+        v.crossOrigin = 'anonymous';
+        v.preload = 'auto';
+        let settled = false;
+
+        const cleanup = () => {
+          v.removeEventListener('loadedmetadata', onMeta);
+          v.removeEventListener('error', onErr);
+        };
+        const onMeta = () => {
+          if (settled) return;
+          settled = true;
+          cleanup();
+          resolve(v);
+        };
+        const onErr = () => {
+          if (settled) return;
+          settled = true;
+          cleanup();
+          reject(new Error('extract-load'));
+        };
+
+        v.addEventListener('loadedmetadata', onMeta, { once: true });
+        v.addEventListener('error', onErr, { once: true });
+        v.src = src;
+        try { v.load(); } catch {}
+
+        setTimeout(() => {
+          if (settled) return;
+          if (Number.isFinite(v.duration) && v.duration > 0) {
+            settled = true;
+            cleanup();
+            resolve(v);
+          } else {
+            settled = true;
+            cleanup();
+            reject(new Error('extract-timeout'));
+          }
+        }, 9000);
+      });
+    }
+
+    function destroyExtractionVideo(v) {
+      if (!v) return;
+      try { v.pause(); } catch {}
+      try {
+        v.removeAttribute('src');
+        v.load();
+      } catch {}
+    }
+
+    function seekMediaTime(media, t, timeout = 1800) {
+      return new Promise((resolve, reject) => {
+        let settled = false;
+        const cleanup = () => {
+          media.removeEventListener('seeked', onDone);
+          media.removeEventListener('error', onErr);
+        };
+        const finish = (ok) => {
+          if (settled) return;
+          settled = true;
+          cleanup();
+          if (ok) resolve();
+          else reject(new Error('seek'));
+        };
+        const onDone = () => finish(true);
+        const onErr = () => finish(false);
+
+        media.addEventListener('seeked', onDone, { once: true });
+        media.addEventListener('error', onErr, { once: true });
+        try {
+          media.currentTime = t;
+        } catch {
+          finish(false);
+          return;
+        }
+        setTimeout(() => {
+          if (settled) return;
+          const near = Math.abs((media.currentTime || 0) - t) <= 0.08;
+          finish(near);
+        }, timeout);
+      });
+    }
+
+    async function extractFramesFromExternalSource(url, frameCount, scale) {
+      let extractionVideo = null;
+      const frames = [];
+      try {
+        extractionVideo = await createExtractionVideo(url);
+        const dur = Number(extractionVideo.duration) || 0;
+        if (!Number.isFinite(dur) || dur <= 0) throw new Error('no-duration');
+
+        const maxEnd = Math.max(0, dur - END_SAFETY);
+        const segStart = clamp(START_AT, 0, maxEnd);
+        const segEnd = clamp(segStart + SEG_LEN, segStart, maxEnd);
+
+        const vw = extractionVideo.videoWidth || 640;
+        const vh = extractionVideo.videoHeight || 360;
+        const cw = Math.max(2, Math.round(vw * scale));
+        const ch = Math.max(2, Math.round(vh * scale));
+
+        const offscreen = document.createElement('canvas');
+        offscreen.width = cw;
+        offscreen.height = ch;
+        const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
+        if (!offCtx) throw new Error('no-ctx');
+
+        const hasCreateBitmap = typeof createImageBitmap === 'function' && !(isMobile && isIOS);
+        for (let i = 0; i < frameCount; i++) {
+          const t = segStart + (i / Math.max(1, frameCount - 1)) * (segEnd - segStart);
+          await seekMediaTime(extractionVideo, t);
+          offCtx.drawImage(extractionVideo, 0, 0, cw, ch);
+          if (hasCreateBitmap) frames.push(await createImageBitmap(offscreen));
+          else frames.push(offCtx.getImageData(0, 0, cw, ch));
+        }
+        return { frames, cw, ch };
+      } catch {
+        closeFrames(frames);
+        return null;
+      } finally {
+        destroyExtractionVideo(extractionVideo);
+      }
+    }
+
+    function maybeUpgradeToHdFrames() {
+      if (!isDesktopChromeWindows || hqUpgrade.started || hqUpgrade.done || hqUpgrade.failed) return;
+      const src = video.currentSrc || video.src || VIDEO_SOURCES[sourceIndex] || '';
+      if (!sourceLooksSD(src)) return;
+
+      hqUpgrade.started = true;
+      const run = async () => {
+        try {
+          await new Promise((r) => setTimeout(r, 750));
+          const out = await extractFramesFromExternalSource(HD_URL, HD_UPGRADE_FRAME_COUNT, HD_UPGRADE_SCALE);
+          if (!out || !out.frames.length) throw new Error('upgrade-fail');
+          applyFrameCache(out.frames, out.cw, out.ch);
+          hqUpgrade.done = true;
+        } catch {
+          hqUpgrade.failed = true;
+        }
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => { run(); }, { timeout: 5000 });
+      } else {
+        setTimeout(run, 900);
+      }
+    }
 
     async function extractFrames() {
       if (fc.extracting || fc.ready || fc.error) return;
@@ -870,29 +1078,12 @@
       } catch (e) {
         fc.error = true;
         fc.extracting = false;
-        frames.forEach(f => { if (f.close) f.close(); });
+        closeFrames(frames);
         return;
       }
 
-      fc.frames = frames;
-      fc.extracting = false;
-      fc.ready = true;
-
-      heroCanvas.width = cw;
-      heroCanvas.height = ch;
-      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
-      if (fc.ctx) {
-        fc.ctx.imageSmoothingEnabled = true;
-        if ('imageSmoothingQuality' in fc.ctx) {
-          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
-        }
-      }
-
-      heroCanvas.style.display = 'block';
-      video.style.display = 'none';
-      video.pause();
-
-      displayFrame(getProgress());
+      applyFrameCache(frames, cw, ch);
+      maybeUpgradeToHdFrames();
     }
 
     function displayFrame(progress) {
@@ -1013,6 +1204,7 @@
     }
 
     function drawBootStill() {
+      if (video.readyState < 2) return false;
       const vw = video.videoWidth || 0;
       const vh = video.videoHeight || 0;
       if (vw <= 0 || vh <= 0) return false;
@@ -1198,9 +1390,10 @@
       fc.extracting = false;
       fc.error = false;
       fc.ctx = null;
-      fc.lastA = -1;
-      fc.lastB = -1;
-      fc.lastMix = -1;
+      resetFrameCachePointers();
+      hqUpgrade.started = false;
+      hqUpgrade.done = false;
+      hqUpgrade.failed = false;
       clearBootStillTimer();
       bootStill.attempts = 0;
       bootStillActive = false;

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,13 +110,18 @@
       pointer-events: none;
     }
     .hero video {
-      transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
-      will-change: transform;
+      /* Video sits behind canvas; never visible to user.
+         Kept in DOM so browser will decode frames when we seek. */
+      z-index: 0; opacity: 0;
     }
     .hero-canvas {
+      /* Canvas is the ONLY visible hero visual. Shown from first paint
+         with a neutral fill, then a static video frame once loaded,
+         then scroll-driven frames on interaction. */
+      z-index: 1;
       transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
       will-change: transform;
-      display: none; /* shown once frames are ready */
+      background: #f2f2f2;
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
@@ -381,7 +387,10 @@
         opacity: var(--overlay-opacity, 1);
       }
       .hero video, .hero-canvas {
-        transform: scale(1.0); object-position: center 30%;
+        object-position: center 30%;
+      }
+      .hero-canvas {
+        transform: scale(1.0);
         filter: none; will-change: auto;
       }
       .hero-content { will-change: opacity; }
@@ -521,37 +530,29 @@
     /* ================================================================
        PERFORMANCE ARCHITECTURE
        ================================================================
-       The #1 bottleneck was video.currentTime seeking in the scroll path.
-       Each seek forces the video decoder (CPU) to decompress a frame,
-       taking 10-100ms on phones and old hardware.
-
-       FIX: Keep hero static at load, then pre-decode frames only after
-       user engagement. Frames are extracted with a hidden video element,
-       so the visible hero never "cycles" during startup.
-
-       Once cached, the canvas replaces the visible video for scroll
-       playback. If extraction fails or is disabled, we fall back to
-       direct video seeking on desktop.
-
-       Other optimizations:
-       - Single scroll listener → single rAF → batched DOM writes
-       - Cached layout positions (recalc on resize only)
-       - Static gradients on stat/metric numbers (no animation repaints)
-       - Shared particle canvas (one instead of two)
-       - content-visibility on below-fold sections
+       1. Canvas is ALWAYS visible (neutral fill → static frame → scroll frames)
+       2. Video is ALWAYS invisible (opacity:0 CSS) — used only as a decode source
+       3. On load: seek once → draw to canvas → static hero image
+       4. Background: extract all frames to ImageBitmaps (invisible seeks)
+       5. Once cached: scroll uses instant drawImage(bitmap) — sub-millisecond
+       6. Until cached: scroll uses seek+draw fallback (functional but slower)
+       7. If extraction fails: keeps using seek+draw permanently
        ================================================================ */
 
     const MOBILE_MQ = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
-    const PHONE_MQ = '(max-width: 767px), (max-height: 500px) and (pointer: coarse)';
     const isMobile = window.matchMedia(MOBILE_MQ).matches;
-    const isPhone = window.matchMedia(PHONE_MQ).matches;
     const isMobileViewport = () => window.matchMedia(MOBILE_MQ).matches;
     const isFirefox = /firefox/i.test(navigator.userAgent);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4)
-                  || (navigator.deviceMemory && navigator.deviceMemory <= 4);
-    const ENABLE_FRAME_CACHE = !isFirefox && !LOW_END && !reducedMotion;
+    const LOW_END = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)
+                  || (navigator.deviceMemory && navigator.deviceMemory <= 2);
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+    /* Phone vs tablet: only small-screen touch devices get SD video.
+       Tablets (iPad 768+, Android tabs 600+) get HD like desktops. */
+    const isPhone = window.matchMedia('(pointer: coarse)').matches
+      && (Math.min(window.screen.width || 9999, window.screen.height || 9999) <= 500
+          || window.innerWidth <= 600);
 
     if (isFirefox) document.documentElement.classList.add('is-firefox');
 
@@ -567,16 +568,13 @@
     const testimonialDotsEl = document.getElementById('testimonialDots');
     const aboutShell = document.getElementById('aboutVideoShell');
     const aboutBox = document.getElementById('aboutVideoBox');
-    const extractorVideo = document.createElement('video');
-    extractorVideo.muted = true;
-    extractorVideo.playsInline = true;
-    extractorVideo.preload = 'auto';
-    extractorVideo.crossOrigin = 'anonymous';
 
     // ── Video sources ──
     const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
     const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
-    const VIDEO_SOURCES = isPhone ? [SD_URL, HD_URL] : [HD_URL, SD_URL];
+    const FALLBACK_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+    // Only phones get SD; tablets and desktops get HD
+    const VIDEO_SOURCES = isPhone ? [SD_URL, FALLBACK_URL] : [HD_URL, SD_URL, FALLBACK_URL];
     let sourceIndex = 0;
 
     // ── Scrub constants ──
@@ -585,189 +583,226 @@
     const END_SAFETY = 0.06;
     const LERP = isFirefox ? 0.1 : 0.12;
 
+    // Seek throttle: min ms between seek requests
+    const SEEK_THROTTLE = LOW_END ? 100 : (isMobile ? 60 : 33);
+
     /* ================================================================
-       FRAME CACHE
-       Pre-decodes video frames to ImageBitmaps / ImageData for
-       instant display during scroll.
+       CANVAS DISPLAY — the only visible hero visual
        ================================================================ */
+    let cvCtx = null;
+    let cvReady = false;   // canvas has been sized and has a valid context
+    let cvHasFrame = false; // canvas has at least one video frame drawn
+
+    function initCanvas() {
+      if (cvReady) return;
+      const vw = video.videoWidth || 640;
+      const vh = video.videoHeight || 360;
+      // Half-res on desktop (HD source is large); full on phone (SD is small)
+      const scale = isPhone ? 1 : 0.5;
+      heroCanvas.width = Math.round(vw * scale);
+      heroCanvas.height = Math.round(vh * scale);
+      cvCtx = heroCanvas.getContext('2d', { alpha: false });
+      // Fill with neutral color to avoid garbage pixels
+      cvCtx.fillStyle = '#f2f2f2';
+      cvCtx.fillRect(0, 0, heroCanvas.width, heroCanvas.height);
+      cvReady = true;
+    }
+
+    function drawVideoToCanvas() {
+      if (!cvReady || !cvCtx) return false;
+      try {
+        cvCtx.drawImage(video, 0, 0, heroCanvas.width, heroCanvas.height);
+        cvHasFrame = true;
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    /* ================================================================
+       FRAME CACHE — pre-decoded ImageBitmaps for instant scroll display
+       ================================================================
+       Extracts frames in background AFTER the first static frame is shown.
+       Video is always opacity:0 (CSS), so the user never sees the seeks.
+       Once complete, scroll uses drawImage(bitmap) instead of video seeking.
+       If extraction fails, the seek+draw fallback continues permanently. */
+
     const fc = {
-      frames: [],
-      ready: false,
+      frames: [],       // Array of ImageBitmap or ImageData
+      ready: false,     // All frames extracted successfully
       extracting: false,
-      error: false,
-      ctx: null,        // drawing context for heroCanvas
-      lastIdx: -1,      // last displayed frame index
+      lastIdx: -1,      // Last displayed frame index
     };
-    const FRAME_COUNT = isPhone ? 20 : (isMobile ? 28 : 42);
-    let heroEngaged = false;
-    let extractScheduled = false;
-    let extractGen = 0;
+    const FRAME_COUNT = isMobile ? 30 : 48;
 
-    const rafTick = () => new Promise(resolve => requestAnimationFrame(() => resolve()));
-
-    function releaseFrameCache() {
-      if (fc.frames.length) {
-        fc.frames.forEach(f => { if (f && typeof f.close === 'function') f.close(); });
+    function displayFrame(progress) {
+      if (!fc.ready || !cvCtx) return;
+      const idx = Math.round(clamp(progress, 0, 1) * (fc.frames.length - 1));
+      if (idx === fc.lastIdx) return;
+      fc.lastIdx = idx;
+      const frame = fc.frames[idx];
+      try {
+        if (frame instanceof ImageBitmap) {
+          cvCtx.drawImage(frame, 0, 0, heroCanvas.width, heroCanvas.height);
+        } else if (frame instanceof ImageData) {
+          cvCtx.putImageData(frame, 0, 0);
+        }
+        cvHasFrame = true;
+      } catch (e) {
+        // Canvas context lost — rare but possible
       }
-      fc.frames = [];
-      fc.ready = false;
-      fc.extracting = false;
-      fc.ctx = null;
-      fc.lastIdx = -1;
-      heroCanvas.style.display = 'none';
-      video.style.display = 'block';
-    }
-
-    function waitForVideoReady(el, timeout = 5000) {
-      if (el.readyState >= 1 && Number(el.duration) > 0) return Promise.resolve(true);
-      return new Promise((resolve) => {
-        let done = false;
-        const finish = (ok) => {
-          if (done) return;
-          done = true;
-          clearTimeout(timer);
-          el.removeEventListener('loadedmetadata', onReady);
-          el.removeEventListener('canplay', onReady);
-          el.removeEventListener('error', onErr);
-          resolve(ok);
-        };
-        const onReady = () => finish(true);
-        const onErr = () => finish(false);
-        const timer = setTimeout(() => finish(false), timeout);
-        el.addEventListener('loadedmetadata', onReady, { once: true });
-        el.addEventListener('canplay', onReady, { once: true });
-        el.addEventListener('error', onErr, { once: true });
-      });
-    }
-
-    function scheduleFrameExtraction() {
-      if (!ENABLE_FRAME_CACHE || extractScheduled || fc.ready || fc.extracting || fc.error || !scrub.ready) return;
-      extractScheduled = true;
-      const start = () => {
-        extractScheduled = false;
-        extractFrames();
-      };
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(start, { timeout: 1200 });
-      } else {
-        setTimeout(start, 200);
-      }
-    }
-
-    function engageHeroAnimation() {
-      if (heroEngaged) return;
-      heroEngaged = true;
-      scheduleFrameExtraction();
-      requestFrame();
     }
 
     async function extractFrames() {
-      if (!ENABLE_FRAME_CACHE || fc.extracting || fc.ready || fc.error) return;
-      const runId = extractGen;
+      if (fc.extracting || fc.ready) return;
       fc.extracting = true;
 
-      const ready = await waitForVideoReady(extractorVideo);
-      if (!ready) {
-        fc.error = true;
-        fc.extracting = false;
-        return;
-      }
-
-      const dur = extractorVideo.duration;
+      const dur = video.duration;
       if (!dur || !Number.isFinite(dur) || dur <= 0) { fc.extracting = false; return; }
 
       const maxEnd = Math.max(0, dur - END_SAFETY);
       const segStart = clamp(START_AT, 0, maxEnd);
       const segEnd = clamp(segStart + SEG_LEN, segStart, maxEnd);
 
-      const vw = extractorVideo.videoWidth || 640;
-      const vh = extractorVideo.videoHeight || 360;
-      const scale = isPhone ? 1 : 0.5;
-      const cw = Math.max(1, Math.round(vw * scale));
-      const ch = Math.max(1, Math.round(vh * scale));
+      // Use same dimensions as the display canvas
+      const cw = heroCanvas.width;
+      const ch = heroCanvas.height;
 
       const offscreen = document.createElement('canvas');
       offscreen.width = cw;
       offscreen.height = ch;
       const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
-      if (!offCtx) {
-        fc.error = true;
-        fc.extracting = false;
-        return;
-      }
 
       const hasCreateBitmap = typeof createImageBitmap === 'function';
       const frames = [];
 
+      // Disconnect the normal onSeeked handler during extraction
+      video.removeEventListener('seeked', onSeeked);
+      // Reset seek state to avoid stuck scrub.seeking from any in-flight seek
+      scrub.seeking = false;
+      scrub.needsDraw = false;
+
       try {
         for (let i = 0; i < FRAME_COUNT; i++) {
-          if (runId !== extractGen) {
-            frames.forEach(f => { if (f && typeof f.close === 'function') f.close(); });
-            fc.extracting = false;
-            return;
-          }
           const t = segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (segEnd - segStart);
-          extractorVideo.currentTime = t;
+
+          video.currentTime = t;
           await new Promise((resolve, reject) => {
-            const onDone = () => { extractorVideo.removeEventListener('seeked', onDone); extractorVideo.removeEventListener('error', onErr); resolve(); };
-            const onErr = () => { extractorVideo.removeEventListener('seeked', onDone); extractorVideo.removeEventListener('error', onErr); reject(new Error('seek')); };
-            extractorVideo.addEventListener('seeked', onDone, { once: true });
-            extractorVideo.addEventListener('error', onErr, { once: true });
+            const timeout = setTimeout(() => {
+              video.removeEventListener('seeked', done);
+              video.removeEventListener('error', err);
+              reject(new Error('timeout'));
+            }, 5000); // 5s timeout per frame
+            const done = () => { clearTimeout(timeout); video.removeEventListener('error', err); resolve(); };
+            const err = () => { clearTimeout(timeout); video.removeEventListener('seeked', done); reject(new Error('seek')); };
+            video.addEventListener('seeked', done, { once: true });
+            video.addEventListener('error', err, { once: true });
           });
-          offCtx.drawImage(extractorVideo, 0, 0, cw, ch);
-          if (hasCreateBitmap) frames.push(await createImageBitmap(offscreen));
-          else frames.push(offCtx.getImageData(0, 0, cw, ch));
-          if (i % 4 === 3) await rafTick();
+
+          // Firefox fires 'seeked' before the frame is actually painted to the video.
+          // Wait one animation frame to ensure the decoded frame is available for drawImage.
+          if (isFirefox) {
+            await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+          }
+
+          offCtx.drawImage(video, 0, 0, cw, ch);
+
+          if (hasCreateBitmap) {
+            frames.push(await createImageBitmap(offscreen));
+          } else {
+            frames.push(offCtx.getImageData(0, 0, cw, ch));
+          }
         }
       } catch (e) {
-        fc.error = true;
+        // Extraction failed — clean up and fall back to seek+draw
         fc.extracting = false;
-        frames.forEach(f => { if (f && typeof f.close === 'function') f.close(); });
+        frames.forEach(f => { if (f && f.close) f.close(); });
+        // Re-attach the normal seek handler
+        video.addEventListener('seeked', onSeeked);
+        return;
+      }
+
+      // Verify we got valid frames (check first frame isn't blank)
+      if (frames.length < FRAME_COUNT) {
+        fc.extracting = false;
+        frames.forEach(f => { if (f && f.close) f.close(); });
+        video.addEventListener('seeked', onSeeked);
         return;
       }
 
       fc.frames = frames;
-      fc.extracting = false;
-      if (runId !== extractGen) {
-        frames.forEach(f => { if (f && typeof f.close === 'function') f.close(); });
-        return;
-      }
       fc.ready = true;
-      heroCanvas.width = cw;
-      heroCanvas.height = ch;
-      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
-      if (!fc.ctx) {
-        releaseFrameCache();
-        fc.error = true;
-        return;
-      }
+      fc.extracting = false;
 
-      heroCanvas.style.display = 'block';
-      video.style.display = 'none';
+      // Re-attach seek handler (needed for anchor scroll fallback)
+      video.addEventListener('seeked', onSeeked);
+
+      // Video is no longer needed for scroll — stop decoding
       video.pause();
-      displayFrame(heroEngaged ? getProgress() : 0);
-    }
 
-    function displayFrame(progress) {
-      if (!fc.ready || !fc.ctx) return;
-      const idx = Math.round(clamp(progress, 0, 1) * (fc.frames.length - 1));
-      if (idx === fc.lastIdx) return;
-      fc.lastIdx = idx;
-      const frame = fc.frames[idx];
-      if (frame instanceof ImageBitmap) {
-        fc.ctx.drawImage(frame, 0, 0);
-      } else if (frame instanceof ImageData) {
-        fc.ctx.putImageData(frame, 0, 0);
-      }
-    }
-
-    // The element that gets parallax transforms (canvas when ready, video as fallback)
-    function getHeroVisual() {
-      return fc.ready ? heroCanvas : video;
+      // Display the correct frame for current scroll position
+      displayFrame(getProgress());
     }
 
     /* ================================================================
-       LAYOUT CACHE — recalculated on resize only, not per-frame
+       VIDEO SEEK+DRAW ENGINE (fallback until frame cache is ready)
+       ================================================================ */
+    const scrub = {
+      ready: false,
+      duration: 0,
+      smoothTime: 0,
+      targetTime: 0,
+      seeking: false,
+      lastSeekTs: 0,
+      paused: false,
+      needsDraw: false,
+    };
+
+    function computeTargetTime(progress, dur) {
+      const maxEnd = Math.max(0, dur - END_SAFETY);
+      const s = clamp(START_AT, 0, maxEnd);
+      const e = clamp(s + SEG_LEN, s, maxEnd);
+      return s + progress * (e - s);
+    }
+
+    function onSeeked() {
+      scrub.seeking = false;
+      drawVideoToCanvas();
+      if (scrub.needsDraw) {
+        scrub.needsDraw = false;
+        doSeek(scrub.smoothTime);
+      }
+    }
+
+    function doSeek(time) {
+      if (scrub.seeking) { scrub.needsDraw = true; return; }
+      const now = performance.now();
+      if (now - scrub.lastSeekTs < SEEK_THROTTLE) { scrub.needsDraw = true; return; }
+
+      scrub.seeking = true;
+      scrub.lastSeekTs = now;
+
+      let seekTime = time;
+      if (isFirefox) seekTime = Math.round(time * 25) / 25;
+
+      try { video.currentTime = seekTime; } catch (e) { scrub.seeking = false; }
+    }
+
+    function updateScrub(ts, progress) {
+      if (!scrub.ready || scrub.paused) return;
+
+      scrub.targetTime = computeTargetTime(progress, scrub.duration);
+      const diff = scrub.targetTime - scrub.smoothTime;
+      if (Math.abs(diff) > 0.001) scrub.smoothTime += diff * LERP;
+      else scrub.smoothTime = scrub.targetTime;
+
+      doSeek(scrub.smoothTime);
+    }
+
+    video.addEventListener('seeked', onSeeked);
+
+    /* ================================================================
+       LAYOUT CACHE
        ================================================================ */
     const layout = {
       vh: window.innerHeight || 0,
@@ -792,12 +827,10 @@
       }
 
       if (testimonialSection && testimonialRail) {
-        // Set section height first, then measure
         const railW = testimonialRail.scrollWidth;
         const viewW = window.innerWidth;
         const scrollDist = Math.max(0, railW - viewW + 80);
         testimonialSection.style.height = (layout.vh + scrollDist) + 'px';
-
         const r = testimonialSection.getBoundingClientRect();
         layout.testimonialTop = sy + r.top;
         layout.testimonialScrollRange = Math.max(0, testimonialSection.offsetHeight - layout.vh);
@@ -817,49 +850,7 @@
     }
 
     /* ================================================================
-       VIDEO SEEK FALLBACK (used only if frame extraction fails)
-       ================================================================ */
-    const scrub = {
-      ready: false,
-      duration: 0,
-      smoothTime: 0,
-      targetTime: 0,
-      lastSeekTs: 0,
-      paused: false,
-    };
-
-    function computeTargetTime(progress, dur) {
-      const maxEnd = Math.max(0, dur - END_SAFETY);
-      const s = clamp(START_AT, 0, maxEnd);
-      const e = clamp(s + SEG_LEN, s, maxEnd);
-      return s + progress * (e - s);
-    }
-
-    function seekVideo(ts, progress) {
-      // Only called when frame cache is NOT ready
-      if (!scrub.ready || scrub.paused) return;
-      scrub.targetTime = computeTargetTime(progress, scrub.duration);
-      const diff = scrub.targetTime - scrub.smoothTime;
-      if (Math.abs(diff) > 0.001) scrub.smoothTime += diff * LERP;
-      else scrub.smoothTime = scrub.targetTime;
-
-      if (isFirefox) {
-        const snapped = Math.round(scrub.smoothTime * 25) / 25;
-        if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - scrub.lastSeekTs) > 33) {
-          try { video.currentTime = snapped; } catch {}
-          scrub.lastSeekTs = ts;
-        }
-      } else {
-        if (Math.abs(video.currentTime - scrub.smoothTime) > 0.002) {
-          try { video.currentTime = scrub.smoothTime; } catch {}
-          scrub.lastSeekTs = ts;
-        }
-      }
-    }
-
-    /* ================================================================
        UNIFIED SCROLL FRAME LOOP
-       One scroll listener → one rAF → all reads first → all writes.
        ================================================================ */
     let frameId = 0;
     let lastScrollTs = 0;
@@ -886,17 +877,16 @@
     function frame(ts) {
       frameId = 0;
 
-      // ── READS ──
+      // ── READ ──
       const sy = window.scrollY || window.pageYOffset;
-      const rawProgress = getProgress();
-      const progress = heroEngaged ? rawProgress : 0;
+      const progress = getProgress();
 
       // ── WRITE: nav ──
       nav.classList.toggle('scrolled', sy > layout.navThreshold);
 
       // ── WRITE: hero text + overlay fade ──
       if (!reducedMotion && heroContent && heroEl) {
-        if (!heroEngaged || sy <= 4) {
+        if (sy <= 4) {
           if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
           if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
         } else {
@@ -911,19 +901,23 @@
         }
       }
 
-      // ── WRITE: hero visual (canvas frames or video seek fallback) ──
-      if (!heroEngaged) {
-        // Keep hero static at initial frame until user engages the page.
-      } else if (fc.ready) {
-        displayFrame(progress);
-      } else if (!fc.extracting && !isMobile && scrub.ready && !scrub.paused) {
-        seekVideo(ts, progress);
+      // ── WRITE: hero video scrub ──
+      if (!isMobile) {
+        if (fc.ready) {
+          // Frame cache ready — instant bitmap blit, no seeking
+          displayFrame(progress);
+        } else if (!fc.extracting) {
+          // Fallback: seek+draw (only when extraction is NOT running,
+          // otherwise we'd conflict with extraction's own seeks)
+          updateScrub(ts, progress);
+        }
+        // During extraction: canvas shows static first frame, no scrub
       }
 
-      // ── WRITE: parallax (desktop only) ──
+      // ── WRITE: canvas parallax (desktop only) ──
       if (!isMobile) {
-        const py = heroEngaged ? (progress - 0.5) * (isFirefox ? 5 : 12) : 0;
-        getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+        const py = (progress - 0.5) * (isFirefox ? 5 : 12);
+        heroCanvas.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
       }
 
       // ── WRITE: testimonial horizontal scroll ──
@@ -946,9 +940,11 @@
         aboutShell.style.transform = 'scale(' + (0.78 + 0.22 * ap).toFixed(4) + ')';
       }
 
-      // ── Continue loop while lerp settling (video fallback only) ──
-      if (heroEngaged && !fc.ready && !isMobile && scrub.ready && !scrub.paused) {
-        if (Math.abs(scrub.targetTime - scrub.smoothTime) > 0.001 || (ts - lastScrollTs) < 140) {
+      // ── Continue loop while settling ──
+      if (!isMobile && scrub.ready && !scrub.paused && !fc.ready) {
+        if (Math.abs(scrub.targetTime - scrub.smoothTime) > 0.001
+          || scrub.seeking || scrub.needsDraw
+          || (ts - lastScrollTs) < 140) {
           requestFrame();
         }
       }
@@ -956,21 +952,13 @@
 
     function onScroll() {
       lastScrollTs = performance.now();
-      if (!heroEngaged && (window.scrollY || window.pageYOffset) > 8) {
-        engageHeroAnimation();
-      }
       requestFrame();
     }
 
-    function onEngageInput() {
-      if (!heroEngaged) engageHeroAnimation();
-      onScroll();
-    }
-
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('wheel', onEngageInput, { passive: true });
-    window.addEventListener('touchstart', onEngageInput, { passive: true });
-    window.addEventListener('touchmove', onEngageInput, { passive: true });
+    window.addEventListener('wheel', onScroll, { passive: true });
+    window.addEventListener('touchstart', onScroll, { passive: true });
+    window.addEventListener('touchmove', onScroll, { passive: true });
 
     let resizeTimer = 0;
     window.addEventListener('resize', () => {
@@ -982,66 +970,102 @@
     }, { passive: true });
 
     /* ================================================================
-       VIDEO LOAD + FRAME EXTRACTION
+       VIDEO LOAD + FRAME EXTRACTION TRIGGER
        ================================================================ */
     function setVideoSource(url) {
-      extractGen++;
-      releaseFrameCache();
-      fc.error = false;
-      extractScheduled = false;
-      scrub.ready = false;
-
       video.pause();
+      video.removeAttribute('src');
+      video.load();
+      video.src = url;
+      // crossOrigin needed so canvas stays origin-clean for frame extraction
       video.crossOrigin = 'anonymous';
       video.preload = 'auto';
-      video.src = url;
       video.load();
-
-      if (ENABLE_FRAME_CACHE) {
-        extractorVideo.pause();
-        extractorVideo.crossOrigin = 'anonymous';
-        extractorVideo.preload = 'auto';
-        extractorVideo.src = url;
-        extractorVideo.load();
-      }
     }
 
+    let videoInited = false;
+    let firstFrameDrawn = false;
+
     function initVideo() {
+      if (videoInited) return;
       const dur = Number(video.duration) || 0;
       if (!Number.isFinite(dur) || dur <= 0) return;
+      videoInited = true;
+
       scrub.duration = dur;
       scrub.ready = true;
 
       recalcLayout();
-      const p = heroEngaged ? getProgress() : 0;
-      scrub.targetTime = computeTargetTime(p, dur);
-      scrub.smoothTime = scrub.targetTime;
+      initCanvas();
 
-      try { video.currentTime = scrub.targetTime; } catch {}
+      // Seek to start frame
+      const startTime = computeTargetTime(0, dur);
+      scrub.smoothTime = startTime;
+      scrub.targetTime = startTime;
+
+      // Draw the first frame, then start background extraction
+      const onFirstFrame = () => {
+        video.removeEventListener('seeked', onFirstFrame);
+
+        // Firefox fires 'seeked' before frame is painted — delay draw
+        const doDraw = () => {
+          const drawn = drawVideoToCanvas();
+
+          if (!drawn) {
+            video.addEventListener('seeked', onSeeked);
+            requestFrame();
+            return;
+          }
+
+          firstFrameDrawn = true;
+          video.addEventListener('seeked', onSeeked);
+          requestFrame();
+
+          // Start background frame extraction after a small delay
+          setTimeout(() => {
+            if (!fc.ready && !fc.extracting) extractFrames();
+          }, 500);
+        };
+
+        if (isFirefox) {
+          requestAnimationFrame(() => requestAnimationFrame(doDraw));
+        } else {
+          doDraw();
+        }
+      };
+
+      // Temporarily swap in our first-frame handler
+      video.removeEventListener('seeked', onSeeked);
+      video.addEventListener('seeked', onFirstFrame, { once: true });
+
+      try { video.currentTime = startTime; } catch (e) {
+        // Seek failed — restore normal handler
+        video.removeEventListener('seeked', onFirstFrame);
+        video.addEventListener('seeked', onSeeked);
+      }
+
       video.pause();
-
-      if (heroEngaged) scheduleFrameExtraction();
       requestFrame();
     }
 
-    video.style.background = '#fff';
     video.addEventListener('loadedmetadata', initVideo);
-    video.addEventListener('canplay', () => { if (!scrub.ready) initVideo(); });
+    video.addEventListener('canplay', () => { if (!videoInited) initVideo(); });
     video.addEventListener('error', () => {
       sourceIndex++;
       if (sourceIndex < VIDEO_SOURCES.length) {
-        setVideoSource(VIDEO_SOURCES[sourceIndex]);
-      } else {
+        videoInited = false;
+        firstFrameDrawn = false;
         scrub.ready = false;
-        fc.error = true;
-        releaseFrameCache();
-        video.style.display = 'none';
+        fc.ready = false;
+        fc.extracting = false;
+        setVideoSource(VIDEO_SOURCES[sourceIndex]);
       }
     });
 
-    setVideoSource(VIDEO_SOURCES[0]);
+    if (!LOW_END) {
+      setVideoSource(VIDEO_SOURCES[0]);
+    }
 
-    // Init
     recalcLayout();
     requestFrame();
     window.addEventListener('load', () => { recalcLayout(); requestFrame(); });
@@ -1069,7 +1093,7 @@
     })();
 
     /* ================================================================
-       REVEAL ANIMATIONS (IntersectionObserver — zero scroll cost)
+       REVEAL ANIMATIONS
        ================================================================ */
     if (!reducedMotion) {
       const revealTargets = Array.from(document.querySelectorAll('.page-content section, .page-content .divider, .page-content footer, .service-item, .stat, .case-study, .approach-step, .metric'));
@@ -1087,7 +1111,7 @@
     }
 
     /* ================================================================
-       RESULTS COUNTERS (IntersectionObserver)
+       RESULTS COUNTERS
        ================================================================ */
     (() => {
       const counters = Array.from(document.querySelectorAll('.stat-number[data-count-to], .metric-value[data-count-to]'));
@@ -1150,8 +1174,7 @@
     })();
 
     /* ================================================================
-       SHARED PARTICLE CANVAS (one canvas for all effects, lazy init)
-       Desktop only — skipped on mobile.
+       SHARED PARTICLE CANVAS (desktop only, lazy init)
        ================================================================ */
     const particles = [];
     let pCanvas = null, pCtx = null, pAnimating = false, pDpr = 1;
@@ -1216,7 +1239,7 @@
     }
     function ensurePLoop() { if (!pAnimating) { pAnimating = true; requestAnimationFrame(pLoop); } }
 
-    /* ── Submit button: sparkles on hover, fireworks on click ── */
+    /* ── Submit button: sparkles + fireworks ── */
     (() => {
       const btn = document.getElementById('submitBtn');
       if (!btn || reducedMotion || isMobile) return;
@@ -1335,8 +1358,6 @@
 
     /* ================================================================
        ANCHOR SCROLLING
-       Preserves original two-phase ease, cinematic hero scroll,
-       and mobile cadence. Video scrub replaced with frame display.
        ================================================================ */
     (() => {
       if (reducedMotion) return;
@@ -1381,9 +1402,9 @@
         af = requestAnimationFrame(step);
       };
 
-      // Desktop: cinematic play-through-hero scroll
+      /* Desktop: cinematic play-through-hero scroll.
+         Uses frame cache when available, seek+draw as fallback. */
       const playThenScroll = (targetY) => {
-        engageHeroAnimation();
         stopAnim();
         const heroEnd = layout.trackScrollable;
         const startY = window.scrollY || window.pageYOffset;
@@ -1392,7 +1413,6 @@
         const start = performance.now();
 
         scrub.paused = true;
-        if (!fc.ready) scrub.smoothTime = computeTargetTime(getProgress(), scrub.duration);
 
         const step = (now) => {
           const t = Math.min(1, heroDur > 0 ? (now - start) / heroDur : 1);
@@ -1401,26 +1421,21 @@
 
           const p = getProgress();
 
-          // Display frame or seek video
+          // Use frame cache if ready, otherwise seek+draw
           if (fc.ready) {
             displayFrame(p);
           } else if (scrub.ready) {
-            scrub.targetTime = computeTargetTime(p, scrub.duration);
-            const d = scrub.targetTime - scrub.smoothTime;
-            if (Math.abs(d) > .001) scrub.smoothTime += d * .25;
-            else scrub.smoothTime = scrub.targetTime;
-            if (isFirefox) {
-              const sn = Math.round(scrub.smoothTime * 25) / 25;
-              if (Math.abs(video.currentTime - sn) > .02) try { video.currentTime = sn; } catch {}
-            } else {
-              if (Math.abs(video.currentTime - scrub.smoothTime) > .002) try { video.currentTime = scrub.smoothTime; } catch {}
-            }
+            const target = computeTargetTime(p, scrub.duration);
+            const diff = target - scrub.smoothTime;
+            if (Math.abs(diff) > .001) scrub.smoothTime += diff * .25;
+            else scrub.smoothTime = target;
+            doSeek(scrub.smoothTime);
           }
 
           // Parallax + fade during programmatic scroll
           if (!isMobile) {
             const py = (p - .5) * (isFirefox ? 5 : 12);
-            getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+            heroCanvas.style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
           }
           if (heroContent) heroContent.style.opacity = Math.max(0, 1 - (p / 0.42)).toFixed(3);
           if (heroEl) heroEl.style.setProperty('--overlay-opacity', Math.max(0, 1 - p).toFixed(3));
@@ -1435,9 +1450,8 @@
         else fastScrollTo(targetY);
       };
 
-      // Mobile: two-phase ease (gentle hero opener → fast tail to target)
+      /* Mobile: two-phase ease (gentle hero opener → fast tail) */
       const mobileScroll = (targetY) => {
-        engageHeroAnimation();
         stopAnim();
         const heroEnd = layout.trackScrollable;
         const startY = window.scrollY || window.pageYOffset;
@@ -1487,10 +1501,10 @@
           else {
             af = 0;
             recalcLayout();
-            const freshRect = document.querySelector(location.hash || '#learn-more');
-            if (freshRect) {
+            const hashTarget = document.querySelector(location.hash || '#learn-more');
+            if (hashTarget) {
               const sy = window.scrollY || window.pageYOffset;
-              const fr = freshRect.getBoundingClientRect();
+              const fr = hashTarget.getBoundingClientRect();
               const fy = Math.max(0, Math.round(fr.top + sy - navH()));
               if (fy > sy + 2) fastScrollTo(fy);
             }
@@ -1520,7 +1534,6 @@
         } else if (!isMobile && atTop && (scrub.ready || fc.ready)) {
           playThenScroll(targetY);
         } else {
-          if (atTop && !heroEngaged) engageHeroAnimation();
           fastScrollTo(targetY);
         }
 
@@ -1532,7 +1545,7 @@
       });
     })();
 
-    /* ── Mobile: highlight service items (IntersectionObserver) ── */
+    /* ── Mobile: highlight service items ── */
     if (isMobile) {
       const items = document.querySelectorAll('.service-item');
       if (items.length) {

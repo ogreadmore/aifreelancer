@@ -755,16 +755,12 @@
         applyNavState();
       }
 
-      const MOBILE_VIDEO_SOURCES = [
-        'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4',
-        'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
-      ];
-      const DESKTOP_VIDEO_SOURCES = [
-        'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4',
-        'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4',
-        'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'
-      ];
-      const SOURCES = isMobile ? MOBILE_VIDEO_SOURCES : DESKTOP_VIDEO_SOURCES;
+      const SD_VIDEO_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
+      const HD_VIDEO_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
+      const FALLBACK_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+      const MOBILE_VIDEO_SOURCES = [SD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      const DESKTOP_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
+      const DESKTOP_LITE_VIDEO_SOURCES = [SD_VIDEO_URL, HD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const isFirefox = /firefox/i.test(navigator.userAgent);
       if (isFirefox) document.documentElement.classList.add('is-firefox');
       // Fallback: weaker desktops keep scroll-scrub, but with lighter styling/seek cadence.
@@ -784,6 +780,9 @@
         (isWindowsDesktop && !hasClearlyStrongDesktop)
       );
       if (desktopLiteMode) document.documentElement.classList.add('is-lite-desktop');
+      let activeSources = isMobile
+        ? MOBILE_VIDEO_SOURCES
+        : (desktopLiteMode ? DESKTOP_LITE_VIDEO_SOURCES : DESKTOP_VIDEO_SOURCES);
 
       let sourceIndex = 0, ready = false, duration = 0, targetTime = 0, raf = 0, lastInputTs = 0;
       let scrubPaused = false; 
@@ -838,6 +837,14 @@
         desktopLiteMode = true;
         document.documentElement.classList.add('is-lite-desktop');
         video.style.transform = '';
+        activeSources = DESKTOP_LITE_VIDEO_SOURCES;
+        sourceIndex = 0;
+        // If we were on the HD desktop source, switch down to SD immediately.
+        if ((video.currentSrc || video.src || '').indexOf('8134766-sd_426_226_25fps.mp4') === -1) {
+          ready = false;
+          setVideoSource(activeSources[sourceIndex]);
+          return;
+        }
         if (!ready) return;
         targetTime = computeTargetTime();
         smoothTime = targetTime;
@@ -990,9 +997,9 @@
       video.addEventListener('canplay', () => { if (!ready) initScrub(); });
       video.addEventListener('error', () => {
         sourceIndex += 1;
-        if (sourceIndex < SOURCES.length) {
+        if (sourceIndex < activeSources.length) {
           ready = false;
-          setVideoSource(SOURCES[sourceIndex]);
+          setVideoSource(activeSources[sourceIndex]);
         }
       });
 
@@ -1034,7 +1041,7 @@
           scheduleTick();
         }, { passive: true });
         window.addEventListener('load', refreshTrackMetrics, { passive: true });
-        setVideoSource(SOURCES[sourceIndex]);
+        setVideoSource(activeSources[sourceIndex]);
       }
 
       // ── About video: click-to-load + scroll-grow effect ──

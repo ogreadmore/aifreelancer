@@ -144,16 +144,31 @@
       -webkit-backdrop-filter: none; backdrop-filter: none;
       background: rgba(255,255,255,.96);
     }
+    .is-lite-desktop .scroll-track {
+      height: auto;
+    }
+    .is-lite-desktop .hero {
+      position: relative;
+      top: 0;
+      height: min(92vh, 760px);
+      min-height: 460px;
+      background: #fff;
+    }
     .is-lite-desktop .hero video {
       transform: scale(1.01);
       filter: none;
       will-change: auto;
+      opacity: 1;
+      transition: opacity .7s ease;
     }
     .is-lite-desktop .hero::after {
       -webkit-backdrop-filter: none; backdrop-filter: none;
       background:
         linear-gradient(to bottom, rgba(255,255,255,.52), rgba(255,255,255,.72)),
         radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.34), rgba(255,255,255,.12));
+    }
+    .is-lite-desktop.lite-video-faded .hero video {
+      opacity: 0;
     }
 
     .hero-content { position: relative; z-index: 2; width: min(94vw, 800px); margin: 0 auto; padding: 0 2rem 5rem; }
@@ -732,6 +747,7 @@
       const nav = document.getElementById('mainNav');
       const track = document.getElementById('track');
       const video = document.getElementById('bgVideo');
+      const rootEl = document.documentElement;
       const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
       function getNavThreshold() {
@@ -762,7 +778,7 @@
       const DESKTOP_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const DESKTOP_LITE_VIDEO_SOURCES = [HD_VIDEO_URL, SD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const isFirefox = /firefox/i.test(navigator.userAgent);
-      if (isFirefox) document.documentElement.classList.add('is-firefox');
+      if (isFirefox) rootEl.classList.add('is-firefox');
       // Fallback: weaker desktops use lighter styling and autoplay (not scroll-scrub).
       const ua = navigator.userAgent || '';
       const isWindowsDesktop = !isMobile && /Windows/i.test(ua);
@@ -779,7 +795,7 @@
         hasKnownLowDesktop ||
         (isWindowsDesktop && !hasClearlyStrongDesktop)
       );
-      if (desktopLiteMode) document.documentElement.classList.add('is-lite-desktop');
+      if (desktopLiteMode) rootEl.classList.add('is-lite-desktop');
       let activeSources = isMobile
         ? MOBILE_VIDEO_SOURCES
         : (desktopLiteMode ? DESKTOP_LITE_VIDEO_SOURCES : DESKTOP_VIDEO_SOURCES);
@@ -796,6 +812,7 @@
 
       function setVideoSource(url) {
         video.pause();
+        rootEl.classList.remove('lite-video-faded');
         video.removeAttribute('src');
         video.load();
         video.src = url;
@@ -832,10 +849,21 @@
       }
       refreshTrackMetrics();
 
+      function isLiteVideoNearEnd() {
+        if (!desktopLiteMode || !ready || !Number.isFinite(duration) || duration <= 0) return false;
+        return video.currentTime >= (duration - 0.35);
+      }
+
+      function updateLiteVideoFade() {
+        if (!desktopLiteMode) return;
+        if (isLiteVideoNearEnd()) rootEl.classList.add('lite-video-faded');
+        else rootEl.classList.remove('lite-video-faded');
+      }
+
       function enableDesktopLiteMode() {
         if (isMobile || desktopLiteMode) return;
         desktopLiteMode = true;
-        document.documentElement.classList.add('is-lite-desktop');
+        rootEl.classList.add('is-lite-desktop');
         video.style.transform = '';
         activeSources = DESKTOP_LITE_VIDEO_SOURCES;
         sourceIndex = 0;
@@ -848,9 +876,10 @@
         if (!ready) return;
         try {
           video.pause();
-          video.loop = true;
+          video.loop = false;
           video.playbackRate = 1;
-          if (video.currentTime < START_AT_SECONDS) video.currentTime = START_AT_SECONDS;
+          if (video.currentTime >= duration - 0.35) video.currentTime = 0;
+          rootEl.classList.remove('lite-video-faded');
           video.play().catch(() => {});
         } catch {}
       }
@@ -906,7 +935,8 @@
         raf = 0;
         if (!ready || scrubPaused) return;
         if (desktopLiteMode) {
-          if (video.paused) video.play().catch(() => {});
+          updateLiteVideoFade();
+          if (!isLiteVideoNearEnd() && video.paused) video.play().catch(() => {});
           return;
         }
 
@@ -962,7 +992,8 @@
       function scheduleTick() {
         if (!ready || scrubPaused) return;
         if (desktopLiteMode) {
-          if (video.paused) video.play().catch(() => {});
+          updateLiteVideoFade();
+          if (!isLiteVideoNearEnd() && video.paused) video.play().catch(() => {});
           return;
         }
         lastInputTs = performance.now();
@@ -975,13 +1006,12 @@
         ready = true;
 
         if (desktopLiteMode) {
-          const maxEnd = Math.max(0, duration - END_SAFETY_SECONDS);
-          const segmentStart = clamp(START_AT_SECONDS, 0, maxEnd);
-          targetTime = segmentStart;
-          smoothTime = segmentStart;
+          targetTime = 0;
+          smoothTime = 0;
           try {
-            video.currentTime = segmentStart;
-            video.loop = true;
+            rootEl.classList.remove('lite-video-faded');
+            video.currentTime = 0;
+            video.loop = false;
             video.playbackRate = 1;
             video.play().catch(() => {});
           } catch {}
@@ -1010,6 +1040,14 @@
 
       video.addEventListener('loadedmetadata', initScrub);
       video.addEventListener('canplay', () => { if (!ready) initScrub(); });
+      video.addEventListener('timeupdate', () => {
+        if (!desktopLiteMode) return;
+        updateLiteVideoFade();
+      });
+      video.addEventListener('ended', () => {
+        if (!desktopLiteMode) return;
+        rootEl.classList.add('lite-video-faded');
+      });
       video.addEventListener('error', () => {
         sourceIndex += 1;
         if (sourceIndex < activeSources.length) {

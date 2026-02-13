@@ -558,9 +558,9 @@
     const HIGH_END = (CORES >= 8) || (MEM_GB >= 8) || (!MEM_GB && CORES >= 6);
     const ENABLE_PARALLAX = !isMobile && HIGH_END && !reducedMotion;
     const FRAME_PROFILE = isPhone
-      ? { count: 20, scale: 1, yieldEvery: 2 }
+      ? { count: 32, scale: 1, yieldEvery: 2 }
       : isTablet
-        ? { count: 28, scale: 0.70, yieldEvery: 2 }
+        ? { count: 40, scale: 0.70, yieldEvery: 2 }
         : LOW_END
           ? { count: 18, scale: 0.45, yieldEvery: 2 }
           : HIGH_END
@@ -618,6 +618,7 @@
       ctx: null,        // drawing context for heroCanvas
       lastIdx: -1,      // last displayed frame index
       lastTarget: -1,   // last requested frame index
+      lastDir: 1,       // 1 forward, -1 backward
       width: 0,
       height: 0,
       segStart: 0,
@@ -647,6 +648,7 @@
       fc.extracting = false;
       fc.lastIdx = -1;
       fc.lastTarget = -1;
+      fc.lastDir = 1;
       fc.ctx = null;
       fc.width = 0;
       fc.height = 0;
@@ -745,10 +747,8 @@
       if (fc.loaded[target]) return target;
       if (dir >= 0) {
         for (let left = target - 1; left >= 0; left--) if (fc.loaded[left]) return left;
-        for (let right = target + 1; right < FRAME_COUNT; right++) if (fc.loaded[right]) return right;
       } else {
         for (let right = target + 1; right < FRAME_COUNT; right++) if (fc.loaded[right]) return right;
-        for (let left = target - 1; left >= 0; left--) if (fc.loaded[left]) return left;
       }
       return -1;
     }
@@ -761,10 +761,16 @@
         video.pause();
       }
       const target = Math.round(clamp(progress, 0, 1) * (FRAME_COUNT - 1));
-      const dir = (fc.lastTarget < 0 || target >= fc.lastTarget) ? 1 : -1;
+      if (fc.lastTarget >= 0) {
+        if (target > fc.lastTarget) fc.lastDir = 1;
+        else if (target < fc.lastTarget) fc.lastDir = -1;
+      }
       fc.lastTarget = target;
+      const dir = fc.lastDir;
       const idx = nearestDecodedIndex(target, dir);
       if (idx < 0 || idx === fc.lastIdx) return;
+      if (fc.lastIdx >= 0 && dir >= 0 && idx < fc.lastIdx) return;
+      if (fc.lastIdx >= 0 && dir < 0 && idx > fc.lastIdx) return;
       const frame = fc.frames[idx];
       if (!frame) return;
       fc.lastIdx = idx;
@@ -1099,6 +1105,7 @@
       fc.complete = false;
       fc.lastIdx = -1;
       fc.lastTarget = -1;
+      fc.lastDir = 1;
 
       recalcLayout();
       drawStartFrame();
@@ -1319,9 +1326,9 @@
           return;
         }
 
-        const heroPxPerMs = isTablet ? 0.34 : (isPhone ? 0.56 : 0.9);
-        const heroMinDur = isTablet ? 1400 : 900;
-        const heroMaxDur = isTablet ? 3600 : 2800;
+        const heroPxPerMs = isTablet ? 0.25 : (isPhone ? 0.20 : 0.9);
+        const heroMinDur = isTablet ? 1900 : (isPhone ? 2200 : 900);
+        const heroMaxDur = isTablet ? 4600 : (isPhone ? 5200 : 2800);
         const heroDur = Math.min(heroMaxDur, Math.max(heroMinDur, heroDist / heroPxPerMs));
         runScroll(heroStop, heroDur, null, () => {
           if (targetY > heroStop + 2) smoothScrollTo(targetY);

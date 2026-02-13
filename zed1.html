@@ -550,6 +550,7 @@
     const isMobile = window.matchMedia(MOBILE_MQ).matches;
     const isPhone = window.matchMedia(PHONE_MQ).matches;
     const isFirefox = /firefox/i.test(navigator.userAgent);
+    const isChrome = /chrome|chromium|crios/i.test(navigator.userAgent) && !/edg|opr/i.test(navigator.userAgent);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const CORES = Number(navigator.hardwareConcurrency) || 0;
     const MEM_GB = Number(navigator.deviceMemory) || 0;
@@ -558,11 +559,11 @@
     const HIGH_END = (CORES >= 8) || (MEM_GB >= 8) || (!MEM_GB && CORES >= 6);
     const ENABLE_PARALLAX = !isMobile && HIGH_END && !reducedMotion;
     const FRAME_PROFILE = isPhone
-      ? { count: 32, scale: 1, yieldEvery: 2 }
+      ? { count: 30, scale: 1, yieldEvery: 2 }
       : isTablet
         ? { count: 40, scale: 0.70, yieldEvery: 2 }
         : LOW_END
-          ? { count: 18, scale: 0.45, yieldEvery: 2 }
+          ? { count: 22, scale: 0.45, yieldEvery: 2 }
           : HIGH_END
             ? { count: 56, scale: 0.75, yieldEvery: 4 }
             : { count: 36, scale: 0.58, yieldEvery: 3 };
@@ -699,8 +700,31 @@
     }
 
     function buildDecodeOrder(n) {
-      if (LOW_END || isMobile) {
+      if (isMobile) {
         return Array.from({ length: n }, (_, i) => i);
+      }
+      if (LOW_END) {
+        const warmCount = Math.min(8, n);
+        const warm = Array.from({ length: warmCount }, (_, i) => i);
+        const rest = [];
+        const seen = new Uint8Array(n);
+        warm.forEach(i => { seen[i] = 1; });
+        const push = (i) => {
+          if (i < 0 || i >= n || seen[i]) return;
+          seen[i] = 1;
+          rest.push(i);
+        };
+        push(n - 1);
+        const q = [[warmCount - 1, n - 1]];
+        while (q.length) {
+          const [a, b] = q.shift();
+          if ((b - a) <= 1) continue;
+          const mid = Math.floor((a + b) / 2);
+          push(mid);
+          q.push([a, mid], [mid, b]);
+        }
+        for (let i = warmCount; i < n; i++) push(i);
+        return warm.concat(rest);
       }
       const out = [];
       const seen = new Uint8Array(n);
@@ -838,7 +862,7 @@
       const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
       if (!offCtx) { fc.extracting = false; fc.error = true; return; }
 
-      const hasCreateBitmap = typeof createImageBitmap === 'function';
+      const useBitmapFrames = (typeof createImageBitmap === 'function') && !(isChrome && (isMobile || LOW_END));
       const order = buildDecodeOrder(FRAME_COUNT);
 
       try {
@@ -851,7 +875,7 @@
           if (runId !== extractGen) { fc.extracting = false; return; }
           offCtx.drawImage(extractorVideo, 0, 0, fc.width, fc.height);
           let frame;
-          if (hasCreateBitmap) {
+          if (useBitmapFrames) {
             frame = await createImageBitmap(offscreen);
           } else {
             const snap = document.createElement('canvas');

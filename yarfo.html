@@ -755,7 +755,8 @@
       applyNavState();
 
       const HD_VIDEO_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
-      const VIDEO_SOURCES = [HD_VIDEO_URL];
+      const FALLBACK_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+      const VIDEO_SOURCES = [HD_VIDEO_URL, FALLBACK_VIDEO_URL];
       const isFirefox = /firefox/i.test(navigator.userAgent);
       if (isFirefox) rootEl.classList.add('is-firefox');
       const activeSources = VIDEO_SOURCES;
@@ -772,18 +773,12 @@
       const HW_CORES = navigator.hardwareConcurrency || 0;
       const HW_MEM_GB = navigator.deviceMemory || 0;
       const LOW_END = (HW_CORES > 0 && HW_CORES <= 2) || (HW_MEM_GB > 0 && HW_MEM_GB <= 2);
-      const SLOW_DEVICE = (HW_CORES > 0 && HW_CORES <= 4) || (HW_MEM_GB > 0 && HW_MEM_GB <= 4);
-      const FAST_DEVICE = !SLOW_DEVICE && ((HW_CORES >= 8) || (HW_MEM_GB >= 8));
-      const USE_FRAME_CACHE = !isMobile || FAST_DEVICE;
 
-      const MOBILE_FPS_TARGET = SLOW_DEVICE ? 7 : (FAST_DEVICE ? 12 : 9);
-      const DESKTOP_FPS_TARGET = SLOW_DEVICE ? 10 : (FAST_DEVICE ? 16 : 13);
-      const MOBILE_FRAME_COUNT = Math.round(MOBILE_SEGMENT_DURATION_SECONDS * MOBILE_FPS_TARGET);
-      const DESKTOP_FRAME_COUNT = Math.round(SEGMENT_DURATION_SECONDS * DESKTOP_FPS_TARGET);
-      const FRAME_COUNT = isMobile ? MOBILE_FRAME_COUNT : DESKTOP_FRAME_COUNT;
-      const FRAME_LERP_SPEED = isMobile ? (SLOW_DEVICE ? 0.32 : 0.4) : (SLOW_DEVICE ? 0.24 : 0.27);
+      const FRAME_COUNT = LOW_END
+        ? (isMobile ? 30 : 40)
+        : (isMobile ? 46 : 68);
+      const FRAME_LERP_SPEED = isMobile ? 0.34 : 0.27;
       const FRAME_BLEND = !isFirefox;
-      const FRAME_MIX_EPSILON = isMobile ? (SLOW_DEVICE ? 0.0038 : 0.0018) : 0.006;
       const FRAME_RENDER_EPSILON = 0.0008;
 
       const fc = {
@@ -792,7 +787,6 @@
         extracting: false,
         error: false,
         token: 0,
-        deferSwap: false,
         ctx: null,
         lastA: -1,
         lastB: -1,
@@ -800,14 +794,8 @@
         targetTime: 0,
         renderTime: 0,
       };
-      let frameExtractTimer = 0;
-      const EXTRACTION_START_DELAY_MS = 0;
 
       function resetFrameCache(resetError = true) {
-        if (frameExtractTimer) {
-          clearTimeout(frameExtractTimer);
-          frameExtractTimer = 0;
-        }
         fc.token += 1;
         if (fc.frames.length) {
           fc.frames.forEach((frame) => {
@@ -819,7 +807,6 @@
         fc.frames = [];
         fc.ready = false;
         fc.extracting = false;
-        fc.deferSwap = false;
         fc.ctx = null;
         fc.lastA = -1;
         fc.lastB = -1;
@@ -835,27 +822,7 @@
         video.style.display = 'block';
       }
 
-      const getHeroVisual = () => ((USE_FRAME_CACHE && fc.ready && !fc.deferSwap) ? heroCanvas : video);
-
-      function maybeActivateCachedCanvas(nowTs = performance.now()) {
-        if (!USE_FRAME_CACHE || !fc.ready || !fc.deferSwap || !heroCanvas) return;
-        if (isMobile && (nowTs - lastInputTs) < 180) return;
-        fc.deferSwap = false;
-        heroCanvas.style.display = 'block';
-        video.style.display = 'none';
-        video.pause();
-        displayCachedFrameByTime(fc.renderTime);
-      }
-
-      function queueFrameExtraction(delayMs = EXTRACTION_START_DELAY_MS) {
-        if (!USE_FRAME_CACHE || fc.ready || fc.error || fc.extracting) return;
-        if (frameExtractTimer) clearTimeout(frameExtractTimer);
-        frameExtractTimer = setTimeout(() => {
-          frameExtractTimer = 0;
-          if (!USE_FRAME_CACHE || fc.ready || fc.error || fc.extracting) return;
-          extractFrames();
-        }, Math.max(0, delayMs));
-      }
+      const getHeroVisual = () => (fc.ready ? heroCanvas : video);
 
       function setVideoSource(url) {
         resetFrameCache();
@@ -944,7 +911,7 @@
         const a = Math.floor(scaled);
         const b = Math.min(fc.frames.length - 1, a + 1);
         const mix = scaled - a;
-        if (a === fc.lastA && b === fc.lastB && Math.abs(mix - fc.lastMix) < FRAME_MIX_EPSILON) return;
+        if (a === fc.lastA && b === fc.lastB && Math.abs(mix - fc.lastMix) < 0.006) return;
         fc.lastA = a;
         fc.lastB = b;
         fc.lastMix = mix;
@@ -970,7 +937,7 @@
       }
 
       async function extractFrames() {
-        if (!USE_FRAME_CACHE || fc.extracting || fc.ready || fc.error) return;
+        if (fc.extracting || fc.ready || fc.error) return;
         if (!ready || duration <= 0) return;
         const { segmentStart, segmentEnd } = getSegmentBounds();
         const span = segmentEnd - segmentStart;
@@ -983,7 +950,7 @@
         fc.extracting = true;
         const videoW = video.videoWidth || 640;
         const videoH = video.videoHeight || 360;
-        const scale = 1;
+        const scale = isMobile ? 1 : (LOW_END ? 0.42 : 0.5);
         const cacheW = Math.max(2, Math.round(videoW * scale));
         const cacheH = Math.max(2, Math.round(videoH * scale));
         const buffer = document.createElement('canvas');
@@ -1141,26 +1108,19 @@
         );
         fc.targetTime = synced;
         fc.renderTime = synced;
-        if (isMobile && USE_FRAME_CACHE && (performance.now() - lastInputTs) < 180) {
-          fc.deferSwap = true;
-          heroCanvas.style.display = 'none';
-          video.style.display = 'block';
-        } else {
-          fc.deferSwap = false;
-          heroCanvas.style.display = 'block';
-          video.style.display = 'none';
-          video.pause();
-          displayCachedFrameByTime(fc.renderTime);
-        }
+        heroCanvas.style.display = 'block';
+        video.style.display = 'none';
+        video.pause();
+        displayCachedFrameByTime(fc.renderTime);
       }
 
       let lastSeekTs = 0;
       let smoothTime = 0; 
-      const LERP_SPEED = isMobile ? (USE_FRAME_CACHE ? 0.11 : 0.2) : 0.12; 
-      const LERP_SPEED_FF = isMobile ? (USE_FRAME_CACHE ? 0.1 : 0.16) : 0.1;
-      const SEEK_THRESHOLD = isMobile ? (USE_FRAME_CACHE ? 0.006 : 0.0025) : 0.002; 
-      const SEEK_COOLDOWN = isMobile ? (USE_FRAME_CACHE ? (SLOW_DEVICE ? 8 : 0) : 0) : 0; 
-      const MOBILE_TOUCH_THRESHOLD = 0.003;
+      const LERP_SPEED = isMobile ? 0.11 : 0.12; 
+      const LERP_SPEED_FF = isMobile ? 0.1 : 0.1;
+      const SEEK_THRESHOLD = isMobile ? 0.015 : 0.002; 
+      const SEEK_COOLDOWN = isMobile ? 14 : 0; 
+      const MOBILE_TOUCH_THRESHOLD = 0.004;
       const MOBILE_PREROLL_MS = 1000;
       const MOBILE_PREROLL_BOOST = 1 / 6; // ~1 second in a 6-second mobile segment
       let mobilePreRollBoost = 0;
@@ -1174,18 +1134,15 @@
 
         const diff = targetTime - smoothTime;
         const mobileFingerActive = isMobile && (ts - lastTouchInputTs) < 140;
-        if (mobileFingerActive && (!USE_FRAME_CACHE || !fc.ready)) {
+        if (mobileFingerActive) {
           smoothTime = targetTime;
         } else {
           const baseLerp = isFirefox ? LERP_SPEED_FF : LERP_SPEED;
-          const lerp = mobileFingerActive ? Math.max(baseLerp, 0.4) : baseLerp;
-          if (Math.abs(diff) > 0.001) smoothTime += diff * lerp;
+          if (Math.abs(diff) > 0.001) smoothTime += diff * baseLerp;
           else smoothTime = targetTime;
         }
 
-        maybeActivateCachedCanvas(ts);
-
-        if (USE_FRAME_CACHE && fc.ready && !fc.deferSwap) {
+        if (!fc.extracting && fc.ready) {
           fc.targetTime = smoothTime;
           const frameDiff = fc.targetTime - fc.renderTime;
           if (Math.abs(frameDiff) > FRAME_RENDER_EPSILON) {
@@ -1194,7 +1151,7 @@
             fc.renderTime = fc.targetTime;
           }
           displayCachedFrameByTime(fc.renderTime);
-        } else {
+        } else if (!fc.extracting) {
           if (isFirefox) {
             const snapped = Math.round(smoothTime / (1 / 25)) * (1 / 25);
             if (Math.abs(video.currentTime - snapped) > 0.035 && (ts - lastSeekTs) > 33) {
@@ -1222,9 +1179,6 @@
       function scheduleTick() {
         if (!ready || scrubPaused) return;
         lastInputTs = performance.now();
-        if (USE_FRAME_CACHE && !fc.ready && !fc.extracting && !fc.error) {
-          queueFrameExtraction(0);
-        }
         if (!raf) raf = requestAnimationFrame(tick);
       }
       function initScrub() {
@@ -1252,9 +1206,9 @@
         fc.targetTime = targetTime;
         fc.renderTime = smoothTime;
         video.pause();
-        if (USE_FRAME_CACHE && !fc.ready && !fc.extracting && !fc.error) {
-          queueFrameExtraction();
-        } else if (USE_FRAME_CACHE && fc.ready) {
+        if (!fc.ready && !fc.extracting && !fc.error) {
+          extractFrames();
+        } else if (fc.ready) {
           displayCachedFrameByTime(fc.renderTime);
         }
         scheduleTick();

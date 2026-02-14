@@ -706,6 +706,28 @@
       margin-bottom: clamp(1.35rem, 2.9vw, 2.1rem);
     }
 
+    .testimonials-scroll .testimonials-head,
+    .testimonials-scroll .testimonials-track-wrap {
+      opacity: 0;
+      transform: translate3d(0, 26px, 0) scale(.988);
+      filter: blur(3px);
+      transition:
+        opacity .62s cubic-bezier(.22, 1, .36, 1),
+        transform .72s cubic-bezier(.16, 1, .3, 1),
+        filter .62s ease;
+    }
+
+    .testimonials-scroll .testimonials-track-wrap {
+      transition-delay: 80ms;
+    }
+
+    .testimonials-scroll.in-view .testimonials-head,
+    .testimonials-scroll.in-view .testimonials-track-wrap {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
+    }
+
     .testimonials-track-wrap {
       height: clamp(240px, 42vh, 330px);
       overflow: hidden;
@@ -1288,7 +1310,7 @@
             id="heroVideoFrame"
             title="AI Freelancer Intro"
             loading="lazy"
-            data-src="https://www.youtube-nocookie.com/embed/Hx7hXZxoXz4?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1"
+            data-src="https://www.youtube-nocookie.com/embed/Hx7hXZxoXz4?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1&enablejsapi=1"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
@@ -2124,10 +2146,37 @@
         if (!heroVideoTrigger || !heroVideoEmbed || !heroVideoFrame || !heroVideoClose) return;
 
         const OPEN_CLASS = 'is-open';
+        let stateListenerBound = false;
+        let bindRetries = 0;
+        let bindTimer = 0;
 
         const isOpen = () => heroVideoTrigger.classList.contains(OPEN_CLASS);
         const loadVideo = () => { heroVideoFrame.src = heroVideoFrame.dataset.src || ''; };
         const unloadVideo = () => { heroVideoFrame.src = ''; };
+        const postPlayerCommand = (func, args = []) => {
+          if (!heroVideoFrame.contentWindow) return;
+          heroVideoFrame.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func,
+            args
+          }), 'https://www.youtube-nocookie.com');
+        };
+        const stopBindTimer = () => {
+          if (!bindTimer) return;
+          window.clearTimeout(bindTimer);
+          bindTimer = 0;
+        };
+        const scheduleBindStateListener = () => {
+          stopBindTimer();
+          bindRetries = 0;
+          const tick = () => {
+            if (!isOpen() || stateListenerBound || bindRetries >= 12) return;
+            bindRetries += 1;
+            postPlayerCommand('addEventListener', ['onStateChange']);
+            bindTimer = window.setTimeout(tick, 220);
+          };
+          tick();
+        };
         const centerVideoInViewport = (behavior = 'smooth') => {
           const rect = heroVideoTrigger.getBoundingClientRect();
           const viewportH = window.innerHeight || document.documentElement.clientHeight || 0;
@@ -2181,6 +2230,9 @@
 
         const closeInline = (restoreFocus = true) => {
           if (!isOpen()) return;
+          stopBindTimer();
+          stateListenerBound = false;
+          bindRetries = 0;
           heroVideoTrigger.classList.remove(OPEN_CLASS);
           heroVideoTrigger.setAttribute('aria-expanded', 'false');
           heroVideoEmbed.setAttribute('aria-hidden', 'true');
@@ -2206,6 +2258,41 @@
         heroVideoClose.addEventListener('click', (event) => {
           event.stopPropagation();
           closeInline(true);
+        });
+
+        heroVideoFrame.addEventListener('load', () => {
+          stateListenerBound = false;
+          scheduleBindStateListener();
+        });
+
+        window.addEventListener('message', (event) => {
+          if (!isOpen()) return;
+          if (event.origin !== 'https://www.youtube-nocookie.com' && event.origin !== 'https://www.youtube.com') return;
+          if (event.source !== heroVideoFrame.contentWindow) return;
+
+          let payload = event.data;
+          if (typeof payload === 'string') {
+            try {
+              payload = JSON.parse(payload);
+            } catch {
+              return;
+            }
+          }
+          if (!payload || typeof payload !== 'object') return;
+
+          if (payload.event === 'onReady') {
+            stateListenerBound = true;
+            stopBindTimer();
+            postPlayerCommand('addEventListener', ['onStateChange']);
+            return;
+          }
+
+          if (payload.event === 'onStateChange') {
+            stateListenerBound = true;
+            stopBindTimer();
+            const state = Number(payload.info);
+            if (state === 0) closeInline(false);
+          }
         });
 
         document.addEventListener('keydown', (event) => {
@@ -2323,13 +2410,22 @@
         const io = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             const isVisible = entry.isIntersecting && entry.intersectionRatio > 0.08;
-            // Keep the testimonials section stable once revealed to avoid
-            // edge-threshold flicker on desktop Chrome.
             if (entry.target.id === 'testimonialsScroll') {
-              if (isVisible) {
-                entry.target.classList.add('in-view');
-                io.unobserve(entry.target);
-              }
+              const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+              const top = entry.boundingClientRect.top;
+              const bottom = entry.boundingClientRect.bottom;
+              const currentlyVisible = entry.target.classList.contains('in-view');
+              const shouldReveal = entry.isIntersecting
+                && entry.intersectionRatio > 0.1
+                && top < (vh * 0.84)
+                && bottom > (vh * 0.16);
+              const shouldHide = !entry.isIntersecting
+                || entry.intersectionRatio < 0.04
+                || top >= (vh * 0.94)
+                || bottom <= (vh * 0.06);
+
+              if (!currentlyVisible && shouldReveal) entry.target.classList.add('in-view');
+              else if (currentlyVisible && shouldHide) entry.target.classList.remove('in-view');
               return;
             }
             entry.target.classList.toggle('in-view', isVisible);

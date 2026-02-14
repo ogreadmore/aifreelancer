@@ -218,15 +218,15 @@
 
     .nav-cta:hover,
     .nav-cta:focus-visible {
-      animation-play-state: paused;
-      transform: scale(1.1);
+      animation: accentShift 10s ease infinite;
+      transform: scale(1.08);
       box-shadow: 0 8px 24px rgba(138, 59, 241, .2), 0 0 12px rgba(217, 65, 161, .14);
       filter: brightness(1.03);
     }
 
     .nav-cta.pop {
-      animation-play-state: paused;
-      transform: scale(1.14);
+      animation: accentShift 10s ease infinite;
+      transform: scale(1.12);
       box-shadow: 0 12px 30px rgba(138, 59, 241, .24), 0 0 18px rgba(217, 65, 161, .18);
     }
 
@@ -847,7 +847,7 @@
       padding: .98rem 1.06rem 1.08rem;
       color: var(--text);
       background: #ffffff;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, .08), 0 1px 4px rgba(15, 23, 42, .04);
+      box-shadow: none;
       display: grid;
       gap: .34rem;
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
@@ -914,7 +914,7 @@
       border: 1px solid #d0d4dc;
       background: #ffffff;
       transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
-      box-shadow: 0 6px 14px rgba(15, 23, 42, .08);
+      box-shadow: none;
     }
 
     .contact-social:hover,
@@ -1266,7 +1266,7 @@
             id="heroVideoFrame"
             title="AI Freelancer Intro"
             loading="lazy"
-            data-src="https://www.youtube-nocookie.com/embed/4UZaMDg3GZk?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1"
+            data-src="https://www.youtube-nocookie.com/embed/Hx7hXZxoXz4?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>

@@ -565,6 +565,28 @@
       color: #626262;
     }
 
+    .service-item.center-active {
+      background:
+        linear-gradient(rgba(255, 255, 255, .92), rgba(255, 255, 255, .92)) padding-box,
+        linear-gradient(105deg, rgba(75, 136, 218, .36), rgba(138, 59, 241, .36), rgba(217, 65, 161, .36), rgba(229, 72, 77, .36)) border-box;
+      border-color: transparent;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(138, 59, 241, .1), 0 2px 8px rgba(10, 10, 10, .04);
+    }
+
+    .service-item.center-active .service-name {
+      background: var(--accent-gradient);
+      background-size: 180% 180%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 9s ease infinite;
+    }
+
+    .service-item.center-active .service-desc {
+      color: #626262;
+    }
+
     .service-list:not(.in-view) .service-item {
       opacity: 0;
       filter: blur(2px);
@@ -2318,6 +2340,80 @@
         });
 
         revealEls.forEach((el) => io.observe(el));
+      })();
+
+      (() => {
+        const mq = window.matchMedia('(max-width: 940px)');
+        const serviceList = document.getElementById('serviceList');
+        if (!serviceList) return;
+
+        const rows = Array.from(serviceList.querySelectorAll('.service-item'));
+        if (!rows.length) return;
+
+        let raf = 0;
+        let activeRow = null;
+
+        const clearActive = () => {
+          if (!activeRow) return;
+          activeRow.classList.remove('center-active');
+          activeRow = null;
+        };
+
+        const updateActiveRow = () => {
+          raf = 0;
+          if (!mq.matches) {
+            clearActive();
+            return;
+          }
+
+          const viewH = window.innerHeight || document.documentElement.clientHeight || 0;
+          if (!viewH) return;
+
+          const centerY = viewH * 0.5;
+          let bestRow = null;
+          let bestDist = Infinity;
+
+          rows.forEach((row) => {
+            const rect = row.getBoundingClientRect();
+            if (rect.bottom <= 0 || rect.top >= viewH) return;
+            const rowCenter = rect.top + rect.height * 0.5;
+            const dist = Math.abs(rowCenter - centerY);
+            if (dist < bestDist) {
+              bestDist = dist;
+              bestRow = row;
+            }
+          });
+
+          if (bestRow === activeRow) return;
+          if (activeRow) activeRow.classList.remove('center-active');
+          activeRow = bestRow;
+          if (activeRow) activeRow.classList.add('center-active');
+        };
+
+        const queueUpdate = () => {
+          if (raf) return;
+          raf = window.requestAnimationFrame(updateActiveRow);
+        };
+
+        const onMqChange = () => {
+          if (!mq.matches) {
+            clearActive();
+            return;
+          }
+          queueUpdate();
+        };
+
+        window.addEventListener('scroll', queueUpdate, { passive: true });
+        window.addEventListener('resize', queueUpdate, { passive: true });
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener('resize', queueUpdate, { passive: true });
+          window.visualViewport.addEventListener('scroll', queueUpdate, { passive: true });
+        }
+
+        if (typeof mq.addEventListener === 'function') mq.addEventListener('change', onMqChange);
+        else if (typeof mq.addListener === 'function') mq.addListener(onMqChange);
+
+        queueUpdate();
       })();
 
       (() => {

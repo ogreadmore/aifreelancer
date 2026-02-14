@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1393,10 +1394,19 @@
 
         const colors = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D'];
         const emojiCycle = ['😄', '😁', '🚀', '🥇', '🏆', '👍', '🙏', '💯', '🚀', '🤩'];
-        const emojiStride = 4;
+        const cpuCores = navigator.hardwareConcurrency || 0;
+        const memoryGb = navigator.deviceMemory || 0;
+        const isLowPerf = (cpuCores > 0 && cpuCores <= 4) || (memoryGb > 0 && memoryGb <= 4);
+        const isMidPerf = !isLowPerf && ((cpuCores > 0 && cpuCores <= 8) || (memoryGb > 0 && memoryGb <= 8));
+        const qualityScale = isLowPerf ? 0.4 : (isMidPerf ? 0.62 : 0.82);
+        const maxParticles = isLowPerf ? 68 : (isMidPerf ? 96 : 128);
+        const emojiStride = isLowPerf ? 999 : (isMidPerf ? 7 : 5);
+        const targetFps = isLowPerf ? 30 : (isMidPerf ? 45 : 60);
+        const frameBudgetMs = 1000 / targetFps;
         const particles = [];
         let raf = 0;
         let dpr = 1;
+        let lastFrameTs = 0;
 
         const resize = () => {
           dpr = window.devicePixelRatio || 1;
@@ -1430,8 +1440,13 @@
           ctx.restore();
         };
 
-        const step = () => {
+        const step = (ts = performance.now()) => {
           raf = 0;
+          if (lastFrameTs && (ts - lastFrameTs) < frameBudgetMs) {
+            if (particles.length) raf = window.requestAnimationFrame(step);
+            return;
+          }
+          lastFrameTs = ts;
           ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
           for (let i = particles.length - 1; i >= 0; i -= 1) {
@@ -1463,7 +1478,9 @@
         };
 
         const burstFromButton = (originX, originY, spread = 1, count = 64, angleBias = 0, emojiOffset = 0) => {
-          for (let i = 0; i < count; i += 1) {
+          const remainingBudget = Math.max(0, maxParticles - particles.length);
+          const spawnCount = Math.min(count, remainingBudget);
+          for (let i = 0; i < spawnCount; i += 1) {
             const angle = (Math.PI * 0.72) + angleBias + ((Math.random() - 0.5) * Math.PI * 0.58);
             const speed = (8.5 + Math.random() * 13) * spread;
             const useRect = Math.random() > 0.3;
@@ -1501,13 +1518,20 @@
           const originX = rect.left + rect.width * 0.52;
           const originY = rect.top + rect.height * 0.82;
           const isCoarse = window.matchMedia('(pointer: coarse)').matches;
-          const fanBiases = [-0.14, 0.08];
-          const burstCount = isCoarse ? 38 : 56;
+          const fanBiases = isLowPerf ? [-0.06] : [-0.14, 0.08];
+          const baseCount = isCoarse ? 24 : 36;
+          const burstCount = Math.max(10, Math.round(baseCount * qualityScale));
           const burstEmojiOffset = 0;
 
           fanBiases.forEach((bias) => {
             burstFromButton(originX, originY, 1.04, burstCount, bias, burstEmojiOffset);
           });
+        });
+
+        document.addEventListener('visibilitychange', () => {
+          if (!document.hidden) return;
+          particles.length = 0;
+          ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
         });
 
         resize();

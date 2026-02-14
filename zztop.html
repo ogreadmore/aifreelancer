@@ -219,7 +219,7 @@
     .nav-cta:hover,
     .nav-cta:focus-visible {
       animation-play-state: paused;
-      transform: scale(1.08);
+      transform: scale(1.1);
       box-shadow: 0 8px 24px rgba(138, 59, 241, .2), 0 0 12px rgba(217, 65, 161, .14);
       filter: brightness(1.03);
     }
@@ -842,19 +842,15 @@
 
     .contact-call {
       text-decoration: none;
-      border: 1.5px solid transparent;
-      border-radius: 18px;
+      border: 1px solid #d2d5dc;
+      border-radius: 14px;
       padding: .98rem 1.06rem 1.08rem;
       color: var(--text);
-      background:
-        linear-gradient(#fff, #fff) padding-box,
-        var(--accent-gradient) border-box;
-      background-size: auto, 180% 180%;
-      animation: accentShift 10s ease infinite;
-      box-shadow: 0 10px 24px rgba(138, 59, 241, .13), 0 2px 8px rgba(10, 10, 10, .05);
+      background: #ffffff;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .08), 0 1px 4px rgba(15, 23, 42, .04);
       display: grid;
       gap: .34rem;
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
 
     .contact-call-kicker {
@@ -877,6 +873,12 @@
     .contact-call:hover,
     .contact-call:focus-visible {
       transform: translateY(-2px) scale(1.015);
+      border-color: transparent;
+      background:
+        linear-gradient(#fff, #fff) padding-box,
+        var(--accent-gradient) border-box;
+      background-size: auto, 180% 180%;
+      animation: accentShift 9s ease infinite;
       box-shadow: 0 14px 30px rgba(138, 59, 241, .22), 0 4px 14px rgba(10, 10, 10, .07);
       filter: brightness(1.02);
       outline: none;
@@ -904,21 +906,25 @@
     .contact-social {
       width: 3.95rem;
       height: 3.95rem;
-      border-radius: 14px;
+      border-radius: 11px;
       display: grid;
       place-items: center;
       text-decoration: none;
-      color: #ffffff;
-      background: var(--accent-gradient);
-      background-size: 180% 180%;
-      animation: accentShift 9s ease infinite;
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-      box-shadow: 0 8px 20px rgba(138, 59, 241, .17);
+      color: #4b5563;
+      border: 1px solid #d0d4dc;
+      background: #ffffff;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, .08);
     }
 
     .contact-social:hover,
     .contact-social:focus-visible {
       transform: translateY(-2px) scale(1.045);
+      color: #ffffff;
+      border-color: transparent;
+      background: var(--accent-gradient);
+      background-size: 180% 180%;
+      animation: accentShift 9s ease infinite;
       box-shadow: 0 13px 26px rgba(138, 59, 241, .27);
       filter: brightness(1.04);
       outline: none;
@@ -993,14 +999,14 @@
 
     .cta-button:hover,
     .cta-button:focus-visible {
-      transform: scale(1.04);
+      transform: scale(1.08);
       box-shadow: 0 10px 28px rgba(138, 59, 241, .24), 0 0 14px rgba(217, 65, 161, .16);
       filter: brightness(1.04);
       outline: none;
     }
 
     .cta-button.pop {
-      transform: scale(1.08);
+      transform: scale(1.12);
       box-shadow: 0 14px 32px rgba(138, 59, 241, .28), 0 0 18px rgba(217, 65, 161, .2);
     }
 
@@ -1234,7 +1240,7 @@
   <header class="hero" id="top">
     <div class="container">
       <h1 class="hero-title reveal">
-        <span class="hero-line-main">We love optimization. &#x2764;&#xfe0f;</span>
+        <span class="hero-line-main">We love optimization &#x2764;&#xfe0f;</span>
       </h1>
 
       <div class="featured reveal" id="heroVideoTrigger" role="button" tabindex="0" aria-label="Play intro video" aria-expanded="false">
@@ -1477,21 +1483,38 @@
         if (!ctx) return;
         document.body.appendChild(canvas);
 
-        const colors = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D'];
-        const emojiCycle = ['😄', '😁', '🚀', '🥇', '🏆', '👍', '🙏', '💯', '🚀', '🤩'];
+        const colors = ['#6BA9F4', '#A15CFF', '#FF5EB8', '#FF6A6F'];
+        const emojiCycle = ['😄', '🥰', '💯', '🏆', '🙏', '👍', '🚀'];
+        const shadeHex = (hex, amount) => {
+          const normalized = (hex || '').replace('#', '');
+          const full = normalized.length === 3
+            ? normalized.split('').map((ch) => ch + ch).join('')
+            : normalized.padEnd(6, '0').slice(0, 6);
+          const mix = amount < 0 ? 0 : 255;
+          const weight = Math.min(1, Math.max(0, Math.abs(amount)));
+          const clampChannel = (value) => Math.max(0, Math.min(255, Math.round(value)));
+          const r = parseInt(full.slice(0, 2), 16) || 0;
+          const g = parseInt(full.slice(2, 4), 16) || 0;
+          const b = parseInt(full.slice(4, 6), 16) || 0;
+          const sr = clampChannel((mix - r) * weight + r);
+          const sg = clampChannel((mix - g) * weight + g);
+          const sb = clampChannel((mix - b) * weight + b);
+          return `#${sr.toString(16).padStart(2, '0')}${sg.toString(16).padStart(2, '0')}${sb.toString(16).padStart(2, '0')}`;
+        };
         const cpuCores = navigator.hardwareConcurrency || 0;
         const memoryGb = navigator.deviceMemory || 0;
         const isLowPerf = (cpuCores > 0 && cpuCores <= 4) || (memoryGb > 0 && memoryGb <= 4);
         const isMidPerf = !isLowPerf && ((cpuCores > 0 && cpuCores <= 8) || (memoryGb > 0 && memoryGb <= 8));
-        const qualityScale = isLowPerf ? 0.4 : (isMidPerf ? 0.62 : 0.82);
-        const maxParticles = isLowPerf ? 68 : (isMidPerf ? 96 : 128);
-        const emojiStride = isLowPerf ? 999 : (isMidPerf ? 7 : 5);
+        const qualityScale = isLowPerf ? 0.42 : (isMidPerf ? 0.78 : 1.02);
+        const maxParticles = isLowPerf ? 74 : (isMidPerf ? 124 : 172);
+        const emojiStride = isLowPerf ? 999 : (isMidPerf ? 8 : 6);
         const targetFps = isLowPerf ? 30 : (isMidPerf ? 45 : 60);
         const frameBudgetMs = 1000 / targetFps;
         const particles = [];
         let raf = 0;
         let dpr = 1;
         let lastFrameTs = 0;
+        let sparkleInterval = 0;
 
         const resize = () => {
           dpr = window.devicePixelRatio || 1;
@@ -1507,16 +1530,43 @@
           ctx.translate(p.x, p.y);
           ctx.rotate(p.rot);
           ctx.globalAlpha = Math.max(0, Math.min(1, p.life));
-          ctx.fillStyle = p.color;
-
-          if (p.shape === 'rect') {
+          if (p.shape === 'sparkle') {
+            const s = p.size * (0.5 + 0.5 * Math.sin((1 - p.life) * 10 + p.phase));
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            for (let i = 0; i < 4; i += 1) {
+              const angle = (i / 4) * Math.PI * 2 - Math.PI / 2;
+              const outerX = Math.cos(angle) * s;
+              const outerY = Math.sin(angle) * s;
+              const innerAngle = angle + Math.PI / 4;
+              const innerX = Math.cos(innerAngle) * s * 0.3;
+              const innerY = Math.sin(innerAngle) * s * 0.3;
+              if (i === 0) ctx.moveTo(outerX, outerY);
+              else ctx.lineTo(outerX, outerY);
+              ctx.lineTo(innerX, innerY);
+            }
+            ctx.closePath();
+            ctx.fill();
+          } else if (p.shape === 'rect') {
+            const flipCos = Math.cos(p.flip);
+            const tiltSin = Math.sin(p.tilt);
+            const scaleX = (flipCos < 0 ? -1 : 1) * (0.2 + Math.abs(flipCos) * 0.8);
+            const scaleY = 0.72 + (1 - Math.abs(flipCos)) * 0.32;
+            const skewX = tiltSin * 0.38;
+            ctx.transform(scaleX, 0, skewX, scaleY, 0, 0);
+            ctx.fillStyle = flipCos >= 0 ? p.color : p.backColor;
             ctx.fillRect(-p.w * 0.5, -p.h * 0.5, p.w, p.h);
+            ctx.globalAlpha *= 0.55;
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(-p.w * 0.5, -p.h * 0.5, p.w, Math.max(1, p.h * 0.24));
           } else if (p.shape === 'emoji') {
             ctx.font = `${p.size}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
+            ctx.fillStyle = p.color;
             ctx.fillText(p.emoji, 0, 0);
           } else {
+            ctx.fillStyle = p.color;
             ctx.beginPath();
             ctx.arc(0, 0, p.r, 0, Math.PI * 2);
             ctx.fill();
@@ -1543,6 +1593,11 @@
             p.vy *= p.drag;
             p.rot += p.vr;
             p.life -= p.decay;
+            if (p.shape === 'rect') {
+              p.flip += p.flipSpeed;
+              p.tilt += p.tiltSpeed;
+              p.vx += Math.sin(p.flip + p.phase) * 0.018;
+            }
 
             if (p.life <= 0 || p.y > window.innerHeight + 120 || p.x < -120 || p.x > window.innerWidth + 120) {
               particles.splice(i, 1);
@@ -1562,6 +1617,51 @@
           raf = window.requestAnimationFrame(step);
         };
 
+        const stopHoverSparkles = () => {
+          if (!sparkleInterval) return;
+          window.clearInterval(sparkleInterval);
+          sparkleInterval = 0;
+        };
+
+        const spawnHoverSparkle = () => {
+          const rect = navCta.getBoundingClientRect();
+          const edge = Math.random();
+          let x = rect.left;
+          let y = rect.top;
+
+          if (edge < 0.25) {
+            x = rect.left + Math.random() * rect.width;
+            y = rect.top - 4 + Math.random() * 8;
+          } else if (edge < 0.5) {
+            x = rect.left + Math.random() * rect.width;
+            y = rect.bottom - 4 + Math.random() * 8;
+          } else if (edge < 0.75) {
+            x = rect.left - 4 + Math.random() * 8;
+            y = rect.top + Math.random() * rect.height;
+          } else {
+            x = rect.right - 4 + Math.random() * 8;
+            y = rect.top + Math.random() * rect.height;
+          }
+
+          particles.push({
+            x,
+            y,
+            vx: (Math.random() - 0.5) * 1.2,
+            vy: (Math.random() - 0.5) * 1.2 - 0.4,
+            gravity: 0,
+            drag: 0.98,
+            rot: Math.random() * Math.PI * 2,
+            vr: (Math.random() - 0.5) * 0.1,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            life: 1,
+            decay: 0.018 + Math.random() * 0.012,
+            shape: 'sparkle',
+            size: 3 + Math.random() * 5,
+            phase: Math.random() * Math.PI * 2
+          });
+          start();
+        };
+
         const burstFromButton = (originX, originY, spread = 1, count = 64, angleBias = 0, emojiOffset = 0) => {
           const remainingBudget = Math.max(0, maxParticles - particles.length);
           const spawnCount = Math.min(count, remainingBudget);
@@ -1572,6 +1672,7 @@
             const useEmoji = (i % emojiStride) === 0;
             const emojiIndex = Math.floor(i / emojiStride) + emojiOffset;
 
+            const color = colors[Math.floor(Math.random() * colors.length)];
             particles.push({
               x: originX + (Math.random() - 0.5) * 16,
               y: originY + (Math.random() - 0.5) * 10,
@@ -1581,15 +1682,21 @@
               drag: 0.985,
               rot: Math.random() * Math.PI * 2,
               vr: (Math.random() - 0.5) * 0.44,
-              color: colors[Math.floor(Math.random() * colors.length)],
+              color,
+              backColor: shadeHex(color, -0.35),
               life: 1,
               decay: 0.0058 + Math.random() * 0.0052,
               shape: useEmoji ? 'emoji' : (useRect ? 'rect' : 'dot'),
               emoji: useEmoji ? emojiCycle[emojiIndex % emojiCycle.length] : '',
-              size: useEmoji ? (32 + Math.random() * 20) : 0,
-              w: useRect ? (12 + Math.random() * 14) : 0,
-              h: useRect ? (10 + Math.random() * 12) : 0,
-              r: useRect ? 0 : (5 + Math.random() * 4.8)
+              size: useEmoji ? (36 + Math.random() * 22) : 0,
+              w: useRect ? (14 + Math.random() * 16) : 0,
+              h: useRect ? (12 + Math.random() * 14) : 0,
+              r: useRect ? 0 : (5.8 + Math.random() * 5.2),
+              phase: Math.random() * Math.PI * 2,
+              flip: Math.random() * Math.PI * 2,
+              flipSpeed: 0.22 + Math.random() * 0.28,
+              tilt: Math.random() * Math.PI * 2,
+              tiltSpeed: (Math.random() - 0.5) * 0.22
             });
           }
           start();
@@ -1603,18 +1710,32 @@
           const originX = rect.left + rect.width * 0.52;
           const originY = rect.top + rect.height * 0.82;
           const isCoarse = window.matchMedia('(pointer: coarse)').matches;
-          const fanBiases = isLowPerf ? [-0.06] : [-0.14, 0.08];
-          const baseCount = isCoarse ? 24 : 36;
-          const burstCount = Math.max(10, Math.round(baseCount * qualityScale));
+          const fanBiases = isLowPerf
+            ? [-0.06]
+            : (isMidPerf ? [-0.15, 0.09] : [-0.18, -0.02, 0.14]);
+          const baseCount = isCoarse ? 30 : 46;
+          const burstCount = Math.max(12, Math.round(baseCount * qualityScale));
           const burstEmojiOffset = 0;
 
           fanBiases.forEach((bias) => {
-            burstFromButton(originX, originY, 1.04, burstCount, bias, burstEmojiOffset);
+            burstFromButton(originX, originY, 1.08, burstCount, bias, burstEmojiOffset);
           });
         });
 
+        navCta.addEventListener('mouseenter', () => {
+          if (window.matchMedia('(pointer: coarse)').matches) return;
+          stopHoverSparkles();
+          sparkleInterval = window.setInterval(spawnHoverSparkle, 60);
+          for (let i = 0; i < 4; i += 1) spawnHoverSparkle();
+        });
+
+        navCta.addEventListener('mouseleave', stopHoverSparkles);
+        navCta.addEventListener('touchend', stopHoverSparkles, { passive: true });
+        navCta.addEventListener('touchcancel', stopHoverSparkles, { passive: true });
+
         document.addEventListener('visibilitychange', () => {
           if (!document.hidden) return;
+          stopHoverSparkles();
           particles.length = 0;
           ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
         });
@@ -1633,20 +1754,32 @@
         if (!ctx) return;
         document.body.appendChild(canvas);
 
-        const colors = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D'];
+        const colors = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D', '#F59E0B', '#ffffff'];
+        const shadeHex = (hex, amount) => {
+          const normalized = (hex || '').replace('#', '');
+          const full = normalized.length === 3
+            ? normalized.split('').map((ch) => ch + ch).join('')
+            : normalized.padEnd(6, '0').slice(0, 6);
+          const mix = amount < 0 ? 0 : 255;
+          const weight = Math.min(1, Math.max(0, Math.abs(amount)));
+          const clamp = (value) => Math.max(0, Math.min(255, Math.round(value)));
+          const r = parseInt(full.slice(0, 2), 16) || 0;
+          const g = parseInt(full.slice(2, 4), 16) || 0;
+          const b = parseInt(full.slice(4, 6), 16) || 0;
+          const sr = clamp((mix - r) * weight + r);
+          const sg = clamp((mix - g) * weight + g);
+          const sb = clamp((mix - b) * weight + b);
+          return `#${sr.toString(16).padStart(2, '0')}${sg.toString(16).padStart(2, '0')}${sb.toString(16).padStart(2, '0')}`;
+        };
         const cpuCores = navigator.hardwareConcurrency || 0;
         const memoryGb = navigator.deviceMemory || 0;
         const isLowPerf = (cpuCores > 0 && cpuCores <= 4) || (memoryGb > 0 && memoryGb <= 4);
         const isMidPerf = !isLowPerf && ((cpuCores > 0 && cpuCores <= 8) || (memoryGb > 0 && memoryGb <= 8));
-        const qualityScale = isLowPerf ? 0.46 : (isMidPerf ? 0.66 : 0.84);
-        const maxParticles = isLowPerf ? 64 : (isMidPerf ? 90 : 116);
-        const targetFps = isLowPerf ? 30 : (isMidPerf ? 45 : 60);
-        const frameBudgetMs = 1000 / targetFps;
-
+        const burstBase = isLowPerf ? 44 : (isMidPerf ? 64 : 84);
         const particles = [];
-        let raf = 0;
+        let animating = false;
         let dpr = 1;
-        let lastFrameTs = 0;
+        let sparkleInterval = 0;
 
         const resize = () => {
           dpr = window.devicePixelRatio || 1;
@@ -1660,105 +1793,268 @@
         const drawParticle = (p) => {
           ctx.save();
           ctx.translate(p.x, p.y);
-          ctx.rotate(p.rot);
-          ctx.globalAlpha = Math.max(0, Math.min(1, p.life));
-          ctx.fillStyle = p.color;
-          if (p.shape === 'rect') {
-            ctx.fillRect(-p.w * 0.5, -p.h * 0.5, p.w, p.h);
-          } else {
+          ctx.rotate(p.rot || 0);
+          ctx.globalAlpha = Math.min(1, p.life * 2);
+          if (p.type === 'sparkle') {
+            const s = p.size * (0.5 + 0.5 * Math.sin((1 - p.life) * 10 + p.phase));
+            ctx.fillStyle = p.color;
             ctx.beginPath();
-            ctx.arc(0, 0, p.r, 0, Math.PI * 2);
+            for (let i = 0; i < 4; i += 1) {
+              const angle = (i / 4) * Math.PI * 2 - Math.PI / 2;
+              const outerX = Math.cos(angle) * s;
+              const outerY = Math.sin(angle) * s;
+              const innerAngle = angle + Math.PI / 4;
+              const innerX = Math.cos(innerAngle) * s * 0.3;
+              const innerY = Math.sin(innerAngle) * s * 0.3;
+              if (i === 0) ctx.moveTo(outerX, outerY);
+              else ctx.lineTo(outerX, outerY);
+              ctx.lineTo(innerX, innerY);
+            }
+            ctx.closePath();
             ctx.fill();
+          } else if (p.type === 'trail') {
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          } else if (p.type === 'confetti') {
+            const flipCos = Math.cos(p.flip);
+            const tiltSin = Math.sin(p.tilt);
+            const scaleX = (flipCos < 0 ? -1 : 1) * (0.18 + Math.abs(flipCos) * 0.82);
+            const scaleY = 0.72 + (1 - Math.abs(flipCos)) * 0.34;
+            const skewX = tiltSin * 0.42;
+            ctx.transform(scaleX, 0, skewX, scaleY, 0, 0);
+            ctx.fillStyle = flipCos >= 0 ? p.color : p.backColor;
+            ctx.fillRect(-p.w * 0.5, -p.h * 0.5, p.w, p.h);
+            ctx.globalAlpha *= 0.52;
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(-p.w * 0.5, -p.h * 0.5, p.w, Math.max(1, p.h * 0.24));
+          } else if (p.type === 'burst') {
+            ctx.fillStyle = p.color;
+            ctx.shadowColor = p.color;
+            ctx.shadowBlur = 8;
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size * Math.max(0.3, p.life), 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
           }
           ctx.restore();
         };
 
-        const step = (ts = performance.now()) => {
-          raf = 0;
-          if (lastFrameTs && (ts - lastFrameTs) < frameBudgetMs) {
-            if (particles.length) raf = window.requestAnimationFrame(step);
+        const step = () => {
+          if (!particles.length) {
+            animating = false;
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
             return;
           }
-          lastFrameTs = ts;
+
           ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
           for (let i = particles.length - 1; i >= 0; i -= 1) {
             const p = particles[i];
-            p.vy += p.gravity;
-            p.x += p.vx;
-            p.y += p.vy;
-            p.vx *= p.drag;
-            p.vy *= p.drag;
-            p.rot += p.vr;
             p.life -= p.decay;
-
-            if (p.life <= 0 || p.y > window.innerHeight + 120 || p.x < -120 || p.x > window.innerWidth + 120) {
+            if (p.life <= 0) {
               particles.splice(i, 1);
               continue;
             }
-
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += p.gravity;
+            p.vx *= p.friction;
+            p.vy *= p.friction;
+            if (p.rotSpeed) p.rot += p.rotSpeed;
+            if (p.type === 'confetti') {
+              p.flip += p.flipSpeed;
+              p.tilt += p.tiltSpeed;
+              p.vx += Math.sin(p.flip + p.phase) * 0.015;
+            }
+            if (p.y > window.innerHeight + 120 || p.x < -120 || p.x > window.innerWidth + 120) {
+              particles.splice(i, 1);
+              continue;
+            }
             drawParticle(p);
           }
-
-          if (particles.length) raf = window.requestAnimationFrame(step);
+          ctx.globalAlpha = 1;
+          window.requestAnimationFrame(step);
         };
 
-        const start = () => {
-          if (raf) return;
-          raf = window.requestAnimationFrame(step);
+        const ensureLoop = () => {
+          if (animating) return;
+          animating = true;
+          window.requestAnimationFrame(step);
         };
 
-        const spawnBurst = (originX, originY, count, minDeg, maxDeg, speedMin, speedMax) => {
-          const remainingBudget = Math.max(0, maxParticles - particles.length);
-          const spawnCount = Math.min(count, remainingBudget);
-          const minRad = (minDeg * Math.PI) / 180;
-          const maxRad = (maxDeg * Math.PI) / 180;
+        const stopHoverSparkles = () => {
+          if (!sparkleInterval) return;
+          window.clearInterval(sparkleInterval);
+          sparkleInterval = 0;
+        };
 
-          for (let i = 0; i < spawnCount; i += 1) {
-            const angle = minRad + Math.random() * (maxRad - minRad);
-            const speed = speedMin + Math.random() * (speedMax - speedMin);
-            const useRect = Math.random() > 0.28;
-            particles.push({
-              x: originX + (Math.random() - 0.5) * 12,
-              y: originY + (Math.random() - 0.5) * 8,
-              vx: Math.cos(angle) * speed,
-              vy: Math.sin(angle) * speed,
-              gravity: 0.24 + Math.random() * 0.08,
-              drag: 0.986,
-              rot: Math.random() * Math.PI * 2,
-              vr: (Math.random() - 0.5) * 0.4,
-              color: colors[Math.floor(Math.random() * colors.length)],
-              life: 1,
-              decay: 0.008 + Math.random() * 0.005,
-              shape: useRect ? 'rect' : 'dot',
-              w: useRect ? (8 + Math.random() * 11) : 0,
-              h: useRect ? (7 + Math.random() * 10) : 0,
-              r: useRect ? 0 : (3 + Math.random() * 3.8)
-            });
+        const spawnHoverSparkle = () => {
+          const rect = submitBtn.getBoundingClientRect();
+          const edge = Math.random();
+          let x = rect.left;
+          let y = rect.top;
+
+          if (edge < 0.25) {
+            x = rect.left + Math.random() * rect.width;
+            y = rect.top - 4 + Math.random() * 8;
+          } else if (edge < 0.5) {
+            x = rect.left + Math.random() * rect.width;
+            y = rect.bottom - 4 + Math.random() * 8;
+          } else if (edge < 0.75) {
+            x = rect.left - 4 + Math.random() * 8;
+            y = rect.top + Math.random() * rect.height;
+          } else {
+            x = rect.right - 4 + Math.random() * 8;
+            y = rect.top + Math.random() * rect.height;
           }
-          start();
+
+          particles.push({
+            type: 'sparkle',
+            x,
+            y,
+            vx: (Math.random() - 0.5) * 1.8,
+            vy: (Math.random() - 0.5) * 1.8 - 0.6,
+            gravity: 0,
+            friction: 0.97,
+            size: 5 + Math.random() * 7,
+            rot: Math.random() * Math.PI * 2,
+            rotSpeed: (Math.random() - 0.5) * 0.15,
+            phase: Math.random() * Math.PI * 2,
+            color: Math.random() < 0.35 ? '#ffffff' : colors[Math.floor(Math.random() * colors.length)],
+            life: 1,
+            decay: 0.014 + Math.random() * 0.01
+          });
+
+          ensureLoop();
+        };
+
+        const launchFirework = (originX, originY, targetX, targetY, delayMs = 0) => {
+          window.setTimeout(() => {
+            const color = colors[Math.floor(Math.random() * (colors.length - 1))];
+            const dx = targetX - originX;
+            const dy = targetY - originY;
+            const dist = Math.hypot(dx, dy);
+            const travelFrames = Math.max(14, Math.floor(dist / 7));
+            const vx = dx / travelFrames;
+            const vy = dy / travelFrames;
+            let frame = 0;
+            let rocketX = originX;
+            let rocketY = originY;
+
+            const rise = () => {
+              frame += 1;
+              rocketX += vx;
+              rocketY += vy;
+
+              for (let t = 0; t < 2; t += 1) {
+                particles.push({
+                  type: 'trail',
+                  x: rocketX + (Math.random() - 0.5) * 4,
+                  y: rocketY + (Math.random() - 0.5) * 4,
+                  vx: (Math.random() - 0.5) * 1.5,
+                  vy: Math.random() * 1.5 + 0.5,
+                  gravity: 0.03,
+                  friction: 0.96,
+                  size: 1.5 + Math.random() * 1.5,
+                  rot: 0,
+                  rotSpeed: 0,
+                  color,
+                  life: 1,
+                  decay: 0.04 + Math.random() * 0.03
+                });
+              }
+
+              ensureLoop();
+
+              if (frame < travelFrames) {
+                window.requestAnimationFrame(rise);
+                return;
+              }
+
+              const burstCount = burstBase + Math.floor(Math.random() * Math.round(burstBase * 0.5));
+              for (let b = 0; b < burstCount; b += 1) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 2.5 + Math.random() * 6;
+                const burstColor = Math.random() < 0.3
+                  ? colors[Math.floor(Math.random() * (colors.length - 1))]
+                  : color;
+                particles.push({
+                  type: 'confetti',
+                  x: rocketX + (Math.random() - 0.5) * 10,
+                  y: rocketY + (Math.random() - 0.5) * 10,
+                  vx: Math.cos(angle) * speed,
+                  vy: Math.sin(angle) * speed - 2.5,
+                  gravity: 0.12 + Math.random() * 0.06,
+                  friction: 0.985,
+                  w: 8 + Math.random() * 8,
+                  h: 4 + Math.random() * 5,
+                  rot: Math.random() * Math.PI * 2,
+                  rotSpeed: (Math.random() - 0.5) * 0.25,
+                  phase: Math.random() * Math.PI * 2,
+                  flip: Math.random() * Math.PI * 2,
+                  flipSpeed: 0.2 + Math.random() * 0.28,
+                  tilt: Math.random() * Math.PI * 2,
+                  tiltSpeed: (Math.random() - 0.5) * 0.24,
+                  color: burstColor,
+                  backColor: shadeHex(burstColor, -0.35),
+                  life: 1,
+                  decay: 0.008 + Math.random() * 0.006
+                });
+              }
+
+              ensureLoop();
+            };
+
+            window.requestAnimationFrame(rise);
+          }, delayMs);
         };
 
         triggerSendFireworks = () => {
           const rect = submitBtn.getBoundingClientRect();
           const originX = rect.left + rect.width * 0.5;
-          const originY = rect.top + rect.height * 0.62;
-          const isCoarse = window.matchMedia('(pointer: coarse)').matches;
-          const baseCount = isCoarse ? 24 : 32;
-          const primaryCount = Math.max(12, Math.round(baseCount * qualityScale));
-          const secondaryCount = Math.max(10, Math.round(primaryCount * 0.82));
-          const tertiaryCount = Math.max(8, Math.round(primaryCount * 0.66));
+          const originY = rect.top + rect.height * 0.45;
+          const centerX = window.innerWidth * 0.5;
+          const centerY = window.innerHeight * 0.46;
+          const spreadX = Math.min(320, window.innerWidth * 0.25);
+          const spreadY = Math.min(210, window.innerHeight * 0.21);
+          const targets = [
+            { x: centerX, y: centerY - spreadY * 0.88, delay: 0 },
+            { x: centerX - spreadX, y: centerY + spreadY * 0.12, delay: 55 },
+            { x: centerX + spreadX, y: centerY + spreadY * 0.12, delay: 110 },
+            { x: centerX - spreadX * 0.66, y: centerY - spreadY * 0.72, delay: 165 },
+            { x: centerX + spreadX * 0.66, y: centerY - spreadY * 0.72, delay: 220 },
+            { x: centerX, y: centerY + spreadY * 0.58, delay: 275 },
+            { x: centerX - spreadX * 0.38, y: centerY + spreadY * 0.78, delay: 330 },
+            { x: centerX + spreadX * 0.38, y: centerY + spreadY * 0.78, delay: 385 },
+            { x: centerX - spreadX * 0.18, y: centerY - spreadY, delay: 440 },
+            { x: centerX + spreadX * 0.18, y: centerY - spreadY, delay: 495 },
+            { x: centerX, y: centerY - spreadY * 0.2, delay: 550 }
+          ];
 
           submitBtn.classList.add('pop');
           window.setTimeout(() => submitBtn.classList.remove('pop'), 220);
 
-          spawnBurst(originX, originY, primaryCount, -168, -12, 7.2, 12.6);
-          window.setTimeout(() => spawnBurst(originX, originY, secondaryCount, -160, -20, 6, 10.8), 90);
-          window.setTimeout(() => spawnBurst(originX, originY, tertiaryCount, -150, -30, 5.2, 9.6), 180);
+          targets.forEach((target) => {
+            launchFirework(originX, originY, target.x, target.y, target.delay);
+          });
         };
+
+        submitBtn.addEventListener('mouseenter', () => {
+          if (submitBtn.disabled || window.matchMedia('(pointer: coarse)').matches) return;
+          stopHoverSparkles();
+          sparkleInterval = window.setInterval(spawnHoverSparkle, 40);
+          for (let i = 0; i < 8; i += 1) spawnHoverSparkle();
+        });
+
+        submitBtn.addEventListener('mouseleave', stopHoverSparkles);
+        submitBtn.addEventListener('touchend', stopHoverSparkles, { passive: true });
+        submitBtn.addEventListener('touchcancel', stopHoverSparkles, { passive: true });
 
         document.addEventListener('visibilitychange', () => {
           if (!document.hidden) return;
+          stopHoverSparkles();
           particles.length = 0;
           ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
         });

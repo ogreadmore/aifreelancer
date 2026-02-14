@@ -813,8 +813,28 @@
     const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : 48;
     const FRAME_BLEND = !isFirefox && !isIOS;
 
+    /* ================================================================
+       FRAME CACHE
+       Pre-decodes video frames to ImageBitmaps / ImageData for
+       instant display during scroll.
+       ================================================================ */
+    const fc = {
+      frames: [],
+      ready: false,
+      extracting: false,
+      abort: false, // New: interrupt flag
+      error: false,
+      ctx: null,
+      lastA: -1,
+      lastB: -1,
+      lastMix: -1,
+    };
+    const FRAME_COUNT = isMobile ? (LOW_END ? 24 : 44) : 48;
+    const FRAME_BLEND = !isFirefox && !isIOS;
+    let extractTimeout = 0;
+
     async function extractFrames() {
-      if (fc.extracting || fc.ready || fc.error) return;
+      if (fc.extracting || fc.ready || fc.error || fc.abort) return;
       if (isMobile && !MOBILE_FRAME_CACHE) { fc.error = true; return; }
       fc.extracting = true;
 
@@ -839,46 +859,30 @@
       const hasCreateBitmap = typeof createImageBitmap === 'function' && !(isMobile && isIOS);
       const frames = [];
 
-      // Setup hero canvas early so we can show a static frame immediately
-      heroCanvas.width = cw;
-      heroCanvas.height = ch;
-      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
-      if (fc.ctx) {
-        fc.ctx.imageSmoothingEnabled = true;
-        if ('imageSmoothingQuality' in fc.ctx) {
-          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
-        }
-      }
-
       try {
         for (let i = 0; i < FRAME_COUNT; i++) {
+          // INTERRUPT CHECK: If user scrolled, stop extraction and return video to scroll control
+          if (fc.abort) {
+            fc.extracting = false;
+            video.style.display = 'block';
+            video.classList.add('visible');
+            frames.forEach(f => { if (f.close) f.close(); });
+            return;
+          }
+
           const t = segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (segEnd - segStart);
           video.currentTime = t;
           await new Promise((resolve, reject) => {
-            const onDone = () => { video.removeEventListener('seeked', onDone); video.removeEventListener('error', onErr); resolve(); };
-            const onErr = () => { video.removeEventListener('seeked', onDone); video.removeEventListener('error', onErr); reject(new Error('seek')); };
+            const onDone = () => { video.removeEventListener('seeked', onDone); resolve(); };
+            const onErr = () => { video.removeEventListener('error', onErr); reject(new Error('seek')); };
             video.addEventListener('seeked', onDone, { once: true });
             video.addEventListener('error', onErr, { once: true });
           });
           offCtx.drawImage(video, 0, 0, cw, ch);
-
-          let frameObj;
           if (hasCreateBitmap) {
-            frameObj = await createImageBitmap(offscreen);
+            frames.push(await createImageBitmap(offscreen));
           } else {
-            frameObj = offCtx.getImageData(0, 0, cw, ch);
-          }
-          frames.push(frameObj);
-
-          // After the very first frame, show the canvas so the user sees a "static image"
-          if (i === 0) {
-            heroCanvas.style.display = 'block';
-            video.style.display = 'none';
-            if (frameObj instanceof ImageBitmap) {
-              fc.ctx.drawImage(frameObj, 0, 0);
-            } else if (frameObj instanceof ImageData) {
-              fc.ctx.putImageData(frameObj, 0, 0);
-            }
+            frames.push(offCtx.getImageData(0, 0, cw, ch));
           }
         }
       } catch (e) {
@@ -894,7 +898,20 @@
       fc.extracting = false;
       fc.ready = true;
 
+      heroCanvas.width = cw;
+      heroCanvas.height = ch;
+      fc.ctx = heroCanvas.getContext('2d', { alpha: false });
+      if (fc.ctx) {
+        fc.ctx.imageSmoothingEnabled = true;
+        if ('imageSmoothingQuality' in fc.ctx) {
+          fc.ctx.imageSmoothingQuality = LOW_END ? 'low' : 'high';
+        }
+      }
+
+      heroCanvas.style.display = 'block';
+      video.style.display = 'none';
       video.pause();
+
       displayFrame(getProgress());
     }
 
@@ -1122,6 +1139,10 @@
 
     function onScroll() {
       lastScrollTs = performance.now();
+      // KILL EXTRACTION ON SCROLL: handmade handoff back to the video scrubber
+      if (fc.extracting) { fc.abort = true; }
+      if (extractTimeout) { clearTimeout(extractTimeout); extractTimeout = 0; }
+
       if (layout.trackScrollable <= 0) recalcLayout();
       requestFrame();
     }
@@ -1150,6 +1171,7 @@
       fc.frames = [];
       fc.ready = false;
       fc.extracting = false;
+      fc.abort = false;
       fc.error = false;
       fc.ctx = null;
       fc.lastA = -1;
@@ -1177,25 +1199,20 @@
 
       recalcLayout();
 
-      if (!fc.ready && !fc.error && (!isMobile || MOBILE_FRAME_CACHE)) {
-        extractFrames();
-      }
+      // 1. Position the video correctly for the CURRENT scroll state immediately
+      const p = getProgress();
+      scrub.targetTime = computeTargetTime(p, dur);
+      scrub.smoothTime = scrub.targetTime;
+      try { video.currentTime = scrub.targetTime; } catch {}
+      
+      // 2. Show the video as a static image
+      video.classList.add('visible');
+      requestFrame();
 
-      // If we are NOT extracting (or while extraction is pending), set the initial frame.
-      // But don't fight with extractFrames if it has already taken over the video.
-      if (!fc.ready && !fc.extracting) {
-        const p = getProgress();
-        scrub.targetTime = computeTargetTime(p, dur);
-        scrub.smoothTime = scrub.targetTime;
-        if (!isMobile) {
-          try { video.currentTime = scrub.targetTime; } catch {}
-          video.pause();
-        } else {
-          try { video.currentTime = clamp(START_AT, 0, dur - END_SAFETY); } catch {}
-          video.pause();
-        }
-        video.classList.add('visible');
-        requestFrame();
+      // 3. Delay extraction sweep so it doesn't cause a "play through" glitch on load
+      if (!fc.ready && !fc.error && (!isMobile || MOBILE_FRAME_CACHE)) {
+        if (extractTimeout) clearTimeout(extractTimeout);
+        extractTimeout = setTimeout(extractFrames, 2000); // Wait 2s of idle time
       }
     }
 

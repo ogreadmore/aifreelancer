@@ -2149,17 +2149,69 @@
         let stateListenerBound = false;
         let bindRetries = 0;
         let bindTimer = 0;
+        let statePollTimer = 0;
+        let closeFallbackTimer = 0;
+        let lastPlayerState = null;
+        let lastKnownDuration = 0;
+        const END_CLOSE_BUFFER = 0.35;
+        const FORCE_CLOSE_MS = 185000;
 
         const isOpen = () => heroVideoTrigger.classList.contains(OPEN_CLASS);
-        const loadVideo = () => { heroVideoFrame.src = heroVideoFrame.dataset.src || ''; };
+        const loadVideo = () => {
+          const src = heroVideoFrame.dataset.src || '';
+          if (!src) {
+            heroVideoFrame.src = '';
+            return;
+          }
+
+          try {
+            const url = new URL(src, window.location.href);
+            if (!url.searchParams.has('enablejsapi')) url.searchParams.set('enablejsapi', '1');
+            if (!url.searchParams.has('origin') && window.location.origin && window.location.origin !== 'null') {
+              url.searchParams.set('origin', window.location.origin);
+            }
+            heroVideoFrame.src = url.toString();
+          } catch {
+            heroVideoFrame.src = src;
+          }
+        };
         const unloadVideo = () => { heroVideoFrame.src = ''; };
+        const stopStatePolling = () => {
+          if (!statePollTimer) return;
+          window.clearInterval(statePollTimer);
+          statePollTimer = 0;
+        };
+        const stopCloseFallback = () => {
+          if (!closeFallbackTimer) return;
+          window.clearTimeout(closeFallbackTimer);
+          closeFallbackTimer = 0;
+        };
+        const startStatePolling = () => {
+          stopStatePolling();
+          statePollTimer = window.setInterval(() => {
+            if (!isOpen()) {
+              stopStatePolling();
+              return;
+            }
+            postPlayerCommand('getPlayerState');
+            postPlayerCommand('getCurrentTime');
+            postPlayerCommand('getDuration');
+          }, 650);
+        };
+        const startCloseFallback = () => {
+          stopCloseFallback();
+          closeFallbackTimer = window.setTimeout(() => {
+            if (!isOpen()) return;
+            closeInline(false);
+          }, FORCE_CLOSE_MS);
+        };
         const postPlayerCommand = (func, args = []) => {
           if (!heroVideoFrame.contentWindow) return;
           heroVideoFrame.contentWindow.postMessage(JSON.stringify({
             event: 'command',
             func,
             args
-          }), 'https://www.youtube-nocookie.com');
+          }), '*');
         };
         const stopBindTimer = () => {
           if (!bindTimer) return;
@@ -2231,8 +2283,12 @@
         const closeInline = (restoreFocus = true) => {
           if (!isOpen()) return;
           stopBindTimer();
+          stopStatePolling();
+          stopCloseFallback();
           stateListenerBound = false;
           bindRetries = 0;
+          lastPlayerState = null;
+          lastKnownDuration = 0;
           heroVideoTrigger.classList.remove(OPEN_CLASS);
           heroVideoTrigger.setAttribute('aria-expanded', 'false');
           heroVideoEmbed.setAttribute('aria-hidden', 'true');
@@ -2263,12 +2319,13 @@
         heroVideoFrame.addEventListener('load', () => {
           stateListenerBound = false;
           scheduleBindStateListener();
+          startStatePolling();
+          startCloseFallback();
         });
 
         window.addEventListener('message', (event) => {
           if (!isOpen()) return;
           if (event.origin !== 'https://www.youtube-nocookie.com' && event.origin !== 'https://www.youtube.com') return;
-          if (event.source !== heroVideoFrame.contentWindow) return;
 
           let payload = event.data;
           if (typeof payload === 'string') {
@@ -2280,18 +2337,62 @@
           }
           if (!payload || typeof payload !== 'object') return;
 
+          const handleState = (rawState) => {
+            const state = Number(rawState);
+            if (!Number.isFinite(state)) return;
+            if (state === lastPlayerState) return;
+            lastPlayerState = state;
+            stateListenerBound = true;
+            stopBindTimer();
+            if (state === 0) closeInline(false);
+          };
+          const handleTiming = (rawCurrentTime, rawDuration) => {
+            const currentTime = Number(rawCurrentTime);
+            const duration = Number(rawDuration);
+            if (Number.isFinite(duration) && duration > 0) {
+              lastKnownDuration = duration;
+            }
+            const effectiveDuration = lastKnownDuration;
+            if (!Number.isFinite(currentTime) || currentTime < 0 || !Number.isFinite(effectiveDuration) || effectiveDuration <= 0) return;
+            if (currentTime >= (effectiveDuration - END_CLOSE_BUFFER)) {
+              closeInline(false);
+            }
+          };
+
           if (payload.event === 'onReady') {
             stateListenerBound = true;
             stopBindTimer();
             postPlayerCommand('addEventListener', ['onStateChange']);
+            startStatePolling();
+            startCloseFallback();
             return;
           }
 
           if (payload.event === 'onStateChange') {
-            stateListenerBound = true;
-            stopBindTimer();
-            const state = Number(payload.info);
-            if (state === 0) closeInline(false);
+            handleState(payload.info);
+            if (payload && payload.info && typeof payload.info === 'object') {
+              handleTiming(payload.info.currentTime, payload.info.duration);
+            }
+            return;
+          }
+
+          if (payload.event === 'infoDelivery' && payload.info && typeof payload.info === 'object') {
+            if (Object.prototype.hasOwnProperty.call(payload.info, 'playerState')) {
+              handleState(payload.info.playerState);
+            }
+            if (Object.prototype.hasOwnProperty.call(payload.info, 'currentTime') || Object.prototype.hasOwnProperty.call(payload.info, 'duration')) {
+              handleTiming(payload.info.currentTime, payload.info.duration);
+            }
+            return;
+          }
+
+          if (payload.info && typeof payload.info === 'object') {
+            if (Object.prototype.hasOwnProperty.call(payload.info, 'playerState')) {
+              handleState(payload.info.playerState);
+            }
+            if (Object.prototype.hasOwnProperty.call(payload.info, 'currentTime') || Object.prototype.hasOwnProperty.call(payload.info, 'duration')) {
+              handleTiming(payload.info.currentTime, payload.info.duration);
+            }
           }
         });
 

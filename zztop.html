@@ -43,6 +43,7 @@
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
+      --nav-height: 84px;
     }
 
     * {
@@ -271,6 +272,12 @@
       cursor: pointer;
       background: #090909;
       isolation: isolate;
+      transition:
+        min-height .45s cubic-bezier(.22, 1, .36, 1),
+        border-radius .32s ease,
+        box-shadow .32s ease,
+        transform .35s ease,
+        width .45s cubic-bezier(.22, 1, .36, 1);
     }
 
     .featured-video {
@@ -289,6 +296,7 @@
       inset: 0;
       background: linear-gradient(to bottom, rgba(0, 0, 0, .36), rgba(0, 0, 0, .58) 56%, rgba(0, 0, 0, .8));
       pointer-events: none;
+      transition: opacity .36s ease;
     }
 
     .featured-overlay {
@@ -301,6 +309,7 @@
       align-items: center;
       padding: clamp(1rem, 2.5vw, 2rem);
       color: #f7f4ea;
+      transition: opacity .34s ease, transform .44s cubic-bezier(.22, 1, .36, 1);
     }
 
     .featured-tag {
@@ -351,6 +360,82 @@
       width: 1.2rem;
       height: 1.2rem;
       transform: translateX(1px);
+    }
+
+    .featured-embed {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background: #000;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.02);
+      transition: opacity .36s ease, transform .44s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .featured-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #000;
+    }
+
+    .featured-inline-close {
+      position: absolute;
+      top: .62rem;
+      right: .62rem;
+      z-index: 4;
+      width: 2.05rem;
+      height: 2.05rem;
+      border: 0;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(246, 244, 236, .92);
+      color: #121212;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s ease, transform .24s ease, background .2s ease;
+    }
+
+    .featured-inline-close:hover,
+    .featured-inline-close:focus-visible {
+      background: #ffffff;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .featured.is-open {
+      --open-safe-height: calc(100dvh - var(--nav-height, 84px) - 24px);
+      width: min(100%, calc(var(--open-safe-height) * 1.7778));
+      margin-inline: auto;
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+      max-height: var(--open-safe-height);
+      cursor: default;
+      box-shadow: 0 18px 42px rgba(10, 10, 10, .2);
+    }
+
+    .featured.is-open::after {
+      opacity: 0;
+    }
+
+    .featured.is-open .featured-overlay {
+      opacity: 0;
+      transform: translateY(12px) scale(.985);
+      pointer-events: none;
+    }
+
+    .featured.is-open .featured-embed {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .featured.is-open .featured-inline-close {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .section {
@@ -523,13 +608,13 @@
     .case-meta {
       text-transform: uppercase;
       letter-spacing: .12em;
-      font-size: .7rem;
+      font-size: .76rem;
       font-weight: 700;
       color: var(--muted);
     }
 
     .case-item h3 {
-      font-size: clamp(1.45rem, 2.8vw, 2.35rem);
+      font-size: clamp(1.68rem, 3.35vw, 2.8rem);
       letter-spacing: -.03em;
       line-height: .98;
       font-weight: 800;
@@ -538,8 +623,8 @@
 
     .case-item p {
       color: #262626;
-      font-size: .99rem;
-      line-height: 1.42;
+      font-size: 1.12rem;
+      line-height: 1.44;
       max-width: 72ch;
     }
 
@@ -548,7 +633,7 @@
       padding-top: .85rem;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: .75rem;
+      gap: .85rem;
     }
 
     .case-metrics > div {
@@ -556,14 +641,14 @@
       color: var(--text);
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
-      padding: .78rem .75rem;
-      min-height: 80px;
+      padding: .92rem .85rem;
+      min-height: 96px;
       display: grid;
       align-content: end;
     }
 
     .metric-value {
-      font-size: clamp(1.6rem, 2.8vw, 2.45rem);
+      font-size: clamp(2.05rem, 3.8vw, 3.15rem);
       line-height: .88;
       letter-spacing: -.02em;
       font-weight: 800;
@@ -579,7 +664,7 @@
       margin-top: .34rem;
       text-transform: uppercase;
       letter-spacing: .08em;
-      font-size: .7rem;
+      font-size: .78rem;
       color: var(--muted);
       font-weight: 700;
     }
@@ -705,44 +790,61 @@
     }
 
     .contact-shell {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--paper);
-      padding: clamp(1.25rem, 3vw, 2.2rem);
       display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      gap: clamp(1.2rem, 3vw, 2rem);
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
+      grid-template-areas:
+        "head head"
+        "form lead";
+      align-items: stretch;
+      gap: clamp(1.05rem, 2.2vw, 1.65rem) clamp(1.2rem, 3vw, 2rem);
     }
 
-    .contact-shell h2 {
-      font-size: clamp(1.9rem, 4.1vw, 3.5rem);
-      line-height: .95;
-      letter-spacing: -.03em;
+    .contact-head {
+      grid-area: head;
+      display: grid;
+      gap: .42rem;
+      margin-bottom: .1rem;
+    }
+
+    .contact-kicker {
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .contact-title {
+      font-size: clamp(2.45rem, 5.6vw, 5.2rem);
+      line-height: .9;
+      letter-spacing: -.042em;
       font-weight: 800;
-      margin-bottom: .72rem;
-      max-width: 10ch;
+      max-width: 13ch;
+      text-wrap: balance;
     }
 
-    .cta-subtitle {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1.07rem, 1.62vw, 1.34rem);
-      line-height: 1.28;
-      color: #404040;
-      max-width: 31ch;
+    .contact-lead {
+      grid-area: lead;
+      display: grid;
+      align-content: start;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      padding: clamp(.95rem, 1.7vw, 1.25rem);
     }
 
     .contact-meta {
-      margin-top: 1.05rem;
       display: grid;
-      gap: .92rem;
-      max-width: 420px;
+      gap: 1.02rem;
+      max-width: none;
+      width: 100%;
     }
 
     .contact-call {
       text-decoration: none;
       border: 1.5px solid transparent;
-      border-radius: 16px;
-      padding: .86rem 1rem .94rem;
+      border-radius: 18px;
+      padding: .98rem 1.06rem 1.08rem;
       color: var(--text);
       background:
         linear-gradient(#fff, #fff) padding-box,
@@ -766,8 +868,8 @@
     }
 
     .contact-call-number {
-      font-size: clamp(1.6rem, 2.4vw, 2.15rem);
-      letter-spacing: -.025em;
+      font-size: clamp(1.95rem, 3.4vw, 2.7rem);
+      letter-spacing: -.03em;
       line-height: 1;
       font-weight: 800;
     }
@@ -782,28 +884,26 @@
 
     .contact-socials-wrap {
       display: grid;
-      gap: .5rem;
+      gap: .2rem;
     }
 
-    .contact-socials-label {
-      display: block;
-      font-size: .68rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--muted);
-      font-weight: 700;
-      line-height: 1;
+    .contact-email-address {
+      font-size: clamp(1.08rem, 2vw, 1.45rem);
+      letter-spacing: -.01em;
+      line-height: 1.1;
+      font-weight: 800;
+      overflow-wrap: anywhere;
     }
 
     .contact-socials {
       display: flex;
       align-items: center;
-      gap: .74rem;
+      gap: .86rem;
     }
 
     .contact-social {
-      width: 3.58rem;
-      height: 3.58rem;
+      width: 3.95rem;
+      height: 3.95rem;
       border-radius: 14px;
       display: grid;
       place-items: center;
@@ -825,15 +925,20 @@
     }
 
     .contact-social svg {
-      width: 1.52rem;
-      height: 1.52rem;
+      width: 1.68rem;
+      height: 1.68rem;
       fill: currentColor;
     }
 
     .contact-form {
+      grid-area: form;
       display: grid;
       gap: .72rem;
       align-content: start;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      padding: clamp(.95rem, 1.7vw, 1.25rem);
     }
 
     .form-row {
@@ -870,18 +975,19 @@
       margin-top: .28rem;
       width: fit-content;
       border: 0;
-      border-radius: 11px;
+      border-radius: 13px;
       background: var(--accent-gradient);
       background-size: 180% 180%;
       animation: accentShift 9s ease infinite;
       color: #ffffff;
       font: inherit;
-      font-size: .88rem;
+      font-size: 1rem;
       text-transform: uppercase;
-      letter-spacing: .09em;
-      font-weight: 700;
+      letter-spacing: .11em;
+      font-weight: 800;
       cursor: pointer;
-      padding: .83rem 1.2rem;
+      min-width: 11.2rem;
+      padding: 1.02rem 1.6rem;
       transition: transform .22s ease, box-shadow .22s ease, filter .22s ease, opacity .18s ease;
     }
 
@@ -891,6 +997,11 @@
       box-shadow: 0 10px 28px rgba(138, 59, 241, .24), 0 0 14px rgba(217, 65, 161, .16);
       filter: brightness(1.04);
       outline: none;
+    }
+
+    .cta-button.pop {
+      transform: scale(1.08);
+      box-shadow: 0 14px 32px rgba(138, 59, 241, .28), 0 0 18px rgba(217, 65, 161, .2);
     }
 
     .cta-button:disabled {
@@ -953,64 +1064,6 @@
       50% { transform: scale(1.045); }
     }
 
-    .video-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(6, 6, 6, .85);
-      display: grid;
-      place-items: center;
-      padding: clamp(.9rem, 2.5vw, 1.6rem);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease;
-    }
-
-    .video-modal.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .video-modal-panel {
-      position: relative;
-      width: min(1140px, 94vw);
-      aspect-ratio: 16 / 9;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background: #000;
-      border: 1px solid rgba(255, 255, 255, .14);
-      transform-origin: center;
-    }
-
-    .video-modal-panel iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: #000;
-    }
-
-    .video-close {
-      position: absolute;
-      top: .52rem;
-      right: .52rem;
-      z-index: 2;
-      width: 2rem;
-      height: 2rem;
-      border: 0;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(246, 244, 236, .92);
-      color: #121212;
-      cursor: pointer;
-    }
-
-    .video-close:hover,
-    .video-close:focus-visible {
-      background: #ffffff;
-      outline: none;
-    }
-
     .reveal {
       opacity: 0;
       transform: translate3d(0, 30px, 0) scale(.985);
@@ -1045,6 +1098,15 @@
 
       .contact-shell {
         grid-template-columns: 1fr;
+        grid-template-areas:
+          "head"
+          "form"
+          "lead";
+        gap: 1rem;
+      }
+
+      .contact-title {
+        max-width: 13ch;
       }
     }
 
@@ -1078,6 +1140,14 @@
       .case-metrics,
       .approach-grid {
         grid-template-columns: 1fr;
+      }
+
+      .metric-value {
+        font-size: clamp(2.5rem, 11vw, 3.85rem);
+      }
+
+      .metric-label {
+        font-size: .84rem;
       }
 
       .stat-number {
@@ -1167,10 +1237,10 @@
         <span class="hero-line-main">We love optimization. &#x2764;&#xfe0f;</span>
       </h1>
 
-      <button type="button" class="featured reveal" id="heroVideoTrigger" aria-haspopup="dialog" aria-controls="heroVideoModal" aria-label="Play intro video">
+      <div class="featured reveal" id="heroVideoTrigger" role="button" tabindex="0" aria-label="Play intro video" aria-expanded="false">
         <span class="featured-overlay">
           <span class="featured-tag">Featured</span>
-          <span class="featured-title">We don’t sell AI. We sell optimized performance.</span>
+          <span class="featured-title">We don't sell AI. We sell performance.</span>
           <span class="featured-foot">
             <span>Watch 2-minute intro</span>
             <span class="play-dot" aria-hidden="true">
@@ -1179,28 +1249,25 @@
           </span>
           <span class="sr-only">Open and play intro video</span>
         </span>
-      </button>
+        <div class="featured-embed" id="heroVideoEmbed" aria-hidden="true">
+          <button class="featured-inline-close" type="button" id="heroVideoClose" aria-label="Close video">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M18 6L6 18"></path>
+              <path d="M6 6l12 12"></path>
+            </svg>
+          </button>
+          <iframe
+            id="heroVideoFrame"
+            title="AI Freelancer Intro"
+            loading="lazy"
+            data-src="https://www.youtube-nocookie.com/embed/4UZaMDg3GZk?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
     </div>
   </header>
-
-  <div class="video-modal" id="heroVideoModal" role="dialog" aria-modal="true" aria-label="AI Freelancer intro video">
-    <div class="video-modal-panel" id="heroVideoPanel">
-      <button class="video-close" type="button" id="heroVideoClose" aria-label="Close video">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <path d="M18 6L6 18"></path>
-          <path d="M6 6l12 12"></path>
-        </svg>
-      </button>
-      <iframe
-        id="heroVideoFrame"
-        title="AI Freelancer Intro"
-        loading="lazy"
-        data-src="https://www.youtube-nocookie.com/embed/4UZaMDg3GZk?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
 
   <main>
     <section class="section alt" id="results">
@@ -1302,7 +1369,7 @@
           <div class="testimonials-pin" id="testimonialsPin">
             <div class="section-head testimonials-head">
               <p class="eyebrow">Client Feedback</p>
-              <h2 class="section-title">Trusted by operators.</h2>
+              <h2 class="section-title">Trusted by business owners.</h2>
             </div>
             <div class="testimonials-track-wrap" id="testimonialsTrackWrap">
               <div class="testimonials-track" id="testimonialsTrack">
@@ -1322,16 +1389,22 @@
     <section class="section" id="contact">
       <div class="container">
         <div class="contact-shell reveal">
-          <div>
-            <p class="eyebrow">Let's Talk</p>
-            <h2>Let&apos;s make it better.</h2>
+          <div class="contact-head">
+            <p class="contact-kicker">Let&apos;s talk</p>
+            <h2 class="contact-title">We&apos;d love to help.</h2>
+          </div>
+
+          <div class="contact-lead">
             <div class="contact-meta">
               <a class="contact-call" href="tel:+14409411785" aria-label="Call 440 941 1785">
                 <span class="contact-call-kicker">Call Us</span>
                 <span class="contact-call-number">440 941 1785</span>
               </a>
+              <a class="contact-call" href="mailto:hello@aifreelancer.co" aria-label="Email hello@aifreelancer.co">
+                <span class="contact-call-kicker">Email Us</span>
+                <span class="contact-email-address">hello@aifreelancer.co</span>
+              </a>
               <div class="contact-socials-wrap">
-                <span class="contact-socials-label">Connect Online</span>
                 <div class="contact-socials" aria-label="Social links">
                   <a class="contact-social" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.7H3.56V19.5h3.38V8.7zM5.25 3.2a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.3c0-3.2-1.71-4.69-3.99-4.69-1.84 0-2.66 1.01-3.12 1.72v-1.47H9.95c.04.97 0 10.64 0 10.64h3.38v-5.94c0-.32.02-.63.12-.86.25-.63.83-1.29 1.8-1.29 1.27 0 1.78.97 1.78 2.39v5.7H20.4v-6.2h.04z"/></svg>
@@ -1351,7 +1424,7 @@
             </div>
             <input type="text" name="company" placeholder="Company (optional)">
             <textarea name="message" rows="5" placeholder="What should we optimize first?" required></textarea>
-            <button type="submit" class="cta-button" id="submitBtn">Send Request</button>
+            <button type="submit" class="cta-button" id="submitBtn">Send</button>
             <div class="form-status" id="formStatus"></div>
           </form>
         </div>
@@ -1367,20 +1440,32 @@
     (() => {
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const nav = document.getElementById('mainNav');
+      const root = document.documentElement;
 
       const heroVideoTrigger = document.getElementById('heroVideoTrigger');
-      const heroVideoModal = document.getElementById('heroVideoModal');
-      const heroVideoPanel = document.getElementById('heroVideoPanel');
+      const heroVideoEmbed = document.getElementById('heroVideoEmbed');
       const heroVideoFrame = document.getElementById('heroVideoFrame');
       const heroVideoClose = document.getElementById('heroVideoClose');
+      let triggerSendFireworks = null;
 
       function onScroll() {
         if (!nav) return;
         nav.classList.toggle('scrolled', (window.scrollY || window.pageYOffset) > 8);
       }
 
+      function syncNavHeightVar() {
+        if (!nav || !root) return;
+        const navHeight = Math.max(0, Math.round(nav.getBoundingClientRect().height));
+        if (navHeight > 0) {
+          root.style.setProperty('--nav-height', `${navHeight}px`);
+        }
+      }
+
       window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', syncNavHeightVar, { passive: true });
+      window.addEventListener('load', syncNavHeightVar, { once: true });
       onScroll();
+      syncNavHeightVar();
 
       (() => {
         const navCta = document.querySelector('.nav-cta');
@@ -1539,77 +1624,241 @@
       })();
 
       (() => {
-        if (!heroVideoTrigger || !heroVideoModal || !heroVideoPanel || !heroVideoFrame || !heroVideoClose) return;
+        const submitBtn = document.getElementById('submitBtn');
+        if (!submitBtn || reducedMotion) return;
 
-        let closeTimer = 0;
-        let lastFocus = null;
+        const canvas = document.createElement('canvas');
+        canvas.className = 'nav-confetti-canvas';
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        document.body.appendChild(canvas);
 
-        const modalOpen = () => heroVideoModal.classList.contains('open');
-        const lockScroll = () => { document.body.style.overflow = 'hidden'; };
-        const unlockScroll = () => { document.body.style.overflow = ''; };
+        const colors = ['#4B88DA', '#8A3BF1', '#D941A1', '#E5484D'];
+        const cpuCores = navigator.hardwareConcurrency || 0;
+        const memoryGb = navigator.deviceMemory || 0;
+        const isLowPerf = (cpuCores > 0 && cpuCores <= 4) || (memoryGb > 0 && memoryGb <= 4);
+        const isMidPerf = !isLowPerf && ((cpuCores > 0 && cpuCores <= 8) || (memoryGb > 0 && memoryGb <= 8));
+        const qualityScale = isLowPerf ? 0.46 : (isMidPerf ? 0.66 : 0.84);
+        const maxParticles = isLowPerf ? 64 : (isMidPerf ? 90 : 116);
+        const targetFps = isLowPerf ? 30 : (isMidPerf ? 45 : 60);
+        const frameBudgetMs = 1000 / targetFps;
 
-        const loadVideo = () => {
-          heroVideoFrame.src = heroVideoFrame.dataset.src || '';
+        const particles = [];
+        let raf = 0;
+        let dpr = 1;
+        let lastFrameTs = 0;
+
+        const resize = () => {
+          dpr = window.devicePixelRatio || 1;
+          canvas.width = Math.round(window.innerWidth * dpr);
+          canvas.height = Math.round(window.innerHeight * dpr);
+          canvas.style.width = `${window.innerWidth}px`;
+          canvas.style.height = `${window.innerHeight}px`;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         };
 
+        const drawParticle = (p) => {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.globalAlpha = Math.max(0, Math.min(1, p.life));
+          ctx.fillStyle = p.color;
+          if (p.shape === 'rect') {
+            ctx.fillRect(-p.w * 0.5, -p.h * 0.5, p.w, p.h);
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        };
+
+        const step = (ts = performance.now()) => {
+          raf = 0;
+          if (lastFrameTs && (ts - lastFrameTs) < frameBudgetMs) {
+            if (particles.length) raf = window.requestAnimationFrame(step);
+            return;
+          }
+          lastFrameTs = ts;
+          ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+          for (let i = particles.length - 1; i >= 0; i -= 1) {
+            const p = particles[i];
+            p.vy += p.gravity;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vx *= p.drag;
+            p.vy *= p.drag;
+            p.rot += p.vr;
+            p.life -= p.decay;
+
+            if (p.life <= 0 || p.y > window.innerHeight + 120 || p.x < -120 || p.x > window.innerWidth + 120) {
+              particles.splice(i, 1);
+              continue;
+            }
+
+            drawParticle(p);
+          }
+
+          if (particles.length) raf = window.requestAnimationFrame(step);
+        };
+
+        const start = () => {
+          if (raf) return;
+          raf = window.requestAnimationFrame(step);
+        };
+
+        const spawnBurst = (originX, originY, count, minDeg, maxDeg, speedMin, speedMax) => {
+          const remainingBudget = Math.max(0, maxParticles - particles.length);
+          const spawnCount = Math.min(count, remainingBudget);
+          const minRad = (minDeg * Math.PI) / 180;
+          const maxRad = (maxDeg * Math.PI) / 180;
+
+          for (let i = 0; i < spawnCount; i += 1) {
+            const angle = minRad + Math.random() * (maxRad - minRad);
+            const speed = speedMin + Math.random() * (speedMax - speedMin);
+            const useRect = Math.random() > 0.28;
+            particles.push({
+              x: originX + (Math.random() - 0.5) * 12,
+              y: originY + (Math.random() - 0.5) * 8,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              gravity: 0.24 + Math.random() * 0.08,
+              drag: 0.986,
+              rot: Math.random() * Math.PI * 2,
+              vr: (Math.random() - 0.5) * 0.4,
+              color: colors[Math.floor(Math.random() * colors.length)],
+              life: 1,
+              decay: 0.008 + Math.random() * 0.005,
+              shape: useRect ? 'rect' : 'dot',
+              w: useRect ? (8 + Math.random() * 11) : 0,
+              h: useRect ? (7 + Math.random() * 10) : 0,
+              r: useRect ? 0 : (3 + Math.random() * 3.8)
+            });
+          }
+          start();
+        };
+
+        triggerSendFireworks = () => {
+          const rect = submitBtn.getBoundingClientRect();
+          const originX = rect.left + rect.width * 0.5;
+          const originY = rect.top + rect.height * 0.62;
+          const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+          const baseCount = isCoarse ? 24 : 32;
+          const primaryCount = Math.max(12, Math.round(baseCount * qualityScale));
+          const secondaryCount = Math.max(10, Math.round(primaryCount * 0.82));
+          const tertiaryCount = Math.max(8, Math.round(primaryCount * 0.66));
+
+          submitBtn.classList.add('pop');
+          window.setTimeout(() => submitBtn.classList.remove('pop'), 220);
+
+          spawnBurst(originX, originY, primaryCount, -168, -12, 7.2, 12.6);
+          window.setTimeout(() => spawnBurst(originX, originY, secondaryCount, -160, -20, 6, 10.8), 90);
+          window.setTimeout(() => spawnBurst(originX, originY, tertiaryCount, -150, -30, 5.2, 9.6), 180);
+        };
+
+        document.addEventListener('visibilitychange', () => {
+          if (!document.hidden) return;
+          particles.length = 0;
+          ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        });
+
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+      })();
+
+      (() => {
+        if (!heroVideoTrigger || !heroVideoEmbed || !heroVideoFrame || !heroVideoClose) return;
+
+        const OPEN_CLASS = 'is-open';
+
+        const isOpen = () => heroVideoTrigger.classList.contains(OPEN_CLASS);
+        const loadVideo = () => { heroVideoFrame.src = heroVideoFrame.dataset.src || ''; };
         const unloadVideo = () => { heroVideoFrame.src = ''; };
-
-        const animateFromTrigger = () => {
-          if (reducedMotion) return;
-
-          const source = heroVideoTrigger.getBoundingClientRect();
-          const target = heroVideoPanel.getBoundingClientRect();
-          if (!source.width || !source.height || !target.width || !target.height) return;
-
-          const dx = (source.left + source.width / 2) - (target.left + target.width / 2);
-          const dy = (source.top + source.height / 2) - (target.top + target.height / 2);
-          const sx = Math.min(1.2, Math.max(0.25, source.width / target.width));
-          const sy = Math.min(1.2, Math.max(0.25, source.height / target.height));
-
-          heroVideoPanel.style.transition = 'none';
-          heroVideoPanel.style.transform = `translate3d(${dx.toFixed(2)}px, ${dy.toFixed(2)}px, 0) scale(${sx.toFixed(3)}, ${sy.toFixed(3)})`;
-
-          requestAnimationFrame(() => {
-            heroVideoPanel.style.transition = 'transform 420ms cubic-bezier(.22,1,.36,1)';
-            heroVideoPanel.style.transform = 'translate3d(0,0,0) scale(1)';
-          });
+        const centerVideoInViewport = (behavior = 'smooth') => {
+          const rect = heroVideoTrigger.getBoundingClientRect();
+          const viewportH = window.innerHeight || document.documentElement.clientHeight || 0;
+          if (!viewportH) return;
+          const navHeight = nav ? Math.max(0, Math.round(nav.getBoundingClientRect().height)) : 0;
+          const topPadding = navHeight + 12;
+          const bottomPadding = 12;
+          const safeViewportH = Math.max(140, viewportH - topPadding - bottomPadding);
+          const targetTopInViewport = topPadding + Math.max(0, (safeViewportH - rect.height) / 2);
+          const scrollY = window.scrollY || window.pageYOffset || 0;
+          const targetY = scrollY + rect.top - targetTopInViewport;
+          const docH = Math.max(
+            document.documentElement.scrollHeight || 0,
+            document.body ? document.body.scrollHeight : 0
+          );
+          const maxY = Math.max(0, docH - viewportH);
+          const clampedY = Math.max(0, Math.min(targetY, maxY));
+          if (Math.abs(clampedY - scrollY) < 2) return;
+          window.scrollTo({ top: clampedY, behavior });
         };
 
-        const openModal = () => {
-          if (modalOpen()) return;
-          clearTimeout(closeTimer);
-          lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-          heroVideoModal.classList.add('open');
-          lockScroll();
+        const openInline = () => {
+          if (isOpen()) return;
+          heroVideoTrigger.classList.add(OPEN_CLASS);
+          heroVideoTrigger.setAttribute('aria-expanded', 'true');
+          heroVideoEmbed.setAttribute('aria-hidden', 'false');
           loadVideo();
-          animateFromTrigger();
+
+          const scrollBehavior = reducedMotion ? 'auto' : 'smooth';
+          window.requestAnimationFrame(() => {
+            centerVideoInViewport(scrollBehavior);
+            window.requestAnimationFrame(() => {
+              centerVideoInViewport(scrollBehavior);
+            });
+          });
+
+          if (!reducedMotion) {
+            const onExpandEnd = (event) => {
+              if (event.target !== heroVideoTrigger || event.propertyName !== 'min-height') return;
+              heroVideoTrigger.removeEventListener('transitionend', onExpandEnd);
+              centerVideoInViewport('smooth');
+            };
+            heroVideoTrigger.addEventListener('transitionend', onExpandEnd);
+            window.setTimeout(() => {
+              heroVideoTrigger.removeEventListener('transitionend', onExpandEnd);
+            }, 700);
+          }
+
           heroVideoClose.focus({ preventScroll: true });
         };
 
-        const closeModal = () => {
-          if (!modalOpen()) return;
-
-          heroVideoModal.classList.remove('open');
-          unlockScroll();
-
-          closeTimer = window.setTimeout(() => {
-            unloadVideo();
-            heroVideoPanel.style.transition = '';
-            heroVideoPanel.style.transform = '';
-            if (lastFocus) {
-              lastFocus.focus({ preventScroll: true });
-            }
-          }, reducedMotion ? 0 : 220);
+        const closeInline = (restoreFocus = true) => {
+          if (!isOpen()) return;
+          heroVideoTrigger.classList.remove(OPEN_CLASS);
+          heroVideoTrigger.setAttribute('aria-expanded', 'false');
+          heroVideoEmbed.setAttribute('aria-hidden', 'true');
+          unloadVideo();
+          if (restoreFocus) {
+            heroVideoTrigger.focus({ preventScroll: true });
+          }
         };
 
-        heroVideoTrigger.addEventListener('click', openModal);
-        heroVideoClose.addEventListener('click', closeModal);
-        heroVideoModal.addEventListener('click', (event) => {
-          if (event.target === heroVideoModal) closeModal();
+        heroVideoTrigger.addEventListener('click', (event) => {
+          if (event.target.closest('#heroVideoClose')) return;
+          if (isOpen()) return;
+          openInline();
+        });
+
+        heroVideoTrigger.addEventListener('keydown', (event) => {
+          if ((event.key === 'Enter' || event.key === ' ') && !isOpen()) {
+            event.preventDefault();
+            openInline();
+          }
+        });
+
+        heroVideoClose.addEventListener('click', (event) => {
+          event.stopPropagation();
+          closeInline(true);
         });
 
         document.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape' && modalOpen()) closeModal();
+          if (event.key === 'Escape' && isOpen()) {
+            closeInline(true);
+          }
         });
       })();
 
@@ -1721,6 +1970,15 @@
         const io = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             const isVisible = entry.isIntersecting && entry.intersectionRatio > 0.08;
+            // Keep the testimonials section stable once revealed to avoid
+            // edge-threshold flicker on desktop Chrome.
+            if (entry.target.id === 'testimonialsScroll') {
+              if (isVisible) {
+                entry.target.classList.add('in-view');
+                io.unobserve(entry.target);
+              }
+              return;
+            }
             entry.target.classList.toggle('in-view', isVisible);
           });
         }, {
@@ -1815,6 +2073,10 @@
         form.addEventListener('submit', async (event) => {
           event.preventDefault();
 
+          if (typeof triggerSendFireworks === 'function') {
+            triggerSendFireworks();
+          }
+
           btn.disabled = true;
           btn.textContent = 'Sending...';
           status.className = 'form-status';
@@ -1843,7 +2105,7 @@
             status.className = 'form-status error';
           } finally {
             btn.disabled = false;
-            btn.textContent = 'Send Request';
+            btn.textContent = 'Send';
           }
         });
       })();

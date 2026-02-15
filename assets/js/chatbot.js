@@ -140,13 +140,14 @@ if (window.AF_CHAT_WIDGET_LOADED) {
   // --- Begin original chat widget script (extracted) ---
 /* ---------- CONFIG ---------- */
 const AF_CHAT_ENDPOINTS = [
+  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat',
   '/api/chat'
 ];
 
 // if you ever stand up a second backend you can push another item into the array
 //   e.g. AF_CHAT_ENDPOINTS.push('https://backup.my‑domain.com/api/chat');
 
-const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config'; 
+const AF_CHAT_CONFIG_ENDPOINT = ''; 
 
 const AF_CHAT_DEFAULT_CONFIG = {
   brand: 'AI Freelancer',
@@ -979,6 +980,7 @@ if (afEls.clearBtn) afEls.clearBtn.addEventListener('click', afClearChat);
 
 /* ---------- LOAD REMOTE CONFIG ---------- */
 async function afLoadRemoteConfig() {
+  if (!AF_CHAT_CONFIG_ENDPOINT) return;
   try {
     const res = await fetch(AF_CHAT_CONFIG_ENDPOINT, { method:'GET' });
     if (!res.ok) return;

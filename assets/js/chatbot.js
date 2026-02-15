@@ -10,7 +10,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     const l = document.createElement('link');
     l.rel = 'stylesheet';
     // Use relative path so the asset loads correctly on GitHub Pages
-    l.href = 'assets/css/chatbot.css?v=20260215b';
+    l.href = 'assets/css/chatbot.css?v=20260215c';
     l.setAttribute('data-afchat-css', '');
     document.head.appendChild(l);
   }
@@ -37,12 +37,12 @@ if (window.AF_CHAT_WIDGET_LOADED) {
             <div id="chatbot-messages" aria-live="polite">
                 <div class="af-message-wrapper justify-start">
                     <div class="chat-bubble chat-bubble-bot">
-                        <p>Hi there! I'm your AI assistant. How can I help you today?</p>
+                        <p>Welcome. I am here to help with calm, practical guidance for business optimization and AI.</p>
                         <p class="chat-intro-label">You can ask me about:</p>
                         <ul>
-                            <li>Our AI solutions</li>
-                            <li>Implementation process</li>
-                            <li>Pricing options</li>
+                            <li>What we can optimize</li>
+                            <li>How to start your project</li>
+                            <li>Pricing and nonprofit support</li>
                         </ul>
                     </div>
                 </div>
@@ -141,53 +141,114 @@ const AF_CHAT_CONFIG_ENDPOINT = '/api/chat-config';
 
 const AF_CHAT_DEFAULT_CONFIG = {
   brand: 'AI Freelancer',
-  greeting: "Hey! I'm the AI assistant for AI Freelancer. What can I help with today? ",
+  greeting: "Welcome. I am the AI assistant for AI Freelancer. How can I support you today?",
   suggestions: [
-    "Pricing options",
+    "What can you optimize?",
+    "Tell me about AI Freelancer",
+    "I run a nonprofit",
     "Schedule a consultation",
-    "What do you automate?",
     "Ask the team"
   ]
 };
 
-/* ---------- COMMON RESPONSES (pretty “solutions” list) ---------- */
+const AF_CONTACT_LINE = "If you prefer direct contact, call (440) 941-1785 or email hello@aifreelancer.co.";
+
+const AF_ASSISTANT_INSTRUCTIONS = [
+  "Voice and tone: calm, kind, compassionate, and professional, with clear international business English.",
+  "Business model: AI Freelancer accepts broad business optimization and AI engagements across functions.",
+  "Pricing policy: do not volunteer pricing unless asked directly. If asked, state $250 USD/hour, negotiable. Nonprofits may be free (pro bono) depending on fit and capacity.",
+  "Conversion goal: guide visitors toward direct contact (email, phone, or scheduling) in a helpful, non-pushy way.",
+  "Company facts: founded end of 2023, based in Cleveland, Ohio, global associates with developers primarily in Asia.",
+  "Founder facts: Taylor Oliphant (O-L-I-P-H-A-N-T), graduated high school at 15, web development background in Silicon Valley, MBA from Purdue University (4.0), AI certifications from University of Pennsylvania and Lund University, plus credentials from Intel, Google, and Harvard University.",
+  "Founder philosophy: pro-science and pro-human outcomes, helpful with AI, but skeptical about concentration of power and rushed deployment by very large AI companies."
+].join("\n");
+
+/* ---------- COMMON RESPONSES ---------- */
 const COMMON_RESPONSES = {
+  capabilities: {
+    keywords: [
+      'what can you do', 'what do you do', 'what do you optimize', 'what can you optimize',
+      'services', 'service', 'offer', 'help with', 'can you help', 'can you do',
+      'business optimization', 'ai work', 'automation', 'optimize',
+      'google ads', 'facebook ads', 'meta ads', 'shopify', 'magento', 'woocommerce',
+      'wordpress', 'ecommerce', 'tax prep', 'accounting', 'hr', 'team training'
+    ],
+    response:
+`In short: if it improves a business, we will usually take it on.
+
+We support Google Ads and Facebook Ads optimization, ecommerce builds and upgrades (Shopify, Magento, WooCommerce, WordPress), business process optimization, team training, HR optimization, AI workflow design, and custom AI implementation. We are also expanding accounting and tax preparation support.
+
+If your project sits anywhere in business optimization or AI, we would be glad to discuss it. ${AF_CONTACT_LINE}`
+  },
+
   pricing: {
     keywords: [
-      'price','pricing','cost','fee','charge',
-      'how much','expensive','rate','rates'
+      'price', 'pricing', 'cost', 'fee', 'charge', 'how much', 'rate', 'rates', 'hourly', 'budget'
     ],
     response:
-`Every solution has two clear parts: a pocket‑friendly monthly fee **plus** a one‑time kickoff charge.\n\n• **AI\u00a0Website\u00a0Chatbot** — *$99\u00a0/\u00a0mo*\u00a0+\u00a0$499\u00a0setup  \n• **Internal\u00a0Process\u00a0Automation** — *$999\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0build  \n• **Sales\u00a0&\u00a0CRM\u00a0Automation** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$599\u00a0integration  \n• **AI\u00a0Data\u00a0&\u00a0Analytics** — *$899\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0setup  \n• **Automated\u00a0Customer\u00a0Support** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$599\u00a0integration  \n• **AI\u00a0Social\u00a0Media\u00a0Manager** — *$499\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0strategy  \n• **Creative\u00a0&\u00a0Development** — *from\u00a0$1,999\u00a0per\u00a0project* (retainer optional)  \n• **AI‑Powered\u00a0Team\u00a0Training** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$299\u00a0setup  \n• **Fractional\u00a0Chief\u00a0AI\u00a0Officer / Full‑Scale\u00a0Transformation** — *custom* (Discovery from\u00a0$4,999; retainer from\u00a0$1,499\u00a0/\u00a0mo)  \n\nLet me know which line item you’d like to explore!`
+`Our standard rate is **$250 USD per hour**.
+It is negotiable based on scope, and we often provide **free work for nonprofits** when the project aligns and capacity allows.
+
+If you share your goal and timeline, I can help you choose a practical next step. ${AF_CONTACT_LINE}`
   },
 
-  solutions: {
+  nonprofit: {
     keywords: [
-      'solutions','services','offer','product','automation',
-      'packages','what do you do','catalog','line‑up'
+      'nonprofit', 'non-profit', 'charity', 'ngo', 'foundation', 'mission-driven'
     ],
     response:
-`Here’s our nine‑solution line‑up (installation, training & 24/7 support included):\n\n• **AI\u00a0Website\u00a0Chatbot** — *$99\u00a0/\u00a0mo*\u00a0+\u00a0$499\u00a0setup  \n• **Internal\u00a0Process\u00a0Automation** — *$999\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0build  \n• **Sales\u00a0&\u00a0CRM\u00a0Automation** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$599\u00a0integration  \n• **AI\u00a0Data\u00a0&\u00a0Analytics** — *$899\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0setup  \n• **Automated\u00a0Customer\u00a0Support** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$599\u00a0integration  \n• **AI\u00a0Social\u00a0Media\u00a0Manager** — *$499\u00a0/\u00a0mo*\u00a0+\u00a0$999\u00a0strategy  \n• **Creative\u00a0&\u00a0Development** — *from\u00a0$1,999\u00a0per\u00a0project* (retainer optional)  \n• **AI‑Powered\u00a0Team\u00a0Training** — *$599\u00a0/\u00a0mo*\u00a0+\u00a0$299\u00a0setup  \n• **Fractional\u00a0Chief\u00a0AI\u00a0Officer / Full‑Scale\u00a0Transformation** — *custom* (Discovery from\u00a0$4,999; retainer from\u00a0$1,499\u00a0/\u00a0mo)  \n\nAsk for details on any package or bundle multiple for extra savings.`
+`We care deeply about nonprofit work.
+
+For nonprofits, we often offer pro bono or reduced-fee support depending on scope and current capacity. If you share your mission and what you need, we can discuss the best path with care. ${AF_CONTACT_LINE}`
   },
 
-  'how it works': {
+  company: {
     keywords: [
-      'how it works','process','implementation','onboard',
-      'deployment','timeline','setup','integrate','rollout','steps'
+      'about', 'company', 'who are you', 'who is ai freelancer', 'background', 'history'
     ],
     response:
-      "We start with a free discovery call ➜ design a pilot in 2–4\u00a0weeks ➜ launch, train & support continuously. " +
-      "All development is done by our engineers in Cleveland, Ohio. Interested in a sample project plan?"
+`AI Freelancer was founded at the end of **2023** and is now in its third year.
+We are based in **Cleveland, Ohio**, mobile in how we work, and supported by associates around the world. Our developers are primarily in Asia.
+
+We focus mostly on small and medium-sized businesses, and we also love helping sole proprietors, nonprofits, and larger organizations when there is a good fit.`
   },
 
-  roi: {
+  founder: {
     keywords: [
-      'roi','return on investment','payback','worth it',
-      'save money','profit','value','break even'
+      'taylor', 'oliphant', 'founder', 'owner', 'who runs', 'leadership', 'ceo'
     ],
     response:
-      "Clients usually reach break‑even within **60–90\u00a0days**. Example: a retailer trimmed 120 support hours per month " +
-      "with our chatbot—over $7.8\u00a0k/month back to the bottom\u00a0line. Shall we crunch your numbers?"
+`The founder is **Taylor Oliphant** (O-L-I-P-H-A-N-T).
+
+Taylor graduated high school at 15, began web development work in Silicon Valley with notable pioneers, has traveled widely, and completed an MBA at Purdue University with a 4.0.
+He also holds AI certifications from the University of Pennsylvania and Lund University, plus certifications from Intel, Google, and Harvard University.
+
+He loves science and helping people with AI, while staying thoughtful and skeptical about concentrated power and rushed deployment by very large AI companies.`
+  },
+
+  process: {
+    keywords: [
+      'how it works', 'process', 'implementation', 'timeline', 'onboard', 'rollout', 'steps', 'start'
+    ],
+    response:
+`We keep the process simple:
+- Understand your goals, constraints, and desired outcomes.
+- Prioritize the highest-impact optimization first.
+- Execute quickly, measure results, and refine.
+
+If you want, we can start with a short consultation and map your best first move. ${AF_CONTACT_LINE}`
+  },
+
+  contact: {
+    keywords: [
+      'contact', 'call', 'phone', 'email', 'reach you', 'talk to team', 'speak with someone'
+    ],
+    response:
+`Of course. You can reach us directly at:
+- **Phone:** (440) 941-1785
+- **Email:** hello@aifreelancer.co
+
+If you prefer, I can also collect your details here and pass them to the team.`
   }
 };
 
@@ -254,7 +315,7 @@ function afStartLeadCapture() {
     .join(' | ');
   AFChatState.leadData.message = `Chat conversation summary: ${summary}`;
   console.log('AFCHAT: starting lead capture, summary=', summary);
-  afAddBotMessage("Great — I'd be happy to pass this to the team. What's your name? (You can type 'cancel' at any time to stop)");
+  afAddBotMessage("Of course. I will pass your message to the team with care. May I have your name? (You can type 'cancel' at any time.)");
 }
 
 function afCheckCancellation(value) {
@@ -266,7 +327,7 @@ function afCancelLeadCapture() {
   AFChatState.collectingInfo = false;
   AFChatState.currentField = null;
   AFChatState.leadData = { name: '', email: '', phone: '', company: '', message: '' };
-  afAddBotMessage("No problem! Feel free to ask me anything else or let me know if you change your mind.");
+  afAddBotMessage("No problem at all. We can continue whenever you are ready.");
 }
 
 function afProcessLeadField(value) {
@@ -277,21 +338,21 @@ function afProcessLeadField(value) {
   if (field === 'name') {
     AFChatState.leadData.name = value;
     AFChatState.currentField = 'email';
-    afAddBotMessage(`Nice to meet you, ${value}! What's the best email to reach you at?`);
+    afAddBotMessage(`Thank you, ${value}. What is the best email to reach you?`);
   } else if (field === 'email') {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value)) { afAddBotMessage("That doesn't look like a valid email. Could you provide a valid one? (Or type 'cancel' to stop)"); return; }
+    if (!emailRegex.test(value)) { afAddBotMessage("I may have misread that email. Could you share it again? (Or type 'cancel' to stop.)"); return; }
     AFChatState.leadData.email = value;
     AFChatState.currentField = 'phone';
-    afAddBotMessage("Great! And what's your phone number? (Optional — type 'skip' to pass)");
+    afAddBotMessage("Thank you. What is your phone number? (Optional; type 'skip' if you prefer.)");
   } else if (field === 'phone') {
     if (value.toLowerCase() !== 'skip') AFChatState.leadData.phone = value;
     AFChatState.currentField = 'company';
-    afAddBotMessage("What company are you with? (Optional — type 'skip' if not applicable)");
+    afAddBotMessage("What company are you with? (Optional; type 'skip' if not applicable.)");
   } else if (field === 'company') {
     if (value.toLowerCase() !== 'skip') AFChatState.leadData.company = value;
     AFChatState.currentField = 'additional';
-    afAddBotMessage("Anything specific you'd like us to know about your needs?");
+    afAddBotMessage("Is there anything else you would like us to know about your goals?");
   } else if (field === 'additional') {
     if (!['skip','no'].includes(value.toLowerCase())) {
       AFChatState.leadData.message += `\n\nAdditional info: ${value}`;
@@ -301,7 +362,7 @@ function afProcessLeadField(value) {
 }
 
 async function afSubmitLeadToFormspree() {
-  afAddBotMessage("Perfect! Let me submit your information... 📨");
+  afAddBotMessage("Thank you. I am sending this to the team now.");
   const formData = new FormData();
   formData.append('name', AFChatState.leadData.name);
   formData.append('email', AFChatState.leadData.email);
@@ -322,7 +383,7 @@ async function afSubmitLeadToFormspree() {
     const text = await response.text().catch(()=>'');
     console.log('AFCHAT: formspree primary response', {status: response.status, ok: response.ok, text: text.slice(0,400)});
     if (response.ok) {
-      afAddBotMessage("✅ Thank you! Your information has been sent. Someone from our team will contact you within 24 hours.");
+      afAddBotMessage("Thank you. Your information has been sent, and someone from our team will contact you within 24 hours.");
       // Avoid sending raw email addresses to analytics; send only presence and domain for segmentation
       const email = AFChatState.leadData.email || '';
       const emailDomain = (email.includes('@') ? email.split('@')[1] : '').toLowerCase();
@@ -357,7 +418,7 @@ async function afSubmitLeadToFormspree() {
       const t2 = await r2.text().catch(()=>'');
       console.log('AFCHAT: formspree json fallback response', {status: r2.status, ok: r2.ok, text: t2.slice(0,400)});
       if (r2.ok) {
-        afAddBotMessage("✅ Thank you! Your information has been sent. Someone from our team will contact you within 24 hours.");
+        afAddBotMessage("Thank you. Your information has been sent, and someone from our team will contact you within 24 hours.");
       // Avoid sending raw email addresses to analytics; send only presence and domain for segmentation
       const email2 = AFChatState.leadData.email || '';
       const emailDomain2 = (email2.includes('@') ? email2.split('@')[1] : '').toLowerCase();
@@ -378,21 +439,19 @@ async function afSubmitLeadToFormspree() {
 
     // If we get here both attempts failed
     console.warn('AFCHAT: Formspree submission failed (both attempts)');
-    afAddBotMessage("I'm sorry, there was an issue submitting your info. Please try the contact form below or call us at (440) 941-1785.");
+    afAddBotMessage("I am sorry, there was an issue submitting your information. Please use the contact form below or call us at (440) 941-1785.");
   } catch (error) {
     console.error('AFCHAT: Lead submission error (primary attempt)', error);
-    afAddBotMessage("I'm sorry, there was an issue submitting your info. Please try the contact form below or call us at (440) 941-1785.");
+    afAddBotMessage("I am sorry, there was an issue submitting your information. Please use the contact form below or call us at (440) 941-1785.");
   }
 }
 
 /* ---------- CHECK FOR LEAD INTENT ---------- */
 function afCheckLeadIntent(message) {
   const leadKeywords = [
-    'contact','call','demo','consultation','consult','meeting',
-    'schedule','talk','speak','interested','quote','proposal',
-    'more information','get started','sign up','learn more',
-    // additional conversation patterns that imply someone wants to reach out
-    'ask','question','inquiry','message'
+    'contact', 'call', 'demo', 'consultation', 'consult', 'meeting',
+    'schedule', 'talk to team', 'speak with someone', 'interested', 'quote', 'proposal',
+    'more information', 'get started', 'sign up', 'book a call', 'reach out'
   ];
   const lower = message.toLowerCase();
   return leadKeywords.some(k => lower.includes(k));
@@ -525,6 +584,45 @@ function checkCommonQuestions(message) {
     if (data.keywords.some(k => lower.includes(k))) return data.response;
   }
   return null;
+}
+
+function afCanonicalContactNudge() {
+  return "If you want, I can connect you with the team now and help you choose the fastest next step.";
+}
+
+function afNormalizeBotReply(reply, userMessage = '') {
+  const raw = String(reply || '');
+  const lowerReply = raw.toLowerCase();
+  const lowerUser = String(userMessage || '').toLowerCase();
+
+  const legacySignals = [
+    'ai website chatbot',
+    'internal process automation',
+    'sales & crm automation',
+    'ai data & analytics',
+    'automated customer support',
+    'ai social media manager',
+    'fractional chief ai officer',
+    'nine-solution',
+    'line-up',
+    '$99',
+    '$499',
+    '$599',
+    '$899',
+    '$999',
+    '$1499',
+    '$1,499',
+    '$4,999'
+  ];
+
+  if (legacySignals.some(sig => lowerReply.includes(sig.toLowerCase()))) {
+    if (/(price|pricing|cost|rate|fee|budget|hourly)/i.test(lowerUser)) {
+      return `${COMMON_RESPONSES.pricing.response}\n\n${afCanonicalContactNudge()}`;
+    }
+    return `${COMMON_RESPONSES.capabilities.response}\n\n${afCanonicalContactNudge()}`;
+  }
+
+  return raw;
 }
 
 /* ---------- RENDER: messages ---------- */
@@ -663,7 +761,7 @@ async function afSubmitMessage() {
   // scheduling intent first
   if (afCheckScheduleIntent(userMessage)) {
     await simulateTyping(600);
-    afAddBotMessage("Happy to help with that. My calendar should now be open on your screen.");
+    afAddBotMessage("Certainly. I have opened the calendar so you can choose a time that works.");
     afShowCalendar();
     return;
   }
@@ -674,7 +772,7 @@ async function afSubmitMessage() {
     const positive = ['yes','yeah','sure','ok','okay','definitely','please','yep','absolutely'];
     if (positive.some(r => userMessage.toLowerCase().includes(r))) {
       await simulateTyping(600);
-      afAddBotMessage("Great! I've opened the calendar for you. Please pick a time that works.");
+      afAddBotMessage("Wonderful. I have opened the calendar for you. Please choose any convenient time.");
       afShowCalendar();
       return;
     } else {
@@ -720,9 +818,11 @@ async function afSubmitMessage() {
     await simulateTyping(800);
     afAddBotMessage(commonResponse);
     AFChatState.history.push({ role:'assistant', content:commonResponse });
-    if (userMessage.toLowerCase().includes('pric') || userMessage.toLowerCase().includes('solution')) {
+    if (
+      /(pric|cost|rate|budget|service|optimiz|nonprofit|about|founder|project|help)/i.test(userMessage)
+    ) {
       await simulateTyping(1000);
-      afAddBotMessage("Would you like to schedule a free consultation to discuss your specific needs? Just say 'yes' and I'll collect your info!");
+      afAddBotMessage("If you would like, we can schedule a short consultation. Just say 'yes' and I will open the calendar or collect your details.");
       AFChatState.waitingForLeadConfirmation = true;
     }
     return;
@@ -747,7 +847,8 @@ async function afSendToAI(userMessage, thinkingNode) {
         headers: { 'Content-Type': 'application/json' }, // simple request => no CORS pre‑flight
         body: JSON.stringify({ 
           message: userMessage,
-          history: payloadHistory
+          history: payloadHistory,
+          assistant_instructions: AF_ASSISTANT_INSTRUCTIONS
         })
       });
 
@@ -758,7 +859,8 @@ async function afSendToAI(userMessage, thinkingNode) {
       }
 
   const data = await res.json();
-  const botReply = data.reply ?? data.message ?? data.content ?? '';
+  const rawReply = data.reply ?? data.message ?? data.content ?? '';
+  const botReply = afNormalizeBotReply(rawReply, userMessage);
       console.log('AFCHAT: botReply received', { botReply: botReply.slice(0,400), detectedLeadIntent: AFChatState.detectedLeadIntent });
       if (!botReply) throw new Error('Empty reply from server');
 
@@ -783,7 +885,7 @@ async function afSendToAI(userMessage, thinkingNode) {
       // or mentions contact/personal info, start our client-side capture so we can collect details.
       if (AFChatState.detectedLeadIntent && (containsNeg || containsInfo)) {
         console.log('AFCHAT: AI refusal heuristic triggered (loose mode); starting client capture', {lowerReply, containsNeg, containsInfo});
-        afAddBotMessage("Great — I can pass this on to the team. What's your name? (You can type 'cancel' to stop)");
+        afAddBotMessage("Of course. I can pass this to the team with care. May I have your name? (You can type 'cancel' to stop.)");
         AFChatState.collectingInfo = true;
         AFChatState.currentField = 'name';
       }
@@ -800,8 +902,7 @@ async function afSendToAI(userMessage, thinkingNode) {
   /* ---- every endpoint failed ---- */
   if (thinkingNode?.remove) thinkingNode.remove();
   afAddBotMessage(
-    "Sorry, I'm having trouble connecting right now. " +
-    "Feel free to use the contact form below or try again in a moment!"
+    "I am having trouble connecting right now. Please use the contact form below, call (440) 941-1785, or email hello@aifreelancer.co."
   );
   afSetSending(false);
   console.error('[AFChat] all endpoints failed', lastErr);
@@ -905,7 +1006,10 @@ async function afLoadRemoteConfig() {
     const res = await fetch(AF_CHAT_CONFIG_ENDPOINT, { method:'GET' });
     if (!res.ok) return;
     const data = await res.json();
-    AFChatState.config = { ...AFChatState.config, ...data };
+    // Keep core tone/content settings local so behavior stays consistent.
+    if (data && typeof data.brand === 'string' && data.brand.trim()) {
+      AFChatState.config.brand = data.brand.trim();
+    }
   } catch (_) {}
 }
 

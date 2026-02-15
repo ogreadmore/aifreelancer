@@ -21,10 +21,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     <div class="chatbot-container">
         <button id="chatbot-launcher" type="button" class="chatbot-launcher gemini-gradient-bg pulse" aria-label="Open AI chat assistant">
             <svg class="chatbot-launcher-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 6.75A2.75 2.75 0 0 1 7.75 4h8.5A2.75 2.75 0 0 1 19 6.75v5.5A2.75 2.75 0 0 1 16.25 15H11l-4.5 3v-3A2.75 2.75 0 0 1 3.75 12.25v-5.5Z" fill="currentColor"/>
-                <circle cx="9" cy="9.5" r="1" fill="#FFFFFF"/>
-                <circle cx="12" cy="9.5" r="1" fill="#FFFFFF"/>
-                <circle cx="15" cy="9.5" r="1" fill="#FFFFFF"/>
+                <path d="M4 5.75A1.75 1.75 0 0 1 5.75 4h12.5A1.75 1.75 0 0 1 20 5.75v8.5A1.75 1.75 0 0 1 18.25 16H9.7l-4.95 3.45A.5.5 0 0 1 4 19.04V16.2A1.75 1.75 0 0 1 2.25 14.5V5.75A1.75 1.75 0 0 1 4 4Z" fill="currentColor"/>
             </svg>
         </button>
         
@@ -218,6 +215,7 @@ const AFChatState = {
 
 /* ---------- DOM LOOKUPS ---------- */
 const afEls = {
+  container:         document.querySelector('.chatbot-container'),
   launcher:          document.getElementById('chatbot-launcher'),
   window:            document.getElementById('chatbot-window'),
   closeBtn:          document.getElementById('close-chatbot'),
@@ -833,21 +831,35 @@ if (afEls.form) {
 /* ---------- CHAT WINDOW TOGGLE with mobile optimization ---------- */
 function afToggleChat(show) {
   const win = afEls.window;
+  const container = afEls.container;
   if (!win) return;
   const isMobile = window.innerWidth < 768;
   // ensure inline display toggled for reliable show/hide across pages
   if (show) {
-    win.style.display = isMobile ? 'block' : 'flex';
+    win.style.display = 'flex';
   }
   if (isMobile) {
     win.style.width = '100vw';
     win.style.height = '100vh';
     win.style.bottom = '0';
     win.style.right = '0';
+    win.style.left = '0';
+    win.style.top = 'auto';
     win.style.borderRadius = '0';
     win.style.maxHeight = '100vh';
+  } else {
+    // Clear mobile-only inline overrides so desktop CSS controls layout.
+    win.style.width = '';
+    win.style.height = '';
+    win.style.bottom = '';
+    win.style.right = '';
+    win.style.left = '';
+    win.style.top = '';
+    win.style.borderRadius = '';
+    win.style.maxHeight = '';
   }
   if (show) {
+    if (container) container.classList.add('is-open');
     win.classList.remove('hidden');
     win.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = isMobile ? 'hidden' : '';
@@ -859,6 +871,7 @@ function afToggleChat(show) {
       afGtag('chat_open');
     }
   } else {
+    if (container) container.classList.remove('is-open');
     win.style.transform = isMobile ? 'translateY(100%)' : 'scale(0.95)';
     win.style.opacity = isMobile ? '1' : '0';
     document.body.style.overflow = '';

@@ -10,7 +10,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     const l = document.createElement('link');
     l.rel = 'stylesheet';
     // Use relative path so the asset loads correctly on GitHub Pages
-    l.href = 'assets/css/chatbot.css?v=20260215c';
+    l.href = 'assets/css/chatbot.css?v=20260215f';
     l.setAttribute('data-afchat-css', '');
     document.head.appendChild(l);
   }
@@ -89,6 +89,17 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     console.log('AFCHAT: injected chatbot HTML into document.body');
   } catch (err) {
     console.error('AFCHAT: failed to inject chatbot HTML', err);
+  }
+
+  // Keep launcher positioning independent from chat window positioning.
+  // Moving the window out of the transformed launcher container prevents open-position drift/jumps.
+  try {
+    const injectedWindow = document.getElementById('chatbot-window');
+    if (injectedWindow && injectedWindow.parentElement !== document.body) {
+      document.body.appendChild(injectedWindow);
+    }
+  } catch (err) {
+    console.warn('AFCHAT: failed to relocate chatbot window', err);
   }
 
   // Developer debug helper: if URL includes ?afdebug=1 show a test button

@@ -1,39 +1,41 @@
-name: Build CSS
+  - name: Setup Node
+    uses: actions/setup-node@v4
+    with:
+      node-version: 20
 
-on:
-  push:
-    branches: [ main, master ]
-  workflow_dispatch:
+  - name: Detect Tailwind Build Inputs
+    id: detect
+    run: |
+      if [ -f package.json ] && [ -f tailwind.config.js ] && [ -f assets/tailwind.css ]; then
+        echo "should_build=true" >> "$GITHUB_OUTPUT"
+        echo "Tailwind build inputs found."
+      else
+        echo "should_build=false" >> "$GITHUB_OUTPUT"
+        echo "Skipping CSS build: required files not found in repository root."
+      fi
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  - name: Install deps
+    if: steps.detect.outputs.should_build == 'true'
+    run: |
+      if [ -f package-lock.json ]; then
+        npm ci
+      else
+        npm install
+      fi
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+  - name: Build Tailwind CSS
+    if: steps.detect.outputs.should_build == 'true'
+    run: npm run build:css
 
-      - name: Install deps
-        run: |
-          npm ci || npm install
-
-      - name: Build Tailwind CSS
-        run: |
-          npm run build:css
-
-      - name: Commit generated CSS
-        run: |
-          if [ -n "$(git status --porcelain assets/site.css)" ]; then
-            git config user.name "github-actions"
-            git config user.email "actions@users.noreply.github.com"
-            git add assets/site.css
-            git commit -m "chore: build Tailwind CSS"
-            git push
-          else
-            echo "No changes to commit."
-          fi
-
+  - name: Commit generated CSS
+    if: steps.detect.outputs.should_build == 'true'
+    run: |
+      if [ -f assets/site.css ] && [ -n "$(git status --porcelain -- assets/site.css)" ]; then
+        git config user.name "github-actions"
+        git config user.email "actions@users.noreply.github.com"
+        git add assets/site.css
+        git commit -m "chore: build Tailwind CSS"
+        git push
+      else
+        echo "No CSS changes to commit."
+      fi

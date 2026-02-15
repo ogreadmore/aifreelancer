@@ -177,6 +177,7 @@ const AF_ASSISTANT_INSTRUCTIONS = [
   "Reasoning style: answer practical yes/no questions directly first, then add concise nuance and next-step guidance.",
   "Style: prefer outcomes language (performance, best practices, measurable improvements, business results) over feature catalog language.",
   "Concision: default to 2-4 sentences unless the user asks for depth.",
+  "Follow-up style: offer a concrete plan only for tactical business questions, not founder/company biography questions.",
   "Capabilities phrasing: when asked what we do, lead with broad optimization scope across the business, then mention AI as one of several tools.",
   "If asked whether AI Freelancer is a marketing company or agency, answer yes, then clarify that we take a holistic business-optimization approach beyond marketing.",
   "Conversion goal: guide visitors toward direct contact (email, phone, or scheduling) in a helpful, non-pushy way.",
@@ -191,10 +192,12 @@ const AF_BRAND_PRIMER_MESSAGE = [
   "2) We can optimize nearly any business function; AI is often the best tool but not the only one.",
   "3) Avoid generic agency phrasing like 'AI solutions company' or 'we specialize in chatbots'.",
   "4) Do not proactively sell chatbots unless the user explicitly asks about them.",
-  "5) Keep default answers to 2-4 sentences, then offer to go deeper.",
-  "6) Communicate with low hype, precision, and practical clarity.",
-  "7) Prefer outcome-focused wording and clear next steps.",
-  "8) For yes/no questions, answer yes or no directly in the first sentence."
+  "5) Keep default answers to 2-4 sentences.",
+  "6) Offer deeper follow-up only for tactical business questions.",
+  "7) For founder/company biography questions, do not append 'concrete plan' language.",
+  "8) Communicate with low hype, precision, and practical clarity.",
+  "9) Prefer outcome-focused wording and clear next steps.",
+  "10) For yes/no questions, answer yes or no directly in the first sentence."
 ].join(" ");
 
 /* ---------- STATE ---------- */
@@ -525,6 +528,15 @@ function afUserRequestedDepth(userMessage = '') {
   return /(detail|deeper|in depth|step by step|walk me through|long version|full explanation|elaborate|deep dive|expand)/i.test(String(userMessage));
 }
 
+function afIsBackgroundPrompt(userMessage = '') {
+  return /(founder|taylor|oliphant|who is|who are you|about (the )?(founder|taylor|company|ai freelancer)|background|history|when did you start)/i.test(String(userMessage));
+}
+
+function afShouldOfferConcretePlanFollowup(userMessage = '') {
+  if (afIsBackgroundPrompt(userMessage)) return false;
+  return /(optimiz|improv|marketing|ads|seo|roadmap|strategy|plan|project|workflow|process|pricing|cost|rate|budget|nonprofit|help|next step|consult|appointment|book|schedule)/i.test(String(userMessage));
+}
+
 function afTrimToSentenceLimit(text, limit = 4) {
   const cleaned = String(text || '').trim();
   if (!cleaned) return cleaned;
@@ -543,6 +555,8 @@ function afNormalizeBotReply(reply, userMessage = '') {
 
   const lowerUser = String(userMessage || '').toLowerCase();
   const askedAboutChatbots = /(chatbot|chat bot|website chat|web chat|live chat|support bot|assistant widget)/i.test(lowerUser);
+  const isBackgroundPrompt = afIsBackgroundPrompt(userMessage);
+  const shouldOfferPlanFollowup = afShouldOfferConcretePlanFollowup(userMessage);
 
   // Soft phrasing corrections to keep voice on-brand without forcing canned responses.
   const replacements = [
@@ -560,10 +574,17 @@ function afNormalizeBotReply(reply, userMessage = '') {
       .replace(/\bchatbots?\b/gi, 'automation tools');
   }
 
+  // Remove generic plan CTA from biography-style prompts.
+  if (isBackgroundPrompt) {
+    text = text.replace(/\n*\s*if you want, i can go deeper with a concrete plan\.?\s*/ig, '').trim();
+  }
+
   if (!afUserRequestedDepth(userMessage)) {
     const trimmed = afTrimToSentenceLimit(text, 4);
     if (trimmed !== text) {
-      text = `${trimmed}\n\nIf you want, I can go deeper with a concrete plan.`;
+      text = shouldOfferPlanFollowup
+        ? `${trimmed}\n\nIf you want, I can go deeper with a concrete plan.`
+        : trimmed;
     }
   }
 

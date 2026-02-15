@@ -1,0 +1,1382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (() => {
+      const nav = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]) || null;
+      const legacyNavType = performance.navigation ? performance.navigation.type : -1;
+      const navType = nav && typeof nav.type === 'string'
+        ? nav.type
+        : (legacyNavType === 1 ? 'reload' : '');
+      const isReload = navType === 'reload';
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch {}
+      if (!isReload) return;
+      const resetToTop = () => { window.scrollTo(0, 0); };
+      resetToTop();
+      window.addEventListener('pageshow', resetToTop, { once: true });
+      window.addEventListener('load', resetToTop, { once: true });
+    })();
+  </script>
+  <title>AI Freelancer — We Optimize Everything</title>
+  <meta name="description" content="AI Freelancer is a business optimization powerhouse based in Cleveland, OH. We optimize your marketing, website, SEO, workflows, and more — delivering real results in days, not months.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aifreelancer.co/">
+  <meta property="og:title" content="AI Freelancer — We Optimize Everything">
+  <meta property="og:description" content="We're not an AI agency. We're a business optimization powerhouse. Marketing, websites, SEO, workflows — optimized and launched fast.">
+  <meta property="og:image" content="https://aifreelancer.co/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Freelancer — We Optimize Everything">
+  <meta name="twitter:description" content="We're not an AI agency. We're a business optimization powerhouse.">
+  <meta name="twitter:image" content="https://aifreelancer.co/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234B88DA'/%3E%3Cstop offset='40%25' stop-color='%238A3BF1'/%3E%3Cstop offset='70%25' stop-color='%23D941A1'/%3E%3Cstop offset='100%25' stop-color='%23E5484D'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='6' fill='url(%23g)'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='18' fill='white'%3EAi%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff; color: #0A0A0A; line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 920px; margin: 0 auto; padding: 0 2rem; }
+
+    nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      padding: 1.5rem 0;
+      transition: background .3s ease, box-shadow .3s ease;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,.92);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(0,0,0,.08);
+    }
+    .nav-inner {
+      max-width: 920px; margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+      font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+      font-weight: 800; letter-spacing: .02em; line-height: 1; white-space: nowrap;
+    }
+    .logo-ai {
+      background: linear-gradient(105deg, #4B88DA, #8A3BF1, #D941A1, #E5484D);
+      background-size: 180% 180%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 10s ease infinite;
+      display: inline-block; margin-right: .2em;
+    }
+    .logo-freelancer { color: #0A0A0A; }
+
+    .nav-link {
+      font-size: .875rem; font-weight: 600; color: #0A0A0A; text-decoration: none;
+      padding: .75rem 1.5rem; border: 1.5px solid transparent; border-radius: 6px;
+      background: linear-gradient(#fff,#fff) padding-box,
+                  linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D) border-box;
+      background-size: auto, 180% 180%;
+      animation: accentShift 10s ease infinite;
+      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease;
+      position: relative; z-index: 1;
+    }
+    .nav-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(138,59,241,.18), 0 0 12px rgba(217,65,161,.12);
+      filter: brightness(1.02);
+    }
+    .nav-link:active, .nav-link.pop {
+      transform: scale(1.18);
+      box-shadow: 0 8px 28px rgba(138,59,241,.24), 0 0 18px rgba(217,65,161,.16);
+    }
+
+    .scroll-track { height: 400vh; position: relative; }
+    .hero {
+      position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden;
+      display: flex; align-items: flex-end; background: #f2f2f2;
+      --overlay-opacity: 1;
+    }
+    .hero video, .hero-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      pointer-events: none;
+    }
+    .hero video {
+      transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
+      will-change: transform;
+    }
+    .hero-canvas {
+      transform: scale(1.04); filter: saturate(1.05) contrast(1.02) brightness(.95);
+      will-change: transform;
+      display: none; /* shown once frames are ready */
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.40), rgba(255,255,255,.60)),
+        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.24), rgba(255,255,255,.06));
+      opacity: var(--overlay-opacity, 1);
+      pointer-events: none;
+    }
+    .is-firefox .hero::after {
+      -webkit-backdrop-filter: none; backdrop-filter: none;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.62), rgba(255,255,255,.8)),
+        radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.4), rgba(255,255,255,.14));
+    }
+
+    .hero-content { position: relative; z-index: 2; width: min(94vw, 800px); margin: 0 auto; padding: 0 2rem 5rem; }
+    .hero h1 {
+      font-family: 'Archivo','Inter',system-ui,sans-serif;
+      font-size: clamp(2.75rem, 8vw, 5.5rem);
+      font-weight: 900; line-height: .92; letter-spacing: -.045em;
+      margin-bottom: 1.5rem; color: #050505; max-width: 16ch; text-wrap: balance;
+    }
+    .subtitle {
+      font-size: clamp(1.05rem,1.9vw,1.4rem);
+      color: rgba(0,0,0,.6); margin-bottom: 2.5rem; font-weight: 500; line-height: 1.4; max-width: 480px;
+    }
+    .hero-cta {
+      display: inline-block; color: #fff; text-decoration: none;
+      padding: 1.25rem 3rem; font-size: 1rem; font-weight: 700; border-radius: 6px;
+      letter-spacing: -.01em;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 180% 180%; animation: accentShift 9s ease infinite;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .hero-cta:hover {
+      animation: accentShift 9s ease infinite, ctaPulse 1.2s ease-in-out infinite;
+      box-shadow: 0 12px 24px rgba(10,10,10,.2); filter: saturate(1.06);
+    }
+    @keyframes ctaPulse {
+      0%, 100% { transform: translateY(-2px) scale(1); }
+      50% { transform: translateY(-2px) scale(1.07); }
+    }
+
+    .page-content { background: #fff; position: relative; z-index: 10; }
+    .divider { border: none; border-top: 1px solid #E5E5E5; }
+    .section-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #737373; margin-bottom: 3rem; }
+
+    .pitch { padding: 6rem 0 3rem; }
+    .pitch-text { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 700; line-height: 1.35; letter-spacing: -.03em; max-width: 700px; color: #A3A3A3; }
+    .pitch-text span { color: #0A0A0A; }
+
+    .about-video-wrap { padding: 1rem 0 5rem; }
+    .about-video-shell {
+      width: 100%; max-width: 100%; margin: 0 auto;
+      transform: scale(.84); transform-origin: center top;
+      will-change: transform; transition: transform .15s linear;
+    }
+    .about-video-box {
+      position: relative; background: #f3f4f6; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 18px 50px rgba(10,10,10,.12); aspect-ratio: 16 / 9;
+    }
+    .about-video-box iframe { width: 100%; height: 100%; border: 0; }
+    .about-video-overlay {
+      position: absolute; inset: 0; background: #f3f4f6;
+      display: block; cursor: pointer; transition: opacity .28s ease; z-index: 2;
+    }
+    .about-video-overlay.hidden { opacity: 0; pointer-events: none; }
+    .about-video-cta {
+      width: 78px; height: 78px; border-radius: 999px; display: grid; place-items: center;
+      color: #fff;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 180% 180%; animation: accentShift 9s ease infinite;
+      box-shadow: 0 10px 28px rgba(138,59,241,.28);
+    }
+    .about-video-caption {
+      position: absolute; left: 50%; top: calc(50% + 56px); transform: translateX(-50%);
+      text-align: center; font-size: 1.05rem; font-weight: 700; color: #111827;
+      width: calc(100% - 2rem); pointer-events: none; line-height: 1.2;
+    }
+
+    /* PERF: content-visibility on below-fold sections */
+    .proof, .services, .case-studies, .approach, .cta-section {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 600px;
+    }
+
+    .proof, .services, .case-studies, .approach { padding: 5rem 0; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .stat { padding: 2rem; background: #F9F9F9; border-radius: 8px; }
+    .stat-number {
+      font-size: 2.75rem; font-weight: 800; line-height: 1; margin-bottom: .5rem; letter-spacing: -.03em;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 200% 200%; background-position: 30% 50%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* PERF: static gradient position — no animation, no repaints */
+    }
+    .stat-label { font-size: .8125rem; color: #737373; font-weight: 500; }
+
+    .service-grid { display: grid; gap: 0; }
+    .service-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 1.15rem 1.5rem; gap: 1.5rem;
+      border-bottom: 1px solid #E5E5E5; text-decoration: none;
+      color: inherit; border-radius: 10px;
+      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .service-item:first-child { border-top: 1px solid #E5E5E5; }
+    .service-item:hover, .service-item:focus-visible {
+      background:
+        linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)) padding-box,
+        linear-gradient(105deg, rgba(75,136,218,.48), rgba(138,59,241,.48), rgba(217,65,161,.48), rgba(229,72,77,.48)) border-box;
+      border: 1px solid transparent;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(138,59,241,.12), 0 2px 8px rgba(10,10,10,.05);
+      outline: none;
+    }
+    .service-item:hover .service-name,
+    .service-item:focus-visible .service-name {
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 180% 180%; background-position: 30% 50%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .service-item:hover .service-desc,
+    .service-item:focus-visible .service-desc { color: #6b7280; }
+    .service-name { font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; }
+    .service-desc { font-size: .8125rem; color: #A3A3A3; font-weight: 500; text-align: right; max-width: 340px; padding-left: 1rem; }
+
+    .case-study { background: #F9F9F9; border-radius: 8px; padding: 3rem; margin-bottom: 1.5rem; }
+    .case-study-eyebrow { font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #A3A3A3; margin-bottom: 1rem; }
+    .case-study h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -.03em; margin-bottom: .75rem; }
+    .case-study-desc { font-size: 1rem; color: #525252; margin-bottom: 2rem; line-height: 1.6; }
+    .case-study-metrics { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .metric-value {
+      font-size: 1.75rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; margin-bottom: .25rem;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 200% 200%; background-position: 30% 50%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .metric-label { font-size: .75rem; color: #A3A3A3; font-weight: 500; }
+
+    .testimonial-scroll { position: relative; }
+    .testimonial-sticky {
+      position: sticky; top: 0; height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; overflow: hidden;
+    }
+    .testimonial-header { padding: 0 4rem; margin-bottom: 2.5rem; }
+    .testimonial-rail {
+      display: flex; gap: 2rem; padding: 0 4rem;
+      will-change: transform;
+    }
+    .testimonial-card {
+      flex: 0 0 420px; max-width: 420px;
+      background: #F9F9F9; border-radius: 12px; padding: 2.5rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .testimonial-card .tc-quote {
+      font-size: 1.05rem; font-weight: 500; line-height: 1.65;
+      color: #262626; margin-bottom: 1.5rem; flex: 1;
+    }
+    .testimonial-card .tc-quote::before { content: '\201C'; }
+    .testimonial-card .tc-quote::after { content: '\201D'; }
+    .testimonial-card .tc-stars { display: flex; gap: 3px; margin-bottom: 1.25rem; }
+    .testimonial-card .tc-stars svg { width: 18px; height: 18px; }
+    .testimonial-card .tc-author { display: flex; align-items: center; gap: .75rem; }
+    .testimonial-card .tc-name { font-size: .875rem; font-weight: 600; color: #0A0A0A; }
+    .testimonial-card .tc-role { font-size: .75rem; color: #737373; }
+    .testimonial-progress { display: flex; gap: .5rem; justify-content: center; margin-top: 2rem; }
+    .testimonial-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #D4D4D4; transition: background .3s, transform .3s;
+    }
+    .testimonial-dot.active { background: #8A3BF1; transform: scale(1.3); }
+
+    .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .step-number { font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #A3A3A3; margin-bottom: 1rem; }
+    .step-title { font-size: 1.125rem; font-weight: 700; margin-bottom: .75rem; letter-spacing: -.02em; }
+    .step-desc { font-size: .875rem; color: #737373; line-height: 1.6; }
+
+    .cta-section { padding: 6rem 0; text-align: center; }
+    .cta-section h2 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin-bottom: 1.5rem; }
+    .cta-subtitle { font-size: 1.125rem; color: #737373; margin-bottom: 2.5rem; max-width: 560px; margin-inline: auto; }
+    .contact-form { max-width: 760px; margin: 0 auto; display: grid; gap: .9rem; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .contact-form input, .contact-form textarea {
+      width: 100%; border: 1px solid #E5E5E5; border-radius: 8px;
+      padding: .9rem 1rem; font: inherit; color: #0A0A0A; background: #fff;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none; border-color: #8A3BF1; box-shadow: 0 0 0 3px rgba(138,59,241,.14);
+    }
+    .cta-button {
+      width: 100%; border: 0; cursor: pointer;
+      color: #fff; padding: 1rem 1.25rem; border-radius: 8px; font-weight: 700;
+      background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+      background-size: 180% 180%; animation: accentShift 9s ease infinite;
+      font-size: 1rem; position: relative;
+      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, filter .25s ease, opacity .2s ease;
+    }
+    .cta-button:hover:not(:disabled) {
+      transform: scale(1.045);
+      box-shadow: 0 8px 24px rgba(138,59,241,.22), 0 0 14px rgba(217,65,161,.14);
+      filter: brightness(1.04);
+    }
+    .cta-button:active:not(:disabled), .cta-button.pop {
+      transform: scale(1.07);
+      box-shadow: 0 10px 30px rgba(138,59,241,.28), 0 0 20px rgba(217,65,161,.18);
+    }
+    .cta-button:disabled { opacity: .6; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+    .form-status {
+      text-align: center; padding: 1rem; border-radius: 8px;
+      font-size: .9375rem; font-weight: 600; display: none;
+    }
+    .form-status.success { display: block; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .form-status.error { display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+    footer { text-align: center; padding: 3rem 0; border-top: 1px solid #E5E5E5; color: #A3A3A3; font-size: .8125rem; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.reveal-in { opacity: 1; transform: translateY(0); }
+    .reveal-fast { transition-duration: .45s; }
+    .reveal-slow { transition-duration: .75s; }
+
+    @keyframes accentShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-ai, .nav-link, .hero-cta, .cta-button { animation: none !important; }
+      .service-item, .service-item:hover, .service-item:focus-visible { transform: none !important; box-shadow: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+    .is-low-end .logo-ai,
+    .is-low-end .nav-link,
+    .is-low-end .hero-cta,
+    .is-low-end .cta-button {
+      animation: none !important;
+    }
+    .is-low-end .hero-cta:hover,
+    .is-low-end .cta-button:hover {
+      animation: none !important;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px) {
+      nav {
+        padding: 1rem 0; background: transparent;
+        -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none;
+      }
+      nav.scrolled {
+        -webkit-backdrop-filter: none; backdrop-filter: none;
+        background: rgba(255,255,255,.98);
+        box-shadow: 0 1px 0 rgba(0,0,0,.08);
+      }
+      .container, .nav-inner { padding: 0 1.25rem; }
+      .hero-content { padding: 0 1.25rem 3rem; }
+      .scroll-track { height: 200svh; padding-top: 75px; box-sizing: border-box; }
+      .hero {
+        position: sticky; top: 75px; height: 68svh; min-height: 460px;
+        align-items: flex-end; --overlay-opacity: 1;
+      }
+      .hero::after {
+        -webkit-backdrop-filter: none; backdrop-filter: none;
+        background:
+          linear-gradient(to bottom, rgba(255,255,255,.40), rgba(255,255,255,.64)),
+          radial-gradient(120% 90% at 12% 22%, rgba(255,255,255,.28), rgba(255,255,255,.10));
+        opacity: var(--overlay-opacity, 1);
+      }
+      .hero video, .hero-canvas {
+        transform: scale(1.0); object-position: center 30%;
+        filter: none; will-change: auto;
+      }
+      .hero-content { will-change: opacity; }
+      .hero-cta:hover { animation: accentShift 9s ease infinite; box-shadow: none; filter: none; }
+      .page-content {
+        margin-top: calc(-200svh + max(68svh, 460px) + 75px);
+        position: relative; z-index: 10; background: #fff;
+        border-top-left-radius: 20px; border-top-right-radius: 20px;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+      }
+      .pitch { padding: 4rem 0 1.5rem; opacity: 1 !important; transform: none !important; transition: none !important; }
+      .about-video-wrap { padding: 0 0 3rem; opacity: 1 !important; transform: none !important; transition: none !important; }
+      .about-video-shell { transform: scale(1) !important; transition: none !important; }
+      .stats { grid-template-columns: 1fr; gap: 1rem; }
+      .service-item { flex-direction: column; align-items: flex-start; gap: .5rem; padding: 1rem; }
+      .service-desc { text-align: left; max-width: 100%; padding-left: 0; }
+      .service-item.scroll-active {
+        background:
+          linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)) padding-box,
+          linear-gradient(105deg, rgba(75,136,218,.48), rgba(138,59,241,.48), rgba(217,65,161,.48), rgba(229,72,77,.48)) border-box;
+        border: 1px solid transparent; transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(138,59,241,.12), 0 2px 8px rgba(10,10,10,.05);
+      }
+      .service-item.scroll-active .service-name {
+        background: linear-gradient(105deg,#4B88DA,#8A3BF1,#D941A1,#E5484D);
+        background-size: 180% 180%; background-position: 30% 50%;
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .service-item.scroll-active .service-desc { color: #6b7280; }
+      .case-study { padding: 2rem; }
+      .case-study-metrics { gap: 1.5rem; }
+      .approach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .testimonial-header { padding: 0 1.25rem; }
+      .testimonial-rail { padding: 0 1.25rem; gap: 1.25rem; }
+      .testimonial-card { flex: 0 0 300px; max-width: 300px; padding: 1.75rem; }
+      .about-video-caption { font-size: .96rem; top: calc(50% + 52px); }
+    }
+    @media (max-width: 375px) { .hero-content { padding: 0 1.25rem 3.5rem; } }
+    @media (max-height: 600px) { .hero-content { padding: 0 1.25rem 3rem; } .hero { min-height: 360px; } }
+  </style>
+</head>
+<body>
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <div class="logo"><span class="logo-ai">AI</span><span class="logo-freelancer"> Freelancer</span></div>
+      <a href="#contact" class="nav-link">Let's Talk</a>
+    </div>
+  </nav>
+
+  <div class="scroll-track" id="track">
+    <section class="hero">
+      <video id="bgVideo" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="heroCanvas" class="hero-canvas"></canvas>
+      <div class="hero-content">
+        <h1>We love optimization.</h1>
+        <p class="subtitle">We're not an AI agency. We're a business optimization powerhouse.</p>
+        <a href="#learn-more" class="hero-cta">Learn More</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="page-content">
+    <section class="pitch" id="learn-more"><div class="container"><p class="pitch-text">We can optimize everything. Your website. Your ads. Your workflows. Your team. <span>We sell success, not AI.</span></p></div></section>
+
+    <section class="about-video-wrap" aria-label="About video">
+      <div class="container">
+        <div class="about-video-shell" id="aboutVideoShell">
+          <div class="about-video-box" id="aboutVideoBox">
+            <iframe id="aboutVideoFrame" title="AI Freelancer Intro" loading="lazy"
+              data-src="https://www.youtube.com/embed/4UZaMDg3GZk?rel=0&showinfo=0&autoplay=1&mute=1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+            <div class="about-video-overlay" id="aboutVideoOverlay" role="button" tabindex="0" aria-label="Play intro video">
+              <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+                <div class="about-video-cta"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+              <p class="about-video-caption">Watch Our 2-Minute Intro</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><hr class="divider"></div>
+    <section class="proof"><div class="container"><div class="section-label">Results We've Delivered</div><div class="stats"><div class="stat"><div class="stat-number" data-count-to="4" data-prefix="" data-suffix="x" data-format="int">4x</div><div class="stat-label">Google Ads ROI</div></div><div class="stat"><div class="stat-number" data-count-to="500" data-prefix="" data-suffix="%" data-format="int">500%</div><div class="stat-label">Traffic increase</div></div><div class="stat"><div class="stat-number" data-count-to="100" data-prefix="$" data-suffix="K+" data-format="int">$100K+</div><div class="stat-label">Raised for non-profits</div></div></div></div></section>
+    <div class="container"><hr class="divider"></div>
+    <section class="services"><div class="container"><div class="section-label">We Optimize Everything</div><div class="service-grid">
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Marketing</div><div class="service-desc">Google Ads, PPC, content, campaigns</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Website</div><div class="service-desc">Conversions, e-commerce, speed, UX</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your SEO</div><div class="service-desc">Search rankings, local SEO, visibility</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Business Processes</div><div class="service-desc">Automation, workflows, operations</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Customer Support</div><div class="service-desc">AI support, response time, satisfaction</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Employee Training</div><div class="service-desc">Onboarding, knowledge bases, SOPs</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Supply Chain</div><div class="service-desc">Logistics, vendors, inventory</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Online Security</div><div class="service-desc">Protection, compliance, monitoring</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your App Development</div><div class="service-desc">Custom tools, integrations, MVPs</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your AI Skills</div><div class="service-desc">Training, workshops, implementation</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Agentic Engineering</div><div class="service-desc">AI agents, autonomous workflows</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your HR Systems</div><div class="service-desc">Hiring, retention, people operations</div></a>
+      <a class="service-item" href="#contact"><div class="service-name">Optimize Your Accounting &amp; Tax Prep</div><div class="service-desc">Bookkeeping systems, tax optimization</div></a>
+    </div></div></section>
+
+    <div class="container"><hr class="divider"></div>
+    <section class="case-studies"><div class="container"><div class="section-label">Case Studies</div>
+      <div class="case-study"><div class="case-study-eyebrow">Veterinary E-Commerce · Cleveland, OH</div><h3>Medica Veterinary</h3><p class="case-study-desc">A veterinary practice needed to move from in-office sales to e-commerce. We built a complete Shopify store in one month with entirely AI-generated product photography, driving a 2x increase in sales.</p><div class="case-study-metrics"><div class="metric"><div class="metric-value" data-count-to="2" data-prefix="" data-suffix="x" data-format="int">2x</div><div class="metric-label">Increase in sales</div></div><div class="metric"><div class="metric-value" data-count-to="500" data-prefix="" data-suffix="%" data-format="int">500%</div><div class="metric-label">More site traffic</div></div><div class="metric"><div class="metric-value" data-count-to="1" data-prefix="" data-suffix=" mo" data-format="int">1 mo</div><div class="metric-label">From zero to live</div></div></div></div>
+      <div class="case-study"><div class="case-study-eyebrow">Functional Medicine · Wellness Clinic</div><h3>Inspire Wellness</h3><p class="case-study-desc">A functional medicine clinic needed a steady stream of new patients. We built a new WordPress site and launched a Google Ads campaign that was profitable within the first week.</p><div class="case-study-metrics"><div class="metric"><div class="metric-value" data-count-to="4" data-prefix="" data-suffix="x" data-format="int">4x</div><div class="metric-label">Google Ads ROI</div></div><div class="metric"><div class="metric-value" data-count-to="20" data-prefix="" data-suffix="%" data-format="int">20%</div><div class="metric-label">More new signups</div></div><div class="metric"><div class="metric-value" data-count-to="15" data-prefix="" data-suffix="%" data-format="int">15%</div><div class="metric-label">Visitor-to-call rate</div></div></div></div>
+      <div class="case-study"><div class="case-study-eyebrow">Digital Strategy · Multiple Organizations</div><h3>Non-Profit Organizations</h3><p class="case-study-desc">Several non-profit organizations needed help with fundraising, audience growth, and digital presence. We delivered measurable results across every engagement.</p><div class="case-study-metrics"><div class="metric"><div class="metric-value" data-count-to="100" data-prefix="$" data-suffix="K+" data-format="int">$100K+</div><div class="metric-label">Raised in campaigns</div></div><div class="metric"><div class="metric-value" data-count-to="2000" data-prefix="" data-suffix="%" data-format="int">2000%</div><div class="metric-label">Social media growth</div></div><div class="metric"><div class="metric-value" data-count-to="50" data-prefix="" data-suffix="+" data-format="int">50+</div><div class="metric-label">Countries benefited</div></div></div></div>
+    </div></section>
+
+    <div class="container"><hr class="divider"></div>
+    <section class="testimonial-scroll" id="testimonial-scroll">
+      <div class="testimonial-sticky">
+        <div class="testimonial-header"><div class="container"><div class="section-label">Client Feedback</div></div></div>
+        <div class="testimonial-rail" id="testimonialRail">
+          <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4B88DA"/><stop offset="35%" stop-color="#8A3BF1"/><stop offset="70%" stop-color="#D941A1"/><stop offset="100%" stop-color="#E5484D"/></linearGradient><symbol id="star" viewBox="0 0 24 24"><path fill="url(#starGrad)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol></defs></svg>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">Taylor quickly understood our mission and used automation to help us reach the right audiences. His insights and attention to detail brought measurable results from day one.</p><div class="tc-author"><div><div class="tc-name">Vlad Khaykin</div><div class="tc-role">Thought Leader, Nonprofit Management</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">The AI-powered analytics dashboard gives us insights we never had before. We can now make data-driven decisions with confidence, which has been a game-changer for our marketing campaigns.</p><div class="tc-author"><div><div class="tc-name">Jessica Williams</div><div class="tc-role">Founder, Creative Co.</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">Dependable, sharp, and trustworthy. AI Freelancer delivered the automation solution we needed&mdash;on time and with zero surprises. Highly recommended for any business or project.</p><div class="tc-author"><div><div class="tc-name">JC Hansen</div><div class="tc-role">Project Manager, Earthtone Construction</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">We were skeptical about AI, but the team at AI Freelancer made the process seamless. Their automation of our invoicing and reporting has saved us countless hours and reduced errors significantly.</p><div class="tc-author"><div><div class="tc-name">Linda Kim</div><div class="tc-role">CFO, Blue Bear</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">Taylor brings a rare blend of technical skill and business strategy. The automation tools he built for us saved time and made our workflows run smoother than ever.</p><div class="tc-author"><div><div class="tc-name">Gregory Taylor</div><div class="tc-role">President, GCT Group LLC</div></div></div></div>
+          <div class="testimonial-card"><div class="tc-stars"><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg><svg viewBox="0 0 24 24"><use href="#star"/></svg></div><p class="tc-quote">Working with Taylor was a breeze. He delivered an automation solution that fit perfectly with my tech stack and requirements. Excellent communication and outstanding results.</p><div class="tc-author"><div><div class="tc-name">Jon Coleman</div><div class="tc-role">IT Support, Ohio State University</div></div></div></div>
+        </div>
+        <div class="testimonial-progress" id="testimonialDots"></div>
+      </div>
+    </section>
+    <div class="container"><hr class="divider"></div>
+    <section class="approach"><div class="container"><div class="section-label">How We Work</div><div class="approach-grid"><div class="approach-step"><div class="step-number">01 — Listen</div><div class="step-title">Understand your business</div><p class="step-desc">We learn what you do, how you do it, and where you want to go. Every engagement starts with understanding, not assumptions.</p></div><div class="approach-step"><div class="step-number">02 — Optimize</div><div class="step-title">Make it better</div><p class="step-desc">We implement real improvements—faster processes, smarter marketing, better systems. No strategy decks that collect dust.</p></div><div class="approach-step"><div class="step-number">03 — Grow</div><div class="step-title">Scale what works</div><p class="step-desc">Once it's working, we help you do more of it. More efficiency, more revenue, more of what makes your business great.</p></div></div></div></section>
+    <div class="container"><hr class="divider"></div>
+    <section class="cta-section" id="contact"><div class="container"><h2>Let's make it better.</h2><p class="cta-subtitle">We love business optimization, and we'd love to hear from you!</p><form class="contact-form" id="contactForm" action="https://formspree.io/f/mldlebob" method="POST"><div class="form-row"><input type="text" name="name" placeholder="Your name" required><input type="email" name="email" placeholder="Your email" required></div><input type="text" name="company" placeholder="Company (optional)"><textarea name="message" rows="5" placeholder="What should we optimize first?" required></textarea><button type="submit" class="cta-button" id="submitBtn">Send Request</button><div class="form-status" id="formStatus"></div></form></div></section>
+    <footer><div class="container">AI Freelancer · AIFreelancer.co · Cleveland, OH</div></footer>
+  </div>
+
+  <script>
+  (() => {
+    /* ================================================================
+       PERFORMANCE ARCHITECTURE
+       ================================================================
+       The #1 bottleneck was video.currentTime seeking in the scroll path.
+       Each seek forces the video decoder (CPU) to decompress a frame,
+       taking 10-100ms on phones and old hardware.
+
+       FIX: Decode a fixed set of video frames to ImageBitmaps using a
+       hidden extractor video, then render those bitmaps on a hero canvas.
+       Scroll and programmatic anchor movement only choose which decoded
+       frame to blit. No live currentTime scrubbing in the scroll path.
+
+       Other optimizations:
+       - Single scroll listener → single rAF → batched DOM writes
+       - Cached layout positions (recalc on resize only)
+       - Static gradients on stat/metric numbers (no animation repaints)
+       - Removed heavy click/hover particle effects from primary flow
+       - content-visibility on below-fold sections
+       ================================================================ */
+
+    const MOBILE_MQ = '(max-width: 768px), (max-height: 500px) and (orientation: landscape), (pointer: coarse) and (max-width: 1366px)';
+    const PHONE_MQ = '(max-width: 767px), (max-height: 500px) and (pointer: coarse)';
+    const isMobile = window.matchMedia(MOBILE_MQ).matches;
+    const isPhone = window.matchMedia(PHONE_MQ).matches;
+    const isFirefox = /firefox/i.test(navigator.userAgent);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const LOW_END = true;
+    const ENABLE_PARALLAX = false;
+    const FRAME_PROFILE = { count: 24, scale: 1, yieldEvery: 2 };
+    const ENABLE_FRAME_CACHE = !reducedMotion;
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+    if (isFirefox) document.documentElement.classList.add('is-firefox');
+    if (LOW_END) document.documentElement.classList.add('is-low-end');
+
+    // ── DOM refs ──
+    const nav = document.getElementById('mainNav');
+    const track = document.getElementById('track');
+    const video = document.getElementById('bgVideo');
+    const heroCanvas = document.getElementById('heroCanvas');
+    const heroContent = document.querySelector('.hero-content');
+    const heroEl = document.querySelector('.hero');
+    const testimonialSection = document.getElementById('testimonial-scroll');
+    const testimonialRail = document.getElementById('testimonialRail');
+    const testimonialDotsEl = document.getElementById('testimonialDots');
+    const aboutShell = document.getElementById('aboutVideoShell');
+    const aboutBox = document.getElementById('aboutVideoBox');
+    const extractorVideo = document.createElement('video');
+    extractorVideo.muted = true;
+    extractorVideo.playsInline = true;
+    extractorVideo.preload = 'auto';
+    extractorVideo.crossOrigin = 'anonymous';
+
+    // ── Video sources ──
+    const SD_URL = 'https://raw.githubusercontent.com/ogreadmore/aifreelancer/main/assets/8134766-sd_426_226_25fps.mp4';
+    const HD_URL = 'https://aifreelancer.co/8134766-hd_1366_720_25fps.mp4';
+    const PREFER_SD = true;
+    const VIDEO_SOURCES = PREFER_SD ? [SD_URL, HD_URL] : [HD_URL, SD_URL];
+    let sourceIndex = 0;
+
+    // ── Hero segment constants ──
+    const START_AT = isMobile ? 4.75 : 5.25;
+    const SEG_LEN = isMobile ? 6 : 4;
+    const END_SAFETY = 0.06;
+
+    /* ================================================================
+       FRAME CACHE
+       Pre-decodes video frames to ImageBitmaps / ImageData for
+       instant display during scroll.
+       ================================================================ */
+    const fc = {
+      frameTimes: [],
+      frames: [],
+      loaded: [],
+      decodedCount: 0,
+      complete: false,
+      extracting: false,
+      error: false,
+      retries: 0,
+      ctx: null,        // drawing context for heroCanvas
+      lastIdx: -1,      // last displayed frame index
+      lastTarget: -1,   // last requested frame index
+      lastDir: 1,       // 1 forward, -1 backward
+      width: 0,
+      height: 0,
+      segStart: 0,
+      segEnd: 0,
+      duration: 0,
+    };
+    const FRAME_COUNT = FRAME_PROFILE.count;
+    const FRAME_SCALE = FRAME_PROFILE.scale;
+    const DECODE_YIELD_EVERY = FRAME_PROFILE.yieldEvery;
+    let heroEngaged = false;
+    let extractScheduled = false;
+    let extractGen = 0;
+
+    const rafTick = () => new Promise(resolve => requestAnimationFrame(() => resolve()));
+
+    function closeFrame(frame) {
+      if (frame && typeof frame.close === 'function') frame.close();
+    }
+
+    function releaseFrameCache() {
+      if (fc.frames.length) fc.frames.forEach(closeFrame);
+      fc.frameTimes = [];
+      fc.frames = [];
+      fc.loaded = [];
+      fc.decodedCount = 0;
+      fc.complete = false;
+      fc.extracting = false;
+      fc.error = false;
+      fc.retries = 0;
+      fc.lastIdx = -1;
+      fc.lastTarget = -1;
+      fc.lastDir = 1;
+      fc.ctx = null;
+      fc.width = 0;
+      fc.height = 0;
+      heroCanvas.style.display = 'none';
+      video.style.display = 'block';
+    }
+
+    function waitForVideoReady(el, timeout = 20000) {
+      if (el.readyState >= 1 && Number(el.duration) > 0) return Promise.resolve(true);
+      return new Promise((resolve) => {
+        let done = false;
+        const finish = (ok) => {
+          if (done) return;
+          done = true;
+          clearTimeout(timer);
+          el.removeEventListener('loadedmetadata', onReady);
+          el.removeEventListener('canplay', onReady);
+          el.removeEventListener('error', onErr);
+          resolve(ok);
+        };
+        const onReady = () => finish(true);
+        const onErr = () => finish(false);
+        const timer = setTimeout(() => finish(false), timeout);
+        el.addEventListener('loadedmetadata', onReady, { once: true });
+        el.addEventListener('canplay', onReady, { once: true });
+        el.addEventListener('error', onErr, { once: true });
+      });
+    }
+
+    function seekTo(videoEl, t, timeout = (LOW_END ? 9000 : 3000)) {
+      return new Promise((resolve, reject) => {
+        let done = false;
+        const finish = (ok) => {
+          if (done) return;
+          done = true;
+          clearTimeout(timer);
+          videoEl.removeEventListener('seeked', onSeeked);
+          videoEl.removeEventListener('error', onErr);
+          ok ? resolve() : reject(new Error('seek'));
+        };
+        const onSeeked = () => finish(true);
+        const onErr = () => finish(false);
+        const timer = setTimeout(() => finish(false), timeout);
+        videoEl.addEventListener('seeked', onSeeked, { once: true });
+        videoEl.addEventListener('error', onErr, { once: true });
+        try { videoEl.currentTime = t; } catch { finish(false); }
+      });
+    }
+
+    function waitForDecodedFrame(videoEl, timeout = 1200) {
+      if (typeof videoEl.requestVideoFrameCallback === 'function') {
+        return new Promise((resolve) => {
+          let done = false;
+          const finish = () => {
+            if (done) return;
+            done = true;
+            clearTimeout(timer);
+            resolve();
+          };
+          const timer = setTimeout(finish, timeout);
+          try {
+            videoEl.requestVideoFrameCallback(() => finish());
+          } catch {
+            finish();
+          }
+        });
+      }
+      return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    }
+
+    function buildDecodeOrder(n) {
+      return Array.from({ length: n }, (_, i) => i);
+    }
+
+    function getHeroVisual() {
+      return heroCanvas.style.display !== 'none' ? heroCanvas : video;
+    }
+
+    function configureHeroCanvas(vw, vh) {
+      const scale = (vw <= 640 || vh <= 360) ? 1 : FRAME_SCALE;
+      const cw = Math.max(1, Math.round(vw * scale));
+      const ch = Math.max(1, Math.round(vh * scale));
+      fc.width = cw;
+      fc.height = ch;
+      heroCanvas.width = cw;
+      heroCanvas.height = ch;
+      fc.ctx = heroCanvas.getContext('2d', { alpha: false, desynchronized: true });
+      if (fc.ctx) {
+        try { fc.ctx.imageSmoothingEnabled = true; fc.ctx.imageSmoothingQuality = 'high'; } catch {}
+      }
+      return !!fc.ctx;
+    }
+
+    function nearestDecodedIndex(target, dir) {
+      if (!fc.loaded.length) return -1;
+      if (fc.loaded[target]) return target;
+      if (dir >= 0) {
+        for (let left = target - 1; left >= 0; left--) if (fc.loaded[left]) return left;
+      } else {
+        for (let right = target + 1; right < FRAME_COUNT; right++) if (fc.loaded[right]) return right;
+      }
+      return -1;
+    }
+
+    function displayFrame(progress) {
+      if (!fc.ctx || !fc.decodedCount) return;
+      if (heroCanvas.style.display === 'none') {
+        heroCanvas.style.display = 'block';
+        video.style.display = 'none';
+        video.pause();
+      }
+      const target = Math.round(clamp(progress, 0, 1) * (FRAME_COUNT - 1));
+      if (fc.lastTarget >= 0) {
+        if (target > fc.lastTarget) fc.lastDir = 1;
+        else if (target < fc.lastTarget) fc.lastDir = -1;
+      }
+      fc.lastTarget = target;
+      const dir = fc.lastDir;
+      const idx = nearestDecodedIndex(target, dir);
+      if (idx < 0 || idx === fc.lastIdx) return;
+      if (fc.lastIdx >= 0 && dir >= 0 && idx < fc.lastIdx) return;
+      if (fc.lastIdx >= 0 && dir < 0 && idx > fc.lastIdx) return;
+      const frame = fc.frames[idx];
+      if (!frame) return;
+      fc.lastIdx = idx;
+      if (frame instanceof ImageData) fc.ctx.putImageData(frame, 0, 0);
+      else fc.ctx.drawImage(frame, 0, 0, fc.width, fc.height);
+    }
+
+    async function drawStartFrame() {
+      if (!fc.ctx || !fc.duration) return;
+      try {
+        await seekTo(video, fc.segStart);
+        await waitForDecodedFrame(video);
+        video.pause();
+        fc.ctx.drawImage(video, 0, 0, fc.width, fc.height);
+        heroCanvas.style.display = 'block';
+        video.style.display = 'none';
+      } catch {
+        video.pause();
+      }
+    }
+
+    function scheduleFrameExtraction() {
+      if (!ENABLE_FRAME_CACHE || extractScheduled || fc.extracting || fc.complete || fc.error || !fc.duration) return;
+      extractScheduled = true;
+      const start = () => {
+        extractScheduled = false;
+        extractFrames();
+      };
+      if (LOW_END || isMobile) {
+        setTimeout(start, 0);
+      } else if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(start, { timeout: 900 });
+      } else {
+        setTimeout(start, 120);
+      }
+    }
+
+    function engageHeroAnimation() {
+      if (heroEngaged) return;
+      heroEngaged = true;
+      scheduleFrameExtraction();
+      requestFrame();
+    }
+
+    async function extractFrames() {
+      if (!ENABLE_FRAME_CACHE || fc.extracting || fc.complete || fc.error || !fc.duration) return;
+      const runId = extractGen;
+      fc.extracting = true;
+
+      const src = video.currentSrc || video.src || VIDEO_SOURCES[sourceIndex] || '';
+      if (!src) { fc.extracting = false; return; }
+      if (extractorVideo.currentSrc !== src && extractorVideo.src !== src) {
+        extractorVideo.pause();
+        extractorVideo.crossOrigin = 'anonymous';
+        extractorVideo.preload = 'auto';
+        extractorVideo.src = src;
+        extractorVideo.load();
+      }
+
+      const ready = await waitForVideoReady(extractorVideo);
+      if (!ready) {
+        fc.extracting = false;
+        fc.retries++;
+        if (fc.retries <= 4) setTimeout(scheduleFrameExtraction, 250);
+        else fc.error = true;
+        return;
+      }
+
+      const offscreen = document.createElement('canvas');
+      offscreen.width = fc.width;
+      offscreen.height = fc.height;
+      const offCtx = offscreen.getContext('2d', { willReadFrequently: false });
+      if (!offCtx) { fc.extracting = false; fc.error = true; return; }
+
+      const useBitmapFrames = false;
+      const order = buildDecodeOrder(FRAME_COUNT);
+
+      for (let i = 0; i < order.length; i++) {
+        if (runId !== extractGen) { fc.extracting = false; return; }
+        const idx = order[i];
+        if (fc.loaded[idx]) continue;
+
+        try {
+          await seekTo(extractorVideo, fc.frameTimes[idx]);
+          await waitForDecodedFrame(extractorVideo);
+          if (runId !== extractGen) { fc.extracting = false; return; }
+          offCtx.drawImage(extractorVideo, 0, 0, fc.width, fc.height);
+          let frame;
+          if (useBitmapFrames) {
+            frame = await createImageBitmap(offscreen);
+          } else {
+            const snap = document.createElement('canvas');
+            snap.width = fc.width;
+            snap.height = fc.height;
+            const snapCtx = snap.getContext('2d');
+            if (!snapCtx) throw new Error('snap-canvas');
+            snapCtx.drawImage(offscreen, 0, 0, fc.width, fc.height);
+            frame = snap;
+          }
+          if (runId !== extractGen) { closeFrame(frame); fc.extracting = false; return; }
+          fc.frames[idx] = frame;
+          fc.loaded[idx] = 1;
+          fc.decodedCount++;
+        } catch {}
+
+        if (heroEngaged) requestFrame();
+        if (i % DECODE_YIELD_EVERY === (DECODE_YIELD_EVERY - 1)) await rafTick();
+      }
+
+      fc.extracting = false;
+      if (runId !== extractGen) return;
+      if (fc.decodedCount > 0) {
+        fc.retries = 0;
+        fc.complete = fc.decodedCount >= FRAME_COUNT;
+        if (!fc.complete) setTimeout(scheduleFrameExtraction, 100);
+        requestFrame();
+      } else {
+        fc.retries++;
+        if (fc.retries <= 4) setTimeout(scheduleFrameExtraction, 280);
+        else fc.error = true;
+      }
+    }
+
+    /* ================================================================
+       LAYOUT CACHE — recalculated on resize only, not per-frame
+       ================================================================ */
+    const layout = {
+      vh: window.innerHeight || 0,
+      trackTop: 0,
+      trackScrollable: 0,
+      testimonialTop: 0,
+      testimonialScrollRange: 0,
+      testimonialMaxTx: 0,
+      aboutBoxTop: 0,
+      navThreshold: 10,
+    };
+
+    function recalcLayout() {
+      layout.vh = window.innerHeight || 0;
+      const sy = window.scrollY || window.pageYOffset;
+
+      if (track) {
+        const r = track.getBoundingClientRect();
+        layout.trackTop = sy + r.top;
+        layout.trackScrollable = Math.max(0, track.offsetHeight - layout.vh);
+        layout.navThreshold = isMobile ? 10 : Math.max(0, Math.floor(layout.trackScrollable - 2));
+      }
+
+      if (testimonialSection && testimonialRail) {
+        // Set section height first, then measure
+        const railW = testimonialRail.scrollWidth;
+        const viewW = window.innerWidth;
+        const scrollDist = Math.max(0, railW - viewW + 80);
+        testimonialSection.style.height = (layout.vh + scrollDist) + 'px';
+
+        const r = testimonialSection.getBoundingClientRect();
+        layout.testimonialTop = sy + r.top;
+        layout.testimonialScrollRange = Math.max(0, testimonialSection.offsetHeight - layout.vh);
+        layout.testimonialMaxTx = Math.max(0, railW - viewW + 80);
+      }
+
+      if (aboutBox && !isMobile) {
+        const r = aboutBox.getBoundingClientRect();
+        layout.aboutBoxTop = sy + r.top;
+      }
+    }
+
+    function getProgress() {
+      if (!track || layout.trackScrollable <= 0) return 0;
+      const sy = window.scrollY || window.pageYOffset;
+      return clamp((sy - layout.trackTop) / layout.trackScrollable, 0, 1);
+    }
+
+    /* ================================================================
+       UNIFIED SCROLL FRAME LOOP
+       One scroll listener → one rAF → all reads first → all writes.
+       ================================================================ */
+    let frameId = 0;
+    let lastScrollTs = -1e9;
+    let lastTextFade = -1;
+    let lastOverlayFade = -1;
+
+    // Testimonial state
+    let tCards = [];
+    let tDots = [];
+    if (testimonialRail && testimonialDotsEl) {
+      tCards = testimonialRail.querySelectorAll('.testimonial-card');
+      tCards.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
+        testimonialDotsEl.appendChild(d);
+      });
+      tDots = testimonialDotsEl.querySelectorAll('.testimonial-dot');
+    }
+
+    function requestFrame() {
+      if (!frameId) frameId = requestAnimationFrame(frame);
+    }
+
+    function frame(ts) {
+      frameId = 0;
+
+      // ── READS ──
+      const sy = window.scrollY || window.pageYOffset;
+      const rawProgress = getProgress();
+      const progress = heroEngaged ? rawProgress : 0;
+
+      // ── WRITE: nav ──
+      nav.classList.toggle('scrolled', sy > layout.navThreshold);
+
+      // ── WRITE: hero text + overlay fade ──
+      if (!reducedMotion && heroContent && heroEl) {
+        if (LOW_END) {
+          if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
+          if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
+        } else if (!heroEngaged || sy <= 4) {
+          if (lastTextFade !== 1) { heroContent.style.opacity = '1'; lastTextFade = 1; }
+          if (lastOverlayFade !== 1) { heroEl.style.setProperty('--overlay-opacity', '1'); lastOverlayFade = 1; }
+        } else {
+          const textEnd = isMobile ? 0.18 : 0.42;
+          const tf = Math.max(0, 1 - (progress / textEnd));
+          if (Math.abs(tf - lastTextFade) >= 0.01) { heroContent.style.opacity = tf.toFixed(3); lastTextFade = tf; }
+
+          const olEnd = isMobile ? 0.28 : 1;
+          const olFloor = isMobile ? 0.12 : 0;
+          const ol = Math.max(olFloor, 1 - (progress / olEnd));
+          if (Math.abs(ol - lastOverlayFade) >= 0.01) { heroEl.style.setProperty('--overlay-opacity', ol.toFixed(3)); lastOverlayFade = ol; }
+        }
+      }
+
+      // ── WRITE: hero visual (decoded frame canvas) ──
+      displayFrame(progress);
+
+      // ── WRITE: parallax (desktop only) ──
+      if (ENABLE_PARALLAX) {
+        const py = heroEngaged ? (progress - 0.5) * (isFirefox ? 5 : 12) : 0;
+        getHeroVisual().style.transform = 'scale(1.04) translate3d(0,' + py.toFixed(2) + 'px,0)';
+      } else {
+        getHeroVisual().style.transform = 'scale(1.04) translate3d(0,0,0)';
+      }
+
+      // ── WRITE: testimonial horizontal scroll ──
+      if (testimonialSection && testimonialRail && layout.testimonialScrollRange > 0) {
+        const tTop = layout.testimonialTop - sy;
+        if (tTop <= layout.vh && (tTop + layout.testimonialScrollRange + layout.vh) >= 0) {
+          const tp = clamp(-tTop / layout.testimonialScrollRange, 0, 1);
+          testimonialRail.style.transform = 'translate3d(' + (-tp * layout.testimonialMaxTx).toFixed(1) + 'px,0,0)';
+          const ci = Math.min(tCards.length - 1, Math.floor(tp * tCards.length));
+          tDots.forEach((d, i) => d.classList.toggle('active', i === ci));
+        }
+      }
+
+      // ── WRITE: about video scroll-grow (desktop only) ──
+      if (!isMobile && aboutShell && aboutBox) {
+        const bt = layout.aboutBoxTop - sy;
+        const start = layout.vh;
+        const end = layout.vh * 0.38;
+        const ap = clamp((start - bt) / (start - end), 0, 1);
+        aboutShell.style.transform = 'scale(' + (0.78 + 0.22 * ap).toFixed(4) + ')';
+      }
+
+      // ── Continue short burst while user is actively scrolling ──
+      if ((ts - lastScrollTs) < 140) requestFrame();
+    }
+
+    function onScroll() {
+      lastScrollTs = performance.now();
+      if (!heroEngaged && (window.scrollY || window.pageYOffset) > 8) {
+        engageHeroAnimation();
+      }
+      requestFrame();
+    }
+
+    function onEngageInput() { if (!heroEngaged) engageHeroAnimation(); }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('wheel', onEngageInput, { passive: true, once: true });
+    window.addEventListener('touchstart', onEngageInput, { passive: true, once: true });
+    window.addEventListener('pointerdown', onEngageInput, { passive: true, once: true });
+    window.addEventListener('keydown', onEngageInput, { passive: true, once: true });
+
+    let resizeTimer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { recalcLayout(); requestFrame(); }, 80);
+    }, { passive: true });
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => { recalcLayout(); requestFrame(); }, 200);
+    }, { passive: true });
+
+    /* ================================================================
+       VIDEO LOAD + FRAME EXTRACTION
+       ================================================================ */
+    let activeVideoSrc = '';
+
+    function setVideoSource(url) {
+      extractGen++;
+      releaseFrameCache();
+      activeVideoSrc = '';
+      extractScheduled = false;
+      fc.error = false;
+      fc.duration = 0;
+      fc.segStart = 0;
+      fc.segEnd = 0;
+      extractorVideo.pause();
+      extractorVideo.removeAttribute('src');
+      extractorVideo.load();
+
+      video.pause();
+      video.crossOrigin = 'anonymous';
+      video.preload = 'auto';
+      video.src = url;
+      video.load();
+
+      extractorVideo.crossOrigin = 'anonymous';
+      extractorVideo.preload = 'auto';
+      extractorVideo.src = url;
+      extractorVideo.load();
+    }
+
+    function initVideo() {
+      const src = video.currentSrc || video.src || '';
+      if (!src || activeVideoSrc === src) return;
+      const dur = Number(video.duration) || 0;
+      if (!Number.isFinite(dur) || dur <= 0) return;
+      activeVideoSrc = src;
+      fc.duration = dur;
+      const maxEnd = Math.max(0, dur - END_SAFETY);
+      fc.segStart = clamp(START_AT, 0, maxEnd);
+      fc.segEnd = clamp(fc.segStart + SEG_LEN, fc.segStart, maxEnd);
+
+      if (!configureHeroCanvas(video.videoWidth || 640, video.videoHeight || 360)) {
+        fc.error = true;
+        return;
+      }
+
+      fc.frameTimes = Array.from({ length: FRAME_COUNT }, (_, i) =>
+        fc.segStart + (i / Math.max(1, FRAME_COUNT - 1)) * (fc.segEnd - fc.segStart)
+      );
+      fc.frames = new Array(FRAME_COUNT);
+      fc.loaded = new Uint8Array(FRAME_COUNT);
+      fc.decodedCount = 0;
+      fc.complete = false;
+      fc.lastIdx = -1;
+      fc.lastTarget = -1;
+      fc.lastDir = 1;
+
+      recalcLayout();
+      drawStartFrame();
+      scheduleFrameExtraction();
+      requestFrame();
+    }
+
+    video.style.background = '#fff';
+    video.addEventListener('loadedmetadata', initVideo);
+    video.addEventListener('canplay', initVideo);
+    video.addEventListener('error', () => {
+      sourceIndex++;
+      if (sourceIndex < VIDEO_SOURCES.length) {
+        setVideoSource(VIDEO_SOURCES[sourceIndex]);
+      } else {
+        fc.error = true;
+        releaseFrameCache();
+        video.style.display = 'none';
+      }
+    });
+
+    setVideoSource(VIDEO_SOURCES[0]);
+
+    // Init
+    recalcLayout();
+    requestFrame();
+    window.addEventListener('load', () => { recalcLayout(); requestFrame(); });
+
+    /* ================================================================
+       ABOUT VIDEO: click-to-load + scroll-grow
+       ================================================================ */
+    (() => {
+      const overlay = document.getElementById('aboutVideoOverlay');
+      const iframe = document.getElementById('aboutVideoFrame');
+      if (!overlay || !iframe) return;
+
+      const loadAndPlay = () => {
+        if (!iframe.src) iframe.src = iframe.dataset.src || '';
+        overlay.classList.add('hidden');
+      };
+      overlay.addEventListener('click', loadAndPlay);
+      overlay.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadAndPlay(); }
+      });
+
+      if (isMobile || reducedMotion) {
+        if (aboutShell) aboutShell.style.transform = 'scale(1)';
+      }
+    })();
+
+    /* ================================================================
+       REVEAL ANIMATIONS (IntersectionObserver — zero scroll cost)
+       ================================================================ */
+    if (!reducedMotion) {
+      const revealTargets = Array.from(document.querySelectorAll('.page-content section, .page-content .divider, .page-content footer, .service-item, .stat, .case-study, .approach-step, .metric'));
+      revealTargets.forEach((el, i) => {
+        if (isMobile && (el.classList.contains('about-video-wrap') || el.classList.contains('pitch'))) return;
+        el.classList.add('reveal');
+        if (el.matches('.service-item, .metric, .stat')) el.classList.add('reveal-fast');
+        if (el.matches('.case-study')) el.classList.add('reveal-slow');
+        el.style.transitionDelay = Math.min((i % 10) * 40, 240) + 'ms';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => entry.target.classList.toggle('reveal-in', entry.isIntersecting));
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revealTargets.forEach(el => io.observe(el));
+    }
+
+    /* ================================================================
+       RESULTS COUNTERS (IntersectionObserver)
+       ================================================================ */
+    (() => {
+      const counters = Array.from(document.querySelectorAll('.stat-number[data-count-to], .metric-value[data-count-to]'));
+      if (!counters.length) return;
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      const formatValue = (el, value) => {
+        const fmt = el.dataset.format || 'int';
+        const pre = el.dataset.prefix || '';
+        const suf = el.dataset.suffix || '';
+        if (fmt === 'compact') return pre + new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: value >= 10000 ? 0 : 1 }).format(value) + suf;
+        if (fmt === 'decimal1') return pre + (Math.round(value * 10) / 10).toFixed(1) + suf;
+        return pre + Math.round(value).toLocaleString('en-US') + suf;
+      };
+      const animateCounter = (el) => {
+        if (el.dataset.animated === 'true') return;
+        el.dataset.animated = 'true';
+        const target = Number(el.dataset.countTo || 0);
+        if (!Number.isFinite(target)) return;
+        if (reducedMotion) { el.textContent = formatValue(el, target); return; }
+        const dur = 1300, start = performance.now();
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / dur);
+          el.textContent = formatValue(el, target * easeOutCubic(t));
+          if (t < 1) requestAnimationFrame(tick);
+          else el.textContent = formatValue(el, target);
+        };
+        requestAnimationFrame(tick);
+      };
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.dataset.animated = 'false'; animateCounter(entry.target); }
+          else if (entry.target.dataset.animated === 'true') {
+            entry.target.dataset.animated = 'false';
+            if (!reducedMotion) entry.target.textContent = formatValue(entry.target, 0);
+          }
+        });
+      }, { threshold: 0.45, rootMargin: '0px 0px -8% 0px' });
+      counters.forEach(el => io.observe(el));
+    })();
+
+    /* ================================================================
+       CONTACT FORM
+       ================================================================ */
+    (() => {
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('formStatus');
+      if (!form || !btn || !status) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true; btn.textContent = 'Sending\u2026';
+        status.className = 'form-status'; status.style.display = 'none';
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+          if (res.ok) { status.textContent = 'Thanks! We\u2019ll be in touch within 24 hours.'; status.className = 'form-status success'; form.reset(); }
+          else { const data = await res.json().catch(() => null); status.textContent = (data && data.errors) ? data.errors.map(err => err.message).join(', ') : 'Something went wrong. Please try again.'; status.className = 'form-status error'; }
+        } catch { status.textContent = 'Network error \u2014 please check your connection and try again.'; status.className = 'form-status error'; }
+        finally { btn.disabled = false; btn.textContent = 'Send Request'; }
+      });
+    })();
+
+    /* ================================================================
+       ANCHOR SCROLLING
+       Canvas frame display is driven by scroll position only.
+       ================================================================ */
+    (() => {
+      if (reducedMotion) return;
+
+      const EASE = (t) => 1 - Math.pow(1 - t, 3);
+      let af = 0;
+      let ft = 0;
+
+      const stopAnim = () => {
+        if (af) cancelAnimationFrame(af);
+        if (ft) clearTimeout(ft);
+        af = 0;
+        ft = 0;
+        requestFrame();
+      };
+
+      const navH = () => {
+        const n = document.getElementById('mainNav');
+        return n ? Math.max(0, Math.round(n.getBoundingClientRect().height + 8)) : 0;
+      };
+
+      const runScroll = (targetY, dur, onStep, onDone) => {
+        const startY = window.scrollY || window.pageYOffset;
+        const dist = targetY - startY;
+        if (Math.abs(dist) < 2) {
+          window.scrollTo(0, targetY);
+          if (onStep) onStep(1);
+          requestFrame();
+          if (onDone) onDone();
+          return;
+        }
+
+        const start = performance.now();
+        let done = false;
+        const finish = () => {
+          if (done) return;
+          done = true;
+          if (af) cancelAnimationFrame(af);
+          if (ft) clearTimeout(ft);
+          af = 0;
+          ft = 0;
+          if (onDone) onDone();
+        };
+
+        ft = setTimeout(() => {
+          window.scrollTo(0, targetY);
+          if (onStep) onStep(1);
+          requestFrame();
+          finish();
+        }, dur + 600);
+
+        const step = (now) => {
+          if (done) return;
+          const t = Math.min(1, (now - start) / dur);
+          window.scrollTo(0, startY + dist * EASE(t));
+          if (onStep) onStep(t);
+          requestFrame();
+          if (t < 1) af = requestAnimationFrame(step);
+          else finish();
+        };
+        af = requestAnimationFrame(step);
+      };
+
+      const smoothScrollTo = (targetY, cb) => {
+        stopAnim();
+        const sy = window.scrollY || window.pageYOffset;
+        const dist = Math.abs(targetY - sy);
+        const dur = Math.min(1800, Math.max(420, dist / 2.8));
+        runScroll(targetY, dur, null, cb);
+      };
+
+      const playHeroThenScroll = (targetY) => {
+        stopAnim();
+        engageHeroAnimation();
+        recalcLayout();
+
+        const sy = window.scrollY || window.pageYOffset;
+        const heroEnd = layout.trackScrollable;
+        const heroStop = Math.max(sy, Math.min(heroEnd, targetY));
+        const heroDist = Math.max(0, heroStop - sy);
+
+        if (heroDist < 2) {
+          smoothScrollTo(targetY);
+          return;
+        }
+
+        const heroPxPerMs = isPhone ? 0.20 : 0.26;
+        const heroMinDur = isPhone ? 2200 : 1800;
+        const heroMaxDur = isPhone ? 5200 : 4600;
+        const heroDur = Math.min(heroMaxDur, Math.max(heroMinDur, heroDist / heroPxPerMs));
+        runScroll(heroStop, heroDur, null, () => {
+          if (targetY > heroStop + 2) smoothScrollTo(targetY);
+          else requestFrame();
+        });
+      };
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        if (!href.startsWith('#') || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+
+        recalcLayout();
+        const sy = window.scrollY || window.pageYOffset;
+        const atTop = sy < 50;
+        const offset = navH();
+        const r = target.getBoundingClientRect();
+        const targetY = Math.max(0, Math.round(r.top + sy - offset));
+
+        if (atTop) playHeroThenScroll(targetY);
+        else smoothScrollTo(targetY);
+
+        try { if (history.pushState) history.pushState(null, '', href); } catch { location.hash = href; }
+      }, { passive: false });
+
+      ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(evt => {
+        window.addEventListener(evt, stopAnim, { passive: true });
+      });
+    })();
+
+    /* ── Mobile: highlight service items (IntersectionObserver) ── */
+    if (isMobile) {
+      const items = document.querySelectorAll('.service-item');
+      if (items.length) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => e.target.classList.toggle('scroll-active', e.isIntersecting));
+        }, { rootMargin: '-35% 0px -35% 0px' });
+        items.forEach(item => obs.observe(item));
+      }
+    }
+
+  })();
+  </script>
+</body>
+</html>

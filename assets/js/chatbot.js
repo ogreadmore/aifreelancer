@@ -1,15 +1,18 @@
 // AI Freelancer shared chat widget loader
+const AF_CHAT_DEBUG = new URLSearchParams(window.location.search).get('afdebug') === '1';
+const afDebugLog = (...args) => { if (AF_CHAT_DEBUG) console.log(...args); };
+
 if (window.AF_CHAT_WIDGET_LOADED) {
   console.warn('AF chat widget already loaded');
 } else {
   window.AF_CHAT_WIDGET_LOADED = true;
-  console.log('AFCHAT: assets/js/chatbot.js loaded and executing');
+  afDebugLog('AFCHAT: assets/js/chatbot.js loaded and executing');
 
   // Ensure CSS is present
   if (!document.querySelector('link[data-afchat-css]')) {
     const l = document.createElement('link');
     l.rel = 'stylesheet';
-    // Use relative path so the asset loads correctly on GitHub Pages
+    // Keep this in sync with index.html cache-bust when chat CSS changes.
     l.href = 'assets/css/chatbot.css?v=20260215g';
     l.setAttribute('data-afchat-css', '');
     document.head.appendChild(l);
@@ -86,7 +89,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
   try {
     if (!document.body) console.warn('AFCHAT: document.body is not present');
     document.body.insertAdjacentHTML('beforeend', html);
-    console.log('AFCHAT: injected chatbot HTML into document.body');
+    afDebugLog('AFCHAT: injected chatbot HTML into document.body');
   } catch (err) {
     console.error('AFCHAT: failed to inject chatbot HTML', err);
   }
@@ -102,10 +105,9 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     console.warn('AFCHAT: failed to relocate chatbot window', err);
   }
 
-  // Developer debug helper: if URL includes ?afdebug=1 show a test button
+  // Developer debug helper. Enabled only when URL has ?afdebug=1.
   try {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('afdebug') === '1') {
+    if (AF_CHAT_DEBUG) {
       const dbg = document.createElement('button');
       dbg.textContent = 'AF Test Submit';
       dbg.style.position = 'fixed';
@@ -120,7 +122,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
       dbg.style.cursor = 'pointer';
       dbg.title = 'Trigger a test Formspree submission';
       dbg.addEventListener('click', async () => {
-        console.log('AFCHAT: debug button clicked — performing test submit');
+        afDebugLog('AFCHAT: debug button clicked — performing test submit');
         AFChatState.leadData = {
           name: 'Debug Tester',
           email: 'debug@example.com',
@@ -133,13 +135,14 @@ if (window.AF_CHAT_WIDGET_LOADED) {
         } catch (e) { console.error('AFCHAT: debug submit error', e); }
       });
       document.body.appendChild(dbg);
-      console.log('AFCHAT: debug button appended (use ?afdebug=1 in URL to enable)');
+      afDebugLog('AFCHAT: debug button appended (use ?afdebug=1 in URL to enable)');
     }
   } catch (e) { /* debug helper init suppressed in production */ }
 
   // --- Begin original chat widget script (extracted) ---
 /* ---------- CONFIG ---------- */
 const AF_CHAT_ENDPOINTS = [
+  // External endpoint first because production static hosting may not execute /api routes.
   'https://aifreelancerchatbotvercelthing.vercel.app/api/chat',
   '/api/chat'
 ];
@@ -256,7 +259,7 @@ function afStartLeadCapture() {
     .map(msg => msg.content)
     .join(' | ');
   AFChatState.leadData.message = `Chat conversation summary: ${summary}`;
-  console.log('AFCHAT: starting lead capture, summary=', summary);
+  afDebugLog('AFCHAT: starting lead capture, summary=', summary);
   afAddBotMessage("Of course. I will pass your message to the team with care. May I have your name? (You can type 'cancel' at any time.)");
 }
 
@@ -275,7 +278,7 @@ function afCancelLeadCapture() {
 function afProcessLeadField(value) {
   if (afCheckCancellation(value)) { afCancelLeadCapture(); return; }
   const field = AFChatState.currentField;
-  console.log('AFCHAT: processing lead field', { field, value });
+  afDebugLog('AFCHAT: processing lead field', { field, value });
 
   if (field === 'name') {
     AFChatState.leadData.name = value;
@@ -323,7 +326,7 @@ async function afSubmitLeadToFormspree() {
       headers: { 'Accept': 'application/json' }
     });
     const text = await response.text().catch(()=>'');
-    console.log('AFCHAT: formspree primary response', {status: response.status, ok: response.ok, text: text.slice(0,400)});
+    afDebugLog('AFCHAT: formspree primary response', {status: response.status, ok: response.ok, text: text.slice(0,400)});
     if (response.ok) {
       afAddBotMessage("Thank you. Your information has been sent, and someone from our team will contact you within 24 hours.");
       // Avoid sending raw email addresses to analytics; send only presence and domain for segmentation
@@ -348,8 +351,7 @@ async function afSubmitLeadToFormspree() {
       phone: AFChatState.leadData.phone || '',
       company: AFChatState.leadData.company || '',
       message: AFChatState.leadData.message,
-      _subject: 'New Lead from AI Chatbot',
-      _cc: 'tayloroliphant@gmail.com'
+      _subject: 'New Lead from AI Chatbot'
     };
     try {
       const r2 = await fetch('https://formspree.io/f/mldlebob', {
@@ -358,7 +360,7 @@ async function afSubmitLeadToFormspree() {
         body: JSON.stringify(payload)
       });
       const t2 = await r2.text().catch(()=>'');
-      console.log('AFCHAT: formspree json fallback response', {status: r2.status, ok: r2.ok, text: t2.slice(0,400)});
+      afDebugLog('AFCHAT: formspree json fallback response', {status: r2.status, ok: r2.ok, text: t2.slice(0,400)});
       if (r2.ok) {
         afAddBotMessage("Thank you. Your information has been sent, and someone from our team will contact you within 24 hours.");
       // Avoid sending raw email addresses to analytics; send only presence and domain for segmentation
@@ -523,52 +525,14 @@ function afUserRequestedDepth(userMessage = '') {
   return /(detail|deeper|in depth|step by step|walk me through|long version|full explanation|elaborate|deep dive|expand)/i.test(String(userMessage));
 }
 
-function afIsCapabilitiesPrompt(userMessage = '') {
-  return /(what can you optimize|what do you optimize|what can you do|what do you do|services|capabilities)/i.test(String(userMessage));
-}
-
-function afIsMarketingPrompt(userMessage = '') {
-  return /(marketing|google ads|facebook ads|meta ads|ppc|seo|campaign|advertising)/i.test(String(userMessage));
-}
-
-function afBuildOnBrandCapabilitiesReply() {
-  return [
-    "We optimize business performance wherever there is friction, waste, or missed opportunity.",
-    "That can include marketing, operations, workflows, ecommerce, analytics, team execution, and other hard business problems.",
-    "AI is often our favorite tool, but it is not the product. We sell best practices, strong execution, and measurable outcomes.",
-    "If you share your priority, I can suggest a practical first move."
-  ].join("\n\n");
-}
-
-function afBuildOnBrandMarketingReply() {
-  return [
-    "Yes, we do marketing, and we take it very seriously.",
-    "Our focus is not just ad setup. We optimize the full marketing system so traffic quality, conversion, follow-up speed, and unit economics all improve together.",
-    "That usually includes Google Ads and Meta, plus landing pages, offers, tracking, and sales handoff so performance is real, not vanity.",
-    "If you share your current bottleneck, I can suggest the highest-impact next step."
-  ].join("\n\n");
-}
-
-const AF_OFFBRAND_REPLY_PATTERNS = [
-  /ai social media manager/i,
-  /ai data\s*&\s*analytics/i,
-  /automated customer support/i,
-  /sales\s*&\s*crm automation/i,
-  /internal process automation/i,
-  /fractional chief ai officer/i,
-  /ai website chatbot/i,
-  /book (a )?free discovery call/i,
-  /request an roi calculation/i,
-  /advanced ai solutions?/i,
-  /ai-driven tools?/i,
-  /we specialize in/i
-];
-
 function afTrimToSentenceLimit(text, limit = 4) {
   const cleaned = String(text || '').trim();
   if (!cleaned) return cleaned;
   const normalized = cleaned.replace(/\s+/g, ' ').trim();
-  const sentences = normalized.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g) || [normalized];
+  // Protect decimals like "4.0" from being split as sentence boundaries.
+  const protectedText = normalized.replace(/(\d)\.(\d)/g, '$1<afdot>$2');
+  const sentences = (protectedText.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g) || [protectedText])
+    .map((s) => s.replace(/<afdot>/g, '.'));
   if (sentences.length <= limit) return cleaned;
   return sentences.slice(0, limit).join(' ').trim();
 }
@@ -579,8 +543,6 @@ function afNormalizeBotReply(reply, userMessage = '') {
 
   const lowerUser = String(userMessage || '').toLowerCase();
   const askedAboutChatbots = /(chatbot|chat bot|website chat|web chat|live chat|support bot|assistant widget)/i.test(lowerUser);
-  const isCapabilitiesPrompt = afIsCapabilitiesPrompt(userMessage);
-  const isMarketingPrompt = afIsMarketingPrompt(userMessage);
 
   // Soft phrasing corrections to keep voice on-brand without forcing canned responses.
   const replacements = [
@@ -592,22 +554,10 @@ function afNormalizeBotReply(reply, userMessage = '') {
   replacements.forEach(([pattern, value]) => { text = text.replace(pattern, value); });
 
   if (!askedAboutChatbots) {
+    // Keep wording aligned with "optimization-first" unless chatbot topic is explicitly requested.
     text = text
       .replace(/\bAI chatbots?\b/gi, 'automation tools')
       .replace(/\bchatbots?\b/gi, 'automation tools');
-  }
-
-  const offBrandSignals =
-    AF_OFFBRAND_REPLY_PATTERNS.some((pattern) => pattern.test(text)) ||
-    /(ai solutions?|specialize in ai|ai agency|automated customer support)/i.test(text.toLowerCase());
-
-  // Hard quality gate for key intents: if response drifts off-brand, replace with on-brand framing.
-  if (offBrandSignals && isMarketingPrompt) {
-    text = afBuildOnBrandMarketingReply();
-  } else if (offBrandSignals && isCapabilitiesPrompt) {
-    text = afBuildOnBrandCapabilitiesReply();
-  } else if (isCapabilitiesPrompt && /(chatbot|automation tools|support bot)/i.test(text) && !askedAboutChatbots) {
-    text = afBuildOnBrandCapabilitiesReply();
   }
 
   if (!afUserRequestedDepth(userMessage)) {
@@ -841,7 +791,7 @@ async function afSendToAI(userMessage, thinkingNode) {
   const data = await res.json();
   const rawReply = data.reply ?? data.message ?? data.content ?? '';
   const botReply = afNormalizeBotReply(rawReply, userMessage);
-      console.log('AFCHAT: botReply received', { botReply: botReply.slice(0,400), detectedLeadIntent: AFChatState.detectedLeadIntent });
+      afDebugLog('AFCHAT: botReply received', { botReply: botReply.slice(0,400), detectedLeadIntent: AFChatState.detectedLeadIntent });
       if (!botReply) throw new Error('Empty reply from server');
 
       // tidy up the “thinking…” indicator
@@ -860,11 +810,11 @@ async function afSendToAI(userMessage, thinkingNode) {
       const infoWords = ['collect','personal','information','relay','contact','email','details','private'];
       const containsNeg = negWords.some(n => lowerReply.includes(n));
       const containsInfo = infoWords.some(n => lowerReply.includes(n));
-      console.log('AFCHAT: refusal heuristic check', { lowerReply, containsNeg, containsInfo, detectedLeadIntent: AFChatState.detectedLeadIntent });
+      afDebugLog('AFCHAT: refusal heuristic check', { lowerReply, containsNeg, containsInfo, detectedLeadIntent: AFChatState.detectedLeadIntent });
       // If we previously detected lead intent, and the assistant mentions being unable
       // or mentions contact/personal info, start our client-side capture so we can collect details.
       if (AFChatState.detectedLeadIntent && (containsNeg || containsInfo)) {
-        console.log('AFCHAT: AI refusal heuristic triggered (loose mode); starting client capture', {lowerReply, containsNeg, containsInfo});
+        afDebugLog('AFCHAT: AI refusal heuristic triggered (loose mode); starting client capture', {lowerReply, containsNeg, containsInfo});
         afAddBotMessage("Of course. I can pass this to the team with care. May I have your name? (You can type 'cancel' to stop.)");
         AFChatState.collectingInfo = true;
         AFChatState.currentField = 'name';
@@ -1028,7 +978,7 @@ function afHeaderMobileEtc(){
   }
 }
 
-/* Contact form handling moved to `assets/js/contact-form.js` to keep chatbot responsibilities separate. */
+/* Contact form handling is intentionally outside this file; this script owns chatbot behavior only. */
 
 /* ---------- INJECT ENHANCED STYLES ---------- */
 function afInjectStyles(){
@@ -1064,7 +1014,7 @@ function afInjectStyles(){
 window.addEventListener('DOMContentLoaded', () => {
   // Initialize header/menu and smooth scroll
   afHeaderMobileEtc();
-  // Contact form handlers moved to `assets/js/contact-form.js` (keeps chatbot responsibilities separate)
+  // Chatbot concerns only; primary page form has separate submit logic.
   // Defer style injection to idle time
   if ('requestIdleCallback' in window) requestIdleCallback(afInjectStyles); else setTimeout(afInjectStyles, 1);
 

@@ -10,7 +10,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     const l = document.createElement('link');
     l.rel = 'stylesheet';
     // Use relative path so the asset loads correctly on GitHub Pages
-    l.href = 'assets/css/chatbot.css?v=20260215f';
+    l.href = 'assets/css/chatbot.css?v=20260215g';
     l.setAttribute('data-afchat-css', '');
     document.head.appendChild(l);
   }
@@ -165,15 +165,34 @@ const AF_CHAT_DEFAULT_CONFIG = {
 
 const AF_ASSISTANT_INSTRUCTIONS = [
   "Voice and tone: calm, kind, compassionate, and professional, with clear international business English.",
+  "Style target: measured, intellectually honest, low-hype, precise, practical, and technically literate.",
+  "Core identity: AI Freelancer is a business optimization company. AI is a preferred tool, not the product.",
   "Business model: AI Freelancer accepts broad business optimization and AI engagements across functions.",
+  "Positioning guardrail: avoid framing AI Freelancer as a generic AI agency or chatbot vendor.",
+  "Do not sell chatbots unless the user explicitly asks about chatbots or website chat.",
   "Pricing policy: do not volunteer pricing unless asked directly. If asked, state $250 USD/hour, negotiable. Nonprofits may be free (pro bono) depending on fit and capacity.",
   "Reasoning style: answer practical yes/no questions directly first, then add concise nuance and next-step guidance.",
+  "Style: prefer outcomes language (performance, best practices, measurable improvements, business results) over feature catalog language.",
+  "Concision: default to 2-4 sentences unless the user asks for depth.",
+  "Capabilities phrasing: when asked what we do, lead with broad optimization scope across the business, then mention AI as one of several tools.",
   "If asked whether AI Freelancer is a marketing company or agency, answer yes, then clarify that we take a holistic business-optimization approach beyond marketing.",
   "Conversion goal: guide visitors toward direct contact (email, phone, or scheduling) in a helpful, non-pushy way.",
   "Company facts: founded end of 2023, based in Cleveland, Ohio, global associates with developers primarily in Asia.",
   "Founder facts: Taylor Oliphant (O-L-I-P-H-A-N-T), graduated high school at 15, web development background in Silicon Valley, MBA from Purdue University (4.0), AI certifications from University of Pennsylvania and Lund University, plus credentials from Intel, Google, and Harvard University.",
   "Founder philosophy: pro-science and pro-human outcomes, helpful with AI, but skeptical about concentration of power and rushed deployment by very large AI companies."
 ].join("\n");
+
+const AF_BRAND_PRIMER_MESSAGE = [
+  "Internal brand primer for this conversation:",
+  "1) We sell business optimization and performance, not AI products.",
+  "2) We can optimize nearly any business function; AI is often the best tool but not the only one.",
+  "3) Avoid generic agency phrasing like 'AI solutions company' or 'we specialize in chatbots'.",
+  "4) Do not proactively sell chatbots unless the user explicitly asks about them.",
+  "5) Keep default answers to 2-4 sentences, then offer to go deeper.",
+  "6) Communicate with low hype, precision, and practical clarity.",
+  "7) Prefer outcome-focused wording and clear next steps.",
+  "8) For yes/no questions, answer yes or no directly in the first sentence."
+].join(" ");
 
 /* ---------- STATE ---------- */
 const AFChatState = {
@@ -500,8 +519,61 @@ function afGetTimestamp() {
   return now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
 }
 
-function afNormalizeBotReply(reply) {
-  return String(reply || '');
+function afUserRequestedDepth(userMessage = '') {
+  return /(detail|deeper|in depth|step by step|walk me through|long version|full explanation|elaborate|deep dive|expand)/i.test(String(userMessage));
+}
+
+function afTrimToSentenceLimit(text, limit = 4) {
+  const cleaned = String(text || '').trim();
+  if (!cleaned) return cleaned;
+  const normalized = cleaned.replace(/\s+/g, ' ').trim();
+  const sentences = normalized.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g) || [normalized];
+  if (sentences.length <= limit) return cleaned;
+  return sentences.slice(0, limit).join(' ').trim();
+}
+
+function afNormalizeBotReply(reply, userMessage = '') {
+  let text = String(reply || '').trim();
+  if (!text) return text;
+
+  const lowerUser = String(userMessage || '').toLowerCase();
+  const askedAboutChatbots = /(chatbot|chat bot|website chat|web chat|live chat|support bot|assistant widget)/i.test(lowerUser);
+
+  // Soft phrasing corrections to keep voice on-brand without forcing canned responses.
+  const replacements = [
+    [/\bAI solutions?\b/gi, 'business optimization work'],
+    [/\bAI agency\b/gi, 'business optimization company'],
+    [/\bchatbot solutions?\b/gi, 'chat support improvements (when useful)'],
+    [/\bwe specialize in\b/gi, 'we focus on']
+  ];
+  replacements.forEach(([pattern, value]) => { text = text.replace(pattern, value); });
+
+  if (!askedAboutChatbots) {
+    text = text
+      .replace(/\bAI chatbots?\b/gi, 'automation tools')
+      .replace(/\bchatbots?\b/gi, 'automation tools');
+  }
+
+  // If a core capabilities answer drifts into generic AI-agency language, reframe it.
+  const isCapabilitiesPrompt = /(what can you optimize|what do you optimize|what can you do|what do you do|services)/i.test(lowerUser);
+  const offBrandSignals = /(ai solutions?|chatbot|specialize in ai|ai agency|automated customer support)/i.test(text.toLowerCase());
+  if (isCapabilitiesPrompt && offBrandSignals) {
+    text = [
+      "We optimize businesses end to end, wherever performance can improve.",
+      "That includes marketing, operations, workflows, ecommerce, team enablement, analytics, and other hard business problems.",
+      "AI is one of our favorite tools, but it is not the product. We sell best practices, execution quality, and measurable outcomes.",
+      "If you share your goal, I can suggest the highest-impact first step."
+    ].join("\n\n");
+  }
+
+  if (!afUserRequestedDepth(userMessage)) {
+    const trimmed = afTrimToSentenceLimit(text, 4);
+    if (trimmed !== text) {
+      text = `${trimmed}\n\nIf you want, I can go deeper with a concrete plan.`;
+    }
+  }
+
+  return text;
 }
 
 /* ---------- RENDER: messages ---------- */
@@ -701,8 +773,8 @@ async function afSubmitMessage() {
 async function afSendToAI(userMessage, thinkingNode) {
   let lastErr;
   
-  // only keep the last ~10 messages for context
-  const payloadHistory = AFChatState.history.slice(-10);
+  // Keep recent chat context and prepend a stable brand primer each turn.
+  const payloadHistory = [{ role: 'assistant', content: AF_BRAND_PRIMER_MESSAGE }, ...AFChatState.history.slice(-9)];
 
   for (const url of AF_CHAT_ENDPOINTS) {
     try {

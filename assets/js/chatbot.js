@@ -18,30 +18,31 @@ if (window.AF_CHAT_WIDGET_LOADED) {
   // Inject HTML container + modals
   const html = `
     <!-- AI Chatbot (injected) -->
-    <div class="chatbot-container" style="z-index:10000; position:fixed; bottom:2rem; right:2rem;">
-        <div id="chatbot-launcher" class="chatbot-launcher gemini-gradient-bg pulse" aria-label="Open AI chat assistant">
-            <i class="fa-solid fa-robot text-xl"></i>
-        </div>
+    <div class="chatbot-container">
+        <button id="chatbot-launcher" type="button" class="chatbot-launcher gemini-gradient-bg pulse" aria-label="Open AI chat assistant">
+            <svg class="chatbot-launcher-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 6.75A2.75 2.75 0 0 1 7.75 4h8.5A2.75 2.75 0 0 1 19 6.75v5.5A2.75 2.75 0 0 1 16.25 15H11l-4.5 3v-3A2.75 2.75 0 0 1 3.75 12.25v-5.5Z" fill="currentColor"/>
+                <circle cx="9" cy="9.5" r="1" fill="#FFFFFF"/>
+                <circle cx="12" cy="9.5" r="1" fill="#FFFFFF"/>
+                <circle cx="15" cy="9.5" r="1" fill="#FFFFFF"/>
+            </svg>
+        </button>
         
         <div id="chatbot-window" class="chatbot-window hidden" aria-hidden="true" style="display:none; opacity:0; transform:scale(.95);">
-            <div class="gemini-gradient-bg p-4 text-white flex justify-between items-center">
-                <h3 class="font-bold">AI Assistant</h3>
-                <div>
-                    <button id="clear-chatbot" class="text-white mr-2 text-sm opacity-70 hover:opacity-100" aria-label="Clear chat history">
-                        <i class="fa-solid fa-trash-can mr-1"></i> Clear
-                    </button>
-                    <button id="close-chatbot" class="text-white" aria-label="Close chat">
-                        <i class="fa-solid fa-times"></i>
-                    </button>
+            <div class="chatbot-header gemini-gradient-bg">
+                <h3 class="chatbot-title">AI Assistant</h3>
+                <div class="chatbot-header-actions">
+                    <button id="clear-chatbot" class="chatbot-clear-btn" aria-label="Clear chat history">Clear</button>
+                    <button id="close-chatbot" class="chatbot-close-btn" aria-label="Close chat">&times;</button>
                 </div>
             </div>
             
-            <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto" aria-live="polite">
-                <div class="flex mb-4">
-                    <div class="chat-bubble-bot p-3">
-                        <p>Hi there!  I'm your AI assistant. How can I help you today?</p>
-                        <p class="mt-2">You can ask me about:</p>
-                        <ul class="list-disc pl-5 mt-1 space-y-1">
+            <div id="chatbot-messages" aria-live="polite">
+                <div class="af-message-wrapper justify-start">
+                    <div class="chat-bubble chat-bubble-bot">
+                        <p>Hi there! I'm your AI assistant. How can I help you today?</p>
+                        <p class="chat-intro-label">You can ask me about:</p>
+                        <ul>
                             <li>Our AI solutions</li>
                             <li>Implementation process</li>
                             <li>Pricing options</li>
@@ -50,39 +51,38 @@ if (window.AF_CHAT_WIDGET_LOADED) {
                 </div>
             </div>
             
-            <div class="p-4 border-t border-gray-200">
-                <form id="chatbot-form" class="flex gap-2">
-                    <input type="text" id="chatbot-input" placeholder="Ask me anything..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" aria-label="Type your message">
-                    <button type="submit" class="w-10 h-10 rounded-full gemini-gradient-bg text-white flex items-center justify-center" aria-label="Send message">
-                        <i class="fa-solid fa-paper-plane"></i>
+            <div class="chatbot-input-wrap">
+                <form id="chatbot-form">
+                    <input type="text" id="chatbot-input" placeholder="Ask me anything..." aria-label="Type your message">
+                    <button type="submit" class="chatbot-send gemini-gradient-bg" aria-label="Send message">
+                        <svg class="chatbot-send-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M3.4 11.2 20 3.8a.7.7 0 0 1 .96.78L18.2 19.9a.7.7 0 0 1-1.18.35l-4.2-4.2-3.9 2.1a.7.7 0 0 1-1.02-.67l.3-4.9-4-1.6a.7.7 0 0 1-.8-.67.7.7 0 0 1 .4-.12Z" fill="currentColor"/>
+                        </svg>
                     </button>
                 </form>
             </div>
         </div>
     </div>
 
-<div id="thank-you-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-60 z-[100] flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center max-w-md mx-auto transform transition-all scale-95 opacity-0" id="modal-content">
-        <div class="w-20 h-20 mx-auto mb-6 gemini-gradient-bg rounded-full flex items-center justify-center">
-            <i class="fa-solid fa-check text-white text-4xl"></i>
+<div id="thank-you-modal" class="hidden chatbot-modal">
+    <div class="chatbot-modal-card" id="modal-content">
+        <div class="chatbot-check-wrap gemini-gradient-bg">
+            <span class="chatbot-check" aria-hidden="true">&#10003;</span>
         </div>
-        <h2 class="text-3xl font-bold text-gray-900 mb-3">Thank You!</h2>
-        <p class="text-gray-600 text-lg mb-8">Your message has been sent successfully. We'll be in touch shortly.</p>
-        <button id="close-modal-button" class="bg-gray-200 text-gray-800 font-semibold py-3 px-8 rounded-full hover:bg-gray-300 transition-all">
+        <h2 class="chatbot-modal-title">Thank You!</h2>
+        <p class="chatbot-modal-copy">Your message has been sent successfully. We'll be in touch shortly.</p>
+        <button id="close-modal-button" class="chatbot-modal-close">
             Close
         </button>
     </div>
 </div>
-<div id="scheduler-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-60 z-[100] flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full h-[90vh] max-h-[700px] flex flex-col transform transition-all scale-95 opacity-0" id="scheduler-modal-content">
-        <div class="p-4 border-b flex justify-between items-center">
-            <h3 class="font-bold text-lg text-gray-800">Schedule a Consultation</h3>
-            <button id="close-scheduler-modal" class="text-gray-500 hover:text-gray-900" aria-label="Close scheduler">
-                <i class="fa-solid fa-times text-2xl"></i>
-            </button>
+<div id="scheduler-modal" class="hidden chatbot-modal">
+    <div class="chatbot-scheduler-card" id="scheduler-modal-content">
+        <div class="chatbot-scheduler-head">
+            <h3>Schedule a Consultation</h3>
+            <button id="close-scheduler-modal" class="chatbot-scheduler-close" aria-label="Close scheduler">&times;</button>
         </div>
-        <div id="scheduler-iframe-container" class="flex-1 w-full h-full">
-            </div>
+        <div id="scheduler-iframe-container"></div>
     </div>
 </div>
 `;
@@ -533,11 +533,11 @@ function checkCommonQuestions(message) {
 function afAddBotMessage(text, skipAnimation = false) {
   const timestamp = afGetTimestamp();
   const wrapper = document.createElement('div');
-  wrapper.className = 'flex mb-4 justify-start af-message-wrapper';
+  wrapper.className = 'af-message-wrapper justify-start';
   if (!skipAnimation) { wrapper.style.opacity = '0'; wrapper.style.transform = 'translateY(10px)'; }
   const bubble = document.createElement('div');
-  bubble.className = 'p-3 max-w-xs chat-bubble-bot text-gray-700 af-chat-msg';
-  bubble.innerHTML = afMarkdownToHtml(text) + `<div class="text-xs text-gray-400 mt-1 text-right">${timestamp}</div>`;
+  bubble.className = 'chat-bubble chat-bubble-bot af-chat-msg';
+  bubble.innerHTML = afMarkdownToHtml(text) + `<div class="chat-msg-time bot-time">${timestamp}</div>`;
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
   if (!skipAnimation) {
@@ -553,12 +553,12 @@ function afAddBotMessage(text, skipAnimation = false) {
 function afAddUserMessage(text) {
   const timestamp = afGetTimestamp();
   const wrapper = document.createElement('div');
-  wrapper.className = 'flex mb-4 justify-end af-message-wrapper';
+  wrapper.className = 'af-message-wrapper justify-end';
   wrapper.style.opacity = '0'; wrapper.style.transform = 'translateY(10px)';
   const bubble = document.createElement('div');
-  bubble.className = 'p-3 max-w-xs chat-bubble-user af-chat-msg text-white';
+  bubble.className = 'chat-bubble chat-bubble-user af-chat-msg';
   const escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  bubble.innerHTML = escaped + `<div class="text-xs text-blue-200 mt-1 text-right">${timestamp}</div>`;
+  bubble.innerHTML = escaped + `<div class="chat-msg-time user-time">${timestamp}</div>`;
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
   requestAnimationFrame(() => {
@@ -572,13 +572,13 @@ function afAddUserMessage(text) {
 
 function afAddThinking() {
   const thinking = document.createElement('div');
-  thinking.className = 'flex mb-4 af-thinking';
+  thinking.className = 'af-message-wrapper justify-start af-thinking';
   thinking.innerHTML = `
-    <div class="chat-bubble-bot p-3">
-      <div class="flex items-center gap-1">
+    <div class="chat-bubble chat-bubble-bot">
+      <div class="thinking-row">
         <span class="thinking-dot"></span><span class="thinking-dot"></span><span class="thinking-dot"></span>
       </div>
-      <p class="text-xs text-gray-500 mt-1">AI is thinking...</p>
+      <p class="chat-thinking-label">AI is thinking...</p>
     </div>`;
   afEls.messages.appendChild(thinking);
   afScrollMessages();
@@ -589,12 +589,12 @@ function afRenderChips() {
   const { suggestions=[] } = AFChatState.config;
   if (!suggestions.length) return;
   const chipRow = document.createElement('div');
-  chipRow.className = 'flex flex-wrap gap-2 mb-4';
+  chipRow.className = 'chat-chip-row';
   chipRow.style.opacity = '0';
   suggestions.forEach((label, i) => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'af-quick-chip px-4 py-2 rounded-full border text-sm hover:bg-gray-100 transition-all hover:scale-105 transform';
+    btn.className = 'af-quick-chip';
     btn.textContent = label;
     btn.style.opacity = '0';
     btn.style.transform = 'translateY(5px)';
@@ -620,9 +620,9 @@ function afRenderChips() {
     }, 100 * i);
   });
   const wrapper = document.createElement('div');
-  wrapper.className = 'flex justify-start mb-2';
+  wrapper.className = 'af-message-wrapper justify-start';
   const bubble = document.createElement('div');
-  bubble.className = 'chat-bubble-bot p-2 max-w-xs';
+  bubble.className = 'chat-bubble chat-bubble-bot chip-bubble';
   bubble.appendChild(chipRow);
   wrapper.appendChild(bubble);
   afEls.messages.appendChild(wrapper);
@@ -917,15 +917,6 @@ function afHeaderMobileEtc(){
     // Update on scroll
     window.addEventListener('scroll', applyHeaderState, { passive: true });
   }
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior:'smooth' });
-    });
-  });
 
   const ytFrame = document.getElementById('intro-video');
   if (ytFrame && videoOverlay) {

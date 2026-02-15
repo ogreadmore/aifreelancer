@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Playbook — Fractional CAIO | AI Freelancer</title>
+  <meta name="description" content="Step‑by‑step delivery process for Fractional Chief AI Officer: Advisory Sprint, Enablement, and Operating Partner. Includes story guides, interactive checklists, KPIs, and templates." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style> body{font-family:'Inter',sans-serif; line-height:1.5} .sec{scroll-margin-top:80px} </style>
+  <style>
+    html { scroll-behavior: smooth; }
+    :root{ --teal:#0d9488; --indigo:#4f46e5; --accent:var(--teal); --muted:#6b7280; --text:#0f172a; --card-bg:#fff; }
+    body{ background: linear-gradient(180deg, rgba(79,70,229,0.04) 0%, rgba(13,148,136,0.02) 60%), #fff; color:var(--text); }
+    .bg-white.border.rounded-xl, .bg-white.border.rounded-2xl { position:relative; background:linear-gradient(180deg,#fff,#fbfdff); border:1px solid rgba(79,70,229,0.06); box-shadow:0 10px 30px rgba(15,23,42,0.06); transition:transform .16s, box-shadow .16s; }
+    .bg-white.border.rounded-xl:hover, .bg-white.border.rounded-2xl:hover{ transform: translateY(-6px); box-shadow:0 26px 60px rgba(15,23,42,0.12); }
+    h1{ color:var(--indigo); font-weight:900; font-size:2.4rem; } h2{ color:#061126; font-weight:800; }
+    a{ color:var(--indigo); } a:hover{ color:#3730a3; text-decoration:underline; }
+    .kpi-grid > div{ padding-left:18px; overflow:hidden; }
+    .kpi-grid > div::before{ content:''; position:absolute; left:0; top:12px; bottom:12px; width:6px; border-radius:6px; }
+    .kpi-grid > div:nth-child(1)::before{ background: linear-gradient(180deg,var(--teal),var(--indigo)); }
+    .kpi-grid > div:nth-child(2)::before{ background: linear-gradient(180deg,#f59e0b,#f97316); }
+    .kpi-grid > div:nth-child(3)::before{ background: linear-gradient(180deg,#fb7185,#ef4444); }
+    table.min-w-full thead th{ position: sticky; top:0; background: linear-gradient(180deg,#fbfdff,#f8fafc); color:var(--muted); font-weight:800; padding:12px 16px; z-index:2; }
+    table.min-w-full td{ padding:12px 16px; border-top:1px solid rgba(15,23,42,0.03); }
+    details summary{ cursor:pointer; } details[open] summary{ color:var(--indigo); }
+    code,kbd{ background:#f1f5f9; border:1px solid #e6eef8; border-radius:.375rem; padding:.125rem .375rem; }
+    #toc a.active { color: var(--indigo); font-weight:800; text-decoration:underline; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-white border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
+      <nav class="text-sm text-gray-600">
+        <a href="index.html" class="hover:text-gray-900">Playbook index</a>
+        <span class="mx-3">•</span>
+        <a href="/fractional-chief-ai-officer.html" class="hover:text-gray-900">Service page</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-10 space-y-12">
+    <section class="sec" id="overview">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">🧭 Delivery Playbook: Fractional Chief AI Officer</h1>
+      <p class="mt-4 text-lg text-gray-700">Pragmatic CAIO partnership in three tiers: Advisory Sprint (map, pilot, policy), Enablement (workflows, SLAs, approvals), and Operating Partner (identity, governance, observability). We focus on ROI and safety, not hype. Best practices: start with small reversible bets, set guardrails before automation, measure outcomes not activity, and keep a running decision log so the org learns.</p>
+      <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Outcome</p><p class="text-xl font-bold">First pilot in 30–60 days</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Adoption</p><p class="text-xl font-bold">≥ 60% target team</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Governance</p><p class="text-xl font-bold">Approvals + audit logs</p></div>
+      </div>
+    </section>
+
+    
+
+    <div class="grid md:grid-cols-12 gap-8 items-start">
+      <aside id="toc" class="hidden md:block md:col-span-3 md:self-start md:sticky md:top-5">
+        <nav class="bg-white border rounded-xl p-4 md:h-[calc(100vh-40px)] md:max-h-none md:overflow-auto text-sm">
+          <p class="text-xs font-semibold uppercase text-gray-500 mb-2">On this page</p>
+          <ul class="space-y-2">
+            <li><a class="hover:text-indigo-600" href="#tier-overview">Tier Overview</a></li>
+          </ul>
+          <details class="mt-4" open>
+            <summary class="font-semibold cursor-pointer">Core Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#core-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#core-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#core-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#core-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#core-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#core-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#core-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#core-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#core-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#core-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#core-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#core-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#core-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#core-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#core-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enhanced Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enhanced-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enhanced-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enhanced-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enhanced-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enhanced-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enhanced-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enhanced-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enhanced-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enhanced-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enhanced-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enhanced-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enhanced-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enhanced-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enhanced-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enhanced-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enterprise Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enterprise-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enterprise-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enterprise-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enterprise-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enterprise-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enterprise-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enterprise-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enterprise-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enterprise-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enterprise-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enterprise-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enterprise-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enterprise-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enterprise-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enterprise-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <div class="mt-4 border-t pt-3">
+            <a href="#overview" class="inline-block px-3 py-2 border rounded-lg hover:bg-gray-50">Back to top</a>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="md:col-span-9 space-y-12">
+
+    <section class="sec" id="tier-overview">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">🧭 Tier Overview</h2>
+        <p class="mt-2 text-sm text-gray-700">Each tier is a complete, standalone playbook. Use the buttons to jump directly to the tier you need.</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href="#tier-core" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Advisory Sprint</a>
+          <a href="#tier-enhanced" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enablement</a>
+          <a href="#tier-enterprise" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Operating Partner</a>
+        </div>
+        <div class="overflow-x-auto mt-6 bg-white border rounded-2xl">
+          <table class="min-w-full text-sm">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Best For</th><th class="p-3 text-left">Includes (one‑line)</th><th class="p-3 text-left">Notable Differences</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Core (Advisory Sprint)</td><td class="p-3">Start smart</td><td class="p-3">Backlog + policy + 1–2 pilots</td><td class="p-3">Focus on ROI and safety</td></tr>
+              <tr><td class="p-3 font-semibold">Enhanced (Enablement)</td><td class="p-3">Orchestrate</td><td class="p-3">Workflows + SLAs + approvals</td><td class="p-3">UAT incl. error paths; dashboards</td></tr>
+              <tr><td class="p-3 font-semibold">Enterprise (Operating Partner)</td><td class="p-3">Scale & govern</td><td class="p-3">Identity, flags, DW sync, SLOs</td><td class="p-3">Change control, audits, incidents</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Tier: Advisory Sprint -->
+    <section class="sec space-y-8" id="tier-core">
+      <h2 class="text-3xl font-bold tracking-tight">⚡ Core Tier — Advisory Sprint</h2>
+      <p class="mt-2 text-gray-600">30–60 days to map use‑cases, policy, and land 1–2 quick wins with real KPIs. The goal is momentum with governance, not perfection.</p>
+
+      <section class="sec" id="core-story">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+          <p class="mt-3 text-sm text-gray-700">We build an opportunity backlog (ROI, risks, owner), define simple policies (data, prompts, approvals), and deliver 1–2 pilots with success criteria. We also fix the plumbing that trips teams up later: capture → upsert, dedupe, normalized phone (E.164), UTM mapping, owner assignment, alerts, and short on‑brand sequences with SPF/DKIM/DMARC and quiet hours. Everything is logged and reviewable.</p>
+          <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+            <li><strong>Backlog:</strong> 10–25 ideas scored by impact, effort, risk, and data availability.</li>
+            <li><strong>Policies:</strong> a one‑pager for data classification, prompt rules, approvals, and incident response.</li>
+            <li><strong>Pilots:</strong> 1–2 selected use‑cases with crisp KPIs, owners, and exit/expand criteria.</li>
+          </ul>
+          <details class="mt-3"><summary class="font-semibold">Newbie guide: How this feels end‑to‑end</summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p><strong>Story mode:</strong> First, we meet key folks (sales, ops, support) and ask: “What slows you down?” We write every idea on a list. Next, we score each idea by how useful it is and how hard it is. We pick the top one or two that look both useful and realistic. We agree on what number proves it worked (for example, “meetings booked per week” or “faster first response”). Then we set simple safety rules (what data we can use, who approves messages), turn on the basic plumbing so data is clean, and launch the pilots to a small group. Every week we look at a simple chart and decide what to adjust.</p>
+              <ol class="list-decimal list-inside space-y-1">
+                <li>Interview 3–5 teammates; capture ideas and pains.</li>
+                <li>Score ideas (impact, effort, risk, data available).</li>
+                <li>Pick 1–2 pilots; define KPIs and a 2–4 week plan.</li>
+                <li>Set safety basics: data scope, approvals, incident path.</li>
+                <li>Fix hygiene (dedupe, phone format, routing, alerts).</li>
+                <li>Launch small; watch results; decide to expand or stop.</li>
+              </ol>
+              <p>At the end, you’ll know which ideas are worth scaling, with numbers to back it up.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="core-communication">
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+          <p>Weekly “Done/Next/Risks”, pilot scorecards, and month‑end snapshot: speed‑to‑lead, routing accuracy, logging coverage. We maintain a living decision log so future teammates can see why choices were made.</p>
+          <ul class="list-disc list-inside space-y-1 mt-2">
+            <li><strong>Cadence:</strong> 30–45 min weekly call; async Slack updates mid‑week.</li>
+            <li><strong>Artifacts:</strong> backlog, policy one‑pager, pilot scorecards, decision log, risk register.</li>
+            <li><strong>Visibility:</strong> simple Kanban (To‑Do/Doing/Done); client has edit access.</li>
+          </ul>
+          <details class="mt-2"><summary class="font-semibold">Newbie guide: What does the report look like?</summary>
+            <p class="mt-1 text-gray-700"><strong>Story mode:</strong> You’ll get one page with three parts: a small chart (the KPI), three bullets of what changed this week, and three bullets of what we’ll change next week. There’s also a short “decisions” box that says what we agreed to and why.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="core-simple-checklist">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+          <p class="text-gray-600 text-sm">Use this live checklist. Progress stores in your browser only.</p>
+          <div class="mt-3 h-2 bg-gray-100 rounded"><div id="core-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="core-progress-text"></div></div>
+          <div id="core-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+          <div class="mt-6 space-y-6" id="core-checklist">
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 1 — Backlog & Policy</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-backlog"/> <span>Backlog of opportunities with ROI/risk/owner</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-policy"/> <span>Simple policies (data, prompts, approvals)</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-kpis"/> <span>Pilot KPIs and exit criteria</span></label>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide</summary>
+                <div class="text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> Open a shared doc. Make four columns: Idea, Why it helps, What it needs, Risks. Ask team leads to add ideas and vote. Pick the top 1–2 with the best “help vs. effort” ratio. Write a simple rule set: what data we can read, who approves messages, and how to pause if something goes wrong.</p>
+                  <ul class="list-disc list-inside">
+                    <li>Example KPI: “First reply within 5 minutes for inbound leads.”</li>
+                    <li>Exit rule: If the KPI doesn’t improve within 2 weeks, we stop and pick the next idea.</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 2 — Hygiene</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-capture"/> <span>Capture → upsert; dedupe by email/domain</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-phone"/> <span>Normalize phone (E.164); validate</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-assign"/> <span>Owner assignment; speed‑to‑lead alerts; quiet hours</span></label>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide</summary>
+                <div class="text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> List every place leads come from (website forms, chat, Calendly, email, ads). Connect each to one “intake flow.” Make phone numbers look the same (+country code). Set a rule that assigns new leads to a person. Turn on alerts so they get pinged within minutes. Write 3 short messages that sound like your brand.</p>
+                  <ol class="list-decimal list-inside">
+                    <li>Map fields: name, email, phone, company, UTMs.</li>
+                    <li>Set dedupe: email → domain+name → phone.</li>
+                    <li>Test: create a fake lead; confirm owner gets alert.</li>
+                  </ol>
+                </div>
+              </details>
+            </div>
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 3 — Pilots</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-pilot1"/> <span>Pilot 1 live with KPI tracking</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-pilot2"/> <span>Pilot 2 (optional) live</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-review"/> <span>Review + next actions</span></label>
+              <details class="mt-3"><summary class="font-semibold">Newbie guide</summary>
+                <div class="text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> Pick Pilot 1 and write a 10‑line plan: goal, who does what, when it’s “done”. Launch to a small group (5–20% of traffic). Check the KPI daily. If it’s good, ramp to more people. If not, fix or stop. Document what you learned either way.</p>
+                  <p>For Pilot 2, repeat the same steps only after Pilot 1 is steady.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="mt-6 flex items-center gap-3"><button id="core-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50">Reset checklist</button><span class="text-xs text-gray-500">Saved locally in this browser.</span></div>
+        </div>
+      </section>
+
+      <section class="sec" id="core-phases"><h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3><div class="bg-white border rounded-2xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Backlog, policy, KPIs</td><td class="p-3">You + Client</td><td class="p-3">Sprint plan</td></tr><tr><td class="p-3 font-semibold">Build</td><td class="p-3">Hygiene, pilot setup</td><td class="p-3">You</td><td class="p-3">Working pilots</td></tr><tr><td class="p-3 font-semibold">Run</td><td class="p-3">Monitor, review</td><td class="p-3">You</td><td class="p-3">Next steps</td></tr></tbody></table></div></section>
+      <section class="sec" id="core-scope"><h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3><ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm"><li>Backlog, policy, pilot design</li><li>Capture → upsert; dedupe; normalized phones</li><li>UTM mapping; routing; alerts; sequences</li></ul></section>
+      <section class="sec" id="core-kpis"><h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3><div class="bg-white border rounded-2xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">Time‑to‑first pilot</td><td class="p-3">≤ 60 days</td><td class="p-3">From kickoff</td></tr><tr><td class="p-3 font-semibold">Speed‑to‑lead</td><td class="p-3">≤ 5 min</td><td class="p-3">Alerts + assignment</td></tr><tr><td class="p-3 font-semibold">Logging coverage</td><td class="p-3">≥ 90%</td><td class="p-3">Activity timeline</td></tr></tbody></table></div></section>
+      <section class="sec" id="core-glossary"><h3 class="text-xl font-bold mb-3">📚 Glossary</h3><div class="bg-white border rounded-2xl p-6 text-sm space-y-1"><p><strong>Upsert:</strong> Create or update a record safely.</p><p><strong>E.164:</strong> Standard phone format with country code.</p><p><strong>Quiet hours:</strong> Times to avoid sending messages.</p></div></section>
+      <section class="sec" id="core-initial-setup"><h3 class="text-xl font-bold mb-3">🧰 Part 2: Implementer’s Guide — Initial Setup</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ol class="list-decimal list-inside space-y-1"><li>Backlog + policy + KPIs.</li><li>Hygiene: normalize, dedupe, upsert.</li><li>Routing, alerts, sequences.</li></ol></div></section>
+      <section class="sec" id="core-prereqs"><h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3><ul class="bg-white border rounded-2xl p-6 text-sm space-y-1"><li>CRM admin; email/messaging admin; DNS access (SPF/DKIM/DMARC).</li><li>Form/chat/webhook endpoints; analytics/ads for UTMs.</li><li>Security contact; outbound copy approver.</li></ul></section>
+      <section class="sec" id="core-tooling"><h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3><div class="bg-white border rounded-xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">CRM</td><td class="p-3">HubSpot/Pipedrive/Salesforce</td><td class="p-3">Native upsert</td></tr><tr><td class="p-3 font-semibold">Messaging</td><td class="p-3">SendGrid, Twilio, Front</td><td class="p-3">Deliverability + logs</td></tr><tr><td class="p-3 font-semibold">Automation</td><td class="p-3">Zapier/Make</td><td class="p-3">Idempotent keys</td></tr><tr><td class="p-3 font-semibold">Forms/Chat</td><td class="p-3">Typeform, Tally, Intercom</td><td class="p-3">Standard fields</td></tr></tbody></table></div></section>
+      <section class="sec" id="core-design"><h3 class="text-xl font-bold mb-3">💡 Design Notes</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>Canonical contact schema; consent flags; data provenance.</li><li>Dedupe order: email → domain+name → phone; log merges.</li><li>Assignment: region/product; fallback owner; off‑hours queue.</li></ul></div></section>
+      <section class="sec" id="core-security"><h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>PII minimization; role‑based access; least privilege for automations.</li><li>Rotate keys quarterly; secrets manager only.</li><li>Retention 12–24 months; honor deletion requests.</li></ul></div></section>
+      <section class="sec" id="core-timeline"><h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ol class="list-decimal list-inside space-y-1"><li>W1: Backlog + policy.</li><li>W2: Hygiene + routing.</li><li>W3–4: Pilots live; review.</li></ol></div></section>
+      <section class="sec" id="core-templates"><h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3><div class="bg-white border rounded-2xl p-6 text-sm space-y-3"><pre class="whitespace-pre-wrap text-xs">Policy starter (one‑pager)
+data: public + approved
+prompts: guardrails + no-PHI
+approvals: maker-checker for risky changes
+</pre><pre class="whitespace-pre-wrap text-xs">Lead alert (Slack)
+POST /hooks/slack
+{"text": "New lead {{name}} from {{source}} assigned to {{owner}} (respond in 5 min)"}
+</pre></div></section>
+      <section class="sec" id="core-audit-monitoring"><h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>Weekly pilot review; fix list.</li><li>Monthly KPI snapshot.</li></ul></div></section>
+    </section>
+
+    <!-- Enhanced Tier: Enablement -->
+    <section class="sec space-y-8" id="tier-enhanced">
+      <h2 class="text-3xl font-bold tracking-tight">🚀 Enhanced Tier — Enablement</h2>
+      <p class="mt-2 text-gray-600">Workflows, SLAs, enrichment & scoring, AI‑drafted copy with approvals, UAT incl. error paths, dashboards. We keep humans in control and make failures predictable and boring.</p>
+      <section class="sec" id="enhanced-story"><div class="bg-white border rounded-2xl p-6"><h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3><p class="mt-3 text-sm text-gray-700">We add orchestrated workflows with routing and SLA timers, time‑boxed enrichment and scoring with fast‑lane thresholds, AI‑drafted messages with human approvals, bi‑directional sync with idempotency keys + retries/backoff, and UAT including 5xx/429/timeouts. Dashboards show performance by intent/segment. We document field mappings and set up a change log for transparency.</p><details class="mt-3"><summary class="font-semibold">Newbie guide</summary><div class="text-sm text-gray-700 space-y-2"><p><strong>Story mode:</strong> We sketch the steps on a whiteboard. For each step we write: what kicks it off, how long it should take, and what happens if time runs out. We add quick lookups to learn more about the lead. The AI writes a draft message, but a human approves it. We try the flow when systems are healthy and again when they fail to make sure it recovers cleanly.</p><ol class="list-decimal list-inside"><li>Write the flow as boxes and arrows (trigger → actions → outcomes).</li><li>Add a timer to any box that touches a person or a customer.</li><li>Write a message template and a short approval rule (who can approve, where it’s logged).</li><li>Test three “bad” cases: service down (5xx), too many requests (429), and a timeout.</li></ol></div></details></div></section>
+      <section class="sec" id="enhanced-communication"><div class="bg-white border rounded-2xl p-6 text-sm"><h3 class="text-xl font-bold">💬 Communication & Reporting</h3><p>Weekly updates with change logs; UAT sign‑off; monthly deck with SLA compliance, routing accuracy by segment, and conversion impact.</p></div></section>
+      <section class="sec" id="enhanced-simple-checklist"><div class="bg-white border rounded-2xl p-6"><h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3><p class="text-gray-600 text-sm">Independent per tier. Progress saved locally.</p><div class="mt-3 h-2 bg-gray-100 rounded"><div id="enhanced-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enhanced-progress-text"></div></div><div id="enhanced-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div><div class="mt-6 space-y-6" id="enhanced-checklist"><div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 1 — Workflow & Timers</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-wf"/> <span>Intent map; routing; SLA timers</span></label><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-esc"/> <span>Escalation paths; pause windows</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enh-uat"/> <span>UAT plan incl. error paths</span></label><details class="mt-3"><summary class="font-semibold">Newbie guide</summary><div class="text-sm text-gray-600 space-y-2"><p><strong>Story mode:</strong> Draw the steps; set a time limit for each; decide what happens if a system is slow or down. If a timer expires, escalate to a person or queue.</p><p>Write UAT cases as short stories: “When X happens → expect Y; check logs for Z.”</p></div></details></div><div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 2 — Enrichment & Scoring</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-enrich"/> <span>Time‑boxed enrichment</span></label><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-score"/> <span>Score model; fast‑lane thresholds</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enh-sync"/> <span>Bi‑directional sync</span></label><details class="mt-3"><summary class="font-semibold">Newbie guide</summary><div class="text-sm text-gray-600 space-y-2"><p><strong>Story mode:</strong> Look up a few facts (company size, role) but stop after a set time. Mark great fits as fast‑lane so they jump the queue.</p><p>Save the score into your CRM so everyone sees why a lead is hot.</p></div></details></div><div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 3 — Approvals & Templates</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-templates"/> <span>AI templates with human approvals</span></label><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enh-ab"/> <span>A/B variants; tone guardrails</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enh-retries"/> <span>Idempotency + retries/backoff</span></label><details class="mt-3"><summary class="font-semibold">Newbie guide</summary><div class="text-sm text-gray-600 space-y-2"><p><strong>Story mode:</strong> The AI writes a draft using your brand voice. A human approves it. If it fails to send, the system tries again later without duplicating.</p><p>Keep an approved responses library to maintain quality.</p></div></details></div></div><div class="mt-6 flex items-center gap-3"><button id="enhanced-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50">Reset checklist</button><span class="text-xs text-gray-500">Saved locally in this browser.</span></div></div></section>
+      <section class="sec" id="enhanced-phases"><h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3><div class="bg-white border rounded-2xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">Design</td><td class="p-3">Flows, timers, approvals</td><td class="p-3">You + Client</td><td class="p-3">Spec</td></tr><tr><td class="p-3 font-semibold">Build</td><td class="p-3">Enrich/score; templates; sync</td><td class="p-3">You</td><td class="p-3">Working flows</td></tr><tr><td class="p-3 font-semibold">Test</td><td class="p-3">UAT incl. errors</td><td class="p-3">You + Client</td><td class="p-3">Sign‑off</td></tr></tbody></table></div></section>
+      <section class="sec" id="enhanced-scope"><h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3><ul class="bg-white border rounded-2xl p-6 text-sm space-y-1"><li>Workflows with routing and SLAs</li><li>Enrichment + scoring; templates with approvals</li><li>Idempotency + retries/backoff; UAT</li><li>Dashboards by intent/segment</li></ul></section>
+      <section class="sec" id="enhanced-kpis"><h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3><div class="bg-white border rounded-2xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">SLA compliance</td><td class="p-3">≥ 95%</td><td class="p-3">By segment</td></tr><tr><td class="p-3 font-semibold">Routing accuracy</td><td class="p-3">≥ 97%</td><td class="p-3">After enrichment</td></tr><tr><td class="p-3 font-semibold">Error rate</td><td class="p-3">≤ 1%</td><td class="p-3">After retries</td></tr><tr><td class="p-3 font-semibold">Conversion uplift</td><td class="p-3">+10–20%</td><td class="p-3">From fast‑lane</td></tr></tbody></table></div></section>
+      <section class="sec" id="enhanced-glossary"><h3 class="text-xl font-bold mb-3">📚 Glossary</h3><div class="bg-white border rounded-2xl p-6 text-sm space-y-1"><p><strong>Idempotency:</strong> Repeating a request doesn’t duplicate work.</p><p><strong>Retry/backoff:</strong> Wait longer between retry attempts.</p><p><strong>UAT:</strong> User Acceptance Testing.</p></div></section>
+      <section class="sec" id="enhanced-initial-setup"><h3 class="text-xl font-bold mb-3">🧰 Part 2: Implementer’s Guide — Initial Setup</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ol class="list-decimal list-inside space-y-1"><li>Define intents, SLAs, approvals.</li><li>Implement enrichment, scoring, templates.</li><li>Wire idempotent sync; build dashboards.</li><li>Run UAT; fix issues.</li></ol></div></section>
+      <section class="sec" id="enhanced-prereqs"><h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3><ul class="bg-white border rounded-2xl p-6 text-sm space-y-1"><li>CRM + messaging admin; iPaaS access.</li><li>Enrichment API keys; test accounts.</li></ul></section>
+      <section class="sec" id="enhanced-tooling"><h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3><div class="bg-white border rounded-xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">iPaaS</td><td class="p-3">Make, Zapier, n8n</td><td class="p-3">Fast iteration</td></tr><tr><td class="p-3 font-semibold">Enrichment</td><td class="p-3">Clearbit, ZoomInfo, PDL</td><td class="p-3">Time‑box</td></tr><tr><td class="p-3 font-semibold">Messaging</td><td class="p-3">SendGrid, Twilio, HubSpot</td><td class="p-3">Approval queue</td></tr></tbody></table></div></section>
+      <section class="sec" id="enhanced-design"><h3 class="text-xl font-bold mb-3">💡 Design Notes</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>Intent routing + timer matrix.</li><li>Fast‑lane thresholds; documented field mapping.</li></ul></div></section>
+      <section class="sec" id="enhanced-security"><h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>Least privilege; key rotation.</li><li>Consent tracking; redaction in logs; right‑to‑erasure.</li></ul></div></section>
+      <section class="sec" id="enhanced-timeline"><h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ol class="list-decimal list-inside space-y-1"><li>W1: Design flows, SLAs.</li><li>W2: Build enrich/score, templates.</li><li>W3: UAT; dashboards.</li><li>W4: Launch.</li></ol></div></section>
+      <section class="sec" id="enhanced-templates"><h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3><div class="bg-white border rounded-2xl p-6 text-sm space-y-3"><pre class="whitespace-pre-wrap text-xs">Retry/backoff (pseudo)
+for(attempt=1; attempt<=5; attempt++){
+  try{ send(); break; }
+  catch(e){ wait(2 ** attempt * 1000 + jitter()); }
+}
+</pre><pre class="whitespace-pre-wrap text-xs">Idempotency header
+X-Idempotency-Key: {{source}}-{{timestamp}}-{{hash}}
+</pre></div></section>
+      <section class="sec" id="enhanced-audit-monitoring"><h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>Weekly SLA breach review; change log.</li><li>Monthly deck (by segment).</li></ul></div></section>
+    </section>
+
+    <!-- Enterprise Tier: Operating Partner -->
+    <section class="sec space-y-8" id="tier-enterprise">
+      <h2 class="text-3xl font-bold tracking-tight">🏢 Enterprise Tier — Operating Partner</h2>
+      <p class="mt-2 text-gray-600">Identity, governance, observability, flags with canary and rollback drills, DW sync + lineage/DLP, SLOs & error budgets, incident runbooks, monthly eval packs. We bias for reversibility and steady change over big bang launches.</p>
+      <section class="sec" id="enterprise-story"><div class="bg-white border rounded-2xl p-6"><h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3><p class="mt-3 text-sm text-gray-700">We integrate SSO/RBAC + SCIM, set maker‑checker approvals and audit logs, roll out changes with flags (5%→25%→100%) and ready rollbacks, sync to the warehouse with lineage/DLP/retention, and add observability (logs/traces/cost). We define SLOs and error budgets and run incident playbooks with monthly evaluation packs. Release notes and change calendars keep stakeholders in the loop.</p><details class="mt-3"><summary class="font-semibold">Newbie guide</summary><div class="text-sm text-gray-700 space-y-2"><p><strong>Story mode:</strong> Everyone uses their company login. People have roles that define what they can do. Risky changes require a second approver. When we ship, we first enable it for a small group. If anything looks off in the dashboards, we turn it off with a switch.</p><ol class="list-decimal list-inside"><li>Set SSO and create roles (admin, editor, viewer).</li><li>Turn on audit logging for admin actions.</li><li>Ship with a feature flag; start at 5% of traffic.</li><li>Watch SLO dashboards; expand to 25% then 100% if healthy.</li><li>Practice rollbacks so it’s routine, not panic.</li></ol></div></details></div></section>
+      <section class="sec" id="enterprise-communication"><div class="bg-white border rounded-2xl p-6 text-sm"><h3 class="text-xl font-bold">💬 Communication & Reporting</h3><p>Steering cadence; change calendar; SLO dashboards; release notes with approvals; monthly evaluation packs. Risks and mitigations tracked in a visible register.</p></div></section>
+      <section class="sec" id="enterprise-simple-checklist"><div class="bg-white border rounded-2xl p-6"><h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3><p class="text-gray-600 text-sm">Independent per tier. Progress saved locally.</p><div class="mt-3 h-2 bg-gray-100 rounded"><div id="enterprise-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enterprise-progress-text"></div></div><div id="enterprise-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div><div class="mt-6 space-y-6" id="enterprise-checklist"><div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 1 — Governance & Identity</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-sso"/> <span>SSO/RBAC + SCIM; least privilege</span></label><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-maker"/> <span>Maker‑checker approvals</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ent-audit"/> <span>Audit logs; retention controls</span></label><details class="mt-3"><summary class="font-semibold">Newbie guide</summary><div class="text-sm text-gray-600 space-y-2"><p><strong>Story mode:</strong> Connect your identity provider. Create roles. Require two people to approve risky changes. Make sure admin actions are recorded and kept for audits.</p></div></details></div><div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 2 — Data & Lineage</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-dw"/> <span>Warehouse sync + lineage + DLP</span></label><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-retention"/> <span>Retention windows; PII masking</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ent-cost"/> <span>Cost dashboards per flow</span></label><details class="mt-3"><summary class="font-semibold">Newbie guide</summary><div class="text-sm text-gray-600 space-y-2"><p><strong>Story mode:</strong> Send important metrics to a central dashboard. Mark each field with where it came from. Hide or remove sensitive fields as needed. Show cost by feature so leaders can see value vs spend.</p></div></details></div><div class="border rounded-xl p-4"><p class="font-semibold mb-2">Step 3 — Flags & SLOs</p><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-flags"/> <span>Feature flags; canary 5%→25%→100%</span></label><label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="ent-slos"/> <span>SLOs + error budgets; alerts</span></label><label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="ent-runbooks"/> <span>Incident runbooks + drills</span></label><details class="mt-3"><summary class="font-semibold">Newbie guide</summary><div class="text-sm text-gray-600 space-y-2"><p><strong>Story mode:</strong> Turn features on for a small slice first. Watch the health numbers. If they stay good, expand. If not, flip the switch off and follow the runbook.</p></div></details></div></div><div class="mt-6 flex items-center gap-3"><button id="enterprise-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50">Reset checklist</button><span class="text-xs text-gray-500">Saved locally in this browser.</span></div></div></section>
+      <section class="sec" id="enterprise-phases"><h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3><div class="bg-white border rounded-2xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Governance, SLOs, risks</td><td class="p-3">You + Client</td><td class="p-3">Charter</td></tr><tr><td class="p-3 font-semibold">Build</td><td class="p-3">Identity, flags, DW sync</td><td class="p-3">You</td><td class="p-3">Platform</td></tr><tr><td class="p-3 font-semibold">Run</td><td class="p-3">Canary, audits, incidents</td><td class="p-3">You</td><td class="p-3">Dashboards + RCAs</td></tr></tbody></table></div></section>
+      <section class="sec" id="enterprise-scope"><h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3><ul class="bg-white border rounded-2xl p-6 text-sm space-y-1"><li>SSO/RBAC + SCIM; approvals; audit logs</li><li>Flags + canary + rollback drills</li><li>DW sync + lineage/DLP + retention</li><li>Observability; SLOs + error budgets</li></ul></section>
+      <section class="sec" id="enterprise-kpis"><h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3><div class="bg-white border rounded-2xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">Availability (SLO)</td><td class="p-3">≥ 99.9%</td><td class="p-3">Excludes planned</td></tr><tr><td class="p-3 font-semibold">Error budget</td><td class="p-3">≤ 0.1%/mo</td><td class="p-3">Blocks releases</td></tr><tr><td class="p-3 font-semibold">Latency p95</td><td class="p-3">Within target</td><td class="p-3">Per critical flows</td></tr><tr><td class="p-3 font-semibold">Audit completeness</td><td class="p-3">100%</td><td class="p-3">Who/what/when</td></tr></tbody></table></div></section>
+      <section class="sec" id="enterprise-glossary"><h3 class="text-xl font-bold mb-3">📚 Glossary</h3><div class="bg-white border rounded-2xl p-6 text-sm space-y-1"><p><strong>SCIM:</strong> Auto‑provision/deprovision users.</p><p><strong>Feature flag:</strong> Switch to enable/disable features.</p><p><strong>SLO/Error budget:</strong> Reliability target and allowance.</p></div></section>
+      <section class="sec" id="enterprise-initial-setup"><h3 class="text-xl font-bold mb-3">🧰 Part 2: Implementer’s Guide — Initial Setup</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ol class="list-decimal list-inside space-y-1"><li>Identity + roles + SCIM.</li><li>Observability; SLOs; alerts.</li><li>Flags; canary + rollback.</li><li>DW sync; lineage; DLP.</li></ol></div></section>
+      <section class="sec" id="enterprise-prereqs"><h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3><ul class="bg-white border rounded-2xl p-6 text-sm space-y-1"><li>IdP (Okta/Azure AD) admin; warehouse admin.</li><li>Flags platform; monitoring.</li></ul></section>
+      <section class="sec" id="enterprise-tooling"><h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3><div class="bg-white border rounded-xl overflow-hidden text-sm"><table class="min-w-full"><thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead><tbody class="divide-y"><tr><td class="p-3 font-semibold">Identity</td><td class="p-3">Okta, Azure AD</td><td class="p-3">SCIM</td></tr><tr><td class="p-3 font-semibold">Flags</td><td class="p-3">LaunchDarkly, Unleash</td><td class="p-3">Targeted rollouts</td></tr><tr><td class="p-3 font-semibold">Observability</td><td class="p-3">Datadog, Grafana</td><td class="p-3">Cost tags</td></tr></tbody></table></div></section>
+      <section class="sec" id="enterprise-design"><h3 class="text-xl font-bold mb-3">💡 Design Notes</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>Dev/Stage/Prod separation; approvals to promote.</li><li>Backpressure + rate limiting across integrations.</li></ul></div></section>
+      <section class="sec" id="enterprise-security"><h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>Least privilege; token rotation.</li><li>DLP; retention windows; data residency if required.</li></ul></div></section>
+      <section class="sec" id="enterprise-timeline"><h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ol class="list-decimal list-inside space-y-1"><li>W1–2: Governance & identity.</li><li>W3–4: Observability & flags; DW sync.</li><li>W5: Canary + rollback drills.</li><li>W6+: Operate to SLOs.</li></ol></div></section>
+      <section class="sec" id="enterprise-templates"><h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3><div class="bg-white border rounded-2xl p-6 text-sm space-y-3"><pre class="whitespace-pre-wrap text-xs">Canary plan
+- 5% → 25% → 100%
+- rollback on KPI breach
+</pre></div></section>
+      <section class="sec" id="enterprise-audit-monitoring"><h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3><div class="bg-white border rounded-2xl p-6 text-sm"><ul class="list-disc list-inside space-y-1"><li>Quarterly audits; evidence archive.</li><li>Operational reviews: SLOs, costs, incidents.</li></ul></div></section>
+    </section>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+  // Checklist: Core tier
+  (function(){
+    const boxes = document.querySelectorAll('#core-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('core-progress-bar');
+    const txt = document.getElementById('core-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+    function update(){ const total = boxes.length||1; const done = Array.from(boxes).filter(b=>b.checked).length; const pct = Math.round((done/total)*100); if(bar){ bar.style.width = pct+'%'; bar.setAttribute('aria-valuenow', String(pct)); } if(txt){ txt.textContent = pct + '% complete'; } }
+    function load(){ boxes.forEach(b=>{ try{ b.checked = localStorage.getItem(KEY(b.dataset.id))==='1'; }catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try{ localStorage.setItem(KEY(id), e.target.checked?'1':'0'); }catch(e){} update(); }
+    boxes.forEach(b=>b.addEventListener('change', onChange));
+    const reset = document.getElementById('core-reset'); if(reset){ reset.addEventListener('click', ()=>{ boxes.forEach(b=>{ try{ localStorage.removeItem(KEY(b.dataset.id)); }catch(e){} b.checked=false; }); update(); }); }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+  <script>
+  // Sticky TOC highlight
+  (function(){
+    const toc = document.getElementById('toc'); if(!toc) return;
+    const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    const ids = links.map(a=>a.getAttribute('href').slice(1));
+    const sections = ids.map(id=>document.getElementById(id)).filter(Boolean);
+    const byId = Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1), a]));
+    const OFFSET = 140; let ticking=false;
+    function clear(){ links.forEach(a=>a.classList.remove('active')); }
+    function setActive(id){ const a = byId[id]; if(!a) return; clear(); a.classList.add('active'); const d=a.closest('details'); if(d) d.open=true; }
+    function update(){ const y=window.scrollY+OFFSET; let current=ids[0]||''; for(let i=0;i<sections.length;i++){ const s=sections[i]; if(s && s.offsetTop<=y) current=s.id; else break; } if(current) setActive(current); }
+    function onScroll(){ if(ticking) return; ticking=true; requestAnimationFrame(()=>{ update(); ticking=false; }); }
+    window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', onScroll);
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', update); else update();
+    window.addEventListener('hashchange', ()=>{ const id=location.hash.replace('#',''); if(id) setActive(id); });
+    links.forEach(a=>a.addEventListener('click', ()=>{ const id=a.getAttribute('href').slice(1); setActive(id); }));
+  })();
+  </script>
+  <script>
+  // Checklist: Enhanced tier
+  (function(){
+    const boxes = document.querySelectorAll('#enhanced-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enhanced-progress-bar');
+    const txt = document.getElementById('enhanced-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+    function update(){ const total=boxes.length||1; const done=Array.from(boxes).filter(b=>b.checked).length; const pct=Math.round((done/total)*100); if(bar){ bar.style.width=pct+'%'; bar.setAttribute('aria-valuenow', String(pct)); } if(txt){ txt.textContent=pct+'% complete'; } }
+    function load(){ boxes.forEach(b=>{ try{ b.checked = localStorage.getItem(KEY(b.dataset.id))==='1'; }catch(e){} }); update(); }
+    function onChange(e){ const id=e.target?.dataset?.id; if(!id) return; try{ localStorage.setItem(KEY(id), e.target.checked?'1':'0'); }catch(e){} update(); }
+    boxes.forEach(b=>b.addEventListener('change', onChange));
+    const reset=document.getElementById('enhanced-reset'); if(reset){ reset.addEventListener('click', ()=>{ boxes.forEach(b=>{ try{ localStorage.removeItem(KEY(b.dataset.id)); }catch(e){} b.checked=false; }); update(); }); }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+  <script>
+  // Checklist: Enterprise tier
+  (function(){
+    const boxes = document.querySelectorAll('#enterprise-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enterprise-progress-bar');
+    const txt = document.getElementById('enterprise-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+    function update(){ const total=boxes.length||1; const done=Array.from(boxes).filter(b=>b.checked).length; const pct=Math.round((done/total)*100); if(bar){ bar.style.width=pct+'%'; bar.setAttribute('aria-valuenow', String(pct)); } if(txt){ txt.textContent=pct+'% complete'; } }
+    function load(){ boxes.forEach(b=>{ try{ b.checked = localStorage.getItem(KEY(b.dataset.id))==='1'; }catch(e){} }); update(); }
+    function onChange(e){ const id=e.target?.dataset?.id; if(!id) return; try{ localStorage.setItem(KEY(id), e.target.checked?'1':'0'); }catch(e){} update(); }
+    boxes.forEach(b=>b.addEventListener('change', onChange));
+    const reset=document.getElementById('enterprise-reset'); if(reset){ reset.addEventListener('click', ()=>{ boxes.forEach(b=>{ try{ localStorage.removeItem(KEY(b.dataset.id)); }catch(e){} b.checked=false; }); update(); }); }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+  
+</body>
+</html>

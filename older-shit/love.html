@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales & CRM Automation | AI Freelancer</title>
+  <meta name="description" content="Automate lead capture, follow-ups, routing, and CRM hygiene. Improve speed-to-lead, conversion, and pipeline visibility with AI-driven sales automation.">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Analytics (match index.html) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMV6PZPXJ4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-YMV6PZPXJ4');
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which CRMs and tools do you support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Core: HubSpot, Pipedrive, or Zoho. Enhanced: Salesforce or HubSpot with custom workflows and integrations. Enterprise: Salesforce + advanced governance; integrations with Slack, Segment, Make/Zapier, Twilio, and data warehouses."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you improve speed-to-lead?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We trigger instant outreach and routing the moment a lead is created, with contextual templates and SLA timers. Enhanced adds round-robin, time-based rules, and sequenced follow-ups across email and SMS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What data do you enrich and log?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Firmographics, social, and location data plus campaign context. Activities, touches, and outcomes are logged back to CRM with owner, stage, and next steps for accurate reporting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will reps lose control of messaging?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. We implement brand voice and approvals where needed. Templates are tested and versioned; reps can personalize safely without breaking compliance or process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about security and governance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Core keeps things simple. Enterprise adds SSO (SAML/OIDC), RBAC, audit logs, PII redaction, configurable retention, and environment isolation. DPAs and data residency options are available."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Service with Offers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Sales & CRM Automation",
+    "provider": {
+      "@type": "Organization",
+      "name": "AI Freelancer",
+      "url": "https://aifreelancer.co"
+    },
+    "areaServed": "Worldwide",
+    "serviceType": "Sales & CRM Automation",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Plans",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Core",
+          "price": 900.00,
+          "priceCurrency": "USD",
+          "category": "starter",
+          "description": "Lean setup with instant lead routing, basic enrichment, CRM logging, and monthly health checks.",
+          "additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": 2000.00}]
+        },
+        {
+          "@type": "Offer",
+          "name": "Enhanced",
+          "price": 1500.00,
+          "priceCurrency": "USD",
+          "category": "managed",
+          "description": "Custom workflows, round-robin routing, multi-channel sequences, scoring rules, and dashboards.",
+          "additionalProperty": [{"@type": "PropertyValue","name": "Setup","value": 7500.00}]
+        },
+        {
+          "@type": "AggregateOffer",
+          "name": "Enterprise",
+          "lowPrice": 3000.00,
+          "priceCurrency": "USD",
+          "category": "enterprise",
+          "description": "SSO/RBAC/audit, PII redaction & retention, data residency, performance testing, and priority SLAs.",
+          "additionalProperty": [{"@type": "PropertyValue","name": "Setup (from)","value": 15000.00}]
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- SEO and Social -->
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aifreelancer.co/sales-crm-automation.html">
+  <meta property="og:title" content="Sales & CRM Automation | AI Freelancer">
+  <meta property="og:description" content="Automate lead capture, follow-ups, routing, and CRM hygiene. Improve speed-to-lead and pipeline visibility with AI-driven sales automation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aifreelancer.co/sales-crm-automation.html">
+  <meta property="og:site_name" content="AI Freelancer">
+  <meta property="og:image" content="https://aifreelancer.co/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sales & CRM Automation | AI Freelancer">
+  <meta name="twitter:description" content="Automate lead capture, follow-ups, routing, and CRM hygiene.">
+  <meta name="twitter:image" content="https://aifreelancer.co/assets/images/social-share-image.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/images/favicons/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/images/favicons/site.webmanifest">
+
+  <!-- Google Fonts (non-blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </noscript>
+  <style>
+    :root { --primary-gradient: linear-gradient(105deg, #4B88DA, #8A3BF1, #D941A1, #E5484D); }
+    body { font-family: 'Inter', sans-serif; color:#111827; }
+    .gemini-gradient-bg{ background:var(--primary-gradient); background-size:200% 200%; animation:gradient 8s ease infinite; }
+    .gemini-gradient-text{ background:var(--primary-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    @keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .form-input { background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1rem; width:100%; transition:all .3s ease; }
+    .form-input:focus { outline:none; border-color:#93c5fd; box-shadow:0 0 0 3px rgba(147,197,253,.3); }
+
+    /* FAQ styling (matching About page) */
+    .faq-item { transition: box-shadow .18s ease, border-color .18s ease; border: 1px solid #f1f5f9; border-radius: .75rem; overflow: hidden; background: #fff; }
+    .faq-item:hover { border-color: #e6e6f0; box-shadow: 0 8px 24px rgba(15,23,42,0.04); }
+    .faq-toggle { width: 100%; text-align: left; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #fff; }
+    .faq-toggle:focus { outline: none; box-shadow: 0 0 0 4px rgba(147,197,253,0.12); }
+    .faq-panel { font-size: 1.03rem; line-height: 1.7; transform-origin: top; transform: scaleY(0); opacity: 0; transition: transform 260ms ease, opacity 200ms ease; overflow: hidden; display: none; }
+    .faq-item.open .faq-panel { transform: scaleY(1); opacity: 1); padding: 0.75rem 1.25rem 1rem 1.25rem; display: block; }
+    .faq-chevron { transition: transform 200ms ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-white">
+    <!-- Header standardized to match index.html -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3">
+    <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between">
+            <a href="/" class="text-2xl">
+                <span class="font-extrabold gemini-gradient-text">AI</span> <span class="font-medium text-gray-700">Freelancer</span>
+            </a>
+            
+            <nav class="hidden lg:flex items-center space-x-8">
+                <a href="/" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Home</a>
+                <a href="/#about" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">About</a>
+                <a href="/#solutions" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Solutions</a>
+                <a href="/#results" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Results</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Contact</a>
+            </nav>
+            
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="tel:440-941-1785" class="flex items-center gap-2 text-white font-semibold py-2 px-6 rounded-full gemini-gradient-bg hover:shadow-lg transition-all">
+                    <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
+                    (440) 941-1785
+                </a>
+            </div>
+            
+            <button id="mobile-menu-button" class="lg:hidden p-3 rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 bg-white rounded-xl shadow-2xl p-4">
+            <a href="/" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Home</a>
+            <a href="/#about" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">About</a>
+            <a href="/#solutions" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Solutions</a>
+            <a href="/#results" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Results</a>
+            <a href="#contact" class="block py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg font-medium">Contact</a>
+            <hr class="my-2 border-gray-100">
+            <a href="tel:440-941-1785" class="block w-full text-center mt-2 py-3 px-4 gemini-gradient-bg text-white font-semibold rounded-full hover:shadow-lg transition-all">
+                <i class="fa-solid fa-phone mr-2" aria-hidden="true"></i>Call (440) 941-1785
+            </a>
+        </div>
+    </div>
+</header>
+
+
+  <main class="pt-0">
+    <!-- Plans first -->
+    <section id="plans" class="bg-gray-50 pt-16 md:pt-24">
+      <div class="container mx-auto px-6 py-16">
+        <div class="text-center max-w-4xl mx-auto mb-10">
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900">Sales & <span class="gemini-gradient-text">CRM Automation</span></h1>
+          <p class="mt-5 text-xl text-gray-600">Choose a plan that accelerates speed-to-lead, improves data quality, and keeps your pipeline moving without manual busywork.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          <!-- Core -->
+          <div class="rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col h-full bg-white">
+            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Lean Setup</div>
+            <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Core</h3>
+            <p class="text-gray-600 mb-5">Cost-effective, done-for-you automation for lead routing, logging, and simple follow-ups—so reps focus on selling.</p>
+            <ul class="text-gray-700 space-y-3 mb-8">
+              <li class="flex gap-3"><i class="fa-solid fa-bolt gemini-gradient-text mt-1" aria-hidden="true"></i><span>Instant lead capture and basic routing to owner</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-address-card gemini-gradient-text mt-1" aria-hidden="true"></i><span>Light enrichment (company, role) from public sources</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-envelope-circle-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Simple email templates for first-touch follow-ups</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-database gemini-gradient-text mt-1" aria-hidden="true"></i><span>Automatic CRM logging of touches and outcomes</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-bell gemini-gradient-text mt-1" aria-hidden="true"></i><span>Alerts to Slack/email for high-intent leads</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-chart-simple gemini-gradient-text mt-1" aria-hidden="true"></i><span>Basic dashboards for speed-to-lead and response</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> HubSpot, Pipedrive, Make/Zapier, ChatGPT</span></li>
+            </ul>
+            <div class="mt-auto">
+              <div class="mb-3">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-5xl font-extrabold tracking-tight">$900</span>
+                  <span class="text-gray-500 font-semibold">/mo</span>
+                </div>
+                <div class="text-sm text-gray-600 mt-[10px]">
+                  <span class="font-semibold">Setup:</span> $2000 one-time
+                </div>
+              </div>
+              <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Today</a>
+              <p class="text-sm text-gray-500 mt-3">Best for lean teams launching reliable automation fast.</p>
+            </div>
+          </div>
+
+          <!-- Enhanced (Most Popular) -->
+          <div class="gemini-gradient-bg p-0.5 rounded-2xl shadow-2xl">
+            <div class="bg-white rounded-2xl h-full p-7 flex flex-col border border-gray-100">
+              <div class="text-center -mt-8 mb-2">
+                <span class="inline-block gemini-gradient-bg text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">Most Popular</span>
+              </div>
+              <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Managed</div>
+              <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Enhanced</h3>
+              <p class="text-gray-600 mb-5">Everything most teams need: custom workflows, scoring, round-robin routing, sequences—and ongoing training & tuning.</p>
+              <ul class="text-gray-700 space-y-3 mb-8">
+                <li class="flex gap-3"><i class="fa-solid fa-diagram-project gemini-gradient-text mt-1" aria-hidden="true"></i><span>Custom workflows across lead, contact, and opportunity stages</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-scale-balanced gemini-gradient-text mt-1" aria-hidden="true"></i><span>Lead scoring rules and prioritization with SLA timers</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-people-arrows gemini-gradient-text mt-1" aria-hidden="true"></i><span>Round-robin routing with territory and availability rules</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-sitemap gemini-gradient-text mt-1" aria-hidden="true"></i><span>Sequenced email/SMS follow-ups with calendar booking</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1" aria-hidden="true"></i><span>Dashboards and events to measure speed, touches, and conversion</span></li>
+                <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Salesforce/HubSpot workflows, Outreach/Salesloft, Apollo, Twilio, ChatGPT</span></li>
+              </ul>
+              <div class="mt-auto">
+                <div class="mb-3">
+                  <div class="flex items-baseline gap-2">
+                    <span class="text-5xl font-extrabold tracking-tight">$1500</span>
+                    <span class="text-gray-500 font-semibold">/mo</span>
+                  </div>
+                  <div class="text-sm text-gray-600 mt-[10px]">
+                    <span class="font-semibold">Setup:</span> $7500 one-time
+                  </div>
+                </div>
+                <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Start Today</a>
+                <p class="text-sm text-gray-500 mt-3">Best for growing teams improving speed and consistency.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col h-full bg-white">
+            <div class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Scale & Governance</div>
+            <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Enterprise</h3>
+            <p class="text-gray-600 mb-5">Advanced security, privacy, and scale for complex orgs, high volume, and regulated teams.</p>
+            <ul class="text-gray-700 space-y-3 mb-8">
+              <li class="flex gap-3"><i class="fa-solid fa-user-shield gemini-gradient-text mt-1" aria-hidden="true"></i><span>SSO (SAML/OIDC), RBAC, audit logs; SCIM provisioning</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-shield-halved gemini-gradient-text mt-1" aria-hidden="true"></i><span>PII redaction, DLP rules, configurable retention; DPA support</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-globe gemini-gradient-text mt-1" aria-hidden="true"></i><span>Data residency controls and region-bound processing</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-gauge-high gemini-gradient-text mt-1" aria-hidden="true"></i><span>High-volume readiness, load testing, error budgets</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-screwdriver-wrench gemini-gradient-text mt-1" aria-hidden="true"></i><span>Priority SLAs, dedicated environment, change control</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-clipboard-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Custom guardrails and compliance testing</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-box-open gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Example technologies:</strong> Salesforce Sales Cloud, Service Cloud, Mulesoft, Segment, Twilio</span></li>
+            </ul>
+            <div class="mt-auto">
+              <div class="mb-3">
+                <div class="flex items-baseline gap-2">
+                  <span class="text-5xl font-extrabold tracking-tight">From $3000</span>
+                  <span class="text-gray-500 font-semibold">/mo</span>
+                </div>
+                <div class="text-sm text-gray-600 mt-[10px]">
+                  <span class="font-semibold">Setup:</span> From $15000
+                </div>
+              </div>
+              <a href="#contact" class="w-full block text-center gemini-gradient-bg text-white font-semibold py-3 rounded-lg hover:shadow-lg transition-all">Request Proposal</a>
+              <p class="text-sm text-gray-500 mt-3">Best for enterprises with strict security & governance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Primary Marketing Section -->
+    <section class="bg-white">
+      <div class="container mx-auto px-6 py-16">
+        <div class="max-w-3xl mx-auto text-center mb-10">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Make <span class="gemini-gradient-text">Every</span> Rep Effective</h2>
+          <p class="mt-5 text-xl text-gray-600">Give reps a head start with instant outreach, clean data, and consistent processes that boost conversion.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
+          <div class="space-y-5">
+            <p class="text-lg text-gray-700">Most teams don’t lose deals for lack of talent—they lose them to slow response, messy data, and inconsistent process. We map your stages, connect your tools, and automate the moments that matter—from speed-to-lead to post-demo follow-ups—so reps stay focused on conversations.</p>
+            <p class="text-lg text-gray-700">Leads are enriched automatically, routed to the right owner, and sequenced across channels with approved, on-brand templates. Every touch is logged back to CRM with owner, stage, and next step so reporting stays accurate and leadership has real visibility.</p>
+            <p class="text-lg text-gray-700">As you grow, add scoring rules, territory logic, and handoff between SDRs and AEs without rework. Guardrails keep messaging on-brand, while dashboards and events expose bottlenecks, enabling safe experiments that improve conversion and cycle time.</p>
+          </div>
+          <div>
+            <ul class="space-y-4 text-gray-800 text-base md:text-lg">
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Respond in minutes:</strong> instantly route new leads, trigger outreach, and set SLAs so nothing slips.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Work clean:</strong> enrich, dedupe, and log activities automatically to keep dashboards reliable.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Stay consistent:</strong> use brand-approved templates and sequences while allowing safe personalization.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Route smartly:</strong> assign by territory, product interest, or availability with round-robin options.</span></li>
+              <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span><strong>Improve continuously:</strong> track speed, touches, and outcomes; test changes safely and iterate.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info cards directly after marketing -->
+    <section class="bg-white">
+      <div class="container mx-auto px-6 pb-20 md:pb-24">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Who It’s For</h3>
+            <p class="text-gray-700">Founder-led sales teams and growing orgs using HubSpot, Salesforce, or Pipedrive that want faster response, cleaner data, and consistent follow-ups without adding headcount.</p>
+          </div>
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Outcomes</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li>• Faster speed-to-lead and more connects</li>
+              <li>• Cleaner CRM and better pipeline visibility</li>
+              <li>• Consistent, on-brand follow-ups that convert</li>
+            </ul>
+          </div>
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-lg mb-2">Timeline</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li>• Week 1: discovery, mapping, quick wins</li>
+              <li>• Week 2: build workflows, sequences, routing</li>
+              <li>• Week 3: launch, dashboards, tuning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- (Optional) Feature grid -->
+    <section class="container mx-auto px-6 py-16 grid md:grid-cols-3 gap-12">
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Why It Works</h2>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Immediate outreach reduces drop-off and increases connect rates</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Clean data ensures reliable reporting and targeting</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Consistent processes scale best practices across reps</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Guardrails keep messaging on-brand and compliant</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold mb-4">What’s Included</h2>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>CRM integration and field mapping</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Lead enrichment, scoring, and routing rules</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Email/SMS sequences with calendar booking</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-check gemini-gradient-text mt-1" aria-hidden="true"></i><span>Dashboards, events, and weekly reports</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold mb-4">Use Cases</h2>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex gap-3"><i class="fa-solid fa-bolt gemini-gradient-text mt-1" aria-hidden="true"></i><span>Inbound speed-to-lead and rapid qualification</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-envelope gemini-gradient-text mt-1" aria-hidden="true"></i><span>Post-demo follow-ups and intent-based nudges</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-people-group gemini-gradient-text mt-1" aria-hidden="true"></i><span>SDR → AE handoff with context and next steps</span></li>
+          <li class="flex gap-3"><i class="fa-solid fa-chart-line gemini-gradient-text mt-1" aria-hidden="true"></i><span>Pipeline hygiene and accurate forecasting</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Service Levels & Limits -->
+    <section class="bg-white">
+      <div class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Service Levels &amp; Limits</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-xl mb-2">Core</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li>• Up to 3 automations</li>
+              <li>• 1 calendar + 1 enrichment</li>
+              <li>• 1 change request per month</li>
+              <li>• Response SLO &lt; 2 business days</li>
+            </ul>
+          </div>
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-xl mb-2">Enhanced</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li>• Up to 8 flows (branching OK)</li>
+              <li>• Routing + 1 dashboard</li>
+              <li>• 2 optimization cycles per month</li>
+              <li>• SLO &lt; 2 business days</li>
+            </ul>
+          </div>
+          <div class="p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-xl mb-2">Enterprise</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li>• Discovery + SOW</li>
+              <li>• Sandbox QA + change control</li>
+              <li>• Partner bench options</li>
+              <li>• Custom SLOs/SLAs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="py-12">
+      <div class="container mx-auto px-6">
+        <div class="gemini-gradient-bg rounded-3xl p-10 md:p-14 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h3 class="text-2xl md:text-3xl font-extrabold">Help reps move faster</h3>
+            <p class="opacity-90 mt-1">Automate the busywork and keep your pipeline clean—without losing brand control.</p>
+          </div>
+          <div class="flex gap-3">
+            <a href="#plans" class="bg-white text-gray-900 font-semibold px-6 py-3 rounded-full">View Plans</a>
+            <a href="#contact" class="border border-white/70 text-white font-semibold px-6 py-3 rounded-full">Free Consultation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="bg-white">
+      <div class="container mx-auto px-6 py-16">
+        <div class="text-center mb-8">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-3">
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">Which CRMs and tools do you support?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">Core: HubSpot, Pipedrive, or Zoho. Enhanced: Salesforce or HubSpot with custom workflows and integrations. Enterprise: Salesforce + advanced governance; integrations with Slack, Segment, Make/Zapier, Twilio, and data warehouses.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">How do you improve speed-to-lead?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">We trigger instant outreach and routing the moment a lead is created, with contextual templates and SLA timers. Enhanced adds round-robin, time-based rules, and sequenced follow-ups across email and SMS.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">What data do you enrich and log?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">Firmographics, social, and location data plus campaign context. Activities, touches, and outcomes are logged back to CRM with owner, stage, and next steps for accurate reporting.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">Will reps lose control of messaging?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">No. We implement brand voice and approvals where needed. Templates are tested and versioned; reps can personalize safely without breaking compliance or process.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-toggle">
+              <span class="text-lg md:text-xl font-semibold">What about security and governance?</span>
+              <svg class="w-6 h-6 text-gray-500 faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="faq-panel text-gray-700">Core keeps things simple. Enterprise adds SSO (SAML/OIDC), RBAC, audit logs, PII redaction, configurable retention, and environment isolation. DPAs and data residency options are available.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact block -->
+    <section id="contact" class="bg-gray-50 py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+            Let’s Build Your <span class="gemini-gradient-text">AI Advantage</span>
+          </h2>
+          <p class="mt-4 text-xl text-gray-600">
+            Complete the form and one of our AI specialists will contact you shortly!
+          </p>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <div class="grid gap-10 items-start lg:grid-cols-[minmax(0,_360px)_1fr]">
+            <!-- LEFT COLUMN -->
+            <div class="space-y-10">
+              <!-- Contact Info -->
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-6">Contact&nbsp;Info</h3>
+                <div class="space-y-8">
+                  <!-- phone -->
+                  <a href="tel:440-941-1785" class="flex items-center gap-5 group">
+                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition">
+                      <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600">Call us</p>
+                      <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">(440) 941-1785</span>
+                    </div>
+                  </a>
+                  <!-- email -->
+                  <a href="mailto:hello@aifreelancer.co" class="flex items-center gap-5 group">
+                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition">
+                      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600">Email us</p>
+                      <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">hello@aifreelancer.co</span>
+                    </div>
+                  </a>
+                  <!-- location -->
+                  <a href="https://www.google.com/maps/search/?api=1&query=Cleveland+Ohio" target="_blank" class="flex items-center gap-5 group">
+                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition">
+                      <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600">Based in</p>
+                      <span class="text-xl font-bold text-gray-900 group-hover:text-blue-600">
+                        Cleveland, Ohio •<br>Serving Worldwide
+                      </span>
+                    </div>
+                  </a>
+                  <!-- LinkedIn -->
+                  <a href="https://www.linkedin.com/company/ai-freelancer" target="_blank" class="flex items items-center gap-5 group">
+                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition">
+                      <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600">Connect&nbsp;on</p>
+                      <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">LinkedIn</span>
+                    </div>
+                  </a>
+                  <!-- Facebook -->
+                  <a href="https://www.facebook.com/aifreelancer" target="_blank" class="flex items-center gap-5 group">
+                    <div class="w-14 h-14 shrink-0 gemini-gradient-bg rounded-xl flex items-center justify-center text-white text-2xl group-hover:shadow-lg transition">
+                      <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                      <p class="text-gray-600">Follow&nbsp;us</p>
+                      <span class="text-2xl font-bold text-gray-900 group-hover:text-blue-600">Facebook</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN — FORM -->
+            <div class="bg-white rounded-3xl p-10 shadow-xl w-full">
+              <form action="https://formspree.io/f/mldlebob" method="POST" id="contact-form" class="space-y-6">
+                <input type="hidden" name="_subject" value="New Lead from AI-Freelancer.co">
+                <input type="hidden" name="_cc" value="tayloroliphant@gmail.com">
+
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required class="form-input">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required class="form-input">
+                  </div>
+                  <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" class="form-input">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                  <input type="text" id="company" name="company" placeholder="Company name" class="form-input">
+                </div>
+
+                <div>
+                  <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Tell us about your business needs *</label>
+                  <textarea id="message" name="message" rows="4" placeholder="What are your biggest operational challenges or growth goals?" required class="form-input"></textarea>
+                </div>
+
+                <button type="submit" class="gemini-gradient-bg text-white font-bold py-4 px-10 rounded-full text-lg w-full hover:shadow-xl transition">
+                  <i class="fa-solid fa-paper-plane mr-2" aria-hidden="true"></i> Send Request
+                </button>
+
+                <p class="text-center text-gray-500 text-sm mt-3">
+                  <i class="fa-solid fa-lock mr-1" aria-hidden="true"></i>Your information stays private.
+                </p>
+              </form>
+            </div>
+
+          </div><!-- /grid -->
+        </div><!-- /max-w wrapper -->
+      </div><!-- /container -->
+    </section>
+  </main>
+
+  <footer class="bg-gray-50 text-gray-600 py-8">
+    <div class="container mx-auto px-6 text-center">
+      <div class="mb-2">
+        <a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-800 mx-3">Privacy</a>
+        <a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-800 mx-3">Terms</a>
+        <a href="/cookies.html" class="text-sm text-gray-500 hover:text-gray-800 mx-3">Cookies</a>
+      </div>
+      <p class="text-sm">© 2025 AI Freelancer</p>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="assets/css/chatbot.css">
+  <script src="assets/js/chatbot.js" defer></script>
+  <script src="assets/js/contact-form.js" defer></script>
+  <script>
+    // Minimal FAQ accordion behavior (matching About page pattern)
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggles = Array.from(document.querySelectorAll('.faq-toggle'));
+      toggles.forEach((btn, i) => {
+        const item = btn.closest('.faq-item');
+        const panel = item.querySelector('.faq-panel');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-controls', 'faq-panel-' + i);
+        panel.setAttribute('id', 'faq-panel-' + i);
+        panel.setAttribute('aria-hidden', 'true');
+        panel.style.display = 'none';
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(openItem => {
+            openItem.classList.remove('open');
+            const p = openItem.querySelector('.faq-panel');
+            const b = openItem.querySelector('.faq-toggle');
+            if (p){ p.style.display = 'none'; p.setAttribute('aria-hidden','true'); }
+            if (b){ b.setAttribute('aria-expanded','false'); }
+          });
+          if (!isOpen){
+            item.classList.add('open');
+            panel.style.display = 'block';
+            panel.setAttribute('aria-hidden','false');
+            btn.setAttribute('aria-expanded','true');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

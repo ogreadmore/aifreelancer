@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Playbook — Internal Process Automation | AI Freelancer</title>
+  <meta name="description" content="Step-by-step delivery process for Internal Process Automation: map, design, build, test, launch, and operate with reliability and ROI tracking. Includes checklists, KPIs, and templates." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style> html { scroll-behavior: smooth; } body{font-family:'Inter',sans-serif; line-height:1.5} .sec{scroll-margin-top:80px} </style>
+  <style>
+    /* Vibrant Indigo + Teal theme */
+    :root{
+      --teal: #0d9488;   /* teal-600 */
+      --indigo: #4f46e5; /* indigo-600 */
+      --accent: var(--teal);
+      --muted: #6b7280;
+      --text: #0f172a;
+      --card-bg: #ffffff;
+      --glass: rgba(79,70,229,0.06);
+    }
+    body{ background: linear-gradient(180deg, rgba(79,70,229,0.04) 0%, rgba(13,148,136,0.02) 60%), #fff; color:var(--text); }
+    .bg-white.border.rounded-xl, .bg-white.border.rounded-2xl {
+      position:relative;
+      background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+      border: 1px solid rgba(79,70,229,0.06);
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      transition: transform .16s cubic-bezier(.2,.9,.3,1), box-shadow .16s;
+    }
+    .bg-white.border.rounded-xl:hover, .bg-white.border.rounded-2xl:hover{ transform: translateY(-6px); box-shadow: 0 26px 60px rgba(15,23,42,0.12); }
+    h1{ color:var(--indigo); font-weight:900; font-size:2.4rem; }
+    h2{ color:#061126; font-weight:800; }
+    a{ color:var(--indigo); }
+    a:hover{ color: #3730a3; text-decoration:underline; }
+    .kpi-grid > div{ padding-left:18px; overflow:hidden; }
+    .kpi-grid > div::before{ content:''; position:absolute; left:0; top:12px; bottom:12px; width:6px; border-radius:6px; }
+    .kpi-grid > div:nth-child(1)::before{ background: linear-gradient(180deg,var(--teal),var(--indigo)); }
+    .kpi-grid > div:nth-child(2)::before{ background: linear-gradient(180deg,#f59e0b,#f97316); }
+    .kpi-grid > div:nth-child(3)::before{ background: linear-gradient(180deg,#fb7185,#ef4444); }
+    table.min-w-full thead th{ position: sticky; top:0; background: linear-gradient(180deg,#fbfdff,#f8fafc); color:var(--muted); font-weight:800; padding:12px 16px; z-index:2; }
+    table.min-w-full td{ padding:12px 16px; border-top:1px solid rgba(15,23,42,0.03); }
+    table.min-w-full tbody tr:nth-child(odd) td{ background: #ffffff; }
+    table.min-w-full tbody tr:nth-child(even) td{ background: #fbfdff; }
+    details summary{ cursor:pointer; }
+    details[open] summary{ color:var(--indigo); }
+    code,kbd{
+      background:#f1f5f9;
+      border:1px solid #e6eef8;
+      border-radius:.375rem;
+      padding:.125rem .375rem;
+    }
+    #toc a.active { color: var(--indigo); font-weight: 800; text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-white border-b border-gray-200">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-extrabold"><span class="text-indigo-600">AI</span> Freelancer</a>
+      <nav class="text-sm text-gray-600">
+        <a href="index.html" class="hover:text-gray-900">Playbook index</a>
+        <span class="mx-3">•</span>
+        <a href="/internal-process-automation.html" class="hover:text-gray-900">Service page</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-10 space-y-12">
+    
+    <section class="sec" id="overview">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">⚙️ Delivery Playbook: Internal Process Automation</h1>
+      <p class="mt-4 text-lg text-gray-700">Replace manual steps with resilient, observable automations. This playbook covers how we map your current process, design safe and idempotent workflows, and measure the hours you win back each week.</p>
+      <div class="mt-6 grid md:grid-cols-3 gap-4 kpi-grid">
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Primary KPI</p><p class="text-xl font-bold">Hours Saved ≥ 10/wk</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Reliability KPI</p><p class="text-xl font-bold">Success Rate ≥ 99%</p></div>
+        <div class="bg-white border rounded-xl p-4"><p class="text-sm text-gray-500">Quality KPI</p><p class="text-xl font-bold">SLA Met ≥ 95%</p></div>
+      </div>
+    </section>
+
+    
+
+    <div class="grid md:grid-cols-12 gap-8 items-start">
+      <aside id="toc" class="hidden md:block md:col-span-3 md:self-start md:sticky md:top-5">
+        <nav class="bg-white border rounded-xl p-4 md:h-[calc(100vh-40px)] md:max-h-none md:overflow-auto text-sm">
+          <p class="text-xs font-semibold uppercase text-gray-500 mb-2">On this page</p>
+          <ul class="space-y-2">
+            <li><a class="hover:text-indigo-600" href="#tier-overview">Tier Overview</a></li>
+          </ul>
+          <details class="mt-4" open>
+            <summary class="font-semibold cursor-pointer">Core Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#core-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#core-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#core-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#core-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#core-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#core-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#core-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#core-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#core-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#core-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#core-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#core-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#core-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#core-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#core-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enhanced Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enhanced-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enhanced-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enhanced-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enhanced-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enhanced-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enhanced-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enhanced-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enhanced-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enhanced-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enhanced-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enhanced-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enhanced-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enhanced-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enhanced-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enhanced-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <details class="mt-4">
+            <summary class="font-semibold cursor-pointer">Enterprise Tier</summary>
+            <ol class="ml-4 mt-2 space-y-1 list-decimal">
+              <li><a href="#enterprise-story" class="hover:text-indigo-600">Quick Story</a></li>
+              <li><a href="#enterprise-communication" class="hover:text-indigo-600">Communication</a></li>
+              <li><a href="#enterprise-simple-checklist" class="hover:text-indigo-600">Checklist</a></li>
+              <li><a href="#enterprise-phases" class="hover:text-indigo-600">Phases</a></li>
+              <li><a href="#enterprise-scope" class="hover:text-indigo-600">Scope & Inclusions</a></li>
+              <li><a href="#enterprise-kpis" class="hover:text-indigo-600">KPIs</a></li>
+              <li><a href="#enterprise-glossary" class="hover:text-indigo-600">Glossary</a></li>
+              <li><a href="#enterprise-initial-setup" class="hover:text-indigo-600">Initial Setup</a></li>
+              <li><a href="#enterprise-prereqs" class="hover:text-indigo-600">Access & Prereqs</a></li>
+              <li><a href="#enterprise-tooling" class="hover:text-indigo-600">Tooling</a></li>
+              <li><a href="#enterprise-design" class="hover:text-indigo-600">Design</a></li>
+              <li><a href="#enterprise-security" class="hover:text-indigo-600">Security</a></li>
+              <li><a href="#enterprise-timeline" class="hover:text-indigo-600">Timeline</a></li>
+              <li><a href="#enterprise-templates" class="hover:text-indigo-600">Templates</a></li>
+              <li><a href="#enterprise-audit-monitoring" class="hover:text-indigo-600">Audit & Monitoring</a></li>
+            </ol>
+          </details>
+          <div class="mt-4 border-t pt-3">
+            <a href="#overview" class="inline-block px-3 py-2 border rounded-lg hover:bg-gray-50">Back to top</a>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="md:col-span-9 space-y-12">
+
+    <section class="sec" id="tier-overview">
+      <div class="bg-white border rounded-2xl p-6">
+        <h2 class="text-2xl font-bold">🧭 Tier Overview</h2>
+        <p class="mt-2 text-sm text-gray-700">Pick the tier that matches your process complexity and operational risk. Each section below is a complete, standalone playbook. Use the buttons to jump directly to the tier you need.</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href="#tier-core" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Core</a>
+          <a href="#tier-enhanced" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enhanced</a>
+          <a href="#tier-enterprise" class="px-3 py-2 rounded-lg border text-sm hover:bg-gray-50">Go to Enterprise</a>
+        </div>
+        <div class="overflow-x-auto mt-6 bg-white border rounded-2xl">
+          <table class="min-w-full text-sm">
+            <thead class="bg-gray-50 text-gray-600">
+              <tr><th class="p-3 text-left">Tier</th><th class="p-3 text-left">Best For</th><th class="p-3 text-left">Includes (one‑line)</th><th class="p-3 text-left">Notable Differences</th></tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr>
+                <td class="p-3 font-semibold">Core</td>
+                <td class="p-3">Quick wins, low-risk tasks</td>
+                <td class="p-3">Simple syncs, notifications, and approvals with basic monitoring</td>
+                <td class="p-3">Low-code tools, manual replay, simple alerts</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">Enhanced</td>
+                <td class="p-3">Business-critical flows</td>
+                <td class="p-3">All Core + API/DB integration, human-in-the-loop, dashboards</td>
+                <td class="p-3">Branching logic, dead-letter queue, admin UIs</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">Enterprise</td>
+                <td class="p-3">Regulated, high-volume ops</td>
+                <td class="p-3">All Enhanced + SSO/RBAC, audit logs, HA, change control</td>
+                <td class="p-3">Multi-env, SLOs, on-call runbooks, private networking</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Tier -->
+    <section class="sec space-y-8" id="tier-core">
+      <h2 class="text-3xl font-bold tracking-tight">⚡ Core Tier — Internal Process Automation</h2>
+      <p class="mt-2 text-gray-600">Fast, dependable automations for common internal tasks. Designed to launch quickly and reduce manual work using low-code tools.</p>
+
+      <section class="sec" id="core-story">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+          <p class="mt-3 text-sm text-gray-700">We'll automate a repetitive, low-risk internal task to save you time. We start by mapping the current manual steps, then build a simple, reliable workflow using a low-code tool like Zapier or Make. We'll add basic error alerts and show you the run log so you can see it working. You’ll approve a 1-page process map before we build, and you’ll get a weekly update on hours saved.</p>
+          <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+            <li><strong>Map the process:</strong> Document who does what, in which system, and how long it takes.</li>
+            <li><strong>Design the flow:</strong> Define the trigger, actions, and data mapping in a simple diagram.</li>
+            <li><strong>Build & test:</strong> Implement the workflow with basic retries and alerts for failures.</li>
+            <li><strong>Launch & monitor:</strong> Go live, watch the run logs, and report on the time saved.</li>
+          </ul>
+          <details class="mt-3"><summary class="font-semibold">Newbie guide: How this feels end‑to‑end</summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p><strong>Story mode:</strong> You will show us a task you do over and over, like copying data from a form to a spreadsheet. We'll draw a simple map of the steps, build an automation that does it for you, and set up an email alert in case it ever breaks. Once it's live, that task will just happen in the background, and you'll get a weekly note showing how much time it saved.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="core-communication">
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+          <p>Weekly status email with hours saved; simple 1‑page process map after discovery; access to run logs. We keep it plain‑English and focused on ROI.</p>
+          <ul class="list-disc list-inside space-y-1 mt-2">
+            <li><strong>Process Map:</strong> 1‑page plain‑English diagram of the automation. Approval gates build.</li>
+            <li><strong>Cadence:</strong> Weekly updates (Done, Next, Risks/Needs). Slack/Email channel agreed.</li>
+            <li><strong>Visibility:</strong> Link to live workflow and run history.</li>
+            <li><strong>Reporting:</strong> Weekly ROI update (hours saved, runs completed, errors).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="core-simple-checklist">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+          <p class="text-gray-600 text-sm">Use this live checklist. Progress stores in your browser only.</p>
+          <div class="mt-3 h-2 bg-gray-100 rounded">
+            <div id="core-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="core-progress-text"></div>
+          </div>
+          <div id="core-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+          <div class="mt-6 space-y-6" id="core-checklist">
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 1 — Discover & Map</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-kickoff"/> <span>Hold kickoff; define goal and baseline time spent</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-map"/> <span>Create simple process map (trigger, systems, actions)</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-access"/> <span>Get access to required apps (e.g., Google Workspace, Slack)</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What is a process map?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> It's a simple drawing that shows how work gets done today. We'll identify the starting point (like "a new form is submitted"), each step ("copy the email to the spreadsheet"), and the end result ("send a Slack notification"). This helps us see exactly what to automate.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 2 — Design & Approve</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-design"/> <span>Define data mapping (e.g., form field A -> spreadsheet column B)</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-error-plan"/> <span>Plan for basic errors (e.g., send an email alert)</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-approve"/> <span>Get stakeholder approval on the 1-page map</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What is data mapping?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> It's just a list that connects the dots. For example: "The 'Email Address' from the form goes into the 'Contact Email' column in our spreadsheet." This ensures the automation puts the right information in the right place.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 3 — Build & Test</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-build"/> <span>Build the workflow in a low-code tool (Zapier/Make)</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-test"/> <span>Run tests with sample data to verify logic</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-alerts"/> <span>Configure and test error notifications</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: How do we test it?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> We'll use a fake form submission to make sure the automation runs correctly. We'll check that the data appears in the right place and that the notification looks correct. We'll also intentionally cause an error to make sure the alert email gets sent.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 4 — Launch & Monitor</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-launch"/> <span>Activate the live workflow</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="core-monitor"/> <span>Monitor run logs for the first 48 hours (hypercare)</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="core-report"/> <span>Share first report on runs and hours saved</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What are run logs?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> It's a history list that shows every time the automation ran. We can see if it was successful or if there was an error. We watch this closely after launch to make sure everything is working as expected.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <button id="core-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+            <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="core-phases">
+        <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">Goals, baseline time, process map</td><td class="p-3">You + Client</td><td class="p-3">1-page process map</td></tr>
+              <tr><td class="p-3 font-semibold">Design</td><td class="p-3">Data mapping, error handling plan</td><td class="p-3">You</td><td class="p-3">Approved map</td></tr>
+              <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Implement workflow, configure alerts</td><td class="p-3">You</td><td class="p-3">Working automation</td></tr>
+              <tr><td class="p-3 font-semibold">Test</td><td class="p-3">Run golden path tests, verify alerts</td><td class="p-3">You</td><td class="p-3">Test log</td></tr>
+              <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Activate, monitor logs, report ROI</td><td class="p-3">You</td><td class="p-3">Go-live complete</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="core-scope">
+        <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>1-2 triggers, 2-3 actions, linear flow (no complex branching)</li>
+          <li>Integration with common SaaS apps (e.g., G-Suite, Slack, Airtable)</li>
+          <li>Basic error alerts via email/Slack</li>
+          <li>Manual replay of failed runs from tool's UI</li>
+          <li>Run: weekly check-ins; bug fixes in 2 business days</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="core-kpis">
+        <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3">Hours Saved</td><td class="p-3">≥ 2/wk</td><td class="p-3">Calculated from baseline time and frequency</td></tr>
+              <tr><td class="p-3">Successful Runs</td><td class="p-3">≥ 98%</td><td class="p-3">Checked via run logs</td></tr>
+              <tr><td class="p-3">Manual Interventions</td><td class="p-3">&lt; 5/mo</td><td class="p-3">Number of times a human has to fix a run</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="core-glossary">
+        <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <p><strong>Trigger:</strong> The event that starts the automation (e.g., a new email arrives).</p>
+          <p><strong>Action:</strong> A step the automation performs (e.g., create a calendar event).</p>
+          <p><strong>Low-Code:</strong> Tools that use a visual interface to build automations, requiring little to no programming.</p>
+          <p><strong>Run Log:</strong> A history of every time the automation has run, showing success or failure.</p>
+        </div>
+      </section>
+
+      <div class="border-t pt-10">
+        <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+        <p class="mt-2 text-gray-600 text-sm">Step‑by‑step SOPs for Core tier.</p>
+      </div>
+
+      <section class="sec" id="core-initial-setup">
+        <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+        <ul class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <li>Create shared folder for process map, credentials, and runbook.</li>
+          <li>Set up service accounts for integrations; store credentials securely.</li>
+          <li>Establish error notification channel (e.g., a dedicated Slack channel or email alias).</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="core-prereqs">
+        <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>Admin access to low-code platform (Zapier, Make).</li>
+          <li>API keys or OAuth access for all connected applications.</li>
+          <li>Sample data for testing (e.g., a sample form submission).</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="core-tooling">
+        <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+        <div class="bg-white border rounded-xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Orchestration</td><td class="p-3">Zapier, Make, Airtable Automations</td><td class="p-3">Choose based on app connectors and pricing</td></tr>
+              <tr><td class="p-3 font-semibold">Data Store</td><td class="p-3">Google Sheets, Airtable</td><td class="p-3">For simple lookups or logging</td></tr>
+              <tr><td class="p-3 font-semibold">Alerting</td><td class="p-3">Native email/Slack actions</td><td class="p-3">Use built-in error handling features</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="core-design">
+        <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Name steps clearly for easy debugging.</li>
+            <li>Use filters to prevent workflows from running unnecessarily.</li>
+            <li>Validate required data at the beginning of the flow.</li>
+            <li>Keep workflows small and focused on a single outcome.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="core-security">
+        <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Use service accounts, not personal accounts, for connections.</li>
+            <li>Avoid logging sensitive data (PII) in the run history.</li>
+            <li>Review access permissions quarterly and remove unused connections.</li>
+            <li>Store API keys in the platform's secrets manager, not in plaintext.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="core-timeline">
+        <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm">
+          <ol class="list-decimal list-inside space-y-1">
+            <li>W1: Discovery, process mapping, access collection, design approval.</li>
+            <li>W2: Build, test, and launch the automation.</li>
+            <li>W3+: Monitor, report on ROI, and identify next automation opportunity.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="sec" id="core-templates">
+        <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-3">
+<pre class="whitespace-pre-wrap text-xs">
+ROI Calculation Template:
+(Time per task in minutes - Automated time in minutes) * Weekly frequency / 60 = Hours saved per week
+</pre>
+<pre class="whitespace-pre-wrap text-xs">
+Error Alert Message Template:
+Subject: Automation Error: [Workflow Name]
+Body: The workflow '[Workflow Name]' failed at step '[Step Name]'.
+Run ID: {{run_id}}
+Link to logs: {{logs_url}}
+Please review and replay if necessary.
+</pre>
+        </div>
+      </section>
+
+      <section class="sec" id="core-audit-monitoring">
+        <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Weekly: Review run logs for failures or unusual patterns.</li>
+            <li>Monthly: Report on hours saved, success rate, and total runs.</li>
+            <li>Alerts: Configure immediate notifications for critical failures.</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <!-- Enhanced Tier -->
+    <section class="sec space-y-8" id="tier-enhanced">
+      <h2 class="text-3xl font-bold tracking-tight">🚀 Enhanced Tier — Internal Process Automation</h2>
+      <p class="mt-2 text-gray-600">Reliable orchestration for business-critical processes, with API/DB integration, human-in-the-loop approvals, and operational dashboards.</p>
+
+      <section class="sec" id="enhanced-story">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+          <p class="mt-3 text-sm text-gray-700">We'll automate a complex, multi-step process that is critical to your operations. We go beyond Core by integrating directly with APIs and databases, adding human approval steps in Slack or Teams, and building resilient workflows with features like idempotency (to prevent duplicates) and automated retries. We'll provide a dashboard to monitor the health of the automation and a "dead-letter queue" to catch any runs that fail permanently so they can be fixed without data loss.</p>
+          <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+            <li><strong>Design for resilience:</strong> Map failure modes and define idempotency keys and retry logic.</li>
+            <li><strong>Integrate with systems:</strong> Connect to internal APIs, webhooks, and databases.</li>
+            <li><strong>Add human steps:</strong> Build approval flows in Slack/Teams for steps requiring oversight.</li>
+            <li><strong>Operate with visibility:</strong> Launch with dashboards, alerts, and a dead-letter queue.</li>
+          </ul>
+          <details class="mt-3"><summary class="font-semibold">Newbie guide: How Enhanced differs from Core</summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p><strong>Story mode:</strong> Imagine a process like creating a new customer account, which involves multiple systems. Instead of just connecting two apps, we'll build a robust workflow that can talk to your internal database, wait for a manager to approve a step in Slack, and automatically try again if one system is temporarily down. We'll build a dashboard so you can see the status of all in-flight processes at a glance.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-communication">
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+          <p>Weekly updates; design docs for data contracts and SLAs; monthly review deck with ROI, performance metrics, and error analysis.</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Live dashboard link for real-time visibility into workflow health.</li>
+            <li>UAT plan and sign-off checklist before launch.</li>
+            <li>Documented runbook for handling common errors and alerts.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-simple-checklist">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+          <p class="text-gray-600 text-sm">Independent per tier. Progress saved locally.</p>
+          <div class="mt-3 h-2 bg-gray-100 rounded">
+            <div id="enhanced-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enhanced-progress-text"></div>
+          </div>
+          <div id="enhanced-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+          <div class="mt-6 space-y-6" id="enhanced-checklist">
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 1 — Discover & Design</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-map"/> <span>Map process with failure modes and SLAs</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-contracts"/> <span>Define data contracts and idempotency keys</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-access"/> <span>Get API/DB credentials and approval contacts</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What's an idempotency key?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> It's like a unique order number. If the automation tries to process the same request twice (e.g., due to a network hiccup), it sees the same "order number" and knows not to create a duplicate. This prevents mistakes like charging a customer twice.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 2 — Build & Instrument</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-build"/> <span>Build workflow with branching, retries, and backoff</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-approvals"/> <span>Implement human approval steps (Slack/Teams)</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-dlq"/> <span>Set up dead-letter queue and dashboards</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What's a dead-letter queue?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> It's a safety net. If a workflow fails multiple times and the automation gives up, it sends the failed job to a special "fix-it" list instead of deleting it. This way, we can investigate what went wrong and manually fix it without losing any data.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 3 — UAT & Testing</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-uat-plan"/> <span>Build UAT plan with happy path and failure cases</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-run-uat"/> <span>Execute UAT with business stakeholders</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-fix"/> <span>Fix bugs and get formal sign-off</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What is UAT?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> User Acceptance Testing. This is where we ask the people who actually use the process to try out the automation in a test environment. They follow a script to confirm it works as expected and handles errors gracefully before we launch it for real.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 4 — Launch & Optimize</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-launch"/> <span>Launch with pilot group or limited traffic</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enhanced-monitor"/> <span>Monitor dashboards and DLQ (triage ≤1 business day)</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enhanced-report"/> <span>Monthly report deck with insights and improvements</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: After launch</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> We'll turn on the automation for a small set of transactions first to ensure everything is smooth. We'll watch the dashboards closely for any red flags. Each month, we'll share a short report on performance and suggest ways to make it even better.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <button id="enhanced-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+            <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-phases">
+        <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Discovery</td><td class="p-3">SLAs, data contracts, failure modes</td><td class="p-3">You + Client</td><td class="p-3">Design doc</td></tr>
+              <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Workflows, approvals, DLQ, dashboards</td><td class="p-3">You</td><td class="p-3">Working integration</td></tr>
+              <tr><td class="p-3 font-semibold">Test</td><td class="p-3">UAT with failure cases</td><td class="p-3">You + Client</td><td class="p-3">UAT sign-off</td></tr>
+              <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Pilot launch, monitor dashboards</td><td class="p-3">You</td><td class="p-3">Go-live complete</td></tr>
+              <tr><td class="p-3 font-semibold">Optimize</td><td class="p-3">Monthly deck, error analysis</td><td class="p-3">You</td><td class="p-3">Insights + actions</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-scope">
+        <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>All Core + API/DB/webhook integration</li>
+          <li>Branching logic, human-in-the-loop approvals</li>
+          <li>Idempotency, automated retries with backoff</li>
+          <li>Dead-letter queue (DLQ) for failed jobs</li>
+          <li>Operational dashboards and enhanced alerting</li>
+          <li>Run: triage critical failures ≤1 business day; content updates ≤3 business days</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enhanced-kpis">
+        <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3">Success Rate</td><td class="p-3">≥ 99%</td><td class="p-3">Excludes transient, auto-retried errors</td></tr>
+              <tr><td class="p-3">SLA Compliance</td><td class="p-3">≥ 95%</td><td class="p-3">End-to-end process completion time</td></tr>
+              <tr><td class="p-3">MTTR (Mean Time to Resolve)</td><td class="p-3">&lt; 4 business hours</td><td class="p-3">For critical (P1) failures in the DLQ</td></tr>
+              <tr><td class="p-3">UAT Pass Rate</td><td class="p-3">≥ 95%</td><td class="p-3">Across all test cases including failures</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-glossary">
+        <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <p><strong>Idempotency:</strong> Running the same request twice has the same result as running it once; prevents duplicates.</p>
+          <p><strong>Backoff:</strong> Waiting longer between retries when a system is busy or returning errors.</p>
+          <p><strong>Dead-Letter Queue (DLQ):</strong> A holding place for jobs that have failed permanently, so they can be manually reviewed.</p>
+          <p><strong>Data Contract:</strong> An agreement on the format of data passed between systems (e.g., required fields, data types).</p>
+        </div>
+      </section>
+
+      <div class="border-t pt-10">
+        <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+        <p class="mt-2 text-gray-600 text-sm">Technical SOPs for Enhanced tier.</p>
+      </div>
+
+      <section class="sec" id="enhanced-initial-setup">
+        <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>Create design doc defining scope, SLAs, data contracts, and runbook.</li>
+          <li>Set up service accounts and store secrets in a managed service.</li>
+          <li>Configure monitoring dashboards and alerting rules.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enhanced-prereqs">
+        <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>API keys/tokens with appropriate scopes for all systems.</li>
+          <li>Access to a staging or sandbox environment for testing.</li>
+          <li>List of stakeholders for UAT and approval flows.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enhanced-tooling">
+        <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Orchestration</td><td class="p-3">n8n, Retool Workflows, custom code</td><td class="p-3">For complex logic and API integration</td></tr>
+              <tr><td class="p-3 font-semibold">Database</td><td class="p-3">PostgreSQL, MySQL, Airtable</td><td class="p-3">For state management and logging</td></tr>
+              <tr><td class="p-3 font-semibold">Dashboarding</td><td class="p-3">Grafana, Retool, internal tool</td><td class="p-3">To visualize success rates, latency, and DLQ size</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-design">
+        <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Use a unique, external ID for idempotency keys.</li>
+            <li>Implement exponential backoff for retries on 5xx/429 errors.</li>
+            <li>Log with correlation IDs to trace a single run across multiple steps/systems.</li>
+            <li>Design approval messages with clear context and simple actions (Approve/Deny).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-security">
+        <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Encrypt secrets at rest and in transit; rotate keys quarterly.</li>
+            <li>Scope API keys with least-privilege access.</li>
+            <li>Redact PII from logs and dashboards.</li>
+            <li>Document data retention policies for logs and artifacts.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-timeline">
+        <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>W1-2: Deep discovery, design, and stakeholder alignment.</li>
+          <li>W3-4: Build, instrument, and internal testing.</li>
+          <li>W5: UAT with business users and bug fixing.</li>
+          <li>W6: Pilot launch, monitoring, and handover.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enhanced-templates">
+        <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">
+Idempotent request pseudocode:
+POST /api/v1/invoices
+Idempotency-Key: {{uuid}}
+...
+// Server-side check:
+// if cache.get(Idempotency-Key): return cached_response
+// else: process_request(); cache.set(Idempotency-Key, response)
+</pre>
+        </div>
+      </section>
+
+      <section class="sec" id="enhanced-audit-monitoring">
+        <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Daily: Check DLQ size and dashboard for anomalies.</li>
+            <li>Weekly: Review error patterns and SLA compliance.</li>
+            <li>Monthly: Report on ROI, performance trends, and suggest improvements.</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <!-- Enterprise Tier -->
+    <section class="sec space-y-8" id="tier-enterprise">
+      <h2 class="text-3xl font-bold tracking-tight">🏢 Enterprise Tier — Internal Process Automation</h2>
+      <p class="mt-2 text-gray-600">Governed, scalable, and resilient automation for complex, regulated environments with enterprise-grade security and observability.</p>
+
+      <section class="sec" id="enterprise-story">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✨ Quick Story — What will happen</h3>
+          <p class="mt-3 text-sm text-gray-700">We'll automate your most complex and critical processes with the highest standards of security, reliability, and governance. This tier is for organizations that require features like Single Sign-On (SSO) for access, Role-Based Access Control (RBAC), and full audit logs for compliance. We'll deploy the automation across separate dev, staging, and production environments, using change management and feature flags for safe, controlled rollouts. We'll define and monitor Service Level Objectives (SLOs) and provide on-call runbooks for incident response.</p>
+          <ul class="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
+            <li><strong>Govern access:</strong> Integrate with your identity provider for SSO/RBAC and SCIM.</li>
+            <li><strong>Manage change:</strong> Use dev/stage/prod environments with approval gates and feature flags.</li>
+            <li><strong>Ensure reliability:</strong> Define and monitor SLOs, with on-call runbooks for incidents.</li>
+            <li><strong>Maintain compliance:</strong> Provide audit logs, data retention policies, and support for regulations like SOC2/GDPR.</li>
+          </ul>
+          <details class="mt-3"><summary class="font-semibold">Newbie guide: What makes Enterprise different?</summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p><strong>Story mode:</strong> Think of this like building a public utility. It has to be extremely reliable, secure, and have clear rules about who can change what. We'll connect the automation's login system to your company's main login (SSO), create different roles (admins, viewers), and log every important action for security audits. Changes will be tested in a staging area before being carefully rolled out to production, and we'll have a formal plan to handle any issues that arise, day or night.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-communication">
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <h3 class="text-xl font-bold">💬 Communication & Reporting</h3>
+          <p>SLO dashboards; on-call rotation and incident runbooks; formal change request process; quarterly business reviews (QBRs) with performance, security, and cost analysis.</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Change calendar with approvals and release notes.</li>
+            <li>Security reviews and audit log reports.</li>
+            <li>Cost and error budget tracking.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-simple-checklist">
+        <div class="bg-white border rounded-2xl p-6">
+          <h3 class="text-xl font-bold">✅ Simplified Process Timeline and Checklist</h3>
+          <p class="text-gray-600 text-sm">Enterprise scope; separate progress tracking stored locally.</p>
+          <div class="mt-3 h-2 bg-gray-100 rounded">
+            <div id="enterprise-progress-bar" class="h-2 bg-indigo-500 w-0 rounded" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="enterprise-progress-text"></div>
+          </div>
+          <div id="enterprise-progress-text" class="text-xs text-gray-500 mt-1" aria-live="polite">0% complete</div>
+
+          <div class="mt-6 space-y-6" id="enterprise-checklist">
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 1 — Governance & Architecture</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-sso"/> <span>Define SSO/RBAC requirements and roles</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-slos"/> <span>Set SLOs for availability, latency, and success rate</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-arch"/> <span>Design architecture with multi-env and network controls</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What are SLOs?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> Service Level Objectives. They are specific, measurable reliability targets we set for ourselves. For example, "The automation should successfully complete 99.9% of runs." This is more precise than just saying "it should be reliable" and helps us know when we need to focus on stability versus new features.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 2 — Build & Secure</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-iac"/> <span>Set up environments using Infrastructure as Code (IaC)</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-sso-impl"/> <span>Implement SSO/RBAC and audit logging</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-ci-cd"/> <span>Configure CI/CD pipeline with approval gates</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What is CI/CD?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> Continuous Integration/Continuous Deployment. It's an automated way to test and release changes. When we update the workflow, an automated process runs tests, asks for approval, and then deploys it to the right environment. This makes releases faster and safer than doing it all by hand.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 3 — Testing & Release</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-load-test"/> <span>Conduct performance and load testing</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-flags"/> <span>Stage release behind feature flags</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-rollback"/> <span>Drill rollback procedures</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What are feature flags?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> It's like a light switch for a new feature. We can deploy the code with the new feature "off," then turn it on for a small group of users (e.g., 5%) to see how it performs. If everything looks good, we can gradually increase it to 100%. If there's a problem, we can instantly switch it off without having to redeploy everything.</p>
+                </div>
+              </details>
+            </div>
+
+            <div class="border rounded-xl p-4">
+              <p class="font-semibold mb-2">Step 4 — Operate & Govern</p>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-oncall"/> <span>Establish on-call rotation with runbooks</span></label>
+              <label class="flex items-start gap-3 mb-2"><input type="checkbox" class="mt-1" data-id="enterprise-qbr"/> <span>Conduct first QBR with SLO and cost reporting</span></label>
+              <label class="flex items-start gap-3"><input type="checkbox" class="mt-1" data-id="enterprise-access-review"/> <span>Perform quarterly access reviews</span></label>
+              <details class="mt-3">
+                <summary class="font-semibold">Newbie guide: What's a runbook?</summary>
+                <div class="mt-2 text-sm text-gray-600 space-y-2">
+                  <p><strong>Story mode:</strong> It's a checklist for handling a specific alert or incident. If the on-call person gets an alert at 2 AM, they can open the runbook and follow a step-by-step guide to diagnose and fix the problem quickly, even if they're not an expert on that specific workflow.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <button id="enterprise-reset" class="text-sm px-3 py-2 rounded-lg border hover:bg-gray-50" aria-label="Reset checklist">Reset checklist</button>
+            <span class="text-xs text-gray-500">Saved locally in this browser.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-phases">
+        <h3 class="text-xl font-bold mb-3">🧭 Delivery Phases</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Key Tasks</th><th class="p-3 text-left">Owner</th><th class="p-3 text-left">Outputs</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Architecture</td><td class="p-3">SLOs, governance, security design</td><td class="p-3">You + Client</td><td class="p-3">Architecture doc</td></tr>
+              <tr><td class="p-3 font-semibold">Build</td><td class="p-3">Multi-env infra, CI/CD, SSO/RBAC</td><td class="p-3">You</td><td class="p-3">Working platform</td></tr>
+              <tr><td class="p-3 font-semibold">Test</td><td class="p-3">Load testing, rollback drills, UAT</td><td class="p-3">You + Client</td><td class="p-3">Sign-off</td></tr>
+              <tr><td class="p-3 font-semibold">Launch</td><td class="p-3">Progressive rollout via feature flags</td><td class="p-3">You</td><td class="p-3">Release notes</td></tr>
+              <tr><td class="p-3 font-semibold">Run</td><td class="p-3">On-call, SLO tracking, QBRs, audits</td><td class="p-3">You</td><td class="p-3">Dashboards + RCAs</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-scope">
+        <h3 class="text-xl font-bold mb-3">📦 Scope & Inclusions</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>All Enhanced + SSO/RBAC, SCIM, and audit logs</li>
+          <li>Dev/stage/prod environments with CI/CD and approval gates</li>
+          <li>Feature flags for progressive rollouts and rollbacks</li>
+          <li>SLO definition, monitoring, and on-call runbooks</li>
+          <li>High-availability (HA) configuration and load testing</li>
+          <li>Private networking and data residency controls</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enterprise-kpis">
+        <h3 class="text-xl font-bold mb-3">📈 KPIs & Reporting</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Metric</th><th class="p-3 text-left">Target</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3">Availability SLO</td><td class="p-3">≥ 99.9%</td><td class="p-3">Measured monthly</td></tr>
+              <tr><td class="p-3">Latency SLO</td><td class="p-3">P95 ≤ target</td><td class="p-3">End-to-end processing time</td></tr>
+              <tr><td class="p-3">Change Fail Percentage</td><td class="p-3">&lt; 5%</td><td class="p-3">Percentage of releases causing a P1/P2 incident</td></tr>
+              <tr><td class="p-3">Audit Trail Coverage</td><td class="p-3">100%</td><td class="p-3">For all critical actions and configuration changes</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-glossary">
+        <h3 class="text-xl font-bold mb-3">📚 Glossary (Newbie‑friendly)</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <p><strong>SSO/RBAC:</strong> Single Sign-On and Role-Based Access Control. Log in with your company account and get permissions based on your role.</p>
+          <p><strong>SLO:</strong> Service Level Objective. A specific, measurable target for reliability (e.g., 99.9% uptime).</p>
+          <p><strong>CI/CD:</strong> Continuous Integration/Continuous Deployment. An automated pipeline for testing and releasing code safely.</p>
+          <p><strong>Feature Flag:</strong> A switch that allows turning features on or off without deploying new code.</p>
+        </div>
+      </section>
+
+      <div class="border-t pt-10">
+        <h3 class="text-2xl font-bold">🧰 Part 2: Implementer’s Guide</h3>
+        <p class="mt-2 text-gray-600 text-sm">Procedures for Enterprise tier with change control.</p>
+      </div>
+
+      <section class="sec" id="enterprise-initial-setup">
+        <h3 class="text-xl font-bold mb-3">🛠️ Initial Setup (SOP)</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>Configure IdP for SSO; define roles in RBAC matrix.</li>
+          <li>Set up environments using IaC (e.g., Terraform, CloudFormation).</li>
+          <li>Establish release calendar and change approval board (CAB).</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enterprise-prereqs">
+        <h3 class="text-xl font-bold mb-3">🔑 Access & Prereqs</h3>
+        <ul class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <li>SSO integration details (metadata URL, entity ID).</li>
+          <li>VPC/network peering information if required.</li>
+          <li>Access to centralized logging and monitoring systems.</li>
+        </ul>
+      </section>
+
+      <section class="sec" id="enterprise-tooling">
+        <h3 class="text-xl font-bold mb-3">🔧 Tooling Options</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Category</th><th class="p-3 text-left">Options</th><th class="p-3 text-left">Notes</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3 font-semibold">Orchestration</td><td class="p-3">Workato, MuleSoft, ServiceNow</td><td class="p-3">Enterprise iPaaS with governance features</td></tr>
+              <tr><td class="p-3 font-semibold">IaC</td><td class="p-3">Terraform, CloudFormation, Pulumi</td><td class="p-3">For reproducible environments</td></tr>
+              <tr><td class="p-3 font-semibold">Observability</td><td class="p-3">Datadog, New Relic, Splunk</td><td class="p-3">For centralized logs, traces, and metrics</td></tr>
+              <tr><td class="p-3 font-semibold">Identity</td><td class="p-3">Okta, Azure AD, Auth0</td><td class="p-3">For SSO, RBAC, and SCIM</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-design">
+        <h3 class="text-xl font-bold mb-3">💡 Design Notes</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Isolate environments (dev/stage/prod) with separate credentials.</li>
+            <li>All configuration changes must go through code review and CI/CD.</li>
+            <li>Design for horizontal scalability and failover between regions/AZs.</li>
+            <li>Log all administrative actions to an immutable audit trail.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-security">
+        <h3 class="text-xl font-bold mb-3">🛡️ Security & Compliance</h3>
+        <div class="bg-white border rounded-2xl p-6 space-y-2 text-sm">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Conduct regular penetration testing and dependency scanning.</li>
+            <li>Implement data retention policies to comply with GDPR/CCPA.</li>
+            <li>Enforce MFA for all administrative access.</li>
+            <li>Document and drill incident response plan quarterly.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-timeline">
+        <h3 class="text-xl font-bold mb-3">🗓️ Detailed Timeline</h3>
+        <div class="bg-white border rounded-2xl overflow-hidden text-sm">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 text-gray-600"><tr><th class="p-3 text-left">Phase</th><th class="p-3 text-left">Duration</th><th class="p-3 text-left">Key Tasks</th></tr></thead>
+            <tbody class="divide-y">
+              <tr><td class="p-3">Architecture & Design</td><td class="p-3">2-3 weeks</td><td class="p-3">SLOs, governance, security review, architecture doc</td></tr>
+              <tr><td class="p-3">Platform Build</td><td class="p-3">3-4 weeks</td><td class="p-3">IaC, CI/CD, SSO/RBAC, observability integration</td></tr>
+              <tr><td class="p-3">Workflow Implementation</td><td class="p-3">2-3 weeks</td><td class="p-3">Build and test specific automation flows</td></tr>
+              <tr><td class="p-3">Testing & Release</td><td class="p-3">2 weeks</td><td class="p-3">Load testing, UAT, rollback drills, progressive rollout</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-templates">
+        <h3 class="text-xl font-bold mb-3">🧩 Templates & Snippets</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm">
+<pre class="whitespace-pre-wrap text-xs">
+Change Request Ticket Template:
+- Summary of change
+- Business justification
+- Rollout plan (with feature flag)
+- Rollback plan
+- Test plan and evidence
+- Approvers
+</pre>
+        </div>
+      </section>
+
+      <section class="sec" id="enterprise-audit-monitoring">
+        <h3 class="text-xl font-bold mb-3">🔍 Audit & Monitoring</h3>
+        <div class="bg-white border rounded-2xl p-6 text-sm space-y-2">
+          <ul class="list-disc list-inside space-y-1">
+            <li>Quarterly: Review audit logs and access permissions.</li>
+            <li>Quarterly: Conduct QBR with stakeholders on performance, cost, and security.</li>
+            <li>Annually: Participate in compliance audits (e.g., SOC2) and penetration tests.</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    </div>
+    </div>
+  </main>
+
+  <script>
+  // Checklist: Core tier
+  (function(){
+    const boxes = document.querySelectorAll('#core-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('core-progress-bar');
+    const txt = document.getElementById('core-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('core-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
+  <script>
+  // Sticky TOC: robust active section highlighting (scroll-position based)
+  (function(){
+    const toc = document.getElementById('toc');
+    if(!toc) return;
+    const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+    const ids = links.map(a => a.getAttribute('href').slice(1));
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+    const byId = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+    const OFFSET = 140; // header + sticky nav offset
+    function clearActive(){ links.forEach(a => a.classList.remove('active')); }
+    function setActiveId(id){
+      const a = byId[id];
+      if(!a) return;
+      clearActive();
+      a.classList.add('active');
+      const details = a.closest('details');
+      if(details) details.open = true;
+    }
+    let ticking = false;
+    function updateActive(){
+      const y = window.scrollY + OFFSET;
+      let currentId = ids[0] || '';
+      for(let i=0;i<sections.length;i++){
+        const sec = sections[i];
+        if(sec && sec.offsetTop <= y) currentId = sec.id; else break;
+      }
+      if(currentId) setActiveId(currentId);
+    }
+    function onScroll(){
+      if(ticking) return; ticking = true;
+      requestAnimationFrame(()=>{ updateActive(); ticking = false; });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', updateActive); else updateActive();
+    window.addEventListener('hashchange', ()=>{
+      const id = location.hash.replace('#',''); if(id) setActiveId(id);
+    });
+    links.forEach(a => a.addEventListener('click', ()=>{
+      const id = a.getAttribute('href').slice(1); setActiveId(id);
+    }));
+  })();
+  </script>
+
+  <script>
+  // Checklist: Enhanced tier
+  (function(){
+    const boxes = document.querySelectorAll('#enhanced-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enhanced-progress-bar');
+    const txt = document.getElementById('enhanced-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('enhanced-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+
+  <script>
+  // Checklist: Enterprise tier
+  (function(){
+    const boxes = document.querySelectorAll('#enterprise-checklist input[type="checkbox"][data-id]');
+    const bar = document.getElementById('enterprise-progress-bar');
+    const txt = document.getElementById('enterprise-progress-text');
+    const slug = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    const KEY = (id) => `aflp:${slug}:check:${id}`;
+
+    function update(){
+      const total = boxes.length || 1;
+      const done = Array.from(boxes).filter(b => b.checked).length;
+      const pct = Math.round((done/total)*100);
+      if(bar){ bar.style.width = pct + '%'; bar.setAttribute('aria-valuenow', String(pct)); }
+      if(txt){ txt.textContent = pct + '% complete'; }
+    }
+    function load(){ boxes.forEach(b => { try { b.checked = localStorage.getItem(KEY(b.dataset.id)) === '1'; } catch(e){} }); update(); }
+    function onChange(e){ const id = e.target?.dataset?.id; if(!id) return; try { localStorage.setItem(KEY(id), e.target.checked ? '1' : '0'); } catch(e){} update(); }
+    boxes.forEach(b => b.addEventListener('change', onChange));
+    const reset = document.getElementById('enterprise-reset');
+    if(reset){ reset.addEventListener('click', () => { boxes.forEach(b => { try { localStorage.removeItem(KEY(b.dataset.id)); } catch(e){} b.checked = false; }); update(); }); }
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
+  })();
+  </script>
+  </body>
+  </html>

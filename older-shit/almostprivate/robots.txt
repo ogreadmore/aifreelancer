@@ -1,0 +1,5 @@
+User-agent: *
+# Note: Standard robots.txt is only read at the site root.
+# Some crawlers may still consult this per-folder file.
+Disallow: /
+

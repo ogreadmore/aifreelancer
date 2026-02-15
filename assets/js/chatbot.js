@@ -151,106 +151,18 @@ const AF_CHAT_DEFAULT_CONFIG = {
   ]
 };
 
-const AF_CONTACT_LINE = "If you prefer direct contact, call (440) 941-1785 or email hello@aifreelancer.co.";
 
 const AF_ASSISTANT_INSTRUCTIONS = [
   "Voice and tone: calm, kind, compassionate, and professional, with clear international business English.",
   "Business model: AI Freelancer accepts broad business optimization and AI engagements across functions.",
   "Pricing policy: do not volunteer pricing unless asked directly. If asked, state $250 USD/hour, negotiable. Nonprofits may be free (pro bono) depending on fit and capacity.",
+  "Reasoning style: answer practical yes/no questions directly first, then add concise nuance and next-step guidance.",
+  "If asked whether AI Freelancer is a marketing company or agency, answer yes, then clarify that we take a holistic business-optimization approach beyond marketing.",
   "Conversion goal: guide visitors toward direct contact (email, phone, or scheduling) in a helpful, non-pushy way.",
   "Company facts: founded end of 2023, based in Cleveland, Ohio, global associates with developers primarily in Asia.",
   "Founder facts: Taylor Oliphant (O-L-I-P-H-A-N-T), graduated high school at 15, web development background in Silicon Valley, MBA from Purdue University (4.0), AI certifications from University of Pennsylvania and Lund University, plus credentials from Intel, Google, and Harvard University.",
   "Founder philosophy: pro-science and pro-human outcomes, helpful with AI, but skeptical about concentration of power and rushed deployment by very large AI companies."
 ].join("\n");
-
-/* ---------- COMMON RESPONSES ---------- */
-const COMMON_RESPONSES = {
-  capabilities: {
-    keywords: [
-      'what can you do', 'what do you do', 'what do you optimize', 'what can you optimize',
-      'services', 'service', 'offer', 'help with', 'can you help', 'can you do',
-      'business optimization', 'ai work', 'automation', 'optimize',
-      'google ads', 'facebook ads', 'meta ads', 'shopify', 'magento', 'woocommerce',
-      'wordpress', 'ecommerce', 'tax prep', 'accounting', 'hr', 'team training'
-    ],
-    response:
-`In short: if it improves a business, we will usually take it on.
-
-We support Google Ads and Facebook Ads optimization, ecommerce builds and upgrades (Shopify, Magento, WooCommerce, WordPress), business process optimization, team training, HR optimization, AI workflow design, and custom AI implementation. We are also expanding accounting and tax preparation support.
-
-If your project sits anywhere in business optimization or AI, we would be glad to discuss it. ${AF_CONTACT_LINE}`
-  },
-
-  pricing: {
-    keywords: [
-      'price', 'pricing', 'cost', 'fee', 'charge', 'how much', 'rate', 'rates', 'hourly', 'budget'
-    ],
-    response:
-`Our standard rate is **$250 USD per hour**.
-It is negotiable based on scope, and we often provide **free work for nonprofits** when the project aligns and capacity allows.
-
-If you share your goal and timeline, I can help you choose a practical next step. ${AF_CONTACT_LINE}`
-  },
-
-  nonprofit: {
-    keywords: [
-      'nonprofit', 'non-profit', 'charity', 'ngo', 'foundation', 'mission-driven'
-    ],
-    response:
-`We care deeply about nonprofit work.
-
-For nonprofits, we often offer pro bono or reduced-fee support depending on scope and current capacity. If you share your mission and what you need, we can discuss the best path with care. ${AF_CONTACT_LINE}`
-  },
-
-  company: {
-    keywords: [
-      'about', 'company', 'who are you', 'who is ai freelancer', 'background', 'history'
-    ],
-    response:
-`AI Freelancer was founded at the end of **2023** and is now in its third year.
-We are based in **Cleveland, Ohio**, mobile in how we work, and supported by associates around the world. Our developers are primarily in Asia.
-
-We focus mostly on small and medium-sized businesses, and we also love helping sole proprietors, nonprofits, and larger organizations when there is a good fit.`
-  },
-
-  founder: {
-    keywords: [
-      'taylor', 'oliphant', 'founder', 'owner', 'who runs', 'leadership', 'ceo'
-    ],
-    response:
-`The founder is **Taylor Oliphant** (O-L-I-P-H-A-N-T).
-
-Taylor graduated high school at 15, began web development work in Silicon Valley with notable pioneers, has traveled widely, and completed an MBA at Purdue University with a 4.0.
-He also holds AI certifications from the University of Pennsylvania and Lund University, plus certifications from Intel, Google, and Harvard University.
-
-He loves science and helping people with AI, while staying thoughtful and skeptical about concentrated power and rushed deployment by very large AI companies.`
-  },
-
-  process: {
-    keywords: [
-      'how it works', 'process', 'implementation', 'timeline', 'onboard', 'rollout', 'steps', 'start'
-    ],
-    response:
-`We keep the process simple:
-- Understand your goals, constraints, and desired outcomes.
-- Prioritize the highest-impact optimization first.
-- Execute quickly, measure results, and refine.
-
-If you want, we can start with a short consultation and map your best first move. ${AF_CONTACT_LINE}`
-  },
-
-  contact: {
-    keywords: [
-      'contact', 'call', 'phone', 'email', 'reach you', 'talk to team', 'speak with someone'
-    ],
-    response:
-`Of course. You can reach us directly at:
-- **Phone:** (440) 941-1785
-- **Email:** hello@aifreelancer.co
-
-If you prefer, I can also collect your details here and pass them to the team.`
-  }
-};
 
 /* ---------- STATE ---------- */
 const AFChatState = {
@@ -577,52 +489,8 @@ function afGetTimestamp() {
   return now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
 }
 
-/* ---------- COMMON QUESTIONS ---------- */
-function checkCommonQuestions(message) {
-  const lower = message.toLowerCase();
-  for (const [, data] of Object.entries(COMMON_RESPONSES)) {
-    if (data.keywords.some(k => lower.includes(k))) return data.response;
-  }
-  return null;
-}
-
-function afCanonicalContactNudge() {
-  return "If you want, I can connect you with the team now and help you choose the fastest next step.";
-}
-
-function afNormalizeBotReply(reply, userMessage = '') {
-  const raw = String(reply || '');
-  const lowerReply = raw.toLowerCase();
-  const lowerUser = String(userMessage || '').toLowerCase();
-
-  const legacySignals = [
-    'ai website chatbot',
-    'internal process automation',
-    'sales & crm automation',
-    'ai data & analytics',
-    'automated customer support',
-    'ai social media manager',
-    'fractional chief ai officer',
-    'nine-solution',
-    'line-up',
-    '$99',
-    '$499',
-    '$599',
-    '$899',
-    '$999',
-    '$1499',
-    '$1,499',
-    '$4,999'
-  ];
-
-  if (legacySignals.some(sig => lowerReply.includes(sig.toLowerCase()))) {
-    if (/(price|pricing|cost|rate|fee|budget|hourly)/i.test(lowerUser)) {
-      return `${COMMON_RESPONSES.pricing.response}\n\n${afCanonicalContactNudge()}`;
-    }
-    return `${COMMON_RESPONSES.capabilities.response}\n\n${afCanonicalContactNudge()}`;
-  }
-
-  return raw;
+function afNormalizeBotReply(reply) {
+  return String(reply || '');
 }
 
 /* ---------- RENDER: messages ---------- */
@@ -813,21 +681,6 @@ async function afSubmitMessage() {
     return;
   }
 
-  const commonResponse = checkCommonQuestions(userMessage);
-  if (commonResponse) {
-    await simulateTyping(800);
-    afAddBotMessage(commonResponse);
-    AFChatState.history.push({ role:'assistant', content:commonResponse });
-    if (
-      /(pric|cost|rate|budget|service|optimiz|nonprofit|about|founder|project|help)/i.test(userMessage)
-    ) {
-      await simulateTyping(1000);
-      afAddBotMessage("If you would like, we can schedule a short consultation. Just say 'yes' and I will open the calendar or collect your details.");
-      AFChatState.waitingForLeadConfirmation = true;
-    }
-    return;
-  }
-
   const thinkingNode = afAddThinking();
   afSetSending(true);
   afSendToAI(userMessage, thinkingNode);
@@ -901,9 +754,7 @@ async function afSendToAI(userMessage, thinkingNode) {
 
   /* ---- every endpoint failed ---- */
   if (thinkingNode?.remove) thinkingNode.remove();
-  afAddBotMessage(
-    "I am having trouble connecting right now. Please use the contact form below, call (440) 941-1785, or email hello@aifreelancer.co."
-  );
+  afAddBotMessage("I am having trouble connecting right now. Please use the contact form below, call (440) 941-1785, or email hello@aifreelancer.co.");
   afSetSending(false);
   console.error('[AFChat] all endpoints failed', lastErr);
 }

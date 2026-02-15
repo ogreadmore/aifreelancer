@@ -54,7 +54,7 @@
   bottom: 84px;
   width: min(390px, calc(100vw - 2rem));
   height: min(560px, 78vh);
-  background: #fff;
+  background: #fff !important;
   border-radius: 24px;
   box-shadow: 0 24px 56px rgba(10, 10, 10, 0.22);
   overflow: hidden;
@@ -65,8 +65,8 @@
 }
 
 .chatbot-window:not(.hidden) {
-  background: linear-gradient(#fff, #fff) padding-box, var(--primary-gradient, var(--afchat-gradient)) border-box;
-  border: 2px solid transparent;
+  background: #fff !important;
+  border: 2px solid rgba(138, 59, 241, 0.35);
 }
 
 .chatbot-window.hidden {
@@ -135,6 +135,7 @@
 #chatbot-messages {
   flex: 1;
   padding: 1rem;
+  background: #fff !important;
   overflow-y: auto;
   scroll-behavior: smooth;
 }
@@ -273,6 +274,7 @@
 .chatbot-input-wrap {
   border-top: 1px solid #e5e7eb;
   padding: 0.9rem;
+  background: #fff !important;
 }
 
 #chatbot-form {

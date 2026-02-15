@@ -10,7 +10,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     const l = document.createElement('link');
     l.rel = 'stylesheet';
     // Use relative path so the asset loads correctly on GitHub Pages
-    l.href = 'assets/css/chatbot.css';
+    l.href = 'assets/css/chatbot.css?v=20260215b';
     l.setAttribute('data-afchat-css', '');
     document.head.appendChild(l);
   }
@@ -954,8 +954,9 @@ function afInjectStyles(){
     .af-message-wrapper { animation: slideInUp .3s ease-out; }
     @keyframes slideInUp { from { opacity:0; transform: translateY(10px);} to { opacity:1; transform: translateY(0);} }
     @media (max-width:768px){ .chatbot-window{ position:fixed !important; } #chatbot-messages{ max-height: calc(100vh - 180px);} }
-    #chatbot-messages { scroll-behavior: smooth; }
-    .chatbot-window:not(.hidden){ background: linear-gradient(white,white) padding-box, var(--primary-gradient) border-box; border:2px solid transparent; }
+    #chatbot-messages { scroll-behavior: smooth; background:#fff !important; }
+    .chatbot-input-wrap { background:#fff !important; }
+    .chatbot-window { background:#fff !important; }
   `;
   const tag = document.createElement('style');
   tag.setAttribute('data-afchat','');

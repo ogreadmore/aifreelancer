@@ -1092,6 +1092,27 @@
       font-size: .78rem;
     }
 
+    .footer-legal {
+      margin-top: .45rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem;
+      text-transform: none;
+      letter-spacing: normal;
+      font-size: .74rem;
+    }
+
+    .footer-legal a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .footer-legal span[aria-hidden="true"] {
+      color: #b1b1b1;
+    }
+
     @keyframes accentShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -1271,6 +1292,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/css/chatbot.css">
 </head>
 <body>
   <nav class="site-nav" id="mainNav">
@@ -1284,7 +1306,7 @@
   <header class="hero" id="top">
     <div class="container">
       <h1 class="hero-title reveal">
-        <span class="hero-line-main">We love optimization &#x2764;&#xfe0f;</span>
+        <span class="hero-line-main">Love your metrics &#x2764;&#xfe0f;</span>
       </h1>
 
       <div class="featured reveal" id="heroVideoTrigger" role="button" tabindex="0" aria-label="Play intro video" aria-expanded="false">
@@ -1320,30 +1342,6 @@
   </header>
 
   <main>
-    <section class="section alt" id="results">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Results We Have Delivered</p>
-          <h2 class="section-title">Proof, not promises.</h2>
-        </div>
-
-        <div class="stats-grid">
-          <article class="stat reveal">
-            <div class="stat-number" data-count-to="4" data-suffix="x">4x</div>
-            <div class="stat-label">Google Ads ROI</div>
-          </article>
-          <article class="stat reveal">
-            <div class="stat-number" data-count-to="500" data-suffix="%">500%</div>
-            <div class="stat-label">Traffic increase</div>
-          </article>
-          <article class="stat reveal">
-            <div class="stat-number" data-count-to="100" data-prefix="$" data-suffix="K+">$100K+</div>
-            <div class="stat-label">Raised for non-profits</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="services">
       <div class="container">
         <div class="section-head reveal">
@@ -1365,50 +1363,6 @@
           <a class="service-item" href="#contact"><div class="service-name">Optimize Your Agentic Engineering</div><div class="service-desc">AI agents, autonomous workflows</div></a>
           <a class="service-item" href="#contact"><div class="service-name">Optimize Your HR Systems</div><div class="service-desc">Hiring, retention, people operations</div></a>
           <a class="service-item" href="#contact"><div class="service-name">Optimize Your Accounting &amp; Tax Prep</div><div class="service-desc">Bookkeeping systems, tax optimization</div></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="case-studies">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Case Studies</p>
-          <h2 class="section-title">Real outcomes, fast execution.</h2>
-        </div>
-
-        <div class="case-list">
-          <article class="case-item reveal">
-            <div class="case-meta">Veterinary E-Commerce · Cleveland, OH</div>
-            <h3>Medica Veterinary</h3>
-            <p>A veterinary practice needed to move from in-office sales to e-commerce. We built a complete Shopify store in one month with entirely AI-generated product photography, driving a 2x increase in sales.</p>
-            <div class="case-metrics">
-              <div><div class="metric-value" data-count-to="2" data-suffix="x">2x</div><div class="metric-label">Increase in sales</div></div>
-              <div><div class="metric-value" data-count-to="500" data-suffix="%">500%</div><div class="metric-label">More site traffic</div></div>
-              <div><div class="metric-value" data-count-to="1" data-suffix=" mo">1 mo</div><div class="metric-label">From zero to live</div></div>
-            </div>
-          </article>
-
-          <article class="case-item reveal">
-            <div class="case-meta">Functional Medicine · Wellness Clinic</div>
-            <h3>Inspire Wellness</h3>
-            <p>A functional medicine clinic needed a steady stream of new patients. We built a new WordPress site and launched a Google Ads campaign that was profitable within the first week.</p>
-            <div class="case-metrics">
-              <div><div class="metric-value" data-count-to="4" data-suffix="x">4x</div><div class="metric-label">Google Ads ROI</div></div>
-              <div><div class="metric-value" data-count-to="20" data-suffix="%">20%</div><div class="metric-label">More new signups</div></div>
-              <div><div class="metric-value" data-count-to="15" data-suffix="%">15%</div><div class="metric-label">Visitor-to-call rate</div></div>
-            </div>
-          </article>
-
-          <article class="case-item reveal">
-            <div class="case-meta">Digital Strategy · Multiple Organizations</div>
-            <h3>Non-Profit Organizations</h3>
-            <p>Several non-profit organizations needed help with fundraising, audience growth, and digital presence. We delivered measurable results across every engagement.</p>
-            <div class="case-metrics">
-              <div><div class="metric-value" data-count-to="100" data-prefix="$" data-suffix="K+">$100K+</div><div class="metric-label">Raised in campaigns</div></div>
-              <div><div class="metric-value" data-count-to="2000" data-suffix="%">2000%</div><div class="metric-label">Social media growth</div></div>
-              <div><div class="metric-value" data-count-to="50" data-suffix="+">50+</div><div class="metric-label">Countries benefited</div></div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -1468,6 +1422,8 @@
           </div>
 
           <form class="contact-form" id="contactForm" action="https://formspree.io/f/mldlebob" method="POST">
+            <input type="hidden" name="_subject" value="New Lead from AI-Freelancer.co">
+            <input type="hidden" name="_cc" value="tayloroliphant@gmail.com">
             <div class="form-row">
               <input type="text" name="name" placeholder="Your name" required>
               <input type="email" name="email" placeholder="Your email" required>
@@ -1483,7 +1439,16 @@
   </main>
 
   <footer>
-    <div class="container">AI Freelancer · AIFreelancer.co · Cleveland, OH</div>
+    <div class="container">
+      AI Freelancer · AIFreelancer.co · Cleveland, OH
+      <div class="footer-legal" aria-label="Legal">
+        <a href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="/terms.html">Terms of Service</a>
+        <span aria-hidden="true">·</span>
+        <a href="/cookies.html">Cookie Policy</a>
+      </div>
+    </div>
   </footer>
 
   <script>
@@ -2827,6 +2792,90 @@
           location.hash = href;
         }
       }, { passive: false });
+    })();
+  </script>
+  <script src="assets/js/chatbot.js"></script>
+  <script>
+    (() => {
+      const CHAT_ICON_SVG = '<svg class="chat-bubble-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm2 4a1 1 0 0 0 0 2h12a1 1 0 1 0 0-2H6Zm0 4a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H6Z"/></svg>';
+      const toNode = (html) => {
+        const tpl = document.createElement('template');
+        tpl.innerHTML = html.trim();
+        return tpl.content.firstElementChild;
+      };
+
+      const maybeReplaceChatIcon = () => {
+        const selectors = [
+          '#chatbot-toggle',
+          '.chatbot-toggle',
+          '.chat-toggle',
+          '.chat-widget-toggle',
+          '.chat-launcher',
+          '[class*="chatbot"][role="button"]',
+          '[class*="chat-toggle"]',
+          'button[aria-label*="chat" i]',
+          'button[title*="chat" i]'
+        ].join(', ');
+
+        const nodes = Array.from(document.querySelectorAll(selectors));
+        nodes.forEach((node) => {
+          const button = node.closest('button, [role="button"]') || node;
+          if (!button || button.dataset.chatIconPatched === '1') return;
+
+          const signature = [
+            button.id || '',
+            String(button.className || ''),
+            button.getAttribute('aria-label') || '',
+            button.getAttribute('title') || '',
+            button.textContent || ''
+          ].join(' ').toLowerCase();
+
+          if (!signature.includes('chat') && !signature.includes('bot')) return;
+
+          let replaced = false;
+          const explicitRobotIcon = button.querySelector('.fa-robot, .fa-bot, [class*="robot"], [class*="bot-face"], [data-icon="robot"]');
+          if (explicitRobotIcon) {
+            explicitRobotIcon.replaceWith(toNode(CHAT_ICON_SVG));
+            replaced = true;
+          }
+
+          if (!replaced && (button.textContent || '').includes('🤖')) {
+            button.textContent = (button.textContent || '').replace(/🤖/g, '').trim();
+            button.prepend(toNode(CHAT_ICON_SVG));
+            replaced = true;
+          }
+
+          if (!replaced) {
+            const firstSvg = button.querySelector('svg');
+            const textOnly = (button.textContent || '').replace(/\s+/g, '').trim();
+            const iconOnly = textOnly.length <= 2;
+            if (firstSvg && iconOnly) {
+              firstSvg.replaceWith(toNode(CHAT_ICON_SVG));
+              replaced = true;
+            }
+          }
+
+          if (replaced) {
+            button.dataset.chatIconPatched = '1';
+            button.setAttribute('aria-label', 'Open chat');
+          }
+        });
+      };
+
+      const style = document.createElement('style');
+      style.textContent = '.chat-bubble-icon { width: 1.14em; height: 1.14em; display: block; }';
+      document.head.appendChild(style);
+
+      const run = () => window.requestAnimationFrame(maybeReplaceChatIcon);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run, { once: true });
+      } else {
+        run();
+      }
+
+      const observer = new MutationObserver(run);
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+      window.setTimeout(() => observer.disconnect(), 30000);
     })();
   </script>
 </body>

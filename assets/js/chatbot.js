@@ -139,9 +139,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
 
   // --- Begin original chat widget script (extracted) ---
 /* ---------- CONFIG ---------- */
-// Prefer the remote hosted endpoint first to avoid hitting a disabled local /api/chat
 const AF_CHAT_ENDPOINTS = [
-  'https://aifreelancerchatbotvercelthing.vercel.app/api/chat',
   '/api/chat'
 ];
 
@@ -170,6 +168,7 @@ const AF_ASSISTANT_INSTRUCTIONS = [
   "Business model: AI Freelancer accepts broad business optimization and AI engagements across functions.",
   "Positioning guardrail: avoid framing AI Freelancer as a generic AI agency or chatbot vendor.",
   "Do not sell chatbots unless the user explicitly asks about chatbots or website chat.",
+  "Do not reference named product packages (for example: 'AI Social Media Manager', 'AI Data & Analytics', 'Automated Customer Support', 'Sales & CRM Automation').",
   "Pricing policy: do not volunteer pricing unless asked directly. If asked, state $250 USD/hour, negotiable. Nonprofits may be free (pro bono) depending on fit and capacity.",
   "Reasoning style: answer practical yes/no questions directly first, then add concise nuance and next-step guidance.",
   "Style: prefer outcomes language (performance, best practices, measurable improvements, business results) over feature catalog language.",
@@ -523,6 +522,47 @@ function afUserRequestedDepth(userMessage = '') {
   return /(detail|deeper|in depth|step by step|walk me through|long version|full explanation|elaborate|deep dive|expand)/i.test(String(userMessage));
 }
 
+function afIsCapabilitiesPrompt(userMessage = '') {
+  return /(what can you optimize|what do you optimize|what can you do|what do you do|services|capabilities)/i.test(String(userMessage));
+}
+
+function afIsMarketingPrompt(userMessage = '') {
+  return /(marketing|google ads|facebook ads|meta ads|ppc|seo|campaign|advertising)/i.test(String(userMessage));
+}
+
+function afBuildOnBrandCapabilitiesReply() {
+  return [
+    "We optimize business performance wherever there is friction, waste, or missed opportunity.",
+    "That can include marketing, operations, workflows, ecommerce, analytics, team execution, and other hard business problems.",
+    "AI is often our favorite tool, but it is not the product. We sell best practices, strong execution, and measurable outcomes.",
+    "If you share your priority, I can suggest a practical first move."
+  ].join("\n\n");
+}
+
+function afBuildOnBrandMarketingReply() {
+  return [
+    "Yes, we do marketing, and we take it very seriously.",
+    "Our focus is not just ad setup. We optimize the full marketing system so traffic quality, conversion, follow-up speed, and unit economics all improve together.",
+    "That usually includes Google Ads and Meta, plus landing pages, offers, tracking, and sales handoff so performance is real, not vanity.",
+    "If you share your current bottleneck, I can suggest the highest-impact next step."
+  ].join("\n\n");
+}
+
+const AF_OFFBRAND_REPLY_PATTERNS = [
+  /ai social media manager/i,
+  /ai data\s*&\s*analytics/i,
+  /automated customer support/i,
+  /sales\s*&\s*crm automation/i,
+  /internal process automation/i,
+  /fractional chief ai officer/i,
+  /ai website chatbot/i,
+  /book (a )?free discovery call/i,
+  /request an roi calculation/i,
+  /advanced ai solutions?/i,
+  /ai-driven tools?/i,
+  /we specialize in/i
+];
+
 function afTrimToSentenceLimit(text, limit = 4) {
   const cleaned = String(text || '').trim();
   if (!cleaned) return cleaned;
@@ -538,6 +578,8 @@ function afNormalizeBotReply(reply, userMessage = '') {
 
   const lowerUser = String(userMessage || '').toLowerCase();
   const askedAboutChatbots = /(chatbot|chat bot|website chat|web chat|live chat|support bot|assistant widget)/i.test(lowerUser);
+  const isCapabilitiesPrompt = afIsCapabilitiesPrompt(userMessage);
+  const isMarketingPrompt = afIsMarketingPrompt(userMessage);
 
   // Soft phrasing corrections to keep voice on-brand without forcing canned responses.
   const replacements = [
@@ -554,16 +596,17 @@ function afNormalizeBotReply(reply, userMessage = '') {
       .replace(/\bchatbots?\b/gi, 'automation tools');
   }
 
-  // If a core capabilities answer drifts into generic AI-agency language, reframe it.
-  const isCapabilitiesPrompt = /(what can you optimize|what do you optimize|what can you do|what do you do|services)/i.test(lowerUser);
-  const offBrandSignals = /(ai solutions?|chatbot|specialize in ai|ai agency|automated customer support)/i.test(text.toLowerCase());
-  if (isCapabilitiesPrompt && offBrandSignals) {
-    text = [
-      "We optimize businesses end to end, wherever performance can improve.",
-      "That includes marketing, operations, workflows, ecommerce, team enablement, analytics, and other hard business problems.",
-      "AI is one of our favorite tools, but it is not the product. We sell best practices, execution quality, and measurable outcomes.",
-      "If you share your goal, I can suggest the highest-impact first step."
-    ].join("\n\n");
+  const offBrandSignals =
+    AF_OFFBRAND_REPLY_PATTERNS.some((pattern) => pattern.test(text)) ||
+    /(ai solutions?|specialize in ai|ai agency|automated customer support)/i.test(text.toLowerCase());
+
+  // Hard quality gate for key intents: if response drifts off-brand, replace with on-brand framing.
+  if (offBrandSignals && isMarketingPrompt) {
+    text = afBuildOnBrandMarketingReply();
+  } else if (offBrandSignals && isCapabilitiesPrompt) {
+    text = afBuildOnBrandCapabilitiesReply();
+  } else if (isCapabilitiesPrompt && /(chatbot|automation tools|support bot)/i.test(text) && !askedAboutChatbots) {
+    text = afBuildOnBrandCapabilitiesReply();
   }
 
   if (!afUserRequestedDepth(userMessage)) {

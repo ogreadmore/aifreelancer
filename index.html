@@ -2529,9 +2529,26 @@
         if (!revealEls.length) return;
 
         const serviceRows = Array.from(document.querySelectorAll('#serviceList .service-item'));
-        serviceRows.forEach((row, index) => {
-          row.style.setProperty('--service-stagger', `${index * 78}ms`);
-        });
+        const serviceStepMs = 78;
+        const setServiceStagger = (direction = 1) => {
+          const count = serviceRows.length;
+          if (!count) return;
+          serviceRows.forEach((row, index) => {
+            const orderIndex = direction < 0 ? (count - 1 - index) : index;
+            row.style.setProperty('--service-stagger', `${orderIndex * serviceStepMs}ms`);
+          });
+        };
+        setServiceStagger(1);
+
+        let revealScrollDirection = 1;
+        let lastRevealScrollY = window.scrollY || window.pageYOffset || 0;
+        const updateRevealScrollDirection = () => {
+          const currentY = window.scrollY || window.pageYOffset || 0;
+          if (currentY > lastRevealScrollY + 1) revealScrollDirection = 1;
+          else if (currentY < lastRevealScrollY - 1) revealScrollDirection = -1;
+          lastRevealScrollY = currentY;
+        };
+        window.addEventListener('scroll', updateRevealScrollDirection, { passive: true });
 
         const revealGroups = Array.from(document.querySelectorAll('.hero .container, .section .container'));
         revealGroups.forEach((group) => {
@@ -2550,6 +2567,10 @@
         const io = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             const isVisible = entry.isIntersecting && entry.intersectionRatio > 0.08;
+            if (entry.target.id === 'serviceList' && isVisible) {
+              // Keep the service stagger directional so up-scroll reveals bottom-to-top.
+              setServiceStagger(revealScrollDirection);
+            }
             if (entry.target.id === 'testimonialsScroll') {
               const vh = window.innerHeight || document.documentElement.clientHeight || 0;
               const top = entry.boundingClientRect.top;

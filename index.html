@@ -861,9 +861,9 @@
     }
 
     .contact-title {
-      font-size: clamp(2.45rem, 5.6vw, 5.2rem);
-      line-height: .9;
-      letter-spacing: -.042em;
+      font-size: clamp(2rem, 4.9vw, 5rem);
+      line-height: .94;
+      letter-spacing: -.038em;
       font-weight: 800;
       max-width: 13ch;
       text-wrap: balance;
@@ -1334,7 +1334,7 @@
             id="heroVideoFrame"
             title="AI Freelancer Intro"
             loading="lazy"
-            data-src="https://www.youtube-nocookie.com/embed/Hx7hXZxoXz4?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1&enablejsapi=1"
+            data-src="https://www.youtube-nocookie.com/embed/Hx7hXZxoXz4?rel=0&modestbranding=1&autoplay=1&mute=0&playsinline=1&enablejsapi=1"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
@@ -2125,6 +2125,8 @@
         let lastKnownDuration = 0;
         const END_CLOSE_BUFFER = 0.35;
         const FORCE_CLOSE_MS = 420000;
+        const HERO_VIDEO_DEFAULT_VOLUME = 34;
+        let volumeAppliedForOpen = false;
 
         const isOpen = () => heroVideoTrigger.classList.contains(OPEN_CLASS);
         function handleState(rawState) {
@@ -2141,6 +2143,7 @@
           lastPlayerState = state;
           stateListenerBound = true;
           stopBindTimer();
+          if (state === 1) applyPreferredVolume();
         }
         function handleTiming(rawCurrentTime, rawDuration) {
           const currentTime = Number(rawCurrentTime);
@@ -2218,6 +2221,23 @@
             args
           }), '*');
         };
+        function applyPreferredVolume() {
+          if (!isOpen() || volumeAppliedForOpen) return;
+          volumeAppliedForOpen = true;
+          const run = () => {
+            if (!isOpen()) return;
+            if (ytPlayer && ytPlayerReady) {
+              try { if (typeof ytPlayer.unMute === 'function') ytPlayer.unMute(); } catch {}
+              try { if (typeof ytPlayer.setVolume === 'function') ytPlayer.setVolume(HERO_VIDEO_DEFAULT_VOLUME); } catch {}
+              try { if (typeof ytPlayer.playVideo === 'function') ytPlayer.playVideo(); } catch {}
+            }
+            postPlayerCommand('unMute');
+            postPlayerCommand('setVolume', [HERO_VIDEO_DEFAULT_VOLUME]);
+            postPlayerCommand('playVideo');
+          };
+          run();
+          window.setTimeout(run, 180);
+        }
         const ensureYouTubeApi = () => {
           if (window.YT && typeof window.YT.Player === 'function') {
             return Promise.resolve(window.YT);
@@ -2254,6 +2274,7 @@
               events: {
                 onReady: () => {
                   ytPlayerReady = true;
+                  applyPreferredVolume();
                   startStatePolling();
                   startCloseFallback();
                   try {
@@ -2262,6 +2283,7 @@
                 },
                 onStateChange: (event) => {
                   handleState(event && event.data);
+                  if (Number(event && event.data) === 1) applyPreferredVolume();
                 }
               }
             });
@@ -2309,6 +2331,7 @@
 
         const openInline = () => {
           if (isOpen()) return;
+          volumeAppliedForOpen = false;
           heroVideoTrigger.classList.add(OPEN_CLASS);
           heroVideoTrigger.setAttribute('aria-expanded', 'true');
           heroVideoEmbed.setAttribute('aria-hidden', 'false');
@@ -2348,6 +2371,7 @@
           bindRetries = 0;
           lastPlayerState = null;
           lastKnownDuration = 0;
+          volumeAppliedForOpen = false;
           heroVideoTrigger.classList.remove(OPEN_CLASS);
           heroVideoTrigger.setAttribute('aria-expanded', 'false');
           heroVideoEmbed.setAttribute('aria-hidden', 'true');
@@ -2401,6 +2425,7 @@
           if (payload.event === 'onReady') {
             stateListenerBound = true;
             stopBindTimer();
+            applyPreferredVolume();
             postPlayerCommand('addEventListener', ['onStateChange']);
             startStatePolling();
             startCloseFallback();
@@ -2409,6 +2434,7 @@
 
           if (payload.event === 'onStateChange') {
             handleState(payload.info);
+            if (Number(payload.info) === 1) applyPreferredVolume();
             if (payload && payload.info && typeof payload.info === 'object') {
               handleTiming(payload.info.currentTime, payload.info.duration);
             }

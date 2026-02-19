@@ -58,6 +58,8 @@
   position: fixed;
   right: 1rem;
   bottom: 0;
+  /* Window is relocated to document.body at runtime, so it needs its own stacking order. */
+  z-index: 10000;
   width: min(390px, calc(100vw - 2rem));
   height: min(560px, 78vh);
   background: #fff !important;
@@ -511,10 +513,11 @@
     position: fixed !important;
     left: 0;
     right: 0;
+    top: 0;
     bottom: 0;
     width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
     border-radius: 0;
   }
 

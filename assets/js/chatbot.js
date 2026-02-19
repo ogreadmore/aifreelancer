@@ -13,7 +13,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     const l = document.createElement('link');
     l.rel = 'stylesheet';
     // Keep this in sync with index.html cache-bust when chat CSS changes.
-    l.href = 'assets/css/chatbot.css?v=20260219b';
+    l.href = 'assets/css/chatbot.css?v=20260219c';
     l.setAttribute('data-afchat-css', '');
     document.head.appendChild(l);
   }
@@ -890,13 +890,13 @@ function afToggleChat(show) {
   }
   if (isMobile) {
     win.style.width = '100vw';
-    win.style.height = '100vh';
+    win.style.height = '100dvh';
     win.style.bottom = '0';
     win.style.right = '0';
     win.style.left = '0';
-    win.style.top = 'auto';
+    win.style.top = '0';
     win.style.borderRadius = '0';
-    win.style.maxHeight = '100vh';
+    win.style.maxHeight = '100dvh';
   } else {
     // Clear mobile-only inline overrides so desktop CSS controls layout.
     win.style.width = '';

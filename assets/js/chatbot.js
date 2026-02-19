@@ -13,7 +13,7 @@ if (window.AF_CHAT_WIDGET_LOADED) {
     const l = document.createElement('link');
     l.rel = 'stylesheet';
     // Keep this in sync with index.html cache-bust when chat CSS changes.
-    l.href = 'assets/css/chatbot.css?v=20260215g';
+    l.href = 'assets/css/chatbot.css?v=20260219b';
     l.setAttribute('data-afchat-css', '');
     document.head.appendChild(l);
   }

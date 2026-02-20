@@ -541,30 +541,32 @@
       transition: background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
     }
 
-    .service-item:hover,
-    .service-item:focus-visible {
-      background:
-        linear-gradient(rgba(255, 255, 255, .92), rgba(255, 255, 255, .92)) padding-box,
-        linear-gradient(105deg, rgba(75, 136, 218, .36), rgba(138, 59, 241, .36), rgba(217, 65, 161, .36), rgba(229, 72, 77, .36)) border-box;
-      border-color: transparent;
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(138, 59, 241, .1), 0 2px 8px rgba(10, 10, 10, .04);
-      outline: none;
-    }
+    @media (hover: hover) and (pointer: fine) {
+      .service-item:hover,
+      .service-item:focus-visible {
+        background:
+          linear-gradient(rgba(255, 255, 255, .92), rgba(255, 255, 255, .92)) padding-box,
+          linear-gradient(105deg, rgba(75, 136, 218, .36), rgba(138, 59, 241, .36), rgba(217, 65, 161, .36), rgba(229, 72, 77, .36)) border-box;
+        border-color: transparent;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(138, 59, 241, .1), 0 2px 8px rgba(10, 10, 10, .04);
+        outline: none;
+      }
 
-    .service-item:hover .service-name,
-    .service-item:focus-visible .service-name {
-      background: var(--accent-gradient);
-      background-size: 180% 180%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: accentShift 9s ease infinite;
-    }
+      .service-item:hover .service-name,
+      .service-item:focus-visible .service-name {
+        background: var(--accent-gradient);
+        background-size: 180% 180%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: accentShift 9s ease infinite;
+      }
 
-    .service-item:hover .service-desc,
-    .service-item:focus-visible .service-desc {
-      color: #626262;
+      .service-item:hover .service-desc,
+      .service-item:focus-visible .service-desc {
+        color: #626262;
+      }
     }
 
     .service-item.center-active {
@@ -1294,7 +1296,7 @@
           <span class="featured-tag">Featured</span>
           <span class="featured-title">We don't sell AI. We sell performance.</span>
           <span class="featured-foot">
-            <span>Watch 2-minute intro</span>
+            <span>Watch 1-minute intro</span>
             <span class="play-dot" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
             </span>

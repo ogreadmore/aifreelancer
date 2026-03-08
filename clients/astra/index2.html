@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyful Purpose Coaching — Astra Fox</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ── BRAND COLORS ── */
+    --purple:        #7B5BAE;
+    --purple-dark:   #5A3E85;
+    --purple-light:  #B99CD8;
+    --purple-pale:   #EDE5F7;
+    --yellow:        #E8C441;
+    --yellow-light:  #F2D96B;
+    --yellow-pale:   #FDF5D0;
+
+    /* ── NEUTRALS ── */
+    --cream:         #faf6ef;
+    --cream-dark:    #f0e8d8;
+    --charcoal:      #2c2a36;
+    --charcoal-soft: #4a4558;
+    --warm-white:    #fffdf8;
+    --blush:         #e8d5c4;
+
+    /* ── TYPOGRAPHY ── */
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'Quicksand', 'Segoe UI', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--charcoal);
+    background: var(--warm-white);
+    overflow-x: hidden;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  /* ─── UTILITY ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; width: 100%;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(250, 246, 239, 0.94);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 2px 30px rgba(91, 62, 133, 0.08);
+    padding: 0.8rem 3rem;
+  }
+  nav .logo img { height: 56px; transition: height 0.4s; }
+  nav.scrolled .logo img { height: 44px; }
+  nav .cta-nav {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple-dark);
+    text-decoration: none;
+    padding: 0.6rem 1.6rem;
+    border: 1.5px solid var(--purple);
+    border-radius: 40px;
+    transition: all 0.35s;
+  }
+  nav .cta-nav:hover {
+    background: var(--purple);
+    color: #fff;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 80%, rgba(123, 91, 174, 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 20%, rgba(232, 196, 65, 0.10) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5rem 5rem 6rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-label {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--purple);
+    font-weight: 400;
+    position: relative;
+  }
+  /* Underline squiggle on "Medicine" */
+  .hero-title em::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 100%; height: 3px;
+    background: var(--yellow);
+    border-radius: 2px;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--charcoal-soft);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.85;
+    opacity: 0;
+    animation: fadeUp 1s 0.7s forwards;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--purple);
+    text-decoration: none;
+    padding: 1rem 2.4rem;
+    border-radius: 50px;
+    transition: all 0.4s;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards;
+    box-shadow: 0 6px 24px rgba(123, 91, 174, 0.35);
+  }
+  .hero-cta:hover {
+    background: var(--purple-dark);
+    box-shadow: 0 8px 32px rgba(90, 62, 133, 0.4);
+    transform: translateY(-2px);
+  }
+  .hero-cta svg { width: 16px; height: 16px; transition: transform 0.3s; }
+  .hero-cta:hover svg { transform: translateX(4px); }
+
+  .hero-image { position: relative; overflow: hidden; }
+  .hero-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: fadeIn 1.4s 0.2s forwards;
+  }
+  .hero-image::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--warm-white) 0%, transparent 12%);
+    pointer-events: none;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 7rem 3rem; }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--purple);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    text-align: center;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .section-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--charcoal-soft);
+    font-weight: 300;
+    max-width: 550px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
+  }
+
+  /* ─── PILLARS ─── */
+  .pillars-section {
+    background: var(--purple-pale);
+    position: relative;
+  }
+  .pillars-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--purple-light), var(--yellow), var(--purple-light));
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .pillar-card {
+    background: var(--warm-white);
+    border-radius: 24px;
+    padding: 3rem 2.2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s;
+    border: 1px solid rgba(123, 91, 174, 0.12);
+  }
+  .pillar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(123, 91, 174, 0.1);
+  }
+  .pillar-card::before {
+    content: '';
+    position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 60px; height: 3px;
+    background: var(--yellow);
+    border-radius: 0 0 3px 3px;
+  }
+  .pillar-icon {
+    width: 72px; height: 72px;
+    margin: 0.5rem auto 1.5rem;
+    object-fit: contain;
+  }
+  .pillar-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--purple-dark);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+  }
+  .pillar-card p {
+    font-size: 0.92rem;
+    color: var(--charcoal-soft);
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  /* ─── INVESTMENT ─── */
+  .investment-section {
+    text-align: center;
+    position: relative;
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+  /* Subtle starburst / glow behind price */
+  .investment-section::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(232,196,65,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .investment-section .price {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    margin: 1.5rem 0 0.5rem;
+    letter-spacing: -0.02em;
+    position: relative; z-index: 1;
+  }
+  .investment-section .price-note {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative; z-index: 1;
+  }
+  .investment-section .invest-text {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--charcoal-soft);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    background: var(--yellow);
+    text-decoration: none;
+    padding: 1rem 2.6rem;
+    border-radius: 50px;
+    transition: all 0.4s;
+    box-shadow: 0 4px 24px rgba(232, 196, 65, 0.4);
+    position: relative; z-index: 1;
+  }
+  .btn-primary:hover {
+    background: var(--purple);
+    color: #fff;
+    box-shadow: 0 6px 28px rgba(123, 91, 174, 0.35);
+    transform: translateY(-2px);
+  }
+
+  /* ─── ABOUT ─── */
+  .about-section {
+    background: var(--purple-pale);
+    position: relative;
+  }
+  .about-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--yellow-light), transparent);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .about-image-wrap { position: relative; }
+  .about-image-wrap img {
+    width: 100%;
+    border-radius: 200px 200px 24px 24px;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+    box-shadow: 0 30px 80px rgba(123, 91, 174, 0.15);
+  }
+  .about-image-wrap::after {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    right: 12px; bottom: 12px;
+    border: 1.5px solid var(--purple-light);
+    border-radius: 200px 200px 24px 24px;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .about-text h2 {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+  .about-text .greeting {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--purple);
+    margin-bottom: 1.5rem;
+    line-height: 1;
+  }
+  .about-text p {
+    font-size: 0.98rem;
+    color: var(--charcoal-soft);
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+  .credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .credential-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--purple-dark);
+    background: var(--warm-white);
+    border: 1px solid rgba(123, 91, 174, 0.25);
+    padding: 0.45rem 1rem;
+    border-radius: 30px;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-section {
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+  .testimonials-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .testimonial-card {
+    background: var(--purple-pale);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    border: 1px solid rgba(123, 91, 174, 0.12);
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(123, 91, 174, 0.1);
+  }
+  .testimonial-card .quote-mark {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--yellow-light);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .testimonial-card p {
+    font-size: 0.9rem;
+    color: var(--charcoal-soft);
+    font-weight: 300;
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .testimonial-card .author {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--purple-dark);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--purple-dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 4rem 3rem;
+    position: relative;
+  }
+  footer::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--purple-light), var(--yellow), var(--purple-light));
+  }
+  footer .footer-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0.3rem;
+  }
+  footer .footer-brand {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--yellow-light);
+    margin-bottom: 2rem;
+  }
+  footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  footer .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  footer .footer-links a:hover { color: var(--yellow-light); }
+  footer .pcc-badge { height: 60px; opacity: 0.75; margin-top: 1rem; }
+
+  /* ─── DIVIDER ─── */
+  .gold-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, var(--purple-light), var(--yellow));
+    margin: 0 auto 2rem;
+    border: none;
+    border-radius: 2px;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { padding: 8rem 3rem 4rem; text-align: center; align-items: center; }
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-image { height: 50vh; }
+    .hero-image::after {
+      background: linear-gradient(to bottom, var(--warm-white) 0%, transparent 15%);
+    }
+    .about-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+    .about-image-wrap { max-width: 340px; margin: 0 auto; }
+    .credentials { justify-content: center; }
+    nav { padding: 1rem 1.5rem; }
+    nav.scrolled { padding: 0.7rem 1.5rem; }
+  }
+  @media (max-width: 768px) {
+    section { padding: 5rem 1.5rem; }
+    .pillars-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; }
+    .hero-text { padding: 7rem 2rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <img src="https://images.squarespace-cdn.com/content/v1/5d9eaa2385501957dae41fc4/e5ce5785-ac09-4e24-b83e-b43df2c5758a/%5BOriginal+size%5D+Joyful+Purpose+Coaching.jpg?format=1500w" alt="Joyful Purpose Coaching">
+  </a>
+  <a href="https://calendly.com/astrafox/discoverycall" class="cta-nav">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-label">Subconscious Transmutation</p>
+    <h1 class="hero-title">Stop Hiding<br>Your <em>Medicine</em></h1>
+    <p class="hero-desc">Answer the Whisper. Start Living Your Calling. A 12-week journey to dissolve procrastination and rewire your nervous system for a life of Joyful Purpose through the alchemy of sound and soul.</p>
+    <a href="https://calendly.com/astrafox/discoverycall" class="hero-cta">
+      Book Your Discovery Call
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.squarespace-cdn.com/content/v1/5d9eaa2385501957dae41fc4/9d14601f-7084-483a-824a-fb28180a9ff2/Astra+Fox+JPC.jpg" alt="Astra Fox — Joyful Purpose Coaching">
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="pillars-section">
+  <div class="reveal">
+    <p class="section-label">The Method</p>
+    <h2 class="section-title">The Three Pillars</h2>
+    <hr class="gold-divider">
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card reveal">
+      <img class="pillar-icon" src="https://images.squarespace-cdn.com/content/v1/5d9eaa2385501957dae41fc4/47e1850a-b01b-4f70-818d-4471093ed05f/Astra+Fox+Logo+%2810%29.png" alt="Soul">
+      <h3>Soul</h3>
+      <p>12 Weeks of Private Initiation + Human Design Integration. Align your energetic blueprint with your daily reality. Move from confusion to a focused, soul-led strategy.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <img class="pillar-icon" src="https://images.squarespace-cdn.com/content/v1/5d9eaa2385501957dae41fc4/b3bac772-7e73-44a5-b12d-5b8c53624e26/Astra+Fox+Logo+%288%29.png" alt="Science">
+      <h3>Science</h3>
+      <p>Subconscious Breakthrough Session designed for deep neural-pathway rewiring. We address the biological "hide" reflex at the root of your procrastination.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <img class="pillar-icon" src="https://images.squarespace-cdn.com/content/v1/5d9eaa2385501957dae41fc4/153d4396-5ad4-489a-b858-51b6f0b2d2ab/Astra+Fox+Logo+%289%29.png" alt="Alchemy">
+      <h3>Alchemy</h3>
+      <p>Unleash your creative medicine with a custom Channeled Musical Mantra. A bespoke sonic soundscape for your nervous system, turning your resistance into creative flow.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="investment-section">
+  <div class="reveal">
+    <p class="section-label">The Investment</p>
+    <p class="price">$4,000 <span style="font-size:0.4em;letter-spacing:0.05em">USD</span></p>
+    <p class="price-note">Payment Plans Available</p>
+    <p class="invest-text">Your unique medicine is the solution the world needs. Are you ready to stop hiding and start creating?</p>
+    <a href="https://calendly.com/astrafox/discoverycall" class="btn-primary">
+      Apply &amp; Book Now
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal">
+      <img src="https://images.squarespace-cdn.com/content/v1/5d9eaa2385501957dae41fc4/352c5ed6-9878-4195-9672-f1bdde5a78dd/IMG_2510.jpg" alt="Astra Fox">
+    </div>
+    <div class="about-text reveal">
+      <h2>Hi, I'm</h2>
+      <p class="greeting">Astra!</p>
+      <p>I believe your creativity is your medicine.</p>
+      <p>If life has brought you here to my page, I know that somewhere deep down, you already know the world is waiting for your unique gift.</p>
+      <p>After navigating my own loss and struggling to find my purpose, I discovered that what stands between you and your calling isn't talent or time ~ it's the subconscious programming keeping you small.</p>
+      <p>I've spent years helping spiritual creatives dissolve those invisible blocks using a unique blend of subconscious science, soul wisdom, and the transformational power of sound ~ so your creativity flows freely, your purpose feels clear, and showing up fully doesn't feel like a struggle anymore.</p>
+      <p>If you can feel your calling pulling at your heart ~ I made this for you.</p>
+      <div class="credentials">
+        <span class="credential-tag">Professional Certified Coach</span>
+        <span class="credential-tag">Certified Spiritual Life Coach</span>
+        <span class="credential-tag">Master Practitioner NLP, MER™ & Hypnosis</span>
+        <span class="credential-tag">Human Design Guide</span>
+        <span class="credential-tag">Transformational Singer-Songwriter</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="reveal">
+    <p class="section-label">Kind Words</p>
+    <h2 class="section-title">Testimonials</h2>
+    <hr class="gold-divider">
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="quote-mark">"</div>
+      <p>I recently completed a 12-week coaching program with Astra Fox from Joyful Purpose Coaching, and I can honestly say it was a transformative experience. Astra holds a powerful, safe space that allowed me to explore parts of myself I hadn't accessed before. Through her intuitive guidance and thoughtful questions, I was able to uncover some deep-seated blocks that had been keeping me from fully stepping into my joyful purpose. Her compassionate presence, combined with her ability to challenge me in all the right ways, made every session meaningful and impactful. I walked away with greater clarity, emotional freedom, and a renewed sense of alignment with who I truly am. If you're feeling stuck, searching for purpose, or simply ready to grow, I highly recommend working with Astra.</p>
+      <span class="author">— Jeannine S.</span>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="quote-mark">"</div>
+      <p>Astra has helped me clarify my life-long goals as I work towards my authentic self. She helps me navigate distractions and issues as they surface and helps me refocus, keeping me accountable, while holding space with a kind heart. One of the most precious gifts from my time with Astra is my own Musical Mantra that she created from our sessions. I sing it all the time and it brightens my spirit on this journey. I feel truly blessed that our paths have crossed and I have the opportunity to work with such an amazing coach!</p>
+      <span class="author">— Kelley J.</span>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="quote-mark">"</div>
+      <p>I had the most amazing experience with Astra! I feel like we got to the root of my issue quickly & she taught me some valuable tools & concepts that I can use on my own. The most incredible part of the experience was when she wrote me my very own Musical Mantra. The song is beautiful & brings tears to my eyes. I feel so seen & understood by her. It was perfect & exactly what I needed. I am confident that it will be something I use for the rest of my life. I highly recommend booking a session with her ASAP!</p>
+      <span class="author">— Sarah I.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-name">Astra Fox</p>
+  <p class="footer-brand">Joyful Purpose Coaching</p>
+  <div class="footer-links">
+    <a href="https://www.joyfulpurposecoaching.com/contact">Contact</a>
+    <a href="https://calendly.com/astrafox/discoverycall">Book a Call</a>
+  </div>
+  <img src="https://images.squarespace-cdn.com/content/v1/5d9eaa2385501957dae41fc4/e31999e1-e739-4fdc-87ef-8eed4d0bdb39/professional-certified-coach-pcc.png" alt="Professional Certified Coach" class="pcc-badge">
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+</script>
+</body>
+</html>

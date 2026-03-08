@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Purpose Coaching | Astra Fox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-base': '#FFFFFF', // Pure white
+                        'brand-surface': '#FBF9F6', // Warm alabaster
+                        'brand-gold': '#C5A059', // Elegant metallic gold
+                        'brand-gold-light': '#E8D596',
+                        'brand-dark': '#2A1B38', // Deep mystical purple for high contrast text
+                        'brand-text': '#5A4F66', // Softer purple-grey for body text
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 90s linear infinite',
+                        'spin-slow-reverse': 'spin 120s linear infinite reverse',
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            background-color: #FFFFFF; 
+            color: #5A4F66; 
+            overflow-x: hidden;
+        }
+        /* Light Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .hero-image-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url('PASTE_HERO_IMAGE_LINK_HERE');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15; /* Kept very light so text pops */
+            z-index: -1;
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-gold selection:text-white relative">
+
+    <!-- GLOBAL MOVING SACRED GEOMETRY BACKGROUND -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center opacity-[0.15] mix-blend-multiply">
+        <!-- Outer counter-rotating rings -->
+        <svg class="absolute animate-spin-slow-reverse w-[150vw] h-[150vw] md:w-[100vw] md:h-[100vw] text-brand-gold" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="0.2">
+            <circle cx="100" cy="100" r="90" stroke-dasharray="2 4"/>
+            <circle cx="100" cy="100" r="85"/>
+            <circle cx="100" cy="100" r="75" stroke-dasharray="1 6"/>
+            <!-- Outer Geometric Star -->
+            <path d="M100 10 L125 75 L190 100 L125 125 L100 190 L75 125 L10 100 L75 75 Z" stroke-width="0.1" stroke-opacity="0.5"/>
+        </svg>
+        <!-- Inner rotating Seed of Life -->
+        <svg class="absolute animate-spin-slow w-[120vw] h-[120vw] md:w-[80vw] md:h-[80vw] text-brand-gold" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.2">
+            <circle cx="50" cy="50" r="20"/>
+            <circle cx="50" cy="30" r="20"/>
+            <circle cx="50" cy="70" r="20"/>
+            <circle cx="32.68" cy="40" r="20"/>
+            <circle cx="67.32" cy="40" r="20"/>
+            <circle cx="32.68" cy="60" r="20"/>
+            <circle cx="67.32" cy="60" r="20"/>
+            <circle cx="50" cy="50" r="40"/>
+        </svg>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-panel fixed w-full z-50 border-b-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- LOGO AREA: White background logo will now blend perfectly -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="PASTE_LOGO_IMAGE_LINK_HERE" alt="Joyful Purpose Logo" class="h-16 w-auto object-contain">
+                    <span class="font-serif text-2xl tracking-[0.2em] text-brand-dark uppercase hidden md:block">
+                        Joyful Purpose
+                    </span>
+                </div>
+                
+                <div class="hidden md:flex space-x-10 text-xs uppercase tracking-[0.25em] font-medium text-brand-dark">
+                    <a href="#work" class="hover:text-brand-gold transition duration-500">Work with Astra</a>
+                    <a href="#music" class="hover:text-brand-gold transition duration-500">Music</a>
+                    <a href="#about" class="hover:text-brand-gold transition duration-500">About</a>
+                </div>
+                <div class="hidden md:flex">
+                    <a href="#book" class="border border-brand-gold text-brand-dark px-8 py-3 rounded-none uppercase text-xs tracking-[0.2em] hover:bg-brand-gold hover:text-white transition duration-500 bg-white/50">
+                        Book Session
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden z-10">
+        <!-- Soft Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-base/40 via-transparent to-brand-surface z-[-1]"></div>
+        <div class="hero-image-overlay"></div>
+
+        <div class="max-w-4xl mt-16 z-10 relative glass-panel p-10 md:p-16 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border-brand-gold/20">
+            <div class="text-brand-gold tracking-[0.3em] uppercase text-xs mb-8 font-semibold animate-pulse-slow">Astra Fox Coaching</div>
+            <h1 class="font-serif text-5xl md:text-7xl mb-6 leading-[1.1] font-light text-brand-dark">
+                Share Your Gifts.<br>
+                <span class="italic text-brand-gold">Live Your Purpose.</span>
+            </h1>
+            <p class="text-sm md:text-base font-light mb-8 max-w-2xl mx-auto tracking-wide leading-relaxed text-brand-text">
+                You are an artist, creative, or conscious entrepreneur with gifts to share, but self-doubt and distraction are keeping you stuck. 
+            </p>
+            <p class="text-sm md:text-base mb-12 font-medium max-w-2xl mx-auto tracking-wide leading-relaxed text-brand-dark">
+                I guide creatives to break through limitations and turn passion into thriving purpose, using proven tools and transformational music medicine.
+            </p>
+            <a href="#book" class="inline-block bg-brand-gold text-white font-semibold px-10 py-4 uppercase text-xs tracking-[0.2em] hover:bg-brand-dark transition duration-500 shadow-xl">
+                Ignite Your Transformation
+            </a>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-50">
+            <div class="w-[1px] h-16 bg-gradient-to-b from-brand-gold to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- Your Passion Is Your Purpose -->
+    <section id="work" class="py-32 px-4 relative z-10 bg-brand-surface/80">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative group">
+                <!-- Golden Frame -->
+                <div class="absolute -inset-4 border border-brand-gold/40 transform rotate-3 transition duration-700 group-hover:rotate-0 bg-white/50 backdrop-blur-sm"></div>
+                
+                <img src="PASTE_SECONDARY_IMAGE_LINK_HERE" alt="Creative Spirit" class="relative z-10 shadow-2xl object-cover h-[700px] w-full">
+            </div>
+            
+            <div class="relative z-10 glass-panel p-10 md:p-14 rounded-2xl">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-[1px] bg-brand-gold"></div>
+                    <span class="text-brand-gold uppercase tracking-[0.2em] text-xs font-semibold">The Shift</span>
+                </div>
+                <h2 class="font-serif text-5xl mb-10 font-light leading-tight text-brand-dark">Your Passion Is <br><span class="italic text-brand-gold">Your Purpose</span></h2>
+                
+                <div class="space-y-6 text-brand-text font-light text-base tracking-wide leading-relaxed">
+                    <p>The old paradigm says you must earn the right to joy. That passion is separate from "real life."</p>
+                    <p class="text-brand-gold text-xl font-serif italic font-medium">We are shifting into a new era of creative abundance.</p>
+                    <p>Where artists and visionaries thrive as the worthy creators we are. Where doing what you love is how you serve the world.</p>
+                    
+                    <div class="pt-8 border-t border-brand-gold/20">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-4 text-lg">✧</span>
+                                <span class="text-brand-dark">Release subconscious blocks and limiting beliefs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-4 text-lg">✧</span>
+                                <span class="text-brand-dark">Transform self-doubt into confident action</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-4 text-lg">✧</span>
+                                <span class="text-brand-dark">Express your creative gifts unapologetically</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Approach -->
+    <section id="music" class="py-32 px-4 relative z-10 border-y border-brand-gold/20 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <h2 class="font-serif text-4xl md:text-5xl mb-6 font-light text-brand-dark">Coaching & Music</h2>
+            <p class="text-sm tracking-[0.2em] uppercase text-brand-gold font-semibold mb-20">Your Complete Transformation</p>
+            
+            <div class="grid md:grid-cols-4 gap-6 text-left">
+                <div class="bg-white p-10 hover:shadow-xl hover:-translate-y-1 border border-brand-surface transition duration-500 group shadow-sm">
+                    <div class="text-brand-gold text-3xl mb-6 opacity-80 group-hover:opacity-100 transition">☥</div>
+                    <h3 class="font-serif text-2xl mb-4 italic text-brand-dark">Music as Medicine</h3>
+                    <p class="font-light text-xs leading-relaxed text-brand-text">Custom Musical Mantras specifically for your transformation, using NLP-engineered lyrics to reprogram your subconscious.</p>
+                </div>
+                <div class="bg-white p-10 hover:shadow-xl hover:-translate-y-1 border border-brand-surface transition duration-500 group shadow-sm">
+                    <div class="text-brand-gold text-3xl mb-6 opacity-80 group-hover:opacity-100 transition">⚛</div>
+                    <h3 class="font-serif text-2xl mb-4 italic text-brand-dark">Science-Backed</h3>
+                    <p class="font-light text-xs leading-relaxed text-brand-text">Neuroscience research and spiritual wisdom. Grounded transformation, not spiritual bypassing. Evidence-based methods.</p>
+                </div>
+                <div class="bg-white p-10 hover:shadow-xl hover:-translate-y-1 border border-brand-surface transition duration-500 group shadow-sm">
+                    <div class="text-brand-gold text-3xl mb-6 opacity-80 group-hover:opacity-100 transition">👁</div>
+                    <h3 class="font-serif text-2xl mb-4 italic text-brand-dark">Lived Authority</h3>
+                    <p class="font-light text-xs leading-relaxed text-brand-text">From grief to joy. From stuck to thriving. I have walked this path and am the living proof these tools work.</p>
+                </div>
+                <div class="bg-white p-10 hover:shadow-xl hover:-translate-y-1 border border-brand-surface transition duration-500 group shadow-sm">
+                    <div class="text-brand-gold text-3xl mb-6 opacity-80 group-hover:opacity-100 transition">◬</div>
+                    <h3 class="font-serif text-2xl mb-4 italic text-brand-dark">Sustainable Success</h3>
+                    <p class="font-light text-xs leading-relaxed text-brand-text">Sustainable creative practice that honors your energy, not burnout culture. Thrive beautifully without the hustle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section class="py-32 px-4 relative z-10 bg-brand-surface/90">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl mb-4 font-light text-brand-dark">The Awakening</h2>
+                <h3 class="text-sm tracking-[0.2em] uppercase font-semibold text-brand-gold">12-Week Integrative Coaching Journey</h3>
+            </div>
+            
+            <div class="bg-white shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] border border-brand-gold/20 relative rounded-xl overflow-hidden">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-12 md:p-16 border-b md:border-b-0 md:border-r border-brand-gold/10">
+                        <div class="text-brand-gold text-xs uppercase tracking-[0.2em] font-semibold mb-4">Phase One</div>
+                        <h4 class="font-serif text-3xl mb-6 italic text-brand-dark">Intensive Breakthrough</h4>
+                        <p class="font-light text-sm text-brand-text mb-12 leading-relaxed">Release the subconscious beliefs and patterns keeping you stuck using NLP, MER®, and Hypnosis. This alone creates immediate, paradigm-altering shifts.</p>
+                        
+                        <div class="text-brand-gold text-xs uppercase tracking-[0.2em] font-semibold mb-4">Phase Two</div>
+                        <h4 class="font-serif text-3xl mb-6 italic text-brand-dark">Integration & Momentum</h4>
+                        <p class="font-light text-sm text-brand-text leading-relaxed">Weekly coaching sessions to integrate your breakthrough, build empowering habits, and take aligned action with accountability and support.</p>
+                    </div>
+                    
+                    <div class="p-12 md:p-16 bg-brand-gold/5 flex flex-col justify-center">
+                        <h4 class="font-serif text-2xl mb-8 font-medium text-brand-dark">The Rebirth Includes:</h4>
+                        <ul class="space-y-6 font-light text-sm tracking-wide text-brand-dark">
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-4 mt-1 text-lg">◈</span>
+                                <span>1 Intensive Breakthrough Session</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-4 mt-1 text-lg">◈</span>
+                                <span>11 weekly 50-minute coaching sessions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-4 mt-1 text-lg">◈</span>
+                                <span>Custom Channeled Musical Mantra</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-4 mt-1 text-lg">◈</span>
+                                <span>Human Design insights integrated</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-brand-gold mr-4 mt-1 text-lg">◈</span>
+                                <span>Action plans & transformation tracking</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-32 px-4 relative z-10 border-y border-brand-gold/20 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-serif text-4xl md:text-5xl mb-20 text-center font-light text-brand-dark">Voices of the <span class="italic text-brand-gold">Awakened</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 shadow-sm border border-brand-gold/10 relative hover:shadow-xl transition duration-500 text-center">
+                    <div class="text-brand-gold mb-6 text-xl">✧ ✧ ✧</div>
+                    <p class="font-light text-sm leading-relaxed mb-8 italic text-brand-text">"Astra holds a powerful, safe space that allowed me to explore parts of myself I hadn't accessed before. Through her intuitive guidance, I uncovered deep-seated blocks keeping me from my joyful purpose."</p>
+                    <p class="font-sans text-brand-dark font-medium uppercase tracking-[0.2em] text-xs">- Jeannine S.</p>
+                </div>
+                <div class="bg-white p-10 shadow-sm border border-brand-gold/10 relative hover:shadow-xl transition duration-500 text-center">
+                    <div class="text-brand-gold mb-6 text-xl">✧ ✧ ✧</div>
+                    <p class="font-light text-sm leading-relaxed mb-8 italic text-brand-text">"The changes I've made have brought me to a much happier, honest, and authentic place. I did therapy for years and while that was amazing this was a whole other level."</p>
+                    <p class="font-sans text-brand-dark font-medium uppercase tracking-[0.2em] text-xs">- Alivia A.</p>
+                </div>
+                <div class="bg-white p-10 shadow-sm border border-brand-gold/10 relative hover:shadow-xl transition duration-500 text-center">
+                    <div class="text-brand-gold mb-6 text-xl">✧ ✧ ✧</div>
+                    <p class="font-light text-sm leading-relaxed mb-8 italic text-brand-text">"The most incredible part was when she wrote me my very own Musical Mantra! The song is beautiful & brought tears to my eyes. She is gifted. I highly recommend booking a session!"</p>
+                    <p class="font-sans text-brand-dark font-medium uppercase tracking-[0.2em] text-xs">- Sarah I.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Astra -->
+    <section id="about" class="py-32 px-4 relative z-10 bg-brand-surface/90">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-20">
+            <div class="w-full md:w-5/12 relative">
+                <!-- Geometric Frame around portrait -->
+                <div class="absolute -inset-6 border border-brand-gold/40 rounded-full animate-spin-slow pointer-events-none border-dashed bg-white/50 backdrop-blur-sm"></div>
+                
+                <img src="PASTE_HEADSHOT_IMAGE_LINK_HERE" alt="Astra Fox" class="relative rounded-full w-full aspect-square object-cover shadow-[0_20px_50px_rgba(42,27,56,0.15)] z-10 border-4 border-white"> 
+            </div>
+            
+            <div class="w-full md:w-7/12 text-center md:text-left glass-panel p-10 rounded-3xl">
+                <div class="text-brand-gold uppercase tracking-[0.2em] font-semibold text-xs mb-4">The Guide</div>
+                <h2 class="font-serif text-5xl mb-8 font-light text-brand-dark">I am <span class="italic text-brand-gold">Astra Fox</span>.</h2>
+                <div class="font-light text-sm text-brand-text leading-relaxed space-y-6">
+                    <p class="text-lg italic text-brand-dark font-serif">I am a woman who transformed pain into purpose and now I guide others to do the same.</p>
+                    <p>My life is proof that these tools work. I have healed deep wounds, built a thriving practice while raising my son, created secure love after failed relationships, and claimed my full power through complete reinvention.</p>
+                    <p>Every area of my life reflects alignment: my creativity, my business, my motherhood, my relationships, my music, and my soul.</p>
+                    <p class="text-brand-gold font-sans font-semibold uppercase tracking-[0.1em] text-xs pt-4">I teach what I have embodied.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA & Footer -->
+    <section id="book" class="py-40 px-4 relative z-10 bg-brand-base border-t border-brand-gold/20">
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10 bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] p-16 rounded-3xl border border-brand-gold/10">
+            <h2 class="font-serif text-5xl mb-8 font-light text-brand-dark">Begin Your <br><span class="italic text-brand-gold">Transformation</span></h2>
+            
+            <div class="font-light text-sm tracking-wide text-brand-text space-y-2 mb-12">
+                <p>If you are tired of playing small...</p>
+                <p>If you are ready to share your gifts with the world...</p>
+                <p>If you know there is more waiting for you...</p>
+            </div>
+            
+            <a href="#" class="inline-block bg-brand-gold text-white font-bold px-12 py-5 uppercase text-xs tracking-[0.2em] hover:bg-brand-dark transition duration-500 mb-8 shadow-xl">
+                Book Blindspot Session
+            </a>
+            
+            <p class="text-xs text-brand-text/70 font-light max-w-lg mx-auto leading-relaxed tracking-wider">
+                We explore what is keeping you stuck, your vision, and how this approach supports your transformation. No pressure. Just clarity.
+            </p>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-brand-surface py-16 text-center text-brand-text font-light border-t border-brand-gold/10 relative z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Footer Logo / Text -->
+            <div class="flex justify-center items-center mb-8">
+                <img src="PASTE_LOGO_IMAGE_LINK_HERE" alt="Logo" class="h-10 object-contain mr-4 mix-blend-multiply">
+                <h2 class="font-serif text-2xl tracking-[0.2em] text-brand-dark uppercase">Joyful Purpose</h2>
+            </div>
+            
+            <div class="flex justify-center space-x-12 mb-12 text-xs uppercase tracking-[0.2em] font-medium text-brand-dark">
+                <a href="#" class="hover:text-brand-gold transition">Instagram</a>
+                <a href="#" class="hover:text-brand-gold transition">Spotify</a>
+                <a href="#" class="hover:text-brand-gold transition">Contact</a>
+            </div>
+            <p class="text-[10px] tracking-widest text-brand-text/60">&copy; 2026 Joyful Purpose Coaching. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

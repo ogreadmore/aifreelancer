@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Cryo Pro | Mobile Cryotherapy — Sonoma & Marin County</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ice:rgb(163,216,244);
+  --ice-light:#d4eef9;
+  --deep:rgb(10,26,47);
+  --deep-mid:#0d2d4f;
+  --frost:rgba(163,216,244,.15);
+  --white:#f8fbfd;
+  --accent:#4fc3f7;
+  --accent-warm:#81d4fa;
+  --text-primary:#e8f4f8;
+  --text-secondary:#a0c4d4;
+  --gradient-hero:linear-gradient(135deg,#061828 0%,#0a1a2f 40%,#0d2644 100%);
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'Outfit',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--deep);color:var(--text-primary);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s,backdrop-filter .4s,padding .4s}
+.nav.scrolled{background:rgba(10,26,47,.92);backdrop-filter:blur(20px);padding:.7rem 3rem;box-shadow:0 2px 30px rgba(0,0,0,.3)}
+.nav-logo{display:flex;align-items:center;gap:.7rem}
+.nav-logo .logo-icon{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--ice));display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:700;color:var(--deep)}
+.nav-logo span{font-family:var(--font-display);font-size:1.4rem;font-weight:700;letter-spacing:.02em;color:var(--white)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-links .btn-nav{background:linear-gradient(135deg,var(--accent),#29b6f6);color:var(--deep);padding:.6rem 1.6rem;border-radius:50px;font-weight:600;letter-spacing:.04em;transition:transform .3s,box-shadow .3s}
+.nav-links .btn-nav:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(79,195,247,.35)}
+.mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.mobile-toggle span{width:26px;height:2px;background:var(--white);transition:all .3s}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.hero-slide.active{opacity:1}
+.hero-slide::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(6,18,32,.88) 0%,rgba(6,18,32,.5) 50%,rgba(6,18,32,.3) 100%);z-index:1}
+.hero-slide-bg{width:100%;height:100%;object-fit:cover;filter:saturate(1.1)}
+.hero-content{position:relative;z-index:2;max-width:720px;padding:0 6%;animation:heroFadeIn 1.2s ease .3s both}
+.hero-content h1{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.4rem);font-weight:700;font-style:italic;line-height:1.12;margin-bottom:1.2rem;color:var(--white)}
+.hero-content h1 em{color:var(--accent);font-style:italic}
+.hero-content p{font-size:1.1rem;line-height:1.7;color:var(--text-secondary);max-width:540px;margin-bottom:2rem;font-weight:300}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--accent),#29b6f6);color:var(--deep);padding:.9rem 2.4rem;border-radius:50px;font-weight:600;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;transition:all .4s;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(79,195,247,.3)}
+.btn-primary svg{width:18px;height:18px}
+.hero-indicators{position:absolute;bottom:3rem;left:6%;z-index:3;display:flex;gap:.7rem}
+.hero-indicator{width:40px;height:3px;background:rgba(255,255,255,.25);border-radius:2px;cursor:pointer;transition:all .4s}
+.hero-indicator.active{width:60px;background:var(--accent)}
+
+@keyframes heroFadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── ABOUT ── */
+.about{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.about-image{position:relative;overflow:hidden}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-image::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 70%,var(--deep) 100%)}
+.about-content{display:flex;flex-direction:column;justify-content:center;padding:5rem 5rem 5rem 4rem}
+.section-label{font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-family:var(--font-body)}
+.about-content h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;font-style:italic;line-height:1.2;margin-bottom:.8rem;color:var(--white)}
+.about-content h3{font-family:var(--font-display);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;font-style:italic;color:var(--accent-warm);margin-bottom:1.5rem}
+.about-content p{font-size:1rem;line-height:1.8;color:var(--text-secondary);margin-bottom:1.5rem;font-weight:300}
+.about-content p strong{color:var(--white);font-weight:500}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--accent);color:var(--accent);padding:.75rem 2rem;border-radius:50px;font-weight:500;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;transition:all .4s;background:transparent}
+.btn-outline:hover{background:var(--accent);color:var(--deep);transform:translateY(-2px)}
+
+/* ── SERVICES ── */
+.services{padding:7rem 6%}
+.services .section-label{text-align:center}
+.services h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;font-style:italic;text-align:center;margin-bottom:3.5rem;color:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto}
+.service-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;cursor:pointer;group:true}
+.service-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .6s}
+.service-card:hover img{transform:scale(1.08);filter:brightness(.7)}
+.service-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,18,32,.9) 0%,rgba(6,18,32,.3) 40%,transparent 70%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem}
+.service-card h3{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
+.service-card p{font-size:.88rem;color:var(--text-secondary);line-height:1.5;font-weight:300}
+.service-card .card-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-top:1rem;transition:all .4s;color:var(--accent)}
+.service-card:hover .card-arrow{background:var(--accent);color:var(--deep)}
+
+/* ── WHERE WE SERVE ── */
+.where{padding:7rem 6%;position:relative;overflow:hidden}
+.where-bg{position:absolute;inset:0;background:linear-gradient(135deg,#071520,#0d2644,#071520);z-index:0}
+.where-bg::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234fc3f7' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.where-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto}
+.where .section-label{text-align:center}
+.where h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;font-style:italic;text-align:center;margin-bottom:3.5rem;color:var(--white)}
+.where-items{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.where-item{text-align:center;padding:2.5rem 2rem;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(79,195,247,.1);backdrop-filter:blur(10px);transition:all .4s}
+.where-item:hover{background:rgba(79,195,247,.08);border-color:rgba(79,195,247,.25);transform:translateY(-4px)}
+.where-item .icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(79,195,247,.2),rgba(79,195,247,.05));display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.5rem}
+.where-item h4{font-family:var(--font-display);font-size:1.25rem;font-weight:700;font-style:italic;color:var(--white);margin-bottom:.7rem}
+.where-item p{font-size:.9rem;color:var(--text-secondary);line-height:1.6;font-weight:300}
+
+/* ── CTA BAND ── */
+.cta-band{position:relative;padding:6rem 6%;text-align:center;overflow:hidden}
+.cta-band-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0b3d6e,#1565c0,#0b3d6e);z-index:0}
+.cta-band-bg::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%234fc3f7' stroke-width='.5' stroke-opacity='.12'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3C/g%3E%3C/svg%3E")}
+.cta-band-bg::after{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(79,195,247,.15),transparent 70%)}
+.cta-band-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.cta-logo{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.6rem;font-weight:700;color:var(--white);backdrop-filter:blur(10px)}
+.cta-band h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:1rem}
+.cta-band p{font-size:1.05rem;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:2rem;font-weight:300}
+.btn-white{display:inline-flex;align-items:center;gap:.5rem;background:var(--white);color:var(--deep);padding:.9rem 2.4rem;border-radius:50px;font-weight:600;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;transition:all .4s}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(255,255,255,.2)}
+
+/* ── SERVICE AREAS ── */
+.areas{padding:7rem 6%}
+.areas .section-label{text-align:center}
+.areas h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;font-style:italic;text-align:center;margin-bottom:3.5rem;color:var(--white)}
+.area-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.area-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/2}
+.area-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.area-card:hover img{transform:scale(1.05)}
+.area-card-content{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,18,32,.85) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem}
+.area-card h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
+.area-card p{font-size:.85rem;color:var(--text-secondary);margin-bottom:1rem;font-weight:300}
+.area-card .btn-sm{font-size:.8rem;color:var(--accent);border:1px solid var(--accent);padding:.45rem 1.2rem;border-radius:50px;display:inline-block;transition:all .3s;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.area-card .btn-sm:hover{background:var(--accent);color:var(--deep)}
+
+/* ── FOOTER ── */
+.footer{border-top:1px solid rgba(79,195,247,.1);padding:4rem 6% 2rem}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;max-width:1200px;margin:0 auto}
+.footer-brand .nav-logo{margin-bottom:1rem}
+.footer-brand p{font-size:.9rem;color:var(--text-secondary);line-height:1.7;max-width:320px;font-weight:300}
+.footer-col h4{font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
+.footer-col a{display:block;font-size:.9rem;color:var(--text-secondary);margin-bottom:.6rem;transition:color .3s;font-weight:300}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:rgba(255,255,255,.3)}
+.footer-bottom a{color:rgba(255,255,255,.4);transition:color .3s}
+.footer-bottom a:hover{color:var(--white)}
+.footer-social{display:flex;gap:1rem}
+.footer-social a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .3s;color:var(--text-secondary);font-size:.85rem}
+.footer-social a:hover{border-color:var(--accent);color:var(--accent);background:rgba(79,195,247,.1)}
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+.reveal-delay-3{transition-delay:.45s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .about{grid-template-columns:1fr}
+  .about-image{height:400px}
+  .about-image::after{background:linear-gradient(to top,var(--deep) 0%,transparent 40%)}
+  .about-content{padding:3rem 6%}
+  .where-items{grid-template-columns:1fr}
+  .area-cards{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .mobile-toggle{display:flex}
+  .nav{padding:1rem 5%}
+  .hero-content h1{font-size:2.2rem}
+  .services-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">❄</div>
+    <span>Mobile Cryo Pro</span>
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#where">Who We Serve</a>
+    <a href="#areas">Service Areas</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:7078676101" class="btn-nav">Book Now</a>
+  </div>
+  <div class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══ HERO CAROUSEL ═══ -->
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1600&q=80" alt="Athletic recovery" class="hero-slide-bg">
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1600&q=80" alt="Sports performance" class="hero-slide-bg">
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80" alt="Recovery therapy" class="hero-slide-bg">
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <h1 id="hero-headline"><em>Recovery delivered</em> to your door.</h1>
+    <p id="hero-sub">Advanced mobile cryotherapy for pain relief, body contouring, and total recovery — brought directly to you across Sonoma & Marin County.</p>
+    <a href="tel:7078676101" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Book Your Session
+    </a>
+  </div>
+
+  <div class="hero-indicators">
+    <div class="hero-indicator active" data-slide="0"></div>
+    <div class="hero-indicator" data-slide="1"></div>
+    <div class="hero-indicator" data-slide="2"></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="about" id="about">
+  <div class="about-image">
+    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1000&q=80" alt="Cryotherapy treatment">
+  </div>
+  <div class="about-content reveal">
+    <span class="section-label">What We Do</span>
+    <h2>Mobile Recovery, Reimagined.</h2>
+    <h3>Professional Cryotherapy — On Your Terms.</h3>
+    <p>Mobile Cryo Pro brings <strong>advanced localized cryotherapy</strong> directly to your home, office, or event. Founded in Sonoma County, we specialize in targeted cold therapy designed to <strong>support recovery, reduce pain and inflammation, and deliver aesthetic-focused treatments</strong> — all without you leaving your door.</p>
+    <p>From athletes seeking faster recovery to individuals pursuing <strong>body contouring and facial rejuvenation</strong>, our mobile-first model prioritizes convenience, professionalism, and results-driven service.</p>
+    <a href="#services" class="btn-outline">Explore Our Services</a>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services" id="services">
+  <span class="section-label">Our Services</span>
+  <h2>Targeted Treatments, Real Results.</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="Pain Relief">
+      <div class="service-card-overlay">
+        <h3>Pain Relief & Recovery</h3>
+        <p>Targeted cold therapy to reduce inflammation, ease chronic pain, and accelerate injury recovery.</p>
+        <div class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="CryoSkin">
+      <div class="service-card-overlay">
+        <h3>CryoSkin® Fat Reduction</h3>
+        <p>Non-invasive fat reduction using advanced cold therapy to permanently destroy fat cells.</p>
+        <div class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80" alt="Body Contouring">
+      <div class="service-card-overlay">
+        <h3>Body Contour Refinement</h3>
+        <p>Sculpt and refine your shape with precision cold therapy that tones and tightens.</p>
+        <div class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Cryo Facial">
+      <div class="service-card-overlay">
+        <h3>Cryo Facial Rejuvenation</h3>
+        <p>Tighten skin, reduce wrinkles, and boost collagen with our signature cryo facial treatment.</p>
+        <div class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHERE WE SERVE ═══ -->
+<section class="where" id="where">
+  <div class="where-bg"></div>
+  <div class="where-inner">
+    <span class="section-label">Who We Serve</span>
+    <h2>Recovery & Wellness, Wherever You Are.</h2>
+    <div class="where-items">
+      <div class="where-item reveal">
+        <div class="icon">🏃</div>
+        <h4>Athletes & Active Individuals</h4>
+        <p>From weekend warriors to competitive athletes, our targeted cryotherapy supports faster recovery, reduced soreness, and improved mobility so you can stay at your best.</p>
+      </div>
+      <div class="where-item reveal reveal-delay-1">
+        <div class="icon">✨</div>
+        <h4>Wellness & Aesthetics Clients</h4>
+        <p>Body contouring, facial rejuvenation, and skin health — our non-invasive cryo treatments help you look and feel your best in the comfort of your own space.</p>
+      </div>
+      <div class="where-item reveal reveal-delay-2">
+        <div class="icon">🐴</div>
+        <h4>Equine Cryotherapy</h4>
+        <p>We bring advanced cold therapy to your horses — supporting recovery from training, reducing inflammation, and helping equine athletes perform at their peak.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND ═══ -->
+<section class="cta-band">
+  <div class="cta-band-bg"></div>
+  <div class="cta-band-inner reveal">
+    <div class="cta-logo">❄</div>
+    <h2>Start Your Recovery Today</h2>
+    <p>Experience professional-grade cryotherapy wherever you are. Our mobile service brings advanced treatments directly to your location — so you can recover faster, feel better, and look your best. Ready to feel the difference?</p>
+    <a href="tel:7078676101" class="btn-white">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call (707) 867-6101
+    </a>
+  </div>
+</section>
+
+<!-- ═══ SERVICE AREAS ═══ -->
+<section class="areas" id="areas">
+  <span class="section-label">Where We Operate</span>
+  <h2>Serving Northern California.</h2>
+  <div class="area-cards">
+    <div class="area-card reveal">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Sonoma County">
+      <div class="area-card-content">
+        <h3>Sonoma County</h3>
+        <p>Santa Rosa, Petaluma, Healdsburg & surrounds</p>
+        <a href="tel:7078676101" class="btn-sm">Book Now</a>
+      </div>
+    </div>
+    <div class="area-card reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=800&q=80" alt="Marin County">
+      <div class="area-card-content">
+        <h3>Marin County</h3>
+        <p>San Rafael, Novato, Mill Valley & surrounds</p>
+        <a href="tel:7078676101" class="btn-sm">Book Now</a>
+      </div>
+    </div>
+    <div class="area-card reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80" alt="Northern California">
+      <div class="area-card-content">
+        <h3>Greater NorCal</h3>
+        <p>Events & special bookings throughout the region</p>
+        <a href="tel:7078676101" class="btn-sm">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">❄</div>
+        <span>Mobile Cryo Pro</span>
+      </a>
+      <p>Professional mobile cryotherapy services for recovery, pain relief, body contouring, and aesthetic wellness — brought directly to you in Sonoma & Marin County.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Pain Relief & Recovery</a>
+      <a href="#">CryoSkin® Fat Reduction</a>
+      <a href="#">Body Contouring</a>
+      <a href="#">Cryo Facials</a>
+      <a href="#">Equine Cryotherapy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">How Cryotherapy Works</a>
+      <a href="#">Before & After Gallery</a>
+      <a href="#">Pricing & Options</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:7078676101">(707) 867-6101</a>
+      <a href="#">Santa Rosa, CA</a>
+      <a href="#">By Appointment — 7 Days</a>
+      <div class="footer-social" style="margin-top:1rem">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="TikTok">tk</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Mobile Cryo Pro. All Rights Reserved.</span>
+    <div style="display:flex;gap:1.5rem">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── Hero carousel
+const slides = document.querySelectorAll('.hero-slide');
+const indicators = document.querySelectorAll('.hero-indicator');
+const headlines = [
+  { h: '<em>Recovery delivered</em> to your door.', p: 'Advanced mobile cryotherapy for pain relief, body contouring, and total recovery — brought directly to you across Sonoma & Marin County.' },
+  { h: '<em>Feel better.</em> Move better. Look better.', p: 'From targeted pain relief to cryo facials and body sculpting — our mobile treatments are designed to help you perform and recover at your best.' },
+  { h: '<em>Cold therapy.</em> Warm results.', p: 'Professional-grade localized cryotherapy on your schedule. No clinic visits, no waiting rooms — just results, delivered to your location.' }
+];
+let current = 0;
+function goToSlide(n) {
+  slides[current].classList.remove('active');
+  indicators[current].classList.remove('active');
+  current = n;
+  slides[current].classList.add('active');
+  indicators[current].classList.add('active');
+  document.getElementById('hero-headline').innerHTML = headlines[current].h;
+  document.getElementById('hero-sub').textContent = headlines[current].p;
+}
+indicators.forEach(ind => ind.addEventListener('click', () => goToSlide(+ind.dataset.slide)));
+setInterval(() => goToSlide((current + 1) % slides.length), 6000);
+
+// ── Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+
+// ── Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Cryo Pro | Elite Athletic Recovery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,900&display=swap');
+
+        :root {
+            --primary: #3bc4f4; /* Bright light blue from screenshot */
+            --bg-light: #ffffff;
+            --text-dark: #222222;
+            --text-gray: #555555;
+            --header-bg: #333333;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        
+        /* Floating Pill Navbar */
+        .header-wrapper { padding: 20px; display: flex; justify-content: center; width: 100%; position: absolute; z-index: 100; }
+        header { background: var(--header-bg); border-radius: 50px; width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: 900; color: white; letter-spacing: 1px; }
+        .logo span { color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        
+        .btn { padding: 12px 30px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 700; border-radius: 50px; transition: all 0.3s ease; border: 2px solid var(--primary); display: inline-block; }
+        .btn:hover { background: transparent; color: var(--primary); }
+        .btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); padding: 8px 24px; }
+        .btn-outline:hover { background: var(--primary); color: #fff; }
+
+        /* Bright Hero Section */
+        .hero-container { padding: 100px 20px 20px 20px; max-width: 1440px; margin: 0 auto; }
+        .hero { height: 75vh; min-height: 600px; border-radius: 30px; overflow: hidden; position: relative; background-color: #f0f0f0; background-position: center; background-size: cover; display: flex; align-items: center; }
+        
+        /* White Gradient Overlay to match screenshot */
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 35%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0) 100%); z-index: 1; }
+        
+        /* Subtle Snowflake Pattern Overlay */
+        .hero-pattern { position: absolute; top: 0; left: 0; bottom: 0; width: 60%; background-image: url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2V22M12 2L9 5M12 2L15 5M12 22L9 19M12 22L15 19M4 7L20 17M4 7L7 7M4 7L5 10M20 17L19 14M20 17L17 17M4 17L20 7M4 17L7 17M4 17L5 14M20 7L19 10M20 7L17 7" stroke="%233bc4f4" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'); background-size: 80px 80px; z-index: 1; opacity: 0.15; mask-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); }
+
+        .hero-content { max-width: 600px; position: relative; z-index: 2; padding-left: 5%; }
+        .hero h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); margin-bottom: 20px; line-height: 1.05; font-style: italic; color: #2b2b2b; }
+        .hero p { font-size: 1.25rem; margin-bottom: 40px; color: var(--text-dark); font-weight: 600; line-height: 1.5; }
+
+        /* Carousel Dots */
+        .carousel-dots { position: absolute; bottom: 30px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 2; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: #b0e8fa; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--primary); }
+
+        /* Clean Services Section */
+        .services { padding: 100px 5%; background: var(--bg-light); }
+        .section-title { text-align: center; font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 60px; font-style: italic; color: #2b2b2b; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .card { background: #fff; border-radius: 20px; text-align: left; transition: transform 0.4s ease; box-shadow: 0 15px 40px rgba(0,0,0,0.06); overflow: hidden; display: flex; flex-direction: column; border: 1px solid #eee; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(59, 196, 244, 0.15); }
+        .card-img-wrapper { width: 100%; height: 250px; overflow: hidden; background: #f5f5f5; }
+        .card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
+        .card:hover img { transform: scale(1.05); }
+        .card-content { padding: 40px 30px; flex-grow: 1; }
+        .card h3 { font-size: 1.8rem; margin-bottom: 15px; color: #2b2b2b; font-style: italic; }
+        .card p { color: var(--text-gray); font-size: 1rem; font-weight: 500; }
+
+        /* Where We Work - White theme */
+        .locations { padding: 80px 5% 120px; background: #f8f9fa; }
+        .loc-grid { display: flex; gap: 30px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--primary) #ddd; max-width: 1400px; margin: 0 auto; }
+        .loc-grid::-webkit-scrollbar { height: 8px; }
+        .loc-grid::-webkit-scrollbar-track { background: #eee; border-radius: 4px; }
+        .loc-grid::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+        .loc-item { min-width: 380px; height: 400px; position: relative; border-radius: 20px; overflow: hidden; background: #eee; flex-shrink: 0; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .loc-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
+        .loc-item::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); z-index: 1; }
+        .loc-item:hover img { transform: scale(1.05); }
+        .loc-item h3 { position: absolute; bottom: 30px; left: 30px; z-index: 2; font-size: 2rem; color: #fff; font-style: italic; line-height: 1.1; }
+
+        /* Loading Animation */
+        @keyframes pulseLight { 0% { background-color: #eee; } 50% { background-color: #f8f8f8; } 100% { background-color: #eee; } }
+        .loading-skeleton { animation: pulseLight 2s infinite ease-in-out; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; }
+        .loading-skeleton::after { content: "Generating Image..."; opacity: 0.7; z-index: 10; }
+
+        /* Footer */
+        footer { text-align: center; padding: 100px 5% 40px; background: var(--header-bg); color: #fff; position: relative; }
+        footer h2 { font-size: 3rem; margin-bottom: 20px; font-style: italic; }
+        footer p { margin-bottom: 40px; color: #ccc; font-weight: 500; }
+        
+        @media (max-width: 900px) {
+            header { flex-wrap: wrap; justify-content: center; gap: 15px; border-radius: 20px; }
+            .nav-links { display: none; /* Hide on mobile for clean preview */ }
+            .hero::before { background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%); }
+            .hero-content { padding-left: 0; text-align: center; padding-top: 40px; }
+            .hero-pattern { width: 100%; mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-wrapper">
+    <header>
+        <div class="logo">MOBILE<span>CRYO</span>PRO</div>
+        <div class="nav-links">
+            <a href="#">Locations</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Franchise</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+            <a href="#" class="btn btn-outline" id="book-btn">Book Now</a>
+        </div>
+    </header>
+</div>
+
+<div class="hero-container">
+    <section class="hero loading-skeleton" id="hero-bg">
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <h1>TRAIN HARD.<br>RECOVER SMART.</h1>
+            <p>With our state-of-the-art cryotherapy services on-site, recovery is faster than ever. Get back to performing at your best in no time.</p>
+            <a href="#services" class="btn">BOOK NOW</a>
+        </div>
+        <div class="carousel-dots">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+</div>
+
+<section id="services" class="services">
+    <h2 class="section-title">RECOVERY ARSENAL</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="card-img-wrapper loading-skeleton" id="img-wrapper-cryo">
+                <img src="" alt="Whole Body Cryotherapy" id="img-cryo" style="display: none;">
+            </div>
+            <div class="card-content">
+                <h3>Full-Body Cryo</h3>
+                <p>Rapid muscle recovery and inflammation reduction through advanced cold therapy.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img-wrapper loading-skeleton" id="img-wrapper-compression">
+                <img src="" alt="Compression Therapy" id="img-compression" style="display: none;">
+            </div>
+            <div class="card-content">
+                <h3>Compression Therapy</h3>
+                <p>Dynamic air compression to flush out fatigue, reduce swelling, and improve circulation.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img-wrapper loading-skeleton" id="img-wrapper-massage">
+                <img src="" alt="Percussive Massage" id="img-massage" style="display: none;">
+            </div>
+            <div class="card-content">
+                <h3>Percussive Massage</h3>
+                <p>High-powered massage therapy to break up tension, relieve soreness, and enhance mobility.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="locations">
+    <h2 class="section-title">WHERE WE WORK</h2>
+    <div class="loc-grid">
+        <div class="loc-item loading-skeleton" id="img-wrapper-youth">
+            <img src="" alt="Youth Sports" id="img-youth" style="display: none;">
+            <h3>Youth Sports &<br>Tournaments</h3>
+        </div>
+        <div class="loc-item loading-skeleton" id="img-wrapper-marathon">
+            <img src="" alt="Marathons" id="img-marathon" style="display: none;">
+            <h3>Endurance<br>Events</h3>
+        </div>
+        <div class="loc-item loading-skeleton" id="img-wrapper-corporate">
+            <img src="" alt="Corporate Wellness" id="img-corporate" style="display: none;">
+            <h3>Brand<br>Activations</h3>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2>READY TO RECHARGE?</h2>
+    <p>Don't let fatigue slow you down. Book our mobile unit today.</p>
+    <a href="#" class="btn" id="footer-btn">SCHEDULE A SESSION</a>
+    <p style="margin-top: 60px; font-size: 0.85rem; color: #777;">&copy; 2026 Mobile Cryo Pro. All rights reserved.</p>
+</footer>
+
+<!-- Download Utility -->
+<div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+    <button id="download-images-btn" class="btn" style="background: #fff; color: #000; padding: 10px 15px; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #ccc;">💾 Download New Images</button>
+</div>
+
+<script>
+    // --- Image Generation Logic for BRIGHT THEME ---
+    const apiKey = ""; // API key is provided by the execution environment
+    const modelUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+
+    const generatedImages = {}; 
+
+    // Prompts completely updated for daytime, bright, clean aesthetic
+    const imageTasks = [
+        { 
+            id: 'hero-bg', 
+            type: 'bg', 
+            wrapperId: 'hero-bg',
+            prompt: 'Bright, sunny outdoor shot of an athletic woman stretching on a blue running track. Clean, daytime, health and wellness aesthetic, vibrant colors. Extremely well lit, wide angle.' 
+        },
+        { 
+            id: 'img-cryo', 
+            type: 'src', 
+            wrapperId: 'img-wrapper-cryo',
+            prompt: 'Bright, modern, clean clinic setting. A smiling athlete emerging from a white, well-lit cryotherapy chamber. Natural sunlight streaming in, clean white walls, health and modern wellness aesthetic, highly detailed.' 
+        },
+        { 
+            id: 'img-compression', 
+            type: 'src', 
+            wrapperId: 'img-wrapper-compression',
+            prompt: 'Athlete smiling, relaxing on a bright white lounge chair in a brightly lit recovery room wearing dynamic air compression boots on their legs. Natural sunlight, clean, modern wellness center vibe, vibrant.' 
+        },
+        { 
+            id: 'img-massage', 
+            type: 'src', 
+            wrapperId: 'img-wrapper-massage',
+            prompt: 'Close up of a percussive massage gun used on an athlete leg in a brightly lit, modern gym. Natural sunlight, clean white towels, modern fitness aesthetic, daytime.' 
+        },
+        { 
+            id: 'img-youth', 
+            type: 'src', 
+            wrapperId: 'img-wrapper-youth',
+            prompt: 'Bright, sunny daytime shot of a youth soccer tournament on a lush green field. Blue sky, vibrant colors, active lifestyle, happy atmosphere, highly detailed.' 
+        },
+        { 
+            id: 'img-marathon', 
+            type: 'src', 
+            wrapperId: 'img-wrapper-marathon',
+            prompt: 'A marathon runner crossing a finish line on a bright, sunny day, arms raised in victory. Blue sky, bright daylight, vibrant colors, health and fitness lifestyle.' 
+        },
+        { 
+            id: 'img-corporate', 
+            type: 'src', 
+            wrapperId: 'img-wrapper-corporate',
+            prompt: 'A clean, modern white event canopy tent set up in a sunny outdoor park for a wellness activation. People in athletic wear chatting happily. Bright daylight, premium lifestyle.' 
+        }
+    ];
+
+    async function fetchWithBackoff(url, options, maxRetries = 5) {
+        const delays = [1000, 2000, 4000, 8000, 16000];
+        for (let i = 0; i < maxRetries; i++) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                if (i === maxRetries - 1) throw error;
+                await new Promise(res => setTimeout(res, delays[i]));
+            }
+        }
+    }
+
+    async function generateImage(task) {
+        const payload = { instances: { prompt: task.prompt }, parameters: { sampleCount: 1 } };
+        try {
+            const data = await fetchWithBackoff(modelUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            if (data.predictions && data.predictions[0]) {
+                const imageUrl = `data:image/png;base64,${data.predictions[0].bytesBase64Encoded}`;
+                const wrapperEl = document.getElementById(task.wrapperId);
+                generatedImages[task.id + '.png'] = imageUrl;
+                
+                if (task.type === 'bg') {
+                    wrapperEl.style.backgroundImage = `url(${imageUrl})`;
+                } else {
+                    const imgEl = document.getElementById(task.id);
+                    imgEl.src = imageUrl;
+                    imgEl.style.display = 'block';
+                }
+                wrapperEl.classList.remove('loading-skeleton');
+            }
+        } catch (error) {
+            console.error(`Failed to generate:`, error);
+            document.getElementById(task.wrapperId).classList.remove('loading-skeleton');
+        }
+    }
+
+    window.onload = () => {
+        imageTasks.forEach(task => generateImage(task));
+
+        document.getElementById('download-images-btn').addEventListener('click', (e) => {
+            const btn = e.target;
+            const filenames = Object.keys(generatedImages);
+            if (filenames.length === 0) return;
+            
+            btn.innerText = "Downloading...";
+            filenames.forEach((filename, index) => {
+                setTimeout(() => {
+                    const a = document.createElement('a');
+                    a.href = generatedImages[filename];
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }, index * 300); 
+            });
+            setTimeout(() => btn.innerText = "💾 Download New Images", filenames.length * 300 + 1000);
+        });
+    };
+</script>
+
+</body>
+</html>

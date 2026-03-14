@@ -115,7 +115,7 @@
 </div>
 
 <div class="hero-container">
-    <section class="hero loading-skeleton" id="hero-bg">
+    <section class="hero" id="hero-bg" style="background-image: url('hero-bg.png');">
         <div class="hero-pattern"></div>
         <div class="hero-content">
             <h1>TRAIN HARD.<br>RECOVER SMART.</h1>
@@ -134,8 +134,8 @@
     <h2 class="section-title">RECOVERY ARSENAL</h2>
     <div class="grid">
         <div class="card">
-            <div class="card-img-wrapper loading-skeleton" id="img-wrapper-cryo">
-                <img src="" alt="Whole Body Cryotherapy" id="img-cryo" style="display: none;">
+            <div class="card-img-wrapper" id="img-wrapper-cryo">
+                <img src="img-cryo.png" alt="Whole Body Cryotherapy" id="img-cryo">
             </div>
             <div class="card-content">
                 <h3>Full-Body Cryo</h3>
@@ -143,8 +143,8 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-img-wrapper loading-skeleton" id="img-wrapper-compression">
-                <img src="" alt="Compression Therapy" id="img-compression" style="display: none;">
+            <div class="card-img-wrapper" id="img-wrapper-compression">
+                <img src="img-compression.png" alt="Compression Therapy" id="img-compression">
             </div>
             <div class="card-content">
                 <h3>Compression Therapy</h3>
@@ -152,8 +152,8 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-img-wrapper loading-skeleton" id="img-wrapper-massage">
-                <img src="" alt="Percussive Massage" id="img-massage" style="display: none;">
+            <div class="card-img-wrapper" id="img-wrapper-massage">
+                <img src="img-massage.png" alt="Percussive Massage" id="img-massage">
             </div>
             <div class="card-content">
                 <h3>Percussive Massage</h3>
@@ -166,16 +166,16 @@
 <section class="locations">
     <h2 class="section-title">WHERE WE WORK</h2>
     <div class="loc-grid">
-        <div class="loc-item loading-skeleton" id="img-wrapper-youth">
-            <img src="" alt="Youth Sports" id="img-youth" style="display: none;">
+        <div class="loc-item" id="img-wrapper-youth">
+            <img src="img-youth.png" alt="Youth Sports" id="img-youth">
             <h3>Youth Sports &<br>Tournaments</h3>
         </div>
-        <div class="loc-item loading-skeleton" id="img-wrapper-marathon">
-            <img src="" alt="Marathons" id="img-marathon" style="display: none;">
+        <div class="loc-item" id="img-wrapper-marathon">
+            <img src="img-marathon.png" alt="Marathons" id="img-marathon">
             <h3>Endurance<br>Events</h3>
         </div>
-        <div class="loc-item loading-skeleton" id="img-wrapper-corporate">
-            <img src="" alt="Corporate Wellness" id="img-corporate" style="display: none;">
+        <div class="loc-item" id="img-wrapper-corporate">
+            <img src="img-corporate.png" alt="Corporate Wellness" id="img-corporate">
             <h3>Brand<br>Activations</h3>
         </div>
     </div>
@@ -187,126 +187,6 @@
     <a href="#" class="btn" id="footer-btn">SCHEDULE A SESSION</a>
     <p style="margin-top: 60px; font-size: 0.85rem; color: #777;">&copy; 2026 Mobile Cryo Pro. All rights reserved.</p>
 </footer>
-
-<!-- Download Utility -->
-<div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
-    <button id="download-images-btn" class="btn" style="background: #fff; color: #000; padding: 10px 15px; font-size: 0.85rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #ccc;">💾 Download New Images</button>
-</div>
-
-<script>
-    // --- Image Generation Logic for BRIGHT THEME ---
-    const apiKey = ""; // API key is provided by the execution environment
-    const modelUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
-
-    const generatedImages = {}; 
-
-    // Prompts completely updated for daytime, bright, clean aesthetic
-    const imageTasks = [
-        { 
-            id: 'hero-bg', 
-            type: 'bg', 
-            wrapperId: 'hero-bg',
-            prompt: 'Bright, sunny outdoor shot of an athletic woman stretching on a blue running track. Clean, daytime, health and wellness aesthetic, vibrant colors. Extremely well lit, wide angle.' 
-        },
-        { 
-            id: 'img-cryo', 
-            type: 'src', 
-            wrapperId: 'img-wrapper-cryo',
-            prompt: 'Bright, modern, clean clinic setting. A smiling athlete emerging from a white, well-lit cryotherapy chamber. Natural sunlight streaming in, clean white walls, health and modern wellness aesthetic, highly detailed.' 
-        },
-        { 
-            id: 'img-compression', 
-            type: 'src', 
-            wrapperId: 'img-wrapper-compression',
-            prompt: 'Athlete smiling, relaxing on a bright white lounge chair in a brightly lit recovery room wearing dynamic air compression boots on their legs. Natural sunlight, clean, modern wellness center vibe, vibrant.' 
-        },
-        { 
-            id: 'img-massage', 
-            type: 'src', 
-            wrapperId: 'img-wrapper-massage',
-            prompt: 'Close up of a percussive massage gun used on an athlete leg in a brightly lit, modern gym. Natural sunlight, clean white towels, modern fitness aesthetic, daytime.' 
-        },
-        { 
-            id: 'img-youth', 
-            type: 'src', 
-            wrapperId: 'img-wrapper-youth',
-            prompt: 'Bright, sunny daytime shot of a youth soccer tournament on a lush green field. Blue sky, vibrant colors, active lifestyle, happy atmosphere, highly detailed.' 
-        },
-        { 
-            id: 'img-marathon', 
-            type: 'src', 
-            wrapperId: 'img-wrapper-marathon',
-            prompt: 'A marathon runner crossing a finish line on a bright, sunny day, arms raised in victory. Blue sky, bright daylight, vibrant colors, health and fitness lifestyle.' 
-        },
-        { 
-            id: 'img-corporate', 
-            type: 'src', 
-            wrapperId: 'img-wrapper-corporate',
-            prompt: 'A clean, modern white event canopy tent set up in a sunny outdoor park for a wellness activation. People in athletic wear chatting happily. Bright daylight, premium lifestyle.' 
-        }
-    ];
-
-    async function fetchWithBackoff(url, options, maxRetries = 5) {
-        const delays = [1000, 2000, 4000, 8000, 16000];
-        for (let i = 0; i < maxRetries; i++) {
-            try {
-                const response = await fetch(url, options);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                return await response.json();
-            } catch (error) {
-                if (i === maxRetries - 1) throw error;
-                await new Promise(res => setTimeout(res, delays[i]));
-            }
-        }
-    }
-
-    async function generateImage(task) {
-        const payload = { instances: { prompt: task.prompt }, parameters: { sampleCount: 1 } };
-        try {
-            const data = await fetchWithBackoff(modelUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-            if (data.predictions && data.predictions[0]) {
-                const imageUrl = `data:image/png;base64,${data.predictions[0].bytesBase64Encoded}`;
-                const wrapperEl = document.getElementById(task.wrapperId);
-                generatedImages[task.id + '.png'] = imageUrl;
-                
-                if (task.type === 'bg') {
-                    wrapperEl.style.backgroundImage = `url(${imageUrl})`;
-                } else {
-                    const imgEl = document.getElementById(task.id);
-                    imgEl.src = imageUrl;
-                    imgEl.style.display = 'block';
-                }
-                wrapperEl.classList.remove('loading-skeleton');
-            }
-        } catch (error) {
-            console.error(`Failed to generate:`, error);
-            document.getElementById(task.wrapperId).classList.remove('loading-skeleton');
-        }
-    }
-
-    window.onload = () => {
-        imageTasks.forEach(task => generateImage(task));
-
-        document.getElementById('download-images-btn').addEventListener('click', (e) => {
-            const btn = e.target;
-            const filenames = Object.keys(generatedImages);
-            if (filenames.length === 0) return;
-            
-            btn.innerText = "Downloading...";
-            filenames.forEach((filename, index) => {
-                setTimeout(() => {
-                    const a = document.createElement('a');
-                    a.href = generatedImages[filename];
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                }, index * 300); 
-            });
-            setTimeout(() => btn.innerText = "💾 Download New Images", filenames.length * 300 + 1000);
-        });
-    };
-</script>
 
 </body>
 </html>

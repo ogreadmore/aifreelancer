@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — AI Freelancer</title>
+  <meta name="description" content="AI Freelancer was built by Taylor Oliphant to give small and midsize businesses access to the tools, leverage, and operational advantages that were once reserved for large enterprises.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aifreelancer.co/about">
+  <meta property="og:title" content="About — AI Freelancer">
+  <meta property="og:description" content="We exist to decentralize economic power. One SMB at a time.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --paper: #ffffff;
+      --text: #0a0a0a;
+      --muted: #737373;
+      --line: #e5e5e5;
+      --ink: #111111;
+      --light: #ffffff;
+      --accent-1: #4B88DA;
+      --accent-2: #8A3BF1;
+      --accent-3: #D941A1;
+      --accent-4: #E5484D;
+      --accent-gradient: linear-gradient(105deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4));
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --nav-height: 84px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.42;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    :focus-visible {
+      outline: 2px solid #1a1916;
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      margin: -1px; padding: 0; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .container {
+      width: min(1380px, calc(100% - clamp(2rem, 5vw, 6rem)));
+      margin-inline: auto;
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 80;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(10px);
+      transition: border-color .18s ease, background .18s ease;
+    }
+    .site-nav.scrolled {
+      border-bottom-color: var(--line);
+      background: rgba(255,255,255,.98);
+    }
+    .nav-row {
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.4rem;
+    }
+    .brand {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: clamp(1.55rem, 2vw, 2rem);
+      letter-spacing: .05em;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      color: var(--text);
+    }
+    .brand-ai {
+      display: inline-block;
+      background: var(--accent-gradient);
+      background-size: 180% 180%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 10s ease infinite;
+    }
+    .nav-links {
+      justify-self: center;
+      display: flex; align-items: center;
+      gap: clamp(.95rem, 1.9vw, 2rem);
+      font-size: .95rem; font-weight: 500; color: #1f1f1d;
+    }
+    .nav-links a {
+      text-decoration: none;
+      transition: opacity .15s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { opacity: .6; }
+    .nav-cta {
+      justify-self: end;
+      text-decoration: none;
+      color: var(--text);
+      border: 1.5px solid transparent;
+      border-radius: 14px;
+      padding: .75rem 1.2rem;
+      font-size: .94rem; font-weight: 600;
+      background:
+        linear-gradient(#fff,#fff) padding-box,
+        var(--accent-gradient) border-box;
+      background-size: auto, 180% 180%;
+      animation: accentShift 10s ease infinite, navCtaPulse 2.35s ease-in-out infinite;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .nav-cta:hover, .nav-cta:focus-visible {
+      animation: accentShift 10s ease infinite;
+      transform: scale(1.08);
+      box-shadow: 0 8px 24px rgba(138,59,241,.2), 0 0 12px rgba(217,65,161,.14);
+      filter: brightness(1.03);
+    }
+
+    /* ── HERO ── */
+    .about-hero {
+      padding: clamp(2rem, 4vw, 4rem) 0 clamp(2.4rem, 4.5vw, 4.5rem);
+      border-bottom: 1px solid var(--line);
+    }
+    .about-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+    }
+    .about-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: .9rem;
+    }
+    .about-hero-title {
+      font-size: clamp(2.6rem, 6.5vw, 7rem);
+      line-height: .93;
+      letter-spacing: -.05em;
+      font-weight: 800;
+      text-wrap: balance;
+      max-width: 14ch;
+    }
+    .about-hero-title em {
+      font-style: normal;
+      background: var(--accent-gradient);
+      background-size: 180% 180%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 9s ease infinite;
+    }
+    .about-hero-aside {
+      text-align: right;
+      max-width: 32ch;
+    }
+    .about-hero-aside p {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.1rem, 1.6vw, 1.32rem);
+      line-height: 1.44;
+      color: #3a3a3a;
+    }
+    .about-hero-aside .founder-sig {
+      margin-top: 1.1rem;
+      font-size: .82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      border-top: 1px solid var(--line);
+      padding: clamp(3rem, 6.2vw, 5.9rem) 0;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: .82rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4.9vw, 5rem);
+      line-height: .94;
+      letter-spacing: -.038em;
+      font-weight: 800;
+      text-wrap: balance;
+    }
+
+    /* ── STORY SECTION ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 4vw, 5rem);
+      align-items: start;
+    }
+    .story-left {}
+    .story-right {}
+    .story-body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.1rem, 1.55vw, 1.28rem);
+      line-height: 1.6;
+      color: #262626;
+    }
+    .story-body p + p { margin-top: 1.3em; }
+
+    .pull-quote {
+      margin-top: clamp(1.8rem, 3vw, 2.8rem);
+      padding: clamp(1.2rem, 2vw, 1.8rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #fafafa;
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -.5rem;
+      left: 1.2rem;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 4rem;
+      line-height: 1;
+      background: var(--accent-gradient);
+      background-size: 180% 180%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 9s ease infinite;
+    }
+    .pull-quote blockquote {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+      line-height: 1.35;
+      letter-spacing: -.01em;
+      color: #1a1a1a;
+      margin-top: .4rem;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: .9rem;
+      font-style: normal;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      color: var(--muted);
+    }
+
+    /* ── MISSION BAND ── */
+    .mission-band {
+      background: #0a0a0a;
+      color: #f7f4ea;
+      padding: clamp(3rem, 6vw, 6rem) 0;
+      border-top: none;
+    }
+    .mission-band .eyebrow { color: rgba(247,244,234,.48); }
+    .mission-statement {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.6rem, 3.4vw, 3.2rem);
+      line-height: 1.14;
+      letter-spacing: -.025em;
+      max-width: 22ch;
+      text-wrap: pretty;
+    }
+    .mission-statement em {
+      font-style: normal;
+      background: var(--accent-gradient);
+      background-size: 180% 180%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 9s ease infinite;
+    }
+    .mission-tagline {
+      margin-top: clamp(1.2rem, 2vw, 2rem);
+      font-size: clamp(.92rem, 1.3vw, 1.08rem);
+      line-height: 1.6;
+      color: rgba(247,244,234,.62);
+      max-width: 56ch;
+    }
+
+    /* ── VALUES GRID ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .95rem;
+    }
+    .value-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      padding: clamp(1.1rem, 2.2vw, 1.6rem);
+      display: grid;
+      gap: .7rem;
+    }
+    .value-number {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .value-title {
+      font-size: clamp(1.15rem, 2vw, 1.6rem);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      font-weight: 800;
+    }
+    .value-body {
+      color: #404040;
+      font-size: .97rem;
+      line-height: 1.52;
+    }
+
+    /* ── CREDENTIALS ── */
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: clamp(2rem, 4vw, 5rem);
+      align-items: start;
+    }
+    .credentials-intro {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+      line-height: 1.6;
+      color: #2c2c2c;
+    }
+    .credentials-intro p + p { margin-top: 1.1em; }
+
+    .cred-list { display: grid; gap: .72rem; }
+    .cred-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      padding: clamp(.9rem, 1.5vw, 1.2rem) clamp(1rem, 1.7vw, 1.35rem);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: .7rem;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+    .cred-item:hover {
+      border-color: transparent;
+      background:
+        linear-gradient(#fff,#fff) padding-box,
+        linear-gradient(105deg, rgba(75,136,218,.3), rgba(138,59,241,.3), rgba(217,65,161,.3)) border-box;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(138,59,241,.1);
+    }
+    .cred-school {
+      font-size: clamp(.96rem, 1.3vw, 1.08rem);
+      font-weight: 700;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+    }
+    .cred-degree {
+      margin-top: .22rem;
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .cred-year {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .95rem;
+      margin-top: clamp(1.8rem, 3vw, 2.6rem);
+    }
+    .stat-mini {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      padding: clamp(1rem, 1.8vw, 1.4rem);
+      display: grid;
+      align-content: space-between;
+      gap: .5rem;
+      min-height: 120px;
+    }
+    .stat-mini-number {
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      line-height: .88;
+      letter-spacing: -.035em;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      background-size: 180% 180%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: accentShift 9s ease infinite;
+    }
+    .stat-mini-label {
+      font-size: .76rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      border-top: 1px solid var(--line);
+      padding: clamp(3.5rem, 7vw, 6.5rem) 0;
+    }
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+    .cta-headline {
+      font-size: clamp(2rem, 4.8vw, 4.8rem);
+      line-height: .94;
+      letter-spacing: -.04em;
+      font-weight: 800;
+      text-wrap: balance;
+    }
+    .cta-sub {
+      margin-top: .9rem;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1rem, 1.4vw, 1.18rem);
+      color: #4a4a4a;
+      max-width: 48ch;
+      line-height: 1.5;
+    }
+    .cta-button-group {
+      display: flex;
+      flex-direction: column;
+      gap: .72rem;
+      align-items: flex-end;
+    }
+    .cta-button {
+      display: inline-block;
+      text-decoration: none;
+      border: 0;
+      border-radius: 13px;
+      background: var(--accent-gradient);
+      background-size: 180% 180%;
+      animation: accentShift 9s ease infinite;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 1.05rem 1.7rem;
+      white-space: nowrap;
+      transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+    }
+    .cta-button:hover, .cta-button:focus-visible {
+      transform: scale(1.07);
+      box-shadow: 0 10px 28px rgba(138,59,241,.24), 0 0 14px rgba(217,65,161,.16);
+      filter: brightness(1.04);
+      outline: none;
+    }
+    .cta-button-ghost {
+      display: inline-block;
+      text-decoration: none;
+      border: 1.5px solid transparent;
+      border-radius: 13px;
+      background:
+        linear-gradient(#fff,#fff) padding-box,
+        var(--accent-gradient) border-box;
+      background-size: auto, 180% 180%;
+      animation: accentShift 10s ease infinite;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 700;
+      padding: 1.05rem 1.7rem;
+      white-space: nowrap;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cta-button-ghost:hover, .cta-button-ghost:focus-visible {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(138,59,241,.14);
+      outline: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1rem 0 1.2rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: .78rem;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+    }
+    .footer-legal {
+      margin-top: .45rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem;
+      text-transform: none;
+      letter-spacing: normal;
+      font-size: .74rem;
+    }
+    .footer-legal a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .footer-legal span[aria-hidden="true"] { color: #b1b1b1; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes accentShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes navCtaPulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.045); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0) scale(.988);
+      filter: blur(3px);
+      transition:
+        opacity .6s cubic-bezier(.22,1,.36,1),
+        transform .72s cubic-bezier(.16,1,.3,1),
+        filter .6s ease;
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: transform, opacity, filter;
+    }
+    .reveal.in-view {
+      opacity: 1;
+      transform: translate3d(0,0,0) scale(1);
+      filter: blur(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1060px) {
+      .about-hero-inner { grid-template-columns: 1fr; }
+      .about-hero-aside { text-align: left; max-width: 52ch; }
+      .story-grid,
+      .credentials-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-button-group { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    }
+    @media (max-width: 780px) {
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .values-grid,
+      .stat-row { grid-template-columns: 1fr; }
+      .container { width: calc(100% - 1.5rem); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .reveal { opacity: 1; transform: none; filter: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav" id="mainNav">
+    <div class="container nav-row">
+      <a class="brand" href="/"><span class="brand-ai">AI</span> Freelancer</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#services">Services</a>
+        <a href="/about.html" aria-current="page">About</a>
+      </nav>
+      <a class="nav-cta" href="/#contact">Let's Talk</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="about-hero" id="top">
+    <div class="container">
+      <div class="about-hero-inner">
+        <div class="reveal">
+          <p class="about-eyebrow">About AI Freelancer</p>
+          <h1 class="about-hero-title">Built to level<br>the <em>playing&nbsp;field.</em></h1>
+        </div>
+        <div class="about-hero-aside reveal" style="--reveal-delay:100ms">
+          <p>AI Freelancer exists because the tools that make large companies dominant have been out of reach for smaller ones — until now.</p>
+          <p class="founder-sig">Taylor Oliphant — Founder, Cleveland OH</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- STORY -->
+    <section class="section" id="story">
+      <div class="container">
+        <div class="story-grid">
+
+          <div class="reveal">
+            <p class="eyebrow">The Origin</p>
+            <h2 class="section-title" style="margin-bottom: clamp(1.4rem,2.8vw,2.4rem)">Why this company exists.</h2>
+            <div class="story-body">
+              <p>My parents were small business owners. I grew up watching them compete — not just against other small businesses, but against industries increasingly shaped by enterprise-scale tools, budgets, and platforms they had no realistic path to accessing.</p>
+              <p>I spent the early part of my career in web development, fintech, and financial services. I built systems inside large institutions. I saw firsthand what those advantages looked like from the inside — and how wide the gap really was.</p>
+              <p>AI is the first technology I've seen that gives smaller businesses a genuine path to closing that gap without enterprise-scale resources. That's what led me to build AI Freelancer — not any particular fondness for AI in itself, but a genuine belief that it's the most powerful tool available right now for leveling the playing field for SMBs.</p>
+            </div>
+          </div>
+
+          <div class="reveal" style="--reveal-delay:110ms">
+            <div class="pull-quote">
+              <blockquote>Technology should increase the agency of ordinary people and smaller organizations — not just amplify the dominance of already-centralized power.</blockquote>
+              <cite>Taylor Oliphant — Founder</cite>
+            </div>
+            <div class="pull-quote" style="margin-top:.95rem">
+              <blockquote>If it were easy, someone bigger would already own the space.</blockquote>
+              <cite>On what makes this work meaningful</cite>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION BAND -->
+    <section class="mission-band">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">Mission</p>
+          <p class="mission-statement">Decentralize economic power. One <em>SMB</em> at a time.</p>
+          <p class="mission-tagline">AI Freelancer helps small and midsize businesses harness AI, automation, and practical digital systems to drive real results — without needing enterprise budgets, giant teams, or technical complexity. We believe the power of advanced technology should not be limited to the largest companies on earth.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="section" id="values">
+      <div class="container">
+        <div class="section-head reveal" style="margin-bottom:clamp(1.8rem,3.6vw,3rem)">
+          <p class="eyebrow">How We Work</p>
+          <h2 class="section-title">Performance first.<br>AI is the tool.</h2>
+        </div>
+        <div class="values-grid">
+
+          <div class="value-card reveal" style="--reveal-delay:0ms">
+            <p class="value-number">01</p>
+            <h3 class="value-title">We sell outcomes, not AI</h3>
+            <p class="value-body">AI is a means to an end. We only recommend what we're confident will actually move the needle — not whatever is newest or trendiest. Our clients succeed because we're honest about what works and what doesn't.</p>
+          </div>
+
+          <div class="value-card reveal" style="--reveal-delay:70ms">
+            <p class="value-number">02</p>
+            <h3 class="value-title">Every engagement is custom</h3>
+            <p class="value-body">The most valuable solutions are almost always highly specific to how a particular business actually operates. We get into the weeds of each client's workflows, systems, and real problems — not a template version of them.</p>
+          </div>
+
+          <div class="value-card reveal" style="--reveal-delay:140ms">
+            <p class="value-number">03</p>
+            <h3 class="value-title">We think in Type 2</h3>
+            <p class="value-body">Most of what we do is slow, effortful, conscious problem-solving — not pattern-matching on autopilot. Every engagement requires thinking hard from the start, because the problems are new and the combinations are always different.</p>
+          </div>
+
+          <div class="value-card reveal" style="--reveal-delay:50ms">
+            <p class="value-number">04</p>
+            <h3 class="value-title">Full-service, end-to-end</h3>
+            <p class="value-body">We plan, staff, build, and automate across every function a business needs: websites, HR, operations, marketing, training, and more. Most SMBs can't afford the end-to-end support large companies take for granted. We exist to change that.</p>
+          </div>
+
+          <div class="value-card reveal" style="--reveal-delay:120ms">
+            <p class="value-number">05</p>
+            <h3 class="value-title">Speed without sacrifice</h3>
+            <p class="value-body">We use AI at every stage to keep costs down and quality up. Real results in days or weeks — not the months-long engagements that price small businesses out before anything ships.</p>
+          </div>
+
+          <div class="value-card reveal" style="--reveal-delay:190ms">
+            <p class="value-number">06</p>
+            <h3 class="value-title">Independence as the goal</h3>
+            <p class="value-body">We're not trying to create dependency on us. We're trying to give smaller companies more leverage, more independence, and a better chance to thrive in a world where scale is increasingly concentrated.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="section" id="credentials">
+      <div class="container">
+        <div class="credentials-grid">
+
+          <div class="reveal">
+            <p class="eyebrow">The Founder</p>
+            <h2 class="section-title" style="margin-bottom:clamp(1.4rem,2.6vw,2.2rem)">Taylor Oliphant</h2>
+            <div class="credentials-intro">
+              <p>Taylor has spent 20+ years building things — web platforms, fintech systems, and now AI-powered business infrastructure. He's worked inside large financial institutions and alongside lean founding teams, which gave him a precise understanding of where the gap between big and small really lives.</p>
+              <p>He earned his MBA from Purdue with a 4.0 GPA, holds professional certificates from Harvard, the University of Pennsylvania, and Lund University in AI, leadership, and law. He's based in Cleveland, OH.</p>
+              <p>He started AI Freelancer because he was tired of watching powerful tools stay locked inside large institutions while the businesses that needed them most had no path in.</p>
+            </div>
+
+            <div class="stat-row reveal" style="--reveal-delay:80ms">
+              <div class="stat-mini">
+                <span class="stat-mini-number">20+</span>
+                <span class="stat-mini-label">Years building</span>
+              </div>
+              <div class="stat-mini">
+                <span class="stat-mini-number">5</span>
+                <span class="stat-mini-label">Degrees & certs</span>
+              </div>
+              <div class="stat-mini">
+                <span class="stat-mini-number">4.0</span>
+                <span class="stat-mini-label">MBA GPA, Purdue</span>
+              </div>
+              <div class="stat-mini">
+                <span class="stat-mini-number">CLÉ</span>
+                <span class="stat-mini-label">Cleveland, OH</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" style="--reveal-delay:100ms">
+            <p class="eyebrow" style="margin-bottom:1.1rem">Education & Credentials</p>
+            <div class="cred-list">
+
+              <div class="cred-item">
+                <div>
+                  <p class="cred-school">Purdue University</p>
+                  <p class="cred-degree">Master of Business Administration · 4.0 GPA</p>
+                </div>
+                <span class="cred-year">2020–22</span>
+              </div>
+
+              <div class="cred-item">
+                <div>
+                  <p class="cred-school">Excelsior University</p>
+                  <p class="cred-degree">B.S. Liberal Arts (Sociology & Applied Statistics) · Magna Cum Laude, 3.87 GPA</p>
+                </div>
+                <span class="cred-year">2015–18</span>
+              </div>
+
+              <div class="cred-item">
+                <div>
+                  <p class="cred-school">Harvard University</p>
+                  <p class="cred-degree">Professional Certificate — Leadership & Communication</p>
+                </div>
+                <span class="cred-year">2023</span>
+              </div>
+
+              <div class="cred-item">
+                <div>
+                  <p class="cred-school">University of Pennsylvania</p>
+                  <p class="cred-degree">Professional Certificate — AI for Business</p>
+                </div>
+                <span class="cred-year">2024</span>
+              </div>
+
+              <div class="cred-item">
+                <div>
+                  <p class="cred-school">Lund University</p>
+                  <p class="cred-degree">Professional Certificate — AI &amp; Law</p>
+                </div>
+                <span class="cred-year">2024</span>
+              </div>
+
+              <div class="cred-item">
+                <div>
+                  <p class="cred-school">Web Development · Fintech · Financial Services</p>
+                  <p class="cred-degree">20+ years across large institutions and lean teams</p>
+                </div>
+                <span class="cred-year">Career</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact-cta">
+      <div class="container">
+        <div class="cta-inner reveal">
+          <div>
+            <h2 class="cta-headline">Ready to build<br>something great?</h2>
+            <p class="cta-sub">Tell us what you're working on. We'll tell you honestly whether and how we can help — and what it would actually take to move the needle.</p>
+          </div>
+          <div class="cta-button-group">
+            <a class="cta-button" href="/#contact">Start a conversation</a>
+            <a class="cta-button-ghost" href="tel:+14409411785">440 941 1785</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      AI Freelancer · AIFreelancer.co · Cleveland, OH
+      <div class="footer-legal" aria-label="Legal">
+        <a href="/privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="/terms.html">Terms of Service</a>
+        <span aria-hidden="true">·</span>
+        <a href="/cookies.html">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const nav = document.getElementById('mainNav');
+
+      // Scroll nav
+      window.addEventListener('scroll', () => {
+        if (!nav) return;
+        nav.classList.toggle('scrolled', (window.scrollY || 0) > 8);
+      }, { passive: true });
+
+      // Smooth anchor scroll
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        if (href.length < 2) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const navOff = nav ? Math.round(nav.getBoundingClientRect().height + 8) : 0;
+        window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - navOff), behavior: reducedMotion ? 'auto' : 'smooth' });
+      }, { passive: false });
+
+      // Reveal on scroll
+      if (!reducedMotion) {
+        const reveals = Array.from(document.querySelectorAll('.reveal'));
+        if (reveals.length) {
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              entry.target.classList.toggle('in-view', entry.isIntersecting && entry.intersectionRatio > 0.06);
+            });
+          }, { threshold: [0, 0.06, 0.16], rootMargin: '0px 0px -6% 0px' });
+          reveals.forEach((el) => io.observe(el));
+        }
+      } else {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+      }
+    })();
+  </script>
+</body>
+</html>

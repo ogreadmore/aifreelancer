@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YMV6PZPXJ4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YMV6PZPXJ4');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — AI Freelancer</title>
@@ -10,21 +18,23 @@
   <meta property="og:url" content="https://aifreelancer.co/about">
   <meta property="og:title" content="About — AI Freelancer">
   <meta property="og:description" content="We exist to decentralize economic power. One SMB at a time.">
+  <meta property="og:image" content="https://aifreelancer.co/assets/images/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111111'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='13' fill='%23f6f4eb'%3EAF%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #ffffff;
-      --surface: #ffffff;
+      --bg: #fafaf9;
+      --surface: #f5f5f4;
       --paper: #ffffff;
       --text: #0a0a0a;
       --muted: #737373;
       --line: #e5e5e5;
       --ink: #111111;
-      --light: #ffffff;
       --accent-1: #4B88DA;
       --accent-2: #8A3BF1;
       --accent-3: #D941A1;
@@ -42,7 +52,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       line-height: 1.42;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
@@ -50,11 +60,7 @@
 
     img { display: block; max-width: 100%; }
     a { color: inherit; }
-
-    :focus-visible {
-      outline: 2px solid #1a1916;
-      outline-offset: 2px;
-    }
+    :focus-visible { outline: 2px solid #1a1916; outline-offset: 2px; }
 
     .sr-only {
       position: absolute; width: 1px; height: 1px;
@@ -70,14 +76,14 @@
     /* ── NAV ── */
     .site-nav {
       position: sticky; top: 0; z-index: 80;
-      background: rgba(255,255,255,.95);
+      background: rgba(250,250,249,.95);
       border-bottom: 1px solid transparent;
       backdrop-filter: blur(10px);
       transition: border-color .18s ease, background .18s ease;
     }
     .site-nav.scrolled {
       border-bottom-color: var(--line);
-      background: rgba(255,255,255,.98);
+      background: rgba(250,250,249,.98);
     }
     .nav-row {
       min-height: 84px;
@@ -87,46 +93,30 @@
       gap: 1.4rem;
     }
     .brand {
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: clamp(1.55rem, 2vw, 2rem);
-      letter-spacing: .05em;
-      font-weight: 800;
-      line-height: 1;
-      white-space: nowrap;
-      color: var(--text);
+      text-decoration: none; text-transform: uppercase;
+      font-size: clamp(1.55rem, 2vw, 2rem); letter-spacing: .05em;
+      font-weight: 800; line-height: 1; white-space: nowrap; color: var(--text);
     }
     .brand-ai {
       display: inline-block;
-      background: var(--accent-gradient);
-      background-size: 180% 180%;
-      -webkit-background-clip: text;
-      background-clip: text;
+      background: var(--accent-gradient); background-size: 180% 180%;
+      -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: accentShift 10s ease infinite;
     }
     .nav-links {
-      justify-self: center;
-      display: flex; align-items: center;
+      justify-self: center; display: flex; align-items: center;
       gap: clamp(.95rem, 1.9vw, 2rem);
       font-size: .95rem; font-weight: 500; color: #1f1f1d;
     }
-    .nav-links a {
-      text-decoration: none;
-      transition: opacity .15s ease;
-    }
+    .nav-links a { text-decoration: none; transition: opacity .15s ease; }
     .nav-links a:hover, .nav-links a:focus-visible { opacity: .6; }
+    .nav-links a[aria-current="page"] { opacity: .5; pointer-events: none; }
     .nav-cta {
-      justify-self: end;
-      text-decoration: none;
-      color: var(--text);
-      border: 1.5px solid transparent;
-      border-radius: 14px;
-      padding: .75rem 1.2rem;
-      font-size: .94rem; font-weight: 600;
-      background:
-        linear-gradient(#fff,#fff) padding-box,
-        var(--accent-gradient) border-box;
+      justify-self: end; text-decoration: none; color: var(--text);
+      border: 1.5px solid transparent; border-radius: 14px;
+      padding: .75rem 1.2rem; font-size: .94rem; font-weight: 600;
+      background: linear-gradient(var(--bg),var(--bg)) padding-box, var(--accent-gradient) border-box;
       background-size: auto, 180% 180%;
       animation: accentShift 10s ease infinite, navCtaPulse 2.35s ease-in-out infinite;
       transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
@@ -135,7 +125,6 @@
       animation: accentShift 10s ease infinite;
       transform: scale(1.08);
       box-shadow: 0 8px 24px rgba(138,59,241,.2), 0 0 12px rgba(217,65,161,.14);
-      filter: brightness(1.03);
     }
 
     /* ── HERO ── */
@@ -144,53 +133,32 @@
       border-bottom: 1px solid var(--line);
     }
     .about-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 2rem;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: end; gap: 2rem;
     }
     .about-eyebrow {
-      text-transform: uppercase;
-      letter-spacing: .17em;
-      font-size: .7rem;
-      font-weight: 700;
-      color: var(--muted);
-      margin-bottom: .9rem;
+      text-transform: uppercase; letter-spacing: .17em;
+      font-size: .7rem; font-weight: 700; color: var(--muted); margin-bottom: .9rem;
     }
     .about-hero-title {
-      font-size: clamp(2.6rem, 6.5vw, 7rem);
-      line-height: .93;
-      letter-spacing: -.05em;
-      font-weight: 800;
-      text-wrap: balance;
-      max-width: 14ch;
+      font-size: clamp(2.6rem, 6.5vw, 7rem); line-height: .93;
+      letter-spacing: -.05em; font-weight: 800; text-wrap: balance; max-width: 14ch;
     }
     .about-hero-title em {
       font-style: normal;
-      background: var(--accent-gradient);
-      background-size: 180% 180%;
-      -webkit-background-clip: text;
-      background-clip: text;
+      background: var(--accent-gradient); background-size: 180% 180%;
+      -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: accentShift 9s ease infinite;
     }
-    .about-hero-aside {
-      text-align: right;
-      max-width: 32ch;
-    }
+    .about-hero-aside { text-align: right; max-width: 32ch; }
     .about-hero-aside p {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1.1rem, 1.6vw, 1.32rem);
-      line-height: 1.44;
-      color: #3a3a3a;
+      font-size: clamp(1.1rem, 1.6vw, 1.32rem); line-height: 1.44; color: #3a3a3a;
     }
     .about-hero-aside .founder-sig {
-      margin-top: 1.1rem;
-      font-size: .82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--muted);
+      margin-top: 1.1rem; font-size: .82rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .12em; color: var(--muted);
     }
 
     /* ── SECTIONS ── */
@@ -198,421 +166,323 @@
       border-top: 1px solid var(--line);
       padding: clamp(3rem, 6.2vw, 5.9rem) 0;
     }
+    .section.alt { background: var(--surface); }
     .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: .17em;
-      font-size: .7rem;
-      font-weight: 700;
-      color: var(--muted);
-      margin-bottom: .82rem;
+      text-transform: uppercase; letter-spacing: .17em;
+      font-size: .7rem; font-weight: 700; color: var(--muted); margin-bottom: .82rem;
     }
     .section-title {
-      font-size: clamp(2rem, 4.9vw, 5rem);
-      line-height: .94;
-      letter-spacing: -.038em;
-      font-weight: 800;
-      text-wrap: balance;
+      font-size: clamp(2rem, 4.9vw, 5rem); line-height: .94;
+      letter-spacing: -.038em; font-weight: 800; text-wrap: balance;
     }
 
-    /* ── STORY SECTION ── */
+    /* ── STORY ── */
     .story-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: clamp(2rem, 4vw, 5rem);
-      align-items: start;
+      display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap: clamp(2rem, 4vw, 5rem); align-items: start;
     }
-    .story-left {}
-    .story-right {}
     .story-body {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1.1rem, 1.55vw, 1.28rem);
-      line-height: 1.6;
-      color: #262626;
+      font-size: clamp(1.1rem, 1.55vw, 1.28rem); line-height: 1.6; color: #262626;
     }
     .story-body p + p { margin-top: 1.3em; }
 
     .pull-quote {
       margin-top: clamp(1.8rem, 3vw, 2.8rem);
       padding: clamp(1.2rem, 2vw, 1.8rem);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: #fafafa;
-      position: relative;
+      border: 1px solid var(--line); border-radius: var(--radius-md);
+      background: var(--paper); position: relative;
     }
+    .pull-quote + .pull-quote { margin-top: .95rem; }
     .pull-quote::before {
-      content: '\201C';
-      position: absolute;
-      top: -.5rem;
-      left: 1.2rem;
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 4rem;
-      line-height: 1;
-      background: var(--accent-gradient);
-      background-size: 180% 180%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: accentShift 9s ease infinite;
+      content: '\201C'; position: absolute; top: -.5rem; left: 1.2rem;
+      font-family: 'Source Serif 4', Georgia, serif; font-size: 4rem; line-height: 1;
+      background: var(--accent-gradient); background-size: 180% 180%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; animation: accentShift 9s ease infinite;
     }
     .pull-quote blockquote {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-      line-height: 1.35;
-      letter-spacing: -.01em;
-      color: #1a1a1a;
-      margin-top: .4rem;
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.35;
+      letter-spacing: -.01em; color: #1a1a1a; margin-top: .4rem;
     }
     .pull-quote cite {
-      display: block;
-      margin-top: .9rem;
-      font-style: normal;
-      font-size: .78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .11em;
-      color: var(--muted);
+      display: block; margin-top: .9rem; font-style: normal;
+      font-size: .78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .11em; color: var(--muted);
     }
 
     /* ── MISSION BAND ── */
     .mission-band {
-      background: #0a0a0a;
-      color: #f7f4ea;
-      padding: clamp(3rem, 6vw, 6rem) 0;
-      border-top: none;
+      background: var(--ink); color: #f7f4ea;
+      padding: clamp(3rem, 6vw, 6rem) 0; border-top: none;
     }
     .mission-band .eyebrow { color: rgba(247,244,234,.48); }
     .mission-statement {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1.6rem, 3.4vw, 3.2rem);
-      line-height: 1.14;
-      letter-spacing: -.025em;
-      max-width: 22ch;
-      text-wrap: pretty;
+      font-size: clamp(1.6rem, 3.4vw, 3.2rem); line-height: 1.14;
+      letter-spacing: -.025em; max-width: 22ch; text-wrap: pretty;
     }
     .mission-statement em {
       font-style: normal;
-      background: var(--accent-gradient);
-      background-size: 180% 180%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: accentShift 9s ease infinite;
+      background: var(--accent-gradient); background-size: 180% 180%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; animation: accentShift 9s ease infinite;
     }
     .mission-tagline {
       margin-top: clamp(1.2rem, 2vw, 2rem);
-      font-size: clamp(.92rem, 1.3vw, 1.08rem);
-      line-height: 1.6;
-      color: rgba(247,244,234,.62);
-      max-width: 56ch;
+      font-size: clamp(.92rem, 1.3vw, 1.08rem); line-height: 1.6;
+      color: rgba(247,244,234,.62); max-width: 56ch;
     }
 
-    /* ── VALUES GRID ── */
+    /* ── VALUES ── */
     .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: .95rem;
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .95rem;
     }
     .value-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: var(--paper);
-      padding: clamp(1.1rem, 2.2vw, 1.6rem);
-      display: grid;
-      gap: .7rem;
+      border: 1px solid var(--line); border-radius: var(--radius-md);
+      background: var(--paper); padding: clamp(1.1rem, 2.2vw, 1.6rem);
+      display: grid; gap: .7rem;
     }
     .value-number {
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .13em;
-      color: var(--muted);
-      font-weight: 700;
+      font-size: .72rem; text-transform: uppercase; letter-spacing: .13em;
+      color: var(--muted); font-weight: 700;
     }
     .value-title {
-      font-size: clamp(1.15rem, 2vw, 1.6rem);
-      line-height: 1.08;
-      letter-spacing: -.02em;
-      font-weight: 800;
+      font-size: clamp(1.15rem, 2vw, 1.6rem); line-height: 1.08;
+      letter-spacing: -.02em; font-weight: 800;
     }
     .value-body {
-      color: #404040;
-      font-size: .97rem;
-      line-height: 1.52;
+      font-family: 'Source Serif 4', Georgia, serif;
+      color: #404040; font-size: .97rem; line-height: 1.52;
     }
 
     /* ── CREDENTIALS ── */
     .credentials-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
-      gap: clamp(2rem, 4vw, 5rem);
-      align-items: start;
+      display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
+      gap: clamp(2rem, 4vw, 5rem); align-items: start;
     }
     .credentials-intro {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1.05rem, 1.45vw, 1.22rem);
-      line-height: 1.6;
-      color: #2c2c2c;
+      font-size: clamp(1.05rem, 1.45vw, 1.22rem); line-height: 1.6; color: #2c2c2c;
     }
     .credentials-intro p + p { margin-top: 1.1em; }
 
     .cred-list { display: grid; gap: .72rem; }
     .cred-item {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
+      border: 1px solid var(--line); border-radius: var(--radius-md);
       background: var(--paper);
       padding: clamp(.9rem, 1.5vw, 1.2rem) clamp(1rem, 1.7vw, 1.35rem);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: .7rem;
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .7rem;
       transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
     }
     .cred-item:hover {
       border-color: transparent;
-      background:
-        linear-gradient(#fff,#fff) padding-box,
+      background: linear-gradient(#fff,#fff) padding-box,
         linear-gradient(105deg, rgba(75,136,218,.3), rgba(138,59,241,.3), rgba(217,65,161,.3)) border-box;
       transform: translateY(-1px);
       box-shadow: 0 8px 22px rgba(138,59,241,.1);
     }
     .cred-school {
-      font-size: clamp(.96rem, 1.3vw, 1.08rem);
-      font-weight: 700;
-      letter-spacing: -.01em;
-      line-height: 1.2;
+      font-size: clamp(.96rem, 1.3vw, 1.08rem); font-weight: 700;
+      letter-spacing: -.01em; line-height: 1.2;
     }
-    .cred-degree {
-      margin-top: .22rem;
-      font-size: .82rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .cred-degree { margin-top: .22rem; font-size: .82rem; color: var(--muted); font-weight: 500; }
     .cred-year {
-      font-size: .72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .11em;
-      color: var(--muted);
-      white-space: nowrap;
+      font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .11em; color: var(--muted); white-space: nowrap;
     }
 
     /* ── STAT ROW ── */
     .stat-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: .95rem;
-      margin-top: clamp(1.8rem, 3vw, 2.6rem);
+      display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: .95rem; margin-top: clamp(1.8rem, 3vw, 2.6rem);
     }
     .stat-mini {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: var(--paper);
-      padding: clamp(1rem, 1.8vw, 1.4rem);
-      display: grid;
-      align-content: space-between;
-      gap: .5rem;
-      min-height: 120px;
+      border: 1px solid var(--line); border-radius: var(--radius-md);
+      background: var(--paper); padding: clamp(1rem, 1.8vw, 1.4rem);
+      display: grid; align-content: space-between; gap: .5rem; min-height: 120px;
     }
     .stat-mini-number {
-      font-size: clamp(2rem, 3.8vw, 3.2rem);
-      line-height: .88;
-      letter-spacing: -.035em;
-      font-weight: 800;
-      background: var(--accent-gradient);
-      background-size: 180% 180%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: accentShift 9s ease infinite;
+      font-size: clamp(2rem, 3.8vw, 3.2rem); line-height: .88;
+      letter-spacing: -.035em; font-weight: 800;
+      background: var(--accent-gradient); background-size: 180% 180%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; animation: accentShift 9s ease infinite;
     }
     .stat-mini-label {
-      font-size: .76rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 700;
+      font-size: .76rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); font-weight: 700;
     }
 
-    /* ── CTA SECTION ── */
-    .cta-section {
-      border-top: 1px solid var(--line);
-      padding: clamp(3.5rem, 7vw, 6.5rem) 0;
+    /* ── CONTACT ── */
+    .contact-shell {
+      display: grid; grid-template-columns: minmax(0,1.2fr) minmax(300px,.8fr);
+      grid-template-areas: "head head" "form lead";
+      align-items: stretch;
+      gap: clamp(1.05rem, 2.2vw, 1.65rem) clamp(1.2rem, 3vw, 2rem);
     }
-    .cta-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 2rem;
+    .contact-head { grid-area: head; display: grid; gap: .42rem; margin-bottom: .1rem; }
+    .contact-kicker {
+      text-transform: uppercase; letter-spacing: .16em;
+      font-size: .72rem; font-weight: 700; color: var(--muted);
     }
-    .cta-headline {
-      font-size: clamp(2rem, 4.8vw, 4.8rem);
-      line-height: .94;
-      letter-spacing: -.04em;
-      font-weight: 800;
-      text-wrap: balance;
+    .contact-title {
+      font-size: clamp(2.45rem, 5.6vw, 5.2rem); line-height: .9;
+      letter-spacing: -.042em; font-weight: 800; max-width: 13ch; text-wrap: balance;
     }
-    .cta-sub {
-      margin-top: .9rem;
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1rem, 1.4vw, 1.18rem);
-      color: #4a4a4a;
-      max-width: 48ch;
-      line-height: 1.5;
+    .contact-lead {
+      grid-area: lead; display: grid; align-content: start;
+      border: 1px solid var(--line); border-radius: var(--radius-md);
+      background: var(--paper); padding: clamp(.95rem, 1.7vw, 1.25rem);
     }
-    .cta-button-group {
-      display: flex;
-      flex-direction: column;
-      gap: .72rem;
-      align-items: flex-end;
+    .contact-meta { display: grid; gap: 1.02rem; width: 100%; }
+    .contact-call {
+      text-decoration: none; border: 1px solid #d2d5dc; border-radius: 14px;
+      padding: .98rem 1.06rem 1.08rem; color: var(--text); background: var(--paper);
+      display: grid; gap: .34rem;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .cta-button {
-      display: inline-block;
-      text-decoration: none;
-      border: 0;
-      border-radius: 13px;
-      background: var(--accent-gradient);
-      background-size: 180% 180%;
+    .contact-call-kicker {
+      display: block; font-size: .68rem; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--muted); font-weight: 700; line-height: 1;
+    }
+    .contact-call-number {
+      font-size: clamp(1.95rem, 3.4vw, 2.7rem); letter-spacing: -.03em;
+      line-height: 1; font-weight: 800;
+    }
+    .contact-call:hover, .contact-call:focus-visible {
+      transform: translateY(-2px) scale(1.015); border-color: transparent;
+      background: linear-gradient(var(--paper),var(--paper)) padding-box, var(--accent-gradient) border-box;
+      background-size: auto, 180% 180%; animation: accentShift 9s ease infinite;
+      box-shadow: 0 14px 30px rgba(138,59,241,.22), 0 4px 14px rgba(10,10,10,.07);
+      outline: none;
+    }
+    .contact-socials-wrap { display: grid; gap: .2rem; }
+    .contact-email-address {
+      font-size: clamp(1.08rem, 2vw, 1.45rem); letter-spacing: -.01em;
+      line-height: 1.1; font-weight: 800; overflow-wrap: anywhere;
+    }
+    .contact-socials { display: flex; align-items: center; gap: .86rem; }
+    .contact-social {
+      width: 3.95rem; height: 3.95rem; border-radius: 11px;
+      display: grid; place-items: center; text-decoration: none;
+      color: #4b5563; border: 1px solid #d0d4dc; background: var(--paper);
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .contact-social:hover, .contact-social:focus-visible {
+      transform: translateY(-2px) scale(1.045); color: #fff; border-color: transparent;
+      background: var(--accent-gradient); background-size: 180% 180%;
       animation: accentShift 9s ease infinite;
-      color: #ffffff;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: .11em;
-      font-weight: 800;
-      cursor: pointer;
-      padding: 1.05rem 1.7rem;
-      white-space: nowrap;
-      transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+      box-shadow: 0 13px 26px rgba(138,59,241,.27); outline: none;
+    }
+    .contact-social svg { width: 1.68rem; height: 1.68rem; fill: currentColor; }
+    .contact-form {
+      grid-area: form; display: grid; gap: .72rem; align-content: start;
+      border: 1px solid var(--line); border-radius: var(--radius-md);
+      background: var(--paper); padding: clamp(.95rem, 1.7vw, 1.25rem);
+    }
+    .form-row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .72rem; }
+    .contact-form input, .contact-form textarea {
+      width: 100%; border: 1px solid var(--line); border-radius: var(--radius-sm);
+      background: var(--paper); color: var(--text); font: inherit; font-size: 1rem;
+      padding: .82rem .88rem;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none; border-color: var(--accent-2);
+      box-shadow: 0 0 0 3px rgba(138,59,241,.14);
+    }
+    .contact-form textarea { resize: vertical; min-height: 126px; }
+    .form-status {
+      display: none; border-radius: var(--radius-sm); border: 1px solid transparent;
+      font-size: .92rem; font-weight: 600; padding: .56rem .7rem;
+    }
+    .form-status.success { display: block; background: #e6efe4; color: #214727; border-color: #bfd1bb; }
+    .form-status.error { display: block; background: #f8e4e1; color: #6f1d1f; border-color: #e8b4af; }
+    .cta-button {
+      margin-top: .28rem; width: fit-content; border: 0; border-radius: 13px;
+      background: var(--accent-gradient); background-size: 180% 180%;
+      animation: accentShift 9s ease infinite;
+      color: #fff; font: inherit; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: .11em; font-weight: 800;
+      cursor: pointer; min-width: 11.2rem; padding: 1.02rem 1.6rem;
+      text-decoration: none; display: inline-block; text-align: center;
+      transition: transform .22s ease, box-shadow .22s ease, filter .22s ease, opacity .18s ease;
     }
     .cta-button:hover, .cta-button:focus-visible {
-      transform: scale(1.07);
+      transform: scale(1.08);
       box-shadow: 0 10px 28px rgba(138,59,241,.24), 0 0 14px rgba(217,65,161,.16);
-      filter: brightness(1.04);
-      outline: none;
+      filter: brightness(1.04); outline: none;
     }
-    .cta-button-ghost {
-      display: inline-block;
-      text-decoration: none;
-      border: 1.5px solid transparent;
-      border-radius: 13px;
-      background:
-        linear-gradient(#fff,#fff) padding-box,
-        var(--accent-gradient) border-box;
-      background-size: auto, 180% 180%;
-      animation: accentShift 10s ease infinite;
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: .11em;
-      font-weight: 700;
-      padding: 1.05rem 1.7rem;
-      white-space: nowrap;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .cta-button-ghost:hover, .cta-button-ghost:focus-visible {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(138,59,241,.14);
-      outline: none;
-    }
+    button.cta-button:disabled { opacity: .68; transform: none; cursor: wait; }
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--line);
-      padding: 1rem 0 1.2rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .09em;
-      font-size: .78rem;
-      font-family: 'Inter', sans-serif;
-      text-align: center;
+      border-top: 1px solid var(--line); padding: 1rem 0 1.2rem;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: .09em; font-size: .78rem; text-align: center;
     }
     .footer-legal {
-      margin-top: .45rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: .5rem;
-      text-transform: none;
-      letter-spacing: normal;
-      font-size: .74rem;
+      margin-top: .45rem; display: flex; flex-wrap: wrap;
+      justify-content: center; gap: .5rem;
+      text-transform: none; letter-spacing: normal; font-size: .74rem;
     }
-    .footer-legal a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
+    .footer-legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
     .footer-legal span[aria-hidden="true"] { color: #b1b1b1; }
 
     /* ── ANIMATIONS ── */
-    @keyframes accentShift {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes navCtaPulse {
-      0%, 100% { transform: scale(1); }
-      50%       { transform: scale(1.045); }
-    }
+    @keyframes accentShift { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+    @keyframes navCtaPulse { 0%,100%{transform:scale(1)}50%{transform:scale(1.045)} }
 
     .reveal {
-      opacity: 0;
-      transform: translate3d(0, 28px, 0) scale(.988);
-      filter: blur(3px);
-      transition:
-        opacity .6s cubic-bezier(.22,1,.36,1),
-        transform .72s cubic-bezier(.16,1,.3,1),
-        filter .6s ease;
+      opacity: 0; transform: translate3d(0,28px,0) scale(.988); filter: blur(3px);
+      transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .72s cubic-bezier(.16,1,.3,1), filter .6s ease;
       transition-delay: var(--reveal-delay, 0ms);
       will-change: transform, opacity, filter;
     }
-    .reveal.in-view {
-      opacity: 1;
-      transform: translate3d(0,0,0) scale(1);
-      filter: blur(0);
-    }
+    .reveal.in-view { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1060px) {
       .about-hero-inner { grid-template-columns: 1fr; }
       .about-hero-aside { text-align: left; max-width: 52ch; }
-      .story-grid,
-      .credentials-grid { grid-template-columns: 1fr; }
-      .cta-inner { grid-template-columns: 1fr; }
-      .cta-button-group { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .story-grid, .credentials-grid { grid-template-columns: 1fr; }
+      .contact-shell { grid-template-columns: 1fr; grid-template-areas: "head" "form" "lead"; gap: 1rem; }
+    }
+    @media (max-width: 940px) {
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 780px) {
       .values-grid { grid-template-columns: 1fr 1fr; }
       .stat-row { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 560px) {
-      .values-grid,
-      .stat-row { grid-template-columns: 1fr; }
+      .values-grid, .stat-row { grid-template-columns: 1fr; }
       .container { width: calc(100% - 1.5rem); }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; filter: none; }
     }
   </style>
+  <link rel="stylesheet" href="assets/css/chatbot.css?v=20260219c" data-afchat-css>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="site-nav" id="mainNav">
     <div class="container nav-row">
       <a class="brand" href="/"><span class="brand-ai">AI</span> Freelancer</a>
-      <nav class="nav-links" aria-label="Primary">
+      <div class="nav-links" aria-label="Main navigation">
+        <a href="/#results">Results</a>
+        <a href="/#testimonials">Testimonials</a>
         <a href="/#services">Services</a>
         <a href="/about.html" aria-current="page">About</a>
-      </nav>
+      </div>
       <a class="nav-cta" href="/#contact">Let's Talk</a>
     </div>
   </nav>
 
-  <!-- HERO -->
   <header class="about-hero" id="top">
     <div class="container">
       <div class="about-hero-inner">
@@ -621,8 +491,8 @@
           <h1 class="about-hero-title">Built to level<br>the <em>playing&nbsp;field.</em></h1>
         </div>
         <div class="about-hero-aside reveal" style="--reveal-delay:100ms">
-          <p>AI Freelancer exists because the tools that make large companies dominant have been out of reach for smaller ones — until now.</p>
-          <p class="founder-sig">Taylor Oliphant — Founder, Cleveland OH</p>
+          <p>AI Freelancer exists because the tools that make large companies dominant have been out of reach for smaller ones &mdash; until now.</p>
+          <p class="founder-sig">Taylor Oliphant &mdash; Founder, Cleveland OH</p>
         </div>
       </div>
     </div>
@@ -630,201 +500,191 @@
 
   <main>
 
-    <!-- STORY -->
     <section class="section" id="story">
       <div class="container">
         <div class="story-grid">
-
           <div class="reveal">
             <p class="eyebrow">The Origin</p>
-            <h2 class="section-title" style="margin-bottom: clamp(1.4rem,2.8vw,2.4rem)">Why this company exists.</h2>
+            <h2 class="section-title" style="margin-bottom:clamp(1.4rem,2.8vw,2.4rem)">Why this company exists.</h2>
             <div class="story-body">
-              <p>My parents were small business owners. I grew up watching them compete — not just against other small businesses, but against industries increasingly shaped by enterprise-scale tools, budgets, and platforms they had no realistic path to accessing.</p>
-              <p>I spent the early part of my career in web development, fintech, and financial services. I built systems inside large institutions. I saw firsthand what those advantages looked like from the inside — and how wide the gap really was.</p>
-              <p>AI is the first technology I've seen that gives smaller businesses a genuine path to closing that gap without enterprise-scale resources. That's what led me to build AI Freelancer — not any particular fondness for AI in itself, but a genuine belief that it's the most powerful tool available right now for leveling the playing field for SMBs.</p>
+              <p>My parents were small business owners. I grew up watching them compete &mdash; not just against other small businesses, but against industries increasingly shaped by enterprise-scale tools, budgets, and platforms they had no realistic path to accessing.</p>
+              <p>I spent the early part of my career in web development, fintech, and financial services. I built systems inside large institutions. I saw firsthand what those advantages looked like from the inside &mdash; and how wide the gap really was.</p>
+              <p>AI is the first technology I&rsquo;ve seen that gives smaller businesses a genuine path to closing that gap without enterprise-scale resources. That&rsquo;s what led me to build AI Freelancer &mdash; not any particular fondness for AI in itself, but a genuine belief that it&rsquo;s the most powerful tool available right now for leveling the playing field for SMBs.</p>
             </div>
           </div>
-
           <div class="reveal" style="--reveal-delay:110ms">
             <div class="pull-quote">
-              <blockquote>Technology should increase the agency of ordinary people and smaller organizations — not just amplify the dominance of already-centralized power.</blockquote>
-              <cite>Taylor Oliphant — Founder</cite>
+              <blockquote>Technology should increase the agency of ordinary people and smaller organizations &mdash; not just amplify the dominance of already-centralized power.</blockquote>
+              <cite>Taylor Oliphant &mdash; Founder</cite>
             </div>
-            <div class="pull-quote" style="margin-top:.95rem">
+            <div class="pull-quote">
               <blockquote>If it were easy, someone bigger would already own the space.</blockquote>
               <cite>On what makes this work meaningful</cite>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- MISSION BAND -->
     <section class="mission-band">
       <div class="container">
         <div class="reveal">
           <p class="eyebrow">Mission</p>
           <p class="mission-statement">Decentralize economic power. One <em>SMB</em> at a time.</p>
-          <p class="mission-tagline">AI Freelancer helps small and midsize businesses harness AI, automation, and practical digital systems to drive real results — without needing enterprise budgets, giant teams, or technical complexity. We believe the power of advanced technology should not be limited to the largest companies on earth.</p>
+          <p class="mission-tagline">AI Freelancer helps small and midsize businesses harness AI, automation, and practical digital systems to drive real results &mdash; without needing enterprise budgets, giant teams, or technical complexity. We believe the power of advanced technology should not be limited to the largest companies on earth.</p>
         </div>
       </div>
     </section>
 
-    <!-- VALUES -->
-    <section class="section" id="values">
+    <section class="section alt" id="values">
       <div class="container">
         <div class="section-head reveal" style="margin-bottom:clamp(1.8rem,3.6vw,3rem)">
           <p class="eyebrow">How We Work</p>
           <h2 class="section-title">Performance first.<br>AI is the tool.</h2>
         </div>
         <div class="values-grid">
-
           <div class="value-card reveal" style="--reveal-delay:0ms">
             <p class="value-number">01</p>
             <h3 class="value-title">We sell outcomes, not AI</h3>
-            <p class="value-body">AI is a means to an end. We only recommend what we're confident will actually move the needle — not whatever is newest or trendiest. Our clients succeed because we're honest about what works and what doesn't.</p>
+            <p class="value-body">AI is a means to an end. We only recommend what we&rsquo;re confident will actually move the needle &mdash; not whatever is newest or trendiest. Our clients succeed because we&rsquo;re honest about what works and what doesn&rsquo;t.</p>
           </div>
-
           <div class="value-card reveal" style="--reveal-delay:70ms">
             <p class="value-number">02</p>
             <h3 class="value-title">Every engagement is custom</h3>
-            <p class="value-body">The most valuable solutions are almost always highly specific to how a particular business actually operates. We get into the weeds of each client's workflows, systems, and real problems — not a template version of them.</p>
+            <p class="value-body">The most valuable solutions are almost always highly specific to how a particular business actually operates. We get into the weeds of each client&rsquo;s workflows, systems, and real problems &mdash; not a template version of them.</p>
           </div>
-
           <div class="value-card reveal" style="--reveal-delay:140ms">
             <p class="value-number">03</p>
-            <h3 class="value-title">We think in Type 2</h3>
-            <p class="value-body">Most of what we do is slow, effortful, conscious problem-solving — not pattern-matching on autopilot. Every engagement requires thinking hard from the start, because the problems are new and the combinations are always different.</p>
+            <h3 class="value-title">We think hard, not fast</h3>
+            <p class="value-body">Most of what we do is slow, effortful, conscious problem-solving &mdash; not pattern-matching on autopilot. Every engagement requires thinking hard from the start, because the problems are new and the combinations are always different.</p>
           </div>
-
           <div class="value-card reveal" style="--reveal-delay:50ms">
             <p class="value-number">04</p>
             <h3 class="value-title">Full-service, end-to-end</h3>
-            <p class="value-body">We plan, staff, build, and automate across every function a business needs: websites, HR, operations, marketing, training, and more. Most SMBs can't afford the end-to-end support large companies take for granted. We exist to change that.</p>
+            <p class="value-body">We plan, staff, build, and automate across every function a business needs: websites, HR, operations, marketing, training, and more. Most SMBs can&rsquo;t afford the end-to-end support large companies take for granted. We exist to change that.</p>
           </div>
-
           <div class="value-card reveal" style="--reveal-delay:120ms">
             <p class="value-number">05</p>
             <h3 class="value-title">Speed without sacrifice</h3>
-            <p class="value-body">We use AI at every stage to keep costs down and quality up. Real results in days or weeks — not the months-long engagements that price small businesses out before anything ships.</p>
+            <p class="value-body">We use AI at every stage to keep costs down and quality up. Real results in days or weeks &mdash; not the months-long engagements that price small businesses out before anything ships.</p>
           </div>
-
           <div class="value-card reveal" style="--reveal-delay:190ms">
             <p class="value-number">06</p>
             <h3 class="value-title">Independence as the goal</h3>
-            <p class="value-body">We're not trying to create dependency on us. We're trying to give smaller companies more leverage, more independence, and a better chance to thrive in a world where scale is increasingly concentrated.</p>
+            <p class="value-body">We&rsquo;re not trying to create dependency on us. We&rsquo;re trying to give smaller companies more leverage, more independence, and a better chance to thrive in a world where scale is increasingly concentrated.</p>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- CREDENTIALS -->
     <section class="section" id="credentials">
       <div class="container">
         <div class="credentials-grid">
-
           <div class="reveal">
             <p class="eyebrow">The Founder</p>
             <h2 class="section-title" style="margin-bottom:clamp(1.4rem,2.6vw,2.2rem)">Taylor Oliphant</h2>
             <div class="credentials-intro">
-              <p>Taylor has spent 20+ years building things — web platforms, fintech systems, and now AI-powered business infrastructure. He's worked inside large financial institutions and alongside lean founding teams, which gave him a precise understanding of where the gap between big and small really lives.</p>
-              <p>He earned his MBA from Purdue with a 4.0 GPA, holds professional certificates from Harvard, the University of Pennsylvania, and Lund University in AI, leadership, and law. He's based in Cleveland, OH.</p>
+              <p>Taylor has spent 20+ years building things &mdash; web platforms, fintech systems, and now AI-powered business infrastructure. He&rsquo;s worked inside large financial institutions and alongside lean founding teams, which gave him a precise understanding of where the gap between big and small really lives.</p>
+              <p>He earned his MBA from Purdue with a 4.0 GPA, holds professional certificates from Harvard, the University of Pennsylvania, and Lund University in AI, leadership, and law. He&rsquo;s based in Cleveland, OH.</p>
               <p>He started AI Freelancer because he was tired of watching powerful tools stay locked inside large institutions while the businesses that needed them most had no path in.</p>
             </div>
-
             <div class="stat-row reveal" style="--reveal-delay:80ms">
               <div class="stat-mini">
                 <span class="stat-mini-number">20+</span>
-                <span class="stat-mini-label">Years building</span>
+                <span class="stat-mini-label">Years Building</span>
               </div>
               <div class="stat-mini">
                 <span class="stat-mini-number">5</span>
-                <span class="stat-mini-label">Degrees & certs</span>
+                <span class="stat-mini-label">Degrees &amp; Certs</span>
               </div>
               <div class="stat-mini">
                 <span class="stat-mini-number">4.0</span>
                 <span class="stat-mini-label">MBA GPA, Purdue</span>
               </div>
               <div class="stat-mini">
-                <span class="stat-mini-number">CLÉ</span>
+                <span class="stat-mini-number">CL&Eacute;</span>
                 <span class="stat-mini-label">Cleveland, OH</span>
               </div>
             </div>
           </div>
-
           <div class="reveal" style="--reveal-delay:100ms">
-            <p class="eyebrow" style="margin-bottom:1.1rem">Education & Credentials</p>
+            <p class="eyebrow" style="margin-bottom:1.1rem">Education &amp; Credentials</p>
             <div class="cred-list">
-
               <div class="cred-item">
                 <div>
                   <p class="cred-school">Purdue University</p>
-                  <p class="cred-degree">Master of Business Administration · 4.0 GPA</p>
+                  <p class="cred-degree">Master of Business Administration &middot; 4.0 GPA</p>
                 </div>
-                <span class="cred-year">2020–22</span>
+                <span class="cred-year">2020&ndash;22</span>
               </div>
-
               <div class="cred-item">
                 <div>
                   <p class="cred-school">Excelsior University</p>
-                  <p class="cred-degree">B.S. Liberal Arts (Sociology & Applied Statistics) · Magna Cum Laude, 3.87 GPA</p>
+                  <p class="cred-degree">B.S. Liberal Arts (Sociology &amp; Applied Statistics) &middot; Magna Cum Laude, 3.87 GPA</p>
                 </div>
-                <span class="cred-year">2015–18</span>
+                <span class="cred-year">2015&ndash;18</span>
               </div>
-
               <div class="cred-item">
                 <div>
                   <p class="cred-school">Harvard University</p>
-                  <p class="cred-degree">Professional Certificate — Leadership & Communication</p>
+                  <p class="cred-degree">Professional Certificate &mdash; Leadership &amp; Communication</p>
                 </div>
                 <span class="cred-year">2023</span>
               </div>
-
               <div class="cred-item">
                 <div>
                   <p class="cred-school">University of Pennsylvania</p>
-                  <p class="cred-degree">Professional Certificate — AI for Business</p>
+                  <p class="cred-degree">Professional Certificate &mdash; AI for Business</p>
                 </div>
                 <span class="cred-year">2024</span>
               </div>
-
               <div class="cred-item">
                 <div>
                   <p class="cred-school">Lund University</p>
-                  <p class="cred-degree">Professional Certificate — AI &amp; Law</p>
+                  <p class="cred-degree">Professional Certificate &mdash; AI &amp; Law</p>
                 </div>
                 <span class="cred-year">2024</span>
               </div>
-
               <div class="cred-item">
                 <div>
-                  <p class="cred-school">Web Development · Fintech · Financial Services</p>
+                  <p class="cred-school">Web Development &middot; Fintech &middot; Financial Services</p>
                   <p class="cred-degree">20+ years across large institutions and lean teams</p>
                 </div>
                 <span class="cred-year">Career</span>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section" id="contact-cta">
+    <section class="section" id="contact">
       <div class="container">
-        <div class="cta-inner reveal">
-          <div>
-            <h2 class="cta-headline">Ready to build<br>something great?</h2>
-            <p class="cta-sub">Tell us what you're working on. We'll tell you honestly whether and how we can help — and what it would actually take to move the needle.</p>
+        <div class="contact-shell reveal">
+          <div class="contact-head">
+            <p class="contact-kicker">Let&apos;s talk</p>
+            <h2 class="contact-title">We&apos;d love to help.</h2>
           </div>
-          <div class="cta-button-group">
-            <a class="cta-button" href="/#contact">Start a conversation</a>
-            <a class="cta-button-ghost" href="tel:+14409411785">440 941 1785</a>
-          </div>
+          <div class="contact-lead"><div class="contact-meta">
+            <a class="contact-call" href="tel:+14409411785" aria-label="Call 440 941 1785"><span class="contact-call-kicker">Call Us</span><span class="contact-call-number">440 941 1785</span></a>
+            <a class="contact-call" href="mailto:hello@aifreelancer.co" aria-label="Email hello@aifreelancer.co"><span class="contact-call-kicker">Email Us</span><span class="contact-email-address">hello@aifreelancer.co</span></a>
+            <div class="contact-socials-wrap"><div class="contact-socials" aria-label="Social links">
+              <a class="contact-social" href="https://www.linkedin.com/company/aifreelancer" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.7H3.56V19.5h3.38V8.7zM5.25 3.2a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.3c0-3.2-1.71-4.69-3.99-4.69-1.84 0-2.66 1.01-3.12 1.72v-1.47H9.95c.04.97 0 10.64 0 10.64h3.38v-5.94c0-.32.02-.63.12-.86.25-.63.83-1.29 1.8-1.29 1.27 0 1.78.97 1.78 2.39v5.7H20.4v-6.2h.04z"/></svg></a>
+              <a class="contact-social" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.1-2.13C19.53 3.5 12 3.5 12 3.5s-7.53 0-9.4.57A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.12c1.87.58 9.4.58 9.4.58s7.53 0 9.4-.58a3 3 0 002.1-2.12A31.3 31.3 0 0024 12a31.3 31.3 0 00-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
+            </div></div>
+          </div></div>
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/mldlebob" method="POST">
+            <input type="hidden" name="_subject" value="New Lead from AI-Freelancer.co (About)">
+            <input type="hidden" name="_cc" value="tayloroliphant@gmail.com">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Your name" required>
+              <input type="email" name="email" placeholder="Your email" required>
+            </div>
+            <input type="text" name="company" placeholder="Company (optional)">
+            <textarea name="message" rows="5" placeholder="What's costing you the most time or money right now?" required></textarea>
+            <button type="submit" class="cta-button" id="submitBtn">Send</button>
+            <div class="form-status" id="formStatus"></div>
+          </form>
         </div>
       </div>
     </section>
@@ -833,12 +693,12 @@
 
   <footer>
     <div class="container">
-      AI Freelancer · AIFreelancer.co · Cleveland, OH
+      AI Freelancer &middot; AIFreelancer.co &middot; Cleveland, OH
       <div class="footer-legal" aria-label="Legal">
         <a href="/privacy.html">Privacy Policy</a>
-        <span aria-hidden="true">·</span>
+        <span aria-hidden="true">&middot;</span>
         <a href="/terms.html">Terms of Service</a>
-        <span aria-hidden="true">·</span>
+        <span aria-hidden="true">&middot;</span>
         <a href="/cookies.html">Cookie Policy</a>
       </div>
     </div>
@@ -846,16 +706,11 @@
 
   <script>
     (() => {
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const nav = document.getElementById('mainNav');
-
-      // Scroll nav
-      window.addEventListener('scroll', () => {
-        if (!nav) return;
-        nav.classList.toggle('scrolled', (window.scrollY || 0) > 8);
+      addEventListener('scroll', () => {
+        if (nav) nav.classList.toggle('scrolled', (scrollY || 0) > 8);
       }, { passive: true });
-
-      // Smooth anchor scroll
       document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href^="#"]');
         if (!link) return;
@@ -865,12 +720,10 @@
         if (!target) return;
         e.preventDefault();
         const navOff = nav ? Math.round(nav.getBoundingClientRect().height + 8) : 0;
-        window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - navOff), behavior: reducedMotion ? 'auto' : 'smooth' });
+        scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + scrollY - navOff), behavior: reducedMotion ? 'auto' : 'smooth' });
       }, { passive: false });
-
-      // Reveal on scroll
       if (!reducedMotion) {
-        const reveals = Array.from(document.querySelectorAll('.reveal'));
+        const reveals = [...document.querySelectorAll('.reveal')];
         if (reveals.length) {
           const io = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -882,7 +735,25 @@
       } else {
         document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
       }
+      // Contact form
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('formStatus');
+      if (form && btn && status) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          btn.disabled = true; btn.textContent = 'Sending...';
+          status.className = 'form-status'; status.style.display = 'none';
+          try {
+            const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+            if (r.ok) { status.textContent = "Thanks! We'll be in touch within 24 hours."; status.className = 'form-status success'; form.reset(); }
+            else { const d = await r.json().catch(() => null); status.textContent = d && d.errors ? d.errors.map(e => e.message).join(', ') : 'Something went wrong. Please try again.'; status.className = 'form-status error'; }
+          } catch { status.textContent = 'Network error. Please check your connection and try again.'; status.className = 'form-status error'; }
+          finally { btn.disabled = false; btn.textContent = 'Send'; }
+        });
+      }
     })();
   </script>
+  <script src="assets/js/chatbot.js?v=20260219c"></script>
 </body>
 </html>

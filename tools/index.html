@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIFreelancer Tools | Own Your Utility Stack</title>
+  <meta name="description" content="AIFreelancer Tools is a static, GitHub Pages-friendly toolbox for diffing text, downloading pasted images, tracking time, matching colors, estimating masonry jobs, converting units, and formatting JSON.">
+  <meta property="og:title" content="AIFreelancer Tools">
+  <meta property="og:description" content="Own your stack with browser-based utilities you can host yourself.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body class="home-page">
+  <header class="site-header">
+    <div class="shell topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">AIFreelancer Tools</span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#tool-directory">Tool Directory</a>
+        <a href="#why-build-it">Why Self-Host</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell home-shell">
+    <section class="hero hero-home">
+      <div class="hero-copy">
+        <p class="eyebrow">Static. Fast. Yours.</p>
+        <h1>Stop renting utility sites. Build your own toolbox and keep shipping.</h1>
+        <p class="hero-text">
+          This starter library gives AIFreelancer a branded collection of browser-only tools you can host on GitHub Pages for free.
+          Everything runs locally in the browser, so there is no backend, no vendor lock-in, and no reason to leave your own ecosystem.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#tool-directory">Explore live tools</a>
+          <a class="button button-secondary" href="./tools/diff-check/">Open Diff Check</a>
+        </div>
+        <div class="stat-row">
+          <article class="stat-card">
+            <span class="stat-kicker">Launch set</span>
+            <strong class="stat-value" data-tool-count>0</strong>
+            <span class="stat-label">ready-to-host utilities</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-kicker">Privacy</span>
+            <strong class="stat-value">100%</strong>
+            <span class="stat-label">browser-side processing</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-kicker">Hosting</span>
+            <strong class="stat-value">Free</strong>
+            <span class="stat-label">GitHub Pages-friendly</span>
+          </article>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="panel-glow"></div>
+        <p class="panel-eyebrow">Built for your actual workflow</p>
+        <ul class="feature-list">
+          <li>Compare prompts, code, contracts, and copy changes with a real diff interface.</li>
+          <li>Paste a screenshot and trigger an instant download without using someone else's tool.</li>
+          <li>Cover builders, trades, web work, and internal ops from one expandable library.</li>
+        </ul>
+        <div class="hero-note">
+          Start with the tools you already use every week, then keep adding pages as new gaps show up.
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-block" id="tool-directory">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Tool Directory</p>
+          <h2>Your first self-hosted utility stack</h2>
+        </div>
+        <label class="search-field" for="tool-search">
+          <span class="field-label">Search tools</span>
+          <input id="tool-search" type="search" placeholder="Search diff, stopwatch, masonry, color, JSON...">
+        </label>
+      </div>
+
+      <div class="chip-row" data-filter-mount aria-label="Tool categories"></div>
+      <div class="tool-grid" data-tool-grid></div>
+    </section>
+
+    <section class="section-block split-section" id="why-build-it">
+      <div>
+        <p class="eyebrow">Why Self-Host</p>
+        <h2>Every small tool you own compounds.</h2>
+        <p class="section-text">
+          A toolbox like this becomes a quiet moat. It keeps you inside your brand, saves clicks, avoids sketchy uploads,
+          and gives you reusable building blocks for future product ideas.
+        </p>
+      </div>
+
+      <div class="tile-grid">
+        <article class="tile">
+          <h3>Private by default</h3>
+          <p>Text diffs, clipboard images, and local calculations stay in the browser instead of bouncing through a third-party app.</p>
+        </article>
+        <article class="tile">
+          <h3>Cheap to scale</h3>
+          <p>Static pages are easy to host, easy to fork, and easy to clone into niche vertical tool collections later.</p>
+        </article>
+        <article class="tile">
+          <h3>Brand gravity</h3>
+          <p>AIFreelancer becomes the place you go to work, not just the place you explain what you do.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>AIFreelancer Tools. Browser-only utilities you can host yourself.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./assets/js/home.js"></script>
+</body>
+</html>

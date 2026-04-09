@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diff Check | AIFreelancer Tools</title>
+  <meta name="description" content="Compare two text blocks with line-level diffing and inline highlights.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">AIFreelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../json-formatter/">JSON Formatter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Dev</span>
+        <h1 class="page-title">Diff Check</h1>
+        <p class="page-description">
+          Compare prompts, code, contracts, copy, or configuration files without pasting them into somebody else's web app.
+          This tool highlights added, removed, and changed lines and shows inline token differences for edited rows.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Good fit</p>
+        <ul class="feature-list">
+          <li>Prompt revisions between AI runs</li>
+          <li>Copy review before a landing page push</li>
+          <li>Contract or policy wording changes</li>
+        </ul>
+        <p class="notice">Everything stays in the browser. Nothing is uploaded anywhere.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="compare-toolbar">
+          <div>
+            <h2>Compare text</h2>
+            <p class="muted-copy">Paste the original version on the left and the updated version on the right.</p>
+          </div>
+          <div class="button-row">
+            <button id="diff-compare" class="button button-primary" type="button">Compare now</button>
+            <button id="diff-swap" class="button button-secondary" type="button">Swap sides</button>
+            <button id="diff-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="diff-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <label class="field">
+            <span class="field-label">Original</span>
+            <textarea id="diff-left" class="compare-textarea" spellcheck="false" placeholder="Paste the original text here"></textarea>
+          </label>
+          <label class="field">
+            <span class="field-label">Revised</span>
+            <textarea id="diff-right" class="compare-textarea" spellcheck="false" placeholder="Paste the updated text here"></textarea>
+          </label>
+        </div>
+
+        <div class="panel-toolbar">
+          <div class="option-row">
+            <label class="toggle"><input id="diff-ignore-whitespace" type="checkbox">Ignore repeated whitespace</label>
+            <label class="toggle"><input id="diff-ignore-case" type="checkbox">Ignore case</label>
+            <label class="toggle"><input id="diff-hide-unchanged" type="checkbox">Hide unchanged lines</label>
+          </div>
+          <p class="helper-copy">Auto-compares after you type, with a manual compare button for larger edits.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Results</h2>
+            <p class="muted-copy">Added, removed, and changed lines are aligned side-by-side for fast scanning.</p>
+          </div>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card">
+            <span class="field-label">Unchanged</span>
+            <strong id="summary-unchanged">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Changed</span>
+            <strong id="summary-changed">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Added</span>
+            <strong id="summary-added">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Removed</span>
+            <strong id="summary-removed">0</strong>
+          </article>
+        </div>
+
+        <div id="diff-results" class="diff-list">
+          <div class="empty-state">
+            <strong class="empty-title">Nothing to compare yet</strong>
+            <p>Paste two versions above or load the sample text to see the diff viewer in action.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>Keep the stack growing</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Diff Check for AIFreelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/diff-check.js"></script>
+</body>
+</html>

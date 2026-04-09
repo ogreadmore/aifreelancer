@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Formatter | AIFreelancer Tools</title>
+  <meta name="description" content="Validate, format, and minify JSON in the browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">AIFreelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Dev</span>
+        <h1 class="page-title">JSON Formatter</h1>
+        <p class="page-description">
+          Validate raw JSON, pretty-print it for review, minify it for transport, or sort nested keys to make diffs cleaner and more predictable.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Handy for</p>
+        <ul class="feature-list">
+          <li>API payload inspection</li>
+          <li>Cleaning config files before commit</li>
+          <li>Preparing JSON for your diff tool</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Format JSON</h2>
+            <p class="muted-copy">Paste raw JSON on the left and generate output on the right.</p>
+          </div>
+          <div class="button-row">
+            <button id="json-format" class="button button-primary" type="button">Format</button>
+            <button id="json-minify" class="button button-secondary" type="button">Minify</button>
+            <button id="json-sort" class="button button-secondary" type="button">Sort keys</button>
+            <button id="json-copy" class="button button-secondary" type="button">Copy output</button>
+            <button id="json-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="json-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <label class="field">
+            <span class="field-label">Input</span>
+            <textarea id="json-input" class="json-input" spellcheck="false" placeholder='{"message":"Paste JSON here"}'></textarea>
+          </label>
+          <div class="field">
+            <span class="field-label">Output</span>
+            <pre id="json-output" class="json-output"></pre>
+          </div>
+        </div>
+
+        <div id="json-status" class="json-status">
+          Validation state will appear here.
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Characters</h3>
+            <p id="json-char-count" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Lines</h3>
+            <p id="json-line-count" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Top-level type</h3>
+            <p id="json-type">Unknown</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>Keep your dev utilities in-house</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>JSON Formatter for AIFreelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/json-formatter.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brick Calculator | AIFreelancer Tools</title>
+  <meta name="description" content="Estimate bricks, blocks, mortar, courses, and pallets for masonry jobs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">AIFreelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../unit-converter/">Unit Converter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Trades</span>
+        <h1 class="page-title">Brick Calculator</h1>
+        <p class="page-description">
+          Estimate unit counts, courses, pallets, and rough mortar needs for walls or facades. It is ideal for ballpark planning and quoting, not stamped engineering.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Covers</p>
+        <ul class="feature-list">
+          <li>Modular brick, queen, king, and CMU block</li>
+          <li>Imperial and metric input modes</li>
+          <li>Waste factor and multi-wythe estimates</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Job inputs</h2>
+            <p class="muted-copy">Enter wall dimensions and choose the masonry format. Outputs refresh automatically.</p>
+          </div>
+          <div class="button-row">
+            <button id="brick-sample" class="button button-secondary" type="button">Load sample wall</button>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <label class="field">
+            <span class="field-label">Input system</span>
+            <select id="brick-system">
+              <option value="imperial">Imperial</option>
+              <option value="metric">Metric</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Masonry format</span>
+            <select id="brick-format"></select>
+          </label>
+          <label class="field">
+            <span id="brick-length-label" class="field-label">Wall length (ft)</span>
+            <input id="brick-length" type="number" min="0" step="0.01" value="24">
+          </label>
+          <label class="field">
+            <span id="brick-height-label" class="field-label">Wall height (ft)</span>
+            <input id="brick-height" type="number" min="0" step="0.01" value="8">
+          </label>
+          <label class="field">
+            <span id="brick-openings-label" class="field-label">Openings area (sq ft)</span>
+            <input id="brick-openings" type="number" min="0" step="0.01" value="12">
+          </label>
+          <label class="field">
+            <span id="brick-joint-label" class="field-label">Mortar joint (in)</span>
+            <input id="brick-joint" type="number" min="0" step="0.01" value="0.375">
+          </label>
+          <label class="field">
+            <span class="field-label">Waste factor (%)</span>
+            <input id="brick-waste" type="number" min="0" step="0.5" value="8">
+          </label>
+          <label class="field">
+            <span class="field-label">Wythes / layers</span>
+            <select id="brick-layers">
+              <option value="1">Single</option>
+              <option value="2">Double</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Estimate</h2>
+            <p class="muted-copy">Rounded for planning and purchase conversations.</p>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Net wall area</h3>
+            <p id="result-area" class="result-number">180 sq ft</p>
+          </article>
+          <article class="result-card">
+            <h3>Units needed</h3>
+            <p id="result-units" class="result-number">1,334</p>
+          </article>
+          <article class="result-card">
+            <h3>Courses</h3>
+            <p id="result-courses" class="result-number">37</p>
+          </article>
+          <article class="result-card">
+            <h3>Units per course</h3>
+            <p id="result-course-units" class="result-number">36</p>
+          </article>
+          <article class="result-card">
+            <h3>Pallets</h3>
+            <p id="result-pallets" class="result-number">3</p>
+          </article>
+          <article class="result-card">
+            <h3>Mortar volume</h3>
+            <p id="result-mortar" class="result-number">0.61 yd&sup3;</p>
+          </article>
+        </div>
+
+        <p class="notice">Planning note: this is a fast estimator. Site conditions, bond patterns, cuts, reinforcement, and structural requirements still need job-specific review.</p>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>Practical utilities for field and desk work</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Brick Calculator for AIFreelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/brick-calculator.js"></script>
+</body>
+</html>

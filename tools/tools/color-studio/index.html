@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Studio | AIFreelancer Tools</title>
+  <meta name="description" content="Convert colors, extract palettes, and check contrast in the browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">AIFreelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../image-paste-downloader/">Image Paste Downloader</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Web</span>
+        <h1 class="page-title">Color Studio</h1>
+        <p class="page-description">
+          Match a color from a design, paste an image to pull a quick palette, and see whether your text contrast is safe before you ship.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Useful for</p>
+        <ul class="feature-list">
+          <li>Landing pages and UI work</li>
+          <li>Brand extraction from screenshots</li>
+          <li>Checking readable text combinations</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <div class="two-column">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Color inspector</h2>
+              <p class="muted-copy">Type a hex value, use the native picker, or click a palette swatch below.</p>
+            </div>
+          </div>
+
+          <div class="detail-grid align-end">
+            <label class="field">
+              <span class="field-label">Hex color</span>
+              <input id="color-hex" type="text" value="#0B84FF" placeholder="#0B84FF">
+            </label>
+            <label class="field">
+              <span class="field-label">Native picker</span>
+              <input id="color-picker" type="color" value="#0b84ff">
+            </label>
+          </div>
+
+          <div id="primary-swatch" class="swatch">
+            <span class="swatch-label">Selected color</span>
+            <strong id="primary-hex" class="swatch-value">#0B84FF</strong>
+          </div>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>RGB</h3>
+              <p id="color-rgb" class="mono">rgb(11, 132, 255)</p>
+            </article>
+            <article class="result-card">
+              <h3>HSL</h3>
+              <p id="color-hsl" class="mono">hsl(210, 100%, 52%)</p>
+            </article>
+            <article class="result-card">
+              <h3>Contrast on white</h3>
+              <p id="contrast-light" class="mono">3.62:1</p>
+            </article>
+            <article class="result-card">
+              <h3>Contrast on ink</h3>
+              <p id="contrast-dark" class="mono">4.69:1</p>
+            </article>
+          </div>
+
+          <div id="tone-grid" class="swatch-grid"></div>
+          <pre id="color-css" class="code-snippet"></pre>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Palette from image</h2>
+              <p class="muted-copy">Drop or paste an image to extract the most dominant colors.</p>
+            </div>
+          </div>
+
+          <div id="palette-dropzone" class="dropzone" tabindex="0">
+            <div>
+              <strong>Drop or paste an image</strong>
+              <p class="muted-copy">A quick canvas pass finds the strongest repeating buckets.</p>
+            </div>
+          </div>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>Palette status</h3>
+              <p id="palette-status">Waiting for an image.</p>
+            </article>
+          </div>
+
+          <div id="palette-grid" class="swatch-grid">
+            <div class="empty-state">
+              <strong class="empty-title">No palette yet</strong>
+              <p>Paste or drop an image to generate clickable swatches.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>Build outward from your workflow</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Color Studio for AIFreelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/color-studio.js"></script>
+</body>
+</html>

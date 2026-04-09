@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch | AIFreelancer Tools</title>
+  <meta name="description" content="A stopwatch and countdown timer for focused work sessions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">AIFreelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Time</span>
+        <h1 class="page-title">Stopwatch</h1>
+        <p class="page-description">
+          A clean session timer with lap capture plus a separate countdown block for client calls, focus sprints, breaks, and quick deadline pressure.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Includes</p>
+        <ul class="feature-list">
+          <li>Large, readable time display</li>
+          <li>Laps for comparing focused intervals</li>
+          <li>Countdown presets for common sprint lengths</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <div class="two-column">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Stopwatch</h2>
+              <p class="muted-copy">Use this for open-ended timing and lap tracking.</p>
+            </div>
+          </div>
+
+          <p id="stopwatch-display" class="timer-display mono">00:00:00.00</p>
+          <div class="button-row">
+            <button id="stopwatch-start" class="button button-primary" type="button">Start</button>
+            <button id="stopwatch-lap" class="button button-secondary" type="button">Lap</button>
+            <button id="stopwatch-reset" class="button button-ghost" type="button">Reset</button>
+          </div>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>State</h3>
+              <p id="stopwatch-state">Ready</p>
+            </article>
+            <article class="result-card">
+              <h3>Laps</h3>
+              <p id="lap-count" class="result-number">0</p>
+            </article>
+          </div>
+
+          <div id="lap-list" class="lap-list">
+            <div class="empty-state">
+              <strong class="empty-title">No laps yet</strong>
+              <p>Start the stopwatch and capture laps to compare segments.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="countdown-card">
+          <div class="panel-head">
+            <div>
+              <h2>Countdown</h2>
+              <p class="muted-copy">Perfect for 5, 10, 15, or 25 minute focused blocks.</p>
+            </div>
+          </div>
+
+          <p id="countdown-display" class="countdown-display mono">10:00</p>
+
+          <div class="detail-grid">
+            <label class="field">
+              <span class="field-label">Minutes</span>
+              <input id="countdown-minutes" type="number" min="0" step="1" value="10">
+            </label>
+            <label class="field">
+              <span class="field-label">Seconds</span>
+              <input id="countdown-seconds" type="number" min="0" max="59" step="1" value="0">
+            </label>
+          </div>
+
+          <div class="preset-row">
+            <button class="filter-chip" data-countdown-preset="5" type="button">5 min</button>
+            <button class="filter-chip" data-countdown-preset="10" type="button">10 min</button>
+            <button class="filter-chip" data-countdown-preset="15" type="button">15 min</button>
+            <button class="filter-chip" data-countdown-preset="25" type="button">25 min</button>
+          </div>
+
+          <div class="button-row">
+            <button id="countdown-start" class="button button-primary" type="button">Start countdown</button>
+            <button id="countdown-reset" class="button button-secondary" type="button">Reset</button>
+          </div>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>Status</h3>
+              <p id="countdown-status">Ready</p>
+            </article>
+            <article class="result-card">
+              <h3>Duration</h3>
+              <p id="countdown-duration">10 minutes</p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>Keep useful things close</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Stopwatch for AIFreelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/stopwatch.js"></script>
+</body>
+</html>

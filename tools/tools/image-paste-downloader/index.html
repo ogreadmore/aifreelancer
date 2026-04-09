@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Paste Downloader | AIFreelancer Tools</title>
+  <meta name="description" content="Paste or drop images and instantly download them in your browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">AIFreelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../color-studio/">Color Studio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Imaging</span>
+        <h1 class="page-title">Image Paste Downloader</h1>
+        <p class="page-description">
+          Focus this page, paste from your clipboard, and get an instant local download. It also accepts drag-and-drop files and keeps a preview gallery so the last few captures stay handy.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Useful for</p>
+        <ul class="feature-list">
+          <li>Screenshots from macOS or Windows clipboard</li>
+          <li>Quick asset capture during client work</li>
+          <li>Saving reference images without extra apps</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Paste or drop</h2>
+            <p class="muted-copy">Click the drop zone once so it stays focused, then paste with your normal keyboard shortcut.</p>
+          </div>
+          <div class="button-row">
+            <button id="clear-gallery" class="button button-secondary" type="button">Clear gallery</button>
+          </div>
+        </div>
+
+        <div class="detail-grid align-end">
+          <label class="field">
+            <span class="field-label">Filename prefix</span>
+            <input id="filename-prefix" type="text" value="aifreelancer-shot" placeholder="aifreelancer-shot">
+          </label>
+          <label class="toggle">
+            <input id="auto-download" type="checkbox" checked>
+            Auto-download each new image
+          </label>
+        </div>
+
+        <div id="image-dropzone" class="dropzone" tabindex="0">
+          <div>
+            <strong>Paste an image or drop files here</strong>
+            <p class="muted-copy">Clipboard screenshots usually arrive as PNG files and can download instantly.</p>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Total captures</h3>
+            <p id="capture-count" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Total size</h3>
+            <p id="capture-size" class="result-number">0 KB</p>
+          </article>
+          <article class="result-card">
+            <h3>Status</h3>
+            <p id="capture-status">Waiting for an image.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Recent captures</h2>
+            <p class="muted-copy">Each card keeps the object URL alive so you can re-download until you clear the gallery.</p>
+          </div>
+        </div>
+        <div id="gallery-grid" class="gallery-grid">
+          <div class="empty-state">
+            <strong class="empty-title">No images yet</strong>
+            <p>Paste or drop an image to start building the local preview gallery.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>Use your own utility stack</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Image Paste Downloader for AIFreelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/image-paste-downloader.js"></script>
+</body>
+</html>

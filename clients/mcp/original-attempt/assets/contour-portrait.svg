@@ -1,0 +1,68 @@
+<svg width="1320" height="1120" viewBox="0 0 1320 1120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="contourBg" x1="154" y1="102" x2="1170" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FAEEE7" />
+      <stop offset="0.52" stop-color="#EAF8F9" />
+      <stop offset="1" stop-color="#D5EAF1" />
+    </linearGradient>
+    <linearGradient id="bodyTone" x1="574" y1="186" x2="818" y2="936" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8F5" />
+      <stop offset="1" stop-color="#B8E6F1" />
+    </linearGradient>
+    <linearGradient id="ribbon" x1="454" y1="642" x2="936" y2="638" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#57C8E7" />
+      <stop offset="0.54" stop-color="#9EE7DA" />
+      <stop offset="1" stop-color="#F2D8CC" />
+    </linearGradient>
+    <filter id="contourBlur" x="0" y="0" width="1320" height="1120" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="30" />
+    </filter>
+  </defs>
+
+  <rect width="1320" height="1120" rx="38" fill="url(#contourBg)" />
+
+  <g opacity="0.24">
+    <path d="M88 176H1232" stroke="#8ACFDC" stroke-width="2" stroke-dasharray="12 18" />
+    <path d="M88 294H1232" stroke="#8ACFDC" stroke-width="2" stroke-dasharray="12 18" />
+    <path d="M88 412H1232" stroke="#8ACFDC" stroke-width="2" stroke-dasharray="12 18" />
+  </g>
+
+  <g filter="url(#contourBlur)">
+    <circle cx="312" cy="250" r="128" fill="#F3D4C6" fill-opacity="0.84" />
+    <circle cx="952" cy="248" r="138" fill="#A3E7F0" fill-opacity="0.76" />
+    <circle cx="946" cy="806" r="164" fill="#8ED8E8" fill-opacity="0.52" />
+  </g>
+
+  <path d="M0 810C144 744 286 712 438 722C592 732 712 818 848 826C1008 834 1142 764 1320 700V1120H0V810Z" fill="#B0D9E1" fill-opacity="0.48" />
+  <path d="M0 888C146 836 330 822 484 844C628 864 744 918 864 922C1018 928 1134 884 1320 830V1120H0V888Z" fill="#8BC9D9" fill-opacity="0.34" />
+
+  <g>
+    <circle cx="694" cy="240" r="72" fill="#F6D9CC" />
+    <path d="M666 320C714 320 752 352 766 410L800 550C814 610 858 650 918 666L962 678L938 756L886 742C796 716 728 646 706 552L688 470C678 426 652 404 610 404C570 404 534 424 512 464L454 576L382 540L438 444C482 368 566 320 666 320Z" fill="url(#bodyTone)" />
+    <path d="M610 404C628 386 652 376 682 376C704 376 724 382 740 394" stroke="#163843" stroke-width="8" stroke-linecap="round" />
+    <path d="M556 500C612 474 666 470 724 488" stroke="#F8FFFF" stroke-width="5" stroke-linecap="round" opacity="0.88" />
+    <path d="M532 566C604 546 676 548 752 572" stroke="#9FDDEA" stroke-width="4" stroke-linecap="round" opacity="0.84" />
+    <path d="M574 638C642 626 706 630 772 650" stroke="#9FDDEA" stroke-width="4" stroke-linecap="round" opacity="0.84" />
+    <path d="M620 710C676 708 726 716 776 736" stroke="#9FDDEA" stroke-width="4" stroke-linecap="round" opacity="0.84" />
+  </g>
+
+  <g>
+    <path d="M402 654C482 610 588 590 720 594C828 598 928 618 1018 654C926 700 824 726 706 730C596 734 494 708 402 654Z" fill="url(#ribbon)" />
+    <path d="M378 654C470 726 580 762 706 762C838 762 950 724 1038 646" stroke="#FAFFFF" stroke-width="7" stroke-linecap="round" opacity="0.82" />
+    <path d="M420 606C510 562 610 540 724 544C832 548 934 572 1034 618" stroke="#53C7E7" stroke-width="6" stroke-linecap="round" opacity="0.72" />
+  </g>
+
+  <g opacity="0.52">
+    <path d="M226 784C316 706 420 664 544 658" stroke="#8BC9D9" stroke-width="5" />
+    <path d="M996 828C1066 766 1122 702 1172 618" stroke="#8BC9D9" stroke-width="5" />
+    <path d="M186 862C290 774 412 724 562 718" stroke="#8BC9D9" stroke-width="5" />
+  </g>
+
+  <g opacity="0.78">
+    <path d="M226 220L252 194" stroke="#6FD2E8" stroke-width="5" stroke-linecap="round" />
+    <path d="M252 220L226 194" stroke="#6FD2E8" stroke-width="5" stroke-linecap="round" />
+    <circle cx="1082" cy="362" r="8" fill="#6FD2E8" />
+    <circle cx="1138" cy="418" r="6" fill="#FFFFFF" fill-opacity="0.76" />
+    <circle cx="246" cy="344" r="7" fill="#FFFFFF" fill-opacity="0.76" />
+  </g>
+</svg>

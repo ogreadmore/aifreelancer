@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=32" />
+    <link rel="stylesheet" href="styles.css?v=39" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -46,7 +46,7 @@
           <a href="about.html">About</a>
           <a href="services.html">Services</a>
           <a href="faq.html">FAQ</a>
-          <a class="nav-cta" href="book.html">Book Now</a>
+          <a class="nav-cta" href="#contact-form">Let's Talk</a>
         </nav>
       </header>
 
@@ -68,7 +68,7 @@
                   happen.
                 </p>
                 <div class="hero-actions">
-                  <a class="button button-primary" href="book.html">Book Now</a>
+                  <a class="button button-primary" href="#contact-form">Book Now</a>
                   <a class="button button-secondary" href="services.html"
                     >View Services</a
                   >
@@ -138,7 +138,7 @@
           <p class="eyebrow">Need a quote?</p>
           <h2>If the city is not listed, send the request anyway and include the location details.</h2>
           <div class="cta-actions">
-            <a class="button button-primary" href="book.html">Start a Request</a>
+            <a class="button button-primary" href="#contact-form">Start a Request</a>
             <a class="button button-secondary" href="services.html#pricing">See Pricing</a>
           </div>
         </section>
@@ -146,15 +146,15 @@
 
       <footer class="site-footer">
         <div class="footer-shell">
-          <div class="footer-grid footer-grid-simple">
+          <div class="footer-grid footer-grid-form">
             <div class="footer-contact">
               <a class="footer-brand" href="index.html" aria-label="Mobile Cryo Pro home">
                 <img class="footer-logo" src="assets/mobile-cryo-pro-logo.png?v=5" alt="Mobile Cryo Pro" width="470" height="170" loading="lazy" />
               </a>
               <div class="footer-copy">
-                <p class="eyebrow">Book a Visit</p>
-                <h2>Tell us the service, location, and timing, and we will help dial in the right visit.</h2>
-                <p>Call, text, or use the booking page to request a recovery session, contour package, cryofacial, event setup, or select equine appointment.</p>
+                <p class="eyebrow">Request a Visit</p>
+                <h2>Tell us the service, location, and timing, and we will line up the right next step.</h2>
+                <p>Use the form for recovery sessions, CryoSkin, cryofacials, private event bookings, and equine requests. If you would rather talk it through, call or text.</p>
               </div>
               <div class="footer-contact-list">
                 <div class="footer-contact-item">
@@ -166,25 +166,76 @@
                   <a href="mailto:info@mobilecryopro.com">info@mobilecryopro.com</a>
                 </div>
                 <div class="footer-contact-item">
-                  <span>Hours</span>
-                  <p>7 days by appointment, with flexible scheduling and select later-hour bookings when availability allows.</p>
+                  <span>Service area</span>
+                  <p>North Bay coverage with San Francisco included in the working service map while routing details are finalized.</p>
                 </div>
               </div>
             </div>
-            <div class="footer-cta-panel">
-              <p class="panel-label">Appointment only</p>
-              <h3>One clear place to request a visit.</h3>
-              <p>Use the booking page to share the goal, area, location, number of people or horses if relevant, and timing window.</p>
-              <ul class="footer-points">
-                <li>Localized recovery and flare-up support</li>
-                <li>Body contouring, CryoSkin, and cryofacial visits</li>
-                <li>Hotels, wineries, workplaces, events, and barns</li>
-              </ul>
-              <div class="footer-cta-actions">
-                <a class="button button-primary" href="book.html">Book Now</a>
-                <a class="button button-secondary" href="service-area.html">Service Area</a>
+            <form class="contact-form" id="contact-form" data-contact-form>
+              <p class="contact-form-context" data-contact-context hidden></p>
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Name</span>
+                  <input type="text" name="name" autocomplete="name" required />
+                </label>
+
+                <label class="form-field">
+                  <span>Email</span>
+                  <input type="email" name="email" autocomplete="email" spellcheck="false" required />
+                </label>
+
+                <label class="form-field">
+                  <span>Phone</span>
+                  <input type="tel" name="phone" autocomplete="tel" inputmode="tel" />
+                </label>
+
+                <label class="form-field">
+                  <span>Service</span>
+                  <select name="service" required>
+                    <option value="" selected disabled>Select a Service</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                    <option value="Pain relief and recovery">Pain relief and recovery</option>
+                    <option value="Body contouring and CryoSkin">Body contouring and CryoSkin</option>
+                    <option value="Cryofacial rejuvenation">Cryofacial rejuvenation</option>
+                    <option value="Equine cryotherapy">Equine cryotherapy</option>
+                    <option value="Event or wellness booking">Event or wellness booking</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Location</span>
+                  <input type="text" name="location" placeholder="City, venue, or neighborhood" autocomplete="off" required />
+                </label>
+
+                <label class="form-field">
+                  <span>Preferred timing</span>
+                  <input type="text" name="timing" placeholder="Weekday mornings, wedding week, next Friday..." autocomplete="off" />
+                </label>
+
+                <label class="form-field">
+                  <span>Goal or area</span>
+                  <input type="text" name="goal_area" placeholder="Shoulder flare-up, abdomen contouring, cryofacial before travel..." autocomplete="off" />
+                </label>
+
+                <label class="form-field">
+                  <span>People or horses</span>
+                  <input type="text" name="party" placeholder="Just me, 3 people, 2 horses..." autocomplete="off" />
+                </label>
+
+                <label class="form-field form-field-full">
+                  <span>Notes</span>
+                  <textarea
+                    name="details"
+                    placeholder="Anything else we should know about the goal, the setting, access, or the schedule..."
+                  ></textarea>
+                </label>
               </div>
-            </div>
+
+              <button class="button button-primary" type="submit">Send Request</button>
+              <p class="contact-form-note">
+                Submitting opens a pre-filled email with your request details.
+              </p>
+            </form>
           </div>
           <div class="footer-bar">
             <p>Mobile Cryo Pro</p>
@@ -198,6 +249,6 @@
         </div>
       </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js?v=9"></script>
   </body>
 </html>

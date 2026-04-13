@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sky Command | AI Freelancer Tools</title>
+  <meta name="description" content="Play Sky Command, a polished browser-only retro-inspired interceptor defense game with waves, score, cities, lives, and a local high score.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .sky-command-shell {
+      --frame-border: rgba(255, 174, 102, 0.24);
+      --frame-glow: rgba(255, 124, 74, 0.26);
+    }
+
+    .sky-command-layout {
+      align-items: start;
+    }
+
+    .sky-game-panel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-head-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: flex-end;
+    }
+
+    .arcade-frame {
+      position: relative;
+      margin-top: 1rem;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--frame-border);
+      background:
+        radial-gradient(circle at 50% 16%, rgba(255, 176, 92, 0.16), transparent 38%),
+        linear-gradient(180deg, rgba(10, 12, 26, 0.98), rgba(4, 6, 14, 1));
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 24px 60px rgba(0, 0, 0, 0.35),
+        0 0 60px var(--frame-glow);
+      aspect-ratio: 4 / 5;
+    }
+
+    .arcade-frame::before,
+    .arcade-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .arcade-frame::before {
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.08), transparent 24%),
+        linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+      mix-blend-mode: screen;
+      z-index: 1;
+    }
+
+    .arcade-frame::after {
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.03) 0,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 5px
+      );
+      opacity: 0.16;
+      z-index: 1;
+    }
+
+    #game-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    .game-overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+      z-index: 2;
+      background: radial-gradient(circle at 50% 20%, rgba(16, 22, 38, 0.14), rgba(2, 4, 10, 0.52));
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .game-overlay.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.99);
+    }
+
+    .overlay-panel {
+      width: min(100%, 22rem);
+      padding: 1.2rem 1.2rem 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 184, 118, 0.2);
+      background: rgba(10, 14, 24, 0.8);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.36);
+      text-align: center;
+    }
+
+    .overlay-eyebrow {
+      margin: 0 0 0.4rem;
+      color: #ffb76a;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .overlay-panel h3 {
+      margin: 0;
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      line-height: 1;
+      color: #f6fbff;
+    }
+
+    .overlay-copy {
+      margin: 0.8rem 0 1rem;
+      color: rgba(229, 239, 251, 0.82);
+      line-height: 1.5;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem;
+    }
+
+    .button-row button,
+    .game-head-actions button,
+    .touch-controls button {
+      border: 1px solid rgba(255, 184, 118, 0.24);
+      background: linear-gradient(180deg, rgba(31, 33, 54, 0.98), rgba(12, 16, 30, 0.98));
+      color: #eff7ff;
+      border-radius: 14px;
+      padding: 0.8rem 1rem;
+      font: inherit;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-row button:hover,
+    .game-head-actions button:hover,
+    .touch-controls button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 204, 154, 0.46);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+    }
+
+    .button-row button:active,
+    .game-head-actions button:active,
+    .touch-controls button:active {
+      transform: translateY(1px);
+    }
+
+    .hud-grid {
+      margin-top: 0.95rem;
+    }
+
+    .status-strip {
+      margin-top: 0.95rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-height: 2rem;
+      color: rgba(238, 247, 255, 0.9);
+    }
+
+    .status-dot {
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 50%;
+      background: #76f1c3;
+      box-shadow: 0 0 12px rgba(118, 241, 195, 0.9);
+      flex: 0 0 auto;
+    }
+
+    .status-dot.is-alert {
+      background: #ffb86b;
+      box-shadow: 0 0 12px rgba(255, 184, 107, 0.85);
+    }
+
+    .status-dot.is-danger {
+      background: #ff758f;
+      box-shadow: 0 0 12px rgba(255, 117, 143, 0.85);
+    }
+
+    .touch-controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .touch-controls button {
+      padding: 0.95rem 0.65rem;
+      font-size: 0.96rem;
+    }
+
+    .touch-note {
+      margin-top: 0.8rem;
+      color: rgba(210, 225, 240, 0.72);
+      line-height: 1.5;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 0.8rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mini-list li {
+      padding: 0.85rem 0.95rem;
+      border-radius: 16px;
+      background: rgba(13, 22, 39, 0.82);
+      border: 1px solid rgba(255, 191, 126, 0.12);
+    }
+
+    .mini-list strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    @media (max-width: 760px) {
+      .game-head-actions {
+        justify-content: flex-start;
+      }
+
+      .touch-controls {
+        position: sticky;
+        bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../star-defender/">Star Defender</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#arcade">&larr; Back to arcade</a>
+        <span class="tool-category">Game</span>
+        <h1 class="page-title">Sky Command</h1>
+        <p class="page-description">
+          A retro-inspired interceptor defense game where every tap launches a counterstrike to protect your skyline.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Command loop</p>
+        <ul class="feature-list">
+          <li>Tap anywhere in the sky to launch an interceptor from the nearest battery</li>
+          <li>Blast rings can wipe out multiple threats at once if the timing is right</li>
+          <li>Your best defense run saves locally in the browser</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="tool-shell sky-command-shell">
+      <div class="two-column sky-command-layout">
+        <section class="panel sky-game-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Control deck</h2>
+              <p class="muted-copy">Click or tap the playfield to launch. P pauses, R restarts, and Enter begins a mission.</p>
+            </div>
+            <div class="game-head-actions">
+              <button id="start-button" type="button">Start</button>
+              <button id="pause-button" type="button">Pause</button>
+              <button id="restart-button" type="button">Restart</button>
+            </div>
+          </div>
+
+          <div class="result-grid hud-grid">
+            <article class="result-card">
+              <h3>Score</h3>
+              <p id="score-display" class="mono">0</p>
+            </article>
+            <article class="result-card">
+              <h3>Lives</h3>
+              <p id="lives-display" class="mono">3</p>
+            </article>
+            <article class="result-card">
+              <h3>Cities</h3>
+              <p id="cities-display" class="mono">8</p>
+            </article>
+            <article class="result-card">
+              <h3>Wave</h3>
+              <p id="wave-display" class="mono">1</p>
+            </article>
+            <article class="result-card">
+              <h3>High score</h3>
+              <p id="high-score-display" class="mono">0</p>
+            </article>
+          </div>
+
+          <div class="arcade-frame" aria-label="Sky Command playfield">
+            <canvas id="game-canvas" width="1080" height="1440"></canvas>
+            <div id="game-overlay" class="game-overlay" aria-live="polite">
+              <div class="overlay-panel">
+                <p id="overlay-eyebrow" class="overlay-eyebrow">Ready for launch</p>
+                <h3 id="overlay-title">Sky Command</h3>
+                <p id="overlay-copy" class="overlay-copy">Tap Start or press Enter to begin the mission.</p>
+                <div class="button-row">
+                  <button id="overlay-start" type="button">Start mission</button>
+                  <button id="overlay-restart" type="button">Restart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-grid status-strip">
+            <article class="result-card">
+              <h3>Launchers</h3>
+              <p id="launchers-display" class="mono">3</p>
+            </article>
+            <article class="result-card">
+              <h3>Threats</h3>
+              <p id="threats-display" class="mono">0</p>
+            </article>
+            <article class="result-card">
+              <h3>Combo</h3>
+              <p id="combo-display" class="mono">x0</p>
+            </article>
+            <article class="result-card">
+              <h3>Status</h3>
+              <p id="status-display" class="status-pill"><span class="status-dot"></span><span id="status-text">Awaiting command</span></p>
+            </article>
+          </div>
+        </section>
+
+        <aside class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Flight manual</h2>
+              <p class="muted-copy">Built to feel like a tiny arcade cabinet with neon glass and a fast feedback loop.</p>
+            </div>
+          </div>
+
+          <ul class="mini-list">
+            <li>
+              <strong>Controls</strong>
+              <span>Click or tap anywhere in the sky to fire. The nearest battery launches the interceptor.</span>
+            </li>
+            <li>
+              <strong>Scoring</strong>
+              <span>Destroy threats before they land. Chain clean hits to grow your combo and earn more points.</span>
+            </li>
+            <li>
+              <strong>Survival</strong>
+              <span>Keep cities alive as long as possible. Once they are gone, the core becomes the last line of defense.</span>
+            </li>
+          </ul>
+
+          <div class="touch-controls" aria-label="Touch controls">
+            <button id="touch-start" type="button">Start</button>
+            <button id="touch-pause" type="button">Pause</button>
+            <button id="touch-restart" type="button">Restart</button>
+          </div>
+          <p class="touch-note">On phones and tablets, tap the playfield to launch interceptors. Sounds are not required to play.</p>
+
+          <section class="section-block">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Arcade extras</p>
+                <h2>More arcade extras</h2>
+              </div>
+            </div>
+            <div class="related-grid" data-related-tools></div>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Sky Command for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/sky-command.js"></script>
+</body>
+</html>

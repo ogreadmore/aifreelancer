@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Sprint | AI Freelancer Tools</title>
+  <meta name="description" content="A polished browser-only five-letter word game with unlimited rounds, local stats, and an on-screen keyboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    body {
+      background:
+        radial-gradient(circle at 14% 12%, rgba(89, 182, 255, 0.18), transparent 24%),
+        radial-gradient(circle at 84% 18%, rgba(255, 145, 100, 0.16), transparent 26%),
+        radial-gradient(circle at 50% 110%, rgba(114, 92, 255, 0.12), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #fff 46%, #fbf7ff 100%);
+    }
+
+    .page-title {
+      max-width: 9ch;
+    }
+
+    .word-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.74fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .word-panel {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .word-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top left, rgba(89, 182, 255, 0.1), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255, 145, 100, 0.08), transparent 30%);
+      z-index: -1;
+    }
+
+    .word-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .word-mode-toggle {
+      display: inline-flex;
+      gap: 0.45rem;
+      padding: 0.35rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(27, 31, 35, 0.08);
+    }
+
+    .word-mode-toggle button {
+      border: none;
+      background: transparent;
+      color: rgba(26, 30, 36, 0.72);
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .word-mode-toggle button.is-active {
+      background: linear-gradient(135deg, rgba(89, 182, 255, 0.16), rgba(255, 145, 100, 0.16));
+      color: #111824;
+    }
+
+    .word-grid {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .word-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .word-cell {
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      border: 1px solid rgba(27, 31, 35, 0.1);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow:
+        0 12px 28px rgba(36, 74, 120, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      transition: transform 140ms ease, background 140ms ease, color 140ms ease, border-color 140ms ease;
+    }
+
+    .word-cell.is-filled {
+      transform: scale(1.02);
+      border-color: rgba(27, 31, 35, 0.18);
+    }
+
+    .word-cell.is-correct {
+      background: linear-gradient(135deg, #1f8f63, #23b46d);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .word-cell.is-present {
+      background: linear-gradient(135deg, #d89b28, #efbf43);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .word-cell.is-miss {
+      background: linear-gradient(135deg, #4b5565, #3e4654);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .word-keyboard {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .word-key-row {
+      display: grid;
+      grid-template-columns: repeat(20, minmax(0, 1fr));
+      gap: 0.45rem;
+    }
+
+    .word-key {
+      grid-column: span 2;
+      min-height: 3.1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(27, 31, 35, 0.1);
+      background: rgba(255, 255, 255, 0.8);
+      color: #18202b;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 120ms ease, background 120ms ease, color 120ms ease;
+      touch-action: manipulation;
+    }
+
+    .word-key:hover,
+    .word-key:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .word-key[data-size="wide"] {
+      grid-column: span 4;
+    }
+
+    .word-key.is-correct {
+      background: #1f8f63;
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .word-key.is-present {
+      background: #d89b28;
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .word-key.is-miss {
+      background: #495361;
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .word-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .word-stat {
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(27, 31, 35, 0.08);
+    }
+
+    .word-stat-label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: rgba(26, 30, 36, 0.58);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .word-stat-value {
+      display: block;
+      font-size: clamp(1.3rem, 2.8vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    @media (max-width: 960px) {
+      .word-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .word-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .word-cell {
+        border-radius: 16px;
+      }
+
+      .word-key {
+        min-height: 2.8rem;
+        font-size: 0.82rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../../#arcade">Arcade</a>
+        <a href="../merge-2048/">Merge 2048</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#arcade">&larr; Back to arcade</a>
+        <span class="tool-category">Game</span>
+        <h1 class="page-title">Word Sprint</h1>
+        <p class="page-description">
+          A sharp five-letter guessing game with daily and unlimited modes, local streak stats, and a built-in keyboard that works just as well on touch as it does on desktop.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Word puzzle</p>
+        <ul class="feature-list">
+          <li>Five-letter daily challenge plus unlimited practice</li>
+          <li>On-screen keyboard and physical keyboard support</li>
+          <li>Local stats for wins, streaks, and solved rounds</li>
+        </ul>
+        <p class="notice">Everything stays local. The word list and stats live in your browser only.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <div class="word-layout">
+        <section class="panel word-panel">
+          <div class="word-topbar">
+            <div>
+              <h2>Guess the word</h2>
+              <p class="muted-copy">Green means locked in. Gold means the letter belongs somewhere else.</p>
+            </div>
+            <div class="word-mode-toggle" role="tablist" aria-label="Word Sprint mode">
+              <button id="word-sprint-mode-daily" class="is-active" type="button" role="tab" aria-selected="true">Daily</button>
+              <button id="word-sprint-mode-unlimited" type="button" role="tab" aria-selected="false">Unlimited</button>
+            </div>
+          </div>
+
+          <div id="word-sprint-grid" class="word-grid" aria-label="Word Sprint board"></div>
+
+          <div class="button-row">
+            <button id="word-sprint-new-round" class="button button-primary" type="button">New round</button>
+            <button id="word-sprint-reveal" class="button button-secondary" type="button">Reveal answer</button>
+          </div>
+
+          <p id="word-sprint-status" class="notice" aria-live="polite">The daily puzzle is ready.</p>
+
+          <div id="word-sprint-keyboard" class="word-keyboard" aria-label="On-screen keyboard"></div>
+        </section>
+
+        <aside class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Local stats</h2>
+              <p class="muted-copy">Your browser keeps the streaks and results.</p>
+            </div>
+          </div>
+
+          <div class="word-stats">
+            <article class="word-stat">
+              <span class="word-stat-label">Played</span>
+              <span id="word-sprint-played" class="word-stat-value">0</span>
+            </article>
+            <article class="word-stat">
+              <span class="word-stat-label">Wins</span>
+              <span id="word-sprint-wins" class="word-stat-value">0</span>
+            </article>
+            <article class="word-stat">
+              <span class="word-stat-label">Current streak</span>
+              <span id="word-sprint-streak" class="word-stat-value">0</span>
+            </article>
+            <article class="word-stat">
+              <span class="word-stat-label">Best streak</span>
+              <span id="word-sprint-best-streak" class="word-stat-value">0</span>
+            </article>
+            <article class="word-stat">
+              <span class="word-stat-label">Solved in</span>
+              <span id="word-sprint-last-solved" class="word-stat-value">-</span>
+            </article>
+            <article class="word-stat">
+              <span class="word-stat-label">Mode</span>
+              <span id="word-sprint-mode-label" class="word-stat-value">Daily</span>
+            </article>
+          </div>
+
+          <div class="result-card">
+            <h3>How it works</h3>
+            <ul class="feature-list">
+              <li>Six guesses per round</li>
+              <li>All answers are from the built-in five-letter list</li>
+              <li>Unlimited mode rotates through random words for practice</li>
+            </ul>
+          </div>
+
+          <div class="result-card">
+            <h3>Keyboard shortcuts</h3>
+            <p class="helper-copy"><strong>A-Z</strong> type, <strong>Backspace</strong> delete, <strong>Enter</strong> submit.</p>
+          </div>
+        </aside>
+      </div>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Arcade extras</p>
+            <h2>More arcade extras</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Word Sprint for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/word-sprint.js"></script>
+</body>
+</html>

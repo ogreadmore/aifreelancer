@@ -147,23 +147,23 @@ function updateUnitLabels() {
 
 function updateEstimate() {
   const format = masonryFormats[formatInput.value];
-  const wasteFactor = Math.max(Number(wasteInput.value || 0), 0) / 100;
-  const layers = Math.max(Number(layersInput.value || 1), 1);
+  const wasteFactor = Math.max(readFiniteNumber(wasteInput.value, 0), 0) / 100;
+  const layers = Math.max(readFiniteNumber(layersInput.value, 1), 1);
   const jointIn = systemInput.value === "imperial"
-    ? Number(jointInput.value || 0)
-    : Number(jointInput.value || 0) / 25.4;
+    ? Math.max(readFiniteNumber(jointInput.value, 0), 0)
+    : Math.max(readFiniteNumber(jointInput.value, 0), 0) / 25.4;
 
   const wallLengthFt = systemInput.value === "imperial"
-    ? Number(lengthInput.value || 0)
-    : Number(lengthInput.value || 0) / 0.3048;
+    ? Math.max(readFiniteNumber(lengthInput.value, 0), 0)
+    : Math.max(readFiniteNumber(lengthInput.value, 0), 0) / 0.3048;
 
   const wallHeightFt = systemInput.value === "imperial"
-    ? Number(heightInput.value || 0)
-    : Number(heightInput.value || 0) / 0.3048;
+    ? Math.max(readFiniteNumber(heightInput.value, 0), 0)
+    : Math.max(readFiniteNumber(heightInput.value, 0), 0) / 0.3048;
 
   const openingsSqFt = systemInput.value === "imperial"
-    ? Number(openingsInput.value || 0)
-    : Number(openingsInput.value || 0) / 0.092903;
+    ? Math.max(readFiniteNumber(openingsInput.value, 0), 0)
+    : Math.max(readFiniteNumber(openingsInput.value, 0), 0) / 0.092903;
 
   const netAreaSqFt = Math.max(wallLengthFt * wallHeightFt - openingsSqFt, 0);
   const wallLengthIn = wallLengthFt * 12;
@@ -192,4 +192,9 @@ function updateEstimate() {
   resultMortar.innerHTML = systemInput.value === "imperial"
     ? `${formatNumber(mortarVolumeYd3)} yd&sup3;`
     : `${formatNumber(mortarVolumeFt3 * 0.0283168)} m&sup3;`;
+}
+
+function readFiniteNumber(value, fallback) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
 }

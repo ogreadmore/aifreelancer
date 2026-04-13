@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>Paddle Duel | AI Freelancer Tools</title>
+  <meta name="description" content="A retro-inspired browser paddle duel with adaptive AI, local best streak tracking, and mobile-friendly controls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#arcade">&larr; Back to arcade</a>
+        <span class="tool-category">Arcade</span>
+        <h1 class="page-title">Paddle Duel</h1>
+        <p class="page-description">
+          A neon, Pong-inspired browser duel with adaptive AI, keyboard and touch controls, adjustable speed, pause and restart actions, and a local best streak that sticks around for your next session.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Includes</p>
+        <ul class="feature-list">
+          <li>Player vs AI with reactive paddle tracking</li>
+          <li>Difficulty and pace controls for easy or brutal rallies</li>
+          <li>Local best win streak saved in your browser</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <div class="two-column">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Neon court</h2>
+              <p class="muted-copy">Use W/S or Up/Down to move. Space starts or pauses the match.</p>
+            </div>
+            <span id="game-status" class="status-pill is-active" aria-live="polite">Ready</span>
+          </div>
+
+          <canvas
+            id="paddle-court"
+            width="960"
+            height="600"
+            tabindex="0"
+            aria-label="Paddle Duel game court"
+            aria-describedby="paddle-controls-note"
+            class="canvas-surface canvas-surface--16x10 touch-none paddle-court-canvas"
+          ></canvas>
+
+          <div class="button-row">
+            <button id="game-primary" class="button button-primary" type="button">Start</button>
+            <button id="game-restart" class="button button-secondary" type="button">Restart</button>
+          </div>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>Player</h3>
+              <p id="player-score" class="result-number mono">0</p>
+            </article>
+            <article class="result-card">
+              <h3>CPU</h3>
+              <p id="cpu-score" class="result-number mono">0</p>
+            </article>
+            <article class="result-card">
+              <h3>Rally</h3>
+              <p id="rally-count" class="result-number mono">0</p>
+            </article>
+            <article class="result-card">
+              <h3>Best streak</h3>
+              <p id="best-streak" class="result-number mono">0</p>
+            </article>
+          </div>
+
+          <p id="game-message" class="notice">
+            Press Start or Space to begin the first serve. Win a match to build your local streak.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Court settings</h2>
+              <p class="muted-copy">Tune the AI and pace before the rally gets hot.</p>
+            </div>
+          </div>
+
+          <div class="detail-grid">
+            <label class="field">
+              <span class="field-label">Difficulty</span>
+              <select id="difficulty">
+                <option value="chill">Chill</option>
+                <option value="classic" selected>Classic</option>
+                <option value="arcade">Arcade</option>
+                <option value="overdrive">Overdrive</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field-label">First to</span>
+              <select id="target-score">
+                <option value="5">5 points</option>
+                <option value="7" selected>7 points</option>
+                <option value="11">11 points</option>
+                <option value="15">15 points</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Court speed</span>
+            <input id="court-speed" type="range" min="80" max="160" step="1" value="105">
+            <span id="court-speed-value" class="helper-copy">105% pace</span>
+          </label>
+
+          <div class="button-row">
+            <button id="mobile-up" class="button button-secondary" type="button">Up</button>
+            <button id="mobile-down" class="button button-secondary" type="button">Down</button>
+            <button id="mobile-pause" class="button button-secondary" type="button">Pause</button>
+            <button id="mobile-restart" class="button button-ghost" type="button">Restart</button>
+          </div>
+
+          <div id="paddle-controls-note" class="empty-state">
+            <strong class="empty-title">Controls</strong>
+            <p>W/S or Arrow keys move the paddle. Space pauses or resumes. On phones and tablets, hold the Up and Down buttons to steer, then tap Pause or Restart when needed.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Arcade extras</p>
+            <h2>More arcade extras</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Paddle Duel for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/paddle-duel.js"></script>
+</body>
+</html>

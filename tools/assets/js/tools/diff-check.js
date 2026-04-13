@@ -1,4 +1,13 @@
 import { escapeHtml, initCommon } from "../common.js";
+import {
+  buildRows,
+  createLineComparator,
+  diffSequence,
+  normalizeComparable,
+  normalizeNewlines,
+  splitLines,
+  tokenize,
+} from "../lib/diff-engine.js";
 
 initCommon("diff-check");
 
@@ -22,12 +31,12 @@ const summaryNodes = {
 const MAX_COMPARE_CELLS = 4_000_000;
 let compareTimer = 0;
 
-const sampleOriginal = `AIFreelancer Tools
+const sampleOriginal = `AI Freelancer Tools
 Ship practical utilities fast.
 Every tool runs locally in the browser.
 Start with Diff Check and keep growing.`;
 
-const sampleRevised = `AIFreelancer Tools
+const sampleRevised = `AI Freelancer Tools
 Ship practical utilities faster.
 Every tool runs locally in the browser.
 Start with Diff Check, then add the next tools as you need them.
@@ -95,8 +104,8 @@ function runCompare() {
     return;
   }
 
-  const operations = diffSequence(leftLines, rightLines, areLinesEqual);
-  const rows = buildRows(operations);
+  const operations = diffSequence(leftLines, rightLines, createLineComparator(getCompareOptions()));
+  const rows = buildRows(operations, getCompareOptions());
 
   setSummary({
     unchanged: rows.filter((row) => row.type === "equal").length,
@@ -188,147 +197,6 @@ function setSummary(counts) {
   summaryNodes.removed.textContent = counts.removed.toString();
 }
 
-function normalizeNewlines(value) {
-  return value.replaceAll("\r\n", "\n");
-}
-
-function splitLines(value) {
-  return value === "" ? [] : value.split("\n");
-}
-
-function areLinesEqual(left, right) {
-  return normalizeComparable(left) === normalizeComparable(right);
-}
-
-function normalizeComparable(value) {
-  let nextValue = value;
-
-  if (ignoreWhitespace.checked) {
-    nextValue = nextValue.trim().replace(/\s+/g, " ");
-  }
-
-  if (ignoreCase.checked) {
-    nextValue = nextValue.toLowerCase();
-  }
-
-  return nextValue;
-}
-
-function diffSequence(leftItems, rightItems, isEqual) {
-  const directions = Array.from({ length: leftItems.length + 1 }, () => new Uint8Array(rightItems.length + 1));
-  let previousRow = new Uint32Array(rightItems.length + 1);
-
-  for (let leftIndex = 1; leftIndex <= leftItems.length; leftIndex += 1) {
-    const currentRow = new Uint32Array(rightItems.length + 1);
-
-    for (let rightIndex = 1; rightIndex <= rightItems.length; rightIndex += 1) {
-      if (isEqual(leftItems[leftIndex - 1], rightItems[rightIndex - 1])) {
-        currentRow[rightIndex] = previousRow[rightIndex - 1] + 1;
-        directions[leftIndex][rightIndex] = 3;
-      } else if (previousRow[rightIndex] >= currentRow[rightIndex - 1]) {
-        currentRow[rightIndex] = previousRow[rightIndex];
-        directions[leftIndex][rightIndex] = 1;
-      } else {
-        currentRow[rightIndex] = currentRow[rightIndex - 1];
-        directions[leftIndex][rightIndex] = 2;
-      }
-    }
-
-    previousRow = currentRow;
-  }
-
-  const operations = [];
-  let leftIndex = leftItems.length;
-  let rightIndex = rightItems.length;
-
-  while (leftIndex > 0 || rightIndex > 0) {
-    if (leftIndex > 0 && rightIndex > 0 && directions[leftIndex][rightIndex] === 3) {
-      operations.push({
-        type: "equal",
-        leftValue: leftItems[leftIndex - 1],
-        rightValue: rightItems[rightIndex - 1],
-      });
-      leftIndex -= 1;
-      rightIndex -= 1;
-    } else if (rightIndex > 0 && (leftIndex === 0 || directions[leftIndex][rightIndex] === 2)) {
-      operations.push({
-        type: "insert",
-        rightValue: rightItems[rightIndex - 1],
-      });
-      rightIndex -= 1;
-    } else {
-      operations.push({
-        type: "delete",
-        leftValue: leftItems[leftIndex - 1],
-      });
-      leftIndex -= 1;
-    }
-  }
-
-  return operations.reverse();
-}
-
-function buildRows(operations) {
-  const rows = [];
-  let leftNumber = 1;
-  let rightNumber = 1;
-
-  for (let index = 0; index < operations.length; index += 1) {
-    const operation = operations[index];
-
-    if (operation.type === "equal") {
-      rows.push({
-        type: "equal",
-        leftNumber,
-        rightNumber,
-        leftText: operation.leftValue,
-        rightText: operation.rightValue,
-      });
-      leftNumber += 1;
-      rightNumber += 1;
-      continue;
-    }
-
-    const deleted = [];
-    const inserted = [];
-
-    while (index < operations.length && operations[index].type !== "equal") {
-      if (operations[index].type === "delete") {
-        deleted.push(operations[index].leftValue);
-      } else {
-        inserted.push(operations[index].rightValue);
-      }
-      index += 1;
-    }
-
-    index -= 1;
-
-    const pairCount = Math.max(deleted.length, inserted.length);
-    for (let rowIndex = 0; rowIndex < pairCount; rowIndex += 1) {
-      const hasLeft = rowIndex < deleted.length;
-      const hasRight = rowIndex < inserted.length;
-
-      rows.push({
-        type: hasLeft && hasRight ? "change" : hasLeft ? "delete" : "insert",
-        leftNumber: hasLeft ? leftNumber : null,
-        rightNumber: hasRight ? rightNumber : null,
-        leftText: hasLeft ? deleted[rowIndex] : "",
-        rightText: hasRight ? inserted[rowIndex] : "",
-      });
-
-      if (hasLeft) {
-        leftNumber += 1;
-      }
-
-      if (hasRight) {
-        rightNumber += 1;
-      }
-    }
-  }
-
-  return rows;
-}
-
 function getInlineDiff(leftText, rightText) {
   const leftTokens = tokenize(leftText);
   const rightTokens = tokenize(rightText);
@@ -341,8 +209,14 @@ function getInlineDiff(leftText, rightText) {
   }
 
   const operations = diffSequence(leftTokens, rightTokens, (left, right) => {
-    const nextLeft = ignoreCase.checked ? left.toLowerCase() : left;
-    const nextRight = ignoreCase.checked ? right.toLowerCase() : right;
+    const nextLeft = normalizeComparable(left, {
+      ignoreCase: ignoreCase.checked,
+      ignoreWhitespace: ignoreWhitespace.checked,
+    });
+    const nextRight = normalizeComparable(right, {
+      ignoreCase: ignoreCase.checked,
+      ignoreWhitespace: ignoreWhitespace.checked,
+    });
     return nextLeft === nextRight;
   });
 
@@ -374,6 +248,9 @@ function renderToken(value, className) {
   return `<span class="${className}">${escapeHtml(value)}</span>`;
 }
 
-function tokenize(value) {
-  return value.match(/(\s+|[A-Za-z0-9_]+|[^\sA-Za-z0-9_])/g) ?? [];
+function getCompareOptions() {
+  return {
+    ignoreWhitespace: ignoreWhitespace.checked,
+    ignoreCase: ignoreCase.checked,
+  };
 }

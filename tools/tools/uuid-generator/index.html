@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>UUID Generator | AI Freelancer Tools</title>
+  <meta name="description" content="Generate UUID v4 values locally in the browser with uppercase and hyphenless options.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Dev</span>
+        <h1 class="page-title">UUID Generator</h1>
+        <p class="page-description">
+          Generate UUID v4 values locally in the browser with browser crypto APIs, single or batch output, and quick copy controls for API work and database keys.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">UUID format</p>
+        <ul class="feature-list">
+          <li>36 characters in the default dashed form</li>
+          <li>Version 4 UUIDs use random bytes with fixed version and variant bits</li>
+          <li>Common layout: `8-4-4-4-12` hex characters</li>
+        </ul>
+        <p class="notice">Everything stays in the browser. No network calls, no dependencies, no server round-trip.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Generate UUIDs</h2>
+            <p class="muted-copy">Generate one UUID or a whole batch, then copy the exact format you want.</p>
+          </div>
+          <div class="button-row">
+            <button id="uuid-generate" class="button button-primary" type="button">Generate</button>
+            <button id="uuid-copy-all" class="button button-secondary" type="button">Copy all</button>
+            <button id="uuid-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="uuid-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <label class="field">
+            <span class="field-label">Count</span>
+            <input id="uuid-count" type="number" min="1" max="20" step="1" value="1">
+          </label>
+          <div class="field">
+            <span class="field-label">Status</span>
+            <p id="uuid-status" class="helper-copy" role="status" aria-live="polite">Ready to generate UUID v4 values locally.</p>
+          </div>
+          <div class="field">
+            <span class="field-label">Format preview</span>
+            <p id="uuid-preview" class="result-number mono mono-wrap">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</p>
+          </div>
+        </div>
+
+        <div class="panel-toolbar">
+          <div class="option-row">
+            <label class="toggle"><input id="uuid-uppercase" type="checkbox">Uppercase output</label>
+            <label class="toggle"><input id="uuid-hyphenless" type="checkbox">Hyphenless output</label>
+          </div>
+          <p class="helper-copy">Use uppercase for logs or docs, and hyphenless output when you need a compact key.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Generated values</h2>
+            <p class="muted-copy">Each UUID has its own copy button, and Copy all collects the current batch as newline-separated text.</p>
+          </div>
+        </div>
+
+        <div id="uuid-results" class="result-grid">
+          <div class="empty-state">
+            <strong class="empty-title">Nothing generated yet</strong>
+            <p>Use Generate or Load sample to create a fresh UUID.</p>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Quick guide</p>
+              <h2>What the format means</h2>
+            </div>
+          </div>
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>Version</h3>
+              <p class="result-number">4</p>
+              <p class="helper-copy">The third group starts with `4` to indicate a random UUID v4.</p>
+            </article>
+            <article class="result-card">
+              <h3>Variant</h3>
+              <p class="result-number">8, 9, A, or B</p>
+              <p class="helper-copy">The first character of the fourth group follows the RFC 4122 variant rule.</p>
+            </article>
+            <article class="result-card">
+              <h3>Length</h3>
+              <p class="result-number">36</p>
+              <p class="helper-copy">The dashed UUID form uses 32 hex digits plus 4 hyphens.</p>
+            </article>
+            <article class="result-card">
+              <h3>Use cases</h3>
+              <p class="helper-copy">Great for database IDs, request tracing, test fixtures, and temporary tokens.</p>
+            </article>
+          </div>
+        </div>
+
+        <p class="notice">UUIDs are generated in your browser with crypto-grade randomness. Nothing is sent anywhere.</p>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>UUID Generator for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/uuid-generator.js"></script>
+</body>
+</html>

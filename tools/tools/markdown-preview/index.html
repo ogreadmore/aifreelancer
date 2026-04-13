@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>Markdown Preview | AI Freelancer Tools</title>
+  <meta name="description" content="Preview Markdown locally in the browser with safe rendering, copyable HTML, and downloadable output.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .markdown-shell {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .markdown-preview {
+      --text: #182235;
+      --muted: #5b6474;
+      --accent: #cc7a00;
+      min-height: 34rem;
+      padding: 1.5rem;
+      border-radius: 1.15rem;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 245, 239, 0.98));
+      color: var(--text);
+      overflow: auto;
+    }
+
+    .markdown-preview > :first-child {
+      margin-top: 0;
+    }
+
+    .markdown-preview h1,
+    .markdown-preview h2,
+    .markdown-preview h3,
+    .markdown-preview h4,
+    .markdown-preview h5,
+    .markdown-preview h6 {
+      margin: 1.35rem 0 0.65rem;
+      color: #101828;
+      font-family: "Source Serif 4", Georgia, serif;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .markdown-preview h1 { font-size: clamp(2rem, 4vw, 2.9rem); }
+    .markdown-preview h2 { font-size: clamp(1.55rem, 2.5vw, 2.1rem); }
+    .markdown-preview h3 { font-size: 1.35rem; }
+    .markdown-preview h4 { font-size: 1.15rem; }
+    .markdown-preview h5 { font-size: 1rem; }
+    .markdown-preview h6 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    .markdown-preview p,
+    .markdown-preview ul,
+    .markdown-preview ol,
+    .markdown-preview blockquote,
+    .markdown-preview table,
+    .markdown-preview pre,
+    .markdown-preview hr {
+      margin: 0 0 1rem;
+    }
+
+    .markdown-preview p {
+      line-height: 1.75;
+    }
+
+    .markdown-preview ul,
+    .markdown-preview ol {
+      padding-left: 1.35rem;
+    }
+
+    .markdown-preview li + li {
+      margin-top: 0.45rem;
+    }
+
+    .markdown-preview blockquote {
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: 1rem;
+      background: rgba(245, 158, 11, 0.09);
+      color: #344054;
+    }
+
+    .markdown-preview pre {
+      padding: 1rem 1.1rem;
+      border-radius: 1rem;
+      background: #101828;
+      color: #f8fafc;
+      overflow: auto;
+    }
+
+    .markdown-preview pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .markdown-preview code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 0.45rem;
+      background: rgba(15, 23, 42, 0.08);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.94em;
+    }
+
+    .markdown-preview a {
+      color: #0f62fe;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.15em;
+    }
+
+    .markdown-preview table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 0.85rem;
+    }
+
+    .markdown-preview th,
+    .markdown-preview td {
+      padding: 0.8rem 0.85rem;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .markdown-preview th {
+      background: rgba(15, 23, 42, 0.05);
+      font-weight: 700;
+    }
+
+    .markdown-preview hr {
+      border: 0;
+      border-top: 1px solid rgba(15, 23, 42, 0.12);
+    }
+
+    .markdown-preview .preview-empty {
+      min-height: 24rem;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .markdown-preview .preview-empty strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .markdown-metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .markdown-note {
+      margin-top: 0.9rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      .markdown-preview {
+        min-height: 24rem;
+        padding: 1.1rem;
+      }
+
+      .markdown-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+        <a href="../json-formatter/">JSON Formatter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Writing</span>
+        <h1 class="page-title">Markdown Preview</h1>
+        <p class="page-description">
+          Paste Markdown, preview safe rendered HTML, and keep the whole loop local to your browser. It is useful for
+          docs, release notes, AI prompts, and quick content drafts that should not leave the page.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Supported locally</p>
+        <ul class="feature-list">
+          <li>Headings, lists, blockquotes, and horizontal rules</li>
+          <li>Inline code, links, emphasis, and fenced code blocks</li>
+          <li>Tables, copyable HTML, and downloadable standalone output</li>
+        </ul>
+        <p class="notice">Raw HTML is escaped, then the preview is sanitized with a small allowlist before it is shown.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Preview Markdown</h2>
+            <p class="muted-copy">Edit the source on the left and watch the rendered preview update on the right.</p>
+          </div>
+          <div class="button-row">
+            <button id="markdown-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="markdown-copy" class="button button-primary" type="button">Copy HTML</button>
+            <button id="markdown-download" class="button button-secondary" type="button">Download HTML</button>
+            <button id="markdown-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="compare-grid markdown-shell">
+          <label class="field">
+            <span class="field-label">Markdown source</span>
+            <textarea id="markdown-input" class="compare-textarea" rows="24" spellcheck="false" aria-describedby="markdown-status" placeholder="# Write markdown here"></textarea>
+          </label>
+          <div class="field">
+            <span class="field-label">Rendered preview</span>
+            <div id="markdown-preview" class="markdown-preview" role="region" aria-label="Rendered markdown preview"></div>
+          </div>
+        </div>
+
+        <div id="markdown-status" class="json-status" role="status" aria-live="polite">
+          Load the sample or paste Markdown to render a safe preview.
+        </div>
+
+        <div class="result-grid markdown-metrics">
+          <article class="result-card">
+            <h3>Words</h3>
+            <p id="markdown-word-count" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Characters</h3>
+            <p id="markdown-char-count" class="result-number">0</p>
+          </article>
+        </div>
+
+        <p class="markdown-note">Rendered locally with a safe HTML allowlist so the preview stays browser-only.</p>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">What it handles</p>
+            <h2>Enough Markdown to make quick publishing useful</h2>
+          </div>
+        </div>
+        <div class="task-grid">
+          <article class="tool-card">
+            <span class="task-kicker">Text</span>
+            <h3>Readable formatting</h3>
+            <p>Headings, emphasis, lists, blockquotes, and inline code all render with clear hierarchy and spacing.</p>
+          </article>
+          <article class="tool-card">
+            <span class="task-kicker">Code</span>
+            <h3>Fenced snippets</h3>
+            <p>Code fences stay monospaced and escaped, so you can paste examples without risking the preview.</p>
+          </article>
+          <article class="tool-card">
+            <span class="task-kicker">Tables</span>
+            <h3>Data stays legible</h3>
+            <p>Simple pipe tables render into a clean grid that is easy to scan in docs and change logs.</p>
+          </article>
+          <article class="tool-card">
+            <span class="task-kicker">Export</span>
+            <h3>Copy or download HTML</h3>
+            <p>Use the rendered fragment directly, or download a standalone HTML file for sharing elsewhere.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Markdown Preview for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/markdown-preview.js"></script>
+</body>
+</html>

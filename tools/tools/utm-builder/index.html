@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>UTM Builder | AI Freelancer Tools</title>
+  <meta name="description" content="Build tracked campaign URLs locally in the browser with UTM source, medium, campaign, term, and content parameters.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../url-inspector/">URL Inspector</a>
+        <a href="../slug-generator/">Slug Generator</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Marketing</span>
+        <h1 class="page-title">UTM Builder</h1>
+        <p class="page-description">
+          Build campaign URLs locally in the browser by combining a base URL with UTM source, medium, campaign, term, and content fields. Values are sanitized, encoded, and previewed instantly.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">What it does</p>
+        <ul class="feature-list">
+          <li>Preserves existing query strings and hash fragments on your base URL</li>
+          <li>Encodes all UTM values safely with the browser URL APIs</li>
+          <li>Keeps everything local with no dependencies or network calls</li>
+        </ul>
+        <p class="notice">Paste a landing page URL, fill in the campaign fields, and copy the final tracked link in one step.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Build campaign URL</h2>
+            <p class="muted-copy">Enter your landing page first, then add only the UTM values you want to track.</p>
+          </div>
+          <div class="button-row">
+            <button id="utm-copy" class="button button-primary" type="button" disabled>Copy URL</button>
+            <button id="utm-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="utm-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <label class="field">
+            <span class="field-label">Base URL</span>
+            <input id="utm-base-url" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://example.com/landing-page">
+          </label>
+          <label class="field">
+            <span class="field-label">utm_source</span>
+            <input id="utm-source" type="text" autocomplete="off" spellcheck="false" placeholder="newsletter">
+          </label>
+          <label class="field">
+            <span class="field-label">utm_medium</span>
+            <input id="utm-medium" type="text" autocomplete="off" spellcheck="false" placeholder="email">
+          </label>
+          <label class="field">
+            <span class="field-label">utm_campaign</span>
+            <input id="utm-campaign" type="text" autocomplete="off" spellcheck="false" placeholder="spring_launch_2026">
+          </label>
+          <label class="field">
+            <span class="field-label">utm_term</span>
+            <input id="utm-term" type="text" autocomplete="off" spellcheck="false" placeholder="ai tools">
+          </label>
+          <label class="field">
+            <span class="field-label">utm_content</span>
+            <input id="utm-content" type="text" autocomplete="off" spellcheck="false" placeholder="hero_button">
+          </label>
+        </div>
+
+        <div class="panel-toolbar">
+          <p class="helper-copy">Common values: source = newsletter, social, google, partner. Medium = email, cpc, social, referral.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Live preview</h2>
+            <p class="muted-copy">The final URL updates as you type, and Copy URL grabs the exact tracked link.</p>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="field">
+            <span class="field-label">Status</span>
+            <p id="utm-status" class="helper-copy" role="status" aria-live="polite">Ready to build a tracked URL locally.</p>
+          </div>
+          <div class="field">
+            <span class="field-label">Active parameters</span>
+            <p id="utm-active-count" class="result-number">0 of 5</p>
+          </div>
+          <div class="field">
+            <span class="field-label">Preview URL</span>
+            <p id="utm-preview" class="result-number mono mono-wrap">Enter a base URL to see the live tracked link.</p>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Quick summary</p>
+              <h2>Parameter snapshot</h2>
+            </div>
+          </div>
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>Base URL</h3>
+              <p id="utm-summary-base" class="result-number mono mono-wrap">Not set</p>
+            </article>
+            <article class="result-card">
+              <h3>utm_source</h3>
+              <p id="utm-summary-source" class="result-number mono mono-wrap">Not set</p>
+            </article>
+            <article class="result-card">
+              <h3>utm_medium</h3>
+              <p id="utm-summary-medium" class="result-number mono mono-wrap">Not set</p>
+            </article>
+            <article class="result-card">
+              <h3>utm_campaign</h3>
+              <p id="utm-summary-campaign" class="result-number mono mono-wrap">Not set</p>
+            </article>
+            <article class="result-card">
+              <h3>utm_term</h3>
+              <p id="utm-summary-term" class="result-number mono mono-wrap">Not set</p>
+            </article>
+            <article class="result-card">
+              <h3>utm_content</h3>
+              <p id="utm-summary-content" class="result-number mono mono-wrap">Not set</p>
+            </article>
+          </div>
+        </div>
+
+        <p class="notice">UTM values are trimmed and encoded locally before the URL is built, so the copied link is ready for analytics tools and ad platforms.</p>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>UTM Builder for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/utm-builder.js"></script>
+</body>
+</html>

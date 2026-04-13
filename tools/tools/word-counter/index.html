@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter | AI Freelancer Tools</title>
+  <meta name="description" content="Count words, characters, sentences, paragraphs, reading time, speaking time, and repeated keywords in the browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Writing</span>
+        <h1 class="page-title">Word Counter</h1>
+        <p class="page-description">
+          Count words, characters, sentences, paragraphs, reading time, speaking time, longest word, average word length, and repeated keywords without sending text anywhere.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Useful for</p>
+        <ul class="feature-list">
+          <li>SEO copy and landing page drafts</li>
+          <li>Prompt cleanup before a model run</li>
+          <li>Article, note, and transcript checks</li>
+        </ul>
+        <p class="notice">Everything runs locally in the browser.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Analyze text</h2>
+            <p class="muted-copy">Paste text below, use the cleanup buttons when needed, and the counts update instantly.</p>
+          </div>
+          <div class="button-row">
+            <button id="word-counter-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="word-counter-trim" class="button button-secondary" type="button">Trim lines</button>
+            <button id="word-counter-collapse" class="button button-secondary" type="button">Collapse spaces</button>
+            <button id="word-counter-strip" class="button button-secondary" type="button">Strip line breaks</button>
+            <button id="word-counter-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <label class="field">
+          <span class="field-label">Text</span>
+          <textarea id="word-counter-input" class="compare-textarea" spellcheck="false" placeholder="Paste text here to count words, timing, and repeated keywords"></textarea>
+        </label>
+
+        <div class="panel-toolbar">
+          <p class="helper-copy">Counts stay in your browser. Use the transform buttons to normalize messy drafts before reviewing them.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Results</h2>
+            <p class="muted-copy">A quick snapshot of the text, plus practical timing estimates for reading and speaking.</p>
+          </div>
+        </div>
+
+        <div class="result-grid" aria-live="polite">
+          <article class="result-card">
+            <h3>Words</h3>
+            <p id="word-counter-words" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Characters</h3>
+            <p id="word-counter-characters" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Characters without spaces</h3>
+            <p id="word-counter-characters-no-spaces" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Sentences</h3>
+            <p id="word-counter-sentences" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Paragraphs</h3>
+            <p id="word-counter-paragraphs" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Reading time</h3>
+            <p id="word-counter-reading-time" class="result-number">0s</p>
+          </article>
+          <article class="result-card">
+            <h3>Speaking time</h3>
+            <p id="word-counter-speaking-time" class="result-number">0s</p>
+          </article>
+          <article class="result-card">
+            <h3>Longest word</h3>
+            <p id="word-counter-longest-word" class="mono">None</p>
+          </article>
+          <article class="result-card">
+            <h3>Average word length</h3>
+            <p id="word-counter-average-word-length" class="result-number">0.0</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Keyword frequency</p>
+            <h2>Most repeated words</h2>
+            <p class="muted-copy">Common stop words are filtered out so the list highlights the words that actually carry meaning.</p>
+          </div>
+        </div>
+
+        <div class="panel converter-table">
+          <table id="word-counter-keyword-table" aria-describedby="word-counter-keyword-note">
+            <thead>
+              <tr>
+                <th>Word</th>
+                <th>Count</th>
+                <th>Share</th>
+              </tr>
+            </thead>
+            <tbody id="word-counter-keyword-body"></tbody>
+          </table>
+          <div id="word-counter-keyword-empty" class="empty-state">
+            <strong class="empty-title">No repeated keywords yet</strong>
+            <p id="word-counter-keyword-note">Paste a longer draft to see repeated words after stop-word filtering.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Word Counter for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/word-counter.js"></script>
+</body>
+</html>

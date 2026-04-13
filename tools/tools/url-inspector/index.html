@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>URL Inspector | AI Freelancer Tools</title>
+  <meta name="description" content="Inspect URLs locally in the browser, decode query params, and rebuild links without sending data anywhere.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .url-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .url-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .url-toolbar-copy {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+    }
+
+    .url-samples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+    }
+
+    .url-source {
+      min-height: 12rem;
+      width: 100%;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+
+    .url-status {
+      margin-top: 0.9rem;
+    }
+
+    .url-status.is-valid {
+      border: 1px solid rgba(30, 155, 97, 0.28);
+      background: rgba(30, 155, 97, 0.1);
+      color: #c8f5df;
+    }
+
+    .url-status.is-invalid {
+      border: 1px solid rgba(229, 72, 77, 0.28);
+      background: rgba(229, 72, 77, 0.1);
+      color: #ffd1d3;
+    }
+
+    .url-preview {
+      word-break: break-all;
+    }
+
+    .url-field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .url-path-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .url-path-segment {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(247, 244, 234, 0.03);
+      color: var(--ink);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .url-path-segment strong {
+      color: var(--ink-soft);
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    .url-group-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .url-group-card {
+      display: grid;
+      gap: 0.85rem;
+      padding: 1rem 1.05rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: rgba(247, 244, 234, 0.03);
+      box-shadow: none;
+    }
+
+    .url-group-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    .url-group-title {
+      margin: 0;
+      font-size: 1.02rem;
+    }
+
+    .url-group-note {
+      margin: 0.15rem 0 0;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .url-value-list {
+      display: grid;
+      gap: 0.65rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .url-value-item {
+      display: grid;
+      gap: 0.3rem;
+      padding: 0.8rem 0.85rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(247, 244, 234, 0.02);
+    }
+
+    .url-value-label {
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .url-value-text {
+      margin: 0;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .url-empty {
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    @media (max-width: 960px) {
+      .url-field-grid,
+      .url-group-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../qr-generator/">QR Generator</a>
+        <a href="../utm-builder/">UTM Builder</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Web</span>
+        <h1 class="page-title">URL Inspector</h1>
+        <p class="page-description">
+          Inspect links locally in the browser, break them into origin, path, query, and hash parts, decode repeated query params cleanly, and rebuild the URL as you edit.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">What it does</p>
+        <ul class="feature-list">
+          <li>Parses standard URLs locally with no uploads or external services</li>
+          <li>Groups repeated query params into a clean decoded summary</li>
+          <li>Lets you edit protocol, host, path, query, and fragment to rebuild the link</li>
+        </ul>
+        <p class="notice">This page stays browser-only. Paste a URL, inspect it, and copy the exact parts you need.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell url-stack">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Inspect a URL</h2>
+            <p class="muted-copy">Paste a link, then use the buttons to parse it, copy parts, or load an example.</p>
+          </div>
+          <div class="url-toolbar-copy">
+            <button id="url-parse" class="button button-primary" type="button">Parse URL</button>
+            <button id="url-copy-full" class="button button-secondary" type="button" disabled>Copy full URL</button>
+            <button id="url-copy-origin" class="button button-secondary" type="button" disabled>Copy origin</button>
+            <button id="url-copy-path" class="button button-secondary" type="button" disabled>Copy path</button>
+            <button id="url-copy-query" class="button button-secondary" type="button" disabled>Copy query</button>
+            <button id="url-copy-hash" class="button button-secondary" type="button" disabled>Copy hash</button>
+            <button id="url-copy-report" class="button button-secondary" type="button" disabled>Copy report</button>
+            <button id="url-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <label class="field">
+          <span class="field-label">Source URL</span>
+          <textarea id="url-source" class="json-input url-source" spellcheck="false" placeholder="https://example.com/path/to/page?ref=home&amp;ref=brand#section-2"></textarea>
+        </label>
+
+        <div class="panel-toolbar">
+          <div class="url-samples" aria-label="Sample URLs">
+            <button id="url-sample-1" class="button button-secondary" type="button">Sample: repeated params</button>
+            <button id="url-sample-2" class="button button-secondary" type="button">Sample: encoded path</button>
+            <button id="url-sample-3" class="button button-secondary" type="button">Sample: protocol-relative</button>
+          </div>
+        </div>
+
+        <p id="url-status" class="json-status url-status" role="status" aria-live="polite">Paste a URL or load a sample to start inspecting it locally.</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Breakdown</h2>
+            <p class="muted-copy">The parsed URL stays readable, and repeated params are grouped instead of duplicated noise.</p>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Origin</h3>
+            <p id="url-origin" class="result-number mono url-preview">—</p>
+          </article>
+          <article class="result-card">
+            <h3>Pathname</h3>
+            <p id="url-pathname" class="result-number mono url-preview">—</p>
+          </article>
+          <article class="result-card">
+            <h3>Query pairs</h3>
+            <p id="url-query-count" class="result-number mono">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Repeated keys</h3>
+            <p id="url-repeated-count" class="result-number mono">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Hash</h3>
+            <p id="url-hash" class="result-number mono url-preview">—</p>
+          </article>
+          <article class="result-card">
+            <h3>Path depth</h3>
+            <p id="url-depth" class="result-number mono">0</p>
+          </article>
+        </div>
+
+        <div class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Path segments</p>
+              <h2>Decoded path pieces</h2>
+            </div>
+          </div>
+          <div id="url-path-segments" class="url-path-list"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Edit and rebuild</h2>
+            <p class="muted-copy">Adjust the URL parts below and the rebuilt link updates in the browser immediately.</p>
+          </div>
+          <div class="button-row">
+            <button id="url-rebuild" class="button button-primary" type="button">Rebuild URL</button>
+            <button id="url-copy-built" class="button button-secondary" type="button" disabled>Copy rebuilt URL</button>
+          </div>
+        </div>
+
+        <div class="url-field-grid">
+          <label class="field">
+            <span class="field-label">Protocol</span>
+            <input id="url-protocol" type="text" autocomplete="off" spellcheck="false" placeholder="https:">
+          </label>
+          <label class="field">
+            <span class="field-label">Username</span>
+            <input id="url-username" type="text" autocomplete="off" spellcheck="false" placeholder="user">
+          </label>
+          <label class="field">
+            <span class="field-label">Password</span>
+            <input id="url-password" type="text" autocomplete="off" spellcheck="false" placeholder="••••••">
+          </label>
+          <label class="field">
+            <span class="field-label">Hostname</span>
+            <input id="url-hostname" type="text" autocomplete="off" spellcheck="false" placeholder="example.com">
+          </label>
+          <label class="field">
+            <span class="field-label">Port</span>
+            <input id="url-port" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="443">
+          </label>
+          <label class="field">
+            <span class="field-label">Pathname</span>
+            <input id="url-pathname-input" type="text" autocomplete="off" spellcheck="false" placeholder="/products/widget-pro">
+          </label>
+          <label class="field">
+            <span class="field-label">Query string</span>
+            <input id="url-search" type="text" autocomplete="off" spellcheck="false" placeholder="ref=home&amp;ref=brand">
+          </label>
+          <label class="field">
+            <span class="field-label">Hash</span>
+            <input id="url-hash-input" type="text" autocomplete="off" spellcheck="false" placeholder="section-2">
+          </label>
+        </div>
+
+        <div class="detail-grid detail-grid-spaced">
+          <div class="field">
+            <span class="field-label">Rebuilt URL</span>
+            <p id="url-preview" class="result-number mono url-preview">Paste a URL or fill in the fields to build one.</p>
+          </div>
+          <div class="field">
+            <span class="field-label">Current query report</span>
+            <p id="url-query-summary" class="helper-copy">No query params loaded yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Query params</h2>
+            <p class="muted-copy">Repeated keys stay grouped, and every value is shown in decoded form.</p>
+          </div>
+        </div>
+        <div id="url-params-empty" class="url-empty">Load a URL with query parameters to see the decoded breakdown.</div>
+        <div id="url-params-grid" class="url-group-grid"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>URL Inspector for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/url-inspector.js"></script>
+</body>
+</html>

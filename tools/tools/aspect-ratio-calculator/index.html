@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspect Ratio Calculator | AI Freelancer Tools</title>
+  <meta name="description" content="Calculate width and height from common aspect ratios directly in your browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../image-resizer/">Image Resizer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Imaging</span>
+        <h1 class="page-title">Aspect Ratio Calculator</h1>
+        <p class="page-description">
+          Pick a preset or enter a custom ratio, solve from width or height, and instantly see the matching dimension, scale-adjusted result, and simplified ratio metadata.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Useful for</p>
+        <ul class="feature-list">
+          <li>Photo and video framing</li>
+          <li>Layout and canvas planning</li>
+          <li>Quick pixel math in the browser</li>
+        </ul>
+        <p class="notice">Everything runs locally with plain HTML and JavaScript.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Calculate dimensions</h2>
+            <p class="muted-copy">Choose a ratio, enter one side, and let the calculator solve the other side with optional scaling and rounding.</p>
+          </div>
+          <div class="button-row">
+            <button id="ratio-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="ratio-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="detail-grid align-end">
+          <label class="field">
+            <span class="field-label">Ratio preset</span>
+            <select id="ratio-preset">
+              <option value="1:1">1:1</option>
+              <option value="4:3">4:3</option>
+              <option value="16:9">16:9</option>
+              <option value="21:9">21:9</option>
+              <option value="9:16">9:16</option>
+              <option value="custom">Custom</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Solve from</span>
+            <select id="solve-from">
+              <option value="width">Width</option>
+              <option value="height">Height</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label" id="source-label">Width</span>
+            <input id="source-value" type="number" step="any" value="1920" inputmode="decimal">
+          </label>
+          <label class="field">
+            <span class="field-label">Scale multiplier</span>
+            <input id="scale-multiplier" type="number" step="any" value="1" inputmode="decimal">
+          </label>
+        </div>
+
+        <div id="custom-ratio-fields" class="detail-grid align-end">
+          <label class="field">
+            <span class="field-label">Custom numerator</span>
+            <input id="ratio-numerator" type="number" min="1" step="1" value="16" inputmode="numeric">
+          </label>
+          <label class="field">
+            <span class="field-label">Custom denominator</span>
+            <input id="ratio-denominator" type="number" min="1" step="1" value="9" inputmode="numeric">
+          </label>
+          <label class="toggle">
+            <input id="round-output" type="checkbox" checked>
+            Round final dimensions
+          </label>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Computed dimension</h3>
+            <p id="computed-dimension" class="result-number">1080 px</p>
+            <p id="computed-formula" class="helper-copy">1920 × 9 ÷ 16 = 1080</p>
+          </article>
+          <article class="result-card">
+            <h3>Scaled pair</h3>
+            <p id="scaled-pair" class="result-number">1920 × 1080 px</p>
+            <p id="scaled-note" class="helper-copy">Scale multiplier keeps both sides in sync.</p>
+          </article>
+          <article class="result-card">
+            <h3>Ratio metadata</h3>
+            <p id="ratio-metadata" class="result-number">16:9</p>
+            <p id="ratio-decimal" class="helper-copy">1.7778:1 simplified to 16:9</p>
+          </article>
+          <article class="result-card">
+            <h3>Status</h3>
+            <p id="ratio-status">Ready.</p>
+          </article>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card">
+            <span class="field-label">Orientation</span>
+            <strong id="ratio-orientation">Landscape</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Simplified ratio</span>
+            <strong id="ratio-simplified">16:9</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Decimal ratio</span>
+            <strong id="ratio-decimal-value" class="mono">1.7778:1</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Scale</span>
+            <strong id="ratio-scale">1x</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>Keep the browser stack growing</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Aspect Ratio Calculator for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/aspect-ratio-calculator.js"></script>
+</body>
+</html>

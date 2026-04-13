@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brick Blitz | AI Freelancer Tools</title>
+  <meta name="description" content="Play a retro-inspired brick breaker game with levels, power-ups, local best scores, and keyboard or touch controls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    #brick-stage {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.4rem;
+      padding: 1rem;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(245, 83, 79, 0.2), transparent 26%),
+        radial-gradient(circle at 82% 14%, rgba(11, 132, 255, 0.18), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(255, 214, 102, 0.12), transparent 28%),
+        linear-gradient(180deg, #070b16 0%, #0b1020 55%, #090e18 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 26px 50px rgba(6, 10, 18, 0.36);
+    }
+
+    #brick-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, transparent 18%),
+        linear-gradient(transparent 0 92%, rgba(255, 255, 255, 0.06) 100%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 56px 100%;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.55;
+    }
+
+    #brick-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      position: relative;
+      z-index: 1;
+      border-radius: 1rem;
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    #brick-banner {
+      position: absolute;
+      left: 50%;
+      top: 1.1rem;
+      transform: translateX(-50%);
+      z-index: 2;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(9, 14, 24, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #f8fbff;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26);
+      backdrop-filter: blur(12px);
+      transition: opacity 180ms ease, transform 180ms ease;
+      pointer-events: none;
+    }
+
+    #brick-banner[data-tone="alert"] {
+      color: #ffe6a8;
+      border-color: rgba(255, 214, 102, 0.35);
+    }
+
+    #brick-banner[data-tone="danger"] {
+      color: #ffd0d0;
+      border-color: rgba(245, 83, 79, 0.45);
+    }
+
+    #brick-banner.is-hidden {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-0.35rem);
+    }
+
+    #brick-status {
+      margin: 0.9rem 0 0;
+    }
+
+    #brick-touch-controls {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    #brick-touch-controls .button {
+      min-height: 3.25rem;
+      justify-content: center;
+    }
+
+    #brick-touch-controls .button[data-action="launch"] {
+      grid-column: span 2;
+    }
+
+    .brick-meta {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .brick-meta-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .brick-tip-list {
+      margin: 0;
+      padding-left: 1.05rem;
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .brick-tip-list li strong {
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    @media (max-width: 720px) {
+      #brick-touch-controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #brick-touch-controls .button[data-action="launch"] {
+        grid-column: span 2;
+      }
+
+      .brick-meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../brick-calculator/">Brick Calculator</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel hero-panel">
+        <div class="panel-glow"></div>
+        <a class="page-back" href="../../#arcade">&larr; Back to arcade</a>
+        <span class="tool-category">Games</span>
+        <h1 class="page-title">Brick Blitz</h1>
+        <p class="page-description">
+          A retro-inspired brick breaker with punchy neon visuals, level progression, combo scoring, power-ups, local best score tracking, and buttery paddle physics.
+        </p>
+        <div class="button-row">
+          <button id="brick-launch" class="button button-primary" type="button">Launch ball</button>
+          <button id="brick-pause" class="button button-secondary" type="button">Pause</button>
+          <button id="brick-restart" class="button button-ghost" type="button">Restart</button>
+        </div>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Arcade notes</p>
+        <ul class="feature-list">
+          <li>Keyboard, pointer, and touch-friendly controls</li>
+          <li>Level banners, combo streaks, and particle pops</li>
+          <li>Saved local best score so every run has a chase</li>
+        </ul>
+        <p class="notice">Use left and right arrows or A and D to move. Space launches the ball, P pauses, and R restarts instantly.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Arcade cabinet</h2>
+            <p class="muted-copy">Break the brick wall, catch power-ups, and clear each level before the ball slips past your paddle.</p>
+          </div>
+          <div class="button-row">
+            <button id="brick-launch-top" class="button button-primary" type="button">Launch</button>
+            <button id="brick-pause-top" class="button button-secondary" type="button">Pause</button>
+            <button id="brick-restart-top" class="button button-ghost" type="button">Restart</button>
+          </div>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card">
+            <span class="field-label">Score</span>
+            <strong id="brick-score">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Best</span>
+            <strong id="brick-best">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Level</span>
+            <strong id="brick-level">1</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Lives</span>
+            <strong id="brick-lives">3</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">Combo</span>
+            <strong id="brick-combo">x1</strong>
+          </article>
+          <article class="summary-card">
+            <span class="field-label">State</span>
+            <strong id="brick-state">Ready</strong>
+          </article>
+        </div>
+
+        <div id="brick-stage">
+          <canvas id="brick-canvas" aria-label="Brick Blitz game board" role="img"></canvas>
+          <div id="brick-banner" aria-live="polite">Press Space or Launch to begin</div>
+        </div>
+
+        <p id="brick-status" class="notice">The ball is parked on the paddle. Move with the keyboard, pointer, or touch buttons, then launch when you are ready.</p>
+
+        <div id="brick-touch-controls" class="button-row" aria-label="Touch controls">
+          <button class="button button-secondary" type="button" data-action="left">Left</button>
+          <button id="brick-launch-touch" class="button button-primary" type="button" data-action="launch">Launch</button>
+          <button class="button button-secondary" type="button" data-action="right">Right</button>
+          <button id="brick-pause-touch" class="button button-ghost" type="button" data-action="pause">Pause</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>How it plays</h2>
+            <p class="muted-copy">Fast, readable, and a little dramatic, like an arcade cabinet on a neon street corner.</p>
+          </div>
+        </div>
+        <div class="brick-meta">
+          <div class="brick-meta-grid">
+            <article class="result-card">
+              <h3>Controls</h3>
+              <ul class="brick-tip-list">
+                <li><strong>Move</strong> Left and right arrows or A and D.</li>
+                <li><strong>Launch</strong> Space, Enter, or Launch button.</li>
+                <li><strong>Pause</strong> P or the Pause button.</li>
+              </ul>
+            </article>
+            <article class="result-card">
+              <h3>Power-ups</h3>
+              <ul class="brick-tip-list">
+                <li><strong>Wide</strong> A bigger paddle for safer saves.</li>
+                <li><strong>Slow</strong> Easier ball speed during clutch moments.</li>
+                <li><strong>Life</strong> Grab an extra chance before game over.</li>
+              </ul>
+            </article>
+          </div>
+          <article class="result-card">
+            <h3>Scoring style</h3>
+            <p class="helper-copy">The combo meter climbs when you keep breaking bricks without letting the action go stale. Clear a level to earn a bonus and kick into a harder pattern with slightly faster ball speed.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Arcade extras</p>
+            <h2>More arcade extras</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Brick Blitz for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/brick-blitz.js"></script>
+</body>
+</html>

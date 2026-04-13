@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV / JSON Converter | AI Freelancer Tools</title>
+  <meta name="description" content="Convert CSV to JSON arrays of objects and JSON arrays of objects back to CSV in the browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../json-formatter/">JSON Formatter</a>
+        <a href="../list-cleaner/">List Cleaner</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Dev</span>
+        <h1 class="page-title">CSV / JSON Converter</h1>
+        <p class="page-description">
+          Turn spreadsheet exports into JSON arrays of objects, or convert JSON arrays of objects back to CSV without
+          sending data to a third-party site. Quoted commas, escaped quotes, and multiline cells are handled locally.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Handles</p>
+        <ul class="feature-list">
+          <li>CSV headers, quoted cells, and multiline values</li>
+          <li>JSON arrays of objects with nested value safety</li>
+          <li>Copy and download output directly from the browser</li>
+        </ul>
+        <p class="notice">Everything stays in the browser. No uploads, no dependencies.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Convert data</h2>
+            <p id="converter-guidance" class="muted-copy">
+              CSV mode expects a header row. JSON mode expects an array of objects.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel-toolbar">
+          <div class="button-row">
+            <button id="converter-mode-csv" class="button button-primary" type="button" aria-pressed="true">CSV → JSON</button>
+            <button id="converter-mode-json" class="button button-secondary" type="button" aria-pressed="false">JSON → CSV</button>
+          </div>
+          <div class="button-row">
+            <button id="converter-sample-csv" class="button button-secondary" type="button">Load CSV sample</button>
+            <button id="converter-sample-json" class="button button-secondary" type="button">Load JSON sample</button>
+            <button id="converter-copy" class="button button-secondary" type="button" disabled>Copy output</button>
+            <button id="converter-download" class="button button-secondary" type="button" disabled>Download output</button>
+            <button id="converter-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+          <div class="option-row">
+            <span id="converter-mode-label" class="status-pill is-active">CSV → JSON</span>
+            <span class="helper-copy">Quoted commas, escaped quotes, and line breaks stay intact when possible.</span>
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <label class="field">
+            <span class="field-label">Source</span>
+            <textarea id="converter-input" class="compare-textarea" spellcheck="false" placeholder="Paste CSV data or JSON here."></textarea>
+          </label>
+          <div class="field">
+            <span class="field-label">Output</span>
+            <pre id="converter-output" class="json-output"></pre>
+          </div>
+        </div>
+
+        <div id="converter-status" class="json-status" role="status" aria-live="polite">
+          Paste data, choose a direction, and the conversion will appear here.
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Source rows / items</h3>
+            <p id="converter-source-count" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Columns / keys</h3>
+            <p id="converter-field-count" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Output lines</h3>
+            <p id="converter-output-lines" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Output chars</h3>
+            <p id="converter-output-chars" class="result-number">0</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Built for messy inputs</p>
+            <h2>Convert spreadsheet exports and API fixtures cleanly</h2>
+          </div>
+        </div>
+        <div class="task-grid">
+          <article class="tool-card">
+            <span class="task-kicker">CSV in</span>
+            <h3>Quoted cells survive</h3>
+            <p>Commas, double quotes, and line breaks inside a quoted cell stay together instead of splitting the data apart.</p>
+          </article>
+          <article class="tool-card">
+            <span class="task-kicker">JSON out</span>
+            <h3>Objects stay readable</h3>
+            <p>The JSON export is pretty-printed so the result is easy to inspect, diff, and paste into code.</p>
+          </article>
+          <article class="tool-card">
+            <span class="task-kicker">JSON in</span>
+            <h3>Array-of-objects only</h3>
+            <p>CSV export expects a JSON array of plain objects and will flatten nested values into safe cell text when needed.</p>
+          </article>
+          <article class="tool-card">
+            <span class="task-kicker">Local first</span>
+            <h3>Copy or download immediately</h3>
+            <p>Everything runs in your browser, with copy and file download support for whichever direction you choose.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>CSV / JSON Converter for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/csv-json-converter.js"></script>
+</body>
+</html>

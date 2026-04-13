@@ -156,6 +156,11 @@ function handleImageFiles(files) {
       .join("");
   };
 
+  image.onerror = () => {
+    URL.revokeObjectURL(objectUrl);
+    paletteStatus.textContent = "That image could not be decoded in this browser.";
+  };
+
   image.src = objectUrl;
 }
 

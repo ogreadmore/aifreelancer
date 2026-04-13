@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Racer | AI Freelancer Tools</title>
+  <meta name="description" content="A retro-inspired browser racer with lane changes, speed ramping, local best score tracking, and touch-friendly controls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    body {
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255, 178, 88, 0.16), transparent 22%),
+        radial-gradient(circle at 78% 16%, rgba(100, 240, 255, 0.12), transparent 24%),
+        radial-gradient(circle at 50% 112%, rgba(255, 79, 122, 0.08), transparent 28%),
+        linear-gradient(180deg, #050816 0%, #09111f 48%, #04060d 100%);
+    }
+
+    .page-title {
+      max-width: 10ch;
+    }
+
+    .page-description {
+      max-width: 66ch;
+    }
+
+    .race-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.78fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .race-panel {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .race-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255, 178, 88, 0.08), transparent 30%),
+        linear-gradient(315deg, rgba(100, 240, 255, 0.06), transparent 34%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: #eef4ff;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 0.62rem;
+      height: 0.62rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #64f0ff, #ffb258);
+      box-shadow: 0 0 18px rgba(100, 240, 255, 0.7);
+    }
+
+    .race-stage {
+      position: relative;
+      border-radius: 28px;
+      padding: 14px;
+      background:
+        radial-gradient(circle at top center, rgba(255, 178, 88, 0.14), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(255, 79, 122, 0.08), transparent 28%),
+        linear-gradient(180deg, rgba(10, 16, 32, 0.98), rgba(6, 8, 18, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .canvas-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      min-height: 360px;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255, 178, 88, 0.18), transparent 24%),
+        linear-gradient(180deg, rgba(9, 12, 24, 1), rgba(8, 10, 20, 1));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .canvas-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(transparent 0 48%, rgba(255, 255, 255, 0.03) 49%, transparent 50%),
+        linear-gradient(90deg, transparent 0 49%, rgba(255, 255, 255, 0.025) 50%, transparent 51%);
+      background-size: 100% 5rem, 5rem 100%;
+      opacity: 0.5;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .canvas-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(100, 240, 255, 0.05), transparent 20%, transparent 82%, rgba(255, 79, 122, 0.05));
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    #pixel-racer-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+
+    .intro-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: linear-gradient(180deg, rgba(5, 8, 18, 0.34), rgba(5, 8, 18, 0.76));
+      backdrop-filter: blur(10px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .intro-overlay.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.985);
+    }
+
+    .intro-card {
+      width: min(100%, 560px);
+      padding: 1.65rem;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(13, 18, 36, 0.92), rgba(9, 12, 24, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.44),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .intro-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.78rem;
+      color: rgba(230, 240, 255, 0.72);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .intro-title {
+      margin: 0;
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+    }
+
+    .intro-copy {
+      margin: 0.95rem 0 1.2rem;
+      color: rgba(230, 240, 255, 0.82);
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .intro-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 1.1rem;
+    }
+
+    .intro-metric {
+      padding: 0.82rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .intro-metric span {
+      display: block;
+    }
+
+    .intro-metric-label {
+      color: rgba(230, 240, 255, 0.6);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .intro-metric-value {
+      margin-top: 0.34rem;
+      color: #fff;
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 0.95rem;
+    }
+
+    .race-touch {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .lane-btn {
+      min-height: 58px;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .helper-copy {
+      margin-top: 14px;
+    }
+
+    .mini-panel {
+      padding: 1.15rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-title {
+      margin: 0 0 0.55rem;
+      font-size: 1rem;
+    }
+
+    .mini-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: rgba(230, 240, 255, 0.8);
+      line-height: 1.7;
+    }
+
+    .mini-list li + li {
+      margin-top: 0.35rem;
+    }
+
+    .hint-band {
+      margin-top: 16px;
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, rgba(100, 240, 255, 0.12), rgba(255, 178, 88, 0.08));
+      color: rgba(244, 247, 255, 0.86);
+    }
+
+    @media (max-width: 1080px) {
+      .race-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .race-touch {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .intro-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#arcade">&larr; Back to arcade</a>
+        <span class="tool-category">Arcade</span>
+        <h1 class="page-title">Pixel Racer</h1>
+        <p class="page-description">
+          A retro-classic browser racer with lane changes, speed ramping, dodge scoring, a local best score, and a neon
+          highway presentation that feels right at home in the AI Freelancer Tools stack.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Includes</p>
+        <ul class="feature-list">
+          <li>Pseudo-3D lane racing with a live speed climb</li>
+          <li>Keyboard and touch controls with pause and restart</li>
+          <li>Distance scoring plus a local best score saved in the browser</li>
+        </ul>
+        <p class="notice">Everything runs locally in the browser. No uploads, no login, no external assets.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <div class="race-layout">
+        <section class="panel race-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Highway run</h2>
+              <p class="muted-copy">Use quick lane changes, stay centered, and keep the traffic flowing past your bumper.</p>
+            </div>
+            <div id="game-status" class="status-pill" aria-live="polite">Ready</div>
+          </div>
+
+          <div class="button-row">
+            <button id="start-button" class="button button-primary" type="button">Start run</button>
+            <button id="pause-button" class="button button-secondary" type="button">Pause</button>
+            <button id="restart-button" class="button button-ghost" type="button">Restart</button>
+          </div>
+
+          <div class="race-stage">
+            <div class="canvas-wrap">
+              <canvas id="pixel-racer-canvas" width="1280" height="720" aria-label="Pixel Racer highway game" role="img"></canvas>
+
+              <div id="intro-overlay" class="intro-overlay">
+                <div class="intro-card">
+                  <div class="intro-kicker">Arcade mode</div>
+                  <h3 id="overlay-title" class="intro-title">Pixel Racer</h3>
+                  <p id="overlay-copy" class="intro-copy">
+                    Slip between lanes, avoid the traffic clusters, and let the speed climb while the skyline flashes by.
+                  </p>
+                  <div class="intro-metrics" aria-hidden="true">
+                    <div class="intro-metric">
+                      <span id="overlay-metric-1-label" class="intro-metric-label">Steer</span>
+                      <span id="overlay-metric-1-value" class="intro-metric-value">A / D</span>
+                    </div>
+                    <div class="intro-metric">
+                      <span id="overlay-metric-2-label" class="intro-metric-label">Pause</span>
+                      <span id="overlay-metric-2-value" class="intro-metric-value">P</span>
+                    </div>
+                    <div class="intro-metric">
+                      <span id="overlay-metric-3-label" class="intro-metric-label">Restart</span>
+                      <span id="overlay-metric-3-value" class="intro-metric-value">R</span>
+                    </div>
+                  </div>
+                  <div class="intro-actions">
+                    <button id="overlay-start" class="button button-primary" type="button">Start now</button>
+                    <button id="overlay-controls" class="button button-secondary" type="button">See controls</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="race-touch" aria-label="Touch controls">
+              <button id="steer-left" class="button button-secondary lane-btn" type="button" data-steer="left">Left</button>
+              <button id="steer-right" class="button button-secondary lane-btn" type="button" data-steer="right">Right</button>
+              <button id="touch-pause" class="button button-secondary lane-btn" type="button" data-action="pause">Pause</button>
+              <button id="touch-restart" class="button button-ghost lane-btn" type="button" data-action="restart">Restart</button>
+            </div>
+
+            <p class="helper-copy">
+              Keyboard: A/D or the arrow keys steer, Space or P pauses, Enter starts, and R restarts.
+            </p>
+          </div>
+        </section>
+
+        <aside class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Telemetry</h2>
+              <p class="muted-copy">Watch the score, distance, and pace as the road gets meaner.</p>
+            </div>
+          </div>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>Score</h3>
+              <p id="score-value" class="result-number">0</p>
+            </article>
+            <article class="result-card">
+              <h3>Distance</h3>
+              <p id="distance-value" class="result-number">0 m</p>
+            </article>
+            <article class="result-card">
+              <h3>Speed</h3>
+              <p id="speed-value" class="result-number">0 kph</p>
+            </article>
+            <article class="result-card">
+              <h3>Best</h3>
+              <p id="best-value" class="result-number">0</p>
+            </article>
+          </div>
+
+          <div class="empty-state">
+            <strong class="empty-title">Track briefing</strong>
+            <p id="briefing-copy">
+              Keep one lane open, use fast taps instead of long holds, and remember that the highway gets faster the longer
+              you survive.
+            </p>
+          </div>
+
+          <ul class="feature-list">
+            <li>Pseudo-3D road projection with a glowing sunset skyline.</li>
+            <li>Traffic batches stay fair, but they stack up fast at higher speeds.</li>
+            <li>Your best score is stored locally in the browser.</li>
+          </ul>
+
+          <div class="hint-band" id="lane-hint">
+            Hit Start, then steer hard left or right and hold your nerve when the traffic fans out.
+          </div>
+        </aside>
+      </div>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Arcade extras</p>
+            <h2>More arcade extras</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Pixel Racer for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/pixel-racer.js"></script>
+</body>
+</html>

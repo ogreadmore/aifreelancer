@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>QR Generator | AI Freelancer Tools</title>
+  <meta name="description" content="Generate QR codes locally in the browser for text, URLs, email, phone, and Wi-Fi payloads.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .qr-preview-panel {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .qr-preview-shell {
+      display: grid;
+      gap: 1rem;
+      place-items: center;
+      min-height: 24rem;
+      padding: 1rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top, rgba(75, 136, 218, 0.16), transparent 56%),
+        linear-gradient(180deg, rgba(247, 244, 234, 0.03), rgba(247, 244, 234, 0.02));
+      box-shadow: none;
+    }
+
+    .qr-preview-frame {
+      width: min(100%, 26rem);
+      aspect-ratio: 1;
+      padding: 0.85rem;
+      border-radius: 28px;
+      background: rgba(251, 247, 240, 0.98);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08), 0 18px 44px rgba(0, 0, 0, 0.22);
+    }
+
+    .qr-preview-frame svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      shape-rendering: crispEdges;
+    }
+
+    .qr-preview-empty {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      min-height: 20rem;
+      border-radius: 20px;
+      border: 1px dashed rgba(15, 23, 42, 0.12);
+      background: rgba(15, 23, 42, 0.03);
+      color: #5f6572;
+      text-align: center;
+      padding: 1.25rem;
+    }
+
+    .qr-preview-empty strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .qr-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .qr-builder {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .qr-mode-panel {
+      display: none;
+      gap: 1rem;
+    }
+
+    .qr-mode-panel.is-active {
+      display: grid;
+    }
+
+    .qr-advanced-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .qr-color-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .qr-size-row {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .qr-size-value {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .qr-size-value strong {
+      color: var(--ink);
+      font-size: 1rem;
+    }
+
+    .qr-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+    }
+
+    .qr-payload {
+      min-height: 9rem;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      line-height: 1.5;
+    }
+
+    .qr-status {
+      margin-top: 0.9rem;
+    }
+
+    .qr-note {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 960px) {
+      .qr-layout,
+      .qr-advanced-grid,
+      .qr-color-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../password-generator/">Password Generator</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Web</span>
+        <h1 class="page-title">QR Generator</h1>
+        <p class="page-description">
+          Generate QR codes locally in the browser for text, URLs, email, phone, and Wi-Fi payloads with live preview, size control, color pickers, and local export.
+        </p>
+        <ul class="feature-list">
+          <li>Everything is encoded in your browser with no network calls</li>
+          <li>Use presets for text, links, contact details, or Wi-Fi access</li>
+          <li>Export as SVG or PNG and keep the payload copied when you need it</li>
+        </ul>
+        <p class="notice">A 4-module quiet zone is included automatically so the code stays scanner-friendly.</p>
+      </div>
+
+      <aside class="panel qr-preview-panel">
+        <div>
+          <p class="panel-eyebrow">Live preview</p>
+          <h2>What the code looks like</h2>
+          <p class="muted-copy">The preview updates as you type, and the download buttons use the same QR matrix.</p>
+        </div>
+        <div class="qr-preview-shell">
+          <div class="qr-preview-frame" id="qr-preview-frame" aria-label="Generated QR code preview">
+            <div class="qr-preview-empty" id="qr-preview-empty">
+              <strong>QR preview will appear here</strong>
+              <span>Pick a payload type or load a sample to start.</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="tool-shell qr-layout">
+      <section class="panel qr-builder">
+        <div class="panel-head">
+          <div>
+            <h2>Build a payload</h2>
+            <p class="muted-copy">Switch the payload type, fill in the fields, and the QR updates automatically.</p>
+          </div>
+          <div class="button-row">
+            <button id="qr-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="qr-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <label class="field">
+            <span class="field-label">Payload type</span>
+            <select id="qr-mode">
+              <option value="text">Text</option>
+              <option value="url">URL</option>
+              <option value="email">Email</option>
+              <option value="phone">Phone</option>
+              <option value="wifi">Wi-Fi</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="qr-panel-text" class="qr-mode-panel is-active" data-mode-panel="text">
+          <label class="field">
+            <span class="field-label">Text payload</span>
+            <textarea id="qr-text" class="json-input qr-payload" spellcheck="false" placeholder="Paste the text you want the QR code to encode."></textarea>
+          </label>
+        </div>
+
+        <div id="qr-panel-url" class="qr-mode-panel" data-mode-panel="url">
+          <label class="field">
+            <span class="field-label">URL</span>
+            <input id="qr-url" type="url" placeholder="https://aifreelancer.co/tools/qr-generator">
+          </label>
+        </div>
+
+        <div id="qr-panel-email" class="qr-mode-panel" data-mode-panel="email">
+          <div class="detail-grid">
+            <label class="field">
+              <span class="field-label">Email address</span>
+              <input id="qr-email-address" type="email" placeholder="hello@aifreelancer.co">
+            </label>
+            <label class="field">
+              <span class="field-label">Subject</span>
+              <input id="qr-email-subject" type="text" placeholder="Project update">
+            </label>
+          </div>
+          <label class="field">
+            <span class="field-label">Body</span>
+            <textarea id="qr-email-body" class="json-input qr-payload" spellcheck="false" placeholder="Write the message body here."></textarea>
+          </label>
+        </div>
+
+        <div id="qr-panel-phone" class="qr-mode-panel" data-mode-panel="phone">
+          <label class="field">
+            <span class="field-label">Phone number</span>
+            <input id="qr-phone" type="tel" placeholder="+1 415 555 0148">
+          </label>
+        </div>
+
+        <div id="qr-panel-wifi" class="qr-mode-panel" data-mode-panel="wifi">
+          <div class="detail-grid">
+            <label class="field">
+              <span class="field-label">Network name</span>
+              <input id="qr-wifi-ssid" type="text" placeholder="AIFreelancer Guest">
+            </label>
+            <label class="field">
+              <span class="field-label">Password</span>
+              <input id="qr-wifi-password" type="text" placeholder="supersecret">
+            </label>
+          </div>
+          <div class="detail-grid">
+            <label class="field">
+              <span class="field-label">Security</span>
+              <select id="qr-wifi-auth">
+                <option value="WPA">WPA / WPA2</option>
+                <option value="WEP">WEP</option>
+                <option value="nopass">No password</option>
+              </select>
+            </label>
+            <div class="field">
+              <span class="field-label">Hidden network</span>
+              <label class="toggle stack-space-md">
+                <input id="qr-wifi-hidden" type="checkbox">
+                <span>Mark as hidden</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-head stack-space-sm">
+          <div>
+            <h2>QR settings</h2>
+            <p class="muted-copy">These options control how the QR is rendered and exported.</p>
+          </div>
+        </div>
+
+        <div class="qr-advanced-grid">
+          <label class="field qr-size-row">
+            <span class="field-label">Export size</span>
+            <input id="qr-size" type="range" min="192" max="1024" step="16" value="320">
+            <span class="qr-size-value"><strong id="qr-size-value">320 px</strong><span>PNG and SVG downloads use this size</span></span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Error correction</span>
+            <select id="qr-ecc">
+              <option value="L">L - best capacity</option>
+              <option value="M" selected>M - balanced</option>
+              <option value="Q">Q - more resilience</option>
+              <option value="H">H - maximum resilience</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="qr-color-grid">
+          <label class="field">
+            <span class="field-label">Foreground color</span>
+            <input id="qr-dark" type="color" value="#111111">
+          </label>
+          <label class="field">
+            <span class="field-label">Background color</span>
+            <input id="qr-light" type="color" value="#fdfaf3">
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Payload and export</h2>
+            <p class="muted-copy">Copy the exact payload string, then download the QR as SVG or PNG without leaving the browser.</p>
+          </div>
+        </div>
+
+        <label class="field">
+          <span class="field-label">Payload preview</span>
+          <textarea id="qr-payload" class="json-input qr-payload" readonly spellcheck="false" aria-label="Generated QR payload"></textarea>
+        </label>
+
+        <div class="qr-actions">
+          <button id="qr-copy-payload" class="button button-primary" type="button">Copy payload</button>
+          <button id="qr-download-svg" class="button button-secondary" type="button">Download SVG</button>
+          <button id="qr-download-png" class="button button-secondary" type="button">Download PNG</button>
+        </div>
+
+        <p id="qr-status" class="helper-copy qr-status" role="status" aria-live="polite">Load a sample or fill in the fields to generate a local QR code.</p>
+
+        <div class="result-grid stack-space-md">
+          <article class="result-card">
+            <h3>Version</h3>
+            <p id="qr-version-card" class="result-number">—</p>
+            <p class="helper-copy">The smallest version that fits the current payload and correction level.</p>
+          </article>
+          <article class="result-card">
+            <h3>Mask</h3>
+            <p id="qr-mask-card" class="result-number">—</p>
+            <p class="helper-copy">The best-scoring mask is chosen automatically for scan quality.</p>
+          </article>
+          <article class="result-card">
+            <h3>Modules</h3>
+            <p id="qr-modules-card" class="result-number">—</p>
+            <p class="helper-copy">The QR matrix size grows in steps of four modules per version.</p>
+          </article>
+          <article class="result-card">
+            <h3>Capacity</h3>
+            <p id="qr-capacity-card" class="result-number">—</p>
+            <p class="helper-copy">Shown in payload bytes for the selected correction level.</p>
+          </article>
+        </div>
+
+        <p class="notice">SVG stays crisp at any size. PNG uses the same QR payload and colors you see in the preview.</p>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>QR Generator for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/qr-generator.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timestamp Converter | AI Freelancer Tools</title>
+  <meta name="description" content="Convert Unix timestamps, milliseconds, and human-readable local or UTC date-time values in the browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Time</span>
+        <h1 class="page-title">Timestamp Converter</h1>
+        <p class="page-description">
+          Convert between Unix seconds, Unix milliseconds, and readable local or UTC date-time values without leaving the browser.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Handy for</p>
+        <ul class="feature-list">
+          <li>Debugging logs and API payloads</li>
+          <li>Checking UTC versus browser-local time</li>
+          <li>Turning raw timestamps into readable deadlines</li>
+        </ul>
+        <p class="notice">Everything runs locally with no network calls.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Convert time</h2>
+            <p class="muted-copy">Edit any field and the other representations stay in sync.</p>
+          </div>
+          <div class="button-row">
+            <button id="timestamp-now-seconds" class="button button-secondary" type="button">Now as seconds</button>
+            <button id="timestamp-now-milliseconds" class="button button-secondary" type="button">Now as milliseconds</button>
+            <button id="timestamp-now-local" class="button button-secondary" type="button">Now local</button>
+            <button id="timestamp-now-utc" class="button button-secondary" type="button">Now UTC</button>
+            <button id="timestamp-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="detail-grid align-end">
+          <label class="field">
+            <span class="field-label">Unix seconds</span>
+            <input id="timestamp-seconds" type="text" inputmode="decimal" spellcheck="false" placeholder="1712666400">
+          </label>
+          <label class="field">
+            <span class="field-label">Unix milliseconds</span>
+            <input id="timestamp-milliseconds" type="text" inputmode="numeric" spellcheck="false" placeholder="1712666400000">
+          </label>
+          <label class="field">
+            <span class="field-label">Local date and time</span>
+            <input id="timestamp-local" type="datetime-local" step="1">
+          </label>
+          <label class="field">
+            <span class="field-label">UTC date and time</span>
+            <input id="timestamp-utc" type="datetime-local" step="1">
+          </label>
+        </div>
+
+        <div id="timestamp-status" class="notice" aria-live="polite">
+          Current time is loaded by default. Edit any field or use a Now button to convert.
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Results</h2>
+            <p class="muted-copy">Copy whichever representation you need for a log, ticket, or bug report.</p>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Unix seconds</h3>
+            <p id="timestamp-seconds-output" class="result-number mono">—</p>
+            <button id="timestamp-copy-seconds" class="button button-secondary" type="button">Copy seconds</button>
+          </article>
+          <article class="result-card">
+            <h3>Unix milliseconds</h3>
+            <p id="timestamp-milliseconds-output" class="result-number mono">—</p>
+            <button id="timestamp-copy-milliseconds" class="button button-secondary" type="button">Copy milliseconds</button>
+          </article>
+          <article class="result-card">
+            <h3>Local time</h3>
+            <p id="timestamp-local-output" class="mono">—</p>
+            <button id="timestamp-copy-local" class="button button-secondary" type="button">Copy local</button>
+          </article>
+          <article class="result-card">
+            <h3>UTC time</h3>
+            <p id="timestamp-utc-output" class="mono">—</p>
+            <button id="timestamp-copy-utc" class="button button-secondary" type="button">Copy UTC</button>
+          </article>
+          <article class="result-card">
+            <h3>ISO 8601</h3>
+            <p id="timestamp-iso-output" class="mono">—</p>
+            <button id="timestamp-copy-iso" class="button button-secondary" type="button">Copy ISO</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>Keep useful utilities close</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Timestamp Converter for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/timestamp-converter.js"></script>
+</body>
+</html>

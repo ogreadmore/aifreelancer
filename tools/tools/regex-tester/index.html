@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regex Tester | AI Freelancer Tools</title>
+  <meta name="description" content="Test regular expressions locally in the browser with live matches, capture groups, replacement previews, and sample patterns.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../json-formatter/">JSON Formatter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Dev</span>
+        <h1 class="page-title">Regex Tester</h1>
+        <p class="page-description">
+          Build and test JavaScript regular expressions locally in the browser with live matches, capture group inspection,
+          and a replacement preview that updates as you type.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Built for</p>
+        <ul class="feature-list">
+          <li>Pattern validation without leaving the browser</li>
+          <li>Replacement previews with capture references</li>
+          <li>Fast checks for email, URL, color, and phone patterns</li>
+        </ul>
+        <p class="notice">Nothing is uploaded. The browser runs the regex directly against the text you paste here.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Build a regex</h2>
+            <p class="muted-copy">Pattern and flags use JavaScript syntax. Replacement preview understands `$1`, `$&`, and named capture references.</p>
+          </div>
+          <div class="button-row">
+            <button id="regex-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="regex-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <label class="field">
+            <span class="field-label">Pattern</span>
+            <input id="regex-pattern" type="text" spellcheck="false" placeholder="[\w.+-]+@[\w-]+(?:\.[\w-]+)+" autocomplete="off">
+          </label>
+          <label class="field">
+            <span class="field-label">Flags</span>
+            <input id="regex-flags" type="text" spellcheck="false" placeholder="gim" autocomplete="off" maxlength="10">
+          </label>
+        </div>
+
+        <label class="field stack-space-md">
+          <span class="field-label">Replacement</span>
+          <input id="regex-replacement" type="text" spellcheck="false" placeholder="$&" autocomplete="off">
+        </label>
+
+        <label class="field stack-space-md">
+          <span class="field-label">Test text</span>
+          <textarea id="regex-text" class="compare-textarea" spellcheck="false" placeholder="Paste text here to test the pattern and preview replacements"></textarea>
+        </label>
+
+        <div class="panel-toolbar">
+          <p class="helper-copy">Use the sample buttons below to jump straight into common cases like emails, URLs, colors, and name swapping.</p>
+        </div>
+
+        <div class="section-block stack-space-sm">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Common samples</p>
+              <h2>Start from a practical pattern</h2>
+            </div>
+          </div>
+          <div class="button-row" id="regex-samples">
+            <button class="button button-secondary" type="button" data-sample="email">Email addresses</button>
+            <button class="button button-secondary" type="button" data-sample="url">URLs</button>
+            <button class="button button-secondary" type="button" data-sample="hex">Hex colors</button>
+            <button class="button button-secondary" type="button" data-sample="phone">Phone numbers</button>
+            <button class="button button-secondary" type="button" data-sample="swap-name">Swap names</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Live results</h2>
+            <p class="muted-copy">Matches, captures, and the replacement output all update in place as you edit the inputs.</p>
+          </div>
+        </div>
+
+        <div class="json-status" id="regex-status" role="status" aria-live="polite">
+          Enter a pattern and some text to see live matches.
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Matches</h3>
+            <p id="regex-match-count" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>Captures</h3>
+            <p id="regex-capture-count" class="result-number">0</p>
+          </article>
+          <article class="result-card">
+            <h3>First index</h3>
+            <p id="regex-first-index" class="result-number">—</p>
+          </article>
+          <article class="result-card">
+            <h3>Preview length</h3>
+            <p id="regex-preview-length" class="result-number">0</p>
+          </article>
+        </div>
+
+        <div class="panel-head stack-space-lg">
+          <div>
+            <h2>Match list</h2>
+            <p class="muted-copy">Each card shows the full match plus any capture groups and named groups that were found.</p>
+          </div>
+        </div>
+
+        <div id="regex-matches" class="result-grid">
+          <div class="empty-state">
+            <strong class="empty-title">No matches yet</strong>
+            <p>Paste text or load a sample to see the matching rows appear here.</p>
+          </div>
+        </div>
+
+        <div class="panel-head stack-space-lg">
+          <div>
+            <h2>Replacement preview</h2>
+            <p class="muted-copy">This uses standard JavaScript replacement syntax and stays local to your browser.</p>
+          </div>
+        </div>
+
+        <pre id="regex-preview" class="code-snippet">Enter a pattern to preview the result here.</pre>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Regex Tester for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/regex-tester.js"></script>
+</body>
+</html>

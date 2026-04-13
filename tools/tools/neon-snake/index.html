@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Snake | AI Freelancer Tools</title>
+  <meta name="description" content="A retro-inspired Snake game with neon visuals, keyboard controls, touch pads, and local high scores.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(0, 229, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(255, 51, 204, 0.14), transparent 24%),
+        radial-gradient(circle at 50% 110%, rgba(0, 255, 153, 0.08), transparent 30%),
+        #050714;
+    }
+
+    .page-title {
+      max-width: 12ch;
+    }
+
+    .page-description {
+      max-width: 64ch;
+    }
+
+    .game-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.8fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .game-panel {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .game-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(0, 229, 255, 0.08), transparent 36%),
+        linear-gradient(300deg, rgba(255, 51, 204, 0.08), transparent 42%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-primary, #eef4ff);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #00e5ff, #ff33cc);
+      box-shadow: 0 0 18px rgba(0, 229, 255, 0.8);
+    }
+
+    .hud-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .stat-card {
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      min-height: 104px;
+    }
+
+    .stat-label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: rgba(234, 240, 255, 0.68);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stat-value {
+      display: block;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1;
+      color: #f8fbff;
+    }
+
+    .stat-note {
+      display: block;
+      margin-top: 0.55rem;
+      color: rgba(234, 240, 255, 0.64);
+      font-size: 0.92rem;
+    }
+
+    .game-stage {
+      position: relative;
+      border-radius: 28px;
+      padding: 14px;
+      background:
+        radial-gradient(circle at top left, rgba(0, 229, 255, 0.12), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255, 51, 204, 0.08), transparent 30%),
+        linear-gradient(180deg, rgba(8, 12, 30, 0.98), rgba(6, 8, 20, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.44),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .canvas-frame {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      min-height: 320px;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(0, 229, 255, 0.18), transparent 28%),
+        linear-gradient(180deg, rgba(4, 9, 21, 0.98), rgba(8, 12, 26, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .canvas-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(transparent 0 49%, rgba(255, 255, 255, 0.03) 50%, transparent 51%),
+        linear-gradient(90deg, transparent 0 49%, rgba(255, 255, 255, 0.025) 50%, transparent 51%);
+      background-size: 100% 4.5rem, 4.5rem 100%;
+      mix-blend-mode: screen;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .canvas-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 229, 255, 0.05), transparent 18%, transparent 82%, rgba(255, 51, 204, 0.05));
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.65;
+    }
+
+    #neon-snake-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .intro-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: linear-gradient(180deg, rgba(5, 9, 20, 0.32), rgba(5, 9, 20, 0.72));
+      backdrop-filter: blur(10px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .intro-overlay.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.985);
+    }
+
+    .intro-card {
+      width: min(100%, 560px);
+      padding: 1.6rem;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(11, 16, 34, 0.9), rgba(10, 14, 28, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .intro-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+      color: rgba(234, 240, 255, 0.72);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .intro-title {
+      margin: 0;
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .intro-copy {
+      margin: 0.9rem 0 1.2rem;
+      color: rgba(234, 240, 255, 0.82);
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .intro-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 1.1rem;
+    }
+
+    .intro-metric {
+      padding: 0.8rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .intro-metric span {
+      display: block;
+    }
+
+    .intro-metric-label {
+      color: rgba(234, 240, 255, 0.6);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .intro-metric-value {
+      margin-top: 0.35rem;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .intro-help {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .keycap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.1rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .button-row--game {
+      margin-top: 14px;
+      justify-content: flex-start;
+    }
+
+    .helper-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .control-pad {
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+    }
+
+    .dpad {
+      display: grid;
+      grid-template-columns: repeat(3, 64px);
+      grid-template-rows: repeat(3, 64px);
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .control-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      min-height: 64px;
+      padding: 0.8rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)),
+        rgba(12, 18, 35, 0.9);
+      color: #f7fbff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .control-btn:hover,
+    .control-btn:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(0, 229, 255, 0.5);
+      box-shadow:
+        0 18px 36px rgba(0, 229, 255, 0.12),
+        0 14px 30px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .control-btn--blank {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .control-btn--primary {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.22), rgba(255, 51, 204, 0.18));
+    }
+
+    .mini-panel {
+      padding: 1.2rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-title {
+      margin: 0 0 0.55rem;
+      font-size: 1rem;
+    }
+
+    .mini-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: rgba(234, 240, 255, 0.8);
+      line-height: 1.7;
+    }
+
+    .mini-list li + li {
+      margin-top: 0.35rem;
+    }
+
+    .hint-band {
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.12), rgba(255, 51, 204, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(244, 247, 255, 0.86);
+    }
+
+    @media (max-width: 1080px) {
+      .game-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hud-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .intro-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .dpad {
+        grid-template-columns: repeat(3, 58px);
+        grid-template-rows: repeat(3, 58px);
+      }
+
+      .control-btn {
+        min-width: 58px;
+        min-height: 58px;
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#arcade">&larr; Back to arcade</a>
+        <span class="tool-category">Arcade</span>
+        <h1 class="page-title">Neon Snake</h1>
+        <p class="page-description">
+          A retro-inspired snake game with crisp keyboard controls, mobile touch pads, speed ramping, and a local high-score
+          loop that feels right at home in the AI Freelancer Tools stack.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Includes</p>
+        <ul class="feature-list">
+          <li>Canvas rendering with glowing retro visuals</li>
+          <li>Keyboard and mobile on-screen controls</li>
+          <li>Pause, restart, and saved best score</li>
+        </ul>
+        <p class="notice">Everything runs locally in the browser. No upload, no account, no nonsense.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <div class="game-layout">
+        <section class="panel game-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Play field</h2>
+              <p class="muted-copy">Eat the neon fruit, avoid the walls and your own trail, and keep the run alive as the grid gets faster.</p>
+            </div>
+            <div id="game-status" class="status-pill" aria-live="polite">Ready</div>
+          </div>
+
+          <div class="hud-grid" aria-label="Game stats">
+            <article class="stat-card">
+              <span class="stat-label">Score</span>
+              <strong id="score-value" class="stat-value">0</strong>
+              <span class="stat-note">Current run</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Best</span>
+              <strong id="best-value" class="stat-value">0</strong>
+              <span class="stat-note">Saved locally</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Speed</span>
+              <strong id="speed-value" class="stat-value">0</strong>
+              <span class="stat-note">Moves per second</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Length</span>
+              <strong id="length-value" class="stat-value">4</strong>
+              <span class="stat-note">Snake segments</span>
+            </article>
+          </div>
+
+          <div class="game-stage">
+            <div class="canvas-frame">
+              <canvas id="neon-snake-canvas" aria-label="Neon Snake game board" role="img"></canvas>
+
+              <div id="intro-overlay" class="intro-overlay">
+                <div class="intro-card">
+                  <div class="intro-kicker">Arcade mode</div>
+                  <h3 id="intro-title" class="intro-title">Neon Snake</h3>
+                  <p id="intro-copy" class="intro-copy">
+                    Guide the glowing serpent through the grid, collect the synth fruit, and let the pace climb until the screen is singing.
+                  </p>
+                  <div class="intro-metrics" aria-hidden="true">
+                    <div class="intro-metric">
+                      <span class="intro-metric-label">Start</span>
+                      <span class="intro-metric-value">Space</span>
+                    </div>
+                    <div class="intro-metric">
+                      <span class="intro-metric-label">Pause</span>
+                      <span class="intro-metric-value">P</span>
+                    </div>
+                    <div class="intro-metric">
+                      <span class="intro-metric-label">Restart</span>
+                      <span class="intro-metric-value">R</span>
+                    </div>
+                  </div>
+                  <div class="intro-actions">
+                    <button id="start-button" class="button button-primary" type="button">Start run</button>
+                    <button id="controls-button" class="button button-secondary" type="button">See controls</button>
+                  </div>
+                  <div class="intro-help" aria-hidden="true">
+                    <span class="keycap">Arrows</span>
+                    <span class="keycap">WASD</span>
+                    <span class="keycap">Space</span>
+                    <span class="keycap">P</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="button-row button-row--game">
+              <button id="pause-button" class="button button-secondary" type="button">Pause</button>
+              <button id="restart-button" class="button button-primary" type="button">Restart</button>
+              <button id="focus-button" class="button button-ghost" type="button">Help</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="helper-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Controls</h2>
+                <p class="muted-copy">Fast to learn, easy to keep in muscle memory.</p>
+              </div>
+            </div>
+
+            <div class="mini-panel">
+              <h3 class="mini-title">Keyboard</h3>
+              <ul class="mini-list">
+                <li><span class="keycap">Arrow keys</span> or <span class="keycap">WASD</span> to steer</li>
+                <li><span class="keycap">Space</span> to start or pause</li>
+                <li><span class="keycap">R</span> to restart instantly</li>
+              </ul>
+            </div>
+
+            <div class="mini-panel stack-space-md">
+              <h3 class="mini-title">Mobile</h3>
+              <p class="helper-copy">Use the neon pad below. It is sized for thumbs and works with quick taps.</p>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Neon pad</h2>
+                <p class="muted-copy">The touch controls mirror the keyboard layout.</p>
+              </div>
+            </div>
+
+            <div class="control-pad" aria-label="Touch controls">
+              <div class="dpad">
+                <span class="control-btn control-btn--blank" aria-hidden="true"></span>
+                <button class="control-btn" data-direction="up" type="button" aria-label="Move up">▲</button>
+                <span class="control-btn control-btn--blank" aria-hidden="true"></span>
+
+                <button class="control-btn" data-direction="left" type="button" aria-label="Move left">◀</button>
+                <button class="control-btn control-btn--primary" data-action="pause" type="button" aria-label="Pause or resume">II</button>
+                <button class="control-btn" data-direction="right" type="button" aria-label="Move right">▶</button>
+
+                <span class="control-btn control-btn--blank" aria-hidden="true"></span>
+                <button class="control-btn" data-direction="down" type="button" aria-label="Move down">▼</button>
+                <span class="control-btn control-btn--blank" aria-hidden="true"></span>
+              </div>
+
+              <div class="button-row">
+                <button class="button button-secondary" data-action="restart" type="button">Restart</button>
+                <button class="button button-ghost" data-action="focus" type="button">Show tips</button>
+              </div>
+            </div>
+          </section>
+
+          <div class="hint-band">
+            <strong>Flow tip:</strong> keep turning early. The snake is happiest when you plan one fruit ahead, not one tile ahead.
+          </div>
+        </aside>
+      </div>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Arcade extras</p>
+            <h2>More arcade extras</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Neon Snake for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/neon-snake.js"></script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block Drop | AI Freelancer Tools</title>
+  <meta name="description" content="A retro-inspired falling block puzzle you can play directly in the browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    #block-drop-stage {
+      color: #edf5ff;
+      background:
+        radial-gradient(circle at top left, rgba(84, 225, 255, 0.14), transparent 30%),
+        radial-gradient(circle at right 18%, rgba(124, 109, 255, 0.18), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(255, 122, 31, 0.14), transparent 26%),
+        linear-gradient(180deg, rgba(6, 10, 20, 0.98), rgba(9, 14, 27, 0.98));
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 28px 70px rgba(6, 10, 20, 0.28);
+    }
+
+    #block-drop-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 100% 14px, 14px 100%;
+      opacity: 0.55;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.88), transparent 94%);
+    }
+
+    #block-drop-stage > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    #block-drop-stage .panel-head h2,
+    #block-drop-stage .result-card h3 {
+      color: #f2f7ff;
+    }
+
+    #block-drop-stage .muted-copy,
+    #block-drop-stage .helper-copy,
+    #block-drop-stage .notice,
+    #block-drop-stage .panel-eyebrow,
+    #block-drop-stage .feature-list,
+    #block-drop-stage .feature-list li {
+      color: rgba(237, 245, 255, 0.74);
+    }
+
+    #block-drop-stage .button-secondary,
+    #block-drop-stage .button-ghost {
+      color: #eef6ff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    #block-drop-stage .button-primary {
+      color: #09111f;
+      background: linear-gradient(120deg, #64f0ff, #7c6dff 60%, #ffbf4d);
+      box-shadow: 0 16px 30px rgba(84, 225, 255, 0.18);
+    }
+
+    #block-drop-stage .result-card,
+    #block-drop-stage .empty-state {
+      color: #edf5ff;
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    #block-drop-stage .result-card p,
+    #block-drop-stage .result-card .mono,
+    #block-drop-stage .result-card .helper-copy {
+      color: rgba(237, 245, 255, 0.92);
+    }
+
+    #block-drop-stage .feature-list {
+      padding-left: 1.1rem;
+    }
+
+    #block-drop-stage .feature-list li::marker {
+      color: rgba(100, 240, 255, 0.92);
+    }
+
+    #block-drop-board-frame {
+      position: relative;
+      overflow: hidden;
+      padding: 1rem;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top left, rgba(100, 240, 255, 0.12), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(255, 191, 77, 0.1), transparent 42%),
+        linear-gradient(180deg, rgba(2, 6, 14, 0.98), rgba(11, 16, 30, 0.98));
+      border: 1px solid rgba(153, 195, 255, 0.16);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 14px 34px rgba(0, 0, 0, 0.25);
+    }
+
+    #block-drop-board-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 32%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: auto, 100% 10px;
+      opacity: 0.72;
+    }
+
+    #block-drop-board {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      aspect-ratio: 10 / 20;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #070b12, #0c1322);
+      image-rendering: pixelated;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    #block-drop-overlay {
+      position: absolute;
+      inset: 50% 1.1rem auto;
+      z-index: 2;
+      display: grid;
+      gap: 0.45rem;
+      padding: 1rem 1.1rem;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(5, 8, 16, 0.88);
+      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.34);
+      text-align: center;
+      transform: translateY(-50%);
+      backdrop-filter: blur(10px);
+    }
+
+    #block-drop-overlay[hidden] {
+      display: none;
+    }
+
+    #block-drop-overlay strong {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      letter-spacing: -0.03em;
+    }
+
+    #block-drop-overlay p {
+      margin: 0;
+      color: rgba(237, 245, 255, 0.76);
+    }
+
+    #block-drop-status {
+      min-height: 3.25rem;
+      margin: 0;
+    }
+
+    #block-drop-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    #block-drop-preview-grid .result-card {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    #block-drop-next,
+    #block-drop-hold {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(7, 11, 18, 0.98), rgba(16, 22, 36, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    #block-drop-touch-controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    #block-drop-touch-controls .button {
+      width: 100%;
+      min-height: 3.25rem;
+    }
+
+    #block-drop-stage .field-label {
+      color: rgba(237, 245, 255, 0.72);
+    }
+
+    @media (max-width: 720px) {
+      #block-drop-preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #block-drop-touch-controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+        <a href="../word-counter/">Word Counter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#arcade">&larr; Back to arcade</a>
+        <span class="tool-category">Game</span>
+        <h1 class="page-title">Block Drop</h1>
+        <p class="page-description">
+          A polished browser-only falling-block puzzle with ghost placement, hold, next preview, score chains, level speed-up, pause/restart, and a local best score.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Retro-inspired</p>
+        <ul class="feature-list">
+          <li>Original name and presentation</li>
+          <li>Keyboard-first play with mobile buttons</li>
+          <li>Best score saved locally in your browser</li>
+        </ul>
+        <p class="notice">Everything runs in the browser. No uploads, no backend.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <div class="two-column">
+        <section class="panel" id="block-drop-stage">
+          <div class="panel-head">
+            <div>
+              <h2>Play Block Drop</h2>
+              <p class="muted-copy">Build clean rows, keep the stack low, and chain clears to push your score higher.</p>
+            </div>
+            <div class="button-row">
+              <button id="block-drop-main-action" class="button button-primary" type="button">Start</button>
+              <button id="block-drop-restart" class="button button-secondary" type="button">Restart</button>
+            </div>
+          </div>
+
+          <div id="block-drop-board-frame">
+            <canvas id="block-drop-board" aria-label="Block Drop playfield" role="img"></canvas>
+            <div id="block-drop-overlay" aria-live="polite">
+              <strong id="block-drop-overlay-title">Ready</strong>
+              <p id="block-drop-overlay-copy">Press Start or Enter to begin.</p>
+            </div>
+          </div>
+
+          <p id="block-drop-status" class="notice" aria-live="polite"></p>
+
+          <div id="block-drop-touch-controls" aria-label="Touch controls">
+            <button class="button button-secondary" type="button" data-block-drop-action="left">Left</button>
+            <button class="button button-secondary" type="button" data-block-drop-action="rotate-cw">Rotate</button>
+            <button class="button button-secondary" type="button" data-block-drop-action="right">Right</button>
+            <button class="button button-secondary" type="button" data-block-drop-action="hold">Hold</button>
+            <button class="button button-secondary" type="button" data-block-drop-action="down">Down</button>
+            <button class="button button-secondary" type="button" data-block-drop-action="drop">Drop</button>
+          </div>
+        </section>
+
+        <aside class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Run stats</h2>
+              <p class="muted-copy">Watch the score climb as the level speeds up.</p>
+            </div>
+          </div>
+
+          <div class="result-grid">
+            <article class="result-card">
+              <h3>Score</h3>
+              <p id="block-drop-score" class="result-number">0</p>
+            </article>
+            <article class="result-card">
+              <h3>Best</h3>
+              <p id="block-drop-best" class="result-number">0</p>
+            </article>
+            <article class="result-card">
+              <h3>Level</h3>
+              <p id="block-drop-level" class="result-number">1</p>
+            </article>
+            <article class="result-card">
+              <h3>Lines</h3>
+              <p id="block-drop-lines" class="result-number">0</p>
+            </article>
+          </div>
+
+          <div id="block-drop-preview-grid">
+            <article class="result-card">
+              <h3>Next piece</h3>
+              <canvas id="block-drop-next" width="240" height="240" aria-label="Next piece preview" role="img"></canvas>
+              <p class="helper-copy">The next block in the queue.</p>
+            </article>
+            <article class="result-card">
+              <h3>Hold piece</h3>
+              <canvas id="block-drop-hold" width="240" height="240" aria-label="Hold piece preview" role="img"></canvas>
+              <p id="block-drop-hold-note" class="helper-copy">Hold is available once you start a run.</p>
+            </article>
+          </div>
+
+          <div class="result-card">
+            <h3>Controls</h3>
+            <ul class="feature-list">
+              <li><strong>Left / Right</strong> move</li>
+              <li><strong>Down</strong> soft drop</li>
+              <li><strong>Up</strong> or <strong>X</strong> rotate clockwise</li>
+              <li><strong>Z</strong> rotate counterclockwise</li>
+              <li><strong>Space</strong> hard drop</li>
+              <li><strong>C</strong> or <strong>Shift</strong> hold</li>
+              <li><strong>P</strong> or <strong>Esc</strong> pause or resume</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Arcade extras</p>
+            <h2>More arcade extras</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Block Drop for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/block-drop.js"></script>
+</body>
+</html>

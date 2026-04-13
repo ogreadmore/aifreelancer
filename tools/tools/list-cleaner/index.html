@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Cleaner | AI Freelancer Tools</title>
+  <meta name="description" content="Clean multi-line lists in the browser with trim, dedupe, sort, case, prefix, and suffix tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Text</span>
+        <h1 class="page-title">List Cleaner</h1>
+        <p class="page-description">
+          Clean up messy multi-line lists in the browser with trimming, blank removal, deduping, sorting, case
+          changes, and prefix or suffix helpers. Copy the finished list when it looks right.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Useful for</p>
+        <ul class="feature-list">
+          <li>Spreadsheet exports and pasted lists</li>
+          <li>Cleanup before imports, uploads, or prompts</li>
+          <li>Quick sorting and dedupe passes on scratch text</li>
+        </ul>
+        <p class="notice">Everything runs locally in the browser.</p>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Clean a list</h2>
+            <p class="muted-copy">Paste one item per line, choose the transforms you want, and the cleaned output updates instantly.</p>
+          </div>
+          <div class="button-row">
+            <button id="list-cleaner-copy" class="button button-primary" type="button">Copy cleaned list</button>
+            <button id="list-cleaner-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="list-cleaner-clear" class="button button-ghost" type="button">Clear</button>
+          </div>
+        </div>
+
+        <div class="panel-toolbar">
+          <div class="option-row">
+            <label class="toggle"><input id="list-cleaner-trim" type="checkbox" checked>Trim lines</label>
+            <label class="toggle"><input id="list-cleaner-blanks" type="checkbox" checked>Remove blanks</label>
+            <label class="toggle"><input id="list-cleaner-dedupe" type="checkbox" checked>Deduplicate</label>
+            <label class="toggle"><input id="list-cleaner-lowercase" type="radio" name="list-cleaner-case" value="lower">Lowercase</label>
+            <label class="toggle"><input id="list-cleaner-uppercase" type="radio" name="list-cleaner-case" value="upper">Uppercase</label>
+            <label class="toggle"><input id="list-cleaner-preserve-case" type="radio" name="list-cleaner-case" value="preserve" checked>Keep case</label>
+          </div>
+          <div class="option-row">
+            <label class="field">
+              <span class="field-label">Sort</span>
+              <select id="list-cleaner-sort">
+                <option value="none">No sort</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+                <option value="natural">Natural sort</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">Prefix</span>
+              <input id="list-cleaner-prefix" type="text" placeholder="Optional prefix">
+            </label>
+            <label class="field">
+              <span class="field-label">Suffix</span>
+              <input id="list-cleaner-suffix" type="text" placeholder="Optional suffix">
+            </label>
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <label class="field">
+            <span class="field-label">Input list</span>
+            <textarea id="list-cleaner-input" class="compare-textarea" spellcheck="false" placeholder="Paste a list with one item per line"></textarea>
+          </label>
+          <label class="field">
+            <span class="field-label">Cleaned output</span>
+            <textarea id="list-cleaner-output" class="compare-textarea" readonly spellcheck="false" placeholder="Your cleaned list appears here"></textarea>
+          </label>
+        </div>
+
+        <div class="panel-toolbar">
+          <p id="list-cleaner-status" class="notice" role="status" aria-live="polite">Ready to clean a list.</p>
+          <p class="helper-copy">Transforms run locally and the output is always copy-ready.</p>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Lines</h3>
+            <p id="list-cleaner-lines" class="result-number">0 → 0</p>
+            <p class="helper-copy">Total lines before and after cleaning.</p>
+          </article>
+          <article class="result-card">
+            <h3>Non-empty lines</h3>
+            <p id="list-cleaner-non-empty" class="result-number">0 → 0</p>
+            <p class="helper-copy">Blank lines removed by the current settings.</p>
+          </article>
+          <article class="result-card">
+            <h3>Characters</h3>
+            <p id="list-cleaner-characters" class="result-number">0 → 0</p>
+            <p class="helper-copy">Character count before and after cleanup.</p>
+          </article>
+          <article class="result-card">
+            <h3>Removed</h3>
+            <p id="list-cleaner-removed" class="result-number">0</p>
+            <p class="helper-copy">Lines dropped by blank removal or dedupe.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>List Cleaner for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/list-cleaner.js"></script>
+</body>
+</html>

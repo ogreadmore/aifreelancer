@@ -20,10 +20,12 @@ inputNode.addEventListener("input", validateInput);
 validateInput();
 
 function transformJson(mode) {
-  const parsed = parseInput();
-  if (!parsed) {
+  const parsedResult = parseInput();
+  if (!parsedResult.ok) {
     return;
   }
+
+  const parsed = parsedResult.value;
 
   const transformed = mode === "sort" ? sortKeysDeep(parsed) : parsed;
   const output = mode === "minify"
@@ -59,6 +61,7 @@ function validateInput() {
     statusNode.className = "json-status is-valid";
     statusNode.textContent = "Valid JSON. Choose a transform to generate formatted output.";
   } catch (error) {
+    outputNode.textContent = "";
     typeNode.textContent = "Invalid";
     statusNode.className = "json-status is-invalid";
     statusNode.textContent = error.message;
@@ -67,11 +70,18 @@ function validateInput() {
 
 function parseInput() {
   try {
-    return JSON.parse(inputNode.value);
+    return {
+      ok: true,
+      value: JSON.parse(inputNode.value),
+    };
   } catch (error) {
+    outputNode.textContent = "";
     statusNode.className = "json-status is-invalid";
     statusNode.textContent = error.message;
-    return null;
+    return {
+      ok: false,
+      value: null,
+    };
   }
 }
 
@@ -116,7 +126,7 @@ function clearAll() {
 }
 
 function loadSample() {
-  inputNode.value = `{"service":"AIFreelancer Tools","categories":["Dev","Trades","Web"],"settings":{"private":true,"hosting":"GitHub Pages","started":"diff-check"}}`;
+  inputNode.value = `{"service":"AI Freelancer Tools","categories":["Dev","Trades","Web"],"settings":{"private":true,"hosting":"GitHub Pages","started":"diff-check"}}`;
   transformJson("format");
 }
 

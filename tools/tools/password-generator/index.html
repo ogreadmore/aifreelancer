@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>Password Generator | AI Freelancer Tools</title>
+  <meta name="description" content="Generate secure passwords locally in the browser with crypto randomness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../diff-check/">Diff Check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#tool-directory">&larr; Back to tool directory</a>
+        <span class="tool-category">Security</span>
+        <h1 class="page-title">Password Generator</h1>
+        <p class="page-description">
+          Generate strong passwords locally in the browser with crypto randomness, requirement-aware character sets, and a fast copy flow for production work.
+        </p>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Built for</p>
+        <ul class="feature-list">
+          <li>Account resets and client onboarding</li>
+          <li>Vault seeds and temporary access codes</li>
+          <li>Reading-friendly passwords with ambiguous characters removed</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="tool-shell">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Generator controls</h2>
+            <p class="muted-copy">Choose the character sets, set the length, and generate as many passwords as you need.</p>
+          </div>
+          <div class="button-row">
+            <button id="password-generate" class="button button-primary" type="button">Generate</button>
+            <button id="password-copy-all" class="button button-secondary" type="button">Copy all</button>
+            <button id="password-sample" class="button button-secondary" type="button">Load sample</button>
+            <button id="password-reset" class="button button-ghost" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <label class="field">
+            <span class="field-label">Length</span>
+            <input id="password-length" type="number" min="8" max="128" step="1" value="16">
+          </label>
+          <label class="field">
+            <span class="field-label">Passwords</span>
+            <input id="password-count" type="number" min="1" max="20" step="1" value="6">
+          </label>
+          <div class="field">
+            <span class="field-label">Status</span>
+            <p id="password-status" class="helper-copy" role="status" aria-live="polite">Ready to generate secure passwords locally.</p>
+          </div>
+        </div>
+
+        <div class="panel-toolbar">
+          <div class="option-row">
+            <label class="toggle"><input id="password-lowercase" type="checkbox" checked>Lowercase</label>
+            <label class="toggle"><input id="password-uppercase" type="checkbox" checked>Uppercase</label>
+            <label class="toggle"><input id="password-numbers" type="checkbox" checked>Numbers</label>
+            <label class="toggle"><input id="password-symbols" type="checkbox" checked>Symbols</label>
+            <label class="toggle"><input id="password-ambiguous" type="checkbox">Exclude ambiguous characters</label>
+          </div>
+          <p class="helper-copy">Every generated password includes at least one character from each enabled set.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Strength and results</h2>
+            <p class="muted-copy">The strength estimate is a simple entropy guide, not a promise, but it is a solid practical check.</p>
+          </div>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card">
+            <h3>Strength</h3>
+            <p id="password-strength" class="result-number">Unknown</p>
+            <div id="password-strength-meter" class="meter-track" aria-hidden="true">
+              <div id="password-strength-fill" class="meter-fill"></div>
+            </div>
+            <p id="password-strength-note" class="helper-copy">Pick your options and generate a fresh batch.</p>
+          </article>
+          <article class="result-card">
+            <h3>Character pool</h3>
+            <p id="password-pool" class="result-number">0</p>
+            <p id="password-pool-note" class="helper-copy">Total available characters after filters are applied.</p>
+          </article>
+          <article class="result-card">
+            <h3>Estimated entropy</h3>
+            <p id="password-entropy" class="result-number">0 bits</p>
+            <p id="password-entropy-note" class="helper-copy">Calculated from the active pool size and requested length.</p>
+          </article>
+          <article class="result-card">
+            <h3>Selected sets</h3>
+            <p id="password-sets" class="result-number">4</p>
+            <p id="password-sets-note" class="helper-copy">The generator guarantees at least one character from each enabled set.</p>
+          </article>
+        </div>
+
+        <div class="panel-head panel-head-spaced">
+          <div>
+            <h2>Generated passwords</h2>
+            <p class="muted-copy">Each card has its own copy button, and Copy all collects the whole batch as newline-separated text.</p>
+          </div>
+        </div>
+
+        <div id="password-results" class="result-grid">
+          <div class="empty-state">
+            <strong class="empty-title">Nothing generated yet</strong>
+            <p>Use Generate or Load sample to build your first batch of passwords.</p>
+          </div>
+        </div>
+
+        <p class="notice">Everything here stays in your browser. The tool uses browser crypto randomness and does not send password data anywhere.</p>
+      </section>
+
+      <section class="section-block">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Other tools</p>
+            <h2>More public tools</h2>
+          </div>
+        </div>
+        <div class="related-grid" data-related-tools></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Password Generator for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/password-generator.js"></script>
+</body>
+</html>

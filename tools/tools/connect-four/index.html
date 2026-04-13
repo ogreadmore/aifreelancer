@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect Four | AI Freelancer Tools</title>
+  <meta name="description" content="A polished browser-only Connect Four game with local multiplayer, a simple AI opponent, responsive controls, and local stats.">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    body {
+      background:
+        radial-gradient(circle at 14% 12%, rgba(255, 92, 92, 0.24), transparent 22%),
+        radial-gradient(circle at 86% 14%, rgba(255, 197, 87, 0.16), transparent 24%),
+        radial-gradient(circle at 50% 118%, rgba(58, 109, 255, 0.16), transparent 30%),
+        linear-gradient(180deg, #07111d 0%, #0c1524 58%, #101522 100%);
+      color: #f7f3eb;
+    }
+
+    .site-header {
+      background: rgba(7, 17, 29, 0.82);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .page-topbar .brand-mark {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .page-topbar .brand-copy,
+    .page-topbar .page-nav,
+    .page-topbar .page-nav a {
+      color: rgba(247, 243, 235, 0.88);
+    }
+
+    .page-topbar .page-nav a:hover {
+      color: #fff;
+    }
+
+    .panel,
+    .panel h2,
+    .panel h3,
+    .panel p,
+    .panel li,
+    .panel .page-back,
+    .panel .tool-category,
+    .panel .field-label,
+    .panel .helper-copy,
+    .panel .muted-copy,
+    .panel .notice,
+    .panel .stat-label {
+      color: #172033;
+    }
+
+    .page-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.72fr);
+      gap: 24px;
+      align-items: end;
+    }
+
+    .page-title {
+      max-width: 10ch;
+    }
+
+    .page-description {
+      max-width: 58ch;
+    }
+
+    .connect-four-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.74fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .game-panel {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .game-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top left, rgba(255, 92, 92, 0.12), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255, 197, 87, 0.1), transparent 26%);
+      z-index: -1;
+    }
+
+    .mode-strip {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      padding: 0.35rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 1rem;
+    }
+
+    .mode-strip button {
+      border: 0;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      background: transparent;
+      color: rgba(247, 243, 235, 0.72);
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 140ms ease, color 140ms ease, transform 140ms ease;
+    }
+
+    .mode-strip button:hover,
+    .mode-strip button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .mode-strip button.is-active {
+      background: linear-gradient(135deg, rgba(255, 92, 92, 0.22), rgba(255, 197, 87, 0.18));
+      color: #fff;
+    }
+
+    .board-stage {
+      position: relative;
+      display: grid;
+      gap: 12px;
+    }
+
+    .overlay-actions {
+      justify-content: center;
+    }
+
+    .column-controls {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .column-button {
+      position: relative;
+      display: grid;
+      place-items: center;
+      gap: 0.25rem;
+      min-height: 4rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      color: #f7f3eb;
+      cursor: pointer;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      transition: transform 140ms ease, background 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+    }
+
+    .column-button:hover,
+    .column-button:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .column-button.is-active {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .column-button.is-red-turn {
+      box-shadow: inset 0 0 0 1px rgba(255, 92, 92, 0.12);
+    }
+
+    .column-button.is-gold-turn {
+      box-shadow: inset 0 0 0 1px rgba(255, 197, 87, 0.12);
+    }
+
+    .column-chip {
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ff7f74, #c72b2b);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 8px 14px rgba(255, 92, 92, 0.16);
+    }
+
+    .column-button.is-gold-turn .column-chip {
+      background: linear-gradient(180deg, #ffe08d, #d38d12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 8px 14px rgba(255, 197, 87, 0.16);
+    }
+
+    .board-shell {
+      position: relative;
+      padding: 16px;
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(16, 28, 48, 0.98), rgba(8, 14, 26, 0.98)),
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 40%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .connect-four-board {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 11px;
+      aspect-ratio: 7 / 6;
+      padding: 10px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 38%),
+        linear-gradient(180deg, #1d3a69, #10213f 58%, #0b172d 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -18px 38px rgba(0, 0, 0, 0.22);
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .cf-cell {
+      position: relative;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(6, 10, 18, 0.94) 0 48%, rgba(12, 17, 26, 0.9) 49% 62%, rgba(255, 255, 255, 0.05) 63% 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -3px 10px rgba(0, 0, 0, 0.35);
+      overflow: visible;
+    }
+
+    .cf-cell.is-hovered::after {
+      content: "";
+      position: absolute;
+      inset: -8%;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+
+    .cf-cell.is-winning {
+      filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.16));
+    }
+
+    .cf-token {
+      position: absolute;
+      inset: 11%;
+      border-radius: 50%;
+      opacity: 1;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.38),
+        inset 0 -10px 18px rgba(0, 0, 0, 0.18),
+        0 16px 24px rgba(0, 0, 0, 0.2);
+      transform: scale(1);
+    }
+
+    .cf-token.is-red {
+      background: linear-gradient(180deg, #ff806f 0%, #d92f2f 58%, #8b1519 100%);
+    }
+
+    .cf-token.is-gold {
+      background: linear-gradient(180deg, #ffe48f 0%, #f1b841 58%, #af6b00 100%);
+    }
+
+    .cf-token.is-dropping {
+      animation: cf-drop 320ms cubic-bezier(0.18, 0.9, 0.3, 1.15);
+    }
+
+    .cf-token.is-winning {
+      animation: cf-pulse 820ms ease-in-out infinite;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 16px;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      border-radius: 24px;
+      background: rgba(6, 10, 18, 0.62);
+      backdrop-filter: blur(10px);
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .overlay[hidden] {
+      display: none;
+    }
+
+    .overlay-card {
+      width: min(100%, 420px);
+      padding: 1.2rem;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(16, 28, 48, 0.98), rgba(10, 17, 30, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.32);
+      text-align: center;
+    }
+
+    .overlay-card h2 {
+      margin: 0.2rem 0 0;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+
+    .overlay-card p {
+      margin: 0.75rem 0 0;
+      color: rgba(247, 243, 235, 0.72);
+    }
+
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.85rem;
+    }
+
+    .status-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    .status-dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ff806f, #d92f2f);
+      box-shadow: 0 0 0 6px rgba(255, 128, 111, 0.12);
+    }
+
+    .status-dot.is-gold {
+      background: linear-gradient(180deg, #ffe48f, #f1b841);
+      box-shadow: 0 0 0 6px rgba(255, 228, 143, 0.12);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat-card {
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: rgba(247, 243, 235, 0.58);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      display: block;
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .tip-list {
+      padding-left: 1.1rem;
+      margin: 0;
+      color: rgba(247, 243, 235, 0.78);
+    }
+
+    .tip-list li + li {
+      margin-top: 0.55rem;
+    }
+
+    .support-note {
+      margin-top: 1rem;
+    }
+
+    @keyframes cf-drop {
+      0% {
+        transform: translateY(-140%) scale(0.75);
+        opacity: 0;
+      }
+      55% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes cf-pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    @media (max-width: 960px) {
+      .page-hero,
+      .connect-four-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .column-controls {
+        gap: 8px;
+      }
+
+      .column-button {
+        min-height: 3.45rem;
+        border-radius: 14px;
+      }
+
+      .board-shell {
+        padding: 12px;
+        border-radius: 24px;
+      }
+
+      .connect-four-board {
+        gap: 8px;
+        padding: 8px;
+        border-radius: 20px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell page-topbar">
+      <a class="brand" href="../../">
+        <span class="brand-mark">AI</span>
+        <span class="brand-copy">Freelancer Tools</span>
+      </a>
+      <nav class="page-nav" aria-label="Primary">
+        <a href="../../">All tools</a>
+        <a href="../merge-2048/">Merge 2048</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell page-shell">
+    <section class="page-hero">
+      <div class="panel">
+        <a class="page-back" href="../../#arcade">&larr; Back to arcade</a>
+        <span class="tool-category">Arcade</span>
+        <h1 class="page-title">Connect Four</h1>
+        <p class="page-description">
+          Drop discs, build lines, and outthink a simple CPU or pass the keyboard for local two-player play.
+          Everything runs in the browser, with turns, wins, draws, and stats saved locally.
+        </p>
+        <div class="meta-line">
+          <span id="connect-four-turn-pill" class="status-pill is-active" aria-live="polite">Red to move</span>
+          <span id="connect-four-announcement" class="helper-copy">Red starts. Use 1-7, arrows, or tap a column.</span>
+        </div>
+      </div>
+      <aside class="panel">
+        <p class="panel-eyebrow">Built for</p>
+        <ul class="feature-list">
+          <li>Player vs player or player vs a simple AI</li>
+          <li>Keyboard, mouse, and touch-friendly column drops</li>
+          <li>Local stats that persist in your browser</li>
+        </ul>
+        <p class="notice">No network calls, no external libraries, and no shared-file edits. The whole game stays in two files.</p>
+      </aside>
+    </section>
+
+    <section class="connect-four-layout">
+      <section class="panel game-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Game board</h2>
+            <p class="muted-copy">Choose a mode, then drop discs into any column. Arrow keys move the focus, Enter drops, and R restarts.</p>
+          </div>
+          <div class="mode-strip" role="group" aria-label="Game mode">
+            <button id="mode-ai" type="button" data-mode="ai" class="is-active" aria-pressed="true">Vs AI</button>
+            <button id="mode-pvp" type="button" data-mode="pvp" aria-pressed="false">Two players</button>
+          </div>
+        </div>
+
+        <div class="board-stage">
+          <div id="connect-four-columns" class="column-controls" aria-label="Column controls"></div>
+
+          <div class="board-shell">
+            <div id="connect-four-board" class="connect-four-board" role="grid" aria-label="Connect Four board"></div>
+            <div id="connect-four-overlay" class="overlay" hidden>
+              <div class="overlay-card">
+                <p id="connect-four-overlay-eyebrow" class="eyebrow">Round over</p>
+                <h2 id="connect-four-overlay-title">Red wins</h2>
+                <p id="connect-four-overlay-copy">That line was clean. Start another round and see if the CPU can answer back.</p>
+                <div class="button-row stack-space-md overlay-actions">
+                  <button id="connect-four-play-again" class="button button-primary" type="button">Play again</button>
+                  <button id="connect-four-close-overlay" class="button button-secondary" type="button">Keep board</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-row support-note">
+          <button id="connect-four-new-game" class="button button-primary" type="button">New game</button>
+          <button id="connect-four-reset-stats" class="button button-secondary" type="button">Reset stats</button>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Local stats</h2>
+            <p class="muted-copy">These stay on this device and change with the selected mode.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span id="stat-a-label" class="stat-label">Your wins</span>
+            <span id="stat-a-value" class="stat-value">0</span>
+          </article>
+          <article class="stat-card">
+            <span id="stat-b-label" class="stat-label">CPU wins</span>
+            <span id="stat-b-value" class="stat-value">0</span>
+          </article>
+          <article class="stat-card">
+            <span id="stat-c-label" class="stat-label">Draws</span>
+            <span id="stat-c-value" class="stat-value">0</span>
+          </article>
+          <article class="stat-card">
+            <span id="stat-d-label" class="stat-label">Best streak</span>
+            <span id="stat-d-value" class="stat-value">0</span>
+          </article>
+        </div>
+
+        <div class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">How it works</p>
+              <h2>Simple rules, sharp feedback</h2>
+            </div>
+          </div>
+          <ul class="tip-list">
+            <li>Connect four discs horizontally, vertically, or diagonally.</li>
+            <li>Center columns are strong early, but a quick block matters more.</li>
+            <li>The AI looks for instant wins first, then blocks your best threats.</li>
+          </ul>
+        </div>
+
+        <div class="empty-state">
+          <strong class="empty-title">Controls</strong>
+          <p>Tap a column button, press a number from 1 to 7, or use the arrow keys and Enter. Press R for a fresh board.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Arcade extras</p>
+          <h2>More arcade extras</h2>
+        </div>
+      </div>
+      <div class="related-grid" data-related-tools></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Connect Four for AI Freelancer Tools.</p>
+      <p>&copy; <span data-year></span> AIFreelancer.co</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../../assets/js/tools/connect-four.js"></script>
+</body>
+</html>

@@ -3,123 +3,278 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIFreelancer Tools | Own Your Utility Stack</title>
-  <meta name="description" content="AIFreelancer Tools is a static, GitHub Pages-friendly toolbox for diffing text, downloading pasted images, tracking time, matching colors, estimating masonry jobs, converting units, and formatting JSON.">
-  <meta property="og:title" content="AIFreelancer Tools">
-  <meta property="og:description" content="Own your stack with browser-based utilities you can host yourself.">
+  <meta name="theme-color" content="#090909">
+  <title>AI Freelancer Tools | Public Browser Tools From AIFreelancer.co</title>
+  <meta name="description" content="AI Freelancer Tools is the public utility wing of AIFreelancer.co: browser-based tools for diffing text, formatting JSON, resizing images, generating passwords, converting timestamps, building UTM links, and more.">
+  <meta property="og:title" content="AI Freelancer Tools">
+  <meta property="og:description" content="Useful browser tools from AIFreelancer.co, organized around what people actually need.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body class="home-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="shell topbar">
-      <a class="brand" href="./">
+      <a class="brand" href="./" aria-label="AI Freelancer Tools home">
         <span class="brand-mark">AI</span>
-        <span class="brand-copy">AIFreelancer Tools</span>
+        <span class="brand-copy">Freelancer Tools</span>
       </a>
       <nav class="topnav" aria-label="Primary">
-        <a href="#tool-directory">Tool Directory</a>
-        <a href="#why-build-it">Why Self-Host</a>
+        <a href="#tool-directory">All Tools</a>
+        <a href="#popular-tools">Popular Tools</a>
+        <a href="#latest-tools">New</a>
+        <a class="nav-cta button button-secondary" href="https://www.aifreelancer.co/" target="_blank" rel="noopener">AIFreelancer.co</a>
       </nav>
     </div>
   </header>
 
-  <main class="shell home-shell">
-    <section class="hero hero-home">
-      <div class="hero-copy">
-        <p class="eyebrow">Static. Fast. Yours.</p>
-        <h1>Stop renting utility sites. Build your own toolbox and keep shipping.</h1>
-        <p class="hero-text">
-          This starter library gives AIFreelancer a branded collection of browser-only tools you can host on GitHub Pages for free.
-          Everything runs locally in the browser, so there is no backend, no vendor lock-in, and no reason to leave your own ecosystem.
+  <main class="shell home-shell" id="main-content">
+    <section class="home-hero">
+      <div class="hero-intro">
+        <p class="eyebrow">Public Utilities From AIFreelancer.co</p>
+        <h1 class="hero-title-lines">
+          <span class="hero-line-main">Useful browser tools</span>
+          <span class="hero-line-sub">for real work.</span>
+        </h1>
+        <p class="hero-text--serif">
+          Local-first utilities for dev, content, imaging, links, and operations work.
+          Fast to open, easy to share, and built to keep the boring-but-necessary jobs inside one dependable public stack.
         </p>
+        <label class="search-field hero-search hero-search-shell" for="tool-search">
+          <span class="field-label">Search the public catalog</span>
+          <input
+            id="tool-search"
+            data-tool-search
+            name="tool-search"
+            type="search"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="tool-search-help"
+            placeholder="Search diff, JSON, password, image resize, timestamp, UTM, regex…"
+          >
+        </label>
+        <p class="hero-search-copy" id="tool-search-help">Search updates the featured list immediately, then syncs with the full catalog below.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#tool-directory">Explore live tools</a>
-          <a class="button button-secondary" href="./tools/diff-check/">Open Diff Check</a>
+          <a class="button button-primary" href="#tool-directory">Open tool catalog</a>
+          <a class="button button-secondary" href="#popular-tools">Browse popular tools</a>
+          <a class="button button-ghost" href="https://www.aifreelancer.co/" target="_blank" rel="noopener">Visit AI Freelancer</a>
         </div>
-        <div class="stat-row">
-          <article class="stat-card">
-            <span class="stat-kicker">Launch set</span>
-            <strong class="stat-value" data-tool-count>0</strong>
-            <span class="stat-label">ready-to-host utilities</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-kicker">Privacy</span>
-            <strong class="stat-value">100%</strong>
-            <span class="stat-label">browser-side processing</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-kicker">Hosting</span>
-            <strong class="stat-value">Free</strong>
-            <span class="stat-label">GitHub Pages-friendly</span>
-          </article>
+        <div class="quick-launch quick-launch--meta">
+          <span class="meta-badge">No signup</span>
+          <span class="meta-badge">Browser-local processing</span>
+          <span class="meta-badge">Direct-link friendly</span>
         </div>
       </div>
 
-      <aside class="hero-panel">
-        <div class="panel-glow"></div>
-        <p class="panel-eyebrow">Built for your actual workflow</p>
-        <ul class="feature-list">
-          <li>Compare prompts, code, contracts, and copy changes with a real diff interface.</li>
-          <li>Paste a screenshot and trigger an instant download without using someone else's tool.</li>
-          <li>Cover builders, trades, web work, and internal ops from one expandable library.</li>
-        </ul>
-        <div class="hero-note">
-          Start with the tools you already use every week, then keep adding pages as new gaps show up.
+      <aside class="catalog-panel hero-rail">
+        <div>
+          <p class="panel-eyebrow">Selected Utilities</p>
+          <h2 class="hero-rail-title">Start with the tools teams actually reach for first.</h2>
         </div>
+
+        <div class="home-metrics" aria-label="Catalog stats">
+          <article class="mini-stat">
+            <strong class="mini-stat-value" data-utility-count>0</strong>
+            <span class="mini-stat-label">Public tools</span>
+          </article>
+          <article class="mini-stat">
+            <strong class="mini-stat-value" data-game-count>0</strong>
+            <span class="mini-stat-label">Arcade extras</span>
+          </article>
+          <article class="mini-stat">
+            <strong class="mini-stat-value">100%</strong>
+            <span class="mini-stat-label">Browser-side</span>
+          </article>
+        </div>
+
+        <div class="hero-spotlight" data-quick-launch></div>
       </aside>
     </section>
 
     <section class="section-block" id="tool-directory">
-      <div class="section-head">
+      <div class="section-head section-head--stack">
         <div>
-          <p class="eyebrow">Tool Directory</p>
-          <h2>Your first self-hosted utility stack</h2>
+          <p class="eyebrow">All Tools</p>
+          <h2>Search and filter the public utility catalog.</h2>
         </div>
-        <label class="search-field" for="tool-search">
-          <span class="field-label">Search tools</span>
-          <input id="tool-search" type="search" placeholder="Search diff, stopwatch, masonry, color, JSON...">
-        </label>
-      </div>
-
-      <div class="chip-row" data-filter-mount aria-label="Tool categories"></div>
-      <div class="tool-grid" data-tool-grid></div>
-    </section>
-
-    <section class="section-block split-section" id="why-build-it">
-      <div>
-        <p class="eyebrow">Why Self-Host</p>
-        <h2>Every small tool you own compounds.</h2>
-        <p class="section-text">
-          A toolbox like this becomes a quiet moat. It keeps you inside your brand, saves clicks, avoids sketchy uploads,
-          and gives you reusable building blocks for future product ideas.
+        <p class="section-note">
+          The main working surface: one search box above, category filters here, and direct links into the full utility library.
         </p>
       </div>
 
-      <div class="tile-grid">
-        <article class="tile">
-          <h3>Private by default</h3>
-          <p>Text diffs, clipboard images, and local calculations stay in the browser instead of bouncing through a third-party app.</p>
+      <div class="catalog-toolbar">
+        <p class="catalog-summary" data-catalog-count role="status" aria-live="polite"></p>
+        <div class="chip-row" data-filter-mount role="group" aria-label="Tool categories"></div>
+      </div>
+
+      <div class="utility-list" data-tool-grid></div>
+    </section>
+
+    <section class="section-block" id="popular-tools">
+      <div class="section-head section-head--stack">
+        <div>
+          <p class="eyebrow">Popular Tools</p>
+          <h2>Start with the most-used utilities.</h2>
+        </div>
+        <p class="section-note">
+          Open the common stuff fast: text comparison, JSON cleanup, QR codes, passwords, screenshots, timestamps, image prep, and practical calculators.
+        </p>
+      </div>
+      <div class="utility-list" data-popular-tools></div>
+    </section>
+
+    <section class="section-block" id="latest-tools">
+      <div class="section-head section-head--stack">
+        <div>
+          <p class="eyebrow">Featured New Tools</p>
+          <h2>Fresh additions worth keeping close.</h2>
+        </div>
+        <p class="section-note">
+          Recently added utility pages prioritized around the jobs people most often end up searching for.
+        </p>
+      </div>
+      <div class="utility-list" data-new-tools></div>
+    </section>
+
+    <section class="section-block" id="browse-by-task">
+      <div class="section-head section-head--stack">
+        <div>
+          <p class="eyebrow">Browse by Task</p>
+          <h2>Browse by the job you need to finish.</h2>
+        </div>
+        <p class="section-note">
+          Each route drops you into a filtered slice of the catalog so the right tools stay one click away.
+        </p>
+      </div>
+
+      <div class="workflow-list">
+        <a class="workflow-row" href="./?category=Dev#tool-directory">
+          <div>
+            <span class="task-kicker">Compare, format, encode</span>
+            <h3>Developer utilities</h3>
+          </div>
+          <p>Diff Check, Regex Tester, JSON Formatter, CSV / JSON Converter, Encoding Lab, Hash Generator, and UUID Generator.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Imaging#tool-directory">
+          <div>
+            <span class="task-kicker">Paste, resize, export</span>
+            <h3>Image workflows</h3>
+          </div>
+          <p>Image Paste Downloader, Image Resizer, Image Compressor, and Aspect Ratio Calculator for quick media cleanup.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Writing#tool-directory">
+          <div>
+            <span class="task-kicker">Draft, count, preview</span>
+            <h3>Writing tools</h3>
+          </div>
+          <p>Word Counter and Markdown Preview for quick drafts, release notes, and docs that stay local.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Text#tool-directory">
+          <div>
+            <span class="task-kicker">Rename, normalize, dedupe</span>
+            <h3>Text cleanup</h3>
+          </div>
+          <p>Case Converter and List Cleaner for batch-ready pasted text and naming cleanup.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Content#tool-directory">
+          <div>
+            <span class="task-kicker">Publish, clean, reuse</span>
+            <h3>Content utilities</h3>
+          </div>
+          <p>Slug Generator for turning rough titles into clean URLs you can ship quickly.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Security#tool-directory">
+          <div>
+            <span class="task-kicker">Tokens, secrets, auth checks</span>
+            <h3>Security essentials</h3>
+          </div>
+          <p>Password Generator and JWT Decoder for fast local credential and token work without uploading sensitive text.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Time#tool-directory">
+          <div>
+            <span class="task-kicker">Track, convert, timestamp</span>
+            <h3>Time tools</h3>
+          </div>
+          <p>Timestamp Converter and Stopwatch for the fast operational tasks people usually hunt for first.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Math#tool-directory">
+          <div>
+            <span class="task-kicker">Percentages & quick formulas</span>
+            <h3>Quick math</h3>
+          </div>
+          <p>Percentage Calculator for margins, deltas, share-of-total checks, and reverse-percent math.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Web#tool-directory">
+          <div>
+            <span class="task-kicker">Color, links, scan-ready assets</span>
+            <h3>Web prep</h3>
+          </div>
+          <p>Color Studio, URL Inspector, and QR Generator for front-end prep, share links, and scan-ready assets.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Marketing#tool-directory">
+          <div>
+            <span class="task-kicker">Campaign tracking</span>
+            <h3>Marketing links</h3>
+          </div>
+          <p>UTM Builder for campaign URLs that stay encoded correctly and copy cleanly.</p>
+        </a>
+        <a class="workflow-row" href="./?category=Trades#tool-directory">
+          <div>
+            <span class="task-kicker">On-site measurements</span>
+            <h3>Trades & estimating</h3>
+          </div>
+          <p>Unit Converter and Brick Calculator for field math without hunting around the web.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head section-head--stack">
+        <div>
+          <p class="eyebrow">Why Teams Use It</p>
+          <h2>Built to stay fast, trustworthy, and easy to share.</h2>
+        </div>
+        <p class="section-note">The point is simple: stop hunting for throwaway utilities and keep a dependable public stack inside the AI Freelancer ecosystem.</p>
+      </div>
+
+      <div class="promise-list">
+        <article class="promise-row">
+          <h3>Local-first by default</h3>
+          <p>Diffs, screenshots, passwords, JSON, and calculations stay in the browser instead of being bounced through random third-party tools.</p>
         </article>
-        <article class="tile">
-          <h3>Cheap to scale</h3>
-          <p>Static pages are easy to host, easy to fork, and easy to clone into niche vertical tool collections later.</p>
+        <article class="promise-row">
+          <h3>Part of the AI Freelancer stack</h3>
+          <p>These tools sit naturally alongside AIFreelancer.co as public utilities you can use, share, and keep expanding over time.</p>
         </article>
-        <article class="tile">
-          <h3>Brand gravity</h3>
-          <p>AIFreelancer becomes the place you go to work, not just the place you explain what you do.</p>
+        <article class="promise-row">
+          <h3>Built around common demand</h3>
+          <p>The catalog is meant to keep growing around the tools people genuinely search for, not around filler pages or novelty first.</p>
         </article>
       </div>
+    </section>
+
+    <section class="section-block arcade-shell" id="arcade">
+      <div class="section-head section-head--stack">
+        <div>
+          <p class="eyebrow">Arcade Extras</p>
+          <h2>Optional games, kept behind the main utility catalog.</h2>
+        </div>
+        <p class="section-note">
+          Small browser side projects for a break, presented as extras rather than as the main product.
+        </p>
+      </div>
+
+      <div class="tool-grid arcade-grid" data-arcade-grid></div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-row">
-      <p>AIFreelancer Tools. Browser-only utilities you can host yourself.</p>
+      <p>AI Freelancer Tools. Public browser utilities from AIFreelancer.co.</p>
       <p>&copy; <span data-year></span> AIFreelancer.co</p>
     </div>
   </footer>

@@ -1,0 +1,985 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Security audit — aifdoggy</title>
+<style>
+:root {
+  --bg: #0e1117; --panel: #161b22; --border: #30363d;
+  --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+  --crit-fg: #ff7b72; --crit-bg: #2d1115;
+  --warn-fg: #d29922; --warn-bg: #2a210a;
+  --info-fg: #8b949e; --info-bg: #1c2128;
+  --ok-fg:   #3fb950; --ok-bg:   #12271a;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); color: var(--text); }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+       max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.55; }
+h1 { font-size: 2rem; margin: 0 0 0.25rem; }
+h2 { margin-top: 2.5rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
+     font-size: 1.25rem; letter-spacing: 0.02em; }
+h3 { margin-top: 1.5rem; font-size: 1.05rem; }
+.meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+.meta code { color: var(--text); }
+.summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin: 1.5rem 0; }
+.card { padding: 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); }
+.card .count { font-size: 2rem; font-weight: 700; }
+.card .label { color: var(--muted); font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.card.crit { border-color: var(--crit-fg); }
+.card.crit .count { color: var(--crit-fg); }
+.card.warn { border-color: var(--warn-fg); }
+.card.warn .count { color: var(--warn-fg); }
+.card.info .count { color: var(--info-fg); }
+.card.ok   { border-color: var(--ok-fg); }
+.card.ok .count { color: var(--ok-fg); }
+.finding { margin: 0.75rem 0 0.25rem; padding: 0.6rem 0.8rem; border-radius: 6px;
+           border-left: 3px solid; background: var(--panel); }
+.finding .badge { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 4px;
+                  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; margin-right: 0.5rem; }
+.finding.crit { border-left-color: var(--crit-fg); background: var(--crit-bg); }
+.finding.crit .badge { background: var(--crit-fg); color: #000; }
+.finding.warn { border-left-color: var(--warn-fg); background: var(--warn-bg); }
+.finding.warn .badge { background: var(--warn-fg); color: #000; }
+.finding.info { border-left-color: var(--info-fg); background: var(--info-bg); }
+.finding.info .badge { background: #30363d; color: var(--text); }
+.finding.ok   { border-left-color: var(--ok-fg); background: var(--ok-bg); }
+.finding.ok   .badge { background: var(--ok-fg); color: #000; }
+.finding .title { font-weight: 500; }
+.remediate { background: #0d1b2a; border-left: 3px solid var(--accent);
+             padding: 0.5rem 0.8rem; margin: 0.25rem 0 0.5rem 1.5rem; border-radius: 0 6px 6px 0;
+             font-size: 0.9rem; color: var(--text); }
+.remediate code { background: #161b22; padding: 0.1rem 0.35rem; border-radius: 4px; }
+pre.code { background: #010409; border: 1px solid var(--border); border-radius: 6px;
+           padding: 0.75rem 1rem; overflow-x: auto; font-size: 0.8rem; margin: 0.5rem 0 1rem 1.5rem;
+           color: #b1bac4; }
+code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.87em; }
+p code { background: #161b22; padding: 0.1rem 0.35rem; border-radius: 4px; }
+table { border-collapse: collapse; margin: 1rem 0; width: 100%; }
+th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+th { background: #161b22; }
+.toc { background: var(--panel); border: 1px solid var(--border); padding: 1rem 1.5rem;
+       border-radius: 6px; margin-bottom: 2rem; }
+.toc a { color: var(--accent); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.report-section { margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--border); }
+.chip { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 10px;
+        font-size: 0.7rem; font-weight: 600; background: var(--panel); border: 1px solid var(--border);
+        color: var(--muted); letter-spacing: 0.05em; }
+.plain-summary { background: var(--panel); border: 1px solid var(--border);
+                 border-left: 4px solid var(--accent);
+                 padding: 1rem 1.75rem; border-radius: 6px; margin: 0 0 2rem; }
+.plain-summary h2 { margin-top: 0.5rem; border: 0; font-size: 1.3rem; }
+.plain-summary p { font-size: 0.98rem; }
+.plain-summary ul { font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<h1>Security audit — aifdoggy</h1>
+<div class="meta">
+  Generated 2026-04-16 18:48:39Z · 3 reports consolidated
+  · <code>MOC-CLAW-SEC-AUDIT</code> kit
+</div>
+
+<section>
+  <h2>Executive summary</h2>
+  <div class="summary"><div class="card crit"><div class="count">2</div><div class="label">🔴 CRIT</div></div><div class="card warn"><div class="count">16</div><div class="label">🟡 WARN</div></div><div class="card info"><div class="count">32</div><div class="label">ℹ️ INFO</div></div><div class="card ok"><div class="count">27</div><div class="label">✅ OK</div></div></div>
+</section>
+
+<section class="plain-summary"><h2>Plain-English summary</h2>
+<p><b>Overall: your server is in solid shape.</b> Nothing is actively on fire. The heavy-lift hardening is already done — SSH is key-only, the firewall is on, fail2ban is watching for brute-force attempts, and the system applies security updates automatically. If ZioSec walked in today, they&#x27;d find a tidy baseline.</p>
+
+<p><b>The one real problem.</b> Your <code>/home/devraj/openclaw/.env</code> file is world-writable. That means any process or user on the box can rewrite it. <code>.env</code> files usually hold database passwords, API keys, and similar secrets, so this is the one thing worth fixing *right now*. It&#x27;s a 5-second fix (<code>chmod 600</code>). While you&#x27;re at it, a bunch of other files in your home directory have the same too-loose permissions — one command cleans them all up.</p>
+
+<p><b>Medium stuff, worth doing before the audit.</b> The server has 55 package updates waiting and is asking for a reboot — standard housekeeping but the auditor will notice. Both <code>root</code> and <code>devraj</code> have passwordless sudo, which is convenient but will get flagged; the trade-off is whether you want to start typing a password every time you <code>sudo</code>. Three kernel-level network settings are slightly off from the textbook-recommended values (one of them is arguably fine for your setup). Your website doesn&#x27;t send an HSTS header, which tells browsers &quot;always use HTTPS&quot; — one line in your Caddyfile. And your domain is missing CAA, SPF, and DMARC DNS records, which protect against certificate-issuance abuse and email spoofing.</p>
+
+<p><b>The &quot;secrets scan&quot; looks scary but isn&#x27;t.</b> It flagged 124 possible secrets in your home directory and 5 in <code>/etc</code>. Walking through them — almost all are noise:</p>
+
+<p>- Most of the 124 are inside <b>test files</b> (<code>*.test.ts</code>) that contain obviously fake tokens like <code>xoxb-test-token</code> or <code>sk-1234567890abcdef</code>. One is literally marked <code>// pragma: allowlist secret</code>.</p>
+<p>- Many are <b>code examples in documentation</b> (postgres URLs in markdown files).</p>
+<p>- The 5 hits in <code>/etc</code> are your server&#x27;s own SSH host keys (supposed to be there, locked down correctly) and a fail2ban config file that uses the word &quot;apikey&quot; as a variable name, not a real credential.</p>
+
+<p>The only legitimate-secret concerns are the <code>.env</code> file mentioned above and some TLS certs sitting in a project folder that might be development-only dummies — worth a quick look.</p>
+
+<p><b>Externally,</b> the site passes the important tests: modern TLS versions only, certificate valid for 51 more days, redirects HTTP → HTTPS, and it already sends most of the important security headers (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy). The only missing one is HSTS.</p>
+
+<p><b>Bottom line:</b> fix the <code>.env</code> permissions, run the updates, reboot, add HSTS, add the DNS records, and decide your stance on passwordless sudo. That&#x27;s the whole to-do list.</p></section>
+
+<section class="toc">
+  <h2 style="border:0; margin-top:0;">Reports in this bundle</h2>
+  <ul><li><a href="#r0">External scan — aifdoggydog.openclawsystems.com</a> <span class="chip">CRIT 0</span> <span class="chip">WARN 5</span></li>
+<li><a href="#r1">Host audit — moc-aifdoggydog</a> <span class="chip">CRIT 0</span> <span class="chip">WARN 10</span></li>
+<li><a href="#r2">Secrets scan — moc-aifdoggydog</a> <span class="chip">CRIT 2</span> <span class="chip">WARN 1</span></li></ul>
+</section>
+
+<section class="report-section" id="r0"><h2>External scan — aifdoggydog.openclawsystems.com <span class="chip">CRIT 0</span> <span class="chip">WARN 5</span> <span class="chip">INFO 6</span> <span class="chip">OK 9</span></h2>
+<p>- Generated: 2026-04-16 18:21:54Z</p>
+<p>- Host: Mac.lan</p>
+
+
+<h2>DNS</h2>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">A records</span></div>
+
+<pre class="code"><code>
+46.62.227.156
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">No AAAA (IPv6) records</span></div>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">No CAA record on openclawsystems.com</span></div>
+
+<div class="remediate"><b>Remediation:</b> Publish a CAA record pinning Let&#x27;s Encrypt (or your CA): <code>openclawsystems.com. IN CAA 0 issue &quot;letsencrypt.org&quot;</code></div>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">No SPF record on openclawsystems.com (spoofing risk if domain sends mail)</span></div>
+
+<div class="remediate"><b>Remediation:</b> Add TXT: <code>v=spf1 -all</code> if you don&#x27;t send mail, else list sending hosts.</div>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">No DMARC record on openclawsystems.com</span></div>
+
+<div class="remediate"><b>Remediation:</b> Add TXT at _dmarc.openclawsystems.com: <code>v=DMARC1; p=reject; rua=mailto:security@openclawsystems.com</code></div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">No DNSSEC (DS record) for openclawsystems.com</span></div>
+
+
+<h2>Exposed ports</h2>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">nmap not installed; skipping port scan (install with: brew install nmap)</span></div>
+
+
+<h2>TLS configuration</h2>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">Protocol supported: tls1.2</span></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">Protocol supported: tls1.3</span></div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">Certificate details</span></div>
+
+<pre class="code"><code>
+subject=CN=aifdoggydog.openclawsystems.com
+issuer=C=US, O=Let&#x27;s Encrypt, CN=E7
+notBefore=Mar  9 02:44:34 2026 GMT
+notAfter=Jun  7 02:44:33 2026 GMT
+X509v3 Subject Alternative Name: 
+    DNS:aifdoggydog.openclawsystems.com
+</code></pre>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">TLS cert valid for 51 more day(s)</span></div>
+
+
+<h2>HTTP / HTTPS behavior</h2>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">HTTP redirects to HTTPS</span></div>
+
+<pre class="code"><code>
+https://aifdoggydog.openclawsystems.com/
+</code></pre>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">Strict-Transport-Security missing</span></div>
+
+<div class="remediate"><b>Remediation:</b> Add: <code>Strict-Transport-Security: max-age=63072000; includeSubDomains; preload</code></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">Content-Security-Policy present</span></div>
+
+<pre class="code"><code>
+default-src &#x27;self&#x27;; base-uri &#x27;none&#x27;; object-src &#x27;none&#x27;; frame-ancestors &#x27;none&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27; https://fonts.googleapis.com; img-src &#x27;self&#x27; data: https:; font-src &#x27;self&#x27; https://fonts.gstatic.com; connect-src &#x27;self&#x27; ws: wss:
+</code></pre>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">X-Content-Type-Options present</span></div>
+
+<pre class="code"><code>
+nosniff
+</code></pre>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">X-Frame-Options present</span></div>
+
+<pre class="code"><code>
+DENY
+</code></pre>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">Referrer-Policy present</span></div>
+
+<pre class="code"><code>
+no-referrer
+</code></pre>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">Permissions-Policy present</span></div>
+
+<pre class="code"><code>
+camera=(), microphone=(), geolocation=()
+</code></pre>
+
+
+<h2>Common leaky paths</h2>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">Site returns 200 for unknown paths (SPA / catch-all)</span></div>
+
+<pre class="code"><code>
+root=200 2899   random=200 2899
+</code></pre>
+
+<div class="remediate"><b>Remediation:</b> A catch-all 200 makes path probing unreliable and can hide real 404s. Return proper 404 for unknown backend paths; keep SPA fallback only for app routes.</div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">No /.well-known/security.txt (nice-to-have)</span></div>
+
+<div class="remediate"><b>Remediation:</b> Publish /.well-known/security.txt per RFC 9116 with a security contact.</div>
+
+
+<h2>Summary</h2>
+
+<table><thead><tr>
+<th>Severity</th>
+<th>Count</th>
+</tr></thead><tbody>
+<tr>
+<td>🔴 CRIT</td>
+<td>0</td>
+</tr>
+<tr>
+<td>🟡 WARN</td>
+<td>5</td>
+</tr>
+<tr>
+<td>ℹ️ INFO</td>
+<td>6</td>
+</tr>
+<tr>
+<td>✅ OK</td>
+<td>9</td>
+</tr>
+<tr>
+<td><b>Total</b></td>
+<td><b>20</b></td>
+</tr>
+</tbody></table></section><section class="report-section" id="r1"><h2>Host audit — moc-aifdoggydog <span class="chip">CRIT 0</span> <span class="chip">WARN 10</span> <span class="chip">INFO 26</span> <span class="chip">OK 15</span></h2>
+<p>- Generated: 2026-04-16 18:25:09Z</p>
+<p>- Host: moc-aifdoggydog</p>
+
+
+<h2>System</h2>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">uname</span></div>
+
+<pre class="code"><code>
+Linux moc-aifdoggydog 6.8.0-106-generic #106-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar  6 07:58:08 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">os-release</span></div>
+
+<pre class="code"><code>
+PRETTY_NAME=&quot;Ubuntu 24.04.3 LTS&quot;
+NAME=&quot;Ubuntu&quot;
+VERSION_ID=&quot;24.04&quot;
+VERSION=&quot;24.04.3 LTS (Noble Numbat)&quot;
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL=&quot;https://www.ubuntu.com/&quot;
+SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;
+BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;
+PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">uptime</span></div>
+
+<pre class="code"><code>
+ 18:25:09 up 5 days, 22:57,  1 user,  load average: 0.04, 0.06, 0.07
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">kernel</span></div>
+
+<pre class="code"><code>
+6.8.0-106-generic
+</code></pre>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">Reboot required (pending kernel/lib updates)</span></div>
+
+<pre class="code"><code>
+*** System restart required ***
+</code></pre>
+
+<div class="remediate"><b>Remediation:</b> Schedule a reboot: <code>sudo reboot</code>. Check running services first.</div>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">Running kernel (6.8.0-106-generic) differs from installed (virtual)</span></div>
+
+<div class="remediate"><b>Remediation:</b> Reboot into the newer kernel.</div>
+
+
+<h2>Package updates</h2>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">55 package update(s) pending</span></div>
+
+<div class="remediate"><b>Remediation:</b> Apply: <code>sudo apt-get update &amp;&amp; sudo apt-get upgrade -y</code>.</div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">unattended-upgrades enabled</span></div>
+
+
+<h2>SSH daemon configuration</h2>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">PermitRootLogin=no</span></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">PasswordAuthentication=no</span></div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">ClientAliveInterval not set (idle sessions linger)</span></div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">host key</span></div>
+
+<pre class="code"><code>
+256 SHA256:Vwet5SsSuWGzz9beLGIh621/Np0a/ISY5q7LunT9fLw root@moc-aifdoggydog (ECDSA)
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">host key</span></div>
+
+<pre class="code"><code>
+256 SHA256:rDwnFKuvuq0FO/WxxMCEaqDnkCLXMY+L5edMoAgKeDM root@moc-aifdoggydog (ED25519)
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">host key</span></div>
+
+<pre class="code"><code>
+3072 SHA256:TGZaI2FVCjA0pxBjXyva0BoOdOQvuyjPFdnXDQkmKac root@moc-aifdoggydog (RSA)
+</code></pre>
+
+
+<h2>SSH authorized_keys</h2>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">devraj: 1 key(s), mode 600</span></div>
+
+<pre class="code"><code>
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKA3DOVDCBVp+iXgj2BzhVKKAFbuTP/7MlJJ2FOMwfk4
+</code></pre>
+
+
+<h2>Firewall</h2>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">ufw active</span></div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">ufw rules</span></div>
+
+<pre class="code"><code>
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere                  
+80/tcp                     ALLOW IN    Anywhere                  
+443/tcp                    ALLOW IN    Anywhere                  
+22/tcp (v6)                ALLOW IN    Anywhere (v6)             
+80/tcp (v6)                ALLOW IN    Anywhere (v6)             
+443/tcp (v6)               ALLOW IN    Anywhere (v6)             
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">nftables ruleset (first 80 lines)</span></div>
+
+<pre class="code"><code>
+# Warning: table ip filter is managed by iptables-nft, do not touch!
+table ip filter {
+	chain ufw-before-logging-input {
+	}
+
+	chain ufw-before-logging-output {
+	}
+
+	chain ufw-before-logging-forward {
+	}
+
+	chain ufw-before-input {
+		iifname &quot;lo&quot; counter packets 769590 bytes 191349973 accept
+		ct state related,established counter packets 204043 bytes 290634637 accept
+		ct state invalid counter packets 1045 bytes 102838 jump ufw-logging-deny
+		ct state invalid counter packets 1045 bytes 102838 drop
+		ip protocol icmp icmp type destination-unreachable counter packets 0 bytes 0 accept
+		ip protocol icmp icmp type time-exceeded counter packets 0 bytes 0 accept
+		ip protocol icmp icmp type parameter-problem counter packets 0 bytes 0 accept
+		ip protocol icmp icmp type echo-request counter packets 19105 bytes 1273046 accept
+		udp sport 67 udp dport 68 counter packets 0 bytes 0 accept
+		counter packets 155938 bytes 8343282 jump ufw-not-local
+		ip daddr 224.0.0.251 udp dport 5353 counter packets 0 bytes 0 accept
+		ip daddr 239.255.255.250 udp dport 1900 counter packets 0 bytes 0 accept
+		counter packets 155938 bytes 8343282 jump ufw-user-input
+	}
+
+	chain ufw-before-output {
+		oifname &quot;lo&quot; counter packets 769590 bytes 191349973 accept
+		ct state related,established counter packets 555768 bytes 127122124 accept
+		counter packets 977 bytes 102796 jump ufw-user-output
+	}
+
+	chain ufw-before-forward {
+		ct state related,established counter packets 0 bytes 0 accept
+		ip protocol icmp icmp type destination-unreachable counter packets 0 bytes 0 accept
+		ip protocol icmp icmp type time-exceeded counter packets 0 bytes 0 accept
+		ip protocol icmp icmp type parameter-problem counter packets 0 bytes 0 accept
+		ip protocol icmp icmp type echo-request counter packets 0 bytes 0 accept
+		counter packets 0 bytes 0 jump ufw-user-forward
+	}
+
+	chain ufw-after-input {
+		udp dport 137 counter packets 35 bytes 2730 jump ufw-skip-to-policy-input
+		udp dport 138 counter packets 0 bytes 0 jump ufw-skip-to-policy-input
+		tcp dport 139 counter packets 112 bytes 5732 jump ufw-skip-to-policy-input
+		tcp dport 445 counter packets 408 bytes 20176 jump ufw-skip-to-policy-input
+		udp dport 67 counter packets 0 bytes 0 jump ufw-skip-to-policy-input
+		udp dport 68 counter packets 0 bytes 0 jump ufw-skip-to-policy-input
+		fib daddr type broadcast counter packets 0 bytes 0 jump ufw-skip-to-policy-input
+	}
+
+	chain ufw-after-output {
+	}
+
+	chain ufw-after-forward {
+	}
+
+	chain ufw-after-logging-input {
+		limit rate 3/minute burst 10 packets counter packets 25741 bytes 1594871 log prefix &quot;[UFW BLOCK] &quot;
+	}
+
+	chain ufw-after-logging-output {
+	}
+
+	chain ufw-after-logging-forward {
+		limit rate 3/minute burst 10 packets counter packets 0 bytes 0 log prefix &quot;[UFW BLOCK] &quot;
+	}
+
+	chain ufw-reject-input {
+	}
+
+	chain ufw-reject-output {
+	}
+
+	chain ufw-reject-forward {
+	}
+
+	chain ufw-track-input {
+	}
+</code></pre>
+
+
+<h2>Listening ports</h2>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">all listening sockets</span></div>
+
+<pre class="code"><code>
+Netid State  Recv-Q Send-Q      Local Address:Port  Peer Address:PortProcess                                                  
+udp   UNCONN 0      0              127.0.0.54:53         0.0.0.0:*    users:((&quot;systemd-resolve&quot;,pid=58212,fd=16))             
+udp   UNCONN 0      0           127.0.0.53%lo:53         0.0.0.0:*    users:((&quot;systemd-resolve&quot;,pid=58212,fd=14))             
+udp   UNCONN 0      0      46.62.227.156%eth0:68         0.0.0.0:*    users:((&quot;systemd-network&quot;,pid=58226,fd=23))             
+udp   UNCONN 0      0                       *:443              *:*    users:((&quot;caddy&quot;,pid=824,fd=8))                          
+tcp   LISTEN 0      4096              0.0.0.0:18790      0.0.0.0:*    users:((&quot;docker-proxy&quot;,pid=317797,fd=8))                
+tcp   LISTEN 0      4096              0.0.0.0:18789      0.0.0.0:*    users:((&quot;docker-proxy&quot;,pid=317775,fd=8))                
+tcp   LISTEN 0      4096           127.0.0.54:53         0.0.0.0:*    users:((&quot;systemd-resolve&quot;,pid=58212,fd=17))             
+tcp   LISTEN 0      4096        127.0.0.53%lo:53         0.0.0.0:*    users:((&quot;systemd-resolve&quot;,pid=58212,fd=15))             
+tcp   LISTEN 0      4096              0.0.0.0:22         0.0.0.0:*    users:((&quot;sshd&quot;,pid=58202,fd=3),(&quot;systemd&quot;,pid=1,fd=152))
+tcp   LISTEN 0      4096            127.0.0.1:2019       0.0.0.0:*    users:((&quot;caddy&quot;,pid=824,fd=4))                          
+tcp   LISTEN 0      4096                 [::]:18790         [::]:*    users:((&quot;docker-proxy&quot;,pid=317804,fd=8))                
+tcp   LISTEN 0      4096                 [::]:18789         [::]:*    users:((&quot;docker-proxy&quot;,pid=317783,fd=8))                
+tcp   LISTEN 0      4096                    *:443              *:*    users:((&quot;caddy&quot;,pid=824,fd=7))                          
+tcp   LISTEN 0      4096                 [::]:22            [::]:*    users:((&quot;sshd&quot;,pid=58202,fd=4),(&quot;systemd&quot;,pid=1,fd=153))
+tcp   LISTEN 0      4096                    *:80               *:*    users:((&quot;caddy&quot;,pid=824,fd=9))                          
+</code></pre>
+
+
+<h2>Users and authentication</h2>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">Only root has UID 0</span></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">No empty-password accounts</span></div>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">NOPASSWD sudo entries</span></div>
+
+<pre class="code"><code>
+devraj ALL=(ALL) NOPASSWD:ALL
+root ALL=(ALL) NOPASSWD:ALL
+</code></pre>
+
+<div class="remediate"><b>Remediation:</b> Review — NOPASSWD should be reserved for narrowly-scoped, non-interactive automation.</div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">Users with interactive shell</span></div>
+
+<pre class="code"><code>
+devraj
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">recent successful logins</span></div>
+
+<pre class="code"><code>
+devraj   pts/0        104.231.95.198   Thu Apr 16 17:21 - 18:23  (01:01)
+devraj   pts/0        104.231.95.198   Fri Apr 10 19:27 - 21:41  (02:14)
+reboot   system boot  6.8.0-106-generi Fri Apr 10 19:27   still running
+devraj   pts/0        104.231.95.198   Sat Mar 28 00:36 - 06:15  (05:38)
+devraj   pts/0        104.231.95.198   Fri Mar 27 17:32 - 23:57  (06:24)
+devraj   pts/0        104.231.95.198   Fri Mar 27 00:56 - 11:48  (10:51)
+reboot   system boot  6.8.0-106-generi Thu Mar 26 23:08 - 06:15 (1+07:06)
+devraj   pts/0        104.231.95.198   Thu Mar 26 22:39 - 22:48  (00:09)
+devraj   pts/0        104.231.95.198   Tue Mar 24 23:16 - 09:37  (10:20)
+devraj   pts/0        104.231.95.198   Tue Mar 24 06:21 - 12:51  (06:30)
+devraj   pts/0        104.231.95.198   Mon Mar 23 18:01 - 20:17  (02:15)
+devraj   pts/0        104.231.95.198   Sun Mar 22 22:14 - 11:09  (12:54)
+devraj   pts/0        104.231.95.198   Sun Mar 22 05:41 - 09:01  (03:19)
+reboot   system boot  6.8.0-106-generi Sun Mar 22 05:40 - 22:48 (4+17:08)
+devraj   pts/0        104.231.95.198   Sun Mar 22 05:18 - 05:40  (00:22)
+
+wtmp begins Thu Jan  8 10:27:31 2026
+</code></pre>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">fail2ban installed</span></div>
+
+<pre class="code"><code>
+Status
+|- Number of jail:	1
+`- Jail list:	sshd
+</code></pre>
+
+
+<h2>Filesystem checks</h2>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">World-writable files (sample)</span></div>
+
+<pre class="code"><code>
+/home/devraj/openclaw/.env
+/home/devraj/moo/USER.md
+/home/devraj/moo/HEARTBEAT.md
+/home/devraj/moo/AGENTS.md
+/home/devraj/moo/TOOLS.md
+/home/devraj/moo/IDENTITY.md
+/home/devraj/moo/.git/config
+/home/devraj/moo/.git/info/exclude
+/home/devraj/moo/.git/HEAD
+/home/devraj/moo/.git/description
+/home/devraj/moo/.git/hooks/applypatch-msg.sample
+/home/devraj/moo/.git/hooks/pre-receive.sample
+/home/devraj/moo/.git/hooks/pre-applypatch.sample
+/home/devraj/moo/.git/hooks/push-to-checkout.sample
+/home/devraj/moo/.git/hooks/post-update.sample
+/home/devraj/moo/.git/hooks/pre-rebase.sample
+/home/devraj/moo/.git/hooks/fsmonitor-watchman.sample
+/home/devraj/moo/.git/hooks/update.sample
+/home/devraj/moo/.git/hooks/pre-merge-commit.sample
+/home/devraj/moo/.git/hooks/commit-msg.sample
+/home/devraj/moo/.git/hooks/pre-commit.sample
+/home/devraj/moo/.git/hooks/prepare-commit-msg.sample
+/home/devraj/moo/.git/hooks/pre-push.sample
+/home/devraj/moo/SOUL.md
+/home/devraj/.openclaw/completions/openclaw.zsh
+/home/devraj/.openclaw/completions/openclaw.bash
+/home/devraj/.openclaw/completions/openclaw.ps1
+/home/devraj/.openclaw/completions/openclaw.fish
+/home/devraj/.openclaw/identity/device.json
+/home/devraj/.openclaw/workspace/USER.md
+/home/devraj/.openclaw/workspace/HEARTBEAT.md
+/home/devraj/.openclaw/workspace/AGENTS.md
+/home/devraj/.openclaw/workspace/TOOLS.md
+/home/devraj/.openclaw/workspace/IDENTITY.md
+/home/devraj/.openclaw/workspace/.git/config
+/home/devraj/.openclaw/workspace/.git/info/exclude
+/home/devraj/.openclaw/workspace/.git/HEAD
+/home/devraj/.openclaw/workspace/.git/description
+/home/devraj/.openclaw/workspace/.git/hooks/applypatch-msg.sample
+/home/devraj/.openclaw/workspace/.git/hooks/pre-receive.sample
+</code></pre>
+
+<div class="remediate"><b>Remediation:</b> Review and <code>chmod o-w</code> anything that should not be writable by all.</div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">SUID binaries</span></div>
+
+<pre class="code"><code>
+/usr/lib/polkit-1/polkit-agent-helper-1
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign
+/usr/bin/at
+/usr/bin/umount
+/usr/bin/su
+/usr/bin/newgrp
+/usr/bin/chsh
+/usr/bin/sudo
+/usr/bin/chfn
+/usr/bin/fusermount3
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/mount
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/8/fs/usr/lib/openssh/ssh-keysign
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/218/fs/usr/lib/openssh/ssh-keysign
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/168/fs/usr/lib/openssh/ssh-keysign
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs/usr/bin/umount
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs/usr/bin/su
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs/usr/bin/newgrp
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs/usr/bin/chsh
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs/usr/bin/chfn
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs/usr/bin/passwd
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs/usr/bin/gpasswd
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6/fs/usr/bin/mount
+</code></pre>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">SUID binaries modified in last 30 days</span></div>
+
+<pre class="code"><code>
+/usr/lib/polkit-1/polkit-agent-helper-1
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/218/fs/usr/lib/openssh/ssh-keysign
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/168/fs/usr/lib/openssh/ssh-keysign
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">/etc/shadow mode</span></div>
+
+<pre class="code"><code>
+640 root shadow
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">/etc/gshadow mode</span></div>
+
+<pre class="code"><code>
+640 root shadow
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">/etc/passwd mode</span></div>
+
+<pre class="code"><code>
+644 root root
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">/etc/group mode</span></div>
+
+<pre class="code"><code>
+644 root root
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">/etc/sudoers mode</span></div>
+
+<pre class="code"><code>
+440 root root
+</code></pre>
+
+
+<h2>Web server configuration</h2>
+
+
+<h2>Docker / containers</h2>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">docker version</span></div>
+
+<pre class="code"><code>
+Docker version 29.3.0, build 5927d80
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">docker.sock 660 root docker</span></div>
+
+
+<h2>Scheduled tasks</h2>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">cron files</span></div>
+
+<pre class="code"><code>
+-rw-r--r-- 1 root root 1136 Aug  5  2025 /etc/crontab
+
+/etc/cron.d:
+total 20
+drwxr-xr-x   2 root root 4096 Aug  5  2025 .
+drwxr-xr-x 106 root root 4096 Apr 16 06:20 ..
+-rw-r--r--   1 root root  201 Apr  8  2024 e2scrub_all
+-rw-r--r--   1 root root  102 Aug  5  2025 .placeholder
+-rw-r--r--   1 root root  396 Aug  5  2025 sysstat
+
+/etc/cron.daily:
+total 36
+drwxr-xr-x   2 root root 4096 Jan  8 10:21 .
+drwxr-xr-x 106 root root 4096 Apr 16 06:20 ..
+-rwxr-xr-x   1 root root  376 Jul  8  2025 apport
+-rwxr-xr-x   1 root root 1478 Mar 22  2024 apt-compat
+-rwxr-xr-x   1 root root  123 Feb  5  2024 dpkg
+-rwxr-xr-x   1 root root  377 Aug  5  2025 logrotate
+-rwxr-xr-x   1 root root 1395 Aug  5  2025 man-db
+-rw-r--r--   1 root root  102 Aug  5  2025 .placeholder
+-rwxr-xr-x   1 root root  518 Aug  5  2025 sysstat
+
+/etc/cron.hourly:
+total 12
+drwxr-xr-x   2 root root 4096 Aug  5  2025 .
+drwxr-xr-x 106 root root 4096 Apr 16 06:20 ..
+-rw-r--r--   1 root root  102 Aug  5  2025 .placeholder
+
+/etc/cron.monthly:
+total 12
+drwxr-xr-x   2 root root 4096 Aug  5  2025 .
+drwxr-xr-x 106 root root 4096 Apr 16 06:20 ..
+-rw-r--r--   1 root root  102 Aug  5  2025 .placeholder
+
+/etc/cron.weekly:
+total 16
+drwxr-xr-x   2 root root 4096 Aug  5  2025 .
+drwxr-xr-x 106 root root 4096 Apr 16 06:20 ..
+-rwxr-xr-x   1 root root 1055 Aug  5  2025 man-db
+-rw-r--r--   1 root root  102 Aug  5  2025 .placeholder
+
+/etc/cron.yearly:
+total 12
+drwxr-xr-x   2 root root 4096 Aug  5  2025 .
+drwxr-xr-x 106 root root 4096 Apr 16 06:20 ..
+-rw-r--r--   1 root root  102 Aug  5  2025 .placeholder
+</code></pre>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">user crontabs</span></div>
+
+<pre class="code"><code>
+--- devraj ---
+*/5 * * * * /home/devraj/healthcheck.sh
+</code></pre>
+
+
+<h2>Kernel hardening</h2>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">sysctl net.ipv4.conf.all.rp_filter=2 (recommend 1)</span></div>
+
+<div class="remediate"><b>Remediation:</b> Add to /etc/sysctl.d/99-hardening.conf: <code>net.ipv4.conf.all.rp_filter = 1</code>, then <code>sudo sysctl --system</code>.</div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">sysctl net.ipv4.conf.all.accept_redirects=0</span></div>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">sysctl net.ipv4.conf.all.send_redirects=1 (recommend 0)</span></div>
+
+<div class="remediate"><b>Remediation:</b> Add to /etc/sysctl.d/99-hardening.conf: <code>net.ipv4.conf.all.send_redirects = 0</code>, then <code>sudo sysctl --system</code>.</div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">sysctl net.ipv4.conf.all.accept_source_route=0</span></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">sysctl net.ipv4.tcp_syncookies=1</span></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">sysctl net.ipv6.conf.all.accept_redirects=0</span></div>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">sysctl kernel.kptr_restrict=1 (recommend 2)</span></div>
+
+<div class="remediate"><b>Remediation:</b> Add to /etc/sysctl.d/99-hardening.conf: <code>kernel.kptr_restrict = 2</code>, then <code>sudo sysctl --system</code>.</div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">sysctl kernel.dmesg_restrict=1</span></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">sysctl fs.protected_hardlinks=1</span></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">sysctl fs.protected_symlinks=1</span></div>
+
+
+<h2>Secrets / credentials on disk</h2>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">Files containing possible secrets (sample)</span></div>
+
+<pre class="code"><code>
+/etc/ssh/ssh_host_ecdsa_key
+/etc/ssh/ssh_host_ed25519_key
+/etc/ssh/ssh_host_rsa_key
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts
+/home/devraj/openclaw/extensions/diagnostics-otel/src/service.test.ts
+/home/devraj/openclaw/skills/1password/references/cli-examples.md
+/home/devraj/openclaw/src/logging/redact.test.ts
+/home/devraj/openclaw/src/agents/model-auth-label.test.ts
+/home/devraj/openclaw/src/agents/models-config.providers.secrets.bedrock-apikey.test.ts
+/home/devraj/openclaw/src/agents/pi-embedded-subscribe.handlers.lifecycle.test.ts
+/home/devraj/openclaw/src/agents/sandbox/ssh.test.ts
+/home/devraj/openclaw/src/config/redact-snapshot.test.ts
+/home/devraj/openclaw/src/infra/tls/gateway.test.ts
+/home/devraj/openclaw/src/infra/push-apns.auth.test.ts
+/home/devraj/openclaw/src/gateway/server-methods/nodes.invoke-wake.test.ts
+/home/devraj/openclaw/src/gateway/server-methods/push.test.ts
+/home/devraj/openclaw/src/gateway/client.watchdog.test.ts
+/home/devraj/openclaw/src/gateway/ws-log.test.ts
+/home/devraj/openclaw/.detect-secrets.cfg
+/home/devraj/moo/practice-template-preview/certs/key.pem
+/home/devraj/.openclaw/identity/device.json
+/home/devraj/.openclaw/workspace/practice-template-preview/certs/key.pem
+/home/devraj/.openclaw/agents/main/sessions/7a52498c-67ad-42a8-b10a-bcdffb49b6eb.jsonl.deleted.2026-03-27T21-11-04.605Z
+/home/devraj/.openclaw/agents/main/sessions/b6e5781b-14fa-4813-8b97-b43f20476049.jsonl.deleted.2026-03-27T15-20-59.298Z
+/home/devraj/.openclaw/agents/main/sessions/0ef04969-15d1-4844-ad21-2d1a4a8ced31.jsonl.deleted.2026-03-27T11-33-55.441Z
+/home/devraj/.openclaw/agents/main/sessions/b94ae6af-edc8-41d9-b275-2ba053171298.jsonl.deleted.2026-03-28T00-29-06.634Z
+/home/devraj/.openclaw/agents/main/sessions/ea25a494-4907-494b-b8f6-00fe554b625b.jsonl.deleted.2026-03-27T12-00-59.310Z
+/home/devraj/.openclaw/agents/main/sessions/8abb981b-e2c7-44cc-879c-3924e6a9d236.jsonl.deleted.2026-03-27T16-20-59.297Z
+/home/devraj/.openclaw/agents/main/sessions/d5940bb0-f587-4ff4-b43a-1c88a36b40fc.jsonl.reset.2026-03-13T19-40-52.014Z
+/home/devraj/.openclaw/agents/main/sessions/3d4c2419-6ebe-4290-9798-962c65e1df26.jsonl.reset.2026-03-27T17-00-07.153Z
+/home/devraj/.openclaw/agents/main/sessions/a9a0338a-a883-4911-b313-1ae1d6ba83ea.jsonl.deleted.2026-03-28T00-00-07.580Z
+/home/devraj/.openclaw/agents/main/sessions/e413f8fe-6160-450b-aaab-6af903d75a7d.jsonl.deleted.2026-03-27T11-22-12.477Z
+/home/devraj/.openclaw/agents/main/sessions/15ae2a71-f25a-404e-9b50-a5ca47d87d81.jsonl.deleted.2026-03-27T13-00-59.280Z
+/home/devraj/.openclaw/agents/main/sessions/ea5f80fc-cab3-4504-ab05-1100adbc5b6f.jsonl.deleted.2026-03-28T00-11-24.797Z
+/home/devraj/.openclaw/agents/main/sessions/afcaff53-680d-428a-9bb4-ac7838834b30.jsonl.deleted.2026-03-27T11-10-29.795Z
+/home/devraj/.openclaw/agents/main/sessions/2969e6b2-9736-4af9-8f34-17b5782d6376.jsonl.deleted.2026-03-27T12-00-59.310Z
+/home/devraj/.openclaw/agents/main/sessions/5b7c7e08-7221-4e69-8c03-85f46dae7d24.jsonl.deleted.2026-03-27T10-21-07.815Z
+/home/devraj/.openclaw/agents/main/sessions/f92ac738-b91c-4a19-8582-0c4d9c04809c.jsonl.deleted.2026-03-27T10-32-07.362Z
+/home/devraj/.openclaw/agents/main/sessions/a127bb3d-4766-474a-8ae2-8079f193963f.jsonl.reset.2026-03-28T04-32-47.632Z
+/home/devraj/.openclaw/agents/main/sessions/4983740f-49a5-45ae-ad61-4adf1e1d711f.jsonl.deleted.2026-03-27T20-32-03.181Z
+/home/devraj/.openclaw/agents/main/sessions/4c378791-92d2-4bc2-a70d-42838ff43d7c.jsonl.deleted.2026-03-27T03-49-11.460Z
+/home/devraj/.openclaw/agents/main/sessions/9e5d5b7f-5754-49a8-a9c3-769cc62cba2d.jsonl.deleted.2026-03-27T15-20-59.298Z
+/home/devraj/.openclaw/agents/main/sessions/8c607f11-9e7c-4a86-9b3a-97de60df7057.jsonl.deleted.2026-03-27T11-05-08.476Z
+/home/devraj/.openclaw/agents/main/sessions/b5e53b1e-7038-4cd6-b5d0-4bd48b7044e6.jsonl.deleted.2026-03-27T22-25-16.747Z
+/home/devraj/.openclaw/agents/main/sessions/258750f8-a393-4601-bcc4-b063eceb4165.jsonl
+/home/devraj/.openclaw/agents/main/sessions/75e81850-233f-4c36-9687-dc920ce2cc91.jsonl.deleted.2026-03-27T14-00-59.304Z
+/home/devraj/.openclaw/agents/main/sessions/9975df6f-5384-448b-9e1b-dca10aca7b66.jsonl.deleted.2026-03-27T13-40-59.309Z
+/home/devraj/.openclaw/agents/main/sessions/85401d52-acc7-4ea0-a2e9-e0cc015d242f.jsonl.deleted.2026-03-27T19-41-04.823Z
+/home/devraj/.openclaw/agents/main/sessions/ab2afcc5-9929-48cf-9bc3-9f49b4f9f2c2.jsonl.deleted.2026-03-27T21-42-08.719Z
+/home/devraj/.openclaw/agents/main/sessions/a222fdaf-6d81-4b68-9752-9d660b22f46c.jsonl.deleted.2026-03-27T13-00-59.279Z
+</code></pre>
+
+<div class="remediate"><b>Remediation:</b> Review each file; move secrets to env vars or a secret manager and remove from disk.</div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">.env files found</span></div>
+
+<pre class="code"><code>
+/home/devraj/openclaw/.env.example
+/home/devraj/openclaw/apps/ios/fastlane/.env.example
+/home/devraj/openclaw/.env
+</code></pre>
+
+
+<h2>Logging</h2>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">logrotate present</span></div>
+
+<div class="finding info"><span class="badge">ℹ️ INFO</span><span class="title">auditd not installed (optional, useful for compliance)</span></div>
+
+
+<h2>Summary</h2>
+
+<table><thead><tr>
+<th>Severity</th>
+<th>Count</th>
+</tr></thead><tbody>
+<tr>
+<td>🔴 CRIT</td>
+<td>0</td>
+</tr>
+<tr>
+<td>🟡 WARN</td>
+<td>10</td>
+</tr>
+<tr>
+<td>ℹ️ INFO</td>
+<td>26</td>
+</tr>
+<tr>
+<td>✅ OK</td>
+<td>15</td>
+</tr>
+<tr>
+<td><b>Total</b></td>
+<td><b>51</b></td>
+</tr>
+</tbody></table></section><section class="report-section" id="r2"><h2>Secrets scan — moc-aifdoggydog <span class="chip">CRIT 2</span> <span class="chip">WARN 1</span> <span class="chip">INFO 0</span> <span class="chip">OK 3</span></h2>
+<p>- Generated: 2026-04-16 18:25:57Z</p>
+<p>- Host: moc-aifdoggydog</p>
+
+
+<h2>Regex scan (fallback — install gitleaks for better coverage)</h2>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">No regex hits under /root</span></div>
+
+<div class="finding crit"><span class="badge">🔴 CRIT</span><span class="title">Possible secrets under /home (124 matches, sample)</span></div>
+
+<pre class="code"><code>
+/home/devraj/openclaw/extensions/open-prose/skills/prose/SKILL.md:204:      echo &quot;OPENPROSE_POSTGRES_URL=postgresql://user:pass@localhost:5432/prose&quot; &gt;&gt; .prose/.env
+/home/devraj/openclaw/extensions/open-prose/skills/prose/SKILL.md:208:      echo &quot;OPENPROSE_POSTGRES_URL=postgresql://postgres@localhost:5432/prose&quot; &gt;&gt; .prose/.env
+/home/devraj/openclaw/extensions/open-prose/skills/prose/state/postgres.md:153:echo &quot;OPENPROSE_POSTGRES_URL=postgresql://postgres@localhost:5432/prose&quot; &gt; .prose/.env
+/home/devraj/openclaw/extensions/open-prose/skills/prose/state/postgres.md:176:echo &quot;OPENPROSE_POSTGRES_URL=postgresql://localhost/myproject&quot; &gt;&gt; .prose/.env
+/home/devraj/openclaw/extensions/open-prose/skills/prose/state/postgres.md:185:echo &quot;OPENPROSE_POSTGRES_URL=postgresql:///myproject&quot; &gt;&gt; .prose/.env
+/home/devraj/openclaw/extensions/open-prose/skills/prose/state/postgres.md:200:echo &quot;OPENPROSE_POSTGRES_URL=postgresql://user:pass@ep-name.us-east-2.aws.neon.tech/neondb?sslmode=require&quot; &gt;&gt; .prose/.env
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:47:    const result = await fetchWithSlackAuth(&quot;https://files.slack.com/test.jpg&quot;, &quot;xoxb-test-token&quot;);
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:54:      headers: { Authorization: &quot;Bearer xoxb-test-token&quot; },
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:61:      fetchWithSlackAuth(&quot;https://example.com/test.jpg&quot;, &quot;xoxb-test-token&quot;),
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:83:    const result = await fetchWithSlackAuth(&quot;https://files.slack.com/test.jpg&quot;, &quot;xoxb-test-token&quot;);
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:90:      headers: { Authorization: &quot;Bearer xoxb-test-token&quot; },
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:116:    await fetchWithSlackAuth(&quot;https://files.slack.com/original.jpg&quot;, &quot;xoxb-test-token&quot;);
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:133:    const result = await fetchWithSlackAuth(&quot;https://files.slack.com/test.jpg&quot;, &quot;xoxb-test-token&quot;);
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:147:    const result = await fetchWithSlackAuth(&quot;https://files.slack.com/test.jpg&quot;, &quot;xoxb-test-token&quot;);
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:165:    await fetchWithSlackAuth(&quot;https://files.slack.com/test.jpg&quot;, &quot;xoxb-test-token&quot;);
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:205:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:221:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:231:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:241:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:260:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:287:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:318:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:355:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:390:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:434:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:465:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:495:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:530:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:566:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:607:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:624:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:640:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:663:      token: &quot;xoxb-test-token&quot;,
+/home/devraj/openclaw/extensions/slack/src/monitor/media.test.ts:681:    expect(new Headers(firstInit?.headers).get(&quot;Authorization&quot;)).toBe(&quot;Bearer xoxb-test-token&quot;);
+/home/devraj/openclaw/extensions/diagnostics-otel/src/service.test.ts:319:      0: &quot;Using API key sk-1234567890abcdef1234567890abcdef&quot;,
+/home/devraj/openclaw/extensions/diagnostics-otel/src/service.test.ts:323:    expect(emitCall?.body).not.toContain(&quot;sk-1234567890abcdef1234567890abcdef&quot;);
+/home/devraj/openclaw/skills/1password/references/cli-examples.md:17:- `export DB_PASSWORD=&quot;op://app-prod/db/password&quot;`
+/home/devraj/openclaw/src/logging/redact.test.ts:73:      &quot;-----BEGIN PRIVATE KEY-----&quot;,
+/home/devraj/openclaw/src/logging/redact.test.ts:83:      [&quot;-----BEGIN PRIVATE KEY-----&quot;, &quot;…redacted…&quot;, &quot;-----END PRIVATE KEY-----&quot;].join(&quot;\n&quot;),
+/home/devraj/openclaw/src/agents/model-auth-label.test.ts:45:          token: &quot;ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;, // pragma: allowlist secret
+</code></pre>
+
+<div class="remediate"><b>Remediation:</b> Review each match; rotate any real credential, move to env var or secret manager.</div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">No regex hits under /opt</span></div>
+
+<div class="finding ok"><span class="badge">✅ OK</span><span class="title">No regex hits under /srv</span></div>
+
+<div class="finding crit"><span class="badge">🔴 CRIT</span><span class="title">Possible secrets under /etc (5 matches, sample)</span></div>
+
+<pre class="code"><code>
+/etc/ssh/ssh_host_ecdsa_key:1:-----BEGIN OPENSSH PRIVATE KEY-----
+/etc/ssh/ssh_host_ed25519_key:1:-----BEGIN OPENSSH PRIVATE KEY-----
+/etc/ssh/ssh_host_rsa_key:1:-----BEGIN OPENSSH PRIVATE KEY-----
+/etc/fail2ban/jail.local:252:action_blocklist_de  = blocklist_de[email=&quot;%(sender)s&quot;, service=&quot;%(__name__)s&quot;, apikey=&quot;%(blocklist_de_apikey)s&quot;, agent=&quot;%(fail2ban_agent)s&quot;]
+/etc/fail2ban/jail.conf:252:action_blocklist_de  = blocklist_de[email=&quot;%(sender)s&quot;, service=&quot;%(__name__)s&quot;, apikey=&quot;%(blocklist_de_apikey)s&quot;, agent=&quot;%(fail2ban_agent)s&quot;]
+</code></pre>
+
+<div class="remediate"><b>Remediation:</b> Review each match; rotate any real credential, move to env var or secret manager.</div>
+
+
+<h2>git history (regex fallback)</h2>
+
+
+<h2>Loose key files / dumps on disk</h2>
+
+<div class="finding warn"><span class="badge">🟡 WARN</span><span class="title">Candidate key/env/dump files</span></div>
+
+<pre class="code"><code>
+/home/devraj/openclaw/.env.example
+/home/devraj/openclaw/apps/ios/fastlane/.env.example
+/home/devraj/openclaw/.env
+/home/devraj/moo/practice-template-preview/certs/cert.pem
+/home/devraj/moo/practice-template-preview/certs/key.pem
+/home/devraj/.openclaw/workspace/practice-template-preview/certs/cert.pem
+/home/devraj/.openclaw/workspace/practice-template-preview/certs/key.pem
+</code></pre>
+
+<div class="remediate"><b>Remediation:</b> Confirm each file belongs there. Keys should be in ~/.ssh with 600 perms; .env files should live in app dirs only; DB dumps should not sit on web-servable paths.</div>
+
+
+<h2>Summary</h2>
+
+<table><thead><tr>
+<th>Severity</th>
+<th>Count</th>
+</tr></thead><tbody>
+<tr>
+<td>🔴 CRIT</td>
+<td>2</td>
+</tr>
+<tr>
+<td>🟡 WARN</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ℹ️ INFO</td>
+<td>0</td>
+</tr>
+<tr>
+<td>✅ OK</td>
+<td>3</td>
+</tr>
+<tr>
+<td><b>Total</b></td>
+<td><b>6</b></td>
+</tr>
+</tbody></table></section>
+
+</body>
+</html>

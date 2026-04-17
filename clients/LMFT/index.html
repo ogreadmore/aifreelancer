@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practice Launch Plan — Lira Family Therapy</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Practice Launch Package — Lira Family Therapy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --cream: #faf6f0;
     --warm-white: #fff9f2;
     --dusty-rose: #c9897a;
+    --dusty-rose-deep: #b37565;
     --sage: #7a9e8a;
     --slate: #8ba5b5;
     --brown: #4a3728;
@@ -19,6 +20,8 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     background-color: var(--cream);
@@ -43,21 +46,110 @@
 
   .container { max-width: 820px; margin: 0 auto; padding: 60px 40px 100px; position: relative; z-index: 1; }
 
-  .header { text-align: center; margin-bottom: 70px; animation: fadeUp 0.8s ease both; }
+  /* Add scroll margin so anchors don't land behind content */
+  [id] { scroll-margin-top: 30px; }
 
+  .header { text-align: center; margin-bottom: 50px; animation: fadeUp 0.8s ease both; }
   .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dusty-rose); margin-bottom: 18px; display: block; }
-
   h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 6vw, 64px); font-weight: 300; line-height: 1.1; color: var(--brown); }
   h1 em { font-style: italic; color: var(--dusty-rose); }
   .subtitle { font-size: 13px; letter-spacing: 0.12em; color: var(--brown-mid); opacity: 0.7; margin-top: 16px; }
 
-  .intro-block { background: var(--warm-white); border-left: 3px solid var(--dusty-rose); padding: 28px 32px; margin-bottom: 60px; border-radius: 0 12px 12px 0; animation: fadeUp 0.8s 0.1s ease both; }
+  .intro-block { background: var(--warm-white); border-left: 3px solid var(--dusty-rose); padding: 28px 32px; margin-bottom: 50px; border-radius: 0 12px 12px 0; animation: fadeUp 0.8s 0.1s ease both; }
   .intro-block p { font-size: 15px; line-height: 1.8; color: var(--brown-mid); }
   .intro-block p + p { margin-top: 14px; }
   .intro-block strong { color: var(--brown); font-weight: 500; }
 
-  .phase-section { margin-bottom: 64px; }
+  /* TABLE OF CONTENTS */
+  .toc {
+    background: var(--warm-white);
+    border: 1px solid var(--gold-light);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 70px;
+    animation: fadeUp 0.8s 0.2s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+  .toc::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,137,122,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .toc-eyebrow { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dusty-rose); text-align: center; display: block; margin-bottom: 8px; }
+  .toc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .toc-part {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    margin: 22px 0 6px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(201,137,122,0.2);
+  }
+  .toc-part:first-of-type { margin-top: 0; }
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 0;
+    text-decoration: none;
+    color: var(--brown-mid);
+    font-size: 14px;
+    transition: color 0.2s, padding-left 0.2s;
+    border-bottom: 1px solid rgba(74,55,40,0.05);
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-item:hover { color: var(--dusty-rose); padding-left: 6px; }
+  .toc-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--dusty-rose);
+    opacity: 0.75;
+    width: 26px;
+    flex-shrink: 0;
+  }
+  .toc-label { flex: 1; line-height: 1.35; }
+  .toc-note { font-size: 11px; color: var(--brown-mid); opacity: 0.55; font-style: italic; }
 
+  /* PART DIVIDERS */
+  .part-divider {
+    margin: 90px -40px 60px;
+    text-align: center;
+    padding: 48px 40px;
+    background: linear-gradient(135deg, rgba(201,137,122,0.05), rgba(196,162,101,0.04));
+    border-top: 1px solid var(--gold-light);
+    border-bottom: 1px solid var(--gold-light);
+    animation: fadeUp 0.6s ease both;
+  }
+  .part-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dusty-rose); margin-bottom: 10px; display: block; font-weight: 500; }
+  .part-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 40px); font-weight: 300; color: var(--brown); line-height: 1.15; }
+  .part-title em { font-style: italic; color: var(--dusty-rose); }
+  .part-sub { font-size: 13px; color: var(--brown-mid); margin-top: 12px; opacity: 0.75; line-height: 1.6; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  /* PHASE / SECTION LABELS */
+  .phase-section { margin-bottom: 64px; }
   .phase-label { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
   .phase-badge { font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
   .phase-badge.rose { background: rgba(201,137,122,0.12); color: var(--dusty-rose); border: 1px solid rgba(201,137,122,0.3); }
@@ -66,25 +158,25 @@
   .phase-badge.gold { background: rgba(196,162,101,0.12); color: var(--gold); border: 1px solid rgba(196,162,101,0.3); }
   .phase-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--gold-light), transparent); }
 
+  /* STEPS */
   .steps { display: flex; flex-direction: column; gap: 48px; }
-
   .step { display: grid; grid-template-columns: 56px 1fr; gap: 28px; align-items: start; animation: fadeUp 0.7s ease both; }
-
   .step-number { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; flex-shrink: 0; margin-top: 4px; }
   .step-number.rose { background: rgba(201,137,122,0.12); color: var(--dusty-rose); border: 1px solid rgba(201,137,122,0.25); }
   .step-number.sage { background: rgba(122,158,138,0.12); color: var(--sage); border: 1px solid rgba(122,158,138,0.25); }
   .step-number.slate { background: rgba(139,165,181,0.14); color: var(--slate); border: 1px solid rgba(139,165,181,0.3); }
   .step-number.gold { background: rgba(196,162,101,0.12); color: var(--gold); border: 1px solid rgba(196,162,101,0.25); }
-
   .step-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.55; margin-bottom: 6px; display: block; }
   .step-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--brown); margin-bottom: 14px; line-height: 1.2; }
   .step-body p { font-size: 14px; line-height: 1.85; color: var(--brown-mid); margin-bottom: 12px; }
   .step-body strong { color: var(--brown); font-weight: 500; }
 
+  /* NAME PILL */
   .name-pill { display: inline-block; background: var(--warm-white); border: 1px solid var(--gold-light); padding: 12px 22px; border-radius: 40px; margin: 10px 0 16px; }
   .name-pill .name-text { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--brown); font-weight: 400; display: block; line-height: 1.3; }
   .name-pill .name-sub { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 3px; }
 
+  /* BRAND CARDS (launch plan phase 1) */
   .brand-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
   .brand-card { padding: 20px; border-radius: 12px; border: 1px solid; }
   .brand-card.primary { background: rgba(201,137,122,0.06); border-color: rgba(201,137,122,0.25); }
@@ -95,11 +187,13 @@
   .brand-card-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--brown); line-height: 1.3; margin-bottom: 8px; }
   .brand-card-note { font-size: 12px; line-height: 1.65; color: var(--brown-mid); opacity: 0.75; }
 
+  /* CHECKLIST */
   .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
   .checklist li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.7; color: var(--brown-mid); }
   .check-icon { width: 20px; height: 20px; border-radius: 50%; background: rgba(122,158,138,0.15); border: 1px solid rgba(122,158,138,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
   .check-icon svg { width: 9px; height: 9px; stroke: var(--sage); stroke-width: 2.5; fill: none; }
 
+  /* TAX COMPARE */
   .tax-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
   .tax-card { padding: 20px; border-radius: 12px; border: 1px solid; }
   .tax-card.bad { background: rgba(201,137,122,0.05); border-color: rgba(201,137,122,0.2); }
@@ -110,6 +204,7 @@
   .tax-card-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--brown); margin-bottom: 10px; line-height: 1.3; }
   .tax-card p { font-size: 12px !important; line-height: 1.65 !important; margin-bottom: 0 !important; }
 
+  /* INFO BLOCKS */
   .info-block { background: rgba(196,162,101,0.08); border: 1px solid rgba(196,162,101,0.3); border-radius: 12px; padding: 20px 24px; margin-top: 12px; display: flex; gap: 16px; align-items: flex-start; }
   .info-block.blue { background: rgba(122,158,138,0.07); border-color: rgba(122,158,138,0.25); }
   .info-block.slate { background: rgba(139,165,181,0.08); border-color: rgba(139,165,181,0.28); }
@@ -118,10 +213,12 @@
   .info-text { font-size: 13px; line-height: 1.75; color: var(--brown-mid); }
   .info-text strong { color: var(--brown); font-weight: 500; }
 
+  /* DIVIDERS */
   .divider { display: flex; align-items: center; gap: 16px; margin: 40px 0; }
   .divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--gold-light), transparent); }
   .divider-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: 0.6; }
 
+  /* COST TABLE */
   .cost-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 14px; }
   .cost-table tr { border-bottom: 1px solid rgba(74,55,40,0.08); }
   .cost-table tr:last-child { border-bottom: none; }
@@ -130,18 +227,7 @@
   .cost-table tr.total td { color: var(--brown); font-weight: 500; padding-top: 16px; border-top: 1px solid var(--gold-light); }
   .cost-table tr.total td:last-child { color: var(--dusty-rose); font-size: 20px; }
 
-  .summary { margin-top: 70px; text-align: center; animation: fadeUp 0.8s 0.6s ease both; }
-  .summary-inner { background: var(--warm-white); border: 1px solid var(--gold-light); border-radius: 20px; padding: 48px 40px; position: relative; overflow: hidden; }
-  .summary-inner::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(201,137,122,0.08) 0%, transparent 70%); pointer-events: none; }
-  .summary-inner::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(122,158,138,0.08) 0%, transparent 70%); pointer-events: none; }
-  .summary h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--brown); margin-bottom: 32px; }
-  .summary h2 em { font-style: italic; color: var(--dusty-rose); }
-  .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(74,55,40,0.07); text-align: left; gap: 20px; }
-  .summary-row:last-of-type { border-bottom: none; }
-  .summary-row-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.55; flex-shrink: 0; width: 140px; }
-  .summary-row-value { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--brown); text-align: right; }
-  .closing-note { margin-top: 28px; font-size: 13px; line-height: 1.85; color: var(--brown-mid); opacity: 0.75; }
-
+  /* OPTIONS TABLE */
   .options-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .options-table thead tr { border-bottom: 2px solid var(--gold-light); }
   .options-table th { padding: 10px 12px; text-align: left; font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.6; }
@@ -156,40 +242,174 @@
   .verdict-no { color: var(--dusty-rose); }
   .verdict-warn { color: var(--gold); }
 
+  /* STACK GRID */
   .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
   .stack-card { background: rgba(139,165,181,0.05); border: 1px solid rgba(139,165,181,0.22); border-radius: 12px; padding: 16px 18px; }
   .stack-card-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); margin-bottom: 6px; display: block; }
   .stack-card-title { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--brown); margin-bottom: 6px; line-height: 1.3; font-weight: 500; }
   .stack-card p { font-size: 12px !important; line-height: 1.6 !important; margin-bottom: 0 !important; color: var(--brown-mid); }
 
+  /* BRAND RESEARCH: AT-A-GLANCE RANKING TABLE */
+  .ranking-table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--warm-white); border-radius: 12px; overflow: hidden; border: 1px solid var(--gold-light); }
+  .ranking-table thead tr { border-bottom: 2px solid var(--gold-light); }
+  .ranking-table th { padding: 14px 16px; text-align: left; font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.6; }
+  .ranking-table td { padding: 15px 16px; border-bottom: 1px solid rgba(74,55,40,0.06); color: var(--brown-mid); line-height: 1.4; vertical-align: middle; }
+  .ranking-table tr:last-child td { border-bottom: none; }
+  .ranking-table .rank-col { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--dusty-rose); width: 56px; }
+  .ranking-table .name-col { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--brown); font-weight: 400; width: 42%; }
+  .ranking-table .approach-col { font-size: 12px; }
+  .ranking-table .score-col { text-align: center; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; }
+  .score-pill { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; }
+  .score-pill.high { background: rgba(122,158,138,0.15); color: var(--sage); }
+  .score-pill.mid { background: rgba(196,162,101,0.15); color: var(--gold); }
+  .score-pill.low { background: rgba(201,137,122,0.12); color: var(--dusty-rose); }
+
+  /* BRAND RESEARCH: NAME CARDS */
+  .name-card { margin-bottom: 44px; animation: fadeUp 0.7s ease both; }
+  .name-card-header { display: flex; align-items: flex-start; gap: 22px; margin-bottom: 16px; position: relative; }
+  .rank-badge { flex-shrink: 0; width: 68px; height: 68px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; border: 1px solid; }
+  .rank-badge.one { background: linear-gradient(135deg, rgba(201,137,122,0.18), rgba(201,137,122,0.08)); border-color: rgba(201,137,122,0.4); color: var(--dusty-rose-deep); }
+  .rank-badge.two { background: rgba(122,158,138,0.12); border-color: rgba(122,158,138,0.3); color: var(--sage); }
+  .rank-badge.three { background: rgba(196,162,101,0.14); border-color: rgba(196,162,101,0.32); color: var(--gold); }
+  .rank-badge.four { background: rgba(139,165,181,0.14); border-color: rgba(139,165,181,0.32); color: var(--slate); }
+  .rank-badge.five { background: rgba(74,55,40,0.06); border-color: rgba(74,55,40,0.18); color: var(--brown-mid); }
+  .rank-num { font-size: 26px; font-weight: 300; line-height: 1; }
+  .rank-label { font-size: 8px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 2px; font-family: 'DM Sans', sans-serif; opacity: 0.75; }
+  .name-card-title-wrap { flex: 1; padding-top: 4px; }
+  .name-card-approach { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.6; margin-bottom: 6px; display: block; }
+  .name-card-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 400; color: var(--brown); line-height: 1.15; }
+  .name-card-name em { font-style: italic; color: var(--dusty-rose); }
+  .name-card-tagline { font-size: 13px; color: var(--brown-mid); opacity: 0.75; margin-top: 6px; font-style: italic; line-height: 1.5; }
+  .name-card-body { padding-left: 90px; }
+  .name-card-body p { font-size: 14px; line-height: 1.8; color: var(--brown-mid); margin-bottom: 14px; }
+  .name-card-body strong { color: var(--brown); font-weight: 500; }
+  .name-card-body em { color: var(--brown); font-style: italic; }
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
+  .meta-item { background: var(--warm-white); border: 1px solid rgba(74,55,40,0.08); border-radius: 10px; padding: 12px 16px; }
+  .meta-item-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.55; display: block; margin-bottom: 4px; }
+  .meta-item-value { font-size: 13px; color: var(--brown); line-height: 1.55; }
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .pro-col, .con-col { padding: 16px 18px; border-radius: 10px; border: 1px solid; }
+  .pro-col { background: rgba(122,158,138,0.06); border-color: rgba(122,158,138,0.22); }
+  .con-col { background: rgba(201,137,122,0.05); border-color: rgba(201,137,122,0.22); }
+  .pro-cons-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; display: block; }
+  .pro-col .pro-cons-label { color: var(--sage); }
+  .con-col .pro-cons-label { color: var(--dusty-rose); }
+  .pros-cons ul { list-style: none; }
+  .pros-cons li { font-size: 12.5px; line-height: 1.6; padding-left: 14px; position: relative; margin-bottom: 6px; color: var(--brown-mid); }
+  .pros-cons li:last-child { margin-bottom: 0; }
+  .pro-col li::before { content: '+'; position: absolute; left: 0; color: var(--sage); font-weight: 500; }
+  .con-col li::before { content: '—'; position: absolute; left: 0; color: var(--dusty-rose); font-weight: 500; font-size: 10px; top: 3px; }
+  .top-pick-callout { position: absolute; top: -12px; right: -8px; background: var(--dusty-rose); color: var(--warm-white); font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 16px; box-shadow: 0 4px 12px rgba(201,137,122,0.3); z-index: 2; }
+
+  /* REJECTED TABLE */
+  .rejected-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .rejected-table thead tr { border-bottom: 2px solid var(--gold-light); }
+  .rejected-table th { padding: 10px 12px; text-align: left; font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.6; }
+  .rejected-table td { padding: 14px 12px; border-bottom: 1px solid rgba(74,55,40,0.07); color: var(--brown-mid); line-height: 1.55; vertical-align: top; }
+  .rejected-table td:first-child { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--brown); font-weight: 400; }
+  .rejected-table a { color: var(--dusty-rose); text-decoration: none; border-bottom: 1px dotted rgba(201,137,122,0.5); }
+  .rejected-table a:hover { color: var(--dusty-rose-deep); }
+  .rejected-table tr:last-child td { border-bottom: none; }
+
+  /* FINAL SUMMARY */
+  .summary { margin-top: 90px; text-align: center; animation: fadeUp 0.8s 0.4s ease both; }
+  .summary-inner { background: var(--warm-white); border: 1px solid var(--gold-light); border-radius: 20px; padding: 48px 40px; position: relative; overflow: hidden; }
+  .summary-inner::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(201,137,122,0.08) 0%, transparent 70%); pointer-events: none; }
+  .summary-inner::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(122,158,138,0.08) 0%, transparent 70%); pointer-events: none; }
+  .summary h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--brown); margin-bottom: 10px; }
+  .summary h2 em { font-style: italic; color: var(--dusty-rose); }
+  .summary-eyebrow { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dusty-rose); margin-bottom: 10px; display: block; }
+  .summary-intro { font-size: 13px; color: var(--brown-mid); opacity: 0.75; margin-bottom: 28px; line-height: 1.7; }
+  .summary-section-label { font-size: 9px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dusty-rose); margin: 24px 0 6px; padding-bottom: 6px; border-bottom: 1px solid rgba(201,137,122,0.2); text-align: left; }
+  .summary-section-label:first-of-type { margin-top: 0; }
+  .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(74,55,40,0.07); text-align: left; gap: 20px; }
+  .summary-row:last-of-type { border-bottom: none; }
+  .summary-row-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.55; flex-shrink: 0; width: 140px; }
+  .summary-row-value { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--brown); text-align: right; }
+  .closing-note { margin-top: 28px; font-size: 13px; line-height: 1.85; color: var(--brown-mid); opacity: 0.75; }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-  @media (max-width: 600px) {
+  @media (max-width: 680px) {
     .container { padding: 40px 24px 80px; }
     .step { grid-template-columns: 44px 1fr; gap: 18px; }
-    .brand-cards, .tax-compare, .stack-grid { grid-template-columns: 1fr; }
+    .brand-cards, .tax-compare, .stack-grid, .meta-grid, .pros-cons { grid-template-columns: 1fr; }
     .summary-inner { padding: 32px 24px; }
+    .name-card-body { padding-left: 0; }
+    .name-card-header { flex-direction: column; gap: 14px; }
+    .ranking-table { font-size: 12px; }
+    .ranking-table th, .ranking-table td { padding: 10px 8px; }
+    .ranking-table .name-col { font-size: 14px; }
+    .part-divider { margin: 60px -24px 40px; padding: 36px 24px; }
+    .toc { padding: 28px 24px; }
+    .hide-mobile { display: none; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
+  <!-- =========================================== -->
+  <!-- HEADER + INTRO + TABLE OF CONTENTS          -->
+  <!-- =========================================== -->
+
   <div class="header">
-    <span class="eyebrow">Practice Launch Guide · Temecula, California</span>
+    <span class="eyebrow">Practice Launch Package · Temecula, California</span>
     <h1>Starting Your<br><em>Private Practice</em></h1>
-    <p class="subtitle">A plain-language guide for licensed therapists in California</p>
+    <p class="subtitle">The launch plan + the brand name · An LMFT-specific guide</p>
   </div>
 
   <div class="intro-block">
-    <p>This guide covers the <strong>full foundation</strong> for launching a private practice — not just the legal entity, but the clinical compliance, insurance, and tax-optimization layers that most formation guides skip over. Most therapists incorporate too early and pay $800/year in franchise tax before they need to, while quietly neglecting the HIPAA stack and federal disclosure rules that actually let them legally see clients.</p>
-    <p>The plan below is <strong>phased and deliberate.</strong> Phase 0 puts your clinical and compliance foundation in place. Phase 1 launches you lean as a sole proprietor with a real brand. Phase 2 incorporates strategically once your numbers make it worth the overhead.</p>
+    <p>This document is the complete launch package for a California LMFT starting a private practice with a focus on fertility, pregnancy, and postpartum mental health. It covers everything from the legal scaffolding to the words on the door. It's organized in two parts.</p>
+    <p><strong>Part I — The Launch Plan</strong> walks through the compliance, legal, and tax foundation most formation guides skip entirely. HIPAA infrastructure, malpractice insurance, federal Good Faith Estimate rules, the California-specific requirements for therapy corporations, and the phased strategy for upgrading from sole proprietor to S-Corp only once the math actually justifies it.</p>
+    <p><strong>Part II — Brand Name Research</strong> is the research layer behind choosing a client-facing name. Five ranked candidates, the names that didn't make the cut (with links to the competing practices that rule them out), and a verification checklist to run before anything gets filed, registered, or printed.</p>
+    <p>The through-line in both parts: <strong>start lean, verify twice, spend once, build something that ages well.</strong></p>
   </div>
 
-  <!-- WHY THIS PLAN -->
-  <div class="phase-section">
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc" aria-label="Table of contents">
+    <span class="toc-eyebrow">Contents</span>
+    <h2 class="toc-title">What's Inside</h2>
+
+    <div class="toc-part">Part I · The Launch Plan</div>
+    <ul class="toc-list">
+      <li><a class="toc-item" href="#why-this-plan"><span class="toc-num">1</span><span class="toc-label">Why This Plan <span class="toc-note">— the four structures compared</span></span></a></li>
+      <li><a class="toc-item" href="#phase-0"><span class="toc-num">2</span><span class="toc-label">Phase 0 · Before You See Your First Client <span class="toc-note">— malpractice, HIPAA, NPI, compliance</span></span></a></li>
+      <li><a class="toc-item" href="#phase-1"><span class="toc-num">3</span><span class="toc-label">Phase 1 · Launch Lean <span class="toc-note">— sole proprietor, FBN, city license</span></span></a></li>
+      <li><a class="toc-item" href="#phase-2"><span class="toc-num">4</span><span class="toc-label">Phase 2 · Incorporate Strategically <span class="toc-note">— PC, S-Corp, retirement, accountable plan</span></span></a></li>
+      <li><a class="toc-item" href="#costs"><span class="toc-num">5</span><span class="toc-label">What This Costs <span class="toc-note">— all three phases priced out</span></span></a></li>
+    </ul>
+
+    <div class="toc-part">Part II · Brand Name Research</div>
+    <ul class="toc-list">
+      <li><a class="toc-item" href="#at-a-glance"><span class="toc-num">6</span><span class="toc-label">At a Glance <span class="toc-note">— the ranking matrix</span></span></a></li>
+      <li><a class="toc-item" href="#shortlist"><span class="toc-num">7</span><span class="toc-label">The Shortlist <span class="toc-note">— five candidates in depth</span></span></a></li>
+      <li><a class="toc-item" href="#also-considered"><span class="toc-num">8</span><span class="toc-label">Also Considered <span class="toc-note">— names rejected and why</span></span></a></li>
+      <li><a class="toc-item" href="#lock-in"><span class="toc-num">9</span><span class="toc-label">Lock-In Checklist <span class="toc-note">— verify before you file</span></span></a></li>
+    </ul>
+
+    <div class="toc-part">Final</div>
+    <ul class="toc-list">
+      <li><a class="toc-item" href="#summary"><span class="toc-num">✦</span><span class="toc-label">The Plan, At a Glance <span class="toc-note">— everything on one page</span></span></a></li>
+    </ul>
+  </nav>
+
+  <!-- =========================================== -->
+  <!-- PART I DIVIDER                              -->
+  <!-- =========================================== -->
+  <div class="part-divider">
+    <span class="part-label">Part I</span>
+    <h2 class="part-title">The <em>Launch Plan</em></h2>
+    <p class="part-sub">The compliance, legal, and tax foundation — phased so nothing gets paid for before it needs to be.</p>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- SECTION 1: WHY THIS PLAN                    -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="why-this-plan">
     <div class="phase-label">
-      <div class="phase-badge gold">Why This Plan</div>
+      <div class="phase-badge gold">§1 · Why This Plan</div>
       <div class="phase-line"></div>
     </div>
 
@@ -267,10 +487,12 @@
 
   <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
 
-  <!-- PHASE 0 -->
-  <div class="phase-section">
+  <!-- =========================================== -->
+  <!-- SECTION 2: PHASE 0                          -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="phase-0">
     <div class="phase-label">
-      <div class="phase-badge slate">Phase 0 · Before You See Your First Client</div>
+      <div class="phase-badge slate">§2 · Phase 0 · Before You See Your First Client</div>
       <div class="phase-line"></div>
     </div>
 
@@ -388,10 +610,12 @@
 
   <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
 
-  <!-- PHASE 1 -->
-  <div class="phase-section">
+  <!-- =========================================== -->
+  <!-- SECTION 3: PHASE 1                          -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="phase-1">
     <div class="phase-label">
-      <div class="phase-badge rose">Phase 1 · Launch Lean</div>
+      <div class="phase-badge rose">§3 · Phase 1 · Launch Lean</div>
       <div class="phase-line"></div>
     </div>
 
@@ -418,26 +642,12 @@
           <span class="step-label">Brand Name</span>
           <h2 class="step-title">File your public-facing brand name</h2>
           <p>Whether you're a sole proprietor or a corporation, the name patients see should be filed as a <strong>Fictitious Business Name (FBN)</strong> with the county. Temecula is in <strong>Riverside County</strong> — not San Diego County.</p>
-          <div class="brand-cards">
-            <div class="brand-card primary">
-              <span class="brand-card-badge">★ Primary Brand (Working)</span>
-              <div class="brand-card-name">Bloom Perinatal &amp; Fertility Therapy</div>
-              <p class="brand-card-note">Warm, memorable, and clearly signals your niche. Strong candidate — but needs extra due diligence (see caveat below).</p>
-            </div>
-            <div class="brand-card secondary">
-              <span class="brand-card-badge">Secondary (Optional)</span>
-              <div class="brand-card-name">Pregnancy, Postpartum &amp; Fertility Therapy</div>
-              <p class="brand-card-note">Keyword-rich. Matches exactly how patients search on Google and therapy directories. Avoid adding "Center" — that implies a multi-clinician facility and can be restricted language.</p>
-            </div>
-          </div>
-          <div class="info-block rose" style="margin-top: 14px;">
-            <div class="info-icon">⚠️</div>
-            <p class="info-text"><strong>Heads-up on the "Bloom" name.</strong> "Bloom" is one of the most heavily used words in the perinatal and maternal-mental-health space — there are many "Bloom" therapy practices, maternal wellness centers, and apps across the country. Before committing, run a thorough search: USPTO trademark database, Google, Instagram, Psychology Today, and the CA Secretary of State business name database. If a direct competitor already owns it in your niche or geography, a rename now is far cheaper than an FBN re-filing and website rebuild later.</p>
+          <div class="info-block rose">
+            <div class="info-icon">→</div>
+            <p class="info-text"><strong>For the name itself, see Part II of this document.</strong> The working hypothesis is <em>Motherline Therapy</em>, with <em>Lira Perinatal Therapy</em> as the safety fallback. Full research, rankings, and rejected candidates are in <a href="#shortlist" style="color: var(--dusty-rose); border-bottom: 1px dotted rgba(201,137,122,0.5); text-decoration: none;">§7 · The Shortlist</a>.</p>
           </div>
           <ul class="checklist">
-            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Check name availability at the Riverside County Clerk and the California Secretary of State database</span></li>
-            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Do a <strong>USPTO trademark search</strong> (tmsearch.uspto.gov) for live marks in Class 44 (medical/therapy services)</span></li>
-            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Verify domain and Instagram handle availability before filing anything</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Finalize the name (run the Lock-In Checklist in <a href="#lock-in" style="color: var(--dusty-rose); border-bottom: 1px dotted rgba(201,137,122,0.5); text-decoration: none;">§9</a>)</span></li>
             <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>File the FBN Statement with <strong>Riverside County Clerk</strong> within 40 days of first doing business. Fee: ~$26</span></li>
             <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Publish in an approved local newspaper <strong>once a week for four consecutive weeks</strong> after filing. Cost: ~$50–100</span></li>
             <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>File the affidavit of publication with Riverside County to complete the process</span></li>
@@ -467,10 +677,12 @@
     </div>
   </div>
 
-  <!-- PHASE 2 -->
-  <div class="phase-section">
+  <!-- =========================================== -->
+  <!-- SECTION 4: PHASE 2                          -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="phase-2">
     <div class="phase-label">
-      <div class="phase-badge sage">Phase 2 · When Revenue Justifies It</div>
+      <div class="phase-badge sage">§4 · Phase 2 · When Revenue Justifies It</div>
       <div class="phase-line"></div>
     </div>
 
@@ -551,10 +763,12 @@
     </div>
   </div>
 
-  <!-- COSTS -->
-  <div class="phase-section">
+  <!-- =========================================== -->
+  <!-- SECTION 5: COSTS                            -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="costs">
     <div class="phase-label">
-      <div class="phase-badge gold">What This Costs</div>
+      <div class="phase-badge gold">§5 · What This Costs</div>
       <div class="phase-line"></div>
     </div>
 
@@ -596,25 +810,548 @@
     </div>
   </div>
 
-  <!-- SUMMARY -->
-  <div class="summary">
+  <!-- =========================================== -->
+  <!-- PART II DIVIDER                             -->
+  <!-- =========================================== -->
+  <div class="part-divider">
+    <span class="part-label">Part II</span>
+    <h2 class="part-title">Brand <em>Name Research</em></h2>
+    <p class="part-sub">Five ranked candidates, the names that didn't survive availability research, and the checklist to run before anything gets filed.</p>
+  </div>
+
+  <div class="intro-block">
+    <p>Any good practice name has to clear four bars at once: <strong>niche fit</strong> (does it resonate with a woman searching for fertility, pregnancy, or postpartum support?), <strong>distinctiveness</strong> (is it already owned by another perinatal practice?), <strong>emotional resonance</strong> (does it feel safe and warm to someone in a vulnerable state?), and <strong>practical availability</strong> (is the domain, trademark class, and social handle clear enough to build a brand on?).</p>
+    <p>The research below started with about fifteen candidates across three registers — metaphorical, clinical-warm, and founder-named — and checked each against existing California and national perinatal practices, USPTO concepts, and directory listings. <strong>The short version: "Bloom" is unusable in this niche.</strong> "BLOOM Maternal Therapy" already operates in California with near-identical positioning. The five names in §7 survived that filter.</p>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- SECTION 6: AT A GLANCE                      -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="at-a-glance">
+    <div class="phase-label">
+      <div class="phase-badge gold">§6 · At a Glance</div>
+      <div class="phase-line"></div>
+    </div>
+
+    <div style="overflow-x: auto;">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th class="hide-mobile">Register</th>
+            <th>Niche Fit</th>
+            <th>Distinctive</th>
+            <th>Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank-col">1</td>
+            <td class="name-col">Motherline Therapy</td>
+            <td class="approach-col hide-mobile">Metaphorical / lineage</td>
+            <td class="score-col"><span class="score-pill high">High</span></td>
+            <td class="score-col"><span class="score-pill high">High</span></td>
+            <td class="score-col"><span class="score-pill high">Low</span></td>
+          </tr>
+          <tr>
+            <td class="rank-col">2</td>
+            <td class="name-col">Lira Perinatal Therapy</td>
+            <td class="approach-col hide-mobile">Founder-named</td>
+            <td class="score-col"><span class="score-pill high">High</span></td>
+            <td class="score-col"><span class="score-pill high">High</span></td>
+            <td class="score-col"><span class="score-pill high">Low</span></td>
+          </tr>
+          <tr>
+            <td class="rank-col">3</td>
+            <td class="name-col">Hearth Perinatal Therapy</td>
+            <td class="approach-col hide-mobile">Metaphorical / warmth</td>
+            <td class="score-col"><span class="score-pill high">High</span></td>
+            <td class="score-col"><span class="score-pill mid">Mid</span></td>
+            <td class="score-col"><span class="score-pill mid">Mid</span></td>
+          </tr>
+          <tr>
+            <td class="rank-col">4</td>
+            <td class="name-col">The Mother Room</td>
+            <td class="approach-col hide-mobile">Literary / evocative</td>
+            <td class="score-col"><span class="score-pill mid">Mid</span></td>
+            <td class="score-col"><span class="score-pill high">High</span></td>
+            <td class="score-col"><span class="score-pill high">Low</span></td>
+          </tr>
+          <tr>
+            <td class="rank-col">5</td>
+            <td class="name-col">Threshold Perinatal Therapy</td>
+            <td class="approach-col hide-mobile">Metaphorical / liminal</td>
+            <td class="score-col"><span class="score-pill high">High</span></td>
+            <td class="score-col"><span class="score-pill high">High</span></td>
+            <td class="score-col"><span class="score-pill mid">Mid</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- SECTION 7: THE SHORTLIST                    -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="shortlist">
+    <div class="phase-label">
+      <div class="phase-badge rose">§7 · The Shortlist</div>
+      <div class="phase-line"></div>
+    </div>
+
+    <!-- #1 MOTHERLINE -->
+    <div class="name-card">
+      <div class="name-card-header">
+        <div class="top-pick-callout">Top Pick</div>
+        <div class="rank-badge one">
+          <span class="rank-num">1</span>
+          <span class="rank-label">Best Fit</span>
+        </div>
+        <div class="name-card-title-wrap">
+          <span class="name-card-approach">Metaphorical · Lineage</span>
+          <h2 class="name-card-name"><em>Motherline</em> Therapy</h2>
+          <p class="name-card-tagline">"Motherline" is the matrilineal thread — the generations of mothers a woman inherits from and carries forward.</p>
+        </div>
+      </div>
+
+      <div class="name-card-body">
+        <p><strong>Why it works.</strong> The perinatal period isn't just a medical transition — it's an identity transition that activates a woman's relationship with her own mother, grandmother, and the women she comes from. "Motherline" names that experience directly. It speaks to fertility clients (who are often grieving a projected future line), pregnancy clients (who are becoming the next link), and postpartum clients (who are rebuilding identity as a mother). That's the full arc the practice serves.</p>
+
+        <p><strong>What the research showed.</strong> No direct perinatal therapy practice using "Motherline" came up in national searches. "Motherline" appears in Jungian and feminist-therapy literature as a concept (Naomi Lowinsky's work), but isn't owned by any practice brand in this space. That makes it distinctive and defensible.</p>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-item-label">Register</span>
+            <span class="meta-item-value">Warm, literary, rooted</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Direct Conflicts Found</span>
+            <span class="meta-item-value">None in perinatal therapy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Legal Entity Pairing</span>
+            <span class="meta-item-value">Lira Family Therapy, P.C. dba Motherline Therapy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Suggested Descriptor</span>
+            <span class="meta-item-value">"Perinatal &amp; Fertility Mental Health"</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="pro-col">
+            <span class="pro-cons-label">Strengths</span>
+            <ul>
+              <li>Covers the full arc (fertility → postpartum), not just postpartum</li>
+              <li>Distinctive in a saturated "Bloom / Willow / Wildflower" space</li>
+              <li>Carries depth — invites a story in marketing and About page</li>
+              <li>Not pigeonholed; ages well if practice broadens</li>
+            </ul>
+          </div>
+          <div class="con-col">
+            <span class="pro-cons-label">Watch-outs</span>
+            <ul>
+              <li>Not a common word — needs a descriptor on first read</li>
+              <li>"Motherline" implies motherhood-centered, so less ideal if she ever expands to adolescent or men's work</li>
+              <li>Verify .com availability before committing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+    <!-- #2 LIRA PERINATAL -->
+    <div class="name-card">
+      <div class="name-card-header">
+        <div class="rank-badge two">
+          <span class="rank-num">2</span>
+          <span class="rank-label">Safest</span>
+        </div>
+        <div class="name-card-title-wrap">
+          <span class="name-card-approach">Founder-named · Professional</span>
+          <h2 class="name-card-name"><em>Lira</em> Perinatal Therapy</h2>
+          <p class="name-card-tagline">Her name on the door. Trust-building, distinctive by definition, and flexible for the long run.</p>
+        </div>
+      </div>
+
+      <div class="name-card-body">
+        <p><strong>Why it works.</strong> Therapy is an intensely personal relationship, and many of the most successful solo practices are named after the clinician. The name is unique by definition — no one else is a Lira-named perinatal therapist in California — and it signals personal accountability. Pairing "Lira" with "Perinatal Therapy" (or "Psychotherapy") makes the niche legible without boxing her in. If she later adds a second clinician or branches into adjacent work, the name flexes.</p>
+
+        <p><strong>What the research showed.</strong> There is a California-licensed LMFT whose <em>first</em> name is Lira (Lira Ravenel, LA-based, non-perinatal). That's not a legal conflict — distinct individual, different niche, different market — but it means "Lira Therapy" as a standalone phrase might cause low-level confusion in directory searches. Adding "Perinatal" or "Psychotherapy" as the modifier neutralizes this.</p>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-item-label">Register</span>
+            <span class="meta-item-value">Clean, professional, trustworthy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Direct Conflicts Found</span>
+            <span class="meta-item-value">None (one CA therapist with first name Lira, non-perinatal)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Legal Entity Pairing</span>
+            <span class="meta-item-value">Lira Family Therapy, P.C. dba Lira Perinatal Therapy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Alt Form</span>
+            <span class="meta-item-value">Lira Psychotherapy (broader, less niche-specific)</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="pro-col">
+            <span class="pro-cons-label">Strengths</span>
+            <ul>
+              <li>Effectively immune to trademark conflicts</li>
+              <li>Builds personal brand + practice brand simultaneously</li>
+              <li>Reads as grown-up and credible for insurance/referrals</li>
+              <li>Ages well if she expands or shifts focus</li>
+            </ul>
+          </div>
+          <div class="con-col">
+            <span class="pro-cons-label">Watch-outs</span>
+            <ul>
+              <li>Less emotionally evocative than metaphorical options</li>
+              <li>Harder to market as a "lifestyle" brand on Instagram</li>
+              <li>Requires "Perinatal" modifier for SEO — clients don't search "Lira"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+    <!-- #3 HEARTH -->
+    <div class="name-card">
+      <div class="name-card-header">
+        <div class="rank-badge three">
+          <span class="rank-num">3</span>
+          <span class="rank-label">Warmest</span>
+        </div>
+        <div class="name-card-title-wrap">
+          <span class="name-card-approach">Metaphorical · Warmth &amp; Sanctuary</span>
+          <h2 class="name-card-name"><em>Hearth</em> Perinatal Therapy</h2>
+          <p class="name-card-tagline">The hearth as the oldest feminine symbol: home, warmth, protection, the center of a woman's world.</p>
+        </div>
+      </div>
+
+      <div class="name-card-body">
+        <p><strong>Why it works.</strong> Hearth does something few other nature words do — it feels <em>indoor</em>, intimate, and domestic rather than outdoorsy. That fits a virtual or home-based private practice better than "Willow" or "Meadow," which imply a countryside aesthetic. It also carries a deep feminine-tradition resonance (hearth as women's gathering space) without being heavy-handed.</p>
+
+        <p><strong>What the research showed.</strong> Generic "hearth counseling" exists in other niches (family therapy, trauma work), but there is no dominant Hearth-named perinatal practice in California or nationally. The name is not trademarked in Class 44 in a way that would block a perinatal practice. Domain availability needs confirming — this is a relatively short, desirable word.</p>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-item-label">Register</span>
+            <span class="meta-item-value">Warm, intimate, traditional-feminine</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Direct Conflicts Found</span>
+            <span class="meta-item-value">Generic "Hearth Counseling" in other niches, no perinatal-dominant brand</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Legal Entity Pairing</span>
+            <span class="meta-item-value">Lira Family Therapy, P.C. dba Hearth Perinatal Therapy</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Suggested Descriptor</span>
+            <span class="meta-item-value">"Therapy for Fertility, Pregnancy &amp; Postpartum"</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="pro-col">
+            <span class="pro-cons-label">Strengths</span>
+            <ul>
+              <li>Emotionally warm without feeling precious or saccharine</li>
+              <li>Pairs beautifully with a soft, grounded visual identity</li>
+              <li>Easy to say, spell, and recommend</li>
+              <li>Logo/icon possibilities are rich (flame, arch, stone)</li>
+            </ul>
+          </div>
+          <div class="con-col">
+            <span class="pro-cons-label">Watch-outs</span>
+            <ul>
+              <li>Short common word — trademark clearance needs care</li>
+              <li>Domain hearththerapy.com may be taken; variants needed</li>
+              <li>Slightly less specific to perinatal than the #1 or #2 pick</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+    <!-- #4 THE MOTHER ROOM -->
+    <div class="name-card">
+      <div class="name-card-header">
+        <div class="rank-badge four">
+          <span class="rank-num">4</span>
+          <span class="rank-label">Boldest</span>
+        </div>
+        <div class="name-card-title-wrap">
+          <span class="name-card-approach">Literary · Evocative</span>
+          <h2 class="name-card-name"><em>The</em> Mother Room</h2>
+          <p class="name-card-tagline">A private space kept for mothers — where the hard parts are allowed to be said out loud.</p>
+        </div>
+      </div>
+
+      <div class="name-card-body">
+        <p><strong>Why it works.</strong> This is the most literary option and the most distinctive. "The Mother Room" evokes a specific, intimate space — a protected interior where a woman is allowed to bring parts of motherhood she can't take anywhere else (ambivalence, rage, grief, exhaustion). For a therapist whose work is about holding that complexity, the name itself <em>is</em> the positioning.</p>
+
+        <p><strong>What the research showed.</strong> The phrase is unused as a therapy practice brand. Virtually no conflicts. The closest cultural reference is Virginia Woolf's "A Room of One's Own," which is an asset, not a liability — it lands in a feminist literary register without leaning too hard on it.</p>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-item-label">Register</span>
+            <span class="meta-item-value">Literary, feminist, distinctive</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Direct Conflicts Found</span>
+            <span class="meta-item-value">None — highly original</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Legal Entity Pairing</span>
+            <span class="meta-item-value">Lira Family Therapy, P.C. dba The Mother Room</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Suggested Descriptor</span>
+            <span class="meta-item-value">"Perinatal &amp; Fertility Psychotherapy"</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="pro-col">
+            <span class="pro-cons-label">Strengths</span>
+            <ul>
+              <li>Nearly impossible to confuse with another practice</li>
+              <li>Invites a strong, cohesive visual identity</li>
+              <li>Memorable — clients remember it after one read</li>
+              <li>Resonates with the specific ambivalence clients bring in</li>
+            </ul>
+          </div>
+          <div class="con-col">
+            <span class="pro-cons-label">Watch-outs</span>
+            <ul>
+              <li>Requires real branding investment — the name alone doesn't explain the service</li>
+              <li>Harder to rank for SEO without a clear descriptor</li>
+              <li>Literary register may not fit her personal voice — has to feel authentic to her</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+    <!-- #5 THRESHOLD -->
+    <div class="name-card">
+      <div class="name-card-header">
+        <div class="rank-badge five">
+          <span class="rank-num">5</span>
+          <span class="rank-label">Evocative</span>
+        </div>
+        <div class="name-card-title-wrap">
+          <span class="name-card-approach">Metaphorical · Liminal</span>
+          <h2 class="name-card-name"><em>Threshold</em> Perinatal Therapy</h2>
+          <p class="name-card-tagline">Fertility, pregnancy, and postpartum as the threshold — the doorway between one version of yourself and the next.</p>
+        </div>
+      </div>
+
+      <div class="name-card-body">
+        <p><strong>Why it works.</strong> Matrescence (the clinical term for becoming a mother) is fundamentally a liminal experience — and "threshold" is the exact word for that kind of crossing. It's a real clinical-literary concept, used by writers like Aviva Romm and in ritual-studies language. It would be an unusually sophisticated brand for this niche.</p>
+
+        <p><strong>Why it landed at #5.</strong> One subtle issue: in perinatal <em>clinical</em> literature, "threshold of viability" refers to the earliest gestational age at which a baby can survive outside the womb. For clients who have experienced preterm birth, miscarriage, or infant loss — a meaningful slice of a fertility-focused practice — that association could land wrong. Most clients won't know this technical meaning, but the ones most likely to read it through that lens are her most vulnerable.</p>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-item-label">Register</span>
+            <span class="meta-item-value">Sophisticated, liminal, slightly clinical</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Direct Conflicts Found</span>
+            <span class="meta-item-value">None in perinatal therapy (generic "Threshold Counseling" in other niches)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Legal Entity Pairing</span>
+            <span class="meta-item-value">Lira Family Therapy, P.C. dba Threshold Perinatal</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item-label">Watch For</span>
+            <span class="meta-item-value">"Threshold of viability" clinical association</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="pro-col">
+            <span class="pro-cons-label">Strengths</span>
+            <ul>
+              <li>Conceptually precise — names the experience clients are having</li>
+              <li>Appeals to educated self-pay clients</li>
+              <li>Distinctive in a soft-nature-word market</li>
+            </ul>
+          </div>
+          <div class="con-col">
+            <span class="pro-cons-label">Watch-outs</span>
+            <ul>
+              <li>"Threshold of viability" association for loss clients is real</li>
+              <li>More abstract — doesn't feel warm on first read</li>
+              <li>Requires a gentle tagline to soften</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- =========================================== -->
+  <!-- SECTION 8: ALSO CONSIDERED                  -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="also-considered">
+    <div class="phase-label">
+      <div class="phase-badge sage">§8 · Also Considered · Why They Didn't Make It</div>
+      <div class="phase-line"></div>
+    </div>
+
+    <p style="font-size: 14px; line-height: 1.75; color: var(--brown-mid); margin-bottom: 20px;">
+      These were the other candidates in the search, with links to the specific competing practices that rule them out. This is the defensive research — so if someone later asks "why not Bloom, isn't that pretty?" the answer is here.
+    </p>
+
+    <div style="overflow-x: auto;">
+      <table class="rejected-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Why Not</th>
+            <th>Conflict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bloom Perinatal / Bloom Maternal</td>
+            <td>Direct California competitor with near-identical positioning (fertility + pregnancy + postpartum). Trademark and SEO nightmare.</td>
+            <td><a href="https://bloommaternaltherapy.com/" target="_blank">bloommaternaltherapy.com</a></td>
+          </tr>
+          <tr>
+            <td>Matrescence Therapy</td>
+            <td>Established multi-state group practice uses this exact name. "Matrescence" as a concept is fair game; as a brand it's taken.</td>
+            <td><a href="https://matrescence-therapy.com/" target="_blank">matrescence-therapy.com</a></td>
+          </tr>
+          <tr>
+            <td>Willow / Willow Tree / Willow Path</td>
+            <td>At least three perinatal practices using "Willow" — Willow Tree Therapy Collective, Willow Path Collective, Willow Family Wellness. Most saturated word in the niche.</td>
+            <td><a href="https://www.willowtreetherapyco.com/" target="_blank">willowtreetherapyco.com</a>, <a href="https://www.willowpathcollective.com/" target="_blank">willowpathcollective.com</a></td>
+          </tr>
+          <tr>
+            <td>Fourth Trimester Therapy</td>
+            <td>Heavily branded by Phoenix Health as a service line across multiple states, plus UCSD and UCSF have "Fourth Trimester" programs. Generic-sounding and pre-owned.</td>
+            <td><a href="https://joinphoenixhealth.com/therapy/fourth-trimester/california/" target="_blank">Phoenix Health</a></td>
+          </tr>
+          <tr>
+            <td>Wildflower</td>
+            <td>Wildflower Center for Emotional Health is an established perinatal practice with significant content footprint and training programs.</td>
+            <td><a href="https://www.wildflowerllc.com/" target="_blank">wildflowerllc.com</a></td>
+          </tr>
+          <tr>
+            <td>Soft Landing / Soft Landings</td>
+            <td>Multiple "Soft Landing" counseling practices exist in adjacent niches. The visual and emotional space is crowded.</td>
+            <td><a href="https://softlandingcounseling.com/" target="_blank">softlandingcounseling.com</a></td>
+          </tr>
+          <tr>
+            <td>Kindred / Kindred Perinatal</td>
+            <td>Kindred Therapy PLLC explicitly offers perinatal care; Kindred Connection in Rochester NY does perinatal psychiatry. Not as saturated as Bloom but not clean.</td>
+            <td><a href="https://kindredtherapy.net/services/" target="_blank">kindredtherapy.net</a></td>
+          </tr>
+          <tr>
+            <td>Becoming / Becoming Mothers</td>
+            <td>Becoming Mothers Counseling exists with very similar positioning. Too close.</td>
+            <td><a href="https://www.becomingmotherscounseling.com/" target="_blank">becomingmotherscounseling.com</a></td>
+          </tr>
+          <tr>
+            <td>The Motherhood Center</td>
+            <td>Major NYC maternal-mental-health institution. Any "Motherhood Center" variant would be derivative.</td>
+            <td><a href="https://themotherhoodcenter.com/" target="_blank">themotherhoodcenter.com</a></td>
+          </tr>
+          <tr>
+            <td>Tidewater / Tidewater Therapy</td>
+            <td>Tidewater Therapy for Children is an established pediatric practice. Also the term has regional associations (Virginia tidewater region) that don't fit Southern California.</td>
+            <td><a href="https://tidewatertherapy.com/" target="_blank">tidewatertherapy.com</a></td>
+          </tr>
+          <tr>
+            <td>Nurture / Nurtured</td>
+            <td>Most overused word in the entire wellness and motherhood category. Unrecoverable.</td>
+            <td>Hundreds of practices</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- SECTION 9: LOCK-IN CHECKLIST                -->
+  <!-- =========================================== -->
+  <div class="phase-section" id="lock-in">
+    <div class="phase-label">
+      <div class="phase-badge slate">§9 · Lock-In Checklist</div>
+      <div class="phase-line"></div>
+    </div>
+
+    <p style="font-size: 14px; line-height: 1.75; color: var(--brown-mid); margin-bottom: 20px;">
+      Once she picks a finalist, these are the verifications to run — in this order — <strong>before</strong> paying for the FBN filing, the domain, or a logo designer. A rename three months in costs weeks of rework; a rename three years in is catastrophic.
+    </p>
+
+    <ul class="checklist">
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Psychology Today directory search.</strong> Search the exact name in the California therapist directory. This is where 90% of clients will search — if an identical or near-identical name appears, clients will confuse you.</span></li>
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Google search:</strong> "[Name] therapy California" and "[Name] perinatal." Look at page one only — that's where clients look. If page one has a similar practice, move on.</span></li>
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>USPTO TESS search</strong> (tmsearch.uspto.gov) in <em>International Class 44</em> (medical and therapy services). Look for live marks — dead or abandoned marks are usually not a concern.</span></li>
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>California Secretary of State business name search</strong> (bizfileonline.sos.ca.gov) for any existing corporate entity using the name.</span></li>
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Riverside County FBN database</strong> for any local filed fictitious business names.</span></li>
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Domain check.</strong> Ideally the exact .com is available. If not, a short clean variant (e.g., motherlinetherapy.com, hearthperinatal.com) is acceptable. Avoid hyphens and cute Tlds like .co or .love — they read as amateur.</span></li>
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Instagram handle check.</strong> @[name] or @[name]therapy — this matters for content marketing. If a dormant account is sitting on the handle, consider a variant rather than fighting for it.</span></li>
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>PSI Directory check</strong> (psidirectory.com — Postpartum Support International). This is a key referral directory for perinatal clients; if a similarly-named practice is listed there, you'll be permanently downstream of them.</span></li>
+      <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Say it out loud to three people.</strong> Literally say "Hi, I'm calling from ___" and "___, how can I help?" If it feels awkward in her mouth, or if her test audience can't spell it back to her, try another.</span></li>
+    </ul>
+
+    <div class="info-block">
+      <div class="info-icon">💡</div>
+      <p class="info-text"><strong>My recommendation:</strong> Start with <strong>Motherline Therapy</strong> as the working hypothesis. Run the full checklist above. If any of the checks raise a meaningful flag (a live USPTO mark, a .com owned by a perinatal competitor, an established Instagram account), fall back to <strong>Lira Perinatal Therapy</strong> — which is effectively checklist-proof because it's built on her legal last name. Between these two, she has both a distinctive lifestyle brand option and a bulletproof safety option.</p>
+    </div>
+
+    <div class="info-block rose">
+      <div class="info-icon">⚠️</div>
+      <p class="info-text"><strong>One thing not to do:</strong> don't crowdsource the name decision on Instagram or in a Facebook group for therapists. Names that win popular votes tend to be the most generic ones — which is exactly how the market ended up full of Blooms and Willows. Pick a name that feels right to <em>her</em> and survives the availability checks above.</p>
+    </div>
+  </div>
+
+  <!-- =========================================== -->
+  <!-- UNIFIED FINAL SUMMARY                       -->
+  <!-- =========================================== -->
+  <div class="summary" id="summary">
     <div class="summary-inner">
-      <h2>The Plan, <em>At a Glance</em></h2>
+      <span class="summary-eyebrow">The Whole Plan</span>
+      <h2>At a <em>Glance</em></h2>
+      <p class="summary-intro">Everything in this document, one page. If something below isn't clear, the detail is in the section referenced.</p>
+
+      <div class="summary-section-label">Foundation · §2</div>
       <div class="summary-row">
-        <span class="summary-row-label">Foundation</span>
+        <span class="summary-row-label">First Moves</span>
         <span class="summary-row-value">Malpractice + HIPAA stack + NPI</span>
       </div>
       <div class="summary-row">
         <span class="summary-row-label">Required Forms</span>
         <span class="summary-row-value">Informed consent, NPP, GFE (NSA)</span>
       </div>
+
+      <div class="summary-section-label">Launch · §3</div>
       <div class="summary-row">
         <span class="summary-row-label">Start With</span>
         <span class="summary-row-value">Sole proprietor + FBN</span>
-      </div>
-      <div class="summary-row">
-        <span class="summary-row-label">Working Brand</span>
-        <span class="summary-row-value">Bloom Perinatal &amp; Fertility Therapy*</span>
       </div>
       <div class="summary-row">
         <span class="summary-row-label">FBN Filed With</span>
@@ -624,6 +1361,8 @@
         <span class="summary-row-label">Local License</span>
         <span class="summary-row-value">City of Temecula</span>
       </div>
+
+      <div class="summary-section-label">Incorporate · §4</div>
       <div class="summary-row">
         <span class="summary-row-label">Incorporate When</span>
         <span class="summary-row-value">Net profit ~$60–80k+/year</span>
@@ -640,9 +1379,24 @@
         <span class="summary-row-label">Tax Stack</span>
         <span class="summary-row-value">Solo 401(k) + accountable plan</span>
       </div>
-      <p class="closing-note">*Bloom is a crowded name in perinatal mental health — run USPTO, Google, and Instagram searches before committing.</p>
-      <p class="closing-note">Foundation first. Launch lean. Incorporate when the math makes sense. That's the full picture.</p>
-      <p class="closing-note" style="margin-top: 16px; font-size: 11px; opacity: 0.45; border-top: 1px solid rgba(74,55,40,0.08); padding-top: 16px;">This guide is for informational purposes only and does not constitute legal, tax, or clinical-compliance advice. Before filing, consult a California attorney familiar with therapy practice formation, a CPA experienced with S-Corp elections for licensed professionals, and verify all HIPAA and No Surprises Act requirements with current federal guidance.</p>
+
+      <div class="summary-section-label">Brand · §7</div>
+      <div class="summary-row">
+        <span class="summary-row-label">Top Pick</span>
+        <span class="summary-row-value">Motherline Therapy</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Safety Fallback</span>
+        <span class="summary-row-value">Lira Perinatal Therapy</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Before Filing</span>
+        <span class="summary-row-value">Run the §9 Lock-In Checklist</span>
+      </div>
+
+      <p class="closing-note" style="margin-top: 32px;">Foundation first. Launch lean. Incorporate when the math makes sense. Name it something that ages well.<br>That's the full picture.</p>
+
+      <p class="closing-note" style="margin-top: 16px; font-size: 11px; opacity: 0.45; border-top: 1px solid rgba(74,55,40,0.08); padding-top: 16px;">This guide is for informational purposes only and does not constitute legal, tax, clinical-compliance, or trademark advice. Before filing, consult a California attorney familiar with therapy practice formation, a CPA experienced with S-Corp elections for licensed professionals, and — if federally registering any mark — a trademark attorney. Name availability findings reflect publicly visible practices at time of research (April 2026) and do not constitute a formal trademark clearance opinion.</p>
     </div>
   </div>
 

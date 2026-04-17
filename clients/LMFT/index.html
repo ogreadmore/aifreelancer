@@ -10,9 +10,8 @@
     --cream: #faf6f0;
     --warm-white: #fff9f2;
     --dusty-rose: #c9897a;
-    --rose-light: #e8b4a8;
     --sage: #7a9e8a;
-    --sage-light: #b4cdbf;
+    --slate: #8ba5b5;
     --brown: #4a3728;
     --brown-mid: #7a5c4a;
     --gold: #c4a265;
@@ -30,12 +29,11 @@
     overflow-x: hidden;
   }
 
-  /* Background texture */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: 
+    background-image:
       radial-gradient(ellipse at 20% 10%, rgba(201,137,122,0.08) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 80%, rgba(122,158,138,0.08) 0%, transparent 50%),
       radial-gradient(ellipse at 60% 30%, rgba(196,162,101,0.05) 0%, transparent 40%);
@@ -43,472 +41,133 @@
     z-index: 0;
   }
 
-  .container {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 60px 40px 100px;
-    position: relative;
-    z-index: 1;
-  }
+  .container { max-width: 820px; margin: 0 auto; padding: 60px 40px 100px; position: relative; z-index: 1; }
 
-  /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 70px;
-    animation: fadeUp 0.8s ease both;
-  }
+  .header { text-align: center; margin-bottom: 70px; animation: fadeUp 0.8s ease both; }
 
-  .eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--dusty-rose);
-    margin-bottom: 18px;
-    display: block;
-  }
+  .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dusty-rose); margin-bottom: 18px; display: block; }
 
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(42px, 6vw, 64px);
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--brown);
-    margin-bottom: 10px;
-  }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 6vw, 64px); font-weight: 300; line-height: 1.1; color: var(--brown); }
+  h1 em { font-style: italic; color: var(--dusty-rose); }
+  .subtitle { font-size: 13px; letter-spacing: 0.12em; color: var(--brown-mid); opacity: 0.7; margin-top: 16px; }
 
-  h1 em {
-    font-style: italic;
-    color: var(--dusty-rose);
-  }
+  .intro-block { background: var(--warm-white); border-left: 3px solid var(--dusty-rose); padding: 28px 32px; margin-bottom: 60px; border-radius: 0 12px 12px 0; animation: fadeUp 0.8s 0.1s ease both; }
+  .intro-block p { font-size: 15px; line-height: 1.8; color: var(--brown-mid); }
+  .intro-block p + p { margin-top: 14px; }
+  .intro-block strong { color: var(--brown); font-weight: 500; }
 
-  .subtitle {
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    color: var(--brown-mid);
-    opacity: 0.7;
-    margin-top: 16px;
-  }
+  .phase-section { margin-bottom: 64px; }
 
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin: 40px 0;
-  }
+  .phase-label { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+  .phase-badge { font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+  .phase-badge.rose { background: rgba(201,137,122,0.12); color: var(--dusty-rose); border: 1px solid rgba(201,137,122,0.3); }
+  .phase-badge.sage { background: rgba(122,158,138,0.12); color: var(--sage); border: 1px solid rgba(122,158,138,0.3); }
+  .phase-badge.slate { background: rgba(139,165,181,0.14); color: var(--slate); border: 1px solid rgba(139,165,181,0.32); }
+  .phase-badge.gold { background: rgba(196,162,101,0.12); color: var(--gold); border: 1px solid rgba(196,162,101,0.3); }
+  .phase-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--gold-light), transparent); }
 
-  .divider-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold-light), transparent);
-  }
+  .steps { display: flex; flex-direction: column; gap: 48px; }
 
-  .divider-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--gold);
-    opacity: 0.6;
-  }
+  .step { display: grid; grid-template-columns: 56px 1fr; gap: 28px; align-items: start; animation: fadeUp 0.7s ease both; }
 
-  /* Intro callout */
-  .intro-block {
-    background: var(--warm-white);
-    border-left: 3px solid var(--dusty-rose);
-    padding: 28px 32px;
-    margin-bottom: 60px;
-    border-radius: 0 12px 12px 0;
-    animation: fadeUp 0.8s 0.1s ease both;
-  }
+  .step-number { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; flex-shrink: 0; margin-top: 4px; }
+  .step-number.rose { background: rgba(201,137,122,0.12); color: var(--dusty-rose); border: 1px solid rgba(201,137,122,0.25); }
+  .step-number.sage { background: rgba(122,158,138,0.12); color: var(--sage); border: 1px solid rgba(122,158,138,0.25); }
+  .step-number.slate { background: rgba(139,165,181,0.14); color: var(--slate); border: 1px solid rgba(139,165,181,0.3); }
+  .step-number.gold { background: rgba(196,162,101,0.12); color: var(--gold); border: 1px solid rgba(196,162,101,0.25); }
 
-  .intro-block p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--brown-mid);
-  }
+  .step-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.55; margin-bottom: 6px; display: block; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--brown); margin-bottom: 14px; line-height: 1.2; }
+  .step-body p { font-size: 14px; line-height: 1.85; color: var(--brown-mid); margin-bottom: 12px; }
+  .step-body strong { color: var(--brown); font-weight: 500; }
 
-  .intro-block strong {
-    color: var(--brown);
-    font-weight: 500;
-  }
+  .name-pill { display: inline-block; background: var(--warm-white); border: 1px solid var(--gold-light); padding: 12px 22px; border-radius: 40px; margin: 10px 0 16px; }
+  .name-pill .name-text { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--brown); font-weight: 400; display: block; line-height: 1.3; }
+  .name-pill .name-sub { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 3px; }
 
-  /* Steps */
-  .steps {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  .step {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 28px;
-    align-items: start;
-    animation: fadeUp 0.7s ease both;
-  }
-
-  .step:nth-child(1) { animation-delay: 0.15s; }
-  .step:nth-child(2) { animation-delay: 0.25s; }
-  .step:nth-child(3) { animation-delay: 0.35s; }
-  .step:nth-child(4) { animation-delay: 0.45s; }
-  .step:nth-child(5) { animation-delay: 0.55s; }
-
-  .step-number {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 300;
-    flex-shrink: 0;
-    margin-top: 4px;
-    position: relative;
-  }
-
-  .step-number.rose {
-    background: rgba(201,137,122,0.12);
-    color: var(--dusty-rose);
-    border: 1px solid rgba(201,137,122,0.25);
-  }
-
-  .step-number.sage {
-    background: rgba(122,158,138,0.12);
-    color: var(--sage);
-    border: 1px solid rgba(122,158,138,0.25);
-  }
-
-  .step-number.gold {
-    background: rgba(196,162,101,0.12);
-    color: var(--gold);
-    border: 1px solid rgba(196,162,101,0.25);
-  }
-
-  .step-body {}
-
-  .step-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--brown-mid);
-    opacity: 0.55;
-    margin-bottom: 6px;
-    display: block;
-  }
-
-  .step-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 400;
-    color: var(--brown);
-    margin-bottom: 14px;
-    line-height: 1.2;
-  }
-
-  .step-body p {
-    font-size: 14px;
-    line-height: 1.85;
-    color: var(--brown-mid);
-    margin-bottom: 12px;
-  }
-
-  /* Name pill */
-  .name-pill {
-    display: inline-block;
-    background: var(--warm-white);
-    border: 1px solid var(--gold-light);
-    padding: 12px 22px;
-    border-radius: 40px;
-    margin: 10px 0 16px;
-  }
-
-  .name-pill .name-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
-    font-style: italic;
-    color: var(--brown);
-    font-weight: 400;
-    display: block;
-    line-height: 1.3;
-  }
-
-  .name-pill .name-sub {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: block;
-    margin-top: 3px;
-  }
-
-  /* Brand cards */
-  .brand-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 14px 0;
-  }
-
-  .brand-card {
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid;
-  }
-
-  .brand-card.primary {
-    background: rgba(201,137,122,0.06);
-    border-color: rgba(201,137,122,0.25);
-  }
-
-  .brand-card.secondary {
-    background: rgba(122,158,138,0.06);
-    border-color: rgba(122,158,138,0.2);
-  }
-
-  .brand-card-badge {
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-  }
-
+  .brand-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+  .brand-card { padding: 20px; border-radius: 12px; border: 1px solid; }
+  .brand-card.primary { background: rgba(201,137,122,0.06); border-color: rgba(201,137,122,0.25); }
+  .brand-card.secondary { background: rgba(122,158,138,0.06); border-color: rgba(122,158,138,0.2); }
+  .brand-card-badge { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; display: block; }
   .brand-card.primary .brand-card-badge { color: var(--dusty-rose); }
   .brand-card.secondary .brand-card-badge { color: var(--sage); }
+  .brand-card-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--brown); line-height: 1.3; margin-bottom: 8px; }
+  .brand-card-note { font-size: 12px; line-height: 1.65; color: var(--brown-mid); opacity: 0.75; }
 
-  .brand-card-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--brown);
-    line-height: 1.3;
-    margin-bottom: 8px;
-  }
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+  .checklist li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.7; color: var(--brown-mid); }
+  .check-icon { width: 20px; height: 20px; border-radius: 50%; background: rgba(122,158,138,0.15); border: 1px solid rgba(122,158,138,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .check-icon svg { width: 9px; height: 9px; stroke: var(--sage); stroke-width: 2.5; fill: none; }
 
-  .brand-card-note {
-    font-size: 12px;
-    line-height: 1.65;
-    color: var(--brown-mid);
-    opacity: 0.75;
-  }
+  .tax-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+  .tax-card { padding: 20px; border-radius: 12px; border: 1px solid; }
+  .tax-card.bad { background: rgba(201,137,122,0.05); border-color: rgba(201,137,122,0.2); }
+  .tax-card.good { background: rgba(122,158,138,0.07); border-color: rgba(122,158,138,0.25); }
+  .tax-card-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+  .tax-card.bad .tax-card-label { color: var(--dusty-rose); }
+  .tax-card.good .tax-card-label { color: var(--sage); }
+  .tax-card-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--brown); margin-bottom: 10px; line-height: 1.3; }
+  .tax-card p { font-size: 12px !important; line-height: 1.65 !important; margin-bottom: 0 !important; }
 
-  /* Checklist */
-  .checklist {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 10px 0;
-  }
+  .info-block { background: rgba(196,162,101,0.08); border: 1px solid rgba(196,162,101,0.3); border-radius: 12px; padding: 20px 24px; margin-top: 12px; display: flex; gap: 16px; align-items: flex-start; }
+  .info-block.blue { background: rgba(122,158,138,0.07); border-color: rgba(122,158,138,0.25); }
+  .info-block.slate { background: rgba(139,165,181,0.08); border-color: rgba(139,165,181,0.28); }
+  .info-block.rose { background: rgba(201,137,122,0.07); border-color: rgba(201,137,122,0.28); }
+  .info-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .info-text { font-size: 13px; line-height: 1.75; color: var(--brown-mid); }
+  .info-text strong { color: var(--brown); font-weight: 500; }
 
-  .checklist li {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--brown-mid);
-  }
+  .divider { display: flex; align-items: center; gap: 16px; margin: 40px 0; }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--gold-light), transparent); }
+  .divider-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: 0.6; }
 
-  .check-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: rgba(122,158,138,0.15);
-    border: 1px solid rgba(122,158,138,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
+  .cost-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 14px; }
+  .cost-table tr { border-bottom: 1px solid rgba(74,55,40,0.08); }
+  .cost-table tr:last-child { border-bottom: none; }
+  .cost-table td { padding: 12px 4px; color: var(--brown-mid); line-height: 1.5; }
+  .cost-table td:last-child { text-align: right; font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--brown); }
+  .cost-table tr.total td { color: var(--brown); font-weight: 500; padding-top: 16px; border-top: 1px solid var(--gold-light); }
+  .cost-table tr.total td:last-child { color: var(--dusty-rose); font-size: 20px; }
 
-  .check-icon svg {
-    width: 9px;
-    height: 9px;
-    stroke: var(--sage);
-    stroke-width: 2.5;
-    fill: none;
-  }
+  .summary { margin-top: 70px; text-align: center; animation: fadeUp 0.8s 0.6s ease both; }
+  .summary-inner { background: var(--warm-white); border: 1px solid var(--gold-light); border-radius: 20px; padding: 48px 40px; position: relative; overflow: hidden; }
+  .summary-inner::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(201,137,122,0.08) 0%, transparent 70%); pointer-events: none; }
+  .summary-inner::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(122,158,138,0.08) 0%, transparent 70%); pointer-events: none; }
+  .summary h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--brown); margin-bottom: 32px; }
+  .summary h2 em { font-style: italic; color: var(--dusty-rose); }
+  .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(74,55,40,0.07); text-align: left; gap: 20px; }
+  .summary-row:last-of-type { border-bottom: none; }
+  .summary-row-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.55; flex-shrink: 0; width: 140px; }
+  .summary-row-value { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--brown); text-align: right; }
+  .closing-note { margin-top: 28px; font-size: 13px; line-height: 1.85; color: var(--brown-mid); opacity: 0.75; }
 
-  /* Warning block */
-  .warning-block {
-    background: rgba(196,162,101,0.08);
-    border: 1px solid rgba(196,162,101,0.3);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-top: 10px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
+  .options-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .options-table thead tr { border-bottom: 2px solid var(--gold-light); }
+  .options-table th { padding: 10px 12px; text-align: left; font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-mid); opacity: 0.6; }
+  .options-table td { padding: 13px 12px; border-bottom: 1px solid rgba(74,55,40,0.07); color: var(--brown-mid); line-height: 1.55; vertical-align: top; }
+  .options-table td strong { color: var(--brown); font-weight: 500; }
+  .options-table .table-note { font-size: 11px; opacity: 0.6; display: block; margin-top: 2px; font-style: italic; }
+  .options-table tr:last-child td { border-bottom: none; }
+  .options-table .highlight-row td { background: rgba(122,158,138,0.04); }
+  .options-table .highlight-row:first-of-type td { border-top: 1px solid rgba(122,158,138,0.15); }
+  .verdict { font-size: 12px; white-space: nowrap; font-weight: 500; }
+  .verdict-yes { color: var(--sage); }
+  .verdict-no { color: var(--dusty-rose); }
+  .verdict-warn { color: var(--gold); }
 
-  .warning-icon {
-    font-size: 18px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
+  .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+  .stack-card { background: rgba(139,165,181,0.05); border: 1px solid rgba(139,165,181,0.22); border-radius: 12px; padding: 16px 18px; }
+  .stack-card-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); margin-bottom: 6px; display: block; }
+  .stack-card-title { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--brown); margin-bottom: 6px; line-height: 1.3; font-weight: 500; }
+  .stack-card p { font-size: 12px !important; line-height: 1.6 !important; margin-bottom: 0 !important; color: var(--brown-mid); }
 
-  .warning-text {
-    font-size: 13px;
-    line-height: 1.75;
-    color: var(--brown-mid);
-  }
-
-  .warning-text strong {
-    color: var(--brown);
-    font-weight: 500;
-  }
-
-  /* Cost table */
-  .cost-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 14px;
-    font-size: 14px;
-  }
-
-  .cost-table tr {
-    border-bottom: 1px solid rgba(74,55,40,0.08);
-  }
-
-  .cost-table tr:last-child {
-    border-bottom: none;
-  }
-
-  .cost-table td {
-    padding: 12px 4px;
-    color: var(--brown-mid);
-    line-height: 1.5;
-  }
-
-  .cost-table td:last-child {
-    text-align: right;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    color: var(--brown);
-    font-weight: 400;
-  }
-
-  .cost-table tr.total td {
-    color: var(--brown);
-    font-weight: 500;
-    padding-top: 16px;
-    border-top: 1px solid var(--gold-light);
-  }
-
-  .cost-table tr.total td:last-child {
-    color: var(--dusty-rose);
-    font-size: 20px;
-  }
-
-  /* Footer summary */
-  .summary {
-    margin-top: 70px;
-    text-align: center;
-    animation: fadeUp 0.8s 0.6s ease both;
-  }
-
-  .summary-inner {
-    background: var(--warm-white);
-    border: 1px solid var(--gold-light);
-    border-radius: 20px;
-    padding: 48px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .summary-inner::before {
-    content: '';
-    position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,137,122,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .summary-inner::after {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    left: -40px;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(122,158,138,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .summary h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 300;
-    color: var(--brown);
-    margin-bottom: 32px;
-  }
-
-  .summary h2 em {
-    font-style: italic;
-    color: var(--dusty-rose);
-  }
-
-  .summary-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(74,55,40,0.07);
-    text-align: left;
-    gap: 20px;
-  }
-
-  .summary-row:last-of-type {
-    border-bottom: none;
-  }
-
-  .summary-row-label {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--brown-mid);
-    opacity: 0.55;
-    flex-shrink: 0;
-    width: 130px;
-  }
-
-  .summary-row-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
-    font-style: italic;
-    color: var(--brown);
-    text-align: right;
-  }
-
-  .closing-note {
-    margin-top: 28px;
-    font-size: 13px;
-    line-height: 1.85;
-    color: var(--brown-mid);
-    opacity: 0.75;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
   @media (max-width: 600px) {
     .container { padding: 40px 24px 80px; }
     .step { grid-template-columns: 44px 1fr; gap: 18px; }
-    .brand-cards { grid-template-columns: 1fr; }
+    .brand-cards, .tax-compare, .stack-grid { grid-template-columns: 1fr; }
     .summary-inner { padding: 32px 24px; }
   }
 </style>
@@ -516,173 +175,474 @@
 <body>
 <div class="container">
 
-  <!-- Header -->
   <div class="header">
     <span class="eyebrow">Practice Launch Guide · Temecula, California</span>
     <h1>Starting Your<br><em>Private Practice</em></h1>
     <p class="subtitle">A plain-language guide for licensed therapists in California</p>
   </div>
 
-  <!-- Intro -->
   <div class="intro-block">
-    <p>California has specific rules for therapists who want to incorporate. The good news: the process is straightforward and inexpensive. This guide walks you through the two core pieces — your <strong>legal entity</strong> and your <strong>public-facing brand name</strong> — so you can launch with the right foundation from day one.</p>
+    <p>This guide covers the <strong>full foundation</strong> for launching a private practice — not just the legal entity, but the clinical compliance, insurance, and tax-optimization layers that most formation guides skip over. Most therapists incorporate too early and pay $800/year in franchise tax before they need to, while quietly neglecting the HIPAA stack and federal disclosure rules that actually let them legally see clients.</p>
+    <p>The plan below is <strong>phased and deliberate.</strong> Phase 0 puts your clinical and compliance foundation in place. Phase 1 launches you lean as a sole proprietor with a real brand. Phase 2 incorporates strategically once your numbers make it worth the overhead.</p>
   </div>
 
-  <div class="steps">
-
-    <!-- Step 1 -->
-    <div class="step">
-      <div class="step-number rose">1</div>
-      <div class="step-body">
-        <span class="step-label">Legal Structure</span>
-        <h2 class="step-title">Form a Professional Corporation — not an LLC</h2>
-        <p>California does not allow licensed therapists to use an LLC for their practice. Instead, you'll form a <strong>Professional Corporation (PC)</strong> — a structure designed specifically for licensed professionals like you. Think of it as the therapist's version of an LLC: it protects your personal assets, gives you a legal entity for billing and contracts, and is what insurance companies and payors expect to see.</p>
-        <p>The legal name must include words like <em>family, marriage,</em> or <em>child</em> paired with <em>therapy, therapist, counseling,</em> or <em>counselor.</em></p>
-        <div class="name-pill">
-          <span class="name-text">Lira Family Therapy, A Professional Corporation</span>
-          <span class="name-sub">Recommended Legal Entity Name</span>
-        </div>
-        <p>This name is clean, professionally credible, legally compliant, and broad enough to grow with you into couples work, family therapy, or broader women's health — without needing to rename.</p>
-      </div>
+  <!-- WHY THIS PLAN -->
+  <div class="phase-section">
+    <div class="phase-label">
+      <div class="phase-badge gold">Why This Plan</div>
+      <div class="phase-line"></div>
     </div>
 
-    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
-
-    <!-- Step 2 -->
     <div class="step">
-      <div class="step-number rose">2</div>
+      <div class="step-number gold" style="font-size:18px;">vs</div>
       <div class="step-body">
-        <span class="step-label">Public Brand</span>
-        <h2 class="step-title">Choose a public-facing brand name</h2>
-        <p>Your legal name is for paperwork. Your brand name is what clients actually see — on your website, Psychology Today profile, Google listing, and business cards. In California, this is called a <strong>Fictitious Business Name (FBN)</strong>, filed with your county.</p>
-        <p>We recommend two names. The primary is your main brand. The secondary costs almost nothing to file alongside it, and covers the exact search terms women use when they need you.</p>
-        <div class="brand-cards">
-          <div class="brand-card primary">
-            <span class="brand-card-badge">★ Primary Brand</span>
-            <div class="brand-card-name">Bloom Perinatal &amp; Fertility Therapy</div>
-            <p class="brand-card-note">Warm, memorable, and clearly signals your niche. Strong for your website, logo, and directory profiles.</p>
+        <span class="step-label">The Options, Compared</span>
+        <h2 class="step-title">There are four ways to structure this — here's why we chose one</h2>
+        <p>Most guides tell you to incorporate immediately. That's not wrong — but it's not optimized either. The table below compares every realistic option for a California LMFT starting a private practice.</p>
+
+        <div style="overflow-x: auto; margin: 20px 0;">
+          <table class="options-table">
+            <thead>
+              <tr>
+                <th>Structure</th>
+                <th>Startup Cost</th>
+                <th>Annual Overhead</th>
+                <th>Tax Efficiency</th>
+                <th>Liability Protection</th>
+                <th>Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LLC</strong></td>
+                <td>~$70</td>
+                <td>$800/yr min</td>
+                <td>Good</td>
+                <td>Good</td>
+                <td class="verdict verdict-no">❌ Illegal for LMFTs in California</td>
+              </tr>
+              <tr>
+                <td><strong>Sole Proprietor only</strong><br><span class="table-note">No FBN, no branding</span></td>
+                <td>$0</td>
+                <td>$0</td>
+                <td>Poor — net earnings hit with 15.3% SE tax</td>
+                <td>None — personal assets exposed</td>
+                <td class="verdict verdict-no">❌ No brand, no protection</td>
+              </tr>
+              <tr class="highlight-row">
+                <td><strong>Sole Proprietor + FBN</strong><br><span class="table-note">Phase 1 of this plan</span></td>
+                <td>~$75–150</td>
+                <td>$0</td>
+                <td>Moderate — all net profit subject to SE tax, but low overhead</td>
+                <td>Low — malpractice insurance is your protection</td>
+                <td class="verdict verdict-yes">✓ Best starting point</td>
+              </tr>
+              <tr>
+                <td><strong>PC only</strong><br><span class="table-note">No S-Corp election</span></td>
+                <td>~$200–300</td>
+                <td>$800/yr min (yr 2+)</td>
+                <td>Poor — double taxation (corp pays tax, then you do)</td>
+                <td>Good</td>
+                <td class="verdict verdict-warn">⚠ Legal but tax-inefficient</td>
+              </tr>
+              <tr class="highlight-row">
+                <td><strong>PC + S-Corp Election</strong><br><span class="table-note">Phase 2 of this plan</span></td>
+                <td>~$1,500–2,500</td>
+                <td>$800/yr min (yr 2+) + CPA/payroll fees</td>
+                <td>Excellent — saves $5–10k/yr at $150k revenue</td>
+                <td>Good</td>
+                <td class="verdict verdict-yes">✓ Best once revenue justifies it</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-block blue">
+          <div class="info-icon">💡</div>
+          <p class="info-text"><strong>Why not incorporate right away?</strong> Even though California waives the minimum franchise tax in a corporation's <em>first</em> tax year, from year two onward you owe $800/year regardless of profit — plus CPA fees and payroll costs. A sole proprietor with malpractice insurance and a filed FBN is fully legitimate and costs almost nothing to operate. Incorporating makes sense once your net profit is high enough that S-Corp tax savings (~$5–10k/year) comfortably outweigh ongoing CPA and payroll costs (~$2–4k/year). That crossover typically lands around <strong>$60–80k net profit per year.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+  <!-- PHASE 0 -->
+  <div class="phase-section">
+    <div class="phase-label">
+      <div class="phase-badge slate">Phase 0 · Before You See Your First Client</div>
+      <div class="phase-line"></div>
+    </div>
+
+    <div class="intro-block" style="border-left-color: var(--slate); margin-bottom: 40px;">
+      <p>Before you see a single client — regardless of whether you're a sole proprietor or a corporation — a short list of non-negotiable pieces needs to be in place. Some are legally required (HIPAA, federal Good Faith Estimates, California fee disclosure). Some are practical baseline (malpractice insurance, a compliant EHR). <strong>None of these should be skipped.</strong> Most formation guides ignore this layer entirely, which is how therapists end up incorporated but out of compliance.</p>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number slate">1</div>
+        <div class="step-body">
+          <span class="step-label">Licensing</span>
+          <h2 class="step-title">Confirm your full license status</h2>
+          <p>California is strict: <strong>you cannot own or operate a private practice if you are still in your associate registration period.</strong> Confirm your LMFT license is fully active with the California Board of Behavioral Sciences (BBS) before proceeding. Everything downstream depends on this.</p>
+        </div>
+      </div>
+
+      <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+      <div class="step">
+        <div class="step-number slate">2</div>
+        <div class="step-body">
+          <span class="step-label">Insurance</span>
+          <h2 class="step-title">Bind malpractice insurance before your first session</h2>
+          <p>As a sole proprietor, malpractice insurance isn't supplementary — it's your <strong>primary liability protection.</strong> Bind coverage before you see a single client.</p>
+          <ul class="checklist">
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Standard carriers for therapists: <strong>CPH &amp; Associates</strong> and <strong>HPSO</strong> — both are considered gold-standard for LMFTs</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Typical cost: <strong>$200–400/year</strong> for $1M per occurrence / $3M aggregate — standard limits for outpatient private practice</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Confirm the policy includes telehealth coverage and covers any states where you see clients virtually</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Re-evaluate coverage limits and carrier when you incorporate in Phase 2</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+      <div class="step">
+        <div class="step-number slate">3</div>
+        <div class="step-body">
+          <span class="step-label">Clinical Infrastructure</span>
+          <h2 class="step-title">Build a HIPAA-compliant practice stack</h2>
+          <p>Every tool that touches protected health information (PHI) must be HIPAA-compliant and backed by a signed <strong>Business Associate Agreement (BAA)</strong> with the vendor. Standard consumer tools — regular Gmail, consumer Zoom, iMessage, Google Docs without a workspace BAA — are <strong>not compliant</strong> and will create liability.</p>
+
+          <div class="stack-grid">
+            <div class="stack-card">
+              <span class="stack-card-label">EHR / Practice Mgmt</span>
+              <div class="stack-card-title">SimplePractice, TherapyNotes, or Jane</div>
+              <p>Notes, scheduling, billing, telehealth, and client portal in one. ~$60–100/month. All three offer BAAs.</p>
+            </div>
+            <div class="stack-card">
+              <span class="stack-card-label">Email</span>
+              <div class="stack-card-title">Google Workspace + BAA, Hushmail, or Paubox</div>
+              <p>Never use personal Gmail for PHI. Google Workspace requires the BAA signed separately. ~$6–25/month.</p>
+            </div>
+            <div class="stack-card">
+              <span class="stack-card-label">Telehealth</span>
+              <div class="stack-card-title">Built into your EHR (preferred)</div>
+              <p>If you need a standalone option, use Zoom for Healthcare (not consumer Zoom) or Doxy.me — both offer BAAs.</p>
+            </div>
+            <div class="stack-card">
+              <span class="stack-card-label">Phone / Fax</span>
+              <div class="stack-card-title">Spruce Health or Google Voice (Workspace)</div>
+              <p>A dedicated business line is non-negotiable. Don't give out your personal cell. ~$25–40/month.</p>
+            </div>
           </div>
-          <div class="brand-card secondary">
-            <span class="brand-card-badge">Secondary (Optional)</span>
-            <div class="brand-card-name">Pregnancy, Postpartum &amp; Fertility Therapy Center</div>
-            <p class="brand-card-note">Keyword-rich. Matches exactly how patients search on Google and therapy directories. Worth filing as a backup.</p>
+
+          <div class="info-block slate">
+            <div class="info-icon">📄</div>
+            <p class="info-text"><strong>Get a BAA from every vendor.</strong> HIPAA requires a written Business Associate Agreement with any service that handles PHI on your behalf. Keep signed copies in a dedicated folder — if you're ever audited or sued, this is the first thing anyone will ask for.</p>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+      <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
 
-    <!-- Step 3 -->
-    <div class="step">
-      <div class="step-number sage">3</div>
-      <div class="step-body">
-        <span class="step-label">Filing Order</span>
-        <h2 class="step-title">Do these steps in this order</h2>
-        <ul class="checklist">
-          <li>
-            <div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div>
-            <span>Confirm you are fully licensed — not in your associate registration period. California prohibits associates from owning or operating a private practice.</span>
-          </li>
-          <li>
-            <div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div>
-            <span>Check name availability for both the corporation name and your chosen brand name at <strong>bizfileonline.sos.ca.gov</strong>. You can reserve the name for 60 days.</span>
-          </li>
-          <li>
-            <div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div>
-            <span>File your <strong>Articles of Incorporation</strong> with the California Secretary of State. Fee: $100.</span>
-          </li>
-          <li>
-            <div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div>
-            <span>File your <strong>Fictitious Business Name</strong> with Riverside County (Temecula is in Riverside County, not San Diego). Fee: ~$26. This should be done within 40 days of first doing business.</span>
-          </li>
-          <li>
-            <div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div>
-            <span>Publish your FBN notice in an approved local newspaper <strong>once a week for four consecutive weeks.</strong> Publication must begin after the county filing. Then file an affidavit of publication with the county to complete the process.</span>
-          </li>
-          <li>
-            <div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div>
-            <span>Do a basic trademark check to confirm no one else is using your chosen brand name nationally.</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
-
-    <!-- Step 4 -->
-    <div class="step">
-      <div class="step-number gold">4</div>
-      <div class="step-body">
-        <span class="step-label">Important Note</span>
-        <h2 class="step-title">One thing to be careful about</h2>
-        <div class="warning-block">
-          <div class="warning-icon">⚠️</div>
-          <p class="warning-text">Avoid using the word <strong>"Center"</strong> in your primary brand name unless you are operating a multi-clinician facility. For a solo practice, it can create the wrong impression — and California's BBS specifically states that a fictitious business name cannot be false, misleading, or deceptive. "Bloom Perinatal &amp; Fertility Therapy" avoids this entirely. The secondary name uses "Center" but it should remain a secondary filing, not your main identity.</p>
+      <div class="step">
+        <div class="step-number slate">4</div>
+        <div class="step-body">
+          <span class="step-label">Identifiers</span>
+          <h2 class="step-title">Get your NPI and EIN</h2>
+          <p>Two free federal identifiers that you'll use on every intake form, superbill, and insurance claim — better to have them than use your Social Security number on client paperwork.</p>
+          <ul class="checklist">
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>NPI Type 1 (Individual)</strong> — free at NPPES (nppes.cms.hhs.gov). Takes about 10 minutes. Get this now regardless of whether you plan to take insurance.</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>NPI Type 2 (Organization)</strong> — apply for this after you incorporate in Phase 2, under the corporation's name.</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>EIN</strong> — free from the IRS (irs.gov). Use this instead of your SSN on all business and client paperwork.</span></li>
+          </ul>
+          <div class="info-block slate">
+            <div class="info-icon">💡</div>
+            <p class="info-text"><strong>Insurance vs. private pay is a separate strategic decision.</strong> Credentialing with insurance panels takes 3–6 months and typically pays $70–110/session; private pay in your niche often runs $180–250+. You don't need to decide today, but decide before you open the calendar — it affects your rates, intake process, and whether you'll issue superbills for out-of-network reimbursement.</p>
+          </div>
         </div>
       </div>
+
+      <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+      <div class="step">
+        <div class="step-number slate">5</div>
+        <div class="step-body">
+          <span class="step-label">Compliance Paperwork</span>
+          <h2 class="step-title">Set up your required disclosures and consent forms</h2>
+          <p>California and federal law require a specific set of written disclosures that every client must receive. Most EHRs (SimplePractice, TherapyNotes) have templates you can customize — but the responsibility for correctness is yours, not the software's.</p>
+          <ul class="checklist">
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Informed consent &amp; fee disclosure</strong> — California requires fees to be disclosed in writing at the outset of treatment, along with your license type, license number, and the BBS's contact information</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Notice of Privacy Practices (NPP)</strong> — HIPAA requires this be provided at first contact. Free template available from HHS (hhs.gov)</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Good Faith Estimate (GFE)</strong> — required under the federal No Surprises Act since 2022. Every self-pay client must receive a written estimate of expected charges before treatment begins. Set up a repeatable workflow in your EHR</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Telehealth consent</strong> — a separate form confirming the client understands the limits and risks of virtual sessions</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Records retention policy</strong> — California requires clinical records be kept for <strong>7 years after last date of service</strong> (or until a minor client turns 25, whichever is longer)</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+  <!-- PHASE 1 -->
+  <div class="phase-section">
+    <div class="phase-label">
+      <div class="phase-badge rose">Phase 1 · Launch Lean</div>
+      <div class="phase-line"></div>
     </div>
 
-    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+    <div class="steps">
 
-    <!-- Step 5 -->
+      <div class="step">
+        <div class="step-number rose">6</div>
+        <div class="step-body">
+          <span class="step-label">Legal Structure · Phase 1</span>
+          <h2 class="step-title">Start as a sole proprietor</h2>
+          <p>When you're just launching, a sole proprietorship is the right call. There is no formation paperwork, no $800/year franchise tax, and no corporate compliance overhead. You simply practice, file income on your personal tax return (Schedule C), and focus on building a client base.</p>
+          <div class="info-block blue">
+            <div class="info-icon">💡</div>
+            <p class="info-text"><strong>When to upgrade to a corporation:</strong> Once your net profit is consistently around <strong>$60,000–$80,000/year</strong>, incorporating becomes a tax-smart move. Below that threshold, the costs outweigh the savings.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+      <div class="step">
+        <div class="step-number rose">7</div>
+        <div class="step-body">
+          <span class="step-label">Brand Name</span>
+          <h2 class="step-title">File your public-facing brand name</h2>
+          <p>Whether you're a sole proprietor or a corporation, the name patients see should be filed as a <strong>Fictitious Business Name (FBN)</strong> with the county. Temecula is in <strong>Riverside County</strong> — not San Diego County.</p>
+          <div class="brand-cards">
+            <div class="brand-card primary">
+              <span class="brand-card-badge">★ Primary Brand (Working)</span>
+              <div class="brand-card-name">Bloom Perinatal &amp; Fertility Therapy</div>
+              <p class="brand-card-note">Warm, memorable, and clearly signals your niche. Strong candidate — but needs extra due diligence (see caveat below).</p>
+            </div>
+            <div class="brand-card secondary">
+              <span class="brand-card-badge">Secondary (Optional)</span>
+              <div class="brand-card-name">Pregnancy, Postpartum &amp; Fertility Therapy</div>
+              <p class="brand-card-note">Keyword-rich. Matches exactly how patients search on Google and therapy directories. Avoid adding "Center" — that implies a multi-clinician facility and can be restricted language.</p>
+            </div>
+          </div>
+          <div class="info-block rose" style="margin-top: 14px;">
+            <div class="info-icon">⚠️</div>
+            <p class="info-text"><strong>Heads-up on the "Bloom" name.</strong> "Bloom" is one of the most heavily used words in the perinatal and maternal-mental-health space — there are many "Bloom" therapy practices, maternal wellness centers, and apps across the country. Before committing, run a thorough search: USPTO trademark database, Google, Instagram, Psychology Today, and the CA Secretary of State business name database. If a direct competitor already owns it in your niche or geography, a rename now is far cheaper than an FBN re-filing and website rebuild later.</p>
+          </div>
+          <ul class="checklist">
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Check name availability at the Riverside County Clerk and the California Secretary of State database</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Do a <strong>USPTO trademark search</strong> (tmsearch.uspto.gov) for live marks in Class 44 (medical/therapy services)</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Verify domain and Instagram handle availability before filing anything</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>File the FBN Statement with <strong>Riverside County Clerk</strong> within 40 days of first doing business. Fee: ~$26</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Publish in an approved local newspaper <strong>once a week for four consecutive weeks</strong> after filing. Cost: ~$50–100</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>File the affidavit of publication with Riverside County to complete the process</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Open a <strong>dedicated business bank account</strong> in your FBN name — keeps personal and business finances cleanly separated from day one</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+      <div class="step">
+        <div class="step-number rose">8</div>
+        <div class="step-body">
+          <span class="step-label">Local Licensing</span>
+          <h2 class="step-title">Register for your City of Temecula business license</h2>
+          <p>The City of Temecula requires a business license for anyone operating a business within city limits — <strong>including home-based therapy practices.</strong> This is separate from your state license and your county FBN. It's cheap, fast, and frequently overlooked.</p>
+          <ul class="checklist">
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Apply through the <strong>City of Temecula Finance Department</strong> (temeculaca.gov) — can be done online</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Annual fee is modest — typically <strong>$35–75/year</strong> for a professional services business</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Apply <em>after</em> your FBN is filed so the business name on the license matches</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>If seeing clients in a home office, verify zoning compliance — Temecula permits most home-based professional practices, but confirm with the Planning Department before advertising your address</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Renew annually — the city will send a renewal notice to the address on file</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase-section">
+    <div class="phase-label">
+      <div class="phase-badge sage">Phase 2 · When Revenue Justifies It</div>
+      <div class="phase-line"></div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number sage">9</div>
+        <div class="step-body">
+          <span class="step-label">Legal Structure · Phase 2</span>
+          <h2 class="step-title">Incorporate as a Professional Corporation</h2>
+          <p>California does not allow therapists to use an LLC. When it's time to incorporate, you'll form a <strong>Professional Corporation (PC)</strong>. The corporate name must contain one of <em>marriage / family / child</em> plus one of <em>therapy / therapist / counseling / counselor.</em></p>
+          <div class="name-pill">
+            <span class="name-text">Lira Family Therapy, A Professional Corporation</span>
+            <span class="name-sub">Recommended Legal Entity Name</span>
+          </div>
+          <p>File Articles of Incorporation at <strong>bizfileonline.sos.ca.gov</strong>. You can reserve the name for 60 days before filing. Your existing FBN brand names carry over — just re-file them under the new corporate entity within 40 days.</p>
+          <ul class="checklist">
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>File Articles of Incorporation — California Secretary of State. Fee: $100</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>File Statement of Information within 90 days of formation, then annually</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Re-file your FBN(s) under the new corporate entity within 40 days of incorporating; update your Temecula city business license to match</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Apply for your <strong>NPI Type 2 (organizational)</strong> under the corporation's name</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Update all client disclosures: California law requires you inform clients at the outset of treatment that services are provided by a marriage and family therapy corporation</span></li>
+          </ul>
+          <div class="info-block">
+            <div class="info-icon">⚠️</div>
+            <p class="info-text"><strong>Franchise tax timing:</strong> California exempts corporations from the $800 minimum franchise tax in their <em>first</em> taxable year — but starting year two, it's charged regardless of profit. S-corps specifically owe the <strong>greater</strong> of $800 or 1.5% of net income. Time your incorporation with this in mind: incorporating late in a calendar year can buy you a nearly-free first year.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+      <div class="step">
+        <div class="step-number sage">10</div>
+        <div class="step-body">
+          <span class="step-label">Tax Strategy</span>
+          <h2 class="step-title">Elect S-Corp status — this is where the real savings are</h2>
+          <p>By default a PC is taxed as a C-Corp: the business pays tax, then you pay tax again on distributions. An <strong>S-Corp election</strong> fixes this. It's not a different company — it's a tax status you elect by filing one IRS form, and it can save you thousands every year.</p>
+          <div class="tax-compare">
+            <div class="tax-card bad">
+              <span class="tax-card-label">PC Without S-Corp</span>
+              <div class="tax-card-title">Default C-Corp Taxation</div>
+              <p>Profits are taxed at the corporate level, then again when distributed to you personally. Even if you avoid this by taking everything as salary, you pay payroll tax on every dollar of net profit.</p>
+            </div>
+            <div class="tax-card good">
+              <span class="tax-card-label">With S-Corp Election</span>
+              <div class="tax-card-title">PC + S-Corp Status</div>
+              <p>You pay yourself a reasonable salary — only that portion is subject to payroll tax. The rest comes out as distributions, <strong>not subject to SE tax.</strong> Typical annual savings: $5,000–$10,000.</p>
+            </div>
+          </div>
+          <ul class="checklist" style="margin-top:16px">
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>File <strong>IRS Form 2553</strong> to elect S-Corp status — ideally before January 1 of the tax year you want it to apply, or within the first 75 days of the year</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Set up payroll through a provider like <strong>Gusto or ADP</strong> — you'll pay yourself a salary as an employee of your own corporation</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span>Work with a CPA experienced with therapy practices — your salary must be "reasonable" by IRS standards or it raises red flags. For a full-time clinician, this typically lands at <strong>50–65% of net profit</strong>, not 30%</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+      <div class="step">
+        <div class="step-number sage">11</div>
+        <div class="step-body">
+          <span class="step-label">Tax Optimization Layer</span>
+          <h2 class="step-title">Stack the rest of the tax-advantaged moves</h2>
+          <p>Once you're an S-Corp paying yourself a salary, a few additional pieces multiply the savings. These are standard hygiene for a well-run corporate practice — skipping them leaves real money on the table.</p>
+          <ul class="checklist">
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Retirement vehicle.</strong> A Solo 401(k) or SEP-IRA inside the S-Corp can shelter an additional <strong>$20,000–$60,000+/year</strong> depending on salary. At higher incomes this often outweighs the S-Corp election savings themselves</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Accountable plan.</strong> Adopt a written policy that lets the corporation reimburse you tax-free for legitimate business expenses — home office, mileage, phone, CEUs, licensure, books. Costs almost nothing to set up; losing this is a common mistake</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>EDD registration.</strong> Once you run payroll, register with the California Employment Development Department as an employer</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Workers' comp exemption.</strong> California requires workers' comp coverage for corporate employees, but sole corporate officers can file the exemption form (Officer Exclusion, via your WC carrier) to opt out — saving ~$500–1,500/year</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>QBI deduction awareness.</strong> Therapy is a "Specified Service Trade or Business" under IRS Section 199A, so the 20% Qualified Business Income deduction phases out above certain income thresholds. Your CPA should model this into your salary decision — it's not a fire-and-forget setting</span></li>
+            <li><div class="check-icon"><svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg></div><span><strong>Self-employed health insurance.</strong> Premiums can be run through the corporation and deducted — another standard S-Corp move</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COSTS -->
+  <div class="phase-section">
+    <div class="phase-label">
+      <div class="phase-badge gold">What This Costs</div>
+      <div class="phase-line"></div>
+    </div>
+
     <div class="step">
-      <div class="step-number sage">5</div>
+      <div class="step-number gold">$</div>
       <div class="step-body">
-        <span class="step-label">Total Cost</span>
-        <h2 class="step-title">What this will cost</h2>
+        <span class="step-label">Phase 0 — Foundation (recurring)</span>
         <table class="cost-table">
-          <tr>
-            <td>Articles of Incorporation — California Secretary of State</td>
-            <td>$100</td>
-          </tr>
-          <tr>
-            <td>Fictitious Business Name filing — Riverside County</td>
-            <td>~$26</td>
-          </tr>
-          <tr>
-            <td>Newspaper publication (4 weeks)</td>
-            <td>~$50–100</td>
-          </tr>
-          <tr>
-            <td>Optional: second FBN filing</td>
-            <td>~$26</td>
-          </tr>
-          <tr class="total">
-            <td>Total estimated launch cost</td>
-            <td>~$200–250</td>
-          </tr>
+          <tr><td>Malpractice insurance</td><td>$200–400/yr</td></tr>
+          <tr><td>EHR / practice management (e.g. SimplePractice)</td><td>$720–1,200/yr</td></tr>
+          <tr><td>HIPAA-compliant email + phone</td><td>$300–600/yr</td></tr>
+          <tr><td>NPI, EIN, consent templates</td><td>Free</td></tr>
+          <tr class="total"><td>Phase 0 ongoing operating cost</td><td>~$1,200–2,200/yr</td></tr>
+        </table>
+
+        <div style="margin-top: 36px;">
+          <span class="step-label">Phase 1 — Launch (one-time)</span>
+        </div>
+        <table class="cost-table">
+          <tr><td>Riverside County FBN filing</td><td>~$26</td></tr>
+          <tr><td>Newspaper publication (4 weeks)</td><td>~$50–100</td></tr>
+          <tr><td>Optional: secondary FBN filing</td><td>~$26</td></tr>
+          <tr><td>City of Temecula business license</td><td>~$35–75/yr</td></tr>
+          <tr class="total"><td>Phase 1 setup cost</td><td>~$140–230</td></tr>
+        </table>
+
+        <div style="margin-top: 36px;">
+          <span class="step-label">Phase 2 — Incorporate (when ready)</span>
+        </div>
+        <table class="cost-table">
+          <tr><td>Articles of Incorporation — CA Secretary of State</td><td>$100</td></tr>
+          <tr><td>FBN re-filing under new corporate entity</td><td>~$26</td></tr>
+          <tr><td>CPA for S-Corp setup and first-year filing</td><td>$1,500–3,000</td></tr>
+          <tr><td>Payroll service (Gusto/ADP)</td><td>$50–80/mo</td></tr>
+          <tr><td>CA minimum franchise tax (yr 2+, ongoing)</td><td>$800+/yr</td></tr>
+          <tr class="total"><td>Phase 2 one-time setup</td><td>~$1,600–3,100</td></tr>
         </table>
       </div>
     </div>
-
   </div>
 
-  <!-- Summary -->
+  <!-- SUMMARY -->
   <div class="summary">
     <div class="summary-inner">
       <h2>The Plan, <em>At a Glance</em></h2>
       <div class="summary-row">
+        <span class="summary-row-label">Foundation</span>
+        <span class="summary-row-value">Malpractice + HIPAA stack + NPI</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Required Forms</span>
+        <span class="summary-row-value">Informed consent, NPP, GFE (NSA)</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Start With</span>
+        <span class="summary-row-value">Sole proprietor + FBN</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Working Brand</span>
+        <span class="summary-row-value">Bloom Perinatal &amp; Fertility Therapy*</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">FBN Filed With</span>
+        <span class="summary-row-value">Riverside County Clerk</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Local License</span>
+        <span class="summary-row-value">City of Temecula</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-row-label">Incorporate When</span>
+        <span class="summary-row-value">Net profit ~$60–80k+/year</span>
+      </div>
+      <div class="summary-row">
         <span class="summary-row-label">Legal Entity</span>
-        <span class="summary-row-value">Lira Family Therapy, A Professional Corporation</span>
+        <span class="summary-row-value">Lira Family Therapy, A P.C.</span>
       </div>
       <div class="summary-row">
-        <span class="summary-row-label">Primary Brand</span>
-        <span class="summary-row-value">Bloom Perinatal &amp; Fertility Therapy</span>
+        <span class="summary-row-label">Tax Election</span>
+        <span class="summary-row-value">S-Corp via IRS Form 2553</span>
       </div>
       <div class="summary-row">
-        <span class="summary-row-label">Secondary Brand</span>
-        <span class="summary-row-value">Pregnancy, Postpartum &amp; Fertility Therapy Center</span>
+        <span class="summary-row-label">Tax Stack</span>
+        <span class="summary-row-value">Solo 401(k) + accountable plan</span>
       </div>
-      <div class="summary-row">
-        <span class="summary-row-label">Filed With</span>
-        <span class="summary-row-value">CA Secretary of State + Riverside County</span>
-      </div>
-      <div class="summary-row">
-        <span class="summary-row-label">Total Cost</span>
-        <span class="summary-row-value">~$200–250</span>
-      </div>
-      <p class="closing-note">One clean legal name that nobody sees. One great brand name that gets you found.<br>That's exactly how it should work.</p>
+      <p class="closing-note">*Bloom is a crowded name in perinatal mental health — run USPTO, Google, and Instagram searches before committing.</p>
+      <p class="closing-note">Foundation first. Launch lean. Incorporate when the math makes sense. That's the full picture.</p>
+      <p class="closing-note" style="margin-top: 16px; font-size: 11px; opacity: 0.45; border-top: 1px solid rgba(74,55,40,0.08); padding-top: 16px;">This guide is for informational purposes only and does not constitute legal, tax, or clinical-compliance advice. Before filing, consult a California attorney familiar with therapy practice formation, a CPA experienced with S-Corp elections for licensed professionals, and verify all HIPAA and No Surprises Act requirements with current federal guidance.</p>
     </div>
   </div>
 

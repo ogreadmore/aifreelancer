@@ -1,0 +1,24 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="snowGradient" x1="18" y1="16" x2="104" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B8F1FF" />
+      <stop offset="1" stop-color="#79D9E6" />
+    </linearGradient>
+  </defs>
+  <circle cx="64" cy="64" r="62" fill="#07171F" stroke="url(#snowGradient)" stroke-width="4" />
+  <g stroke="url(#snowGradient)" stroke-width="5" stroke-linecap="round">
+    <path d="M64 22V106" />
+    <path d="M22 64H106" />
+    <path d="M34.3 34.3L93.7 93.7" />
+    <path d="M34.3 93.7L93.7 34.3" />
+    <path d="M64 22L71.5 31.5" />
+    <path d="M64 22L56.5 31.5" />
+    <path d="M64 106L71.5 96.5" />
+    <path d="M64 106L56.5 96.5" />
+    <path d="M22 64L31.5 56.5" />
+    <path d="M22 64L31.5 71.5" />
+    <path d="M106 64L96.5 56.5" />
+    <path d="M106 64L96.5 71.5" />
+  </g>
+  <circle cx="64" cy="64" r="12" fill="#0A2A35" stroke="url(#snowGradient)" stroke-width="4" />
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" fill="none">
+  <g stroke="#76bbda" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="110" cy="110" r="15" />
+    <circle cx="110" cy="110" r="28" opacity="0.45" />
+    <g>
+      <path d="M110 94V26" />
+      <path d="M110 44l-16 12M110 44l16 12" />
+      <path d="M110 62l-20 14M110 62l20 14" />
+      <path d="M110 80l-24 16M110 80l24 16" />
+      <path d="M110 26l-9 12M110 26l9 12" />
+    </g>
+    <g transform="rotate(60 110 110)">
+      <path d="M110 94V26" />
+      <path d="M110 44l-16 12M110 44l16 12" />
+      <path d="M110 62l-20 14M110 62l20 14" />
+      <path d="M110 80l-24 16M110 80l24 16" />
+      <path d="M110 26l-9 12M110 26l9 12" />
+    </g>
+    <g transform="rotate(120 110 110)">
+      <path d="M110 94V26" />
+      <path d="M110 44l-16 12M110 44l16 12" />
+      <path d="M110 62l-20 14M110 62l20 14" />
+      <path d="M110 80l-24 16M110 80l24 16" />
+      <path d="M110 26l-9 12M110 26l9 12" />
+    </g>
+    <g transform="rotate(180 110 110)">
+      <path d="M110 94V26" />
+      <path d="M110 44l-16 12M110 44l16 12" />
+      <path d="M110 62l-20 14M110 62l20 14" />
+      <path d="M110 80l-24 16M110 80l24 16" />
+      <path d="M110 26l-9 12M110 26l9 12" />
+    </g>
+    <g transform="rotate(240 110 110)">
+      <path d="M110 94V26" />
+      <path d="M110 44l-16 12M110 44l16 12" />
+      <path d="M110 62l-20 14M110 62l20 14" />
+      <path d="M110 80l-24 16M110 80l24 16" />
+      <path d="M110 26l-9 12M110 26l9 12" />
+    </g>
+    <g transform="rotate(300 110 110)">
+      <path d="M110 94V26" />
+      <path d="M110 44l-16 12M110 44l16 12" />
+      <path d="M110 62l-20 14M110 62l20 14" />
+      <path d="M110 80l-24 16M110 80l24 16" />
+      <path d="M110 26l-9 12M110 26l9 12" />
+    </g>
+  </g>
+</svg>

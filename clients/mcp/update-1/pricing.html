@@ -15,30 +15,14 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=40" />
+    <link rel="stylesheet" href="styles.css?v=45" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="ambient-snow" aria-hidden="true">
-      <span class="ambient-flake flake-1"></span>
-      <span class="ambient-flake flake-2"></span>
-      <span class="ambient-flake flake-3"></span>
-      <span class="ambient-flake flake-4"></span>
-      <span class="ambient-flake flake-5"></span>
-      <span class="ambient-flake flake-6"></span>
-      <span class="ambient-flake flake-7"></span>
-      <span class="ambient-flake flake-8"></span>
-      <span class="ambient-flake flake-9"></span>
-      <span class="ambient-flake flake-10"></span>
-      <span class="ambient-flake flake-11"></span>
-      <span class="ambient-flake flake-12"></span>
-      <span class="ambient-flake flake-13"></span>
-    </div>
-
     <div class="page-shell">
       <header class="site-header">
         <a class="brand" href="index.html" aria-label="Mobile Cryo Pro home">
-          <img class="brand-logo" src="assets/mobile-cryo-pro-logo.png?v=5" alt="Mobile Cryo Pro" width="470" height="170" fetchpriority="high" />
+          <img class="brand-logo" src="assets/mobile-cryo-pro-logo.png?v=7" alt="Mobile Cryo Pro" width="940" height="324" fetchpriority="high" />
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
           <span></span>
@@ -124,7 +108,7 @@
           <div class="footer-grid footer-grid-form">
             <div class="footer-contact">
               <a class="footer-brand" href="index.html" aria-label="Mobile Cryo Pro home">
-                <img class="footer-logo" src="assets/mobile-cryo-pro-logo.png?v=5" alt="Mobile Cryo Pro" width="470" height="170" loading="lazy" />
+                <img class="footer-logo" src="assets/mobile-cryo-pro-logo.png?v=7" alt="Mobile Cryo Pro" width="940" height="324" loading="lazy" />
               </a>
               <div class="footer-copy">
                 <p class="eyebrow">Say hello</p>
@@ -147,7 +131,6 @@
               </div>
             </div>
             <form class="contact-form" id="contact-form" data-contact-form>
-              <p class="contact-form-context" data-contact-context hidden></p>
               <div class="form-grid">
                 <label class="form-field">
                   <span>Name</span>
@@ -159,56 +142,24 @@
                   <input type="email" name="email" autocomplete="email" spellcheck="false" required />
                 </label>
 
-                <label class="form-field">
-                  <span>Phone</span>
+                <label class="form-field form-field-full">
+                  <span>Phone <em>(optional)</em></span>
                   <input type="tel" name="phone" autocomplete="tel" inputmode="tel" />
                 </label>
 
-                <label class="form-field">
-                  <span>What you&rsquo;re looking for</span>
-                  <select name="service" required>
-                    <option value="" selected disabled>Pick one</option>
-                    <option value="Not sure yet">Not sure yet&mdash;help me choose</option>
-                    <option value="Pain relief and recovery">Recovery &amp; pain relief</option>
-                    <option value="Body contouring and CryoSkin">CryoSkin body contouring</option>
-                    <option value="Cryofacial rejuvenation">Cryofacial</option>
-                    <option value="Equine cryotherapy">For a horse</option>
-                    <option value="Event or wellness booking">Event or group</option>
-                  </select>
-                </label>
-
-                <label class="form-field">
-                  <span>Where</span>
-                  <input type="text" name="location" placeholder="City, hotel, or venue" autocomplete="off" required />
-                </label>
-
-                <label class="form-field">
-                  <span>When works</span>
-                  <input type="text" name="timing" placeholder="Next Tuesday morning, the week of the 14th&hellip;" autocomplete="off" />
-                </label>
-
-                <label class="form-field">
-                  <span>Goal or area</span>
-                  <input type="text" name="goal_area" placeholder="Sore shoulder, abdomen, cryofacial before my wedding&hellip;" autocomplete="off" />
-                </label>
-
-                <label class="form-field">
-                  <span>How many</span>
-                  <input type="text" name="party" placeholder="Just me, a party of 6, our team&hellip;" autocomplete="off" />
-                </label>
-
                 <label class="form-field form-field-full">
-                  <span>Anything else</span>
+                  <span>Message</span>
                   <textarea
-                    name="details"
-                    placeholder="Medical notes, access details, event timeline&mdash;whatever helps us prep."
+                    name="message"
+                    placeholder="What you&rsquo;re looking for, where, when&mdash;whatever you&rsquo;d like us to know."
+                    required
                   ></textarea>
                 </label>
               </div>
 
               <button class="button button-primary" type="submit">Send It</button>
               <p class="contact-form-note">
-                Opens a pre-filled email with your details. We&rsquo;ll get back to you quickly.
+                Opens a pre-filled email. We&rsquo;ll get back to you quickly.
               </p>
             </form>
           </div>
@@ -224,6 +175,6 @@
         </div>
       </footer>
     </div>
-    <script src="script.js?v=9"></script>
+    <script src="script.js?v=11"></script>
   </body>
 </html>

@@ -5366,12 +5366,13 @@ body:not(.services-page).about-page .about-hero-media {
   }
 }
 
-/* Keep the global header behavior consistent across every page. */
+/* Keep the global header floating on desktop and simple on mobile. */
 .site-header,
 .services-page .site-header,
 body:not(.services-page) .site-header {
-  position: relative;
-  top: auto;
+  position: sticky;
+  top: 12px;
+  z-index: 120;
 }
 
 /* Homepage hero pass: match the mockup hero without touching the rest of the page. */
@@ -6712,5 +6713,39 @@ body.home-page .site-header {
   .faq-page .faq-item[open] summary::after {
     flex-basis: 12px !important;
     width: 12px !important;
+  }
+}
+
+/* v128: desktop fixed floating header. */
+@media (min-width: 761px) {
+  html {
+    scroll-padding-top: 132px;
+  }
+
+  .page-shell,
+  .services-page .page-shell,
+  body:not(.services-page) .page-shell,
+  body.home-page .page-shell,
+  .home-page .page-shell {
+    padding-top: clamp(108px, 7.2vw, 124px) !important;
+  }
+
+  .site-header,
+  .services-page .site-header,
+  body:not(.services-page) .site-header,
+  body.home-page .site-header,
+  .home-page .site-header {
+    position: fixed !important;
+    top: clamp(10px, 1vw, 14px) !important;
+    right: auto !important;
+    left: 50% !important;
+    z-index: 120 !important;
+    isolation: isolate;
+    transform: translateX(-50%) !important;
+    box-shadow:
+      0 18px 44px rgba(6, 16, 30, 0.2),
+      0 6px 18px rgba(6, 16, 30, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(18px);
   }
 }

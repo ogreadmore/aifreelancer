@@ -5,7 +5,6 @@ const heroSlider = document.querySelector("[data-slider]");
 const slides = Array.from(document.querySelectorAll("[data-slide]"));
 const dots = Array.from(document.querySelectorAll("[data-dot]"));
 const contactForm = document.querySelector("[data-contact-form]");
-const siteFooter = document.querySelector(".site-footer");
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 if (navToggle && header) {
@@ -116,28 +115,4 @@ if (contactForm) {
 
     window.location.href = `mailto:info@mobilecryopro.com?${params.toString()}`;
   });
-}
-
-if (header && siteFooter && "IntersectionObserver" in window) {
-  const footerObserver = new IntersectionObserver(
-    ([entry]) => {
-      const shouldRecede = entry.isIntersecting;
-      header.classList.toggle("is-receded", shouldRecede);
-      header.toggleAttribute("inert", shouldRecede);
-
-      if (shouldRecede) {
-        header.setAttribute("aria-hidden", "true");
-        header.classList.remove("nav-open");
-        navToggle?.setAttribute("aria-expanded", "false");
-      } else {
-        header.removeAttribute("aria-hidden");
-      }
-    },
-    {
-      rootMargin: "0px 0px -40% 0px",
-      threshold: 0.01,
-    },
-  );
-
-  footerObserver.observe(siteFooter);
 }

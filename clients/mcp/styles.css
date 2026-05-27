@@ -1430,6 +1430,48 @@ textarea:focus-visible {
   margin-top: 22px;
 }
 
+.city-service-card {
+  gap: 14px;
+  padding: 28px;
+}
+
+.city-service-card strong {
+  max-width: 24rem;
+}
+
+.city-service-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+  margin-top: 4px;
+}
+
+.city-service-group {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(15, 45, 72, 0.1);
+}
+
+.city-service-group span {
+  color: var(--accent-strong);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.city-service-group p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+  font-weight: 650;
+  line-height: 1.48;
+}
+
 .home-cta-band p {
   max-width: 46rem;
 }
@@ -1508,10 +1550,16 @@ main > .page-link-grid {
 
 .home-map-layout {
   display: grid;
-  grid-template-columns: minmax(280px, 0.34fr) minmax(0, 0.66fr);
+  grid-template-columns: minmax(360px, 0.46fr) minmax(0, 0.54fr);
   gap: 24px;
   align-items: start;
   margin-top: 36px;
+}
+
+.home-map-copy-stack {
+  display: grid;
+  align-content: start;
+  gap: 18px;
 }
 
 .stat-grid {
@@ -5241,6 +5289,10 @@ body:not(.services-page).about-page .about-hero-media {
     flex-direction: column;
   }
 
+  .city-service-groups {
+    grid-template-columns: 1fr;
+  }
+
   .about-page .about-hero-media,
   body:not(.services-page).about-page .about-hero-media {
     min-height: 360px;
@@ -5255,6 +5307,14 @@ body:not(.services-page).about-page .about-hero-media {
   body:not(.services-page) .cta-band {
     width: calc(100vw - 32px) !important;
     padding-inline: 20px !important;
+  }
+
+  .city-service-card {
+    padding: 24px;
+  }
+
+  .city-service-group p {
+    font-size: 0.9rem;
   }
 
   .home-services-pricing-band,

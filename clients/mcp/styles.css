@@ -2766,6 +2766,12 @@ main > .page-link-grid {
   display: none;
 }
 
+.services-page .services-menu-hero::before {
+  inset: 0;
+  width: 100%;
+  clip-path: polygon(0 0, 48% 0, 58.22% 76%, 52.72% 100%, 0 100%);
+}
+
 .services-page .services-menu-hero .hero-divider-stack {
   position: absolute;
   inset: 0;

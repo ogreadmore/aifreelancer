@@ -30,7 +30,7 @@
   --mockup-blue: #0d5797;
   --mockup-blue-dark: #05345f;
   --mockup-ice: #44b9dd;
-  --services-hero-image: url("assets/sports-physical-therapy.jpg");
+  --services-hero-image: url("assets/sports-therapy-band.jpg");
 }
 
 /* Sitewide v2 polish: make the services-page direction the design system */
@@ -2566,7 +2566,7 @@ main > .page-link-grid {
   --mockup-blue: #0d5797;
   --mockup-blue-dark: #05345f;
   --mockup-ice: #44b9dd;
-  --services-hero-image: url("assets/sports-physical-therapy.jpg");
+  --services-hero-image: url("assets/sports-therapy-band.jpg");
   background:
     radial-gradient(ellipse at 50% 0%, rgba(77, 174, 214, 0.12), transparent 34%),
     linear-gradient(180deg, #f9fcff 0%, #eef5fb 44%, #fbfcfd 100%);
@@ -2711,6 +2711,49 @@ main > .page-link-grid {
   transform: skewX(-10deg);
   transform-origin: center;
   pointer-events: none;
+}
+
+.services-page .services-menu-hero::after {
+  content: none;
+  display: none;
+}
+
+.services-page .services-menu-hero .hero-divider-stack {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.services-page .services-menu-hero .hero-divider {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.services-page .services-menu-hero .hero-divider-navy {
+  background: #052a4f;
+  clip-path: polygon(47.85% 0, 48.67% 0, 58.9% 76%, 53.4% 100%, 52.57% 100%, 58.07% 76%);
+}
+
+.services-page .services-menu-hero .hero-divider-blue {
+  background: #0d5797;
+  clip-path: polygon(48.43% 0, 49.53% 0, 59.75% 76%, 54.25% 100%, 53.15% 100%, 58.65% 76%);
+}
+
+.services-page .services-menu-hero .hero-divider-ice {
+  background: #44b9dd;
+  clip-path: polygon(49.31% 0, 49.97% 0, 60.19% 76%, 54.69% 100%, 54.03% 100%, 59.53% 76%);
+}
+
+.services-page .services-menu-hero .hero-divider-white {
+  background: #ffffff;
+  clip-path: polygon(49.77% 0, 51.15% 0, 61.37% 76%, 55.87% 100%, 54.49% 100%, 59.99% 76%);
+}
+
+.services-page .services-menu-hero .hero-divider-red {
+  background: #bb202d;
+  clip-path: polygon(50.93% 0, 51.83% 0, 62.05% 76%, 56.55% 100%, 55.65% 100%, 61.15% 76%);
 }
 
 .services-hero-copy {
@@ -3670,6 +3713,7 @@ main > .page-link-grid {
 
   .services-hero::before,
   .services-hero::after,
+  .services-page .services-menu-hero .hero-divider-stack,
   .services-hero-copy::after {
     display: none;
   }

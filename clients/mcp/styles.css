@@ -30,7 +30,7 @@
   --mockup-blue: #0d5797;
   --mockup-blue-dark: #05345f;
   --mockup-ice: #44b9dd;
-  --services-hero-image: url("assets/sports-recovery-stretch.jpg");
+  --services-hero-image: url("assets/sports-physical-therapy.jpg");
 }
 
 /* Sitewide v2 polish: make the services-page direction the design system */
@@ -2566,7 +2566,7 @@ main > .page-link-grid {
   --mockup-blue: #0d5797;
   --mockup-blue-dark: #05345f;
   --mockup-ice: #44b9dd;
-  --services-hero-image: url("assets/sports-recovery-stretch.jpg");
+  --services-hero-image: url("assets/sports-physical-therapy.jpg");
   background:
     radial-gradient(ellipse at 50% 0%, rgba(77, 174, 214, 0.12), transparent 34%),
     linear-gradient(180deg, #f9fcff 0%, #eef5fb 44%, #fbfcfd 100%);

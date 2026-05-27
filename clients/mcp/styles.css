@@ -6409,11 +6409,6 @@ body:not(.home-page):not(.services-page):not(.about-page):not(.faq-page) .hero-s
   line-height: 1.62;
 }
 
-.faq-page #service-area {
-  width: min(calc(100% - 36px), 1220px);
-  border-radius: 14px;
-}
-
 .services-hero-media {
   background-position: center center, center center, center center, 54% 28%;
 }
@@ -6505,8 +6500,7 @@ body:not(.home-page):not(.services-page):not(.about-page):not(.faq-page) .hero-s
   }
 
   .faq-page .faq-hero-panel,
-  .faq-page .faq-section,
-  .faq-page #service-area {
+  .faq-page .faq-section {
     width: calc(100vw - 24px);
   }
 

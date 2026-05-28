@@ -7,6 +7,15 @@ const dots = Array.from(document.querySelectorAll("[data-dot]"));
 const contactForm = document.querySelector("[data-contact-form]");
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+if (header) {
+  const updateScrolledHeader = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 6);
+  };
+
+  updateScrolledHeader();
+  window.addEventListener("scroll", updateScrolledHeader, { passive: true });
+}
+
 if (navToggle && header) {
   navToggle.addEventListener("click", () => {
     const isOpen = header.classList.toggle("nav-open");

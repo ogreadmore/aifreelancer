@@ -8035,3 +8035,12 @@ body:not(.home-page):not(.services-page):not(.about-page):not(.faq-page) .hero-s
     line-height: 1.02;
   }
 }
+
+/* v139: remove the floating nav shadow while the page is scrolled. */
+.site-header.is-scrolled,
+.services-page .site-header.is-scrolled,
+body:not(.services-page) .site-header.is-scrolled,
+body.home-page .site-header.is-scrolled,
+.home-page .site-header.is-scrolled {
+  box-shadow: none !important;
+}

@@ -7387,3 +7387,34 @@ body.home-page .site-header {
     display: none !important;
   }
 }
+
+/* v133: mask scrolled content behind the desktop floating nav. */
+@media (min-width: 761px) {
+  body::before {
+    content: none !important;
+  }
+
+  .page-shell::before {
+    content: "" !important;
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 125;
+    height: clamp(96px, 7vw, 116px);
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(247, 251, 254, 0.98) 0%, rgba(239, 247, 251, 0.94) 66%, rgba(239, 247, 251, 0) 100%);
+    backdrop-filter: blur(10px);
+  }
+
+  .site-header,
+  .services-page .site-header,
+  body:not(.services-page) .site-header,
+  body.home-page .site-header,
+  .home-page .site-header {
+    z-index: 150 !important;
+  }
+
+  .skip-link {
+    z-index: 180;
+  }
+}

@@ -7249,3 +7249,141 @@ body.home-page .site-header {
     line-height: 1.76;
   }
 }
+
+/* v132: keep the floating nav identical on the splash page and inner pages. */
+@media (min-width: 761px) {
+  .site-header,
+  .services-page .site-header,
+  body:not(.services-page) .site-header,
+  body.home-page .site-header,
+  .home-page .site-header {
+    width: min(calc(100% - 28px), var(--services-max, 1760px)) !important;
+    min-height: 76px !important;
+    margin-bottom: 24px !important;
+    padding: 6px 22px 6px 12px !important;
+    border: 1px solid var(--chrome-line) !important;
+    border-radius: 12px !important;
+    background:
+      linear-gradient(135deg, rgba(20, 34, 47, 0.98), rgba(4, 14, 29, 0.98) 60%, rgba(5, 35, 66, 0.98)),
+      linear-gradient(90deg, rgba(62, 187, 221, 0.12), transparent 28%, rgba(187, 32, 45, 0.09) 100%) !important;
+    color: #ffffff !important;
+  }
+
+  .brand-logo,
+  .services-page .brand-logo,
+  body:not(.services-page) .brand-logo,
+  body.home-page .brand-logo,
+  .home-page .brand-logo {
+    height: clamp(58px, 4.3vw, 68px) !important;
+    max-width: 250px !important;
+  }
+
+  .site-nav,
+  .services-page .site-nav,
+  body:not(.services-page) .site-nav,
+  body.home-page .site-nav,
+  .home-page .site-nav {
+    gap: 8px !important;
+    margin-right: 4px !important;
+  }
+
+  .site-nav a,
+  .services-page .site-nav a,
+  body:not(.services-page) .site-nav a,
+  body.home-page .site-nav a,
+  .home-page .site-nav a {
+    padding: 10px 12px !important;
+    border-radius: 8px !important;
+    font-size: 1.02rem !important;
+  }
+
+  .site-nav a[aria-current="page"],
+  .services-page .site-nav a[aria-current="page"],
+  body:not(.services-page) .site-nav a[aria-current="page"],
+  body.home-page .site-nav a[aria-current="page"],
+  .home-page .site-nav a[aria-current="page"] {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .site-nav a[aria-current="page"]::after,
+  .services-page .site-nav a[aria-current="page"]::after,
+  body:not(.services-page) .site-nav a[aria-current="page"]::after,
+  .home-page .site-nav a[aria-current="page"]::after,
+  body.home-page .site-nav a[aria-current="page"]::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .nav-call,
+  .site-nav a.nav-call,
+  .services-page .nav-call,
+  .services-page .site-nav a.nav-call,
+  body:not(.services-page) .nav-call,
+  body:not(.services-page) .site-nav a.nav-call,
+  body.home-page .nav-call,
+  body.home-page .site-nav a.nav-call,
+  .home-page .nav-call {
+    min-height: 40px !important;
+    padding: 0 15px !important;
+    border-color: transparent !important;
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-size: 1.14rem !important;
+  }
+
+  .nav-cta,
+  .site-nav a.nav-cta,
+  .services-page .nav-cta,
+  .services-page .site-nav a.nav-cta,
+  body:not(.services-page) .nav-cta,
+  body:not(.services-page) .site-nav a.nav-cta,
+  body.home-page .nav-cta,
+  body.home-page .site-nav a.nav-cta,
+  .home-page .nav-cta {
+    min-height: 48px !important;
+    padding: 0 18px !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1260px) {
+  .nav-call,
+  .services-page .nav-call,
+  body:not(.services-page) .nav-call,
+  body.home-page .nav-call,
+  .home-page .nav-call {
+    display: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header,
+  .services-page .site-header,
+  body:not(.services-page) .site-header,
+  body.home-page .site-header,
+  .home-page .site-header {
+    border: 1px solid var(--chrome-line) !important;
+    background:
+      linear-gradient(135deg, rgba(20, 34, 47, 0.98), rgba(4, 14, 29, 0.98) 60%, rgba(5, 35, 66, 0.98)),
+      linear-gradient(90deg, rgba(62, 187, 221, 0.12), transparent 28%, rgba(187, 32, 45, 0.09) 100%) !important;
+  }
+
+  .site-nav a[aria-current="page"],
+  .services-page .site-nav a[aria-current="page"],
+  body:not(.services-page) .site-nav a[aria-current="page"],
+  body.home-page .site-nav a[aria-current="page"],
+  .home-page .site-nav a[aria-current="page"] {
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .site-nav a[aria-current="page"]::after,
+  .services-page .site-nav a[aria-current="page"]::after,
+  body:not(.services-page) .site-nav a[aria-current="page"]::after,
+  .home-page .site-nav a[aria-current="page"]::after,
+  body.home-page .site-nav a[aria-current="page"]::after {
+    content: none !important;
+    display: none !important;
+  }
+}

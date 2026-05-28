@@ -7679,3 +7679,359 @@ body:not(.home-page):not(.services-page):not(.about-page):not(.faq-page) .hero-s
       url("assets/sports-medicine-ball.jpg") center bottom / cover no-repeat !important;
   }
 }
+
+/* v138: regional SEO funnel pages. */
+.seo-page {
+  --seo-max: 1760px;
+}
+
+.seo-page .page-shell {
+  padding-bottom: 0;
+}
+
+.seo-hero-panel,
+.seo-content-shell,
+.seo-service-area-board,
+.seo-faq-band {
+  width: min(calc(100% - 36px), var(--seo-max));
+  margin-inline: auto;
+}
+
+.seo-hero-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.38fr);
+  gap: clamp(26px, 4vw, 68px);
+  align-items: center;
+  min-height: clamp(420px, 32vw, 560px);
+  margin-top: 22px;
+  margin-bottom: 36px;
+  overflow: hidden;
+  padding: clamp(32px, 4.8vw, 76px);
+  border: 1px solid rgba(15, 45, 72, 0.12);
+  border-radius: 14px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0 52%, rgba(255, 255, 255, 0.72) 66%, rgba(7, 20, 38, 0.2) 100%),
+    var(--seo-hero-image) 76% center / cover no-repeat;
+  box-shadow:
+    0 28px 66px rgba(8, 23, 41, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.seo-hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 9px;
+  background: linear-gradient(180deg, var(--mockup-red) 0 44%, var(--mockup-blue) 44% 78%, var(--mockup-ice) 78% 100%);
+}
+
+.seo-hero-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 18px;
+  max-width: 760px;
+  padding-left: clamp(14px, 1.8vw, 28px);
+}
+
+.seo-hero-copy h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: #071426;
+  font-family: "Barlow Condensed", Inter, sans-serif;
+  font-size: clamp(3.35rem, 5.2vw, 6.4rem);
+  font-weight: 800;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.seo-hero-copy > p:not(.eyebrow) {
+  max-width: 45rem;
+  color: #52606f;
+  font-size: clamp(1.02rem, 1.2vw, 1.24rem);
+  font-weight: 700;
+  line-height: 1.48;
+}
+
+.seo-hero-card,
+.seo-sidebar-card.dark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+  padding: clamp(22px, 2.6vw, 34px);
+  border: 1px solid rgba(157, 218, 234, 0.18);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #071426 0%, #0b2340 100%);
+  color: #ffffff;
+  box-shadow: 0 24px 58px rgba(8, 23, 41, 0.2);
+}
+
+.seo-hero-card span,
+.seo-sidebar-card span {
+  color: #0d5797;
+  font-family: "Barlow Condensed", Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.seo-hero-card span,
+.seo-sidebar-card.dark span {
+  color: #75d6ee;
+}
+
+.seo-hero-card strong,
+.seo-sidebar-card.dark strong {
+  color: #ffffff;
+  font-family: "Barlow Condensed", Inter, sans-serif;
+  font-size: clamp(1.7rem, 2.1vw, 2.4rem);
+  font-weight: 800;
+  line-height: 0.98;
+}
+
+.seo-content-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+  gap: clamp(22px, 2.8vw, 42px);
+  align-items: start;
+  margin-bottom: 36px;
+}
+
+.seo-content-main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.seo-content-card,
+.seo-sidebar-card,
+.seo-faq-grid article,
+.seo-service-area-board {
+  border: 1px solid rgba(15, 45, 72, 0.12);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  box-shadow: 0 20px 46px rgba(8, 23, 41, 0.08);
+}
+
+.seo-content-card {
+  display: grid;
+  gap: 13px;
+  min-height: 260px;
+  padding: clamp(24px, 2.5vw, 38px);
+}
+
+.seo-content-card.is-lead {
+  border-left: 6px solid var(--mockup-red);
+}
+
+.seo-content-card h2,
+.seo-faq-grid h3 {
+  margin: 0;
+  color: #071426;
+  font-family: "Barlow Condensed", Inter, sans-serif;
+  font-weight: 800;
+  line-height: 0.96;
+}
+
+.seo-content-card h2 {
+  max-width: 13ch;
+  font-size: clamp(2.1rem, 2.6vw, 3.4rem);
+}
+
+.seo-content-card p:not(.panel-label),
+.seo-faq-grid p,
+.seo-sidebar-card li {
+  margin: 0;
+  color: #5c6875;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.52;
+}
+
+.seo-sidebar {
+  display: grid;
+  gap: 18px;
+}
+
+.seo-sidebar-card {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+}
+
+.seo-sidebar-card a {
+  color: inherit;
+  font-family: "Barlow Condensed", Inter, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.seo-sidebar-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.seo-city-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.seo-city-links a,
+.seo-city-links span,
+.seo-city-card {
+  border: 1px solid rgba(13, 87, 151, 0.16);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #071426;
+  text-decoration: none;
+}
+
+.seo-city-links a,
+.seo-city-links span {
+  padding: 8px 10px;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.seo-city-links span {
+  background: rgba(68, 185, 221, 0.14);
+  color: #0d5797;
+}
+
+.seo-faq-band {
+  margin-bottom: 44px;
+  padding: clamp(26px, 3vw, 42px);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #071426 0%, #0b2340 100%);
+}
+
+.seo-faq-band .section-heading {
+  margin-bottom: 22px;
+}
+
+.seo-faq-band .section-heading h2 {
+  color: #ffffff;
+}
+
+.seo-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.seo-faq-grid article {
+  padding: 24px;
+}
+
+.seo-faq-grid h3 {
+  font-size: clamp(1.65rem, 2vw, 2.25rem);
+}
+
+.seo-service-area-board {
+  margin-bottom: 36px;
+  padding: clamp(26px, 3.2vw, 44px);
+}
+
+.seo-city-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.seo-city-card {
+  display: grid;
+  gap: 8px;
+  min-height: 170px;
+  padding: 22px;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.seo-city-card:hover,
+.seo-city-card:focus-visible {
+  border-color: rgba(187, 32, 45, 0.28);
+  box-shadow: 0 18px 38px rgba(8, 23, 41, 0.1);
+  transform: translateY(-2px);
+}
+
+.seo-city-card span,
+.seo-city-card small {
+  color: #5c6875;
+  font-weight: 800;
+}
+
+.seo-city-card span {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.seo-city-card strong {
+  color: #071426;
+  font-family: "Barlow Condensed", Inter, sans-serif;
+  font-size: clamp(2.15rem, 2.6vw, 3.1rem);
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+@media (max-width: 1100px) {
+  .seo-content-shell,
+  .seo-hero-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .seo-content-main,
+  .seo-faq-grid,
+  .seo-city-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .seo-hero-panel,
+  .seo-content-shell,
+  .seo-service-area-board,
+  .seo-faq-band {
+    width: calc(100vw - 24px);
+  }
+
+  .seo-hero-panel {
+    min-height: 0;
+    margin-top: 0;
+    gap: 18px;
+    padding: 28px 22px 24px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 58%, rgba(255, 255, 255, 0.5) 100%),
+      var(--seo-hero-image) center bottom / cover no-repeat;
+  }
+
+  .seo-hero-copy h1 {
+    max-width: 11ch;
+    font-size: clamp(2.8rem, 12vw, 4.05rem);
+  }
+
+  .seo-content-main,
+  .seo-faq-grid,
+  .seo-city-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seo-content-card {
+    min-height: 0;
+  }
+
+  .seo-hero-card {
+    padding: 18px 20px;
+  }
+
+  .seo-hero-card strong,
+  .seo-sidebar-card.dark strong {
+    font-size: clamp(1.45rem, 7vw, 2rem);
+    line-height: 1.02;
+  }
+}

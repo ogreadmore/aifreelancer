@@ -13,6 +13,8 @@
       as="image"
       href="assets/sports-medicine-ball.jpg"
     />
+    <link rel="preload" as="image" href="assets/client-arm-assessment.jpg" />
+    <link rel="preload" as="image" href="assets/client-knee-consultation.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,7 +27,7 @@
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""
     />
-    <link rel="stylesheet" href="styles.css?v=141" />
+    <link rel="stylesheet" href="styles.css?v=142" />
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -139,10 +141,26 @@
           </div>
 
           <div
-            class="services-hero-media"
+            class="services-hero-media home-hero-media-slider"
             role="img"
-            aria-label="Athlete training with a medicine ball in a performance gym"
-          ></div>
+            aria-label="Recovery clients working with a practitioner in sports medicine and physical therapy settings"
+          >
+            <span
+              class="home-hero-media-slide"
+              style="--hero-slide-image: url('assets/sports-medicine-ball.jpg');"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="home-hero-media-slide"
+              style="--hero-slide-image: url('assets/client-arm-assessment.jpg');"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="home-hero-media-slide"
+              style="--hero-slide-image: url('assets/client-knee-consultation.jpg');"
+              aria-hidden="true"
+            ></span>
+          </div>
         </section>
 
         <section class="services-proof-panel home-proof-panel" aria-label="Mobile Cryo Pro highlights">
@@ -229,7 +247,7 @@
             role="img"
             aria-label="Poster frame for the Mobile Cryo Pro introduction video"
             style="
-              --bio-video-image: url('assets/sports-marathon-runner.jpg');
+              --bio-video-image: url('assets/client-knee-consultation.jpg');
             "
           >
             <div class="bio-video-play" aria-hidden="true">

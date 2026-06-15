@@ -19,7 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=144" />
+    <link rel="stylesheet" href="styles.css?v=145" />
   </head>
   <body class="about-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -94,36 +94,30 @@
 
         <section class="about-video-band" id="bio-video">
           <div class="about-section-intro">
-            <p class="eyebrow">Two-minute intro</p>
-            <h2>A quick hello before you book.</h2>
+            <p class="eyebrow">Client testimonial</p>
+            <h2>A quick look before you book.</h2>
             <p>
-              How the visits work, what the setup looks like, and what
-              to expect&mdash;in your own time.
+              Hear from a Mobile Cryo Pro client and get a feel for the
+              experience in your own time.
             </p>
           </div>
 
           <div
-            class="bio-video-frame"
-            role="img"
-            aria-label="Poster frame for Dan Belben&rsquo;s founder introduction"
-            style="
-              --bio-video-image: url('assets/client-arm-assessment-male.jpg');
-            "
+            class="bio-video-frame has-video"
+            aria-label="Mobile Cryo Pro client testimonial video"
           >
-            <div class="bio-video-play" aria-hidden="true">
-              <span></span>
-            </div>
-            <div class="bio-video-meta">
-              <p class="panel-label">Coming soon</p>
-              <h3>The short version of &ldquo;why I built this.&rdquo;</h3>
-              <p>
-                Dropping soon. In the meantime, feel free to just call&mdash;
-                quickest way to get a feel for things.
-              </p>
-            </div>
+            <video
+              class="bio-video-player"
+              controls
+              preload="metadata"
+              playsinline
+              poster="assets/dan-belben-intro-poster.jpg"
+            >
+              <source src="assets/dan-belben-intro.mp4" type="video/mp4" />
+              Your browser does not support embedded video. You can still
+              <a href="assets/dan-belben-intro.mp4">open the testimonial video</a>.
+            </video>
           </div>
-
-          <p class="bio-video-caption">Video coming soon. Call or text if you&rsquo;d rather just chat.</p>
         </section>
 
         <section class="about-story-band">

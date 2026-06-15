@@ -27,7 +27,7 @@
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""
     />
-    <link rel="stylesheet" href="styles.css?v=144" />
+    <link rel="stylesheet" href="styles.css?v=145" />
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -234,33 +234,29 @@
 
         <section class="section-band bio-video-section home-video-band" id="intro-video">
           <div class="section-heading">
-            <p class="eyebrow">Meet Dan</p>
-            <h2>A quick hello before you book.</h2>
+            <p class="eyebrow">Client story</p>
+            <h2>Hear what recovery feels like.</h2>
             <p>
-              Two minutes with founder Dan Belben&mdash;the approach, the
-              setup, and what your first visit will feel like.
+              A short Mobile Cryo Pro testimonial, so you can get a feel for
+              the experience before you pick up the phone.
             </p>
           </div>
 
           <div
-            class="bio-video-frame"
-            role="img"
-            aria-label="Poster frame for the Mobile Cryo Pro introduction video"
-            style="
-              --bio-video-image: url('assets/client-knee-consultation-varied.jpg');
-            "
+            class="bio-video-frame has-video"
+            aria-label="Mobile Cryo Pro client testimonial video"
           >
-            <div class="bio-video-play" aria-hidden="true">
-              <span></span>
-            </div>
-            <div class="bio-video-meta">
-              <p class="panel-label">Press play</p>
-              <h3>Meet your practitioner.</h3>
-              <p>
-                The easiest way to get a feel for the practice before you
-                pick up the phone.
-              </p>
-            </div>
+            <video
+              class="bio-video-player"
+              controls
+              preload="metadata"
+              playsinline
+              poster="assets/dan-belben-intro-poster.jpg"
+            >
+              <source src="assets/dan-belben-intro.mp4" type="video/mp4" />
+              Your browser does not support embedded video. You can still
+              <a href="assets/dan-belben-intro.mp4">open the testimonial video</a>.
+            </video>
           </div>
         </section>
 

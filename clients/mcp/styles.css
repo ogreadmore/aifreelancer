@@ -6453,9 +6453,13 @@ body:not(.home-page):not(.services-page):not(.about-page):not(.faq-page) .hero-s
 .service-tile-contouring,
 .service-tile-facial,
 .service-tile-events,
-.bio-video-frame,
-.about-page .about-hero-media {
+.bio-video-frame {
   background-position: center 24%;
+}
+
+.about-page .about-hero-media,
+body:not(.services-page).about-page .about-hero-media {
+  background-position: center center, 68% 24%;
 }
 
 @media (max-width: 1024px) {

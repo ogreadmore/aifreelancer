@@ -8181,11 +8181,13 @@ body.home-page .site-header.is-scrolled,
   }
 }
 
-/* v145: replace the faux intro-video poster cards with the real testimonial video. */
+/* v146: keep the real testimonial video in its native 16:9 frame. */
 .bio-video-frame.has-video,
 .home-page .home-video-band .bio-video-frame.has-video,
 body:not(.services-page) .bio-video-frame.has-video,
 body:not(.services-page).about-page .bio-video-frame.has-video {
+  min-height: 0 !important;
+  aspect-ratio: 16 / 9 !important;
   background: #071426 !important;
   background-image: none !important;
 }

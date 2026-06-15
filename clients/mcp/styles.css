@@ -23,14 +23,14 @@
   --radius-lg: 12px;
   --radius-md: 12px;
   --max-width: 1760px;
-  --hero-image: url("assets/client-shoulder-assessment-male.jpg");
+  --hero-image: url("assets/recovery-shoulder-assessment.jpg");
   --services-max: 1760px;
   --mockup-red: #bb202d;
   --mockup-red-dark: #941923;
   --mockup-blue: #0d5797;
   --mockup-blue-dark: #05345f;
   --mockup-ice: #44b9dd;
-  --services-hero-image: url("assets/sports-therapy-band.jpg");
+  --services-hero-image: url("assets/recovery-shoulder-cryo-home.jpg");
 }
 
 /* Sitewide v2 polish: make the services-page direction the design system */
@@ -2649,7 +2649,7 @@ main > .page-link-grid {
   --mockup-blue: #0d5797;
   --mockup-blue-dark: #05345f;
   --mockup-ice: #44b9dd;
-  --services-hero-image: url("assets/sports-therapy-band.jpg");
+  --services-hero-image: url("assets/recovery-shoulder-cryo-home.jpg");
   background:
     radial-gradient(ellipse at 50% 0%, rgba(77, 174, 214, 0.12), transparent 34%),
     linear-gradient(180deg, #f9fcff 0%, #eef5fb 44%, #fbfcfd 100%);

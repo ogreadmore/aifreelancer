@@ -125,3 +125,129 @@ if (contactForm) {
     window.location.href = `mailto:info@mobilecryopro.com?${params.toString()}`;
   });
 }
+
+if (document.body.classList.contains("home-page") && !reducedMotionQuery.matches) {
+  const motionTargets = [];
+  const heroMedia = document.querySelector(".home-hero-media-slider");
+  const videoBand = document.querySelector(".home-video-band");
+
+  const addMotionTargets = (selector, options = {}) => {
+    const {
+      baseDelay = 0,
+      stagger = 80,
+      kind = "motion-rise",
+    } = options;
+
+    document.querySelectorAll(selector).forEach((element, index) => {
+      element.classList.add("mcp-motion-item", kind);
+      element.style.setProperty("--motion-delay", `${baseDelay + index * stagger}ms`);
+      motionTargets.push(element);
+    });
+  };
+
+  addMotionTargets(
+    ".home-flagship-hero .services-hero-copy > .eyebrow, .home-flagship-hero .services-hero-copy > h1, .home-flagship-hero .services-hero-copy > p, .home-flagship-hero .services-hero-actions, .home-flagship-hero .hero-trust-row",
+    { baseDelay: 90, stagger: 110, kind: "motion-hero" }
+  );
+  addMotionTargets(".home-proof-panel article", { baseDelay: 120, stagger: 70, kind: "motion-pop" });
+  addMotionTargets(".home-story-grid > *", { stagger: 120, kind: "motion-rise" });
+  addMotionTargets(".home-video-band .section-heading, .home-video-band .bio-video-frame", {
+    stagger: 130,
+    kind: "motion-rise",
+  });
+  addMotionTargets(".home-services-pricing-band .section-heading, .home-menu-grid .menu-preview-card, .home-inline-cta", {
+    stagger: 85,
+    kind: "motion-rise",
+  });
+  addMotionTargets(".home-context-band .section-heading, .coverage-card, .service-map-card, .home-context-band > .cta-actions", {
+    stagger: 85,
+    kind: "motion-rise",
+  });
+
+  const revealMotionTarget = (element) => {
+    element.classList.add("is-motion-visible");
+
+    const delay = Number.parseFloat(element.style.getPropertyValue("--motion-delay")) || 0;
+    window.setTimeout(() => {
+      element.style.setProperty("--motion-delay", "0ms");
+    }, delay + 850);
+  };
+
+  const revealVisibleMotionTargets = () => {
+    motionTargets.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight * 0.9) {
+        revealMotionTarget(element);
+      }
+    });
+  };
+
+  if ("IntersectionObserver" in window) {
+    const motionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            revealMotionTarget(entry.target);
+            motionObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.16,
+      }
+    );
+
+    motionTargets.forEach((element) => motionObserver.observe(element));
+  } else {
+    motionTargets.forEach(revealMotionTarget);
+  }
+
+  let motionTicking = false;
+
+  const updateScrollMotion = () => {
+    const scrollY = window.scrollY;
+
+    if (heroMedia) {
+      heroMedia.style.setProperty("--hero-motion-y", `${Math.min(42, scrollY * 0.06)}px`);
+    }
+
+    if (videoBand) {
+      const rect = videoBand.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+      videoBand.style.setProperty("--band-motion-x", `${(progress - 0.5) * 24}px`);
+    }
+
+    motionTicking = false;
+  };
+
+  const requestScrollMotionUpdate = () => {
+    if (!motionTicking) {
+      window.requestAnimationFrame(updateScrollMotion);
+      motionTicking = true;
+    }
+  };
+
+  document.body.classList.add("motion-ready");
+  window.requestAnimationFrame(() => {
+    document.body.classList.add("motion-started");
+    revealVisibleMotionTargets();
+    updateScrollMotion();
+  });
+
+  window.addEventListener("scroll", requestScrollMotionUpdate, { passive: true });
+  window.addEventListener("resize", requestScrollMotionUpdate);
+
+  reducedMotionQuery.addEventListener("change", (event) => {
+    if (event.matches) {
+      document.body.classList.remove("motion-ready", "motion-started");
+      motionTargets.forEach((element) => {
+        element.classList.remove("mcp-motion-item", "is-motion-visible");
+        element.style.removeProperty("--motion-delay");
+      });
+      window.removeEventListener("scroll", requestScrollMotionUpdate);
+      window.removeEventListener("resize", requestScrollMotionUpdate);
+    }
+  });
+}

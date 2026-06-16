@@ -8216,30 +8216,23 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
   object-fit: cover;
 }
 
-/* v150: premium motion polish, inspired by Cool Factor but scoped away from layout. */
+/* v152: lighter motion polish scoped away from layout. */
 @media (prefers-reduced-motion: no-preference) {
   body.home-page .home-hero-media-slide {
-    transform: scale(1.025);
-    transform-origin: 50% 38%;
-    will-change: opacity, transform;
-    animation:
-      homeHeroPhotoFade 18s infinite ease-in-out,
-      homeHeroPhotoDrift 18s infinite ease-in-out;
+    will-change: opacity;
+    animation: homeHeroPhotoFade 18s infinite ease-in-out;
   }
 
   body.home-page .home-hero-media-slide:nth-child(1) {
-    animation-delay: 0s, 0s;
-    transform-origin: 52% 36%;
+    animation-delay: 0s;
   }
 
   body.home-page .home-hero-media-slide:nth-child(2) {
-    animation-delay: 6s, 6s;
-    transform-origin: 48% 40%;
+    animation-delay: 6s;
   }
 
   body.home-page .home-hero-media-slide:nth-child(3) {
-    animation-delay: 12s, 12s;
-    transform-origin: 54% 44%;
+    animation-delay: 12s;
   }
 
   body.home-page .hero-divider-ice::after,
@@ -8305,10 +8298,6 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
     animation: homeVideoAmbient 10s ease-in-out infinite alternate;
   }
 
-  body.home-page .home-video-band .bio-video-play {
-    animation: videoPlayPulse 3.6s ease-in-out infinite;
-  }
-
   body.home-page .home-inline-cta {
     position: relative;
     overflow: hidden;
@@ -8353,20 +8342,6 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
       transform: translateY(-2px);
       background-color: rgba(255, 255, 255, 0.86);
     }
-  }
-}
-
-@keyframes homeHeroPhotoDrift {
-  0% {
-    transform: scale(1.045) translate3d(0, var(--hero-motion-y, 0px), 0);
-  }
-
-  30% {
-    transform: scale(1.075) translate3d(-18px, calc(var(--hero-motion-y, 0px) - 8px), 0);
-  }
-
-  100% {
-    transform: scale(1.06) translate3d(14px, calc(var(--hero-motion-y, 0px) + 4px), 0);
   }
 }
 
@@ -8417,29 +8392,12 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
 @keyframes homeVideoAmbient {
   0% {
     opacity: 0.68;
-    transform: translate3d(calc(var(--band-motion-x, 0px) - 14px), 0, 0) scale(1.02);
+    transform: translate3d(-14px, 0, 0) scale(1.02);
   }
 
   100% {
     opacity: 0.94;
-    transform: translate3d(calc(var(--band-motion-x, 0px) + 14px), -1%, 0) scale(1.04);
-  }
-}
-
-@keyframes videoPlayPulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 10px rgba(255, 255, 255, 0.08),
-      0 24px 52px rgba(187, 32, 45, 0.38);
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  50% {
-    box-shadow:
-      0 0 0 18px rgba(255, 255, 255, 0.06),
-      0 28px 62px rgba(187, 32, 45, 0.44);
-    transform: translate(-50%, -50%) scale(1.035);
+    transform: translate3d(14px, -1%, 0) scale(1.04);
   }
 }
 
@@ -8455,13 +8413,8 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
   }
 }
 
-/* v151: make the motion obvious while preserving layout. */
+/* Homepage entrance and scroll reveal motion. */
 @media (prefers-reduced-motion: no-preference) {
-  body.home-page {
-    --hero-motion-y: 0px;
-    --band-motion-x: 0px;
-  }
-
   body.home-page.motion-ready .mcp-motion-item {
     opacity: 0;
     filter: blur(8px);
@@ -8471,7 +8424,6 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
       transform 760ms cubic-bezier(0.2, 0.78, 0.18, 1),
       filter 760ms ease;
     transition-delay: var(--motion-delay, 0ms);
-    will-change: opacity, transform, filter;
   }
 
   body.home-page.motion-ready .mcp-motion-item.motion-hero {
@@ -8486,10 +8438,6 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
     opacity: 1;
     filter: blur(0);
     transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  body.home-page .home-video-band .bio-video-frame.has-video {
-    animation: videoFrameGlow 5.2s ease-in-out infinite;
   }
 
   body.home-page .button-primary > *,
@@ -8511,21 +8459,5 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
       transform: translateY(-2px) scale(1);
       transition-delay: 0ms;
     }
-  }
-}
-
-@keyframes videoFrameGlow {
-  0%,
-  100% {
-    box-shadow:
-      0 34px 74px rgba(0, 0, 0, 0.34),
-      -12px 16px 0 rgba(68, 185, 221, 0.1);
-  }
-
-  50% {
-    box-shadow:
-      0 40px 86px rgba(0, 0, 0, 0.42),
-      -12px 16px 0 rgba(68, 185, 221, 0.16),
-      0 0 0 1px rgba(126, 216, 239, 0.2);
   }
 }

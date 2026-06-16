@@ -128,8 +128,6 @@ if (contactForm) {
 
 if (document.body.classList.contains("home-page") && !reducedMotionQuery.matches) {
   const motionTargets = [];
-  const heroMedia = document.querySelector(".home-hero-media-slider");
-  const videoBand = document.querySelector(".home-video-band");
 
   const addMotionTargets = (selector, options = {}) => {
     const {
@@ -204,40 +202,11 @@ if (document.body.classList.contains("home-page") && !reducedMotionQuery.matches
     motionTargets.forEach(revealMotionTarget);
   }
 
-  let motionTicking = false;
-
-  const updateScrollMotion = () => {
-    const scrollY = window.scrollY;
-
-    if (heroMedia) {
-      heroMedia.style.setProperty("--hero-motion-y", `${Math.min(42, scrollY * 0.06)}px`);
-    }
-
-    if (videoBand) {
-      const rect = videoBand.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-      videoBand.style.setProperty("--band-motion-x", `${(progress - 0.5) * 24}px`);
-    }
-
-    motionTicking = false;
-  };
-
-  const requestScrollMotionUpdate = () => {
-    if (!motionTicking) {
-      window.requestAnimationFrame(updateScrollMotion);
-      motionTicking = true;
-    }
-  };
-
   document.body.classList.add("motion-ready");
   window.requestAnimationFrame(() => {
     document.body.classList.add("motion-started");
     revealVisibleMotionTargets();
-    updateScrollMotion();
   });
-
-  window.addEventListener("scroll", requestScrollMotionUpdate, { passive: true });
-  window.addEventListener("resize", requestScrollMotionUpdate);
 
   reducedMotionQuery.addEventListener("change", (event) => {
     if (event.matches) {
@@ -246,8 +215,6 @@ if (document.body.classList.contains("home-page") && !reducedMotionQuery.matches
         element.classList.remove("mcp-motion-item", "is-motion-visible");
         element.style.removeProperty("--motion-delay");
       });
-      window.removeEventListener("scroll", requestScrollMotionUpdate);
-      window.removeEventListener("resize", requestScrollMotionUpdate);
     }
   });
 }

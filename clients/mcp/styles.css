@@ -31,6 +31,7 @@
   --mockup-blue-dark: #05345f;
   --mockup-ice: #44b9dd;
   --services-hero-image: url("assets/recovery-shoulder-cryo-home.jpg");
+  --icon-appointment: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.35' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v4M16 2v4M4 8h16'/%3E%3Cpath d='M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z'/%3E%3Cpath d='m8.8 14 2.2 2.2 4.4-5'/%3E%3C/svg%3E");
 }
 
 /* Sitewide v2 polish: make the services-page direction the design system */
@@ -756,6 +757,19 @@ ul {
   min-height: 40px;
   padding-inline: 15px;
   animation: none;
+}
+
+.nav-cta::before {
+  content: "";
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: var(--icon-appointment) center / contain no-repeat;
+  mask: var(--icon-appointment) center / contain no-repeat;
 }
 
 .nav-cta:hover,
@@ -2928,29 +2942,9 @@ main > .page-link-grid {
 }
 
 .button-icon-calendar {
-  border: 2px solid currentColor;
-  border-radius: 4px;
-}
-
-.button-icon-calendar::before,
-.button-icon-calendar::after {
-  content: "";
-  position: absolute;
   background: currentColor;
-}
-
-.button-icon-calendar::before {
-  top: 4px;
-  left: 2px;
-  right: 2px;
-  height: 2px;
-}
-
-.button-icon-calendar::after {
-  width: 5px;
-  height: 5px;
-  border-radius: 1px;
-  transform: translateY(3px);
+  -webkit-mask: var(--icon-appointment) center / contain no-repeat;
+  mask: var(--icon-appointment) center / contain no-repeat;
 }
 
 .button-icon-play {
@@ -8218,6 +8212,38 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
 
 /* v152: lighter motion polish scoped away from layout. */
 @media (prefers-reduced-motion: no-preference) {
+  .nav-cta,
+  .button-primary {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .nav-cta::after,
+  .button-primary::after {
+    content: "";
+    position: absolute;
+    inset: -80% auto -80% -44%;
+    z-index: 0;
+    width: 34%;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.34),
+        transparent
+      );
+    transform: skewX(-18deg);
+    animation: ctaSheen 6.8s ease-in-out infinite;
+  }
+
+  .button-primary > *,
+  .nav-cta::before {
+    position: relative;
+    z-index: 1;
+  }
+
   body.home-page .home-hero-media-slide {
     will-change: opacity;
     animation: homeHeroPhotoFade 18s infinite ease-in-out;
@@ -8256,31 +8282,6 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
 
   body.home-page .hero-divider-red::after {
     animation-delay: 1.05s;
-  }
-
-  body.home-page .button-primary,
-  body.home-page .nav-cta {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  body.home-page .button-primary::before,
-  body.home-page .nav-cta::before {
-    content: "";
-    position: absolute;
-    inset: -80% auto -80% -44%;
-    z-index: 0;
-    width: 34%;
-    background:
-      linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.34),
-        transparent
-      );
-    transform: skewX(-18deg);
-    animation: ctaSheen 6.8s ease-in-out infinite;
   }
 
   body.home-page .home-video-band::after {
@@ -8438,13 +8439,6 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
     opacity: 1;
     filter: blur(0);
     transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  body.home-page .button-primary > *,
-  body.home-page .button-neutral > *,
-  body.home-page .nav-cta > * {
-    position: relative;
-    z-index: 1;
   }
 
   @media (hover: hover) {

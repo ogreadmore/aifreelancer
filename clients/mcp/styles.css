@@ -5811,7 +5811,7 @@ body.home-page .brand-logo {
 .home-page .hero-divider-stack {
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 7;
   pointer-events: none;
 }
 

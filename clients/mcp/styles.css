@@ -8129,6 +8129,7 @@ body.home-page .site-header.is-scrolled,
 .home-hero-media-slide:nth-child(1) {
   opacity: 1;
   animation-delay: 0s;
+  background-position: center center, center center, 50% 25%;
 }
 
 .home-hero-media-slide:nth-child(2) {
@@ -8176,6 +8177,10 @@ body.home-page .site-header.is-scrolled,
 
   .home-hero-media-slide {
     background-position: center center, center center, 50% 34%;
+  }
+
+  .home-hero-media-slide:nth-child(1) {
+    background-position: center center, center center, 50% 27%;
   }
 }
 

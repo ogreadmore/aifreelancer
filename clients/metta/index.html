@@ -2,407 +2,136 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Metta Practice: The Science, History, and Art of Universal Love. A 66-page introduction to loving-kindness practice - signed paperback, ebook, and guided audio, $24.">
 <meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metta Practice — The Science, History, and Art of Universal Love</title>
+<meta name="description" content="A 66-page introduction to metta — loving-kindness — by Taylor Oliphant. Read the whole book free, or have the signed edition with the author's guided recordings. $24.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FBFAF7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#191613">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-</head>
-<title>Metta Practice — The Science, History, and Art of Universal Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Book","name":"Metta Practice: The Science, History, and Art of Universal Love","author":{"@type":"Person","name":"Taylor Oliphant"},"bookFormat":"Paperback","numberOfPages":66,"inLanguage":"en","offers":{"@type":"Offer","price":"24.00","priceCurrency":"USD","availability":"https://schema.org/PreOrder","description":"Signed paperback, ebook (EPUB/PDF), three author-recorded guided practices, printable practice card."}}
+{"@context":"https://schema.org","@type":"Book","name":"Metta Practice: The Science, History, and Art of Universal Love","author":{"@type":"Person","name":"Taylor Oliphant"},"bookFormat":"Paperback","numberOfPages":66,"inLanguage":"en","offers":{"@type":"Offer","price":"24.00","priceCurrency":"USD"}}
 </script>
-<style>
-  :root{
-    --bg:#fff;--text:#050505;--soft:#20232a;--muted:#6b7280;
-    --rule:#e3e6ec;--rule-strong:#c7ccd6;--violet:#7b4dff;
-    --gradient:linear-gradient(110deg,#ff2daa 0%,#7b4dff 52%,#00d4ff 100%);
-    --selection:rgba(0,212,255,.22);--max:1440px;
-    --sans:"Inter","Helvetica Neue",-apple-system,system-ui,Arial,sans-serif;
-  }
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-  [hidden]{display:none!important}
-  ::selection{background:var(--selection);color:var(--text)}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:64px}
-  a{color:inherit;text-decoration:none}
-  a:hover{color:var(--violet)}
-  h1,h2,h3,p{margin-top:0}
-  h1,h2,h3{font-weight:900;letter-spacing:0;line-height:.98;text-wrap:balance}
-  p{color:var(--soft)}
-  .shell{width:min(100%,var(--max));margin:0 auto;padding:0 clamp(1.25rem,3vw,2rem)}
-  .grad{background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .label{color:var(--muted);font-size:.78rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;margin:0 0 1.2rem}
+</head>
+<body>
 
-  /* chrome */
-  .topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;height:76px;padding:0 clamp(1.25rem,3vw,2rem);background:rgba(255,255,255,.94);border-bottom:1px solid var(--rule);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-  .brand{display:inline-flex;flex-direction:column;gap:.12rem;font-size:clamp(1rem,1.4vw,1.25rem);font-weight:900;line-height:.9;text-transform:uppercase}
-  .brand::before{content:"";display:block;width:66px;height:5px;margin-bottom:.42rem;background:var(--gradient)}
-
-  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.72rem 1.1rem;border:1px solid var(--rule-strong);border-radius:4px;color:var(--text);font-weight:900;font-size:1rem;line-height:1;cursor:pointer;font-family:var(--sans);background:#fff}
-  .btn:hover{color:var(--text);border-color:var(--text)}
-  .btn.primary{border-color:transparent;background:var(--gradient);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.32);transition:box-shadow .18s ease,filter .18s ease,transform .18s ease}
-  .btn.primary:hover,.btn.primary:focus-visible{color:#fff;filter:saturate(1.18) contrast(1.06);transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.42),0 13px 28px rgba(123,77,255,.25)}
-  .btn.primary:active{transform:translateY(0)}
-  .btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid rgba(0,212,255,.35);outline-offset:2px}
-  .actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
-  .note{color:var(--muted);font-size:.92rem;font-weight:600}
-
-  /* hero */
-  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);gap:clamp(2.5rem,6vw,6rem);align-items:start;padding:clamp(3rem,6vw,5rem) clamp(1.25rem,3vw,2rem) clamp(3rem,5vw,4.5rem);border-bottom:1px solid var(--rule);max-width:var(--max);margin:0 auto}
-  .hero h1{font-size:clamp(2.6rem,6.4vw,6.2rem);line-height:.98;margin:0 0 1.3rem;max-width:980px}
-  .hero .lede{font-size:clamp(1.15rem,1.9vw,1.6rem);line-height:1.28;font-weight:600;max-width:760px;margin-bottom:1.6rem}
-  .chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--rule);border-radius:4px;padding:.5rem .8rem;font-size:.85rem;font-weight:900;margin-top:1.1rem}
-  .chip::before{content:"";width:10px;height:10px;background:var(--gradient);border-radius:2px}
-
-  .panel{align-self:stretch;display:flex;flex-direction:column;gap:1.2rem;padding-left:clamp(1.25rem,3vw,2rem);border-left:1px solid var(--rule)}
-  .panel::before{content:"";display:block;width:132px;height:6px;background:var(--gradient)}
-  .panel .phase{font-size:clamp(1.15rem,1.5vw,1.4rem);font-weight:700;line-height:1.3;min-height:6.2rem;text-wrap:balance}
-  .panel .count{font-variant-numeric:tabular-nums;font-size:.78rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
-  .panel .bar{height:4px;background:var(--rule);position:relative;overflow:hidden;border-radius:2px}
-  .panel .bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:var(--gradient);display:block}
-
-  /* sections */
-  .section{padding:clamp(3.5rem,7vw,6rem) clamp(1.25rem,3vw,2rem);border-bottom:1px solid var(--rule)}
-  .section .shell{padding:0}
-  .tick{width:56px;height:3px;background:var(--gradient);margin-bottom:clamp(2rem,4.5vw,3.4rem)}
-  .section h2{font-size:clamp(2.4rem,5.4vw,4.8rem);margin:0 0 1.3rem;max-width:980px}
-  .lede2{max-width:820px;color:var(--soft);font-size:clamp(1.1rem,1.6vw,1.4rem);line-height:1.32;font-weight:600}
-
-  /* intent chips */
-  .intents{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.6rem 0 1rem}
-  .intents button{border:1px solid var(--rule-strong);background:#fff;border-radius:4px;padding:.6rem .9rem;font:900 .9rem/1 var(--sans);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
-  .intents button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(5,5,5,.08)}
-  .intents button[aria-pressed="true"]{background:var(--gradient);color:#fff;border-color:transparent}
-  #intentOut{font-size:1.05rem;font-weight:700;min-height:1.6rem}
-
-  /* evidence + movements matrices */
-  .matrix{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-  .matrix>div{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.8rem;transition:transform .15s ease,box-shadow .15s ease}
-  .matrix>div:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(5,5,5,.08)}
-  .matrix .num{display:block;font-size:2.2rem;font-weight:900;line-height:1;margin-bottom:.9rem;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .matrix h3{font-size:clamp(1.3rem,1.8vw,1.7rem);margin-bottom:.6rem}
-  .matrix p{font-size:1rem;line-height:1.55;margin:0}
-  .matrix.four{grid-template-columns:repeat(4,1fr)}
-
-  /* offer */
-  .offer-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:clamp(2rem,5vw,5rem);align-items:start}
-  .stack{list-style:none;margin:0 0 1.6rem;padding:0}
-  .stack li{display:grid;grid-template-columns:auto 1fr;gap:.35rem .9rem;padding:1.05rem 0;border-top:1px solid var(--rule)}
-  .stack .num{font-size:1.5rem;font-weight:900;line-height:1.1;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .stack .what{align-self:center;line-height:1.5;color:var(--soft)}
-  .stack .what b{color:var(--text);font-weight:900}
-  .price-line{font-size:clamp(1.6rem,2.6vw,2.2rem);font-weight:900;margin:0 0 1.2rem}
-  .price-line small{font-size:.55em;font-weight:700;color:var(--muted)}
-  .gift{display:flex;gap:.85rem;align-items:flex-start;border:1px solid var(--rule);border-radius:4px;padding:1.05rem 1.15rem;margin:0 0 1.4rem;font-size:.98rem;color:var(--soft)}
-  .gift input{margin-top:.3rem;accent-color:var(--violet);width:1.05rem;height:1.05rem}
-  .gift b{color:var(--text);font-weight:900}
-  .guarantee{border:1px solid var(--rule-strong);border-left:4px solid transparent;border-image:var(--gradient) 1;border-radius:0 4px 4px 0;padding:1.1rem 1.2rem;margin:1.4rem 0;font-size:.98rem}
-  .guarantee b{font-weight:900}
-  .direct{margin:1.4rem 0 0;font-size:.95rem;color:var(--soft)}
-  .direct b{font-weight:900;color:var(--text)}
-  .book{aspect-ratio:2/3;max-width:280px;background:#fff;color:var(--text);border:1px solid var(--rule-strong);box-shadow:12px 12px 0 #050505;padding:1.6rem 1.4rem;display:flex;flex-direction:column;font-family:var(--sans)}
-  .book::before{content:"";display:block;width:52px;height:6px;background:var(--gradient);margin-bottom:1rem}
-  .book .eyebrow{font-size:.66rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-  .book .t{margin-top:auto;font-size:2.1rem;font-weight:900;line-height:.92}
-  .book .s{color:var(--muted);font-size:.8rem;font-weight:700;line-height:1.35;margin-top:.7rem}
-  .book .a{font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-top:1rem}
-
-  /* quotes */
-  .quote{max-width:52rem}
-  .quote::before{content:"“";display:block;width:max-content;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:4rem;font-weight:900;line-height:.72;margin-bottom:.6rem}
-  .quote p{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;line-height:1.14;color:var(--text);margin:0}
-  .quote small{display:block;margin-top:1rem;color:var(--muted);font-size:.78rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
-
-  details{border-top:1px solid var(--rule);padding:1.05rem 0;max-width:52rem}
-  summary{cursor:pointer;font-weight:900;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
-  summary::after{content:"+";color:var(--muted);font-weight:900}
-  details[open] summary::after{content:"–"}
-  details p{margin:.8rem 0 0;color:var(--soft)}
-
-  footer{padding:3rem clamp(1.25rem,3vw,2rem) 4rem;border-top:1px solid var(--rule)}
-  footer .brand{margin-bottom:1rem}
-  footer p,footer a{color:var(--muted);font-size:.9rem;font-weight:600}
-  footer .links{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:.6rem}
-  footer .links a{text-decoration:underline;text-underline-offset:.22em}
-
-  /* sticky buy bar */
-  .buybar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem clamp(1rem,3vw,2rem);background:rgba(255,255,255,.96);border-top:1px solid var(--rule);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-  .buybar.show{display:flex}
-  .buybar .what{font-size:.9rem;font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .buybar .pay{font-size:.75rem;color:var(--muted);font-weight:700;display:none}
-  @media(min-width:700px){.buybar .pay{display:block}}
-
-  @media(max-width:900px){.hero{grid-template-columns:1fr}.panel{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:1.5rem}.offer-grid{grid-template-columns:1fr}.matrix,.matrix.four{grid-template-columns:1fr 1fr}}
-  @media(max-width:620px){
-    .matrix,.matrix.four{grid-template-columns:1fr}
-    .btn{min-height:40px;font-size:.95rem;padding:.6rem .9rem}
-    .hero h1{line-height:1.04}
-    body{font-size:15px}
-  }
-  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
-
-<header class="topbar">
-  <span class="brand">Metta<br>Practice</span>
-  <a class="btn primary" href="#offer">Get the bundle — $24</a>
+<header class="masthead">
+  <a class="wordmark" href="./">Metta <b>·</b> Practice</a>
+  <nav>
+    <a href="read/">Read the book</a>
+    <a href="practice/">One minute</a>
+    <a href="#copy">The edition</a>
+  </nav>
 </header>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div>
-    <p class="label" id="heroKicker">The book &amp; practice bundle · $24</p>
-    <h1 id="heroH1">The mind can be trained so that <span class="grad">love</span> becomes its home.</h1>
-    <p class="lede" id="heroLede">That is the claim of metta — loving-kindness, the felt wish that beings be truly happy — and of one short book that teaches how to practice it. No prior knowledge, no religious commitment, and no perfect life required.</p>
-    <div class="actions">
-      <a class="btn primary" href="#offer">Get the bundle — $24</a>
-      <a class="btn" href="#minute">Try one minute first</a>
-    </div>
-    <div class="chip">Keep-the-Book Guarantee — full refund within 30 days, and the book stays with you</div>
-    <p class="note" style="margin-top:.9rem">Signed paperback · ebook · guided audio · practice card · ships in 1–3 business days</p>
-  </div>
-  <aside class="panel" id="minute" aria-label="Try the one-minute practice">
-    <p class="label" style="margin:0">Try it first · one minute</p>
-    <div class="phase" id="phaseText">The whole practice in sixty seconds, adapted from the one-minute meditation on page 31. Press begin, and follow.</div>
-    <div class="count" id="phaseCount">Find it · Strengthen it · Expand it</div>
-    <div class="bar"><i id="bar"></i></div>
-    <div class="actions">
-      <button class="btn primary" id="beginBtn" type="button">Begin</button>
-      <a class="btn" id="panelBuy" href="#offer" hidden>Get the book — $24</a>
-    </div>
-  </aside>
-</section>
+<main class="wrap">
 
-<!-- ============ INTENT ============ -->
-<section class="section" style="padding-top:clamp(2rem,4vw,3rem);padding-bottom:clamp(2rem,4vw,3rem)">
-  <div class="shell">
-    <p class="label" style="margin-bottom:.6rem">What brings you here?</p>
-    <div class="intents" role="group" aria-label="What brings you here">
-      <button type="button" data-k="busy" aria-pressed="false">A stressed, busy mind</button>
-      <button type="button" data-k="science" aria-pressed="false">Curiosity about the science</button>
-      <button type="button" data-k="gift" aria-pressed="false">A gift for someone</button>
-      <button type="button" data-k="deepen" aria-pressed="false">Deepening a practice</button>
+  <!-- opening: the benefit menu -->
+  <section class="section" style="border:0">
+    <div class="prose">
+      <p class="label">One practice · from one minute a day</p>
+      <h1>Less stress, a better mood, and closer relationships — from one trainable practice.</h1>
+      <p style="font-size:var(--step-1);line-height:1.45">Loving-kindness meditation has twenty years of research behind it: studies link the practice to reduced stress, increased positive emotion, softened self-criticism, and improved social connection. This book teaches the whole method in an evening, and it works in as little as one minute a day.</p>
+      <p class="quiet">No prior experience, no religious commitment, no pose, no app. Try it right now — <a href="practice/">the first minute is the proof</a> — or <a href="read/">read the whole book free</a>.</p>
+      <p style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a class="btn" href="practice/">Feel it in one minute — free</a>
+        <a class="btn ghost" href="#copy">Get the book — $24</a>
+      </p>
     </div>
-    <p id="intentOut" aria-live="polite"></p>
-  </div>
-</section>
+  </section>
 
-<!-- ============ EVIDENCE ============ -->
-<section class="section">
-  <div class="shell">
-    <div class="tick"></div>
-    <p class="label">What the book covers</p>
-    <h2>The science, the history, and the art</h2>
-    <div class="matrix" style="margin-top:2rem">
-      <div>
-        <span class="num">01</span>
-        <h3>The science: what the studies show</h3>
-        <p><b>Told honestly and without hype.</b> A 2024 meta-analysis in <i>Clinical Psychology Review</i> found gains in positive emotion and reductions in negative emotion. The strongest single trial is read with the same care — and the same honesty about limits. Every source in the book's 39 endnotes was verified against its publisher.</p>
+  <!-- what the book holds -->
+  <section class="section">
+    <p class="label">What the book holds</p>
+    <div class="duo">
+      <div class="prose reveal">
+        <h3>The science</h3>
+        <p class="spec">Chapter 1 reads the studies of loving-kindness meditation plainly — gains in positive emotion, reductions in negative emotion, and the field's limits stated as clearly as its findings. Every source in the book's <b>39 endnotes</b> was verified against its publisher before release.</p>
+        <h3 style="margin-top:2rem">The history</h3>
+        <p class="spec">Buddhism preserved the Metta Sutta, chanted it for centuries, and carried it across the world. The practice it gathers is older still — the prayer above was spoken in India centuries before the Buddha. The history is an invitation: <b>this love has always belonged to anyone willing to practice it.</b></p>
+        <h3 style="margin-top:2rem">The art</h3>
+        <p class="spec">The Sutta itself, in the author's own translation, read line by line — then one practice: <b>find it, strengthen it, expand it, return to it.</b> It scales to any life: one minute, five minutes, twenty. Morning, countless small returns, and five minutes in bed at night.</p>
+        <p style="margin-top:2.2rem"><a href="practice/">Try the one-minute practice, right now →</a></p>
       </div>
-      <div>
-        <span class="num">02</span>
-        <h3>The history: it belongs to everyone</h3>
-        <p><b>Older and wider than any one tradition.</b> Buddhism preserved the Metta Sutta and carried it across the world — and three thousand years ago, Indian voices were already asking to see every being with the eye of a friend. The history is an invitation: this love has always belonged to anyone willing to practice it.</p>
-      </div>
-      <div>
-        <span class="num">03</span>
-        <h3>The art: one simple practice</h3>
-        <p><b>Four movements, any schedule.</b> The Metta Sutta in a clear modern translation, read line by line — then one practice that scales to any life: one minute, five minutes, twenty. Find it, strengthen it, expand it, return to it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ OFFER ============ -->
-<section class="section" id="offer">
-  <div class="shell">
-    <div class="tick"></div>
-    <p class="label">The bundle · from the author's own shop</p>
-    <h2>Everything needed to begin — and to continue</h2>
-    <div class="offer-grid" style="margin-top:2rem">
-      <div>
-        <p class="price-line">$24 <small>+ $4.95 shipping (US)</small></p>
-        <ul class="stack">
-          <li><span class="num">01</span><span class="what"><b>The signed paperback.</b> 66 pages, 6×9, set in Palatino — signed by the author, an object made to be kept and given. Short enough to read in an evening, large enough to organize a life.</span></li>
-          <li><span class="num">02</span><span class="what"><b>The ebook,</b> EPUB and PDF, delivered to your inbox the moment you order.</span></li>
-          <li><span class="num">03</span><span class="what"><b>The three guided practices,</b> recorded by the author: one minute, five minutes, twenty minutes. Yours to keep — no app, no subscription.</span></li>
-          <li><span class="num">04</span><span class="what"><b>The Practice Card.</b> The four movements and all three clocks on one printable page.</span></li>
-          <li><span class="num">05</span><span class="what"><b>The translator's notes.</b> The book's Metta Sutta rendering is the author's own; these notes show how key lines were decided, against the Pali.</span></li>
-        </ul>
-        <label class="gift">
-          <input type="checkbox" id="giftCopy">
-          <span><b>One to give — add a second signed copy, $10.</b> The practice is wishing another being well. A second copy is ready for the being who keeps coming to mind.</span>
-        </label>
-        <div class="actions">
-          <a class="btn primary" id="buyBtn" href="#stripe-bundle" data-solo="#stripe-bundle" data-gift="#stripe-bundle-gift">Get the bundle — $24</a>
-        </div>
-        <p class="note" style="margin-top:.8rem">Secure checkout via Stripe · Apple Pay · Google Pay · all major cards</p>
-        <div class="guarantee"><b>The Keep-the-Book Guarantee.</b> If it isn't for you, reply to your receipt within 30 days for a full refund — and keep the book, or better, give it away.</div>
-        <p class="direct"><b>Why buy here rather than a big store?</b> Your copy ships signed from the author's own stock, the digital files arrive instantly, and the author is paid within days rather than months — which funds the next book. If cost is a barrier, write and the ebook and audio are yours free, no questions asked.</p>
-        <p class="note" style="margin-top:1rem">Just want the ebook? <a href="#stripe-ebook" style="text-decoration:underline;text-underline-offset:.22em">$4.99, instant delivery</a>.</p>
-      </div>
-      <div class="book" aria-label="Metta Practice, by Taylor Oliphant">
-        <span class="eyebrow">The book</span>
+      <figure class="cover reveal" style="margin:0" aria-label="The cover of Metta Practice">
+        <div class="rule"></div>
         <div class="t">Metta<br>Practice</div>
         <div class="s">The Science, History, and Art of Universal Love</div>
         <div class="a">Taylor Oliphant</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- the edition -->
+  <section class="section" id="copy">
+    <p class="label">The edition</p>
+    <div class="duo">
+      <div class="prose reveal">
+        <h2>A small book, made to be kept — and given</h2>
+        <p class="spec"><b>66 pages · 6 × 9 inches · set in Palatino</b> · the Metta Sutta in Pali and in the author's translation · three comparison translations for study · 39 verified endnotes · <b>signed by the author</b> and shipped from his own desk within 1–3 business days.</p>
+        <p class="spec" style="margin-top:1.2rem">With the printed book come the author's <b>three guided recordings</b> — the one-, five-, and twenty-minute practices, yours to keep, no app and no subscription — the ebook in EPUB and PDF, delivered the moment you order, and <b>the Practice Card</b>: the four movements and all three clocks on a single printable page.</p>
+        <p class="spec" style="margin-top:1.2rem">Reading it takes an evening. The practice is meant to take considerably longer.</p>
       </div>
+      <aside class="offer reveal">
+        <p class="ledger" style="margin-bottom:1rem">THE BOOK &amp; PRACTICE EDITION</p>
+        <p class="price">$24 <small>+ $4.95 SHIPPING (US)</small></p>
+        <ul>
+          <li><b>The signed paperback</b> — first printing</li>
+          <li><b>Three guided recordings</b> by the author</li>
+          <li><b>The ebook</b> — EPUB &amp; PDF, instant</li>
+          <li><b>The Practice Card</b> — printable</li>
+        </ul>
+        <p style="margin:0 0 1rem"><a class="btn" href="#stripe" style="width:100%;text-align:center">Have a copy</a></p>
+        <p class="quiet" style="margin-bottom:.4rem">A second copy for someone you love adds $10 at checkout.</p>
+        <p class="quiet" style="margin-bottom:.4rem">If it isn't for you, reply to your receipt within thirty days for a full refund — and keep the book.</p>
+        <p class="quiet" style="margin:0">If cost is a barrier, <a href="mailto:taylor@aifreelancer.co?subject=Free%20access">write</a> — the ebook and recordings are yours, no questions asked.</p>
+      </aside>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ METHOD ============ -->
-<section class="section">
-  <div class="shell">
-    <div class="tick"></div>
-    <p class="label">The method</p>
-    <h2>One practice, four movements</h2>
-    <div class="matrix four" style="margin-top:2rem">
-      <div><span class="num">1</span><h3>Find it</h3><p>Bring to mind the being who evokes the strongest feeling of love in you. No anchor is too humble — the love you can actually feel is worth more than the love you think you should feel.</p></div>
-      <div><span class="num">2</span><h3>Strengthen it</h3><p>Give the feeling your full attention and turn it all the way up. Think of metta as a mantra you feel rather than say.</p></div>
-      <div><span class="num">3</span><h3>Expand it</h3><p>Keep the same felt wish and let it include more: yourself, a neutral person, a difficult person, and finally all beings — above, below, and all around.</p></div>
-      <div><span class="num">4</span><h3>Return to it</h3><p>Standing, walking, sitting, lying down. When you notice it has slipped away, return. Each return makes it more familiar, until it is simply there.</p></div>
-    </div>
-    <p class="lede2" style="margin-top:2rem"><b>Morning: twenty minutes. During the day: countless returns. Night: five minutes in bed.</b></p>
-  </div>
-</section>
-
-<!-- ============ BIG IDEAS ============ -->
-<section class="section" id="ideas">
-  <div class="shell">
-    <div class="tick"></div>
-    <p class="label">From the afterword</p>
-    <h2>An older answer to the oldest question</h2>
-    <p class="lede2">Nietzsche answered with the will to power. Freud answered with the will to pleasure. Frankl answered with the will to meaning. The afterword reads metta against all three: <b>"Metta is an older answer to the same question: life wants to love."</b></p>
-  </div>
-</section>
-
-<!-- ============ AUTHOR ============ -->
-<section class="section">
-  <div class="shell">
-    <div class="tick"></div>
+  <!-- the author -->
+  <section class="section">
     <p class="label">The author</p>
-    <h2>Written by a practitioner, checked like a monograph</h2>
-    <p class="lede2"><b>Taylor Oliphant is a long-time metta practitioner,</b> trained primarily in the tradition of Ajahn Sona of Birken Forest Monastery, whose full metta retreats shaped the feeling-first method in Chapter 4. He lived for several years in Nepal, where the daily overlap of Buddhist and Hindu practice first convinced him that metta belongs to everyone. The book's translation of the Metta Sutta is his own.</p>
-    <p class="lede2" style="margin-top:1rem">The register is academic and plain: every claim sourced, every quotation verified, nothing oversold. The dedication is to a dog.</p>
-    <p class="lede2" style="margin-top:1.6rem;color:var(--muted);font-size:1rem">Going further: a complete self-paced course is in preparation — bundle owners get first access, and the $24 becomes course credit.</p>
-  </div>
-</section>
+    <div class="prose reveal">
+      <p>Taylor Oliphant is a long-time metta practitioner, trained primarily in the tradition of Ajahn Sona of Birken Forest Monastery, whose full metta retreats shaped the feeling-first method in Chapter 4. He lived for several years in Nepal, where the daily overlap of Buddhist and Hindu practice first convinced him that metta belongs to everyone. The book's translation of the Metta Sutta is his own.</p>
+      <p class="quiet">The register is academic and plain: every claim sourced, every quotation verified, nothing oversold. The dedication is to a dog.</p>
+    </div>
+  </section>
 
-<!-- ============ FAQ ============ -->
-<section class="section">
-  <div class="shell">
-    <div class="tick"></div>
+  <!-- questions -->
+  <section class="section">
     <p class="label">Questions</p>
-    <h2>Asked and answered</h2>
-    <div style="margin-top:1.6rem">
-      <details><summary>Is this a religious book?</summary><p>No religious commitment is required or requested. The book treats the Metta Sutta as what it is — a Buddhist poem gathering a practice older than Buddhism — and teaches the practice in plain language. Readers of any tradition, and of none, practice from the same pages.</p></details>
-      <details><summary>I've never meditated. Can I start here?</summary><p>Yes — the book assumes nothing. It was written to be the first book, readable in an evening, with a practice that begins at one sincere minute.</p></details>
-      <details><summary>Is there free access?</summary><p>Write to the address in the footer and the ebook and guided audio are yours free — no questions asked. Generosity is the subject of the book; it would be strange to sell it any other way.</p></details>
-      <details><summary>What does the research actually show?</summary><p>Chapter 1 reads the evidence honestly: studies suggest loving-kindness practice can increase positive emotion, soften self-criticism, support people under stress, and improve social connection. The book neither hypes the findings nor hides their limits — every source in its 39 endnotes was verified against its publisher.</p></details>
-      <details><summary>How does delivery work?</summary><p>The ebook and audio arrive by email within minutes of ordering. The signed paperback ships from the author's own stock within 1–3 business days; US delivery typically takes 4–8 days via USPS. Reply to any order email and a human — the author — answers.</p></details>
-      <details><summary>What is the guarantee?</summary><p>If the book isn't for you, reply to your receipt within 30 days for a full refund. Keep the book, or better, give it away.</p></details>
-    </div>
-  </div>
-</section>
+    <details><summary>Is this a religious book?</summary><p>No religious commitment is required or requested. The book treats the Metta Sutta as what it is — a Buddhist poem gathering a practice older than Buddhism — and teaches the practice in plain language. Readers of any tradition, and of none, practice from the same pages.</p></details>
+    <details><summary>I've never meditated. Can I start here?</summary><p>Yes — the book assumes nothing. It was written to be the first book, readable in an evening, with a practice that begins at one sincere minute.</p></details>
+    <details><summary>Why is the whole book free to read?</summary><p>Because helping people practice is the point, and generosity is the book's subject. The edition exists for readers who want the object — signed, printed, made to be given — and the recordings that carry the practice into the day. Both choices are welcome here.</p></details>
+    <details><summary>What does the research actually show?</summary><p>Chapter 1 reads the evidence honestly: studies suggest loving-kindness practice can increase positive emotion, soften self-criticism, support people under stress, and improve social connection. The book neither hypes the findings nor hides their limits — every source in its 39 endnotes was verified against its publisher.</p></details>
+    <details><summary>How does delivery work?</summary><p>The ebook and recordings arrive by email within minutes. The signed paperback ships from the author's own stock within 1–3 business days; US delivery typically takes 4–8 days. Reply to any order email and the author answers.</p></details>
+  </section>
 
-<!-- ============ CLOSE ============ -->
-<section class="section">
-  <div class="shell">
-    <div class="quote">
-      <p>May all beings look on me with the eye of a friend. May I look on all beings with the eye of a friend. May we look on one another with the eye of a friend.</p>
-      <small>Vājasaneyi Saṃhitā 36.18 — a prayer three thousand years old, the book's epigraph</small>
+  <!-- close -->
+  <section class="section">
+    <div class="prose reveal">
+      <p class="verse">The practice begins the moment you close this book and meet the next being.</p>
+      <p style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a class="btn" href="#copy">Have the edition — $24</a>
+        <a class="btn ghost" href="read/">Begin reading</a>
+      </p>
     </div>
-    <div class="actions" style="margin-top:2.2rem">
-      <a class="btn primary" href="#offer">Get the bundle — $24</a>
-      <a class="btn" href="#minute">Try one minute first</a>
-    </div>
-  </div>
-</section>
+  </section>
+
+</main>
 
 <footer>
-  <span class="brand">Metta<br>Practice</span>
-  <p><i>Metta Practice: The Science, History, and Art of Universal Love</i> · Taylor Oliphant. Metta is the Pali word for loving-kindness: the felt love and sincere wish that beings be truly happy. The book is a 66-page introduction — the research, the three-thousand-year history, and one practice in four movements — sold here as a $24 bundle with the signed paperback, ebook, guided audio, and practice card.</p>
-  <div class="links">
-    <a href="mailto:taylor@aifreelancer.co">Contact the author</a>
-    <a href="mailto:taylor@aifreelancer.co?subject=Free%20access">Free access</a>
-    <a href="#offer">The bundle</a>
+  <div class="wrap">
+    <p><i>Metta Practice: The Science, History, and Art of Universal Love</i> · Taylor Oliphant</p>
+    <p>Metta is the Pali word for loving-kindness: the felt love and sincere wish that beings be truly happy. This site offers the complete 66-page book free, and a signed edition with the author's guided recordings for $24.</p>
+    <p><a href="read/">Read the book</a> · <a href="practice/">The one-minute practice</a> · <a href="mailto:taylor@aifreelancer.co">Write to the author</a> · <a href="mailto:taylor@aifreelancer.co?subject=Free%20access">Free access</a></p>
+    <p class="ledger" style="margin-top:1rem">SET IN FRAUNCES, NEWSREADER &amp; INSTRUMENT SANS · TYPESET WITH THE SAME CARE AS THE BOOK</p>
   </div>
 </footer>
 
-<div class="buybar" id="buybar">
-  <span class="what">Signed book + audio bundle — $24</span>
-  <span class="pay">Stripe · Apple Pay · Google Pay</span>
-  <a class="btn primary" href="#offer">Get it</a>
-</div>
-
-<script>
-(function(){
-  /* per-ad hero variants (?v=practice|dog|prayer|research|ideas) */
-  var V={
-    practice:{k:"You just practiced · the book teaches the rest",h:'That minute was the practice. The book trains it until <span class="grad">love</span> becomes the mind’s home.'},
-    dog:{k:"The book · practice bundle · $24",h:'A dog greeting you with <span class="grad">love</span> may teach the body what a paragraph cannot.'},
-    prayer:{k:"A prayer three thousand years old",h:'May all beings look on me with the eye of a <span class="grad">friend</span>.'},
-    research:{k:"The evidence, told honestly",h:'What does the research on <span class="grad">loving-kindness</span> actually show?'},
-    ideas:{k:"From the afterword",h:'Power, pleasure, meaning — and an older answer: life wants to <span class="grad">love</span>.'}
-  };
-  try{
-    var v=new URLSearchParams(location.search).get("v");
-    if(v&&V[v]){document.getElementById("heroH1").innerHTML=V[v].h;document.getElementById("heroKicker").textContent=V[v].k;}
-  }catch(e){}
-
-  /* intent chips */
-  var MSG={
-    busy:"Then begin with the one-minute form in the panel above — the book’s whole method fits inside a day that has no room.",
-    science:"Chapter 1 was written for you: the studies read honestly, 39 endnotes, every source verified against its publisher.",
-    gift:"The bundle ships signed, and the second-copy option at checkout exists for exactly this.",
-    deepen:"The feeling-first method — find it, strengthen it, expand it, return — comes from the Ajahn Sona lineage, with the Sutta read line by line."
-  };
-  var out=document.getElementById("intentOut");
-  document.querySelectorAll(".intents button").forEach(function(b){
-    b.addEventListener("click",function(){
-      document.querySelectorAll(".intents button").forEach(function(x){x.setAttribute("aria-pressed","false")});
-      b.setAttribute("aria-pressed","true");out.textContent=MSG[b.dataset.k];
-    });
-  });
-
-  /* one-minute practice */
-  var phases=[
-    {label:"Find it",secs:20,text:"Bring to mind the being who evokes the strongest feeling of love in you. Let the feeling become obvious."},
-    {label:"Strengthen it",secs:20,text:"Give it your full attention. May this being be truly happy. Feel it as fully as you can."},
-    {label:"Expand it",secs:20,text:"Keep the same felt wish and let it include more — yourself, the people near you, all beings, everywhere."}
-  ];
-  var done="That was the practice. The book trains it — stronger, boundless, and constant — until it becomes home.";
-  var btn=document.getElementById("beginBtn"),txt=document.getElementById("phaseText"),
-      cnt=document.getElementById("phaseCount"),bar=document.getElementById("bar"),
-      pbuy=document.getElementById("panelBuy"),timer=null;
-  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function run(i){
-    if(i>=phases.length){txt.textContent=done;cnt.textContent="Return to it · whenever you like";bar.style.transform="scaleX(1)";btn.textContent="Begin again";btn.disabled=false;pbuy.hidden=false;return;}
-    var p=phases[i],left=p.secs;
-    txt.textContent=p.text;
-    function tick(){
-      cnt.textContent=p.label+" · 0:"+String(left).padStart(2,"0");
-      bar.style.transition=reduce?"none":"transform 1s linear";
-      bar.style.transform="scaleX("+(((i*20)+(p.secs-left))/60)+")";
-      if(left--<=0){clearInterval(timer);run(i+1);}
-    }
-    tick();timer=setInterval(tick,1000);
-  }
-  btn.addEventListener("click",function(){btn.disabled=true;btn.textContent="Practicing…";if(timer)clearInterval(timer);bar.style.transform="scaleX(0)";run(0);});
-
-  /* gift bump */
-  var gift=document.getElementById("giftCopy"),buy=document.getElementById("buyBtn");
-  gift.addEventListener("change",function(){
-    buy.href=gift.checked?buy.dataset.gift:buy.dataset.solo;
-    buy.textContent=gift.checked?"Get the bundle + gift copy — $34":"Get the bundle — $24";
-  });
-
-  /* sticky buy bar past the hero */
-  var bar2=document.getElementById("buybar"),hero=document.querySelector(".hero");
-  function onScroll(){var y=hero.offsetTop+hero.offsetHeight;bar2.classList.toggle("show",window.scrollY>y);}
-  window.addEventListener("scroll",onScroll,{passive:true});onScroll();
-})();
-</script>
-
+</body>
 </html>

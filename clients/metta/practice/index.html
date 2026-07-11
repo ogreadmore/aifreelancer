@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One minute of metta — Metta Practice</title>
+<meta name="description" content="The one-minute loving-kindness practice from Metta Practice, adapted from the book. Press begin, and follow.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FBFAF7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#191613">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a class="wordmark" href="../">Metta <b>·</b> Practice</a>
+  <nav>
+    <a href="../read/">Read the book</a>
+    <a href="../#copy">The edition</a>
+  </nav>
+</header>
+
+<main class="room">
+  <div class="inner">
+    <p class="label" style="margin:0">The one-minute practice</p>
+    <p class="phase" id="phase">Sixty seconds, adapted from the one-minute meditation on page&nbsp;31 of the book. Sit however you are. Press begin, and follow.</p>
+    <div class="hair" aria-hidden="true"><i id="hair"></i></div>
+    <p class="ledger" id="count">FIND IT · STRENGTHEN IT · EXPAND IT</p>
+    <p style="margin:0;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+      <button class="btn" id="begin" type="button">Begin</button>
+      <a class="btn ghost" id="after" href="../#copy" hidden>The book — $24</a>
+    </p>
+    <p class="quiet" id="afterNote" hidden>Or <a href="../read/">read the whole book free</a> — the practice deepens from page one.</p>
+  </div>
+</main>
+
+<script>
+(function(){
+  var phases=[
+    {label:"FIND IT",secs:20,text:"Bring to mind the being who evokes the strongest feeling of love in you. Let the feeling become obvious."},
+    {label:"STRENGTHEN IT",secs:20,text:"Give it your full attention. May this being be truly happy. Feel it as fully as you can."},
+    {label:"EXPAND IT",secs:20,text:"Keep the same felt wish and let it include more — yourself, the people near you, all beings, everywhere."}
+  ];
+  var done="That was the practice. The book trains it — stronger, boundless, and constant — until love becomes the mind's home.";
+  var btn=document.getElementById("begin"),phase=document.getElementById("phase"),
+      count=document.getElementById("count"),hair=document.getElementById("hair"),
+      after=document.getElementById("after"),afterNote=document.getElementById("afterNote"),timer=null;
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function run(i){
+    if(i>=phases.length){
+      phase.textContent=done;
+      count.textContent="RETURN TO IT · WHENEVER YOU LIKE";
+      hair.style.transform="scaleX(1)";
+      btn.textContent="Begin again"; btn.disabled=false;
+      after.hidden=false; afterNote.hidden=false; return;
+    }
+    var p=phases[i],left=p.secs;
+    phase.textContent=p.text;
+    function tick(){
+      count.textContent=p.label+" · 0:"+String(left).padStart(2,"0");
+      hair.style.transition=reduce?"none":"transform 1s linear";
+      hair.style.transform="scaleX("+(((i*20)+(p.secs-left))/60)+")";
+      if(left--<=0){clearInterval(timer);run(i+1);}
+    }
+    tick(); timer=setInterval(tick,1000);
+  }
+  btn.addEventListener("click",function(){
+    btn.disabled=true; btn.textContent="Practicing…";
+    if(timer)clearInterval(timer);
+    hair.style.transform="scaleX(0)"; run(0);
+  });
+})();
+</script>
+</body>
+</html>

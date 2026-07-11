@@ -224,6 +224,46 @@ body.market{
 .photo figcaption{ font-family:var(--sans); font-size:.68rem; letter-spacing:.06em;
   color:var(--faint); margin-top:.6rem; text-transform:uppercase }
 
+/* ---------- cinematic hero (the tm.org anatomy, improved) ---------- */
+.cine{
+  position:relative; min-height:100svh; display:grid;
+  grid-template-rows:auto 1fr; isolation:isolate;
+}
+.cine .bg{ position:absolute; inset:0; z-index:-1 }
+.cine .bg img{ width:100%; height:100%; object-fit:cover; display:block }
+.cine .bg::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(30,20,10,.38) 0%, rgba(30,20,10,.18) 30%,
+                    rgba(30,20,10,.30) 72%, rgba(30,20,10,.55) 100%),
+    radial-gradient(90% 60% at 50% 45%, rgba(30,20,10,.16) 0%, rgba(30,20,10,0) 70%);
+}
+.cine .masthead{ max-width:none; width:100%; margin:0 }
+.cine .masthead, .cine .masthead a{ color:#FFF6E8 }
+.cine .wordmark b{ color:#F3C275 }
+.cine .inner{
+  align-self:center; justify-self:center; text-align:center;
+  padding:2rem clamp(1.25rem,4vw,2.5rem) clamp(4rem,8vh,6rem);
+  max-width:56rem; color:#FFF6E8;
+}
+.cine .kicker{ font-family:var(--sans); font-size:.75rem; font-weight:600;
+  letter-spacing:.24em; text-transform:uppercase; color:#F3D9A8; margin:0 0 1.6rem }
+.cine h1{ color:#FFFDF7; font-size:clamp(2.2rem,5.4vw,4.2rem); line-height:1.06;
+  margin:0 0 1rem; text-shadow:0 2px 24px rgba(30,20,10,.35) }
+.cine .sub{ font-family:var(--display); font-style:italic; font-weight:480;
+  font-size:clamp(1.15rem,2.2vw,1.6rem); color:#F7E8CB; margin:0 0 2.2rem;
+  font-variation-settings:"SOFT" 40,"WONK" 0 }
+.cine .actions{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap }
+.cine .note{ margin-top:1.4rem; color:#EBD9B4; font-size:.9rem }
+.cine .note a{ color:#FFF6E8 }
+
+.btn.pill{ border-radius:999px; padding:.95rem 1.9rem }
+.btn.pill.sun{ background:#FFF6E8; border-color:transparent; color:#3A2B14 }
+.btn.pill.sun:hover{ background:#F3C275; color:#241D14 }
+.btn.pill.glass{ background:rgba(255,246,232,.08); border:1px solid rgba(255,246,232,.75);
+  color:#FFF6E8; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px) }
+.btn.pill.glass:hover{ background:rgba(255,246,232,.18); border-color:#fff; color:#fff }
+
 /* benefit tiles */
 .benefits{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem;
   border-top:1px solid var(--line); padding-top:2rem }

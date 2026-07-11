@@ -294,6 +294,29 @@ body.market{
 .trust span::before{ content:""; display:inline-block; width:.55rem; height:.55rem;
   background:var(--mark); border-radius:2px; margin-right:.55rem; vertical-align:.02em }
 
+/* ---------- modern component pass (market pages) ---------- */
+body.market{ --radius:18px }
+body.market .btn{ border-radius:999px; padding:.95rem 1.7rem }
+body.market h2{ font-family:var(--sans); font-weight:600; letter-spacing:-.012em }
+body.market h3{ font-family:var(--sans); font-weight:600; letter-spacing:-.008em }
+body.market .reader h1, body.market .reader h2, body.market .reader h3{
+  font-family:var(--display); font-weight:560; letter-spacing:-.005em }
+body.market .section{ border-bottom:0; padding-block:clamp(3rem,6vw,5rem) }
+body.market .section + .section{ border-top:0 }
+body.market .photo img{ border-radius:var(--radius) }
+body.market .offer, body.market .capture{
+  border:1px solid rgba(36,29,20,.06); border-radius:20px;
+  box-shadow:0 14px 44px -20px rgba(36,29,20,.18), 0 1px 3px rgba(36,29,20,.05) }
+body.market .benefits{ border-top:0; padding-top:0; gap:1rem }
+body.market .benefit{ background:var(--card); border:1px solid rgba(36,29,20,.05);
+  border-radius:var(--radius); padding:1.5rem 1.4rem;
+  box-shadow:0 8px 28px -16px rgba(36,29,20,.14) }
+body.market details{ background:var(--card); border:1px solid rgba(36,29,20,.05);
+  border-top:1px solid rgba(36,29,20,.05); border-radius:14px;
+  padding:1.05rem 1.3rem; margin-bottom:.75rem; max-width:var(--measure);
+  box-shadow:0 6px 22px -14px rgba(36,29,20,.12) }
+body.market details:last-of-type{ border-bottom:1px solid rgba(36,29,20,.05) }
+
 /* ---------- practice room ---------- */
 .room{ min-height:100svh; display:grid; place-items:center; text-align:center;
   padding:2rem }

@@ -195,6 +195,63 @@ footer .wrap{ display:grid; gap:.5rem }
 .toc a{ text-decoration:none }
 .toc a:hover{ color:var(--mark) }
 
+/* ---------- market pages: warm light, locked (dark is for reading) ---------- */
+body.market{
+  color-scheme: light;
+  --paper:#FDFBF5; --ink:#241D14; --soft:#5C5142; --faint:#8A7C67;
+  --line:#EDE4D3; --mark:#B26A1F; --card:#FFFFFF;
+  background:var(--paper); color:var(--ink);
+}
+.dawn{
+  background:
+    radial-gradient(110% 85% at 78% -10%, #F6E3C0 0%, rgba(246,227,192,.45) 38%, rgba(253,251,245,0) 68%),
+    radial-gradient(60% 50% at 15% 110%, rgba(178,106,31,.10) 0%, rgba(253,251,245,0) 60%);
+}
+.hero-split{
+  display:grid; grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);
+  gap:clamp(2rem,5vw,4.5rem); align-items:center;
+  max-width:72rem; margin:0 auto;
+  padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,2.5rem) clamp(3rem,6vw,5rem);
+}
+@media(max-width:56rem){ .hero-split{ grid-template-columns:1fr } }
+.photo{ margin:0; position:relative }
+.photo img{
+  display:block; width:100%; aspect-ratio:4/5; object-fit:cover;
+  border-radius:6px;
+  box-shadow:0 30px 60px -30px rgba(36,29,20,.35), 0 4px 14px rgba(36,29,20,.08);
+}
+.photo.wide img{ aspect-ratio:3/2 }
+.photo figcaption{ font-family:var(--sans); font-size:.68rem; letter-spacing:.06em;
+  color:var(--faint); margin-top:.6rem; text-transform:uppercase }
+
+/* benefit tiles */
+.benefits{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem;
+  border-top:1px solid var(--line); padding-top:2rem }
+@media(max-width:56rem){ .benefits{ grid-template-columns:1fr 1fr } }
+@media(max-width:34rem){ .benefits{ grid-template-columns:1fr } }
+.benefit b{ display:block; font-family:var(--display); font-weight:600;
+  font-size:var(--step-1); margin-bottom:.35rem }
+.benefit b::before{ content:""; display:block; width:1.4rem; height:2px;
+  background:var(--mark); margin-bottom:.8rem }
+.benefit p{ font-size:.95rem; color:var(--soft); margin:0; line-height:1.5 }
+
+/* email capture — 30 Days of Metta */
+.capture{ background:var(--card); border:1px solid var(--line); border-radius:6px;
+  padding:clamp(1.6rem,3vw,2.4rem); max-width:44rem }
+.capture form{ display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.2rem }
+.capture input[type=email]{
+  flex:1 1 16rem; min-height:48px; padding:.7rem 1rem;
+  border:1px solid var(--line); border-radius:4px; background:#fff;
+  font:500 1rem/1.2 var(--sans); color:var(--ink);
+}
+.capture input:focus-visible{ outline:2px solid var(--mark); outline-offset:2px }
+
+/* trust row */
+.trust{ display:flex; gap:1.6rem 2.2rem; flex-wrap:wrap; margin-top:2rem;
+  font-family:var(--sans); font-size:.8rem; font-weight:500; color:var(--soft) }
+.trust span::before{ content:""; display:inline-block; width:.55rem; height:.55rem;
+  background:var(--mark); border-radius:2px; margin-right:.55rem; vertical-align:.02em }
+
 /* ---------- practice room ---------- */
 .room{ min-height:100svh; display:grid; place-items:center; text-align:center;
   padding:2rem }

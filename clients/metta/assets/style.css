@@ -234,9 +234,9 @@ body.market{
 .cine .bg::after{
   content:""; position:absolute; inset:0;
   background:
-    linear-gradient(180deg, rgba(30,20,10,.38) 0%, rgba(30,20,10,.18) 30%,
-                    rgba(30,20,10,.30) 72%, rgba(30,20,10,.55) 100%),
-    radial-gradient(90% 60% at 50% 45%, rgba(30,20,10,.16) 0%, rgba(30,20,10,0) 70%);
+    linear-gradient(180deg, rgba(30,20,10,.25) 0%, rgba(30,20,10,.14) 30%,
+                    rgba(30,20,10,.24) 72%, rgba(30,20,10,.46) 100%),
+    radial-gradient(90% 60% at 50% 45%, rgba(30,20,10,.12) 0%, rgba(30,20,10,0) 70%);
 }
 .cine .masthead{ max-width:none; width:100%; margin:0; padding-top:2rem }
 .cine .masthead nav{ font-size:.9rem; gap:2rem }
@@ -316,6 +316,51 @@ body.market details{ background:var(--card); border:1px solid rgba(36,29,20,.05)
   padding:1.05rem 1.3rem; margin-bottom:.75rem; max-width:var(--measure);
   box-shadow:0 6px 22px -14px rgba(36,29,20,.12) }
 body.market details:last-of-type{ border-bottom:1px solid rgba(36,29,20,.05) }
+
+/* ---------- v02 design pass (judge fixes): sans body, bands, one system ---------- */
+body.market{
+  font-family:var(--sans); font-size:1.05rem; line-height:1.6;
+  --ink:#2E2114; --soft:#66543D; --faint:#94805F;
+  --r-card:20px; --r-media:28px;
+  --shadow:0 10px 30px -12px rgba(36,29,20,.16);
+}
+body.market .prose p, body.market p{ hyphens:none }
+body.market .reader, body.market .reader p{ font-family:var(--serif); hyphens:auto }
+body.market .section{ padding-block:clamp(5rem,9vw,7.5rem) }
+body.market .photo img{ border-radius:var(--r-media) }
+body.market .offer, body.market .capture, body.market .benefit, body.market details{
+  border-radius:var(--r-card); box-shadow:var(--shadow);
+  border:1px solid rgba(36,29,20,.05) }
+body.market .ledger, body.market .photo figcaption{
+  text-transform:none; letter-spacing:.02em; font-size:.82rem; font-weight:500 }
+body.market .capture input[type=email]{
+  border-radius:999px; min-height:56px; padding:.7rem 1.4rem }
+body.market .trust span{ background:#F6EEDD; border-radius:999px;
+  padding:.6rem 1.1rem; color:var(--ink) }
+body.market .trust span::before{ border-radius:999px; width:.5rem; height:.5rem }
+
+/* marigold owns the primary action (except on the hero photo) */
+body.market main .btn, body.market .reader .btn{
+  background:var(--mark); border-color:var(--mark); color:#FFF6E8;
+  box-shadow:0 10px 28px -8px rgba(178,106,31,.45) }
+body.market main .btn:hover, body.market .reader .btn:hover{
+  background:#9A5A16; border-color:#9A5A16; color:#FFF6E8 }
+body.market main .btn.ghost{ background:transparent; color:var(--ink);
+  border:1px solid var(--rule-strong); box-shadow:none }
+
+/* full-bleed tinted bands */
+.band{ margin-inline:calc(50% - 50vw);
+  padding-inline:calc(50vw - 50% + clamp(1.25rem,4vw,2.5rem)) }
+.band-tint{ background:#F6EEDD; border-radius:0 0 32px 32px }
+.band-white{ background:#FFFFFF; border-radius:32px 32px 0 0 }
+.band-dark{ background:#2A2015; border-radius:32px;
+  --ink:#FFF6E8; --soft:#E5D5B5; --faint:#BCA87F; color:#FFF6E8 }
+.band-dark .capture{ background:#352A1B; border-color:rgba(255,246,232,.12);
+  box-shadow:0 18px 50px -20px rgba(0,0,0,.5); margin-inline:auto; text-align:center }
+.band-dark .capture form{ justify-content:center }
+.band-dark .capture input[type=email]{ background:#1F1710; border-color:rgba(255,246,232,.18); color:#FFF6E8 }
+.band-dark .label{ color:#BCA87F }
+.band-dark .label::before{ background:#F3C275 }
 
 /* ---------- practice room ---------- */
 .room{ min-height:100svh; display:grid; place-items:center; text-align:center;

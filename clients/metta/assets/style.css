@@ -489,6 +489,57 @@ body.market .trust span:nth-child(4)::before{ background:var(--red) }
   border:1px solid var(--line); backdrop-filter:none }
 .ghero .btn.pill.glass:hover{ background:#F8FAFF; border-color:#D2E3FC; color:#1765CC }
 
+/* ---------- v07: hip-google (mesh, bento, expressive) ---------- */
+body.market{ --r-card:28px; --blue50:#E8F0FE; --green50:#E6F4EA;
+  --yellow50:#FEF7E0; --red50:#FCE8E6 }
+.ghero{ position:relative; overflow:hidden }
+.ghero::before{ content:""; position:absolute; inset:-20% -10%; z-index:0;
+  background:
+    radial-gradient(38% 45% at 18% 25%, rgba(66,133,244,.16) 0%, transparent 70%),
+    radial-gradient(34% 40% at 84% 20%, rgba(249,171,0,.16) 0%, transparent 70%),
+    radial-gradient(40% 45% at 70% 90%, rgba(52,168,83,.13) 0%, transparent 70%),
+    radial-gradient(30% 35% at 12% 88%, rgba(234,67,53,.10) 0%, transparent 70%) }
+.ghero > *{ position:relative; z-index:1 }
+.ghero h1 .hl{ background:linear-gradient(100deg,#1A73E8,#34A853);
+  -webkit-background-clip:text; background-clip:text; color:transparent }
+.chips{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap;
+  margin:1.6rem 0 0; padding:0; list-style:none }
+.chips li{ font-family:var(--sans); font-size:.85rem; font-weight:600;
+  padding:.5rem 1rem; border-radius:999px; background:#fff;
+  border:1px solid var(--line) }
+.chips li:nth-child(1){ color:#1A73E8; border-color:#D2E3FC; background:#F8FAFF }
+.chips li:nth-child(2){ color:#B06000; border-color:#FDE293; background:#FFFDF5 }
+.chips li:nth-child(3){ color:#188038; border-color:#CEEAD6; background:#F6FBF7 }
+.chips li:nth-child(4){ color:#C5221F; border-color:#FAD2CF; background:#FFF8F7 }
+.band-tint{ background:var(--blue50); border-radius:48px }
+.band-white{ background:var(--yellow50); border-radius:48px }
+.band-dark{ border-radius:48px }
+.band-green{ background:var(--green50); border-radius:48px;
+  margin-inline:calc(50% - 50vw); padding-inline:calc(50vw - 50%) }
+.band-green > *{ padding-inline:clamp(1.25rem,4vw,2.5rem) }
+body.market main .btn{ transition:transform .15s ease, box-shadow .15s ease, background .15s ease }
+body.market main .btn:hover{ transform:translateY(-2px) }
+.products{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; margin-top:2rem }
+@media(max-width:56rem){ .products{ grid-template-columns:1fr } }
+.product{ background:#fff; border-radius:32px; padding:clamp(1.8rem,3vw,2.6rem);
+  box-shadow:0 1px 2px rgba(60,64,67,.1), 0 16px 40px -20px rgba(60,64,67,.25);
+  display:flex; flex-direction:column; gap:1rem }
+.product .tag{ font-family:var(--sans); font-size:.78rem; font-weight:700;
+  letter-spacing:.06em; text-transform:uppercase }
+.product h3{ font-size:clamp(1.5rem,2.4vw,2rem); margin:0 }
+.product .price{ font-family:var(--brand); font-weight:800;
+  font-size:clamp(1.9rem,3vw,2.5rem) }
+.product .price small{ font-size:.5em; font-weight:600; color:var(--faint) }
+.product ul{ margin:0; padding:0; list-style:none; color:var(--soft) }
+.product li{ padding:.45rem 0; border-top:1px solid var(--line) }
+.product .btn{ margin-top:auto; text-align:center }
+.gbar{ display:flex; align-items:center; gap:1rem; background:#fff;
+  border:2px solid #CEEAD6; border-radius:20px; padding:1.1rem 1.4rem;
+  margin-top:1.6rem; font-weight:600 }
+.gbar .dot{ width:2.4rem; height:2.4rem; flex:0 0 auto; border-radius:50%;
+  background:var(--green); display:grid; place-items:center; color:#fff;
+  font-weight:800; font-family:var(--brand) }
+
 /* sticky reserve bar */
 .buybar{ position:fixed; left:0; right:0; bottom:0; z-index:40;
   display:flex; justify-content:center; align-items:center; gap:1.2rem;

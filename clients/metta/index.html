@@ -42,11 +42,19 @@
         </div>
         <p class="fine">One-week money-back guarantee · <a href="read/">read the first chapter free</a></p>
       </div>
-      <div class="fan" aria-hidden="true">
-        <figure class="b"><img src="https://images.unsplash.com/photo-1618075149243-47fc9c7efb4e?q=80&w=900&auto=format&fit=crop" alt=""></figure>
-        <figure class="l"><img src="https://images.unsplash.com/photo-1777984994806-ec544b1c8924?q=80&w=900&auto=format&fit=crop" alt=""></figure>
-        <figure class="r"><img src="https://images.unsplash.com/photo-1753685727529-4f77f7bede29?q=80&w=900&auto=format&fit=crop" alt=""></figure>
-        <figure class="c"><img src="https://images.unsplash.com/photo-1545386673-7723f55e5490?q=80&w=900&auto=format&fit=crop" alt=""></figure>
+      <div class="stage" aria-hidden="true">
+        <div class="book3d rv"><div class="bk">
+          <div class="face front">
+            <span class="orb"></span>
+            <div class="bt">Metta<br>Practice</div>
+            <div class="bs">The Science, History, and Art of Universal Love</div>
+            <div class="ba">Taylor Oliphant</div>
+          </div>
+          <div class="face spine"><span>Metta Practice · Oliphant</span></div>
+          <div class="face pages"></div>
+        </div></div>
+        <span class="chip tl"><b>66 pages</b> · read in an evening</span>
+        <span class="chip br"><b>$14</b> · book + guided audio</span>
       </div>
     </div>
     <div class="quote-strip rv">
@@ -231,13 +239,6 @@
   try{var v=new URLSearchParams(location.search).get("v");
     if(v&&V[v]){document.getElementById("heroH1").innerHTML=V[v].h;
       document.getElementById("heroSub").textContent=V[v].s;}}catch(e){}
-
-  /* hero fan rotation */
-  var order=["c","l","r","b"], figs=[].slice.call(document.querySelectorAll(".fan figure"));
-  setInterval(function(){
-    order.unshift(order.pop());
-    figs.forEach(function(f,i){f.className=order[i]});
-  }, 2600);
 
   /* reveals + count-up */
   var io=new IntersectionObserver(function(es){

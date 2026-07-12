@@ -309,3 +309,6 @@ h1{font-size:clamp(3rem,6vw,5.3rem)}
 .stage::before{z-index:0}
 .book3d{position:relative;z-index:1}
 .stage .chip{z-index:2}
+/* v16: nav solid + in-flow */
+.nav{position:static;background:#fff;border-bottom:1px solid var(--line)}
+.hero .inner{padding-block:70px 100px}

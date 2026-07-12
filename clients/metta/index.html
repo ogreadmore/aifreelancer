@@ -33,8 +33,8 @@
   </header>
   <div class="inner">
     <p class="kicker">Metta · Loving-kindness meditation</p>
-    <h1>Less stress, a better mood, and healthier relationships.</h1>
-    <p class="sub">One trainable practice — and you can feel it working in the first minute.</p>
+    <h1 id="heroH1">Less stress, a better mood, and healthier relationships.</h1>
+    <p class="sub" id="heroSub">One short book, one trainable practice — and you can feel it working in the first minute.</p>
     <div class="actions">
       <a class="btn pill sun" href="practice/">Feel it in one minute — free</a>
       <a class="btn pill glass" href="#thirty">Reserve the first printing — free</a>
@@ -94,8 +94,8 @@
         <p class="spec"><b>66 pages · 6 × 9 inches · set in Palatino</b> · the Metta Sutta in Pali and in the author's translation · 39 verified endnotes · <b>signed by the author</b> and shipped from his own desk within 1–3 business days.</p>
         <p class="spec" style="margin-top:1.2rem">With it come the author's <b>three guided recordings</b> — one, five, and twenty minutes, yours to keep, no app and no subscription — the <b>ebook</b> delivered instantly, and the <b>Practice Card</b>: the whole method on one printable page.</p>
         <figure class="photo wide" style="margin-top:2rem">
-          <img src="assets/spread.jpg" alt="An open spread of the typeset book, pages 24 and 25" loading="lazy" decoding="async">
-          <figcaption>The book itself — pages 24–25 of the typeset interior.</figcaption>
+          <img src="assets/spread2.jpg" alt="An open spread of the typeset book showing the one-minute and five-minute meditations" loading="lazy" decoding="async">
+          <figcaption>The method itself — the one- and five-minute meditations, from the typeset interior.</figcaption>
         </figure>
       </div>
       <aside class="offer">
@@ -129,7 +129,7 @@
         <input type="email" name="email" placeholder="Your email" aria-label="Email address" required>
         <button class="btn" type="submit">Reserve my copy — free</button>
       </form>
-      <p class="ledger" style="margin-top:1rem;margin-bottom:0">NO SPAM · RESERVING COSTS NOTHING · ONE PRACTICE EMAIL A DAY FOR 30 DAYS</p>
+      <p class="ledger" style="margin-top:1rem;margin-bottom:0">No spam · reserving costs nothing · one practice email a day for 30 days · <a href="privacy/">privacy</a></p>
     </div>
   </section>
 
@@ -177,10 +177,31 @@
   <div class="wrap">
     <p><i>Metta Practice: The Science, History, and Art of Universal Love</i> · Taylor Oliphant</p>
     <p>Metta is the Pali word for loving-kindness: the felt love and sincere wish that beings be truly happy. The book is a 66-page introduction — the research, the three-thousand-year history, and one practice in four movements — available as a signed edition with the author's guided recordings for $24. The first chapter is free to read.</p>
-    <p><a href="read/">Read a sample</a> · <a href="practice/">The one-minute practice</a> · <a href="mailto:taylor@aifreelancer.co">Write to the author</a> · <a href="mailto:taylor@aifreelancer.co?subject=Free%20access">Free access</a></p>
+    <p><a href="read/">Read a sample</a> · <a href="practice/">The one-minute practice</a> · <a href="mailto:taylor@aifreelancer.co">Write to the author</a> · <a href="mailto:taylor@aifreelancer.co?subject=Free%20access">Free access</a> · <a href="privacy/">Privacy</a></p>
     <p class="ledger" style="margin-top:1rem">PHOTOGRAPHY VIA UNSPLASH — DIEGO GENNARO, BETH STEVENSON · SET IN FRAUNCES, NEWSREADER &amp; INSTRUMENT SANS</p>
   </div>
 </footer>
 
+<div class="buybar" id="buybar" hidden>
+  <span><b>Reserve the first printing — free</b> · $24 at launch</span>
+  <a class="btn" href="#thirty">Reserve</a>
+</div>
+<script>
+(function(){
+  var V={
+    practice:{h:"That minute was the practice. The book trains it until love is the mind\u2019s home.",s:"You just felt it. One short book teaches the whole method."},
+    dog:{h:"A dog greeting you with love may teach the body what a paragraph cannot.",s:"One short book on the practice of loving-kindness \u2014 feel it working in the first minute."},
+    prayer:{h:"May all beings look on me with the eye of a friend.",s:"A prayer three thousand years old \u2014 and one short book that teaches its practice."},
+    research:{h:"What does the research on loving-kindness actually show?",s:"One short book reads the studies honestly \u2014 and you can feel the practice in a minute."},
+    ideas:{h:"Power, pleasure, meaning \u2014 and an older answer.",s:"One short book on the practice of loving-kindness. Life wants to love."}
+  };
+  try{var v=new URLSearchParams(location.search).get("v");
+    if(v&&V[v]){document.getElementById("heroH1").textContent=V[v].h;
+      document.getElementById("heroSub").textContent=V[v].s;}}catch(e){}
+  var bar=document.getElementById("buybar"),cine=document.querySelector(".cine");
+  function t(){bar.hidden=!(window.scrollY>cine.offsetHeight-80)}
+  window.addEventListener("scroll",t,{passive:true});t();
+})();
+</script>
 </body>
 </html>

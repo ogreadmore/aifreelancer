@@ -374,6 +374,16 @@ body.market footer{ margin-top:0 }
 .band-dark .verse{ color:#FFF6E8 }
 .band-dark .ledger{ color:#BCA87F }
 
+/* sticky reserve bar */
+.buybar{ position:fixed; left:0; right:0; bottom:0; z-index:40;
+  display:flex; justify-content:center; align-items:center; gap:1.2rem;
+  padding:.7rem clamp(1rem,3vw,2rem);
+  background:rgba(253,251,245,.94); border-top:1px solid rgba(36,29,20,.08);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  font-family:var(--sans); font-size:.92rem }
+.buybar[hidden]{ display:none }
+.buybar .btn{ padding:.7rem 1.4rem; min-height:44px }
+
 /* proof strip: the object above the benefits */
 .proofstrip{ display:flex; gap:2rem; align-items:center; margin-bottom:3rem;
   max-width:56rem }

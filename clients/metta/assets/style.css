@@ -414,6 +414,81 @@ body.market main .btn:hover{ filter:saturate(1.15) brightness(1.04); background:
   font-weight:600 }
 .formats li span:last-child{ color:var(--faint); font-weight:500 }
 
+/* ---------- v06: google-vibe (primary colors, ultramodern, white) ---------- */
+body.market{
+  --paper:#FFFFFF; --ink:#1F2124; --soft:#5F6368; --faint:#80868B;
+  --line:#E8EAED; --mark:#1A73E8;
+  --blue:#1A73E8; --red:#EA4335; --yellow:#F9AB00; --green:#34A853;
+  --card:#F8F9FA; --r-card:24px; --r-media:28px;
+  --shadow:0 1px 2px rgba(60,64,67,.12), 0 8px 24px -12px rgba(60,64,67,.18);
+  --brand:"Plus Jakarta Sans", var(--sans);
+}
+body.market h1, body.market h2, body.market h3, body.market .btn{
+  font-family:var(--brand) }
+body.market h1{ font-weight:800; letter-spacing:-.022em }
+body.market h2, body.market h3{ font-weight:700; letter-spacing:-.014em }
+body.market .label{ color:var(--faint) }
+body.market .label::before{ background:var(--blue) }
+body.market main .btn, body.market .reader .btn, .band-dark .capture .btn{
+  background:var(--blue); border:0; color:#fff;
+  box-shadow:0 1px 2px rgba(26,115,232,.3), 0 8px 20px -8px rgba(26,115,232,.5) }
+body.market main .btn:hover, body.market .reader .btn:hover{
+  background:#1765CC; filter:none; color:#fff }
+body.market main .btn.ghost{ background:#fff; color:var(--blue);
+  border:1px solid var(--line); box-shadow:none }
+body.market main .btn.ghost:hover{ background:#F8FAFF; border-color:#D2E3FC }
+.band-tint{ background:#F8F9FA; border-radius:32px }
+.band-white{ background:#fff }
+.band-dark{ background:linear-gradient(120deg,#1A73E8 0%, #3F8CFF 100%);
+  --ink:#fff; --soft:#E8F0FE; --faint:#C6DAFC; color:#fff; border-radius:32px }
+.band-dark .capture{ background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.3) }
+.band-dark .capture .btn{ background:#fff; color:#1A73E8; box-shadow:0 4px 16px rgba(0,0,0,.15) }
+.band-dark .capture .btn:hover{ background:#E8F0FE }
+.band-dark .label::before{ background:#FDE293 }
+body.market .benefit{ background:#fff; border:1px solid var(--line);
+  box-shadow:none; border-radius:var(--r-card) }
+body.market .benefit:hover{ box-shadow:var(--shadow) }
+.benefits > .benefit:nth-child(1){ background:#fff }
+.benefits > .benefit:nth-child(2){ background:#fff }
+.benefits > .benefit:nth-child(3){ background:#fff }
+.benefits > .benefit:nth-child(4){ background:#fff }
+.benefits > .benefit:nth-child(1) b::before{ background:var(--blue) }
+.benefits > .benefit:nth-child(2) b::before{ background:var(--yellow) }
+.benefits > .benefit:nth-child(3) b::before{ background:var(--green) }
+.benefits > .benefit:nth-child(4) b::before{ background:var(--red) }
+body.market .benefit b::before{ width:2rem; height:6px; border-radius:3px }
+.wordmark b{ color:var(--blue) }
+body.market .trust span{ background:#F8F9FA; border:1px solid var(--line) }
+body.market .trust span:nth-child(1)::before{ background:var(--blue) }
+body.market .trust span:nth-child(2)::before{ background:var(--yellow) }
+body.market .trust span:nth-child(3)::before{ background:var(--green) }
+body.market .trust span:nth-child(4)::before{ background:var(--red) }
+.room .hair i{ background:var(--blue) }
+
+/* white google hero */
+.ghero{ background:#fff }
+.ghero .masthead{ max-width:none; padding-top:1.4rem }
+.ghero-inner{ max-width:62rem; margin:0 auto; text-align:center;
+  padding:clamp(3.5rem,8vw,6.5rem) clamp(1.25rem,4vw,2.5rem) clamp(3.5rem,7vw,5.5rem) }
+.dots{ display:flex; gap:.55rem; justify-content:center; margin:0 0 1.8rem }
+.dots i{ width:.8rem; height:.8rem; border-radius:50% }
+.dots i:nth-child(1){ background:var(--blue) } .dots i:nth-child(2){ background:var(--red) }
+.dots i:nth-child(3){ background:var(--yellow) } .dots i:nth-child(4){ background:var(--green) }
+.ghero h1{ font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.05; margin:0 0 1.2rem;
+  color:var(--ink); text-wrap:balance }
+.ghero .sub{ font-family:var(--sans); font-style:normal; font-weight:500;
+  font-size:clamp(1.15rem,2vw,1.5rem); color:var(--soft); max-width:44rem;
+  margin:0 auto 2.4rem; line-height:1.4 }
+.ghero .actions{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap }
+.ghero .note{ margin-top:1.6rem; color:var(--faint); font-size:.95rem }
+.ghero .btn.pill.sun{ background:var(--blue); color:#fff;
+  box-shadow:0 1px 2px rgba(26,115,232,.3), 0 10px 24px -8px rgba(26,115,232,.5) }
+.ghero .btn.pill.sun:hover{ background:#1765CC; color:#fff }
+.ghero .btn.pill.glass{ background:#fff; color:var(--blue);
+  border:1px solid var(--line); backdrop-filter:none }
+.ghero .btn.pill.glass:hover{ background:#F8FAFF; border-color:#D2E3FC; color:#1765CC }
+
 /* sticky reserve bar */
 .buybar{ position:fixed; left:0; right:0; bottom:0; z-index:40;
   display:flex; justify-content:center; align-items:center; gap:1.2rem;

@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metta Practice — The Science, History, and Art of Universal Love</title>
 <meta name="description" content="Less stress, a better mood, and healthier relationships — loving-kindness meditation, taught in one short book. Read the first chapter free. Hardcover, ebook and audiobook at launch.">
-<meta name="theme-color" content="#FFFBF4">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Instrument+Sans:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <!-- Meta Pixel: insert pixel ID + Purchase/Lead events at launch -->
 <script type="application/ld+json">
@@ -18,11 +18,8 @@
 </head>
 <body class="market">
 
-<!-- ============ CINEMATIC HERO ============ -->
-<section class="cine">
-  <div class="bg" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1771784969366-fec21571ab5a?q=80&w=2400&auto=format&fit=crop" alt="" fetchpriority="high">
-  </div>
+<!-- ============ HERO ============ -->
+<section class="ghero">
   <header class="masthead">
     <a class="wordmark" href="./">Metta <b>·</b> Practice</a>
     <nav>
@@ -31,8 +28,8 @@
       <a href="#thirty">Get the book</a>
     </nav>
   </header>
-  <div class="inner">
-    <p class="kicker">Metta · Loving-kindness meditation</p>
+  <div class="ghero-inner">
+    <p class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></p>
     <h1 id="heroH1">Less stress, a better mood, and healthier relationships.</h1>
     <p class="sub" id="heroSub">One short book, one trainable practice — and you can feel it working in the first minute.</p>
     <div class="actions">
@@ -190,7 +187,7 @@
   try{var v=new URLSearchParams(location.search).get("v");
     if(v&&V[v]){document.getElementById("heroH1").textContent=V[v].h;
       document.getElementById("heroSub").textContent=V[v].s;}}catch(e){}
-  var bar=document.getElementById("buybar"),cine=document.querySelector(".cine");
+  var bar=document.getElementById("buybar"),cine=document.querySelector(".ghero");
   function t(){bar.hidden=!(window.scrollY>cine.offsetHeight-80)}
   window.addEventListener("scroll",t,{passive:true});t();
 })();

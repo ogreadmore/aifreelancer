@@ -374,6 +374,46 @@ body.market footer{ margin-top:0 }
 .band-dark .verse{ color:#FFF6E8 }
 .band-dark .ledger{ color:#BCA87F }
 
+/* ---------- v05: turn the vibe up (color pass) ---------- */
+body.market{
+  --paper:#FFFBF4; --mark:#E4762B;
+  --sunrise:linear-gradient(115deg,#FF7E5F 0%,#F5A623 55%,#FFC94D 100%);
+  --rose:#FFE9DD; --gold:#FFF0D2; --sky:#E4F2FA; --leaf:#E9F5E4;
+}
+.band-tint{ background:linear-gradient(180deg,#FFF0D2 0%,#FFE9DD 100%) }
+.band-dark{ background:var(--sunrise); border-radius:32px;
+  --ink:#FFFFFF; --soft:#FFF3E4; --faint:#FFE7C9; color:#fff }
+.band-dark .capture{ background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.35); backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px) }
+.band-dark .capture input[type=email]{ background:rgba(255,255,255,.92);
+  border-color:transparent; color:#3A2510 }
+.band-dark .capture .btn{ background:#2E2114; border-color:#2E2114; color:#FFF6E8;
+  box-shadow:0 10px 28px -8px rgba(46,33,20,.5) }
+.band-dark .label{ color:#FFF3E4 } .band-dark .label::before{ background:#fff }
+.band-dark .ledger{ color:#FFF3E4 }
+body.market main .btn{ background:var(--sunrise); border:0; color:#fff;
+  box-shadow:0 12px 30px -10px rgba(244,126,60,.55) }
+body.market main .btn:hover{ filter:saturate(1.15) brightness(1.04); background:var(--sunrise); color:#fff }
+.cine .btn.pill.sun{ background:#fff; color:#B14E12 }
+.cine .btn.pill.sun:hover{ background:#FFE9DD; color:#8F3C0A }
+.benefit{ position:relative; overflow:hidden }
+.benefit::after{ content:""; position:absolute; inset:auto 0 0 0; height:6px }
+.benefits > .benefit:nth-child(1){ background:linear-gradient(180deg,#fff, #FFE9DD) }
+.benefits > .benefit:nth-child(2){ background:linear-gradient(180deg,#fff, #FFF0D2) }
+.benefits > .benefit:nth-child(3){ background:linear-gradient(180deg,#fff, #E4F2FA) }
+.benefits > .benefit:nth-child(4){ background:linear-gradient(180deg,#fff, #E9F5E4) }
+.benefits > .benefit:nth-child(1) b::before{ background:#FF7E5F }
+.benefits > .benefit:nth-child(2) b::before{ background:#F5A623 }
+.benefits > .benefit:nth-child(3) b::before{ background:#4FA3D1 }
+.benefits > .benefit:nth-child(4) b::before{ background:#6FBF5A }
+.wordmark b{ color:#FF7E5F }
+.formats{ list-style:none; margin:1rem 0 1.4rem; padding:0 }
+.formats li{ display:flex; justify-content:space-between; gap:1rem;
+  padding:.8rem 0; border-top:1px solid rgba(36,29,20,.08);
+  font-weight:600 }
+.formats li span:last-child{ color:var(--faint); font-weight:500 }
+
 /* sticky reserve bar */
 .buybar{ position:fixed; left:0; right:0; bottom:0; z-index:40;
   display:flex; justify-content:center; align-items:center; gap:1.2rem;

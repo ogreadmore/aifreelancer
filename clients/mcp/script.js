@@ -103,19 +103,30 @@ if (contactForm) {
     const formData = new FormData(contactForm);
     const values = Object.fromEntries(formData.entries());
 
-    const subjectParts = ["Mobile Cryo Pro — New inquiry"];
+    const subjectParts = [
+      contactForm.dataset.formSubject || "Mobile Cryo Pro — New inquiry",
+    ];
     if (values.name) {
       subjectParts.push(`from ${values.name}`);
     }
 
-    const lines = [
-      `Name: ${values.name || ""}`,
-      `Email: ${values.email || ""}`,
-      `Phone: ${values.phone || ""}`,
-      "",
-      "Message:",
-      values.message || "",
-    ];
+    const fieldLabels = {
+      name: "Name",
+      email: "Email",
+      phone: "Phone",
+      city: "City",
+      state: "State",
+      desired_territory: "Desired territory",
+      occupation: "Current occupation",
+      business_experience: "Business experience",
+      preferred_time: "Preferred contact time",
+    };
+
+    const lines = Object.entries(fieldLabels)
+      .filter(([key]) => key in values)
+      .map(([key, label]) => `${label}: ${values[key] || ""}`);
+
+    lines.push("", "Message:", values.message || "");
 
     const params = new URLSearchParams({
       subject: subjectParts.join(" "),

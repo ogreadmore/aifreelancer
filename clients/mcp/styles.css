@@ -5406,7 +5406,7 @@ body:not(.services-page) .site-header {
 
 /* Homepage hero pass: match the mockup hero without touching the rest of the page. */
 .home-page {
-  --home-hero-image: url("assets/sports-medicine-ball.jpg");
+  --home-hero-image: url("assets/recovery-shoulder-cryo-home.jpg");
 }
 
 .home-page .site-header {
@@ -8123,7 +8123,7 @@ body.home-page .site-header.is-scrolled,
   background-position: center center, center center, 50% 34%;
   background-size: cover;
   opacity: 0;
-  animation: homeHeroPhotoFade 18s infinite ease-in-out;
+  animation: homeHeroPhotoFade 12s infinite ease-in-out;
 }
 
 .home-hero-media-slide:nth-child(1) {
@@ -8136,21 +8136,13 @@ body.home-page .site-header.is-scrolled,
   animation-delay: 6s;
 }
 
-.home-hero-media-slide:nth-child(3) {
-  animation-delay: 12s;
-}
-
 @keyframes homeHeroPhotoFade {
-  0% {
-    opacity: 0;
-  }
-
-  4%,
-  30% {
+  0%,
+  45% {
     opacity: 1;
   }
 
-  38%,
+  55%,
   100% {
     opacity: 0;
   }
@@ -8251,7 +8243,7 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
 
   body.home-page .home-hero-media-slide {
     will-change: opacity;
-    animation: homeHeroPhotoFade 18s infinite ease-in-out;
+    animation: homeHeroPhotoFade 12s infinite ease-in-out;
   }
 
   body.home-page .home-hero-media-slide:nth-child(1) {
@@ -8260,10 +8252,6 @@ body:not(.services-page).about-page .bio-video-frame.has-video::before {
 
   body.home-page .home-hero-media-slide:nth-child(2) {
     animation-delay: 6s;
-  }
-
-  body.home-page .home-hero-media-slide:nth-child(3) {
-    animation-delay: 12s;
   }
 
   body.home-page .hero-divider-ice::after,

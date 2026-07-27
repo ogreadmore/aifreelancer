@@ -319,6 +319,58 @@ h1 {
   font-size: 13px;
 }
 
+.plain-summary {
+  position: relative;
+  z-index: 2;
+  padding: 10px 0 36px;
+  background: var(--night);
+}
+
+.plain-summary-inner {
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+  gap: 38px;
+  padding: 30px 32px;
+  border-radius: var(--radius);
+  background: var(--lime);
+  color: var(--night);
+}
+
+.plain-summary-kicker {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.plain-summary h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3.4vw, 3.35rem);
+  line-height: 0.96;
+}
+
+.plain-summary-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.plain-summary-steps p {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 1px solid rgba(24, 36, 31, 0.24);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.plain-summary-steps strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
 .snapshot {
   position: relative;
   z-index: 2;
@@ -1405,6 +1457,7 @@ details[open] summary::after {
   }
 
   .hero-grid,
+  .plain-summary-inner,
   .section-head,
   .principle,
   .compare-intro,
@@ -1466,6 +1519,16 @@ details[open] summary::after {
 
   .hero {
     padding-top: 58px;
+  }
+
+  .plain-summary-inner,
+  .plain-summary-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .plain-summary-inner {
+    gap: 24px;
+    padding: 24px 22px;
   }
 
   h1 {
@@ -1836,6 +1899,7 @@ body.assistant-is-open {
   }
 
   .hero,
+  .plain-summary,
   .snapshot,
   .section-dark,
   .footer {
@@ -1864,6 +1928,7 @@ body.assistant-is-open {
   }
 
   .hero-note,
+  .plain-summary-inner,
   .snapshot-grid,
   .snapshot-card,
   .flywheel-card,

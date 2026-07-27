@@ -50,3 +50,45 @@ document.querySelector("[data-expand]")?.addEventListener("click", (event) => {
   });
   event.currentTarget.textContent = shouldOpen ? "Collapse detail" : "Expand detail";
 });
+
+const assistantOpen = document.querySelector("[data-assistant-open]");
+const assistantPanel = document.querySelector("#plan-assistant");
+const assistantClose = document.querySelector("[data-assistant-close]");
+const assistantScrim = document.querySelector("[data-assistant-scrim]");
+
+function setAssistant(open) {
+  if (!assistantPanel || !assistantOpen || !assistantScrim) return;
+  assistantPanel.hidden = !open;
+  assistantScrim.hidden = !open;
+  assistantOpen.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("assistant-is-open", open);
+  if (open) {
+    assistantClose?.focus();
+  } else {
+    assistantOpen.focus();
+  }
+}
+
+assistantOpen?.addEventListener("click", () => setAssistant(true));
+assistantClose?.addEventListener("click", () => setAssistant(false));
+assistantScrim?.addEventListener("click", () => setAssistant(false));
+document.addEventListener("keydown", (event) => {
+  if (assistantPanel?.hidden) return;
+  if (event.key === "Escape") {
+    setAssistant(false);
+    return;
+  }
+  if (event.key !== "Tab") return;
+  const focusable = [...assistantPanel.querySelectorAll("button, a[href]")].filter(
+    (item) => !item.hasAttribute("disabled")
+  );
+  const first = focusable[0];
+  const last = focusable.at(-1);
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last?.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first?.focus();
+  }
+});

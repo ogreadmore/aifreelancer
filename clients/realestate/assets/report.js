@@ -25,6 +25,21 @@ sections.forEach((section) => observer.observe(section));
 window.addEventListener("scroll", updateProgress, { passive: true });
 updateProgress();
 
+let printDetailState = [];
+
+window.addEventListener("beforeprint", () => {
+  printDetailState = [...document.querySelectorAll("details")].map((item) => item.open);
+  document.querySelectorAll("details").forEach((item) => {
+    item.open = true;
+  });
+});
+
+window.addEventListener("afterprint", () => {
+  document.querySelectorAll("details").forEach((item, index) => {
+    item.open = printDetailState[index] ?? item.open;
+  });
+});
+
 document.querySelector("[data-print]")?.addEventListener("click", () => window.print());
 
 document.querySelector("[data-expand]")?.addEventListener("click", (event) => {

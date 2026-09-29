@@ -50,6 +50,40 @@ Unresolved
 
 A relatively close Y67 Devaney match and a separate R-A823 DeVenney tester justify finer comparison. They are two different people, and neither result yet establishes a recent common paternal ancestor with this Oliphant line. [[8]](./index.html#s8)
 
+### Which candidates deserve the next look?
+
+**These are research priorities, not odds of a former surname.** Devaney leads the named DNA comparisons, Wood follows, and seven broad-only Y67 matches remain tied. None is a probable identification of Aaron’s paternal family. The James–David records form a separate investigative track.
+
+Reviewed 29 September 2026 · GD counts differences across the same set of Y-DNA markers; it is not a number of generations. On a narrow screen, scroll each table sideways.
+
+Open candidates and research priorities
+
+| Candidate / comparison | Priority & status | What the evidence says | What would change it |
+| --- | --- | --- | --- |
+| [C01](./index.html#C01) Devaney · Y67 comparator | **1 · First DNA priority** Open; recent link unproved | Official Y67 genetic distance (GD) 5; displayed only as broad R-M269. A close STR match warrants finer testing, but does not establish a recent ancestor. [[8]](./index.html#s8) | Confirm the comparator’s identity and obtain a finer SNP placement. See [R01](./index.html#R01). |
+| [C02](./index.html#C02) DeVenney · separate A823 comparator | **1 · Complementary comparison** Open; recent link unproved | Shares R-A823, but is a different person from C01. No recent shared branch has been demonstrated. This cannot be counted as a second independent confirmation of the same family. [[8]](./index.html#s8) | Compare reliable shared and private variants at positions readable in both tests. See [R01](./index.html#R01). |
+| [C03](./index.html#C03) Wood | **2 · Next broad-only match** Open; finer DNA needed | Y67 GD6; broad R-M222. No finer branch or documented historical connection resolves this comparison. [[8]](./index.html#s8) | Obtain the actual finer SNP result before reconstructing a candidate pedigree. |
+| [C04](./index.html#C04) Cain, McCubbin, Nesbitt, Scanlan, Byrne, Collins, Mc Carroll | **3 · Seven tied comparisons** Open; finer DNA needed | Each is Y67 GD7 with only broad R-M269 or R-M222 displayed. There is no defensible ranking within this group. Y111 testing for three entries does not supply their missing SNP placement. [[8]](./index.html#s8) | Resolve each individual’s finer branch. Initial public-project checks are already complete; repeat only with new data. |
+| [C05](./index.html#C05) James–David Oliphant family | **Parallel documentary priority** Open; Aaron link unproved | Original testimony clarifies a real family and its associates, but supplies no Aaron bridge. Distinct Jameses and Davids must remain separate. No independently documented Y line from this family has established a comparison. [[6]](./index.html#s6) | Seek a contemporary relationship naming Aaron; identify the administrator David. See [H04](./index.html#H04) and [R06](./index.html#R06). |
+| [C06](./index.html#C06) Another or untested family | **Unranked · Keep open** Open alternative | The true paternal family may be missing from the databases. Eliminating named matches cannot prove the last surname left on a list. [[8]](./index.html#s8) [[12]](./index.html#s12) | Anchor the tested line with an independent male-line collateral and keep testing alternatives. See [R02](./index.html#R02). |
+
+### Other comparisons—and what has actually been ruled out
+
+The Y67 review sets aside a recent paternal connection to **14 specific tested men**: eight in C10, three in C11 and three in C12. It does not eliminate 14 independent families, or anyone else merely sharing their surnames. The other comparisons below retain their own limits.
+
+Additional comparisons and scoped exclusions
+
+| Candidate / comparison | Priority & status | What the evidence says | What would change it |
+| --- | --- | --- | --- |
+| [C07](./index.html#C07) McDougall, Cannon, Dodson, Byers | **Context · Big Y matches** Recent origin not established | These appear in the saved Big Y match results. A match-list entry or raw nonmatching-variant count does not identify a recent surname-era ancestor; no documented pedigree bridge identifies Aaron’s origin. [[8]](./index.html#s8) | Assess actual shared branches and pairwise coverage alongside independently documented pedigrees; do not rank by raw variant counts. |
+| [C08](./index.html#C08) Courtney, Brackett | **Lower-resolution comparisons** Open; insufficient resolution | They remain unresolved at Y37 and are not eliminated by the separate Y67 review. Their distances cannot be ranked directly against the 67-marker results. [[8]](./index.html#s8) | Obtain comparable higher-resolution results before drawing a paternal-family conclusion. |
+| [C09](./index.html#C09) Gordon | **Documentary association** Not established as a paternal candidate | George Gordon’s sworn statement identifies him as James Oliphant’s son-in-law. That is useful family context, but neither a Y-DNA link nor a connection to Aaron. [[6]](./index.html#s6) | Use the relationship to trace the James family; require separate evidence before promoting Gordon as Aaron’s paternal family. |
+| [C10](./index.html#C10) Brown, Whelan–Early, Reynolds, Kelly, Daly, McCormick, Ashworth, McCormack | **Set aside · Tested lines** Recent paternal link excluded as typed | Their resolved branches split from the tested Oliphant line above A823, at ZZ87. Brown also has Y67 GD5: the same distance as C01 can conceal a much older relationship. [[8]](./index.html#s8) | Revisit if a typing correction or a different family line appears. Other people with these surnames remain untested by this exclusion. |
+| [C11](./index.html#C11) Joyce, Quirke, Hawley | **Set aside · Tested lines** Recent paternal link excluded as typed | Their resolved branches split above A823, at DF105. They do not support a recent paternal-family connection to the tested line. [[8]](./index.html#s8) | Revisit only with changed branch evidence or a distinct comparator; do not exclude the whole surname. |
+| [C12](./index.html#C12) McMaster / McMasters | **Set aside · Qualified exclusion** Recent paternal link excluded on reviewed evidence | Their path follows A984/A11242 below A823. Visual inspection supports ancestral states at those sites in the tested Oliphant sample, placing it outside that path. This was not a raw-call or counted-depth audit. [[8]](./index.html#s8) | A formal call and coverage audit would strengthen the assessment. Preserve its qualitative limit and tester-specific scope. |
+
+Every entry has a stable reference, C01–C12. Future reviewed evidence should update its status, reason, next test and review date together. The [structured export](./research.json) preserves those fields; the [update guide](./README.md) explains the process. This table summarizes existing work, not a new round of searches.
+
 ### The family line we are working from
 
 The reported line through Solomon Rainwater Oliphant to Aaron and Rebecca remains the working family history. The original Bible pages or a complete, sourced transcript have not yet been retrieved. Later accounts may repeat the same source. That is a specific documentation gap, not affirmative evidence of adoption or invented parentage. [[9]](./index.html#s9)
@@ -379,6 +413,12 @@ Added generated Markdown and structured JSON, stable hypothesis and retrieval id
 ### Edition 01.2 · Sources and reproducible updates
 
 Added direct estate-packet, biography and court-image links already recorded in the research notes, plus a portable build and continuation guide. No new original-record reading or genealogical conclusion is claimed.
+
+29 September 2026
+
+### Edition 01.3 · Candidates in context
+
+Added ranked research priorities, unresolved comparisons and tester-specific exclusions to What We Know, based on the saved DNA and documentary reviews. Stable candidate references and review dates now travel with the Markdown and structured exports. No new searches, surname probabilities or genealogical conclusions are claimed.
 
 ### Use this research in your own work
 

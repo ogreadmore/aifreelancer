@@ -67,6 +67,15 @@ def markdown(node):
         return ''
     if 'record-controls' in node.attrs.get('class', '') or node.attrs.get('id') == 'no-records':
         return ''
+    if node.tag == 'table':
+        rows = []
+        for row in node.all('tr'):
+            cells = [c for c in row.children if isinstance(c, Node) and c.tag in {'th', 'td'}]
+            rows.append('| ' + ' | '.join(re.sub(r'\s+', ' ', markdown(c)).strip().replace('|', '\\|') for c in cells) + ' |')
+        if len(rows) > 1:
+            rows.insert(1, '| ' + ' | '.join('---' for _ in node.all('tr')[0].all('th')) + ' |')
+        captions = node.all('caption')
+        return '\n\n' + (captions[0].text() + '\n\n' if captions else '') + '\n'.join(rows) + '\n\n'
     body = ''.join(markdown(child) for child in node.children).strip()
     if node.tag == 'a':
         url = node.attrs.get('href', '')
@@ -110,6 +119,15 @@ def public_exports(public):
                    'confidence': n.all(cls='tag')[0].text() if n.all(cls='tag') else 'Unresolved alternative',
                    'assessment_markdown': clean_md(n)}
                   for n in main.all() if 'theory' in n.attrs.get('class', '').split() or 'alternative' in n.attrs.get('class', '').split()]
+    candidates = [{'id': n.attrs['id'], 'name': n.all('th')[0].text().removeprefix(n.attrs['id']).strip(),
+                   'priority': n.attrs['data-priority'], 'status': n.attrs['data-status'],
+                   'scope': n.attrs['data-scope'], 'reviewed_on': n.attrs['data-reviewed'],
+                   'assessment_markdown': clean_md(n.all(cls='candidate-evidence')[0]),
+                   'next_step_markdown': clean_md(n.all(cls='candidate-next')[0])}
+                  for n in main.all('tr', 'candidate')]
+    for row in main.all('tr', 'candidate'):
+        if row.all('strong')[0].text() != row.attrs['data-priority'] or row.all(cls='candidate-status')[0].text() != row.attrs['data-status']:
+            raise ValueError('Candidate visible status/priority differs from export: ' + row.attrs['id'])
     ids = [n.attrs['id'] for n in page.all() if 'id' in n.attrs]
     if len(ids) != len(set(ids)):
         raise ValueError('Public page has duplicate IDs')
@@ -118,7 +136,7 @@ def public_exports(public):
         if url.startswith('#') and len(url) > 1 and url[1:] not in ids:
             raise ValueError(f'Broken page anchor: {url}')
     data = {
-        'schema_version': '1.0.0',
+        'schema_version': '1.1.0',
         'title': page.all('title')[0].text(),
         'edition_date': page.all('time')[0].attrs['datetime'],
         'manuscript_sha256': digest(html),
@@ -129,7 +147,7 @@ def public_exports(public):
         'interpretation_rules': ['No origin theory is established as probable.', 'Do not infer surname change from missing birth or passenger records.',
                                  'Distinguish record statements, same-person inference, catalogue descriptions and unread originals.',
                                  'Tester-specific exclusions do not eliminate entire surnames.', 'The reported line through Aaron remains a working history with an underlying-source gap.'],
-        'sections': sections, 'hypotheses': hypotheses, 'retrieval_targets': tasks, 'sources': sources,
+        'sections': sections, 'hypotheses': hypotheses, 'candidates': candidates, 'retrieval_targets': tasks, 'sources': sources,
         'history_coverage': 'The public report includes bounded search summaries and retrieval states. Detailed private historical searches are not publicly reproduced. Absence here is not evidence of an unsearched source.',
         'update_policy': 'Change the reviewed HTML manuscript and its dated notes, then regenerate. This JSON is generated; do not edit it independently.'
     }
@@ -137,6 +155,7 @@ def public_exports(public):
               'type': 'object', 'required': list(data), 'additionalProperties': False,
               'properties': {key: {'type': 'array' if isinstance(value, list) else 'string'} for key, value in data.items()}}
     for key, required in [('sections', ['id', 'title', 'markdown']), ('hypotheses', ['id', 'statement', 'confidence', 'assessment_markdown']),
+                          ('candidates', ['id', 'name', 'priority', 'status', 'scope', 'reviewed_on', 'assessment_markdown', 'next_step_markdown']),
                           ('retrieval_targets', ['id', 'priority_group', 'title', 'details_markdown', 'status']), ('sources', ['id', 'citation', 'urls'])]:
         schema['properties'][key]['items'] = {'type': 'object', 'required': required, 'additionalProperties': False,
             'properties': {name: {'type': 'array', 'items': {'type': 'string'}} if name == 'urls' else {'type': 'string'} for name in required}}
@@ -147,13 +166,15 @@ def public_exports(public):
 ## Read first
 - [Human-readable report](./index.html): findings, qualifications, sources and retrieval agenda.
 - [Full Markdown report](./report.md): the same public manuscript, including expanded retrieval details.
-- [Structured research](./research.json): stable section, hypothesis, source and retrieval IDs.
+- [Structured research](./research.json): stable section, candidate, hypothesis, source and retrieval IDs.
 - [JSON schema](./research.schema.json): versioned export contract.
 - [Continuation and build guide](./README.md): reproducible updates and source limits.
 - [File checksums](./manifest.json): integrity and freshness; not a factual certification.
 
 ## Continuation rules
 Read findings, uncertainty, source notes and completed coverage before proposing searches. No parent, immigrant generation, overseas home or surname event is established. Do not turn missing records into positive evidence. Do not merge the two Devaney comparators or distinct James/David candidates. Respect independent-source and same-person limits. An exact retrieval target is not a discovery.
+
+Candidate IDs C01–C12 retain assessment, scope, next test and review date. Their ranks are information-gathering priorities, not surname probabilities. A tested-line exclusion never eliminates an entire surname. Preserve IDs, cite changed evidence and date the review before regenerating the table and exports.
 
 This package summarizes private genetic observations without publishing living matches or raw data. It does not contain the complete private search ledger. A public omission must not be treated as proof that a search was never done. Researchers with authorized access to the separate private archive should also consult its current operational checkpoint.
 

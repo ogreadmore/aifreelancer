@@ -2,6 +2,49 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
   "properties": {
+    "candidates": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "assessment_markdown": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "next_step_markdown": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "reviewed_on": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "priority",
+          "status",
+          "scope",
+          "reviewed_on",
+          "assessment_markdown",
+          "next_step_markdown"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
     "edition_date": {
       "type": "string"
     },
@@ -155,6 +198,7 @@
     "interpretation_rules",
     "sections",
     "hypotheses",
+    "candidates",
     "retrieval_targets",
     "sources",
     "history_coverage",

@@ -1,4 +1,126 @@
 {
+  "candidates": [
+    {
+      "assessment_markdown": "Official Y67 genetic distance (GD) 5; displayed only as broad R-M269. A close STR match warrants finer testing, but does not establish a recent ancestor. [[8]](./index.html#s8)",
+      "id": "C01",
+      "name": "Devaney · Y67 comparator",
+      "next_step_markdown": "Confirm the comparator’s identity and obtain a finer SNP placement. See [R01](./index.html#R01).",
+      "priority": "1 · First DNA priority",
+      "reviewed_on": "2026-09-29",
+      "scope": "one Y67 comparator",
+      "status": "Open; recent link unproved"
+    },
+    {
+      "assessment_markdown": "Shares R-A823, but is a different person from C01. No recent shared branch has been demonstrated. This cannot be counted as a second independent confirmation of the same family. [[8]](./index.html#s8)",
+      "id": "C02",
+      "name": "DeVenney · separate A823 comparator",
+      "next_step_markdown": "Compare reliable shared and private variants at positions readable in both tests. See [R01](./index.html#R01).",
+      "priority": "1 · Complementary comparison",
+      "reviewed_on": "2026-09-29",
+      "scope": "a separate public A823 comparator",
+      "status": "Open; recent link unproved"
+    },
+    {
+      "assessment_markdown": "Y67 GD6; broad R-M222. No finer branch or documented historical connection resolves this comparison. [[8]](./index.html#s8)",
+      "id": "C03",
+      "name": "Wood",
+      "next_step_markdown": "Obtain the actual finer SNP result before reconstructing a candidate pedigree.",
+      "priority": "2 · Next broad-only match",
+      "reviewed_on": "2026-09-29",
+      "scope": "one Y67 comparator",
+      "status": "Open; finer DNA needed"
+    },
+    {
+      "assessment_markdown": "Each is Y67 GD7 with only broad R-M269 or R-M222 displayed. There is no defensible ranking within this group. Y111 testing for three entries does not supply their missing SNP placement. [[8]](./index.html#s8)",
+      "id": "C04",
+      "name": "Cain, McCubbin, Nesbitt, Scanlan, Byrne, Collins, Mc Carroll",
+      "next_step_markdown": "Resolve each individual’s finer branch. Initial public-project checks are already complete; repeat only with new data.",
+      "priority": "3 · Seven tied comparisons",
+      "reviewed_on": "2026-09-29",
+      "scope": "seven Y67 comparators; no order within this group",
+      "status": "Open; finer DNA needed"
+    },
+    {
+      "assessment_markdown": "Original testimony clarifies a real family and its associates, but supplies no Aaron bridge. Distinct Jameses and Davids must remain separate. No independently documented Y line from this family has established a comparison. [[6]](./index.html#s6)",
+      "id": "C05",
+      "name": "James–David Oliphant family",
+      "next_step_markdown": "Seek a contemporary relationship naming Aaron; identify the administrator David. See [H04](./index.html#H04) and [R06](./index.html#R06).",
+      "priority": "Parallel documentary priority",
+      "reviewed_on": "2026-09-29",
+      "scope": "the Charleston–Union historical family, not all Oliphants",
+      "status": "Open; Aaron link unproved"
+    },
+    {
+      "assessment_markdown": "The true paternal family may be missing from the databases. Eliminating named matches cannot prove the last surname left on a list. [[8]](./index.html#s8) [[12]](./index.html#s12)",
+      "id": "C06",
+      "name": "Another or untested family",
+      "next_step_markdown": "Anchor the tested line with an independent male-line collateral and keep testing alternatives. See [R02](./index.html#R02).",
+      "priority": "Unranked · Keep open",
+      "reviewed_on": "2026-09-29",
+      "scope": "families absent from, or unresolved in, the tested sample",
+      "status": "Open alternative"
+    },
+    {
+      "assessment_markdown": "These appear in the saved Big Y match results. A match-list entry or raw nonmatching-variant count does not identify a recent surname-era ancestor; no documented pedigree bridge identifies Aaron’s origin. [[8]](./index.html#s8)",
+      "id": "C07",
+      "name": "McDougall, Cannon, Dodson, Byers",
+      "next_step_markdown": "Assess actual shared branches and pairwise coverage alongside independently documented pedigrees; do not rank by raw variant counts.",
+      "priority": "Context · Big Y matches",
+      "reviewed_on": "2026-09-29",
+      "scope": "four Big Y comparators, not whole surnames",
+      "status": "Recent origin not established"
+    },
+    {
+      "assessment_markdown": "They remain unresolved at Y37 and are not eliminated by the separate Y67 review. Their distances cannot be ranked directly against the 67-marker results. [[8]](./index.html#s8)",
+      "id": "C08",
+      "name": "Courtney, Brackett",
+      "next_step_markdown": "Obtain comparable higher-resolution results before drawing a paternal-family conclusion.",
+      "priority": "Lower-resolution comparisons",
+      "reviewed_on": "2026-09-29",
+      "scope": "two Y37-only comparisons",
+      "status": "Open; insufficient resolution"
+    },
+    {
+      "assessment_markdown": "George Gordon’s sworn statement identifies him as James Oliphant’s son-in-law. That is useful family context, but neither a Y-DNA link nor a connection to Aaron. [[6]](./index.html#s6)",
+      "id": "C09",
+      "name": "Gordon",
+      "next_step_markdown": "Use the relationship to trace the James family; require separate evidence before promoting Gordon as Aaron’s paternal family.",
+      "priority": "Documentary association",
+      "reviewed_on": "2026-09-29",
+      "scope": "George Gordon’s recorded relationship to James",
+      "status": "Not established as a paternal candidate"
+    },
+    {
+      "assessment_markdown": "Their resolved branches split from the tested Oliphant line above A823, at ZZ87. Brown also has Y67 GD5: the same distance as C01 can conceal a much older relationship. [[8]](./index.html#s8)",
+      "id": "C10",
+      "name": "Brown, Whelan–Early, Reynolds, Kelly, Daly, McCormick, Ashworth, McCormack",
+      "next_step_markdown": "Revisit if a typing correction or a different family line appears. Other people with these surnames remain untested by this exclusion.",
+      "priority": "Set aside · Tested lines",
+      "reviewed_on": "2026-09-29",
+      "scope": "eight individual Y67 comparators only",
+      "status": "Recent paternal link excluded as typed"
+    },
+    {
+      "assessment_markdown": "Their resolved branches split above A823, at DF105. They do not support a recent paternal-family connection to the tested line. [[8]](./index.html#s8)",
+      "id": "C11",
+      "name": "Joyce, Quirke, Hawley",
+      "next_step_markdown": "Revisit only with changed branch evidence or a distinct comparator; do not exclude the whole surname.",
+      "priority": "Set aside · Tested lines",
+      "reviewed_on": "2026-09-29",
+      "scope": "three individual Y67 comparators only",
+      "status": "Recent paternal link excluded as typed"
+    },
+    {
+      "assessment_markdown": "Their path follows A984/A11242 below A823. Visual inspection supports ancestral states at those sites in the tested Oliphant sample, placing it outside that path. This was not a raw-call or counted-depth audit. [[8]](./index.html#s8)",
+      "id": "C12",
+      "name": "McMaster / McMasters",
+      "next_step_markdown": "A formal call and coverage audit would strengthen the assessment. Preserve its qualitative limit and tester-specific scope.",
+      "priority": "Set aside · Qualified exclusion",
+      "reviewed_on": "2026-09-29",
+      "scope": "three individual Y67 comparators only; qualitative read-view limit",
+      "status": "Recent paternal link excluded on reviewed evidence"
+    }
+  ],
   "edition_date": "2026-09-29",
   "history_coverage": "The public report includes bounded search summaries and retrieval states. Detailed private historical searches are not publicly reproduced. Absence here is not evidence of an unsearched source.",
   "hypotheses": [
@@ -41,7 +163,7 @@
     "Tester-specific exclusions do not eliminate entire surnames.",
     "The reported line through Aaron remains a working history with an underlying-source gap."
   ],
-  "manuscript_sha256": "1904ea19a499f1df29e06b43f3b8532246701c9b5a9300d0c5b9af5b4c14566e",
+  "manuscript_sha256": "00d09436c0a1a60d91510544d510a2982975293f6513e8a94a17a7f5256e57be",
   "publication_status": "working_edition_deployment_not_asserted",
   "reader_start": [
     "./report.md",
@@ -150,7 +272,7 @@
       "title": "14 · Conditional follow-ups Other records that need a sharper target Not order-ready"
     }
   ],
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "scope": "Audience-neutral public synthesis. Private observations are summarized with explicit limits; this is not a release of private DNA or the complete research corpus.",
   "sections": [
     {
@@ -160,7 +282,7 @@
     },
     {
       "id": "findings",
-      "markdown": "02 / The present answer\n\n## The American story is clearer. The older connection is still missing.\n\nNo parent, immigrant generation, overseas home, or surname-transition event has yet been established for Aaron. No single origin theory currently deserves to be called probable.\n\nThe strongest progress is a firmer framework for testing those questions. Contemporary records identify Aaron’s wife, stated residences, land transactions and estate. Separately, original court testimony clarifies a proposed James–David Oliphant family. DNA comparisons now distinguish promising unresolved matches from matches whose shared paternal ancestry is much older.\n\nRecorded\n\n### Aaron’s wife and Georgia household have a solid anchor.\n\nA deed dated 29 January 1821 calls Aaron of Hancock County, Georgia, and identifies his wife Rebecca as a daughter of deceased Solomon Rainwater. It names *her* father, not Aaron’s. His estate administration establishes that he was dead by 14 December 1826. [[1]](./index.html#s1) [[4]](./index.html#s4)\n\nRecorded\n\n### The James–David candidate family is more distinct.\n\nGeorge Gordon explicitly acknowledged that he was deceased James Oliphant’s son-in-law. David Oliphant was named as a coadministrator in Charleston. Neither observation identifies Aaron as a relative; David is not thereby proved to be James’s son or the painter. [[6]](./index.html#s6)\n\nUnresolved\n\n### Devaney is a useful comparison, not a recovered former surname.\n\nA relatively close Y67 Devaney match and a separate R-A823 DeVenney tester justify finer comparison. They are two different people, and neither result yet establishes a recent common paternal ancestor with this Oliphant line. [[8]](./index.html#s8)\n\n### The family line we are working from\n\nThe reported line through Solomon Rainwater Oliphant to Aaron and Rebecca remains the working family history. The original Bible pages or a complete, sourced transcript have not yet been retrieved. Later accounts may repeat the same source. That is a specific documentation gap, not affirmative evidence of adoption or invented parentage. [[9]](./index.html#s9)",
+      "markdown": "02 / The present answer\n\n## The American story is clearer. The older connection is still missing.\n\nNo parent, immigrant generation, overseas home, or surname-transition event has yet been established for Aaron. No single origin theory currently deserves to be called probable.\n\nThe strongest progress is a firmer framework for testing those questions. Contemporary records identify Aaron’s wife, stated residences, land transactions and estate. Separately, original court testimony clarifies a proposed James–David Oliphant family. DNA comparisons now distinguish promising unresolved matches from matches whose shared paternal ancestry is much older.\n\nRecorded\n\n### Aaron’s wife and Georgia household have a solid anchor.\n\nA deed dated 29 January 1821 calls Aaron of Hancock County, Georgia, and identifies his wife Rebecca as a daughter of deceased Solomon Rainwater. It names *her* father, not Aaron’s. His estate administration establishes that he was dead by 14 December 1826. [[1]](./index.html#s1) [[4]](./index.html#s4)\n\nRecorded\n\n### The James–David candidate family is more distinct.\n\nGeorge Gordon explicitly acknowledged that he was deceased James Oliphant’s son-in-law. David Oliphant was named as a coadministrator in Charleston. Neither observation identifies Aaron as a relative; David is not thereby proved to be James’s son or the painter. [[6]](./index.html#s6)\n\nUnresolved\n\n### Devaney is a useful comparison, not a recovered former surname.\n\nA relatively close Y67 Devaney match and a separate R-A823 DeVenney tester justify finer comparison. They are two different people, and neither result yet establishes a recent common paternal ancestor with this Oliphant line. [[8]](./index.html#s8)\n\n### Which candidates deserve the next look?\n\n**These are research priorities, not odds of a former surname.** Devaney leads the named DNA comparisons, Wood follows, and seven broad-only Y67 matches remain tied. None is a probable identification of Aaron’s paternal family. The James–David records form a separate investigative track.\n\nReviewed 29 September 2026 · GD counts differences across the same set of Y-DNA markers; it is not a number of generations. On a narrow screen, scroll each table sideways.\n\nOpen candidates and research priorities\n\n| Candidate / comparison | Priority & status | What the evidence says | What would change it |\n| --- | --- | --- | --- |\n| [C01](./index.html#C01) Devaney · Y67 comparator | **1 · First DNA priority** Open; recent link unproved | Official Y67 genetic distance (GD) 5; displayed only as broad R-M269. A close STR match warrants finer testing, but does not establish a recent ancestor. [[8]](./index.html#s8) | Confirm the comparator’s identity and obtain a finer SNP placement. See [R01](./index.html#R01). |\n| [C02](./index.html#C02) DeVenney · separate A823 comparator | **1 · Complementary comparison** Open; recent link unproved | Shares R-A823, but is a different person from C01. No recent shared branch has been demonstrated. This cannot be counted as a second independent confirmation of the same family. [[8]](./index.html#s8) | Compare reliable shared and private variants at positions readable in both tests. See [R01](./index.html#R01). |\n| [C03](./index.html#C03) Wood | **2 · Next broad-only match** Open; finer DNA needed | Y67 GD6; broad R-M222. No finer branch or documented historical connection resolves this comparison. [[8]](./index.html#s8) | Obtain the actual finer SNP result before reconstructing a candidate pedigree. |\n| [C04](./index.html#C04) Cain, McCubbin, Nesbitt, Scanlan, Byrne, Collins, Mc Carroll | **3 · Seven tied comparisons** Open; finer DNA needed | Each is Y67 GD7 with only broad R-M269 or R-M222 displayed. There is no defensible ranking within this group. Y111 testing for three entries does not supply their missing SNP placement. [[8]](./index.html#s8) | Resolve each individual’s finer branch. Initial public-project checks are already complete; repeat only with new data. |\n| [C05](./index.html#C05) James–David Oliphant family | **Parallel documentary priority** Open; Aaron link unproved | Original testimony clarifies a real family and its associates, but supplies no Aaron bridge. Distinct Jameses and Davids must remain separate. No independently documented Y line from this family has established a comparison. [[6]](./index.html#s6) | Seek a contemporary relationship naming Aaron; identify the administrator David. See [H04](./index.html#H04) and [R06](./index.html#R06). |\n| [C06](./index.html#C06) Another or untested family | **Unranked · Keep open** Open alternative | The true paternal family may be missing from the databases. Eliminating named matches cannot prove the last surname left on a list. [[8]](./index.html#s8) [[12]](./index.html#s12) | Anchor the tested line with an independent male-line collateral and keep testing alternatives. See [R02](./index.html#R02). |\n\n### Other comparisons—and what has actually been ruled out\n\nThe Y67 review sets aside a recent paternal connection to **14 specific tested men**: eight in C10, three in C11 and three in C12. It does not eliminate 14 independent families, or anyone else merely sharing their surnames. The other comparisons below retain their own limits.\n\nAdditional comparisons and scoped exclusions\n\n| Candidate / comparison | Priority & status | What the evidence says | What would change it |\n| --- | --- | --- | --- |\n| [C07](./index.html#C07) McDougall, Cannon, Dodson, Byers | **Context · Big Y matches** Recent origin not established | These appear in the saved Big Y match results. A match-list entry or raw nonmatching-variant count does not identify a recent surname-era ancestor; no documented pedigree bridge identifies Aaron’s origin. [[8]](./index.html#s8) | Assess actual shared branches and pairwise coverage alongside independently documented pedigrees; do not rank by raw variant counts. |\n| [C08](./index.html#C08) Courtney, Brackett | **Lower-resolution comparisons** Open; insufficient resolution | They remain unresolved at Y37 and are not eliminated by the separate Y67 review. Their distances cannot be ranked directly against the 67-marker results. [[8]](./index.html#s8) | Obtain comparable higher-resolution results before drawing a paternal-family conclusion. |\n| [C09](./index.html#C09) Gordon | **Documentary association** Not established as a paternal candidate | George Gordon’s sworn statement identifies him as James Oliphant’s son-in-law. That is useful family context, but neither a Y-DNA link nor a connection to Aaron. [[6]](./index.html#s6) | Use the relationship to trace the James family; require separate evidence before promoting Gordon as Aaron’s paternal family. |\n| [C10](./index.html#C10) Brown, Whelan–Early, Reynolds, Kelly, Daly, McCormick, Ashworth, McCormack | **Set aside · Tested lines** Recent paternal link excluded as typed | Their resolved branches split from the tested Oliphant line above A823, at ZZ87. Brown also has Y67 GD5: the same distance as C01 can conceal a much older relationship. [[8]](./index.html#s8) | Revisit if a typing correction or a different family line appears. Other people with these surnames remain untested by this exclusion. |\n| [C11](./index.html#C11) Joyce, Quirke, Hawley | **Set aside · Tested lines** Recent paternal link excluded as typed | Their resolved branches split above A823, at DF105. They do not support a recent paternal-family connection to the tested line. [[8]](./index.html#s8) | Revisit only with changed branch evidence or a distinct comparator; do not exclude the whole surname. |\n| [C12](./index.html#C12) McMaster / McMasters | **Set aside · Qualified exclusion** Recent paternal link excluded on reviewed evidence | Their path follows A984/A11242 below A823. Visual inspection supports ancestral states at those sites in the tested Oliphant sample, placing it outside that path. This was not a raw-call or counted-depth audit. [[8]](./index.html#s8) | A formal call and coverage audit would strengthen the assessment. Preserve its qualitative limit and tester-specific scope. |\n\nEvery entry has a stable reference, C01–C12. Future reviewed evidence should update its status, reason, next test and review date together. The [structured export](./research.json) preserves those fields; the [update guide](./README.md) explains the process. This table summarizes existing work, not a new round of searches.\n\n### The family line we are working from\n\nThe reported line through Solomon Rainwater Oliphant to Aaron and Rebecca remains the working family history. The original Bible pages or a complete, sourced transcript have not yet been retrieved. Later accounts may repeat the same source. That is a specific documentation gap, not affirmative evidence of adoption or invented parentage. [[9]](./index.html#s9)",
       "title": "The American story is clearer. The older connection is still missing."
     },
     {
@@ -190,7 +312,7 @@
     },
     {
       "id": "updates",
-      "markdown": "08 / Edition history\n\n## A living report, with a memory.\n\n29 September 2026\n\n### Edition 01 · A consolidated starting point\n\nReconciles the American chronology, separates the Devaney comparators, preserves the missing Aaron–James/David connection, and brings the outstanding-record agenda into one readable edition.\n\nCorrections carried forward include Appling grant page 63, Gordon’s explicit son-in-law testimony, the separate Davids and Jameses, and the distinction between an accessible marriage register and a bounded search that found no target entry.\n\nFuture editions should state which claim changed, what source changed it, and what remains unresolved. Superseded interpretations should remain traceable rather than disappear from the record.\n\n29 September 2026\n\n### Edition 01.1 · A reusable research record\n\nAdded generated Markdown and structured JSON, stable hypothesis and retrieval identifiers, and a machine-readable entry point. Reframed the report for any reader. These are presentation and continuity improvements; no new genealogical conclusion follows.\n\n29 September 2026\n\n### Edition 01.2 · Sources and reproducible updates\n\nAdded direct estate-packet, biography and court-image links already recorded in the research notes, plus a portable build and continuation guide. No new original-record reading or genealogical conclusion is claimed.\n\n### Use this research in your own work\n\n[Read the full Markdown report](./report.md) · [Structured research (JSON)](./research.json) · [Start here for AI readers](./llms.txt) · [Edition checksums](./manifest.json) · [Research and update guide](./README.md)\n\nThese exports contain the same public evidence and qualifications, including expanded retrieval details. They are regenerated together; they do not expose private DNA records. A missing search in this public summary does not mean it has never been attempted.\n\nEditorial note: research assistance includes AI-supported retrieval, synthesis and comparison. Human-readable source references and explicit limits make review possible; they do not turn an inference into a fact. This web edition remains a provisional working report. Original archive images and private DNA materials are not reproduced.",
+      "markdown": "08 / Edition history\n\n## A living report, with a memory.\n\n29 September 2026\n\n### Edition 01 · A consolidated starting point\n\nReconciles the American chronology, separates the Devaney comparators, preserves the missing Aaron–James/David connection, and brings the outstanding-record agenda into one readable edition.\n\nCorrections carried forward include Appling grant page 63, Gordon’s explicit son-in-law testimony, the separate Davids and Jameses, and the distinction between an accessible marriage register and a bounded search that found no target entry.\n\nFuture editions should state which claim changed, what source changed it, and what remains unresolved. Superseded interpretations should remain traceable rather than disappear from the record.\n\n29 September 2026\n\n### Edition 01.1 · A reusable research record\n\nAdded generated Markdown and structured JSON, stable hypothesis and retrieval identifiers, and a machine-readable entry point. Reframed the report for any reader. These are presentation and continuity improvements; no new genealogical conclusion follows.\n\n29 September 2026\n\n### Edition 01.2 · Sources and reproducible updates\n\nAdded direct estate-packet, biography and court-image links already recorded in the research notes, plus a portable build and continuation guide. No new original-record reading or genealogical conclusion is claimed.\n\n29 September 2026\n\n### Edition 01.3 · Candidates in context\n\nAdded ranked research priorities, unresolved comparisons and tester-specific exclusions to What We Know, based on the saved DNA and documentary reviews. Stable candidate references and review dates now travel with the Markdown and structured exports. No new searches, surname probabilities or genealogical conclusions are claimed.\n\n### Use this research in your own work\n\n[Read the full Markdown report](./report.md) · [Structured research (JSON)](./research.json) · [Start here for AI readers](./llms.txt) · [Edition checksums](./manifest.json) · [Research and update guide](./README.md)\n\nThese exports contain the same public evidence and qualifications, including expanded retrieval details. They are regenerated together; they do not expose private DNA records. A missing search in this public summary does not mean it has never been attempted.\n\nEditorial note: research assistance includes AI-supported retrieval, synthesis and comparison. Human-readable source references and explicit limits make review possible; they do not turn an inference into a fact. This web edition remains a provisional working report. Original archive images and private DNA materials are not reproduced.",
       "title": "A living report, with a memory."
     }
   ],

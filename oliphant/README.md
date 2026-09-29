@@ -17,6 +17,10 @@ The intended web address is https://aifreelancer.co/oliphant/. This repository's
 
 Read the complete report before searching. Use H01–H05 for competing hypotheses, R01–R14 for retrieval targets, and s1–s12 for source notes. These IDs are durable references: preserve them when editing. A confidence label is a qualitative assessment, not a calculated probability.
 
+The candidate tables in What We Know use stable IDs C01–C12. Their priority order ranks information gathering, not surname likelihood. Keep the two Devaney comparators separate and retain the scope of every tested-line exclusion. For each changed assessment, update the visible priority/status, evidence, next test, and row attributes (`data-priority`, `data-status`, `data-scope`, `data-reviewed`) in `index.html`. Date the review, cite its evidence, and add an edition note. Preserve IDs if a candidate is downgraded or excluded; add new IDs for new comparisons. Regenerate and check all exports before publishing. Updates require reviewed evidence; no automatic research or status promotion occurs.
+
+`research.json` schema 1.1.0 includes `candidates` with those fields and cited Markdown assessments. The Markdown report reproduces both tables. Do not update one export independently of the manuscript.
+
 For each new search, record the date, question, linked hypothesis or target, repository, collection, exact query, filters, date and image/page coverage, access conditions, result, source citation, limitations, and next action. Mark interrupted and partial searches explicitly. A negative result applies only to the coverage actually examined. Before repeating work, check both current and older editions and document why a repeat is worthwhile.
 
 This is a comprehensive **public synthesis**, not the complete private working archive. Some DNA comparisons and historical search logs cannot be reproduced publicly. Their limitations remain in the report. Absence from this package never proves that a search was not attempted. Researchers with authorized private-archive access should consult that archive's current checkpoint and full search notes as well.

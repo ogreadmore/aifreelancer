@@ -41,7 +41,7 @@
     "Tester-specific exclusions do not eliminate entire surnames.",
     "The reported line through Aaron remains a working history with an underlying-source gap."
   ],
-  "manuscript_sha256": "70e97e6657e886a2ce8557b4ee7c9caa11a61ad790da4f6b63c740572379c21a",
+  "manuscript_sha256": "1904ea19a499f1df29e06b43f3b8532246701c9b5a9300d0c5b9af5b4c14566e",
   "publication_status": "working_edition_deployment_not_asserted",
   "reader_start": [
     "./report.md",

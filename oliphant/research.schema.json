@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "edition_date": {
+      "type": "string"
+    },
+    "history_coverage": {
+      "type": "string"
+    },
+    "hypotheses": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "assessment_markdown": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "statement",
+          "confidence",
+          "assessment_markdown"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "intended_base_url": {
+      "type": "string"
+    },
+    "interpretation_rules": {
+      "type": "array"
+    },
+    "manuscript_sha256": {
+      "type": "string"
+    },
+    "publication_status": {
+      "type": "string"
+    },
+    "reader_start": {
+      "type": "array"
+    },
+    "retrieval_targets": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "details_markdown": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "priority_group": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "priority_group",
+          "title",
+          "details_markdown",
+          "status"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "sections": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "markdown": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "markdown"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "citation": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "citation",
+          "urls"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "title": {
+      "type": "string"
+    },
+    "update_policy": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "title",
+    "edition_date",
+    "manuscript_sha256",
+    "publication_status",
+    "intended_base_url",
+    "scope",
+    "reader_start",
+    "interpretation_rules",
+    "sections",
+    "hypotheses",
+    "retrieval_targets",
+    "sources",
+    "history_coverage",
+    "update_policy"
+  ],
+  "title": "Oliphant public research export",
+  "type": "object"
+}

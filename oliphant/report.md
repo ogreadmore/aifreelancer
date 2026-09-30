@@ -1,6 +1,6 @@
 # The Oliphant Inquiry
 
-Public working edition, 2026-09-29. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
+Public working edition, 2026-09-30. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
 01 / The questions
 
@@ -92,9 +92,12 @@ Family tree / Historical people
 
 ## The family line, with its evidence.
 
-This small tree shows the reported family through three historical generations. Each relationship carries its own evidence. Aaron’s parents remain unknown; the original record establishing his parentage of Solomon has not yet been located.
+Twenty deceased historical people appear in the core family line and two connected branches. Each relationship carries its own evidence. Aaron’s parents remain unknown; the original record establishing his parentage of Solomon has not yet been located.
 
-Recorded spouse relationship Reported parent relationship
+[Aaron](./index.html#T01) & [Rebecca](./index.html#T02) → [Solomon](./index.html#T03) & [Amanda](./index.html#T04) → [Andrew](./index.html#T05) → [Benjamin Sr.](./index.html#T06) & [Hazel](./index.html#T07) → [Benjamin Jr.](./index.html#T08)
+Arrows follow the reported line; each link’s evidence and qualification appear below.
+
+Relationship named in an original record Reported, indexed or indirectly supported; read each label
 
 T01
 
@@ -158,7 +161,221 @@ A. J. appears aged three in the saved 1850 household and twelve in 1860. Later f
 
 [1860 census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBT-SLT) · [Cemetery transcription](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm)
 
-Reviewed 29 September 2026 from the saved source audits. The underlying Bible or complete transcript remains outstanding; later accounts may repeat the same family information. Stable references T01–T05 identify people and T-R01–T-R06 identify relationships. This tree contains historical people only and does not assign a genetic result to Aaron. [Bible provenance](./index.html#s9) · [What would resolve the gap](./index.html#R03).
+Core line / Later generations
+
+### Andrew’s reported family, continued
+
+Follow Andrew to the reported grandfather and the obituary-supported recent family. Each parent link retains its own qualification.
+
+**Andrew → Benjamin Sr.: reported father.** The descendant account and collaborative profile state this link. The saved 1910 census supports age and birthplace context but does not name his father. [2003 family account](https://www.ancestry.ca/boards/surnames.oliphant/314.1) · [Benjamin profile](https://ancestors.familysearch.org/en/K677-K7B/benjamin-franklin-oliphant-1892-1932).
+
+T06
+
+### Benjamin Franklin Oliphant Sr.
+
+Born about 1892; death 1932 reported
+
+The saved 1910 original records age 18, Texas birth, father born Georgia and mother Mississippi. It names neither parent. Andrew’s fatherhood and the 1932 death remain family-history claims.
+
+[Benjamin profile](https://ancestors.familysearch.org/en/K677-K7B/benjamin-franklin-oliphant-1892-1932) · [2003 family account](https://www.ancestry.ca/boards/surnames.oliphant/314.1)
+
+T07
+
+### Hazel Anna Taylor
+
+Birth 11 May 1898 indexed; death unverified
+
+The birth index names Richard Martin Taylor and Effie Newberry. The 1900 original calls Hazel a daughter in Morton R. and Effie Taylor’s household. The reported 1977 death has not been original-verified here.
+
+[Hazel birth index](https://www.familysearch.org/ark:/61903/1:1:4LDS-K2ZM) · [1900 census](https://www.familysearch.org/ark:/61903/3:1:S3HT-67S9-83L) · [Hobbs obituary](https://www.okcemeteries.net/love/lakeview/h/hobbsma.htm)
+
+**Benjamin Sr. — Hazel: obituary-supported couple.** The Hobbs obituary explicitly names both as her parents. The saved 1931 school record supports identification. Their exact marriage date and place remain unverified. [Hobbs obituary](https://www.okcemeteries.net/love/lakeview/h/hobbsma.htm).
+
+**Benjamin Sr. → Benjamin Jr.: indirectly supported father.** Reported family history agrees with matching deceased sibling groups in two obituaries. No inspected Ben Jr. record explicitly names his father. [Hobbs obituary](https://www.okcemeteries.net/love/lakeview/h/hobbsma.htm) · [DeJohn obituary](https://obits.dejohnfuneral.com/benjamin-f-oliphant).
+
+**Hazel → Benjamin Jr.: indirectly supported mother.** The same sibling-group correlation supports this reported relationship; no inspected named-parent birth record closes it directly. [Hobbs obituary](https://www.okcemeteries.net/love/lakeview/h/hobbsma.htm) · [DeJohn obituary](https://obits.dejohnfuneral.com/benjamin-f-oliphant).
+
+T08
+
+### Benjamin Franklin Oliphant Jr.
+
+Birth 1925 reported; died 22 December 2011
+
+The funeral notice states death on 22 December 2011, aged 86. Matching deceased sibling groups in two obituaries support the proposed parents indirectly. The funeral notice does not name his parents.
+
+[DeJohn obituary](https://obits.dejohnfuneral.com/benjamin-f-oliphant) · [Hobbs obituary](https://www.okcemeteries.net/love/lakeview/h/hobbsma.htm)
+
+[Back to tree overview ↑](./index.html#family-tree)
+
+Connected branch / Rainwater
+
+### Rebecca’s father and Amanda’s family
+
+These families connect through Rebecca and Amanda. The two Solomon Rainwater men have separate identities; no additional father–son link between them is asserted.
+
+T09
+
+### Solomon Rainwater (Rebecca’s father)
+
+Died before 29 January 1821; estate administered in 1814
+
+The 1821 deed explicitly identifies deceased Solomon as Rebecca’s father. Administration in 1814 does not establish an exact death day. He is distinct from Amanda’s father and Solomon Rainwater Oliphant.
+
+[1821 deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B) · [1814 estate packet](https://www.therainwatercollection.com/reference/ref1445_solomon-rainwater-estate-sale.pdf)
+
+**Elder Solomon → Rebecca: recorded father.** The 29 January 1821 deed explicitly calls Rebecca deceased Solomon’s daughter. [1821 deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B).
+
+T10
+
+### Solomon Rainwater (Amanda’s father)
+
+Alive at will execution, 16 September 1856
+
+The recorded will explicitly names Amanda Oliphant as daughter, Nancy as wife, and the children below. The inspected pages establish execution, not the indexed 1856 death/probate date.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+T11
+
+### Nancy Rainwater
+
+Named wife in the 1856 will; vital dates unknown
+
+Items 3, 15, 17 and 18 explicitly call Nancy the testator’s wife. Her maiden surname is not established by this original. The will does not state she was mother of every named child.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+**Amanda’s father Solomon → Amanda: recorded father.** Items 5 and 17 explicitly name Amanda Oliphant as daughter. Her identification as Solomon Oliphant’s wife rests separately on marriage and household records. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+**Solomon — Nancy: recorded spouses.** The will repeatedly calls Nancy his wife. No maiden surname or maternity for the named children is inferred. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+#### Amanda’s named siblings
+
+Seven unambiguous names from one recorded will. Separate clauses are parts of the same source, not independent confirmations. Their mothers are not assigned.
+
+T12
+
+### Samantha Slater
+
+Named daughter in the 1856 will; vital dates unknown
+
+Items 6 and 17 name her as a daughter/child of Amanda’s father Solomon. Slater is the recorded surname; no husband is identified here.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+T13
+
+### Nancy Jones
+
+Named daughter in the 1856 will; vital dates unknown
+
+Items 7 and 17 name Nancy Jones as a daughter/child of Amanda’s father Solomon. This is a separate person from his wife Nancy Rainwater. No husband is identified here.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+T14
+
+### Charity Rainwater
+
+Named daughter in the 1856 will; vital dates unknown
+
+Items 8 and 17 identify Charity as daughter/child of Amanda’s father Solomon. No birth or death date follows from these clauses.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+T15
+
+### Cicero Rainwater
+
+Named son in the 1856 will; vital dates unknown
+
+Items 9, 14 and 18 call Cicero a son; item 17 names him among the children. Executor provisions give no vital dates.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+T16
+
+### Virgil Rainwater
+
+Named son in the 1856 will; vital dates unknown
+
+Items 10, 14 and 18 call Virgil a son; item 17 names him among the children. No vital dates are established here.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+T17
+
+### Horace Rainwater
+
+Named son in the 1856 will; vital dates unknown
+
+Items 11, 14 and 18 call Horace a son; item 17 names him among the children. No vital dates are established here.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+T18
+
+### Leander Rainwater
+
+Named son in the 1856 will; vital dates unknown
+
+Item 17 explicitly calls Leander a son and specifies a separate cash share. That provision establishes the stated relationship, not his age or vital dates.
+
+[1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+**Solomon → Samantha Slater: recorded daughter.** Explicitly named in the 1856 will; vital dates and mother remain unestablished. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+**Solomon → Nancy Jones: recorded daughter.** Explicitly named in the 1856 will; vital dates and mother remain unestablished. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+**Solomon → Charity Rainwater: recorded daughter.** Explicitly named in the 1856 will; vital dates and mother remain unestablished. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+**Solomon → Cicero Rainwater: recorded son.** Explicitly named in the 1856 will; vital dates and mother remain unestablished. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+**Solomon → Virgil Rainwater: recorded son.** Explicitly named in the 1856 will; vital dates and mother remain unestablished. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+**Solomon → Horace Rainwater: recorded son.** Explicitly named in the 1856 will; vital dates and mother remain unestablished. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+**Solomon → Leander Rainwater: recorded son.** Explicitly named in the 1856 will; vital dates and mother remain unestablished. [1856 will, pp2–3](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008).
+
+Further daughters with unresolved name readings are omitted. A same-name younger Solomon’s 1821 estate-share deed is an identity-bridge lead, not a demonstrated identification with this 1856 testator. Ages of enslaved people bequeathed in the will are not the children’s ages.
+
+[Back to tree overview ↑](./index.html#family-tree)
+
+Connected branch / Taylor–Newberry
+
+### Hazel’s named parents
+
+The birth index names both parents; the original 1900 household supplies a daughter relationship and preserves the father’s name variation.
+
+T19
+
+### Richard / Morton R. Taylor
+
+June 1875, Tennessee, reported in 1900; death unverified
+
+Hazel’s birth index calls her father Richard Martin; the 1900 original calls the head Morton R. Taylor. Family correlation supports this identification while preserving the name variation. Reported 1905 death is unverified.
+
+[Hazel birth index](https://www.familysearch.org/ark:/61903/1:1:4LDS-K2ZM) · [1900 census](https://www.familysearch.org/ark:/61903/3:1:S3HT-67S9-83L)
+
+T20
+
+### Effie Newberry
+
+April 1876, Missouri, reported in 1900; death unknown
+
+Hazel’s named-mother birth index supplies Newberry; the 1900 original calls Effie Taylor wife. Its Missouri birthplace differs from the later profile’s Texas claim.
+
+[Hazel birth index](https://www.familysearch.org/ark:/61903/1:1:4LDS-K2ZM) · [1900 census](https://www.familysearch.org/ark:/61903/3:1:S3HT-67S9-83L)
+
+**Richard / Morton — Effie: recorded household spouses.** The 1900 original identifies Morton R. as head and Effie as wife. A ceremony date is not supplied. [1900 census](https://www.familysearch.org/ark:/61903/3:1:S3HT-67S9-83L).
+
+**Richard / Morton → Hazel: named father, supported by household.** The birth index names Richard Martin; the 1900 original places Hazel as daughter of Morton R. Name variation and the uninspected certificate remain visible. [Hazel birth index](https://www.familysearch.org/ark:/61903/1:1:4LDS-K2ZM) · [1900 census](https://www.familysearch.org/ark:/61903/3:1:S3HT-67S9-83L).
+
+**Effie → Hazel: indexed mother.** The birth index explicitly names Effie Newberry as mother; the 1900 family supports identification. The original certificate and registration date have not been inspected. [Hazel birth index](https://www.familysearch.org/ark:/61903/1:1:4LDS-K2ZM) · [1900 census](https://www.familysearch.org/ark:/61903/3:1:S3HT-67S9-83L).
+
+[Back to tree overview ↑](./index.html#family-tree)
+
+Reviewed 29 September 2026 from saved source audits, including a fresh reading of the saved 1856 will images for its explicitly named wife and children. The underlying Bible or complete transcript remains outstanding; later accounts may repeat the same family information. Stable references T01–T20 identify people and T-R01–T-R23 identify relationships. Historical people only; no genetic result is assigned to Aaron. [Bible provenance](./index.html#s9) · [What would resolve the gap](./index.html#R03).
 
 03 / Aaron in the records
 
@@ -500,7 +717,7 @@ DNA tests, family-tree platforms and record repositories
 | --- | --- | --- |
 | [FamilyTreeDNA](https://www.familytreedna.com/) | Big Y-700 paternal test; Y37, Y67 and Y111 match views; public surname projects and paternal-branch comparisons. | R-A823 is confirmed for the tested descendant. STR match views are not separate independent tests. A separate autosomal account was reported, but its results have not been reviewed here. Private variants and historical pedigree links remain incomplete. |
 | [23andMe](https://www.23andme.com/) | Autosomal relatives and a broader paternal haplogroup report, R-M222, were inspected. | Compatible with the finer FamilyTreeDNA result; another test of the same person does not independently verify the historical line. Product generation is not established in this public inventory. |
-| [MyHeritage](https://www.myheritage.com/) | Autosomal matches, shared matches, tree surnames and chromosome comparisons; primary working account tree for sourced updates. | Some segment triangulations were reviewed, but none is assigned to Aaron or a unique ancestral couple. Tree expansion is incomplete; the attempted GEDCOM backup did not complete. The public historical tree is a separate reviewed subset. |
+| [MyHeritage](https://www.myheritage.com/) | Autosomal matches, shared matches, tree surnames and chromosome comparisons; primary working account tree for sourced updates. | Some segment triangulations were reviewed, but none is assigned to Aaron or a unique ancestral couple. Expanded core line through Aaron with qualified source notes; broader account expansion continues; no automatic synchronization. The attempted GEDCOM backup did not complete. The public historical tree is a separate reviewed subset; Ancestry has not been edited. |
 | [Ancestry](https://www.ancestry.ca/) | Autosomal DNA matches, shared matches, member trees, message boards and historical record images. Research used the Canadian site with the existing account. | No account tree has yet been expanded in this phase. Member trees and relationship predictions require verification. Record access can depend on the collection and subscription; account access is not a claim that every relevant image has been examined. |
 | [GEDmatch](https://www.gedmatch.com/) | Existing uploaded-kit match results were inspected as an additional autosomal comparison resource. | Uploads and repeated appearances of the same person are not independent relatives or independent evidence. No new raw-DNA upload was made for this investigation; private kit identities are not published. |
 | [FamilySearch](https://www.familysearch.org/) | Catalogue, indexed records, original record images and collaborative-tree source inventories, especially American deeds, probate, census and marriage records. | An index, catalogue description or tree assertion is not an original-record reading. Some images require sign-in or location-based access. Exact films, image references and remaining restrictions are listed in the retrieval agenda. |
@@ -552,6 +769,12 @@ Added a sourced tree of five historical people, distinguishing recorded spouses 
 ### Edition 01.5 · Research resources
 
 Added a dated resource inventory under Sources & methods covering the DNA services, working tree, record platforms and archive agenda. It distinguishes inspected results from reported or incomplete work and preserves access limits. The contents now displays related subsections together. No new ancestry conclusion follows.
+
+30 September 2026
+
+### Edition 01.6 · A broader sourced family tree
+
+Expanded the historical tree from five to twenty deceased people, with navigation for the core line, Rainwater relatives and Hazel’s Taylor–Newberry parents. A fresh reading of saved 1856 will images supports the explicitly named wife and seven additional children. Later core links retain their family-history, index or obituary-correlation qualifications; unknown dates and unresolved identities remain visible. No parent of Aaron is attached. MyHeritage’s core line has been expanded with qualified source notes; broader account work continues, Ancestry has not been edited, and no automatic synchronization is configured.
 
 ### Use this research in your own work
 

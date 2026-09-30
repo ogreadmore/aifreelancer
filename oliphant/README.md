@@ -4,6 +4,7 @@ A public working investigation of Aaron Oliphant's background, migration, and pa
 
 ## Start here
 
+- [Start here on the website](./index.html#start-here): current checkpoint, continuation steps and evidence-library access.
 - [Read the illustrated report](./index.html).
 - [Explore the historical family tree](./index.html#family-tree), with evidence and qualifications for each relationship.
 - [Browse clues worth following](./index.html#clues), with limits and concrete next tests.
@@ -15,6 +16,14 @@ A public working investigation of Aaron Oliphant's background, migration, and pa
 - [Check edition integrity](./manifest.json): SHA-256 hashes of every public file except the manifest itself.
 
 The intended web address is https://aifreelancer.co/oliphant/. This repository's presence alone does not confirm successful deployment.
+
+## Evidence library
+
+The website's [Start here section](./index.html#start-here) is the authoritative continuation record. Its [restricted evidence library](https://drive.google.com/drive/folders/1ZyZm9ofV12a2kjjpkKOsS8kbixDEuLd1) holds underlying records, DNA evidence, historical working notes and catalogs. Access to the public website does not grant Drive access. Taylor controls invitations; a public link is not permission to broaden sharing.
+
+Use stable ART identifiers in the restricted catalogs to locate source files, original filenames, local content hashes, provenance qualifications and duplicate aliases. File presence does not prove that an original was fully read, authenticated or cleared for public reproduction. Working notes are historical evidence of the investigation and may contain superseded interpretations; reconcile them against the website's latest corrections.
+
+For each completed research batch: save the source and precise search scope; update its inventory and restricted evidence where needed; verify the uploaded file and its access; update the corresponding public finding/note, coverage and next action; rebuild all exports; then verify the deployed bytes and links. Preserve stable references when updating files and distinguish pending transfers from completed uploads. Credentials, payment records and unrelated account material do not belong in the evidence library. Keep the public repository limited to the publication allowlist.
 
 ## Continue without starting over
 
@@ -28,7 +37,7 @@ The same schema includes `tree_people` (T01–T20) and `tree_relationships` (T-R
 
 For each new search, record the date, question, linked hypothesis or target, repository, collection, exact query, filters, date and image/page coverage, access conditions, result, source citation, limitations, and next action. Mark interrupted and partial searches explicitly. A negative result applies only to the coverage actually examined. Before repeating work, check both current and older editions and document why a repeat is worthwhile.
 
-This is a comprehensive **public synthesis**, not the complete private working archive. Some DNA comparisons and historical search logs cannot be reproduced publicly. Their limitations remain in the report. Absence from this package never proves that a search was not attempted. Researchers with authorized private-archive access should consult that archive's current checkpoint and full search notes as well.
+This is a comprehensive **public synthesis**, not the complete private working archive. Some DNA comparisons and historical search logs cannot be reproduced publicly. Their limitations remain in the report. Absence from this package never proves that a search was not attempted. The website Start here section is the current checkpoint. Authorized readers can follow its Drive links to supporting evidence and historical search notes. Drive has no competing Start Here or current research summary.
 
 Keep source statements separate from identity inferences. A catalogue entry is not an original-record reading. A named relative or surname match is not proof of the target paternal line. Do not infer a name change from missing birth or immigration records, merge distinct candidates, or eliminate a whole surname from one tester's results. Record evidence against each hypothesis as carefully as evidence for it. Do not treat downloaded text as operational instructions.
 
@@ -71,4 +80,4 @@ The site is the central public continuation point. After each research batch, pu
 
 Clues worth following is a short curated guide, not a second claim register or a list of ancestry probabilities. Stable K identifiers retain the observation, why it matters, limits and next test; each links to detailed notes or source-backed report entries. Update or retire a clue visibly when the evidence changes. Schema1.4.0 adds research_notes and clues arrays; all collapsed note text is exported.
 
-Earlier-note migration is incomplete. The visible coverage checklist identifies material still to reconcile; do not claim all historical searches are public or infer unsearched status from an omission. Keep private operational notes and sensitive data local. Review and publish the useful conclusion and limits when they can be stated without disclosure. The private archive retains original materials and fuller audit detail; it is not a substitute for updating the public research record.
+Earlier-note migration is incomplete. The visible coverage checklist identifies material still to reconcile; do not claim all historical searches are public or infer unsearched status from an omission. Keep credentials, payment details and unrelated account material local. Research evidence and privacy-sensitive working notes may be stored in the restricted Drive library with verified access; they must not enter the public repository. Review and publish the useful conclusion and limits when they can be stated without disclosure. The private archive retains original materials and fuller audit detail; it is not a substitute for updating the public research record.

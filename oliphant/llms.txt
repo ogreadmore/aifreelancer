@@ -6,7 +6,7 @@
 - [Start here](./index.html#start-here): the authoritative research checkpoint, continuation steps and restricted evidence-library links.
 - [Human-readable report](./index.html): findings, qualifications, sources and retrieval agenda.
 - [Clues worth following](./index.html#clues): selected evidence, why it matters, limits and next tests; not ancestry probabilities.
-- [Research notes](./index.html#research-notes): 74 dated leads, associations, bounded searches, corrections and next steps, with a topic-coverage checklist and restricted supporting reviews.
+- [Research notes](./index.html#research-notes): 78 dated leads, associations, bounded searches, corrections and next steps, with a topic-coverage checklist and restricted supporting reviews.
 - [Related trees and research contacts](./index.html#related-trees): 19 source trails, collateral profiles and comparator families, with provenance limits and exact next questions.
 - [Full Markdown report](./report.md): the same public manuscript, including expanded retrieval details.
 - [Structured research](./research.json): stable section, candidate, hypothesis, source and retrieval IDs.

@@ -58,7 +58,7 @@ The publication allowlist is the eleven files named in `build.py`, including `.g
 
 ## Publication and access limits
 
-This edition summarizes work reviewed on 29 September 2026. Edition 01.6 includes a fresh reading of the saved 1856 will images for explicitly named wife/children; other citations retain the prior audits’ reading limits. Adding links and an export pipeline does not independently verify every underlying record. The public search agenda records the next records needed; it does not claim they have been retrieved. The site has no tracking, account system, external font dependency or required build service. Browser printing is available, but no separately verified PDF edition is supplied.
+This edition was editorially reconciled on 30 September 2026 from source reviews dated mainly 28–29 September; each entry retains its reading limits. Edition 01.6 includes a fresh reading of the saved 1856 will images for explicitly named wife/children; other citations retain the prior audits’ reading limits. Adding links and an export pipeline does not independently verify every underlying record. The public search agenda records the next records needed; it does not claim they have been retrieved. The site has no tracking, account system, external font dependency or required build service. Browser printing is available, but no separately verified PDF edition is supplied.
 
 `llms.txt` and the JSON export help human and AI readers use a supplied address. They do not guarantee search-engine indexing or automatic adoption by future AI systems. Public availability does not transfer rights in third-party sources; consult the source repository's terms for reuse of original images.
 

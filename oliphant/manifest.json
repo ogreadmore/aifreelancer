@@ -5,40 +5,40 @@
       "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
     },
     "README.md": {
-      "bytes": 8282,
-      "sha256": "e915e0be44d9b04150193d62325fdea0ce2d8975daab15b3dbf01f2c6404f886"
+      "bytes": 9185,
+      "sha256": "12ff0d09fcf01ecad340e52b43d098e04ecf74f57c1acdc4effd7fe479c6b37a"
     },
     "app.js": {
       "bytes": 2345,
       "sha256": "150f41a9d79ed3dc0ab2550f7fbc4fe0e39cf76358bac5ff22632ae2aadd672c"
     },
     "build.py": {
-      "bytes": 17538,
-      "sha256": "194e121c301007f6d2a102b86637fa1bf1e48a6adeddb1898ecb71481e824398"
+      "bytes": 17551,
+      "sha256": "b6bf6c1870322a97631c5362c6bf560a55828c2e53f4d38eff4914eebcf534ce"
     },
     "index.html": {
-      "bytes": 79445,
-      "sha256": "e0d9acdc3cb40304d42cb18237acb0071f0f12d4c18cac483d22c0f5c39b8409"
+      "bytes": 104481,
+      "sha256": "a4f6fa5715c6a3c5747acc2a5085ab7c18144087da02fe0b7fbf7bf6659cb2e7"
     },
     "llms.txt": {
       "bytes": 3315,
-      "sha256": "5e21e0dd27b980503ffdb491ec48d8f80e48935b4421091775e5d7a174f1cc2e"
+      "sha256": "281f9d1b5df3037eff5cc627dac567f30b3d0502d4825c568d8c6f9cbdccb396"
     },
     "report.md": {
-      "bytes": 51876,
-      "sha256": "4667ac57cc1e8db9019f94e35ac6f6e6b6a2a2ad0ca26ded1fa800da2b53b9db"
+      "bytes": 64924,
+      "sha256": "f09e0a226358071c30d25ab154bf8a7a2457a8f1dc48bc7527feb5764fa3b551"
     },
     "research.json": {
-      "bytes": 101327,
-      "sha256": "ed4547effbae150c64df81c5d215c1df7b0c064163db4a7a2e370eb5fb53f01e"
+      "bytes": 133336,
+      "sha256": "129829d6ade8a5ef4fbeeb444cf7686f5a1e51f72efffb6ad7ceff3ca73a89a9"
     },
     "research.schema.json": {
       "bytes": 7264,
       "sha256": "f448a0aac595da87540fe4e7320306d88ea0614522c22ff851703ee6c0889a75"
     },
     "styles.css": {
-      "bytes": 21553,
-      "sha256": "eec9215de6a38fa797742e7646bed2f96eb7f9782954868369c21d4196a7ac34"
+      "bytes": 23735,
+      "sha256": "1d243b5f77e8e0775198b50a92d8468651163fd632813c657a66cdb6c9113b60"
     }
   },
   "schema_version": "1.0.0",

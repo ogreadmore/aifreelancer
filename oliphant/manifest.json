@@ -5,40 +5,40 @@
       "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
     },
     "README.md": {
-      "bytes": 10870,
-      "sha256": "607cbd8e1c84ef5791f217c0f61895c4d13a5bd99d64130f07c8556b21f5038f"
+      "bytes": 13179,
+      "sha256": "c6f0eb10ac47f07011aa7b9d9e90bbeb41c5c04dfb6b344b8149f76d038700bd"
     },
     "app.js": {
-      "bytes": 3112,
-      "sha256": "ffa248a93f009c3b3728534d165e26d5108640694ecea3a8a041d7a31456e4c0"
+      "bytes": 3903,
+      "sha256": "784a957f3bf0b0b608590b5c84ba9388c65d1e82fa75e4841b0158b217f87eeb"
     },
     "build.py": {
-      "bytes": 19784,
-      "sha256": "f8e01751febe6b0d9886bc518fcd1a6f591b7bb3d03c1639291342a3ac1907c3"
+      "bytes": 20547,
+      "sha256": "3275f72f3437380a1d9fedca310a2eabfd38ff3b18793a7b650950b3cec9a769"
     },
     "index.html": {
-      "bytes": 136447,
-      "sha256": "dd26ca5e67ced8fefd5c15ab14353851595be807411a57f08a0ce53515d8eee3"
+      "bytes": 342034,
+      "sha256": "f7e92cb7c5748c3f5d7dde72319d3b103bdba2655b3bede38cd997f59de75f8b"
     },
     "llms.txt": {
-      "bytes": 3911,
-      "sha256": "38572bfd40041e187790fa9dd5c7f91fc0eca46acdef02496019311fd4e76dde"
+      "bytes": 4481,
+      "sha256": "289547fd8441f5a12c3bc4d6009adf1ab30b1d4cf55359a7a68a4b951e76bc6f"
     },
     "report.md": {
-      "bytes": 92048,
-      "sha256": "678e3cc66448803a7b1f7561332311ca5fb5c82ee24461752f1253fd0201cc72"
+      "bytes": 276401,
+      "sha256": "664afe311824b6d22fab223b77fdb46b80cfb2c9740726e5990c530fe1072644"
     },
     "research.json": {
-      "bytes": 192456,
-      "sha256": "a0050d07f4c2eb0e50fd8729ee3ec50f982218aad39e7f060b16887721525752"
+      "bytes": 604613,
+      "sha256": "6d5ee3351f082137aa03db0119f2b15edbb291999604cb199f874d1290832d5e"
     },
     "research.schema.json": {
       "bytes": 8902,
       "sha256": "be77f19e9d9cbc8125656d9157ace38bd100c19179949d353460111fe389eb8d"
     },
     "styles.css": {
-      "bytes": 24381,
-      "sha256": "2c1957b2d1e9f23c5d20d49016188364fdee3dcf2ca43af0669d235a27ba3219"
+      "bytes": 25062,
+      "sha256": "b44524451539ffab609a5e44843c6762768fe0ddc9c62d9f4242ca9b46b9a1ce"
     }
   },
   "schema_version": "1.0.0",

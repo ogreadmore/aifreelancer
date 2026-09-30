@@ -526,7 +526,7 @@ Added ranked research priorities, unresolved comparisons and tester-specific exc
 
 ### Edition 01.4 · Family tree, contact and research questions
 
-Added a sourced tree of five historical people, distinguishing recorded spouses from reported parent relationships and preserving uncertain dates. Also added a direct email link, a contact form using the main site’s existing Formspree endpoint, and six specific questions for people with relevant records or DNA information. Stable tree and question references, evidence status and review dates accompany the public record. No new genealogical conclusion is claimed.
+Added a sourced tree of five historical people, distinguishing recorded spouses from reported parent relationships and preserving uncertain dates. Also added a direct email link, a contact form using the main site’s existing Formspree endpoint, and six specific questions for people with relevant records or DNA information. The contents groups Questions for researchers beneath What would move us forward, matching its place within that chapter. Stable tree and question references, evidence status and review dates accompany the public record. No new genealogical conclusion is claimed.
 
 ### Use this research in your own work
 

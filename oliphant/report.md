@@ -8,7 +8,7 @@ Start here / Research checkpoint
 
 This website is the current research record. Read it first, then follow its citations and the restricted evidence library for the underlying material. There is no separate research starting point in Drive.
 
-**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. No origin theory is established as probable. This edition organizes existing evidence and documents bounded retrieval and access checks. It establishes no new parentage or origin conclusion and claims no newly read historical grant or service file.
+**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. No origin theory is established as probable. This edition documents bounded retrieval and access checks and a newly read 1900 census household supporting Andrew’s recorded sons. It establishes no parentage or origin conclusion for Aaron; the historical grants and service file identified below remain at their stated reading or retrieval status.
 
 - **Understand the present assessment.** Read [What we know](./index.html#findings), the [candidate comparison](./index.html#candidate-comparison) and [competing explanations](./index.html#theories). Rankings set research priorities, not surname probabilities.
 
@@ -26,9 +26,11 @@ This website is the current research record. Read it first, then follow its cita
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Library transfer verified on 30 September 2026.** All 1,589 staged files matched Drive filenames, byte sizes and unshared status: 1,351 source files, 51 DNA files, 181 working notes and six catalogs. Supplemental catalogs preserve the topic audit, selected search history, scripts and corrections. Local SHA-256 hashes are retained; this was a metadata comparison, not a remote-content checksum verification. Credentials, payment records and unrelated account material were excluded.
+**Earlier staged transfer verified on 30 September 2026.** All 1,589 staged files matched Drive filenames, byte sizes and unshared status: 1,351 source files, 51 DNA files, 181 working notes and six catalogs. Supplemental catalogs preserve the topic audit, selected search history, scripts and corrections. Local SHA-256 hashes are retained; this was a metadata comparison, not a remote-content checksum verification. Credentials, payment records and unrelated account material were excluded.
 
 [Source ID and original-path lookup](https://drive.google.com/file/d/1Qvs9chZJorbxiDNNJ4QCW1PrJ_cyvG77/view) · [Working-note topic catalog](https://drive.google.com/file/d/105NuoCWVmXFm4A-s_7I4qrpYe2gBXraZ/view) · [Partial historical search ledger](https://drive.google.com/file/d/1zkBz-B9oCqzmpQxzVZ7rg9UNu0qCrpuf/view). These links require library access.
+
+**Edition 01.10 additions verified on 30 September 2026.** Twenty new transfers bring the recorded library total to 1,638, calculated from the previously verified 1,618-file baseline plus twenty additions. This is an incremental total, not a fresh full-library recount. Filenames, byte sizes, parent folder and owner-only permissions were verified; local SHA-256 fingerprints are retained without a claim of remote content-hash equality. The [restricted batch catalog](https://drive.google.com/file/d/1e38st4i-vP6WeqUtvUvF6H6YSYZfdi94/view) lists nineteen supporting files and excludes itself, the twentieth transfer. The new census originals are ART-01409 / ART-01410; catalogue capture and readback are ART-01411 / ART-01412.
 
 ### Identity and interpretation checks
 
@@ -168,7 +170,7 @@ Family tree / Historical people
 
 ## The family line, with its evidence.
 
-Twenty deceased historical people appear in the core family line and two connected branches. Each relationship carries its own evidence. Aaron’s parents remain unknown; the original record establishing his parentage of Solomon has not yet been located.
+Twenty-three deceased historical people appear in the core family line, Andrew’s collateral sons and two connected branches. Each relationship carries its own evidence. Aaron’s parents remain unknown; the original record establishing his parentage of Solomon has not yet been located.
 
 [Aaron](./index.html#T01) & [Rebecca](./index.html#T02) → [Solomon](./index.html#T03) & [Amanda](./index.html#T04) → [Andrew](./index.html#T05) → [Benjamin Sr.](./index.html#T06) & [Hazel](./index.html#T07) → [Benjamin Jr.](./index.html#T08)
 Arrows follow the reported line; each link’s evidence and qualification appear below.
@@ -239,11 +241,11 @@ A. J. appears aged three in the saved 1850 household and twelve in 1860. Later f
 
 Core line / Later generations
 
-### Andrew’s reported family, continued
+### Andrew’s family, continued
 
-Follow Andrew to the reported grandfather and the obituary-supported recent family. Each parent link retains its own qualification.
+The 1900 census records Benjamin as Andrew’s son. The later family links retain their obituary and identity-correlation qualifications.
 
-**Andrew → Benjamin Sr.: reported father.** The descendant account and collaborative profile state this link. The saved 1910 census supports age and birthplace context but does not name his father. [2003 family account](https://www.ancestry.ca/boards/surnames.oliphant/314.1) · [Benjamin profile](https://ancestors.familysearch.org/en/K677-K7B/benjamin-franklin-oliphant-1892-1932).
+**Andrew → Benjamin Sr.: recorded household son.** The original 1900 continuation of Andrew’s family 159 calls Benj F., age 8, a son. The reported Benjamin Franklin identity is supported by age, birthplace and family correlation; this does not independently test biological paternity or the earlier Aaron chain. [Andrew’s household, sheet 9B](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0880) · [Benjamin, sheet 10A line 2](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) · [Reading and limits](./index.html#N65).
 
 T06
 
@@ -251,9 +253,9 @@ T06
 
 Born about 1892; death 1932 reported
 
-The saved 1910 original records age 18, Texas birth, father born Georgia and mother Mississippi. It names neither parent. Andrew’s fatherhood and the 1932 death remain family-history claims.
+The newly read 1900 census records Benj F., born May 1892 in Texas, as son in Andrew’s household. The saved 1910 original supports the age and birthplace pattern. Identity with the later Benjamin is correlated; the 1932 death remains reported.
 
-[Benjamin profile](https://ancestors.familysearch.org/en/K677-K7B/benjamin-franklin-oliphant-1892-1932) · [2003 family account](https://www.ancestry.ca/boards/surnames.oliphant/314.1)
+[1900 census](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) · [Benjamin profile](https://ancestors.familysearch.org/en/K677-K7B/benjamin-franklin-oliphant-1892-1932) · [2003 family account](https://www.ancestry.ca/boards/surnames.oliphant/314.1)
 
 T07
 
@@ -280,6 +282,50 @@ Birth 1925 reported; died 22 December 2011
 The funeral notice states death on 22 December 2011, aged 86. Matching deceased sibling groups in two obituaries support the proposed parents indirectly. The funeral notice does not name his parents.
 
 [DeJohn obituary](https://obits.dejohnfuneral.com/benjamin-f-oliphant) · [Hobbs obituary](https://www.okcemeteries.net/love/lakeview/h/hobbsma.htm)
+
+[Back to tree overview ↑](./index.html#family-tree)
+
+Collateral branches / Andrew’s sons
+
+### Three recorded sons outside Benjamin’s line
+
+The 1900 census records these three historical men as sons in Andrew’s household. Full names in later profiles remain correlations, and the conflicting dates below are unresolved. A later male-child chain and a usable Y comparison have not been established. [Reading, conflicts and next records →](./index.html#N65)
+
+T21
+
+### Robert E. Oliphant
+
+Census birth 1879 · exact dates unresolved
+
+Robt E., age 21, Texas-born, is recorded as son on sheet 9B line 98. The profile-correlated full name is Robert Emmett. Its 1878 birth and 1958 death differ from the census and cemetery transcription; neither conflict is settled.
+
+[1900 census](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0880) · [Reported profile](https://ancestors.familysearch.org/en/GWH1-SQJ/robert-emmett-oliphant-1878-1958) · [Cemetery transcription](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm)
+
+T22
+
+### Walter R. Oliphant
+
+Census birth September 1888 · death 1968 correlated
+
+Walter R., age 11, Texas-born, is recorded as son on sheet 10A line 1. Later sources vary Raleigh/Raliegh. A visually read gravestone and an obituary index support the later identity; the original obituary and any named child remain unread.
+
+[1900 census](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) · [Reported profile](https://ancestors.familysearch.org/en/KHV9-37P/walter-raliegh-oliphant-1888-1968) · [Obituary retrieval and limits](./index.html#N65)
+
+T23
+
+### Henry G. Oliphant
+
+Census birth December 1894 · death 1951 reported
+
+Henry G., age 5, Texas-born, is recorded as son on sheet 10A line 3. The reported full name is Henry Grady. Later profile and cemetery material gives 1893; the exact birth date remains unresolved and the death year has not been verified in a civil original here.
+
+[1900 census](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) · [Cemetery transcription](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm) · [Source limitations](./index.html#N65)
+
+**Andrew → Robert E.: recorded household son.** The original 1900 census names Robt E. as son in Andrew’s family 159. The family identity is supported by household correlation; biological paternity is not independently tested. [Sheet 9B line 98](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0880).
+
+**Andrew → Walter R.: recorded household son.** Sheet 10A continues family 159 and names Walter R. as son. This supplies an Andrew-level historical branch point; no later male-child chain is established. [Sheet 10A line 1](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881).
+
+**Andrew → Henry G.: recorded household son.** The original continuation names Henry G. as son; the next family begins on line 4. Neither this relationship nor the later profile settles his conflicting birth year. [Sheet 10A line 3](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881).
 
 [Back to tree overview ↑](./index.html#family-tree)
 
@@ -451,7 +497,7 @@ Hazel’s named-mother birth index supplies Newberry; the 1900 original calls Ef
 
 [Back to tree overview ↑](./index.html#family-tree)
 
-Source reviews dated 29 September 2026; editorially reconciled 30 September 2026 from saved audits, including the previously recorded reading of the saved 1856 will images for its explicitly named wife and children. The underlying Bible or complete transcript remains outstanding; later accounts may repeat the same family information. Stable references T01–T20 identify people and T-R01–T-R23 identify relationships. Historical people only; no genetic result is assigned to Aaron. [Bible provenance](./index.html#s9) · [What would resolve the gap](./index.html#R03).
+Source reviews dated 29 September 2026; editorially reconciled 30 September 2026 from saved audits, including the previously recorded reading of the saved 1856 will images for its explicitly named wife and children. The underlying Bible or complete transcript remains outstanding; later accounts may repeat the same family information. Stable references T01–T23 identify people and T-R01–T-R26 identify relationships. Edition 01.10 adds a fresh reading of two 1900 census sheets for Andrew’s recorded sons; the earlier Aaron–Solomon link remains reported. Historical people only; no genetic result is assigned to Aaron. [Bible provenance](./index.html#s9) · [What would resolve the gap](./index.html#R03).
 
 03 / Aaron in the records
 
@@ -597,23 +643,25 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 The first five targets below would most directly sharpen the present interpretation. Additional targets retain their exact references so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
-01 · Genetic comparison Resolve the two Devaney comparisons Data needed
+01 · Genetic comparison Resolve the two Devaney comparisons Enquiry sent · reply pending
 
 **Target:** confirm the private/public mapping and any finer existing result for the GD5 Y67 match; separately compare the R-A823 DeVenney tester with Taylor at mutually callable sites.
 
 **Question:** is either a genealogically recent paternal relative, or do the lines split much earlier?
 
-**Route:** a consented comparison with the relevant test administrator. A focused private enquiry has been drafted but not sent. Match identifiers belong in the private request, not this page. Absence from a match list is not a measured pairwise distance.
+**Route:** a consented comparison with the relevant test administrator. A focused enquiry about the two comparisons and paternal collateral branches was sent on 30 September 2026; a reply is pending. Match identifiers belong in the private request, not this page. Absence from a match list is not a measured pairwise distance.
 
 Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSHxRYeXo1u65kb_KQmkY48phacX0fK/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
-02 · Historical DNA anchor An independent male-line collateral Candidate needed
+02 · Historical DNA anchor An independent male-line collateral Historical branch point found
 
 **Target:** an independently documented descendant through a different son of Aaron, preferably with existing Y results; otherwise a different son of Solomon.
 
 **Question:** at which historical generation can this paternal line be independently anchored?
 
 **Route:** family and project pedigree review. No suitable independent Aaron collateral has been identified. A Solomon-only collateral cannot establish Aaron’s Y lineage by itself.
+
+**30 September update:** [Three other recorded sons of Andrew](./index.html#N65) supply historical candidates, but no subsequent male-child chain or independent Y result is established. The next finite record is Walter’s original notice in *The San Bernardino County Sun*, 29 May 1968, [image 61387527, identified article](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355), currently known through an obituary index. Read it for named children, then document every father–son link. This route initially anchors Andrew and does not settle the earlier Solomon–Aaron chain.
 
 03 · Family-held source The complete family Bible record Custody unresolved
 
@@ -622,6 +670,8 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 **Question:** does the earliest source explicitly identify Aaron and Rebecca as Solomon’s parents, and when was that information written?
 
 **Route:** ask the family researchers about custody or a complete existing copy. Later references credit the Bible for children’s birthdates but do not reproduce the needed parentage entry. No original page has been retrieved; do not assume the transcriber owned the Bible.
+
+**30 September update:** Taylor reports a possible location for the Bible, rather than possession of it. Its location, custodian and contents remain unverified; no pages have been examined.
 
 04 · NARA / RG 94 Aaron’s actual War of 1812 service file Index read · file unread
 
@@ -665,13 +715,17 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 **Why:** a prior residence, title relationship or district entry could provide a direct backward step for Aaron.
 
+**30 September update:** [A finite commission-book test for Sharp’s district](./index.html#N64). The captain, numbered district and county cross-reference remain unresolved; the film locators are publisher guidance, not newly read originals.
+
 08 · Pendleton court papers The loose 1816–1817 debt cases Series unresolved
 
 **Targets:** Lawhon & Co. against Aaron, register date **26 December 1816**, $22.53 note; Samuel Taylor against Aaron, **18 March 1817**, $5.37½ account, payment 4 April. Original registers are read; loose obligations and service papers remain unlocated. [Source note 2](./index.html#s2).
 
 **Question:** where did the debts arise, and do the papers identify residence, associates or genuine handwriting?
 
-**Route:** resolve the ledger-to-loose-series crosswalk with the repository. Candidate custodial series: SCDAH **L53085**, magistrates’ memoranda, file 000001, four folders, **260C04**; **L53095**, Common Pleas papers, 15 microfilm reels; **L53061**, summary petitions/decrees, **AN197/AN198, 1800–1826**. These are not identified Aaron packets. Do not equate Grisham’s summons 1063 with a tested Common Pleas roll 1063 covering 1802–1812. The register explicitly gives interest from 4 December 1816 beside the 26 December entry. The derivative writs index separately gives 4 December; its procedural relationship to the register remains unresolved until the underlying writ is read. See the corrected party direction and reading in [N56](./index.html#N56).
+**Route:** resolve the ledger-to-loose-series crosswalk with the repository. Candidate custodial series: SCDAH **L53085**, magistrates’ memoranda, file 000001, four folders, **260C04**; **L53095**, Common Pleas papers, 15 microfilm reels, with inspected unit 000001 at **AN117** (circa 1800–1828); **L53061**, summary petitions/decrees, **AN197/AN198, 1800–1826**. These are not identified Aaron packets. Do not equate Grisham’s summons 1063 with a tested Common Pleas roll 1063 covering 1802–1812. The register explicitly gives interest from 4 December 1816 beside the 26 December entry. The derivative writs index separately gives 4 December; its procedural relationship to the register remains unresolved until the underlying writ is read. See the corrected party direction and reading in [N56](./index.html#N56).
+
+**30 September update:** [Exact paper-unit locators and an unresolved ledger-attribution test](./index.html#N66). L53062 / PK034 has a Pickens filming note; L53034 / C0907 remains a distinct comparison. Neither has been matched to film 1025480 / DGS8687026 or to a surviving Aaron packet.
 
 09 · Rutherford County Archives Thomas Welch’s loose will, 1809 Copy read · loose item unread
 
@@ -757,11 +811,13 @@ Reviewed 29 September 2026. Questions will be updated as evidence arrives. Pleas
 
 ### Related trees and research contacts
 
+Current contact status: the approved three-question enquiry was sent on 30 September 2026. [Restricted sent-message record](https://drive.google.com/file/d/1lmIlc7jnOAHzY8ALf4qchiLZsWH0lthn/view?usp=drivesdk). The earlier four-question draft linked below was not sent. A reply remains pending.
+
 These are inspected profiles, a submitted tree and published family accounts that may help locate records or test a proposed branch. Most profiles are collaboratively edited; they do not have a single verified owner. A public author credit does not establish present availability or custody. If you can supply a source, [contact Taylor](./index.html#contact) and quote the RT reference.
 
 Priority ranks the next evidence question, not the likelihood of descent. Dates below identify the last recorded external check; links were compiled from saved reviews on 30 September 2026 and were not revisited that day. Some account access may be required. Repeated attachments, copied pedigrees and related family accounts are not independent confirmations.
 
-All nineteen entries remain visible and can be searched with the browser’s Find command by name, place or RT reference. Begin with the credited Bible and transcript trail through an existing research contact. Before approaching a named contributor, verify the current profile and frame a specific document question. Private contact planning and unsent drafts belong in the restricted evidence library. No messages have been sent through this register and no automated outreach is configured.
+All nineteen entries remain visible and can be searched with the browser’s Find command by name, place or RT reference. Begin with the credited Bible and transcript trail through an existing research contact. Before approaching a named contributor, verify the current profile and frame a specific document question. Private contact planning and unsent drafts belong in the restricted evidence library. A focused enquiry was sent on 30 September 2026 with Taylor’s approval. A reply is pending; no automated outreach is configured.
 
 - #### [RT01](./index.html#RT01) · Aaron Oliphant · FamilySearch LHXM-9VZ
 
@@ -2050,9 +2106,53 @@ A bounded public discovery pass used two queries, *Pinckney Pinkney DNA project 
 
 Restricted 30 September supporting records: [Supporting review](https://drive.google.com/file/d/1FpM-9_rVxCfl7VL9B5ofCwwRr_m5Y69v/view?usp=drivesdk) · [Scoped request](https://drive.google.com/file/d/1lgW3tPfIrS2hCoCitwKJRKCtWcWsv-UG/view?usp=drivesdk) · [Recorded outcome](https://drive.google.com/file/d/1Eop4X1Jf0TStMPDL86B6W00vJMRHkN9x/view?usp=drivesdk). Access requires Taylor’s permission; these supporting records retain the actual scope and limits.
 
+N64 · A finite commission-book test for Sharp's district
+
+Reviewed 30 September 2026 · New commission route; district unresolved · Publisher index and retrieval guidance read; no original commission or new Aaron record examined.
+
+Sharp's Hancock militia district remains unidentified. Six exact Georgia Journal pages left unread in the earlier search were attempted again: [29 June 1819 page 3](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-06-29/ed-1/seq-3/); [6 July page 6](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-07-06/ed-1/seq-6/); [13 July page 4](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-07-13/ed-1/seq-4/); [20 July page 2](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-07-20/ed-1/seq-2/); [27 July page 4](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-07-27/ed-1/seq-4/); and [13 February 1821 page 4](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1821-02-13/ed-1/seq-4/). The July 6 page returned access verification; the others were inaccessible or cache misses. They remain unread, not negative evidence.
+
+A new [published commission name index](https://www.georgiamilitarycommissions.com/name-index/militia-officers-s/) lists three captain candidates: John T. Sharp (1817), Richard Sharp (1812), and Wiley Sharp (1803). It gives no county or unit, so none is identified as Hancock's captain. The [publisher's retrieval guidance](https://www.georgiamilitarycommissions.com/introduction/) points to the 1815–1818 commission book at Georgia Archives microfilm Drawer 174, Box 34 / FHL film 159001. This locator was not independently confirmed in an official catalogue; no commission page or image was recovered. The compilation ends in March 1818 and cannot exclude later captains.
+
+Alternative publisher pointers are Richard Sharp’s 1812 commission in the date-boundary books, FHL films 158999 / 159000 (Georgia Archives Drawer 174, Boxes 33 / 31), and Wiley Sharp’s 1803 commission in film 158997 (Drawer 39, Box 73). Their original dates and pages remain unknown. A numbered certificate may omit the county; the separate commission register has omissions and must not be treated as a complete officer census.
+
+The next finite test is John T. Sharp's complete original commission, found through that book's name index, followed by an independent county and succession cross-reference for its numbered unit. A matching surname alone cannot identify Aaron's district. Aaron's already-read 4 March 1824 Appling 1/98 grant remains manuscript page 63; its registration category and the separate Early 7/23 entry remain unresolved. No new parentage, earlier residence, title link or origin follows from this pass.
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1laVP28b5vHNmGUPc1Ilpcg3t-XgVPugb/view). Access requires Taylor’s permission; the review preserves both bounded scopes, exact queries, access failures and original-record limits.
+
+N65 · Andrew's collateral sons now have an original census branch point
+
+Reviewed 30 September 2026 · Original census branch point; later male line unproved · Two original census sheets downloaded and visually read; the next obituary remains index-only.
+
+The newly inspected 1900 census records Andrew Oliphant as head, Mattie E. as wife, and Robert E., Walter R., Benjamin F. and Henry G. as sons. It supplies three historical branch candidates outside Benjamin's line and strengthens the Andrew–Benjamin relationship previously shown as reported. The record is the United States census, Indian Territory, Chickasaw Nation, Township 7, enumeration district 150, family 159, enumerated 2 June 1900; NARA T623, roll 1848. [Sheet 9B, lines 96–100](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0880) and [sheet 10A, lines 1–3](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) were visually read. Family 160 begins on line 4 of the second sheet, bounding the continuation.
+
+Age, birthplace, wife and children support correlation with the reported Andrew Jackson Oliphant family. The original abbreviates the children's names and partly obscures the first sheet's surname. Robert E. is recorded born in 1879 and Henry G. in December 1894, conflicting with later profiles' 1878 and 1893. Robert's profile death year of 1958 also differs from the [Lakeview cemetery transcription's 1959](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm). Full names and death dates beyond the census remain profile or cemetery correlations; exact conflicting dates are unresolved. Census son relationships are contemporary reported relationships, not genetic confirmation.
+
+Nine public discovery queries, the Andrew, Robert and Walter public profiles, and a ranked Ancestry death search were examined within a finite scope. Only the strongest five death-result snippets were screened, one obituary index was opened, and the related two-sheet census original was retrieved; the 608 ranked results were not all checked. Detailed FamilySearch sources required login. The inspected profiles exposed no documented subsequent male-child chain, which does not establish childlessness. No further father–son continuation, surviving male line or independent Y result was found in this pass.
+
+The Walter obituary [index record 536130276](https://www.ancestry.ca/search/collections/61843/records/536130276) gives an exact next original: *The San Bernardino County Sun*, 29 May 1968, [newspaper image 61387527, identified article](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355). The original notice remains unread; the AI index names no parent or child, and its Marietta/Adair burial location conflicts with the Love County cemetery context.
+
+**Next test:** inspect that original notice or a deceased son's death or probate record for named children, then document every subsequent father–son step. A comparison through another son of Andrew would initially anchor the shared paternal path at Andrew; it would not establish the earlier Solomon–Aaron chain or Aaron's other proposed sons. See [the collateral retrieval target](./index.html#R02) and [the three historical candidates](./index.html#tree-andrew-collateral). No parent of Aaron, immigrant home or surname transition is identified.
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1zI0LlHRdgY9E7wWuHWb3BAnfHhlMKl1m/view). Access requires Taylor’s permission; the original scans, provenance and bounded scope/result remain in the restricted library.
+
+N66 · Pendleton locators sharpen the loose-paper and ledger questions
+
+Reviewed 30 September 2026 · Catalogue advance; loose papers unlocated · Official catalogue metadata examined; no new historical court paper read.
+
+The historical targets remain Lawhon & Co. against Aaron Oliphant, 26 December 1816, a $22.53 note with interest from 4 December, summons 1063, register page 45; and Samuel Taylor against Aaron, 18 March 1817, a $5.37½ account, summons 1386, page 92, payment acknowledged 4 April. Aaron is the defendant. The original register entries were read previously; this pass found no specific surviving loose packet.
+
+Two inspected Pendleton Common Pleas paper units supply exact catalogue locators: [L53095 unit 000001, AN117, circa 1800–1828](https://scarchcat.rediscoverysoftware.com/MADetailF.aspx?rID=000053/.L%20%2053095-000001&db=fileunit&dir=SCARCHIVE), and [unit 000015, AN188, 1821–1828](https://scarchcat.rediscoverysoftware.com/MADetailF.aspx?rID=000053/.L%20%2053095-000015&db=fileunit&dir=SCARCHIVE). The first includes the target dates; the second is a partial reel with later dates. Neither identifies Grisham or the Aaron cases. The series is unarranged. Eighteen other linked unit details and all underlying papers remain unexamined; the inventory's twenty linked units must not be equated with the series description's fifteen reels.
+
+A separate attribution clue concerns [L53062, abstracts of decrees in summary process, 1816–1819](https://scarchcat.rediscoverysoftware.com/MADetailS.aspx?rID=000053/.L%20%2053062&db=series&dir=SCARCHIVE). Its official description says it was filmed with Pickens County Commissioner of Locations plat books, 1828–1882; its inspected partial-reel [unit 000001 is at PK034](https://scarchcat.rediscoverysoftware.com/MADetailF.aspx?rID=000053/.L%20%2053062-000001&db=fileunit&dir=SCARCHIVE). That unusual provenance resembles the already-read Grisham volume's bound-with-Pickens note. It is a clue to test, not a demonstrated match. The earlier working attribution, [L53034, abstracts of judgments, 1816–1819](https://scarchcat.rediscoverysoftware.com/MADetailS.aspx?rID=000053/.L%20%2053034&db=series&dir=SCARCHIVE), has an inspected [unit 000001 at C0907](https://scarchcat.rediscoverysoftware.com/MADetailF.aspx?rID=000053/.L%20%2053034-000001&db=fileunit&dir=SCARCHIVE). Keep these distinct titles and locations separate until original title, page and reel evidence correlates them. Neither abstract register is itself a located loose obligation.
+
+The next finite test is a repository or original title-and-page crosswalk between PK034, C0907 and the known FamilySearch catalogue 411214, film 1025480 / DGS8687026, followed by any surviving magistrate papers. Candidate paper or memorandum locations remain AN117, L53085 / 260C04 and L53061 / AN197–AN198. No enquiry was sent. Summons 1063 and 1386 are not established Common Pleas roll numbers; [N56's numerical mismatch and corrected party direction](./index.html#N56) remain controlling. Four targeted discovery queries returned no engine hits, while the ordinary public browser displayed the inspected catalogue records; failed web extraction is not a record-loss finding. No parentage, birthplace or origin conclusion follows.
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1IA4Y1MJqNZud6lazLymwMyhfF1zNL84i/view). Access requires Taylor’s permission; the review preserves the catalogue readings, two bounded scopes, exact queries, screenshot and attribution limits.
+
 ### Coverage checklist
 
-The main report covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. Sixty-three dated research notes supply the supporting leads, corrections, bounded negative searches and exact unread references.
+The main report covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. Sixty-six dated research notes supply the supporting leads, corrections, bounded negative searches and exact unread references.
 
 **Historical review:** all 181 staged working notes were classified. Of these, 145 map to report sections or research notes; the remaining 36 have explicit historical, background, private-data or operational retention reasons in the restricted topic catalog. This is a topic-level reconciliation, not a claim that every sentence, search attempt or original source has been independently rechecked. Consult the linked working reviews for full detail before repeating a search.
 
@@ -2060,7 +2160,11 @@ The main report covers the American chronology, DNA comparison limits, candidate
 
 **Still unresolved:** the complete Bible evidence, historical placement of the tested paternal line, comparable terminal DNA evidence, and the original records specified in [Records needed](./index.html#records). Private match identities and detailed DNA data remain in the restricted library. Edition 01.8’s historical search-ledger snapshot contained 11 recorded events across eight search IDs. Subsequent dated notes and restricted supporting reviews preserve newer scopes separately; the historical snapshot is not a complete or current search inventory.
 
-**30 September addition:** four bounded retrieval, access or status-check scopes are preserved separately in the restricted links in [N61](./index.html#N61), [N62](./index.html#N62), [N63](./index.html#N63) and [R06](./index.html#R06). The private contact register and unsent first-contact draft are linked in [Related trees and research contacts](./index.html#related-trees). The [restricted upload-verification snapshot](https://drive.google.com/file/d/1C5QAEPfKnFgNCqwZaMfDjq7r36t68v0F/view?usp=drivesdk) lists fourteen added supporting files; it was uploaded as a fifteenth file. All fifteen were verified by name, byte size, parent folder and owner-only permissions. Local SHA-256 fingerprints are recorded; no remote content-hash equality is claimed. These additions supplement the earlier historical library snapshot.
+**Edition 01.9 addition:** four bounded retrieval, access or status-check scopes are preserved separately in the restricted links in [N61](./index.html#N61), [N62](./index.html#N62), [N63](./index.html#N63) and [R06](./index.html#R06). The private contact register and earlier unsent draft are linked in [Related trees and research contacts](./index.html#related-trees). The [restricted upload-verification snapshot](https://drive.google.com/file/d/1C5QAEPfKnFgNCqwZaMfDjq7r36t68v0F/view?usp=drivesdk) lists fourteen added supporting files; it was uploaded as a fifteenth file. All fifteen were verified by name, byte size, parent folder and owner-only permissions. Local SHA-256 fingerprints are recorded; no remote content-hash equality is claimed. These additions supplement the earlier historical library snapshot.
+
+**Edition 01.10 addition:** [N64](./index.html#N64) preserves two Sharp-district access and commission-route scopes; [N65](./index.html#N65) records the new original Andrew household reading and its incomplete collateral test; [N66](./index.html#N66) preserves two Pendleton catalogue and attribution scopes. Their restricted supporting reviews retain exact coverage, queries and access limits. The current contact status is a sent enquiry with a pending reply; earlier drafts remain historical.
+
+The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e38st4i-vP6WeqUtvUvF6H6YSYZfdi94/view) preserves nineteen verified supporting-file transfers; the catalog itself was the twentieth transfer. Its incremental library total is 1,638 from the prior verified 1,618 baseline. The Edition 01.9 upload snapshot above remains a historical record.
 
 08 / Edition history
 
@@ -2129,6 +2233,12 @@ Made this website the authoritative starting point, added a restricted Google Dr
 ### Edition 01.9 · Related trees and precise next questions
 
 Renamed the report The Aaron Oliphant Inquiry and added nineteen related-tree and source-trail entries, with stable RT references, exact saved links, evidence quality, copy dependence, specific questions and last recorded verification dates. Added N61–N63 for a Nash military-source locator, the Early grant access route and a bounded Pinckney/Pinkney discovery pass. These checks recovered no underlying service file, grant or new paternal comparison. The public notes now number sixty-three; Edition 01.8’s 181-note topic reconciliation remains a historical coverage statement. Contributor credits do not establish present custody or availability. Private contact planning and an unsent Rich draft remain restricted; no messages or automated outreach were sent through this register.
+
+30 September 2026
+
+### Edition 01.10 · Recorded collateral sons and sharper retrieval tests
+
+Added N64–N66 for a qualified Sharp commission-book route, Andrew’s newly read 1900 household, and exact Pendleton court catalogue locators. The two original census sheets record Benjamin and three collateral candidates as Andrew’s sons. The historical tree now contains twenty-three people and twenty-six qualified relationships; no later male-child chain or independent Y comparison has been established. Conflicting Robert and Henry dates remain visible. Sharp’s district and the loose Aaron court packets remain unresolved; catalogue and publisher pointers are distinguished from original readings. Updated the approved enquiry to sent with a reply pending, and clarified that a possible Bible location is unverified. No parent of Aaron, immigrant home or surname transition is established.
 
 ### Use this research in your own work
 

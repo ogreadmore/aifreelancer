@@ -8,7 +8,7 @@ Start here / Research checkpoint
 
 This website is the current research record. Read it first, then follow its citations and the restricted evidence library for the underlying material. There is no separate research starting point in Drive.
 
-**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. No origin theory is established as probable. This edition documents bounded retrieval and access checks and a newly read 1900 census household supporting Andrew’s recorded sons. It establishes no parentage or origin conclusion for Aaron; the historical grants and service file identified below remain at their stated reading or retrieval status.
+**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. No origin theory is established as probable. The original 1900 household records Andrew’s sons; this edition adds Henry Grady’s death-record identity corroboration, qualified adult collateral census findings and precise catalogue/access locators. No later male-child chain or independent comparison tester has been established. The missing commission, parish and service originals remain at their stated access or retrieval status; none of these advances resolves Aaron’s parentage or origins.
 
 - **Understand the present assessment.** Read [What we know](./index.html#findings), the [candidate comparison](./index.html#candidate-comparison) and [competing explanations](./index.html#theories). Rankings set research priorities, not surname probabilities.
 
@@ -31,6 +31,18 @@ The library groups [source records and captures](https://drive.google.com/drive/
 [Source ID and original-path lookup](https://drive.google.com/file/d/1Qvs9chZJorbxiDNNJ4QCW1PrJ_cyvG77/view) · [Working-note topic catalog](https://drive.google.com/file/d/105NuoCWVmXFm4A-s_7I4qrpYe2gBXraZ/view) · [Partial historical search ledger](https://drive.google.com/file/d/1zkBz-B9oCqzmpQxzVZ7rg9UNu0qCrpuf/view). These links require library access.
 
 **Edition 01.10 additions verified on 30 September 2026.** Twenty new transfers bring the recorded library total to 1,638, calculated from the previously verified 1,618-file baseline plus twenty additions. This is an incremental total, not a fresh full-library recount. Filenames, byte sizes, parent folder and owner-only permissions were verified; local SHA-256 fingerprints are retained without a claim of remote content-hash equality. The [restricted batch catalog](https://drive.google.com/file/d/1e38st4i-vP6WeqUtvUvF6H6YSYZfdi94/view) lists nineteen supporting files and excludes itself, the twentieth transfer. The new census originals are ART-01409 / ART-01410; catalogue capture and readback are ART-01411 / ART-01412.
+
+**Edition 01.11 additions verified on 30 September 2026.** Forty-seven transfers bring the current recorded library total to **1,685** from the prior verified 1,638-file baseline. The additions comprise forty-three supporting files and four batch catalogs. Names, byte sizes, parent folders and sole-owner permissions were verified. Local SHA-256 fingerprints are retained; this is an incremental total, not a fresh full-library recount or a claim of remote content-hash equality.
+
+Each restricted snapshot lists its supporting transfers and excludes its own catalog upload:
+
+- [N67–N70 first batch](https://drive.google.com/file/d/1TOTW5s3hT33mjlFWF_x_NHT0Ww8jTNSl/view): nineteen supporting files plus one catalog, twenty transfers.
+
+- [N71–N72 catalogue supplement](https://drive.google.com/file/d/14U8wYdBrHNMC_jwkfDX76Y7qY2DyUWn6/view): ten supporting files plus one catalog, eleven transfers.
+
+- [N72 signed-in access follow-up](https://drive.google.com/file/d/1a74RqlDrWxfX9Xuy6e6RKNdZAffNU4RS/view): four supporting files plus one catalog, five transfers.
+
+- [N73–N74 final follow-ups](https://drive.google.com/file/d/1tr2P7iGsiVPXrsvswk45edIz51BpzroT/view): ten supporting files plus one catalog, eleven transfers.
 
 ### Identity and interpretation checks
 
@@ -299,6 +311,8 @@ Census birth 1879 · exact dates unresolved
 
 Robt E., age 21, Texas-born, is recorded as son on sheet 9B line 98. The profile-correlated full name is Robert Emmett. Its 1878 birth and 1958 death differ from the census and cemetery transcription; neither conflict is settled.
 
+The later [1920 Robert/Emmett household candidate](./index.html#N73) has an unresolved Alfred J. versus Andrew head-name conflict; it is not accepted as a new parent or child link.
+
 [1900 census](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0880) · [Reported profile](https://ancestors.familysearch.org/en/GWH1-SQJ/robert-emmett-oliphant-1878-1958) · [Cemetery transcription](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm)
 
 T22
@@ -309,23 +323,25 @@ Census birth September 1888 · death 1968 correlated
 
 Walter R., age 11, Texas-born, is recorded as son on sheet 10A line 1. Later sources vary Raleigh/Raliegh. A visually read gravestone and an obituary index support the later identity; the original obituary and any named child remain unread.
 
+The later [1920 Walter/Raliegh household candidate](./index.html#N73) has an unresolved Alfred J. versus Andrew head-name conflict; it is not accepted as a new parent or child link.
+
 [1900 census](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) · [Reported profile](https://ancestors.familysearch.org/en/KHV9-37P/walter-raliegh-oliphant-1888-1968) · [Obituary retrieval and limits](./index.html#N65)
 
 T23
 
-### Henry G. Oliphant
+### Henry Grady Oliphant
 
-Census birth December 1894 · death 1951 reported
+Birth December 1893 or 1894 · died 2 August 1951
 
-Henry G., age 5, Texas-born, is recorded as son on sheet 10A line 3. The reported full name is Henry Grady. Later profile and cemetery material gives 1893; the exact birth date remains unresolved and the death year has not been verified in a civil original here.
+Henry G., age 5, Texas-born, is recorded as Andrew’s son on the 1900 census, sheet 10A line 3. The newly read Texas death certificate, state file 39884, names Henry Grady and records father Andrew Jackson Oliphant and mother Mattie Emmer Richardson, supporting the adult identity correlation. It records death on 2 August 1951 at Henrietta, Clay County, Texas. Its secondary birth information gives 3 December 1893 at Dallas; the earlier census gives December 1894. The cemetery transcription’s 3 August death date also conflicts. These disagreements remain visible.
 
-[1900 census](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) · [Cemetery transcription](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm) · [Source limitations](./index.html#N65)
+[1900 census](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) · [1951 death certificate](https://ancestors.familysearch.org/service/tree/tree-data/published/sources/GJJT-KR3/images/i/2/image.jpg) · [Cemetery transcription](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm) · [Identity and source limits](./index.html#N70)
 
 **Andrew → Robert E.: recorded household son.** The original 1900 census names Robt E. as son in Andrew’s family 159. The family identity is supported by household correlation; biological paternity is not independently tested. [Sheet 9B line 98](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0880).
 
 **Andrew → Walter R.: recorded household son.** Sheet 10A continues family 159 and names Walter R. as son. This supplies an Andrew-level historical branch point; no later male-child chain is established. [Sheet 10A line 1](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881).
 
-**Andrew → Henry G.: recorded household son.** The original continuation names Henry G. as son; the next family begins on line 4. Neither this relationship nor the later profile settles his conflicting birth year. [Sheet 10A line 3](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881).
+**Andrew → Henry Grady: recorded son.** The original 1900 continuation names Henry G. as son; the next family begins on line 4. Henry Grady’s 1951 death certificate records father Andrew Jackson Oliphant, corroborating the correlation through secondary parent information within an original vital record. Neither source resolves the conflicting birth year or establishes biological paternity. [Sheet 10A line 3](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) · [Death certificate](https://ancestors.familysearch.org/service/tree/tree-data/published/sources/GJJT-KR3/images/i/2/image.jpg) · [Qualifications](./index.html#N70).
 
 [Back to tree overview ↑](./index.html#family-tree)
 
@@ -497,7 +513,7 @@ Hazel’s named-mother birth index supplies Newberry; the 1900 original calls Ef
 
 [Back to tree overview ↑](./index.html#family-tree)
 
-Source reviews dated 29 September 2026; editorially reconciled 30 September 2026 from saved audits, including the previously recorded reading of the saved 1856 will images for its explicitly named wife and children. The underlying Bible or complete transcript remains outstanding; later accounts may repeat the same family information. Stable references T01–T23 identify people and T-R01–T-R26 identify relationships. Edition 01.10 adds a fresh reading of two 1900 census sheets for Andrew’s recorded sons; the earlier Aaron–Solomon link remains reported. Historical people only; no genetic result is assigned to Aaron. [Bible provenance](./index.html#s9) · [What would resolve the gap](./index.html#R03).
+Source reviews dated 29 September 2026; editorially reconciled 30 September 2026 from saved audits, including the previously recorded reading of the saved 1856 will images for its explicitly named wife and children. The underlying Bible or complete transcript remains outstanding; later accounts may repeat the same family information. Stable references T01–T23 identify people and T-R01–T-R26 identify relationships. The original 1900 census records Andrew’s sons; Edition 01.11 adds Henry Grady’s death-record identity corroboration and Walter’s qualified 1940 household finding. The earlier Aaron–Solomon link remains reported. Historical people only; no genetic result is assigned to Aaron. [Bible provenance](./index.html#s9) · [What would resolve the gap](./index.html#R03).
 
 03 / Aaron in the records
 
@@ -663,6 +679,10 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 **30 September update:** [Three other recorded sons of Andrew](./index.html#N65) supply historical candidates, but no subsequent male-child chain or independent Y result is established. The next finite record is Walter’s original notice in *The San Bernardino County Sun*, 29 May 1968, [image 61387527, identified article](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355), currently known through an obituary index. Read it for named children, then document every father–son link. This route initially anchors Andrew and does not settle the earlier Solomon–Aaron chain.
 
+**Edition 01.11 follow-up:** [Walter’s exact notice remains unread after two blocked archive routes](./index.html#N67). One original 1940 census records a single-member household; it neither proves lifetime childlessness nor independently links that Walter to Andrew. [Henry Grady’s original 1951 death certificate](./index.html#N70) supplies full recorded parent names and supports his adult identity, but names no child. A separately scoped historical Henry household is the next child-link test; the exact Walter notice remains a finite parallel target. Neither result establishes a later male line or a suitable comparison tester.
+
+**Final household screen:** [One original 1920 Emmett/Raliegh household](./index.html#N73) names no child of either adult son and leaves its Alfred J. head-name discrepancy unresolved. Resolve adult identity before treating it as Andrew’s family or tracing a further male line; it does not eliminate either branch.
+
 03 · Family-held source The complete family Bible record Custody unresolved
 
 **Target:** all family-record leaves and title/imprint pages of the Andrew J. Oliphant Bible, or Helen Madison’s complete transcript with annotations and provenance.
@@ -682,6 +702,10 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 **Route:** NARA access enquiry or complete-file copy route. The jacket and cards remain unread; an enquiry draft is unsent. [NARA’s CMSR guide](https://www.archives.gov/research/military/army/compiled-military-service-records).
 
 **30 September update:** [A possible military-source microfiche locator](./index.html#N61). The underlying individual record remains unread.
+
+**Edition 01.11 catalogue coverage:** [All twenty displayed items in the official CLS Ms29 digital listing](./index.html#N69) were inspected at the title/description level. No Series XXIII microfiche list or 51-510 cross-reference was exposed there. This is not absence from the physical archive; neither the list, fiche nor Aaron’s service file was read. The next test remains the 51-510 fiche header in Greenville’s possible parent set, record 20203, with Ms29 Series XXIII as the precise provenance-list reference.
+
+**Parent-set access recovered:** [Greenville record 20203](./index.html#N71) now has a directly read catalogue description and two exact library-use-only copy barcodes. No 51-510 constituent link or original image was exposed; its intermittent numbering does not prove the target fiche’s inclusion.
 
 Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1Qbta3xC9_vuQQAyD0hfY9rDxJir9tRt1/view?usp=drivesdk) · [Supporting review 2](https://drive.google.com/file/d/1muSHxRYeXo1u65kb_KQmkY48phacX0fK/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
@@ -716,6 +740,10 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 **Why:** a prior residence, title relationship or district entry could provide a direct backward step for Aaron.
 
 **30 September update:** [A finite commission-book test for Sharp’s district](./index.html#N64). The captain, numbered district and county cross-reference remain unresolved; the film locators are publisher guidance, not newly read originals.
+
+**Edition 01.11 official locator:** [Georgia Archives identifies the 1815–1818 officers’ commission volume](./index.html#N68), series 022-01-003, VOL1 1681, object 157332 / container 14981. Its linked preliminary inventory lists unit 22 at 2968-09. The original S index and John T. Sharp’s 1817 certificate remain unread; film 159001 and the publisher’s drawer pointer have not been officially crosswalked to this volume. No county or numbered district is assigned.
+
+**Signed-in digital mapping:** [Official FamilySearch catalogue 198871 maps film 159001 to DGS 8628331](./index.html#N74), with center/affiliate access labels. The linked viewer exposed no original image. This is not an explicit crosswalk to VOL1 1681 or a Sharp county assignment; the original index/certificate remains the next test.
 
 08 · Pendleton court papers The loose 1816–1817 debt cases Series unresolved
 
@@ -778,6 +806,10 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 **Scottish goldsmith:** the published 1751 apprenticeship and 1763 burgess entries were read; original Edinburgh manuscript shelfmarks and the American identity bridge remain unresolved.
 
 **Parentage and autosomal assignment:** seek a specifically identified heir, guardian or church record for Aaron’s children; establish the proposed Devaney/Pilcher pedigrees and the actual shared ancestral couple before assigning DNA to that line. No confirmed loose parentage file has yet been identified.
+
+**Edinburgh indexed-family test:** [Official catalogue record 418947 identifies film 1066670](./index.html#N72), baptisms 1755–1758 and 1759–1768, within OPR 685/1. Start with David’s indexed 1 September 1762 birth to James Oliphant and Jean Nevay in the second block, confirming original event wording, page, occupation, residence and witnesses. The original remains unread; physical-catalogue availability labels do not establish all-access absence. This is separate from the goldsmith apprenticeship and does not establish a William–Jean marriage or Scottish–American bridge.
+
+**Later digital access confirmation:** [N72’s signed-in follow-up](./index.html#N72) confirms film 1066670 / DGS 7908830 and the catalogue’s FamilySearch Center/affiliate access label. The linked viewer displayed a generic image-group error without historical pixels; it does not establish all-access absence. The finite original test remains David’s indexed Edinburgh birth to James Oliphant and Jean Nevay.
 
 ### Questions for researchers
 
@@ -1045,15 +1077,15 @@ Published correlation credited to Susan G. Daniel, Frow Chips 43(2), November–
 
 - #### [RT19](./index.html#RT19) · Benjamin Franklin Oliphant Sr. · FamilySearch K677-K7B
 
-**Medium priority** · collaborative profile · Core parent link reported; original named-parent evidence needed · Last recorded check 2026-09-28. [Public profile](https://ancestors.familysearch.org/en/K677-K7B/benjamin-franklin-oliphant-1892-1932)
+**Medium priority** · collaborative profile · 1900 household son recorded; adult identity and vital dates qualified · Profile last checked 2026-09-28; original census reviewed separately 2026-09-30. [Public profile](https://ancestors.familysearch.org/en/K677-K7B/benjamin-franklin-oliphant-1892-1932)
 
 **Relevance:** Later core-line identity bridge from Andrew, relevant to the chain underlying the paternal comparison.
 
-**Evidence:** Saved 1910 census supports approximate 1892 birth, Texas birth and unnamed father born Georgia/mother Mississippi. It does not name his father. Exact death and Andrew fatherhood remain family-history claims.
+**Evidence:** The [original 1900 household, sheet 9B](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0880), names Andrew as head; [sheet 10A line 2](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881) records Benj F., age 8, born May 1892 in Texas, as his son. The family was enumerated 2 June 1900 in Chickasaw Nation, ED 150, family 159; the two originals were reviewed 30 September 2026. [N65 preserves the reading and identity limits](./index.html#N65). The saved 1910 census supplies compatible approximate age, Texas birth and parental birthplaces, without naming the father.
 
-**Dependence and limits:** The profile and RT09 are derivative assertions with unestablished independence. A 1917 Alaska marriage date discrepancy still needs the original.
+**Dependence and limits:** Andrew’s household-son relationship is now recorded in the original census, rather than resting solely on the profile or RT09. Correlation of Benj F. with adult Benjamin Franklin remains qualified; the contemporary reported relationship does not verify biological paternity. The profile and family history may share information. The exact 1917 Alaska marriage date and exact death still require original verification.
 
-**Specific question:** Which original birth, marriage, death or probate record explicitly names Benjamin’s parents and resolves the 1917 date?
+**Specific question:** Which independent identifying record securely connects the adult Benjamin Franklin to Benj F. in Andrew’s 1900 household and resolves the conflicting 1917 marriage and exact death dates?
 
 Restricted contact planning: [Private tree/contact register](https://drive.google.com/file/d/1FEEEjabOUNssVCybTH638QranW5cDwX-/view?usp=drivesdk) · [Unsent first-contact draft](https://drive.google.com/file/d/1IhuE0x_YZUT0gesEZZX_Dv_6yqf6Qmd3/view?usp=drivesdk). These files were verified owner-only on 30 September 2026; access requires Taylor’s permission. They contain planning, not a record of messages sent.
 
@@ -1327,6 +1359,8 @@ A different William's 1842 Guilford estate names widow Mary; it must not simply 
 **Sources and reading status:** [Laurens wagon sale](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS7S-1TPS); [1800 Laurens census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GR8W-X5Z); [William–Thomas gift](https://www.familysearch.org/ark:/61903/3:1:3QS7-99DX-88M1); [family compilation](https://www.familysearch.org/library/books/viewer/58759/); [autobiography](https://www.sermonindex.net/books/oliphant-james-h-autobiography/1/). Specified originals previously visually read; compilation and autobiography are later testimony.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
+
+**Later official retrieval advance:** [N72](./index.html#N72) identifies the original-register reel and date block behind the David index. No personal manuscript entry or family identity bridge has yet been read.
 
 N15 · Edinburgh goldsmith training and the missing American bridge
 
@@ -2086,6 +2120,10 @@ The matching number range suggests a parent-set test, but does not establish inc
 
 Restricted 30 September supporting records: [Supporting review](https://drive.google.com/file/d/1qqfB8LAHwLiXHN5gu3OE3icmMZJmZPun/view?usp=drivesdk) · [Scoped request](https://drive.google.com/file/d/1E_C2j6FTB5eRN2pLykobpcojsll6YwFa/view?usp=drivesdk) · [Recorded outcome](https://drive.google.com/file/d/1ZkFHG2gt16uRtwLrstOoYcQ30C5-g0ms/view?usp=drivesdk). Access requires Taylor’s permission; these supporting records retain the actual scope and limits.
 
+**Later listing coverage:** [N69](./index.html#N69) completes both pages of the twenty-item digital listing. It does not locate or read the physical Series XXIII list or fiche 51-510.
+
+**Later parent-set access recovery:** [N71](./index.html#N71) directly reads Greenville record 20203 and exact copy references, retaining the unproved 51-510 inclusion and Nash-coverage limits.
+
 N62 · Early County district 7 lot 23: access route checked
 
 Reviewed 30 September 2026 · Access route checked; original grant unread · Bounded access review; no original grant or drawer entry inspected.
@@ -2120,6 +2158,8 @@ The next finite test is John T. Sharp's complete original commission, found thro
 
 Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1laVP28b5vHNmGUPc1Ilpcg3t-XgVPugb/view). Access requires Taylor’s permission; the review preserves both bounded scopes, exact queries, access failures and original-record limits.
 
+**Later official catalogue follow-up:** [N68](./index.html#N68) identifies VOL1 1681 and its institutional locators without reading John T. Sharp’s original commission or confirming the film crosswalk.
+
 N65 · Andrew's collateral sons now have an original census branch point
 
 Reviewed 30 September 2026 · Original census branch point; later male line unproved · Two original census sheets downloaded and visually read; the next obituary remains index-only.
@@ -2136,6 +2176,10 @@ The Walter obituary [index record 536130276](https://www.ancestry.ca/search/coll
 
 Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1zI0LlHRdgY9E7wWuHWb3BAnfHhlMKl1m/view). Access requires Taylor’s permission; the original scans, provenance and bounded scope/result remain in the restricted library.
 
+**Later reviewed follow-up:** [N67](./index.html#N67) records Walter’s original 1940 household without adding a child link. [N70](./index.html#N70) supplies Henry Grady’s original 1951 death certificate and full recorded parents; the earlier census birth conflict remains unresolved.
+
+**Final adult-household follow-up:** [N73](./index.html#N73) records a 1920 Emmett/Raliegh household with an unresolved Alfred J. head-name conflict. No later male-child chain was established.
+
 N66 · Pendleton locators sharpen the loose-paper and ledger questions
 
 Reviewed 30 September 2026 · Catalogue advance; loose papers unlocated · Official catalogue metadata examined; no new historical court paper read.
@@ -2150,9 +2194,123 @@ The next finite test is a repository or original title-and-page crosswalk betwee
 
 Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1IA4Y1MJqNZud6lazLymwMyhfF1zNL84i/view). Access requires Taylor’s permission; the review preserves the catalogue readings, two bounded scopes, exact queries, screenshot and attribution limits.
 
+N67 · Walter’s exact notice remains unread; one census household checked
+
+Reviewed 30 September 2026 · Original census fallback; no later male link
+
+A bounded follow-up pursued the exact *San Bernardino County Sun* notice dated 29 May 1968, known through [obituary index record 536130276](https://www.ancestry.ca/search/collections/61843/records/536130276). The [original image 61387527, identified article](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355) and [CDNC Sun calendar](https://cdnc.ucr.edu/?a=cl&cl=CL1&sp=SBS) encountered persistent security verification. No notice text or pixels were read. The [official library guide](https://www.sanbernardino.gov/308/Information-Databases) identifies CDNC Sun coverage, but the access failure is not evidence that the notice or children are absent.
+
+One original historical fallback was visually read: [1940 census, Westmorland City, Imperial County, California, ED 13-46, sheet 6A](https://www.ancestry.ca/imageviewer/collections/2442/images/m-t0627-00210-00599), line 24, household 128, enumerated 6 April 1940; NARA T627, roll 210, viewer 12 of 31. It records Walter R. Oliphant, 51, Texas-born, single, as the only person in household 128; the preceding household ends at line 23 and the next starts at line 25. This establishes one household’s composition, not lifetime childlessness.
+
+Name, middle initial, age and birthplace fit [Andrew’s recorded Walter R., born September 1888 in Texas](./index.html#N65). The 1940 page names no parent or exact birth date; the adult identity and California move still require a linking record. Its single status also does not resolve the marriage history reported in a submitted profile.
+
+Six public discovery queries and six source-access attempts were bounded to the exact notice and this one census fallback. No later father–son link or tester was identified. **Next test:** obtain the exact notice through ordinary accessible archive or library reproduction, establish that it concerns Andrew’s Walter, then independently verify any historical child named. Do not treat a survivor list as permission to trace or contact living people. See [R02](./index.html#R02).
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1xT5HoZW2APwtlBaihp8ieefoOlzWvFIl/view). Access requires Taylor’s permission; supporting originals or catalogue readbacks, provenance and bounded scope/result remain in the restricted evidence library.
+
+N68 · Sharp’s district now has an official commission-volume locator
+
+Reviewed 30 September 2026 · Official catalogue advance; original commission unread
+
+The ordinary browser route reached the [Georgia Archives officers’ commissions series](https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/743), **022-01-003**, and its [1815–1818 volume record](https://georgiaarchives.as.atlas-sys.com/repositories/2/archival_objects/157332), **VOL1 1681**, [container 14981](https://georgiaarchives.as.atlas-sys.com/repositories/2/top_containers/14981). The linked [official preliminary inventory](https://georgiaarchives.org/what_do_we_have/online_indexes/pdi/RG022/022-01-003.htm) lists **unit 22, 16 September 1815–13 May 1818, one volume, location 2968-09**. That shelf locator is provisional, originating in the inventory’s 1992–1994 project; it is not a freshly confirmed current shelf position.
+
+The official record confirms an appropriately dated book, but does not crosswalk VOL1 1681 to the [publisher’s film 159001 / Georgia Archives Drawer 174 Box 34 pointer](https://www.georgiamilitarycommissions.com/introduction/). No official DGS was obtained. Preserve the official volume end **13 May 1818** separately from the publisher compilation cutoff **13 March 1818**; compilation coverage and book coverage have not been equated.
+
+Nine distinct catalogue/access pages were inspected within a ten-page limit. The FamilySearch film lookup redirected to sign-in, while the Georgia catalogue rendered in an independent browser tab. The archive lists unrestricted access but exposed no original-image link in the inspected volume/container records; this does not rule out another image route. No original S index, John T. Sharp entry, exact commission date, numbered unit or county was read. The [derivative captain-1817 candidate](./index.html#N64) remains unassigned to Hancock.
+
+**Next test:** retrieve VOL1 1681 using the official object/container identifiers, confirm its film crosswalk, then read the original S index, John T. Sharp’s complete 1817 certificate and adjacent officer entries. Establish county/unit through an independent contemporary register or return before identifying Sharp’s Hancock district. See [R07](./index.html#R07). No new Aaron record, title identity, parent or origin follows.
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1QzAbEzmR1m95Zk02ZyPNRhsRekzayA0G/view). Access requires Taylor’s permission; supporting originals or catalogue readbacks, provenance and bounded scope/result remain in the restricted evidence library.
+
+**Later digital catalogue advance:** [N74](./index.html#N74) independently confirms film 159001 / DGS 8628331 and access labels. It does not crosswalk the archive’s volume/drawer/shelf identifiers or read Sharp’s entry.
+
+N69 · CLS digital listing checked; the microfiche provenance list remains unread
+
+Reviewed 30 September 2026 · Twenty catalogue items checked; physical list unread
+
+The [official Charleston Library Society collection description](https://charlestonlibrarysociety.omeka.net/collections/show/59) identifies Ms29 and Series XXIII, *List of Microfiche-CLS Manuscripts; Microfilm of CLS Records*. Its visible twenty-item digital listing was read at title/description level: ten entries on [page one](https://charlestonlibrarysociety.omeka.net/items/browse?collection=59) and ten on [page two](https://charlestonlibrarysociety.omeka.net/items/browse?collection=59&page=2). Ordinary browser access resolved the earlier second-page extraction failure.
+
+The second page’s items 1628–1619 concern early book catalogues, the 1759–1811 letter book, the 1833 historical-document committee, meeting minutes/proceedings and eighteenth-century rules/bylaws. None of the twenty displayed summaries exposed the Series XXIII list or a 51-510 military-source cross-reference. No item’s complete historical text or manuscript images were inspected. The collection’s twenty digital entries are not its twenty-six institutional series and are not a complete physical-archive inventory.
+
+**Next test:** inspect the physical header of fiche **51-510** in Greenville’s possible parent set, [*Misc. mss.*, record 20203](https://aspen.greenvillelibrary.org/Record/20203), preserving [the source-identity and Nash-coverage qualifications](./index.html#N61). Ms29 Series XXIII is the precise provenance-list reference if the header is insufficient. Neither the list nor the fiche was read, and Aaron’s service file remains unread. Do not repeat the two browse pages without a changed inventory or a new item-level pointer. See [R04](./index.html#R04). No company, service dates, birthplace or parentage was obtained.
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1rdv9J-nR1J6EWWNj_-cNFhRpyzdvmKsv/view). Access requires Taylor’s permission; supporting originals or catalogue readbacks, provenance and bounded scope/result remain in the restricted evidence library.
+
+N70 · Henry Grady’s death certificate records his full parent names
+
+Reviewed 30 September 2026 · Original death record; secondary parent information
+
+One focused public-source lookup exposed the original Texas death certificate for **Henry Grady Oliphant, state file 39884**, through the [FamilySearch public summary](https://ancestors.familysearch.org/en/GJJT-KR3/henry-grady-oliphant-1893-1951) and its [displayed death-source image](https://ancestors.familysearch.org/service/tree/tree-data/published/sources/GJJT-KR3/images/i/2/image.jpg). It records father **Andrew Jackson Oliphant**, born Georgia, and mother **Mattie Emmer Richardson**, born Mississippi. This supports correlating the adult with Henry G., recorded as Andrew’s son in the [1900 original census, sheet 10A line 3](https://www.ancestry.ca/imageviewer/collections/7602/images/ITT623_1848-0881). Birth and parentage are secondary information within an original vital record; recorded parents are not genetic confirmation.
+
+The certificate records death **2 August 1951 at Henrietta, Clay County, Texas**, usual residence Houston, and birth **3 December 1893 at Dallas, Texas**. The birth year conflicts with the earlier census’s December 1894. The [cemetery transcription](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm) gives death 3 August 1951. Keep both disagreements visible; the exact birth date does not automatically overrule the census.
+
+It records burial **5 August 1951 at Marietta, Oklahoma**, distinct from the death date. It does not expressly name Lakeview or a plot. The submitted summary’s Marietta, Cass County, Texas burial assignment conflicts with the certificate’s Oklahoma location. The source image URL depends on the public summary’s source ordering; no underlying ARK, film or civil-register volume was exposed. The state file number, person, date and jurisdiction identify the document without inventing a film citation.
+
+This batch used no new discovery queries and opened only the public summary and its death-source popup. The submitted summary reports a wife and two daughters; those child relationships were not checked against originals and are not added to the tree. That list does not exclude sons, and the certificate names no child. **Next test:** a separately scoped historical Henry household could establish child relationships in that household, with identity and privacy checked before further tracing. No later male-line continuation or tester was identified. See [T23](./index.html#T23), [the qualified parent link](./index.html#T-R26) and [R02](./index.html#R02).
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/12fF6wpa6efhABNpU2Dlgd85BsrnHaVcH/view). Access requires Taylor’s permission; supporting originals or catalogue readbacks, provenance and bounded scope/result remain in the restricted evidence library.
+
+N71 · Greenville’s possible microfiche parent set is now directly readable
+
+Reviewed 30 September 2026 · Parent catalogue read; fiche inclusion unproved
+
+The previously inaccessible [Greenville record 20203, *Misc. mss.*](https://aspen.greenvillelibrary.org/Record/20203), was read in an ordinary public browser, including its expanded More Details. It describes **58 negative microfiches**, published by the South Carolina Historical Society, with head-of-fiche title *Charleston Library Society misc. mss.* and intermittent numbering **51-1 through 51-527**. Two Hughes Main Library, South Carolina Collection copies are displayed as Library Use Only (Not Holdable), one available each: **SC MICROFIC 975.7915 CHARLESTON, barcode 0000113637227**, and **SC MICROFICHE 975.7915 CHARLESTON, barcode 0000106448707**. Catalogue status is not a physical shelf check.
+
+No fiche scan, 51-510 constituent link, military manuscript citation or MARC control was exposed in the normal or expanded page. The [earlier 51-510 military-title hint](./index.html#N61) remains a catalogue search extract. Intermittent numbering does not prove that 51-510 belongs to this set, and neither Nash nor Aaron coverage is established. No historical fiche header or service material was examined. This changed browser access method used no discovery queries and inspected one catalogue page; no request, login or purchase occurred.
+
+**Next test:** read the 51-510 fiche header for title, source identifier, covered commanders/regiments and frame extent using the exact catalogue and copy references above. Establish Nash coverage before searching Aaron. If provenance is lacking, CLS Ms29 Series XXIII is the precise microfiche-list reference; [its twenty displayed digital item summaries](./index.html#N69) exposed no list item and do not establish physical absence. The South Caroliniana Nash typescript, accession 2350 / OCLC 31399861, remains separate, with its previously observed missing-copy status. Aaron’s complete NARA RG 94 / NAID 300392 file remains unread. See [R04](./index.html#R04). No company, individual service dates, birthplace, parentage or civilian identity bridge follows.
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1LDF67BXsbwD94PvFKRa5VcpmZ84QJ_am/view). Access requires Taylor’s permission; catalogue readbacks, provenance and the bounded scope/result remain in the restricted evidence library.
+
+N72 · An exact Edinburgh reel narrows the James–Jean Nevay register test
+
+Reviewed 30 September 2026 · Official reel catalogue; personal entry unread
+
+The [FamilySearch Library catalogue, record 418947](https://libcat.familysearch.org/Record/418947), identifies **film 1066670** as **Edinburgh baptisms 1755–1758; baptisms 1759–1768 (indexed)** in *Old parochial registers for Edinburgh, 1595–1860*. The collection description says the microfilm reproduces Church of Scotland originals, **OPR 685/1** (catalogued 685'1), volumes 1–111, at New Register House, Edinburgh. Those volume numbers describe the complete register collection, not the specific event’s volume. That first public-catalogue pass supplied no personal original, exact event page or new DGS mapping; the separate signed-in catalogue follow-up below subsequently confirmed the mapping.
+
+The finite target is the original behind the previously read [David index XTPY-32K](https://www.familysearch.org/ark:/61903/1:1:XTPY-32K): indexed birth 1 September 1762, parents **James Oliphant and Jean Nevay**. The event lies within the reel’s second date block, 1759–1768. Earlier work retained batch C11980-9 / DGS 7908830. The public physical-catalogue pass did not reverify those index fields or the DGS crosswalk; the later digital-catalogue check confirms the film/DGS mapping, without rereading the personal index. Do not change an indexed birth date into a baptism date without the manuscript.
+
+Five focused queries and five source surfaces were checked. The digital catalogue redirected to sign-in; the public library catalogue exposed the exact reel row. Its copy is at Granite Mountain Record Vault — Film, status **Vault Master**; the title-level status was **Currently Unavailable**. These are observed physical-catalogue holding/status labels, not proof that no copy, image or other access exists. The [digital film-number lookup](https://www.familysearch.org/en/search/catalog/results?q.filmNumber=1066670) required sign-in during that earlier pass; a later restored-session check supersedes that session-access description.
+
+**Later signed-in access check:** the existing FamilySearch session resumed, and the [digital catalogue, koha:418947](https://www.familysearch.org/en/search/catalog/koha:418947), independently confirms **film 1066670 = DGS 7908830**, with the same two baptism date blocks. Its exact row labels access at a **FamilySearch Center or affiliate library**. The exposed [film link](https://www.familysearch.org/en/search/catalog/film?dgs=007908830&cat=koha:418947&i=0) led to [viewer ARK 3Q9M-CSH8-LSW7](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSH8-LSW7?cat=koha%3A418947&view=explore&grid=on&lang=en&groupId=M97N-KB7), which displayed Cannot Display Image Group. No image count, volume index, event page or historical pixels were exposed. The generic viewer error does not establish its cause; the catalogue’s center/affiliate statement is the specifically observed restriction. No refresh loop or restriction bypass was attempted. This separately scoped check used no new discovery/name queries and read no original entry.
+
+**Next test:** use authorized FamilySearch Center/affiliate access for DGS 7908830, film 1066670, second block 1759–1768, or a repository copy whose access and price are not established here. Obtain the original entry and confirm volume/page, event type/date, father’s occupation, residence and witnesses. Those fields may distinguish the indexed family and test the conflicting Jean 1764/1765 extracts. [James–Jean is the indexed parent pair](./index.html#N14); William was formerly attached as Jean’s son, not her husband. No Wick–Edinburgh–Charleston identity or migration bridge has been established; Nevay is not equated with Devaney, and the later Aaron Olifant Devany belongs to a separate generation. The pending [NRS David letter enquiry](./index.html#R06) is a different target. No new Aaron parent, immigrant generation or surname transition follows.
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1sBPMmUbffaW7mSGvxnetK1ccRVr5nV0a/view). Access requires Taylor’s permission; catalogue readbacks, provenance and the bounded scope/result remain in the restricted evidence library.
+
+Restricted later signed-in access review: [Catalogue mapping and viewer outcome](https://drive.google.com/file/d/1xUo3ImoVEyB9PJ55HcPSwE8JhTidRrUM/view). Its separate scope and readback preserve the center/affiliate label, exact links and unchanged original-reading limit.
+
+N73 · One adult Emmett/Raliegh household leaves an unresolved head-name conflict
+
+Reviewed 30 September 2026 · Original household; adult identity and continuation unresolved
+
+The [1920 census original, Marietta City, Washington Township, Love County, Oklahoma, ED 130, sheet 10A](https://www.ancestry.ca/imageviewer/collections/6061/images/4384877_01064), lines 8–11, records Emmett Oliphant, 41, and Raliegh Oliphant, 31, as single sons in a four-person household; NARA T625, roll 1467, viewer 5 of 30. The next head begins at line 12, bounding the group. No child of either adult son is named. The enumeration-date blanks are unfilled, so no visit date is assigned. This is a household finding, not lifetime childlessness. The [selected Emmett index](https://www.ancestry.ca/search/collections/6061/records/98989025) and original were both examined.
+
+Ages, Texas birthplaces, parental Georgia/Mississippi birthplaces and paired brother names fit the proposed Robert and Walter family. However, the head is indexed **Alfred J.**, age 73, Georgia-born, and the closely written original cannot simply be relabelled Andrew. The wife’s original initials appear **M. E.**, indexed Mc; her age 60 and Mississippi birthplace fit Mattie E., but the original does not give a full name. Her mother’s Alabama birthplace differs from the earlier Tennessee report. An Andrew–Alfred alias or another family explanation remains unproved. Neither Emmett nor Raliegh gives the first names Robert or Walter here.
+
+Four focused queries and two record opens yielded this one original. A Texas death-certificate query for Robert Emmett Oliphant, birth 1878 / death 1959, primary records and default nonexact matching, returned zero good matches. Two 1930 census screens, one with Robert Emmett and one with Emmett alone, examined all 34 and 19 displayed rows respectively without identifying the target. The 1920 Emmett screen examined all 25 displayed rows before selecting the strongest row. These are bounded index screens, not exhaustive record absences; namesakes were not opened or accepted by age alone. Robert’s 1878/1879 birth and 1958/1959 death conflicts remain unresolved.
+
+**Next test:** obtain an independent named-parent or identifying record to resolve Alfred J. versus Andrew and the adult Robert/Emmett identity before further tracing. An exact original local death record or 1958/1959 notice could supply relatives and dates. Every further father–son link needs its own historical identity and relationship evidence. No later male line or tester was established. [N65’s original 1900 branch point](./index.html#N65) remains controlling; see [Robert’s qualified tree entry](./index.html#T21), [Walter’s qualified entry](./index.html#T22) and [R02](./index.html#R02).
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1WRrHr7gwglcQuLQlyIgcQ4FAc3q9KNLH/view). Access requires Taylor’s permission; original or catalogue readbacks, provenance and bounded scope/result remain in the restricted evidence library.
+
+N74 · Sharp’s commission film now has an official digital identifier
+
+Reviewed 30 September 2026 · Official film/DGS mapping; original district test unread
+
+After the existing FamilySearch session resumed, one [exact film-number lookup](https://www.familysearch.org/en/search/catalog/results?count=100&q.filmNumber=159001) exposed [catalogue 198871, *Military commissions in the state militia, 1798–1860*](https://www.familysearch.org/en/search/catalog/koha:198871), author Georgia Executive Department. Its official **1815–1818** row explicitly maps **film 159001 to DGS 8628331**. The catalogue describes 1957 filming of state-archive originals, eighteen reels and an included index; no individual entry was read.
+
+The camera and [Full-Text link](https://www.familysearch.org/en/search/full-text/results?q.groupName=8628331&openEdit) descriptions both label access at a **FamilySearch Center or affiliate library**. Full-Text was not opened or queried. The ordinary [camera route](https://www.familysearch.org/en/search/catalog/film?dgs=008628331&cat=koha:198871&i=0) reached [viewer ARK 3Q9M-C3HS-1YDD](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C3HS-1YDD?cat=koha%3A198871&view=explore&grid=on&lang=en&groupId=TH-909-88289-24560-50), group TH-909-88289-24560-50, displaying Cannot Display Image Group. No manuscript pixels, usable original index or image count was exposed. The generic error does not itself establish the cause or failure of all authorized access methods; the catalogue’s access label is the specific observed condition.
+
+This verifies the film’s official title/date interval and DGS, but does not explicitly crosswalk Georgia Archives VOL1 1681, Drawer 174 Box 34 or provisional shelf location 2968-09. Keep [those archive locators](./index.html#N68) as separate date/title-correlated retrieval references. The official volume end 13 May 1818 and publisher compilation cutoff 13 March 1818 remain distinct. One exact native film lookup and three record surfaces were examined; no search-engine or name queries were added, and no original leaf became readable.
+
+**Next test:** at authorized center/affiliate access, retrieve catalogue 198871 / DGS 8628331 and read the original S index, John T. Sharp’s complete 1817 certificate and adjacent officers. Record page, precise date, rank and numbered unit, then establish county through an independent contemporary return/register before identifying Aaron’s Sharp district. The separate archive locator remains a record-copy route. No Hancock assignment, district number, exact commission date, Aaron origin or identity bridge was obtained. No outreach or order was made. See [R07](./index.html#R07).
+
+Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1sCNj0uSMFnUs2rHPvIm72xnwFAX92a00/view). Access requires Taylor’s permission; original or catalogue readbacks, provenance and bounded scope/result remain in the restricted evidence library.
+
 ### Coverage checklist
 
-The main report covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. Sixty-six dated research notes supply the supporting leads, corrections, bounded negative searches and exact unread references.
+The main report covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. Seventy-four dated research notes supply the supporting leads, corrections, bounded negative searches and exact unread references.
 
 **Historical review:** all 181 staged working notes were classified. Of these, 145 map to report sections or research notes; the remaining 36 have explicit historical, background, private-data or operational retention reasons in the restricted topic catalog. This is a topic-level reconciliation, not a claim that every sentence, search attempt or original source has been independently rechecked. Consult the linked working reviews for full detail before repeating a search.
 
@@ -2165,6 +2323,14 @@ The main report covers the American chronology, DNA comparison limits, candidate
 **Edition 01.10 addition:** [N64](./index.html#N64) preserves two Sharp-district access and commission-route scopes; [N65](./index.html#N65) records the new original Andrew household reading and its incomplete collateral test; [N66](./index.html#N66) preserves two Pendleton catalogue and attribution scopes. Their restricted supporting reviews retain exact coverage, queries and access limits. The current contact status is a sent enquiry with a pending reply; earlier drafts remain historical.
 
 The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e38st4i-vP6WeqUtvUvF6H6YSYZfdi94/view) preserves nineteen verified supporting-file transfers; the catalog itself was the twentieth transfer. Its incremental library total is 1,638 from the prior verified 1,618 baseline. The Edition 01.9 upload snapshot above remains a historical record.
+
+**Edition 01.11 addition:** [N67](./index.html#N67) preserves Walter’s blocked exact notice and original census fallback; [N68](./index.html#N68) adds official Sharp commission-book locators; [N69](./index.html#N69) completes the twenty-item CLS digital listing; [N70](./index.html#N70) records Henry Grady’s original death certificate and its identity/date limits. Historical originals, catalogue metadata and access failures remain distinct. No later male-line chain or Aaron origin was established.
+
+**Edition 01.11 catalogue supplement:** [N71](./index.html#N71) recovers Greenville’s possible microfiche parent-set description and exact physical copy references; [N72](./index.html#N72) identifies an official Edinburgh parish-register reel for the James–Jean Nevay test. Both underlying personal originals remain unread; no fiche inclusion, Nash coverage or migration bridge is assumed.
+
+**Edition 01.11 final follow-ups:** [N73](./index.html#N73) preserves the original adult Emmett/Raliegh household, bounded death/census screens and unresolved head-name identity. [N74](./index.html#N74) confirms the Sharp film’s digital mapping and access condition without reading an original certificate. Neither adds a later male-child chain or resolves Aaron’s district or origins.
+
+**Edition 01.11 verified library coverage:** the four [batch snapshots above](./index.html#library-transfer-current) separately list nineteen, ten, four and ten supporting files. Their own four uploads bring the edition increment to forty-seven transfers and the recorded total to 1,685 from the prior 1,638 baseline. No snapshot combines all batches; no full-library recount or remote content-hash equality is claimed.
 
 08 / Edition history
 
@@ -2239,6 +2405,12 @@ Renamed the report The Aaron Oliphant Inquiry and added nineteen related-tree an
 ### Edition 01.10 · Recorded collateral sons and sharper retrieval tests
 
 Added N64–N66 for a qualified Sharp commission-book route, Andrew’s newly read 1900 household, and exact Pendleton court catalogue locators. The two original census sheets record Benjamin and three collateral candidates as Andrew’s sons. The historical tree now contains twenty-three people and twenty-six qualified relationships; no later male-child chain or independent Y comparison has been established. Conflicting Robert and Henry dates remain visible. Sharp’s district and the loose Aaron court packets remain unresolved; catalogue and publisher pointers are distinguished from original readings. Updated the approved enquiry to sent with a reply pending, and clarified that a possible Bible location is unverified. No parent of Aaron, immigrant home or surname transition is established.
+
+30 September 2026
+
+### Edition 01.11 · Collateral records and precise archive access
+
+Added N67–N74, bringing the dated research notes to seventy-four. Walter’s original 1940 census records a single-member household; his exact obituary remains unread and the adult identity still needs a linking record. Henry Grady’s original 1951 death certificate supplies full recorded parent names and a contemporary death date, supporting his identity correlation while preserving the 1893/1894 birth and 2/3 August death disagreements. The tree remains twenty-three historical people and twenty-six qualified relationships. Added exact official Georgia commission-volume locators, completed the CLS twenty-item digital listing, recovered Greenville’s parent-set holdings and identified the Edinburgh reel behind the James–Jean Nevay index. Signed-in checks confirm the Edinburgh and Sharp film/DGS mappings, while their linked viewers expose no original pages. A final adult Emmett/Raliegh household leaves an Alfred-versus-Andrew identity conflict. These advances do not read the missing personal originals, establish a later male-child link or supply a migration bridge. No later male line, comparison tester, parent of Aaron or overseas origin was established.
 
 ### Use this research in your own work
 

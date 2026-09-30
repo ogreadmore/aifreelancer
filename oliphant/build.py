@@ -161,7 +161,7 @@ def public_exports(public):
     data = {
         'schema_version': '1.3.0',
         'title': page.all('title')[0].text(),
-        'edition_date': page.all('time')[0].attrs['datetime'],
+        'edition_date': max(n.attrs['datetime'] for n in page.all('time')),
         'manuscript_sha256': digest(html),
         'publication_status': 'working_edition_deployment_not_asserted',
         'intended_base_url': 'https://aifreelancer.co/oliphant/',

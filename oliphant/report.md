@@ -8,13 +8,13 @@ Start here / Research checkpoint
 
 This website is the current research record. Read it first, then follow its citations and the restricted evidence library for the underlying material. There is no separate research starting point in Drive.
 
-**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. No origin theory is established as probable. The original 1900 household records Andrew’s sons, with later collateral identity and date limits retained. [Henry’s original 1930 household records three daughters; his actual 1950 census entry is a supplemental individual entry](./index.html#N79), without a recovered family household or son link. [All sixty assessment rows in Rutherford’s explicitly dated October 1809 additional returns were screened](./index.html#N80) without a recognizable target; this does not establish county-wide absence or identify the Tennessee Aaron as Rebecca’s husband. The separate [Caldwell index](./index.html#N75) and Greene [1812](./index.html#N77), [1813](./index.html#N78) and [1814](./index.html#N76) tax checks retain their coverage and legibility limits. Greene’s Richard Sharp headings remain distinct from Aaron’s later Hancock district. New bounded [Gwinnett estate-index](./index.html#N81) and [Greene guardian-letter index](./index.html#N82) checks found no recognizable target in the specified leaves; their later sections and underlying proceedings remain unread. No later male-child chain or independent comparison tester has been established, and the missing commission, parish and service originals remain at their stated retrieval status.
+**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. Use **Aaron Oliphant** as the working name. The family researcher recalls that the Bible’s ancestry stops at Aaron; no page has been examined, and its wording and provenance still need checking. The [separate middle-name recollection](./index.html#N17) is less certain. The Bible’s remaining role is to verify Aaron and later generations, while independent earlier-origin research continues. The active original-record priorities are [the exact federal Nash regiment service file](./index.html#R04) and [Thomas Welch’s 1809 loose will](./index.html#R09). [The three record groups are compared as an identity test](./index.html#N83), not treated as one person merely because the names match. The stronger Pendleton–Georgia family anchor does not establish that the Tennessee witness was a different man. Earlier [collateral census](./index.html#N79), [Rutherford tax](./index.html#N80), [Gwinnett index](./index.html#N81) and [Greene guardian-letter](./index.html#N82) findings retain their bounded coverage and identity limits. No later male-child chain, comparison tester or new ancestry discovery has been established.
 
 - **Understand the present assessment.** Read [What we know](./index.html#findings), the [candidate comparison](./index.html#candidate-comparison) and [competing explanations](./index.html#theories). Rankings set research priorities, not surname probabilities.
 
 - **Check what has already been done.** Read the relevant [research notes](./index.html#research-notes), [coverage checklist](./index.html#notes-coverage) and [source qualifications](./index.html#sources). Check the linked historical reviews before repeating a search; the topic audit is not a transcript of every past search.
 
-- **Choose one question that evidence could settle.** The first priorities are the [two separate Devaney comparisons](./index.html#R01), an [independent paternal collateral](./index.html#R02), the [complete Bible evidence](./index.html#R03), Aaron’s [Nash regiment service file](./index.html#R04) and the [Early County land entry](./index.html#R05). Each target records its limits and retrieval needs.
+- **Choose one question that evidence could settle.** The active independent original-record tests are [Aaron’s federal Nash regiment service file](./index.html#R04) and [Thomas Welch’s original loose will](./index.html#R09). The [two Devaney comparisons](./index.html#R01) await a reply, and an [independent paternal collateral](./index.html#R02) remains a separate historical-line test. [Bible inspection](./index.html#R03) will check wording, dates and provenance for Aaron and later generations; independent earlier-origin work need not wait for it. Other targets retain their exact retrieval references.
 
 - **Leave the next researcher a usable result.** Record the date, question, repository, collection, exact query and filters, pages or images examined, access limits, result, citation, and next finite action. Distinguish an index hit, an original reading and a same-person inference.
 
@@ -46,7 +46,9 @@ Each restricted snapshot lists its supporting transfers and excludes its own cat
 
 **Edition 01.12 additions verified on 30 September 2026.** Forty-one transfers brought the recorded library total to **1,726** from the prior verified 1,685 baseline. Names, byte sizes, parent folders and sole-owner permissions were verified. Local SHA-256 fingerprints are retained; this is an incremental total, not a fresh full-library recount or a claim of remote content-hash equality. The [restricted batch snapshot](https://drive.google.com/file/d/1i5a549NpZM6AldNRdlSGOl6PGktpImTF/view) lists forty supporting entries and excludes its own forty-first upload. The [source-member lookup](https://drive.google.com/file/d/1e9VJeotUc5yAMMja_24so7Z5tlcByZf2/view) maps 205 original-image files in three year bundles—78 for 1814, 85 for 1812 and 42 for 1813—to stable ART identifiers, exact source ARKs, local hashes and reading/correction status. Each ZIP counts as one cloud-file transfer; its members are not additional cloud transfers or a count of fully read tax records. The transfer total includes one retained superseded formatting copy as historical archive material; N76 links the final addendum and subsequent reading correction.
 
-**Edition 01.13 additions verified on 30 September 2026.** Fifty-nine transfers bring the current recorded library total to **1,785** from the prior verified 1,726 baseline. Names, byte sizes, sole parent folders and sole-owner Taylor permissions were independently checked; all files were unshared. This is an incremental total, not a fresh full-library recount or a remote content-hash comparison. The [restricted batch snapshot](https://drive.google.com/file/d/1C0StPBcMgKEwUdU0d7OSUQ14_0_BrO1j/view) lists fifty-eight supporting entries and excludes its own fifty-ninth upload. The [source-artifact lookup](https://drive.google.com/file/d/1zlLwrbv01dtRmBMdV2w8CxZtqWAHJrSM/view) maps eighteen preserved source artifacts: seventeen original-image files and one private account GEDCOM, with stable ART references, local hashes, source locators and reading status. These are preservation counts, not eighteen independent historical records or fully verified genealogy statements. The raw account backup and child identities remain private; the [backup audit](https://drive.google.com/file/d/1ofdoJCa025MRHoxhrFZ3a60nafeeYRzZ/view) and [inline NOTE clarification](https://drive.google.com/file/d/1OL1UD9NMKL9WESBKdqVKMRJ4DLDXmEEq/view) describe its structural checks. The Edition 01.12 snapshot remains historical verification.
+**Last published archive verification: Edition 01.13 additions, 30 September 2026.** Fifty-nine transfers brought the recorded library total to **1,785** from the prior verified 1,726 baseline. Names, byte sizes, sole parent folders and sole-owner Taylor permissions were independently checked; all files were unshared. This is an incremental total, not a fresh full-library recount or a remote content-hash comparison. The [restricted batch snapshot](https://drive.google.com/file/d/1C0StPBcMgKEwUdU0d7OSUQ14_0_BrO1j/view) lists fifty-eight supporting entries and excludes its own fifty-ninth upload. The [source-artifact lookup](https://drive.google.com/file/d/1zlLwrbv01dtRmBMdV2w8CxZtqWAHJrSM/view) maps eighteen preserved source artifacts: seventeen original-image files and one private account GEDCOM, with stable ART references, local hashes, source locators and reading status. These are preservation counts, not eighteen independent historical records or fully verified genealogy statements. The raw account backup and child identities remain private; the [backup audit](https://drive.google.com/file/d/1ofdoJCa025MRHoxhrFZ3a60nafeeYRzZ/view) and [inline NOTE clarification](https://drive.google.com/file/d/1OL1UD9NMKL9WESBKdqVKMRJ4DLDXmEEq/view) describe its structural checks. The Edition 01.12 snapshot remains historical verification.
+
+**Edition 01.14 supporting files verified on 30 September 2026.** Eleven new transfers bring the recorded library total to **1,796** from the prior verified 1,785 baseline. Exact filenames, byte sizes, parent folders, unshared status and sole-owner permissions were verified. These are supporting clarification, synthesis and retrieval-audit files; the batch adds no newly read historical original. Local hashes are retained without a remote content-hash comparison or fresh full-library recount. The prior Edition 01.13 snapshot above remains historical; no new batch snapshot is claimed here. The current supporting reviews are linked in [N17](./index.html#N17) and [N83](./index.html#N83)–[N85](./index.html#N85).
 
 ### Identity and interpretation checks
 
@@ -661,7 +663,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-The first five targets below would most directly sharpen the present interpretation. Additional targets retain their exact references so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
+The current independent original-record focus is the federal Nash service file and the loose Welch will. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
 01 · Genetic comparison Resolve the two Devaney comparisons Enquiry sent · reply pending
 
@@ -689,15 +691,15 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 **Final household screen:** [One original 1920 Emmett/Raliegh household](./index.html#N73) names no child of either adult son and leaves its Alfred J. head-name discrepancy unresolved. Resolve adult identity before treating it as Andrew’s family or tracing a further male line; it does not eliminate either branch.
 
-03 · Family-held source The complete family Bible record Custody unresolved
+03 · Family-held source The complete family Bible record Recalled extent · original unread
 
 **Target:** all family-record leaves and title/imprint pages of the Andrew J. Oliphant Bible, or Helen Madison’s complete transcript with annotations and provenance.
 
-**Question:** does the earliest source explicitly identify Aaron and Rebecca as Solomon’s parents, and when was that information written?
+**Question:** what literal names, dates and relationships does it record for Aaron and later generations, and when and by whom were the entries made?
 
-**Route:** ask the family researchers about custody or a complete existing copy. Later references credit the Bible for children’s birthdates but do not reproduce the needed parentage entry. No original page has been retrieved; do not assume the transcriber owned the Bible.
+**Current role:** the family researcher is certain from recollection that its ancestry stops at Aaron. It is therefore a wording, chronology and provenance check for the accepted working family, not the expected route to Aaron’s parents or an earlier generation. The less certain Pinckney recollection is qualified in [N17](./index.html#N17); use Aaron Oliphant meanwhile.
 
-**30 September update:** Taylor reports a possible location for the Bible, rather than possession of it. Its location, custodian and contents remain unverified; no pages have been examined.
+**Route and limits:** establish custody or a complete existing copy. Taylor reports a possible location rather than possession; no custodian, location, page or full transcript has been verified. Later references credit the Bible for children’s birthdates without reproducing the parentage entry. Do not assume the transcriber owned or wrote the original. Independent research through [the service file](./index.html#R04) and [the loose Welch will](./index.html#R09) need not wait for this inspection.
 
 04 · NARA / RG 94 Aaron’s actual War of 1812 service file Index read · file unread
 
@@ -709,7 +711,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 **30 September update:** [A possible military-source microfiche locator](./index.html#N61). The underlying individual record remains unread.
 
-**Edition 01.11 catalogue coverage:** [All twenty displayed items in the official CLS Ms29 digital listing](./index.html#N69) were inspected at the title/description level. No Series XXIII microfiche list or 51-510 cross-reference was exposed there. This is not absence from the physical archive; neither the list, fiche nor Aaron’s service file was read. The next test remains the 51-510 fiche header in Greenville’s possible parent set, record 20203, with Ms29 Series XXIII as the precise provenance-list reference.
+**Edition 01.11 catalogue coverage:** [All twenty displayed items in the official CLS Ms29 digital listing](./index.html#N69) were inspected at the title/description level. No Series XXIII microfiche list or 51-510 cross-reference was exposed there. This is not absence from the physical archive; neither the list, fiche nor Aaron’s service file was read. The 51-510 fiche header in Greenville’s possible parent set, record 20203, remains a distinct alternate test, with Ms29 Series XXIII as the precise provenance-list reference. [The new exact federal request packet](./index.html#N85) keeps the complete personal service file as the primary military target and documents the unlisted-fiche enquiry route.
 
 **Parent-set access recovered:** [Greenville record 20203](./index.html#N71) now has a directly read catalogue description and two exact library-use-only copy barcodes. No 51-510 constituent link or original image was exposed; its intermittent numbering does not prove the target fiche’s inclusion.
 
@@ -773,7 +775,7 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 **Already read:** recorded will DGS **7642461 images 118–119** and court proof DGS **8142650 image 193, p138**.
 
-**Question and route:** obtain all sides, endorsements and attachments of the listed loose item to test the Tennessee Aaron’s identity. No item scan route or precise box has been found, and no request has been submitted.
+**Question and route:** obtain all sides, endorsements and attachments of the listed loose item to test the Tennessee Aaron’s identity. [The official archive-specific email/mail procedure is now documented](./index.html#N84), with an exact unsigned copy request prepared. No request has been submitted; the loose original, exact box/folder and item-image route remain unverified.
 
 **Edition 01.12 bounded follow-up:** [The three-spread Caldwell index check](./index.html#N75) supplied no unambiguous early James deed target. The surviving loose Welch will remains the direct identity retrieval target.
 
@@ -841,9 +843,9 @@ With the tester’s permission, is there an existing comparison of shared varian
 
 We need a sourced father-to-son line through another son of Aaron, or through another son of Solomon. Please identify which historical relationship the records establish; the two comparisons would answer different questions. [Record target R02](./index.html#R02).
 
-- #### [Q04](./index.html#Q04) · Where is the complete family Bible record?
+- #### [Q04](./index.html#Q04) · Can the Bible’s literal wording and provenance be checked?
 
-Does anyone have the Andrew J. Oliphant Bible, a complete transcript, or information about who holds it? Family pages, the title or publication page, and the history of the copy would help establish exactly what the source says. [Record target R03](./index.html#R03) · [Source note 9](./index.html#s9).
+A complete copy of the Andrew J. Oliphant Bible or its dated transcript would clarify names, dates, relationships and handwriting for Aaron and later generations. Family recollection says its ancestry stops at Aaron; it is not the anticipated source for his parents. Include every family-record leaf, title/imprint page and the copy’s provenance. Custody and the original wording remain unverified. [Record target R03](./index.html#R03) · [Recollection and source limits](./index.html#N17) · [Source note 9](./index.html#s9).
 
 - #### [Q05](./index.html#Q05) · Is there a record connecting Aaron to the James–David family?
 
@@ -1198,6 +1200,8 @@ Reviewed 30 September 2026 · Recorded associations; Aaron identity unresolved
 
 **Edition 01.12 index follow-up:** [Three early Caldwell index spreads were visually examined](./index.html#N75) without locating an unambiguous James deed reference. The two Caldwell identities and the Tennessee-to-Pendleton Aaron bridge remain unresolved. **Edition 01.13 additions screen:** [Sixty assessment rows in the original October 1809 additional returns](./index.html#N80) were separately enlarged and screened without a recognizable target. This closes that specific unread section, not a county-wide absence finding.
 
+**Edition 01.14 retrieval advance:** [The official loose-will copy procedure](./index.html#N84) and exact all-sides request are prepared. This is access planning, not another recorded-copy reading or new identity evidence.
+
 Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1WFMcxav9LknCyu3lgMfUkfrTySiv-px6/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
 N02 · Who was Aaron Olifant Devany?
@@ -1421,6 +1425,8 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 N17 · The family Bible: attribution, exclusions and catalogue limits
 
 Reviewed 30 September 2026 · Source provenance unresolved · Editorial reconciliation of saved research; no new external record retrieval.
+
+**Family-recollection correction, 30 September 2026:** the family researcher reports **100% certainty that the Bible’s ancestry stops at Aaron**, but only **about 75% certainty in recalling the middle name Pinckney**. Those are distinct statements about memory, not calculated probabilities or a reading of a source page. No original leaf or full transcript was inspected. Use **Aaron Oliphant** as the working name; retain Pinckney/Pinkney as an unverified variant, not evidence of a Pinckney-family connection. Future Bible inspection should establish literal wording, dates, relationships, handwriting and provenance for Aaron and later generations. Earlier origins require independent evidence. [Restricted family-recollection clarification](https://drive.google.com/file/d/11Bxl6yzbltB2IlPHqMq_5gSzBudEwbTr/view).
 
 The Rainwater biography specifically credits Andrew J. Oliphant's family Bible, transcribed by Helen Madison, for the children's birthdates. It does not expressly attribute Aaron–Solomon parentage, elder Aaron's birth or middle name to that Bible. Photograph custody credits are not Bible ownership evidence. The complete Bible, transcript, imprint, date and present custody remain unestablished.
 
@@ -2462,9 +2468,55 @@ This separately reserved pass used no new discovery query and stopped at its ope
 
 Restricted supporting records: [Original-index and title review](https://drive.google.com/file/d/1bkXv0i677vQx6tdlr2qWoBYj2A_r7bVR/view) · [Exact source provenance and reading status](https://drive.google.com/file/d/1qwHB7RZjMtg8PIaPiN09hwFNKjNEvt9q/view). Access requires Taylor’s permission; four retained originals, enlarged D reading and thumbnail-only later pointers are documented separately. Private account readback is not published here.
 
+N83 · Three Aaron record groups need independent identity bridges
+
+Reviewed 30 September 2026 · Synthesis of existing readings; no new original record examined
+
+The accepted working family begins with Aaron Oliphant and Rebecca Rainwater. That starting point does not identify every earlier man of the same name or independently place the tested paternal lineage at Aaron. The [Bible is recalled to begin with Aaron](./index.html#N17); independent earlier-origin work need not wait for its inspection.
+
+| Record group | What the reviewed evidence records | Missing bridge and discriminating test |
+| --- | --- | --- |
+| Rutherford, Tennessee, May/July 1809 | Aaron Oliphant joins James Caldwell/Coldwell and James Norman in proof of Thomas Welch’s verbal will. The recorded will and court proof concern the same event. [Sources and associates](./index.html#N01). | No wife, age, birthplace, Rainwater connection or move is stated. Read the surviving [loose will’s sides, endorsements and attachments](./index.html#R09), or a dated transaction linking this witness to the later named couple. An independently documented incompatible adult life could distinguish a namesake; none is established here. |
+| Nash’s Regiment, War of 1812 military index | Aaron Oliphant, private, with Olephant/O’Lephant cross-reference. The personal service file remains unread. [Military and Rainwater context](./index.html#N57). | Company, service dates and identifying remarks are unknown. Retrieve the [complete federal jacket and cards](./index.html#R04), then compare them with John Rainwater’s independently recorded Morehead-company service. Same-regiment association alone does not identify Aaron as Rebecca’s husband. |
+| Pendleton and Georgia, 1814–1826 | An Aaron buys from Solomon Rainwater’s estate in 1814 and appears in 1816–1817 debt registers. The [29 January 1821 deed](./index.html#s1) names Aaron of Hancock, Georgia, and wife Rebecca, daughter of deceased Solomon Rainwater. Later [land](./index.html#s3) and [estate](./index.html#s4) records supply the Georgia chronology. | The 1821 deed is a strong couple/family anchor; it identifies Rebecca’s father, not Aaron’s. The 1814 purchaser’s identification with Rebecca’s later husband is plausible but not established by the sale alone. A purchaser need not be an heir, and the earlier debt registers do not name a wife. Seek an explicit backward reference, genuine original obligation or residence/relative statement tying an earlier candidate to this couple. [Loose debt papers](./index.html#R08) and [title connections](./index.html#R07) remain separate targets. |
+
+**Assessment:** the Pendleton–Georgia family association is more concrete than the Tennessee connection. This ranks documentary linkage, not the probability that the 1809 witness was a different man. The military entry is a separate identity test and does not replace a civilian bridge. Neither active original is promised to name parents. A copied signature or mark is not an autograph suitable for handwriting identification.
+
+No new parent, birthplace, immigrant generation, tested paternal placement or surname transition is established by this comparison. Missing birth/passenger records cannot locate a name change, and selected autosomal surname counts do not identify its generation. Keep [the two Devaney comparisons](./index.html#R01) separate; the sent enquiry remains reply-pending.
+
+Restricted supporting synthesis: [Existing-record identity comparison](https://drive.google.com/file/d/12iNQEIw6qQGXoDqhb-GQxqy-USK9ZJ7o/view) · [Controlling 1814 purchaser qualification](https://drive.google.com/file/d/1PriJ0Nmq9QfTutzPNINCk7UIkRHcYMzn/view). Access requires Taylor’s permission; this review adds no new original reading.
+
+N84 · The loose Welch will has a specific archive copy route
+
+Reviewed 30 September 2026 · Official policy and inventory read; zero loose-original readings
+
+The county’s [archive-specific research policy](https://rutherfordcountytn.gov/archives-research-policy) accepts email or mail enquiries with a mailing address, limits an enquiry to three individuals and asks researchers to allow up to two weeks. Its displayed rate is **$0.15 per page, with the first ten pages free**, subject to change. Electronic delivery, resolution and a complete packet are not guaranteed. No request, order or payment commitment was made.
+
+The [official original-loose-wills inventory](https://secured.rutherfordcountytn.gov/ArchivesMarriageIndex/wills_(1804-1899)) lists **Thomas Welch, written 14 and 18 May 1809, recorded 11 July 1809, RB 1b p82, nuncupative**. Keep it distinct from the Thomas Welch will written 13 June 1842 and filed May term 1843. The inventory’s book designation remains separate from other filmed or published volume labels; blank inventory fields do not prove missing attachments or codicils.
+
+Four focused queries and four official documents supplied the custody/request procedure but exposed no item-image or precise box/folder link. That is not proof that no scan exists elsewhere. An exact unsigned request now specifies every surviving leaf, front and back, wrapper, endorsement and attachment, with the archive citation and supplied-side count. It asks for the loose manuscript rather than another copy of the already read recorded will or court proof. Private requester details remain outside this report.
+
+Endorsements or witness statements might supply residence, occupation, associates or authentic writing absent from the recorded copy. Those details are possible, not promised. Distinguish genuine witness writing from clerk copies; a common mark alone cannot identify a person, and no authenticated autograph comparator is assumed. The loose original remains unread. No Aaron parent, middle name, migration or origin conclusion changes. See [the exact retrieval target](./index.html#R09) and [the independent identity comparison](./index.html#N83). This finite online route investigation is complete; further progress depends on later authorized archive contact or a genuinely new exact digital locator.
+
+Restricted supporting record: [Official retrieval review and unsigned request packet](https://drive.google.com/file/d/1FuPhPy4___A-I1i1D-WoylSIpjmDdY6n/view). Access requires Taylor’s permission; private requester details are excluded from this report.
+
+N85 · The federal service file and alternate fiche have distinct copy routes
+
+Reviewed 30 September 2026 · Official request/access guidance; no original military evidence recovered
+
+The primary target is the complete federal compiled service record for **Oliphant, Aaron, private, Nash’s Regiment, South Carolina Volunteers, War of 1812, RG 94 / NAID 300392**. The previously read [Olephant reference card](https://www.familysearch.org/ark:/61903/3:1:3QHK-Q3PT-1FQD) directs filing under Oliphant, Aaron; the [principal card](https://www.familysearch.org/ark:/61903/3:1:3QHK-93PT-1XKY) names Nash and private. These are index cards, not the personal jacket. Company, individual service dates, age, birthplace and civilian identity remain unknown. Do not assign Morehead’s company or another man’s dates to this soldier.
+
+The [NARA pre-WWI guide](https://www.archives.gov/veterans/military-service-records/pre-ww-1-records) directs compiled-record requests to NATF 86. Its [served fee page](https://www.archives.gov/research/order/fees), last reviewed in 2018, quotes **$30 per case**; no current checkout total or order acceptance was obtained. The [order-status page](https://www.archives.gov/contact/order-status), last reviewed in 2022, gives **8–9 weeks** and warns of significant backlog delays. That is a published estimate, not a guaranteed delivery date or the separate reference-response allowance. The linked newer form returned Page Not Found, and the [public order portal](https://eservices.archives.gov/orderonline/start.swe?SWECmd=Start&SWEHo=eservices.archives.gov) showed server difficulties when checked on 30 September. Those access outcomes are not a historical record negative. An exact unsent enquiry asks for the current copy route, complete jacket, all cards and attached papers, with identifying headings and order preserved. No payment or fee commitment was made.
+
+**A distinct alternate:** the [Greenville South Carolina Room](https://www.greenvillelibrary.org/sc-room) and its [official request form](https://www.greenvillelibrary.org/forms/67/records-request) provide a staff-enquiry route for unlisted record types. A bounded unsent request asks first for the title/source/unit heading of **schs 51-510, [War of 1812 service records]**, using [the previously verified record 20203 and physical copy identifiers](./index.html#N71). Membership in that intermittent fiche set, Nash coverage and an Aaron entry remain unproved. The form’s $15 military category applies only to Revolutionary/Civil War records; no price, acceptance or turnaround is confirmed for this 1812 item. Listed requests offer emailed PDF/JPEG or mailed copies, but that does not guarantee copying of this unlisted fiche. Request an Aaron entry only if the header confirms Nash coverage.
+
+Two focused discovery queries and eight official endpoints examined or attempted supplied request particulars, not a service original or fiche header. An oversized presentation PDF was not read, and the inaccessible newer form’s indexed text was not treated as a usable current form. Earlier catalogue and twenty-item CLS screens were not repeated. Both exact requests remain **unsent**; no message, order, payment or account change occurred. See [R04](./index.html#R04) and [the identity comparison](./index.html#N83). No company, individual dates, parent, immigrant home or surname transition was established.
+
+Restricted supporting record: [Exact unsent military request packet and access review](https://drive.google.com/file/d/1Gxzps2wRe214WFJQGxIKw8kVHsWaV4hn/view). Access requires Taylor’s permission; no personal service file or fiche header is included as a newly read original.
+
 ### Coverage checklist
 
-The main report covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. Eighty-two dated research notes supply the supporting leads, corrections, bounded negative searches and exact unread references.
+The main report covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. Eighty-five dated research notes supply the supporting leads, corrections, bounded negative searches and exact unread references.
 
 **Historical review:** all 181 staged working notes were classified. Of these, 145 map to report sections or research notes; the remaining 36 have explicit historical, background, private-data or operational retention reasons in the restricted topic catalog. This is a topic-level reconciliation, not a claim that every sentence, search attempt or original source has been independently rechecked. Consult the linked working reviews for full detail before repeating a search.
 
@@ -2492,7 +2544,9 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 **Edition 01.13 reviewed follow-ups:** [Henry’s original 1930 household and actual 1950 supplemental entry](./index.html#N79) add dated census evidence without a later son link; index grouping is distinguished from recorded relationships. [Rutherford’s October 1809 additional returns](./index.html#N80) add sixty enlarged assessment-row readings without a recognizable target, not county-wide absence. [Gwinnett’s first estate-index D/V leaves](./index.html#N81) and [Greene’s first guardian-letter D leaf](./index.html#N82) add bounded negatives, with later sections and bodies still unread. A checked private MyHeritage GEDCOM backup supersedes the earlier failed-export status without verifying all account relationships or expanding the public tree.
 
-**Edition 01.13 library verification:** the [verified batch snapshot](./index.html#library-transfer-current) lists fifty-eight supporting entries and excludes its own fifty-ninth upload. Fifty-nine transfers bring the incremental total to 1,785 from 1,726; the source-artifact lookup separately identifies seventeen original-image files and one private account GEDCOM. Names, bytes, sole parents and sole-owner permissions were checked. Local hashes are retained without remote content-hash equality, a full-library recount or genealogical validation being implied.
+**Edition 01.13 library verification:** the [verified batch snapshot](./index.html#library-transfer-edition0113) lists fifty-eight supporting entries and excludes its own fifty-ninth upload. Fifty-nine transfers bring the incremental total to 1,785 from 1,726; the source-artifact lookup separately identifies seventeen original-image files and one private account GEDCOM. Names, bytes, sole parents and sole-owner permissions were checked. Local hashes are retained without remote content-hash equality, a full-library recount or genealogical validation being implied.
+
+**Edition 01.14 correction and synthesis:** [the Bible-extent and middle-name recollections](./index.html#N17) are separately qualified, with no original page examined. [The Tennessee, military and Pendleton–Georgia identity comparison](./index.html#N83) synthesizes existing evidence; it is not a new record finding. The exact federal service file and loose Welch will are the active independent tests, while the Bible’s role is wording, dates and provenance for Aaron and later generations. [N84](./index.html#N84) and [N85](./index.html#N85) document precise unsent archive-copy requests and their access, price and format limits; neither supplies a new original or ancestry fact. Eleven verified supporting-file transfers bring the incremental archive total to 1,796 from 1,785; see [the current verification statement](./index.html#library-transfer-current). No remote content-hash equality or full-library recount is asserted.
 
 08 / Edition history
 
@@ -2585,6 +2639,12 @@ Added N75–N78, bringing the dated-note count to seventy-eight. Three Rutherfor
 ### Edition 01.13 · Census relationships and bounded probate checks
 
 Added N79–N82, bringing the dated-note count to eighty-two. Henry’s original 1930 household records three daughters; the actual 1950 entry names him individually in a supplemental transfer block, without a recovered family household. Automated grouping of adjacent entries does not supply relatives. Separate Henry-first and wife-first 1950 searches yielded no identifiable household, with their finite summary and original-reading coverage preserved. Identity and birth/father-birthplace conflicts remain visible; no later son link or tester was established. Rutherford’s explicitly dated October 1809 additions were enlarged through all sixty assessment rows without a recognizable target, not county-wide absence. Selected Gwinnett estate-index and Greene guardian-letter leaves supplied bounded negatives, while later sections and proceeding bodies remain unread. A checked private eleven-person MyHeritage GEDCOM backup supersedes the earlier failed export; structural validation does not certify every genealogy statement or site-specific field. The historical tree remains twenty-three people and twenty-six qualified relationships. No Aaron parent, identity bridge, migration date or overseas origin was established.
+
+30 September 2026
+
+### Edition 01.14 · Corrected Bible scope and independent identity tests
+
+Recorded the separate family recollections that the Bible’s ancestry stops at Aaron and that Pinckney is recalled with about 75% certainty. No Bible page was examined; Aaron Oliphant remains the working name. Added N83–N85, bringing the note count to eighty-five: an existing-record identity comparison, the official loose-Welch-will copy procedure and exact federal/alternate military request routes. The 1821 named couple remains the strongest family anchor; the 1814 purchaser’s identity with that husband remains plausible rather than proved by the sale. Stronger Pendleton–Georgia linkage does not establish the Tennessee witness as a different man. All request packets are unsent, and prices, access and format limits retain their dated source context. No new historical original, Aaron parent, service company/date, migration or surname transition was established. The historical tree remains twenty-three people and twenty-six qualified relationships.
 
 ### Use this research in your own work
 

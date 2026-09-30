@@ -131,6 +131,72 @@
     "reader_start": {
       "type": "array"
     },
+    "registry_entries": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "branch_relevance": {
+            "type": "string"
+          },
+          "copy_dependence": {
+            "type": "string"
+          },
+          "details_markdown": {
+            "type": "string"
+          },
+          "evidence_quality": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "last_verified_date": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "resource_type": {
+            "type": "string"
+          },
+          "reviewed_on": {
+            "type": "string"
+          },
+          "specific_question": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "resource_type",
+          "priority",
+          "status",
+          "last_verified_date",
+          "reviewed_on",
+          "branch_relevance",
+          "evidence_quality",
+          "copy_dependence",
+          "specific_question",
+          "details_markdown",
+          "urls"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
     "research_notes": {
       "items": {
         "additionalProperties": false,
@@ -416,6 +482,7 @@
     "hypotheses",
     "candidates",
     "research_questions",
+    "registry_entries",
     "research_notes",
     "clues",
     "tree_people",
@@ -426,6 +493,6 @@
     "history_coverage",
     "update_policy"
   ],
-  "title": "Oliphant public research export",
+  "title": "The Aaron Oliphant Inquiry public research export",
   "type": "object"
 }

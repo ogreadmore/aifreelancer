@@ -1,4 +1,4 @@
-# The Oliphant Inquiry
+# The Aaron Oliphant Inquiry
 
 Public working edition, 2026-09-30. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
@@ -8,7 +8,7 @@ Start here / Research checkpoint
 
 This website is the current research record. Read it first, then follow its citations and the restricted evidence library for the underlying material. There is no separate research starting point in Drive.
 
-**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. No origin theory is established as probable. This edition organizes existing evidence; it does not claim new historical discoveries.
+**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. No origin theory is established as probable. This edition organizes existing evidence and documents bounded retrieval and access checks. It establishes no new parentage or origin conclusion and claims no newly read historical grant or service file.
 
 - **Understand the present assessment.** Read [What we know](./index.html#findings), the [candidate comparison](./index.html#candidate-comparison) and [competing explanations](./index.html#theories). Rankings set research priorities, not surname probabilities.
 
@@ -631,6 +631,8 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 **Route:** NARA access enquiry or complete-file copy route. The jacket and cards remain unread; an enquiry draft is unsent. [NARA’s CMSR guide](https://www.archives.gov/research/military/army/compiled-military-service-records).
 
+**30 September update:** [A possible military-source microfiche locator](./index.html#N61). The underlying individual record remains unread.
+
 Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1Qbta3xC9_vuQQAyD0hfY9rDxJir9tRt1/view?usp=drivesdk) · [Supporting review 2](https://drive.google.com/file/d/1muSHxRYeXo1u65kb_KQmkY48phacX0fK/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
 05 · Georgia Archives / FamilySearch Early County district 7, lot 23 Location-restricted
@@ -641,6 +643,8 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1Qbta
 
 **Route:** an authorized FamilySearch center/affiliate reader or onsite archival retrieval. A later deed names the tract; the underlying grant and drawer entry remain unread. This is not a demonstrated subscription paywall.
 
+**30 September update:** [The checked Early grant access route](./index.html#N62). The underlying individual record remains unread.
+
 06 · National Records of Scotland David’s letter and three court entries Enquiry submitted
 
 **References:** [GD113/5/35c, item 17](https://catalogue.nrscotland.gov.uk/nrsonlinecatalogue/details.aspx?reference=GD113%2f5%2f35c), 13 May 1785, David Oliphant in Charleston to Miss Moncreiff in Edinburgh; **CS17/1/6 p196; CS17/1/7 p345; CS17/1/25 p340**.
@@ -648,6 +652,8 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1Qbta
 **Question:** which David, relatives and voyage does the letter identify? The catalogue describes his mother and sisters arriving after a three-month voyage; the original is unread.
 
 **Route:** await the already-submitted four-item copy-price enquiry. Do not duplicate it. Full pages and address/endorsement matter. Even a resolved painter pedigree would still need an Aaron connection.
+
+Originals remain pending. Restricted 30 September supporting records: [Supporting review](https://drive.google.com/file/d/1uT6VO3MfpuvshKvAqss0os4LPyuJc868/view?usp=drivesdk) · [Scoped request](https://drive.google.com/file/d/1AmMZ_ot-fZ5D7kldJhtZ-nofqOQyWRnY/view?usp=drivesdk) · [Recorded outcome](https://drive.google.com/file/d/1a6VNVbs9TBufesnwH4T-jxr9cel3nINc/view?usp=drivesdk). Access requires Taylor’s permission; these supporting records retain the actual scope and limits.
 
 07 · Telfair / Hancock / Greene Earlier residence and land-title connections Partly examined
 
@@ -748,6 +754,254 @@ We are looking for a contemporary deed, probate, church, court or family record 
 The main priorities are Aaron Oliphant’s actual Nash’s Regiment service file and the grant or drawer entry for Early County, district 7, lot 23. The military index has already been read; the full file has not. Exact references and access limits are in [R04](./index.html#R04) and [R05](./index.html#R05).
 
 Reviewed 29 September 2026. Questions will be updated as evidence arrives. Please arrange any sharing of another person’s DNA information with their permission.
+
+### Related trees and research contacts
+
+These are inspected profiles, a submitted tree and published family accounts that may help locate records or test a proposed branch. Most profiles are collaboratively edited; they do not have a single verified owner. A public author credit does not establish present availability or custody. If you can supply a source, [contact Taylor](./index.html#contact) and quote the RT reference.
+
+Priority ranks the next evidence question, not the likelihood of descent. Dates below identify the last recorded external check; links were compiled from saved reviews on 30 September 2026 and were not revisited that day. Some account access may be required. Repeated attachments, copied pedigrees and related family accounts are not independent confirmations.
+
+All nineteen entries remain visible and can be searched with the browser’s Find command by name, place or RT reference. Begin with the credited Bible and transcript trail through an existing research contact. Before approaching a named contributor, verify the current profile and frame a specific document question. Private contact planning and unsent drafts belong in the restricted evidence library. No messages have been sent through this register and no automated outreach is configured.
+
+- #### [RT01](./index.html#RT01) · Aaron Oliphant · FamilySearch LHXM-9VZ
+
+**High priority** · collaborative profile · Source gap; misleading memory tag identified · Last recorded check 2026-09-28. [Public profile](https://ancestors.familysearch.org/en/LHXM-9VZ/aaron-pinkney-oliphant-1791-1826) · [Sources](https://www.familysearch.org/en/tree/person/sources/LHXM-9VZ)
+
+**Relevance:** Reported father of Solomon; source trail for exact dates, Pinkney and the older web account.
+
+**Evidence:** Three sources inspected: military index and two legacy web links. No source tagged to the precise vital dates. A misattached 1898 Emily obituary belongs to the later Pinckney family.
+
+**Dependence and limits:** The 2017 family-info attachment likely repeats RT08. Neither that attachment nor the military index independently establishes parentage.
+
+**Specific question:** Is there an original family entry, heir receipt, guardian record or other named relationship tying Aaron and Rebecca to Solomon?
+
+- #### [RT02](./index.html#RT02) · Solomon Rainwater Oliphant · FamilySearch 262V-F5D
+
+**High priority** · collaborative profile · Reported parentage; original marriage established · Last recorded check 2026-09-28. [Public profile](https://ancestors.familysearch.org/en/262V-F5D/soloman-rainwater-oliphant-1823-1890) · [Sources](https://www.familysearch.org/en/tree/person/sources/262V-F5D) · [Memories](https://www.familysearch.org/en/tree/person/memories/262V-F5D)
+
+**Relevance:** Core line and proposed collateral branches through Solomon’s other sons.
+
+**Evidence:** Eleven source titles screened, not all bodies. Three memory metadata panels read; images were not all readable. Original marriage register separately read: performed 12 March 1846, earlier date 5 March.
+
+**Dependence and limits:** The cropped marriage memory and complete register are one document. The family-history note and RT07–RT09 have unestablished independence.
+
+**Specific question:** Can complete Bible pages or independently named father-to-son records establish Solomon’s parentage and a branch through another son?
+
+- #### [RT03](./index.html#RT03) · Andrew Jackson Oliphant · FamilySearch K8WS-D3D
+
+**High priority** · collaborative profile · Bible not located in inspected attachments · Last recorded check 2026-09-28. [Public profile](https://ancestors.familysearch.org/en/K8WS-D3D/andrew-jackson-oliphant-1847-1921) · [Sources](https://www.familysearch.org/en/tree/person/sources/K8WS-D3D) · [Memories](https://www.familysearch.org/en/tree/person/memories/K8WS-D3D)
+
+**Relevance:** Credited Bible owner’s family; the Andrew branch is the working core line.
+
+**Evidence:** Twenty-one source titles and twelve memory thumbnails screened. The decorated document opened in full is Andrew and Mattie’s 24 June 1877 marriage certificate, not a Bible entry. Not every image or source body was read.
+
+**Dependence and limits:** Pictures and family notes do not independently reproduce the Bible. The earlier memory rendering failure was superseded by a thumbnail screen, not a full-resolution audit.
+
+**Specific question:** Where are all family leaves, title/imprint page and Helen Madison’s complete dated transcript, and what literal relationship wording do they contain?
+
+- #### [RT04](./index.html#RT04) · James Madison Oliphant · FamilySearch 278V-99R
+
+**High priority** · collaborative profile · Proposed collateral; upper parentage bridge missing · Last recorded check 2026-09-28. [Details](https://www.familysearch.org/en/tree/person/details/278V-99R) · [Sources](https://www.familysearch.org/en/tree/person/sources/278V-99R)
+
+**Relevance:** Best-defined proposed branch outside Solomon; Aaron-to-James remains unproved.
+
+**Evidence:** Original 1880 mortality and matching widow household support identity, age about 63, Georgia birth and unnamed parents born South Carolina. Seven-source inventory includes later daughters’ death indexes, not an Aaron-naming record.
+
+**Dependence and limits:** The profile’s parent attachment is not independent of later family accounts. Its Tyler p309 reference does not contain the claimed family history.
+
+**Specific question:** What contemporary record names Aaron or Rebecca as James’s parent, and which original records name James’s sons?
+
+- #### [RT05](./index.html#RT05) · Valcor / Valcol Oliphant · FamilySearch 26LH-STL
+
+**Medium priority** · collaborative profile · Proposed father-to-son step unverified · Last recorded check 2026-09-28. [Sources](https://www.familysearch.org/en/tree/person/sources/26LH-STL)
+
+**Relevance:** Dated proposed male branch under James Madison; full-name and father link need correlation.
+
+**Evidence:** Eight-source inventory: census, children’s death indexes, grave index and a 2013 family note. No own 1917 death source or explicit James-as-father record appeared in that inventory.
+
+**Dependence and limits:** Tree attachments and child source titles do not prove the upper relationship. Nearby V.C./V.L. households establish association only.
+
+**Specific question:** Can an original death, probate or other named-parent record distinguish the initials and establish James → Valcor?
+
+- #### [RT06](./index.html#RT06) · Younger Aaron P. Oliphant · Alexander/Belmont/Danz/Seiter tree
+
+**Medium priority** · individually maintained submitted tree · Inspected through authenticated Ancestry; parentage unresolved · Last recorded check 2026-09-29. [Historical-person facts](https://www.ancestry.ca/family-tree/person/tree/163176783/person/152125652217/facts)
+
+**Relevance:** Second proposed branch outside Solomon; husband of Emily M. Wright, distinct from elder Aaron.
+
+**Evidence:** Four listed sources were inspected; none establishes Aaron/Rebecca as parents. Original 1880 row reports both unnamed parents born Kentucky. Exact 20 May 1905 death remains unsupported and conflicts with a possible 14 May notice.
+
+**Dependence and limits:** Ancestry Family Trees is derivative. An erroneous-looking brother Amanda attachment and non-documentary media require caution. No displayed sons does not prove none existed.
+
+**Specific question:** Is there an original named-parent or sibling record, and can the Kentucky birthplace conflict and exact death identity be resolved?
+
+- #### [RT07](./index.html#RT07) · Rainwater Collection · Oliphant family biography
+
+**High priority** · family-history publication · Named transcript trail; current Bible custodian unknown · Last recorded check 2026-09-28. [Biography](https://www.therainwatercollection.com/gallery/aug2009.shtml) · [Source directory](https://www.therainwatercollection.com/sources.shtml) · [Allied-family Bibles](https://www.therainwatercollection.com/allied-bible.shtml)
+
+**Relevance:** Specific provenance trail to Andrew’s Bible transcript and family photographs.
+
+**Evidence:** The biography credits information to William Rainwater and children’s birthdates to Andrew J. Oliphant’s Bible, transcribed by Helen Madison. Source entries 2364–2365 credit picture originals to Helen and scans to William.
+
+**Dependence and limits:** Bible credit applies expressly to children’s birthdates, not a seen Aaron-as-father entry. Picture ownership does not establish Bible custody. Independence from other family accounts is unknown.
+
+**Specific question:** Can the credited complete transcript or Bible be recovered with date, annotations, custody history and literal Aaron/Rebecca → Solomon wording?
+
+Biography credited publicly to William Rainwater; Bible transcription credited to Helen Madison.
+
+- #### [RT08](./index.html#RT08) · 2002 Matilda Oliphant / Humphrey’s reply
+
+**High priority** · message-board family account · Likely mirror recovered; unsourced lineage statement · Last recorded check 2026-09-28. [Reply 213.1](https://www.ancestry.ca/boards/surnames.oliphant/213.1) · [Original question](https://www.ancestry.ca/boards/surnames.oliphant/213)
+
+**Relevance:** Earliest recovered explicit Aaron/Rebecca seven-child grouping in this source trail.
+
+**Evidence:** Reply signed Glidie (Rainwater) Mobley, displayed 27 January 2002 and edited 7 February 2002. It lists Solomon and precise family dates without Bible quotation, source citation or attached original.
+
+**Dependence and limits:** High-confidence likely mirror of RootsWeb ID 1012164474; raw list headers and pre-edit text unrecovered. Its 2017 FamilySearch attachment is a copy route, not another witness. The 1841 Solomon marriage claim conflicts with the inspected 1846 register.
+
+**Specific question:** What original record underlies the grouping, and does a preserved raw email/digest establish the unedited January wording?
+
+Glidie (Rainwater) Mobley, public signature; 27 January 2002, edited 7 February 2002.
+
+- #### [RT09](./index.html#RT09) · 2003 Bethany Cemetery family reply
+
+**Medium priority** · message-board family account · Published family account; independence unknown · Last recorded check 2026-09-28. [Reply 314.1](https://www.ancestry.ca/boards/surnames.oliphant/314.1)
+
+**Relevance:** Published Benjamin Sr. → Andrew → Solomon → Aaron family assertion and photograph lead.
+
+**Evidence:** Reply signed Lizette Gabrielson, 30 April 2003, discusses grandfather Benjamin and gravestone photographs; no parentage document, Bible transcript or custodian is linked.
+
+**Dependence and limits:** Earlier-generation source is unstated; dependence on RT07/RT08 cannot be excluded. Gravestones would not prove the full chain.
+
+**Specific question:** Which original family papers support the older generations, and is there a complete Bible copy or provenance information beyond the photographs?
+
+Lizette Gabrielson, public board author; 30 April 2003, 10:04 AM.
+
+- #### [RT10](./index.html#RT10) · Legacy Wife record · JewishGen webtrees I2951
+
+**Low priority** · legacy submitted GEDCOM citation · Citation verified; destination unavailable at saved check · Last recorded check 2026-09-28. [FamilySearch source-card location](https://www.familysearch.org/en/tree/person/sources/LHXM-9VZ)
+
+**Relevance:** One of Aaron’s two legacy 2017 web references; actual person and assertions unread.
+
+**Evidence:** The FamilySearch source card cites the exact legacy address http://www.jewishgen.org/webtrees/individual.php?pid=I2951&ged=1_522646_u.ged. Prior destination attempt returned Page Not Found; no external text, owner or citations were recovered. The link here returns to the source inventory, not the unavailable page.
+
+**Dependence and limits:** An inaccessible citation cannot be counted as independent corroboration. Host name supplies no evidence of religious ancestry.
+
+**Specific question:** Is there a preserved copy of this exact individual/GEDCOM page, and does it cite an original relationship record?
+
+- #### [RT11](./index.html#RT11) · James Oliphant · WikiTree Oliphant-910
+
+**Medium priority** · collaborative profile · Candidate identity; compiled details conflict · Last recorded check 2026-09-28. [Profile](https://www.wikitree.com/wiki/Oliphant-910) · [1788 Union deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKJ-G3KM-3)
+
+**Relevance:** Scottish–Charleston goldsmith family comparator; no established Aaron relationship.
+
+**Evidence:** Inspected profile claims uncertain Saline birth, Jean Nevay, 1766 immigration and 5 January 1783 death; citation is generic Scotland Select Births and Baptisms, with no document image.
+
+**Dependence and limits:** Shared child labels overlap RT13. If the profile describes the Union planter, its 1783 death conflicts with his documented 24 June 1788 conveyance, Union Book B pp191–193. A death bound of 1793 alone would not contradict 1783. The Edinburgh-to-American identity remains unproved.
+
+**Specific question:** What original connects the Edinburgh family to the Charleston jeweller and Union planter, and resolves the death chronology?
+
+- #### [RT12](./index.html#RT12) · David Oliphant · WikiTree Oliphant-1099
+
+**Medium priority** · collaborative profile · Proposed identities and Aaron bridge unresolved · Last recorded check 2026-09-28. [Profile](https://www.wikitree.com/wiki/Oliphant-1099)
+
+**Relevance:** Candidate painter biography; keep distinct from physician and other Davids.
+
+**Evidence:** Inspected submitted profile gives 1 September 1762 Edinburgh birth, James/Jean parents, Charleston painter, 1838 death and son Edward L.; these are not independently established by the profile.
+
+**Dependence and limits:** Matching birth labels do not bridge Edinburgh child to American painter or estate administrator. No original Aaron kinship link is established.
+
+**Specific question:** Which original proves the painter’s parentage and identity with the coadministrator, and is there an Aaron-naming relationship record?
+
+- #### [RT13](./index.html#RT13) · James Oliphant and Jean/Joan Nevay · FamilySearch
+
+**Medium priority** · collaborative profiles · Indexed family; original identity bridges unread · Last recorded check 2026-09-28. [Jean details](https://www.familysearch.org/en/tree/person/details/L8VQ-169) · [Jean sources](https://www.familysearch.org/en/tree/person/sources/L8VQ-169) · [James details](https://www.familysearch.org/en/tree/person/details/L8VQ-1XL) · [Jean change history](https://www.familysearch.org/en/tree/person/changelog/L8VQ-169)
+
+**Relevance:** Provenance control for the William/Jean rumor and Scottish family identity.
+
+**Evidence:** Expanded indexes name James and Jean/Joan with Edinburgh children in 1762–1765; manuscript images unavailable. Jean’s claimed birth and circa 1740 marriage have no tagged sources. A Wick 1715 baptism attached to James does not establish his later identity.
+
+**Dependence and limits:** Eight child-source entries include paired copies, not eight independent events. William formerly attached as Jean’s son was removed in 2022; this was not a William–Jean marriage. Jean child dates 1764/1765 conflict.
+
+**Specific question:** Can original parish entries, occupations, witnesses and a marriage record distinguish the family and explain the old attachments?
+
+- #### [RT14](./index.html#RT14) · William Oliphant · FamilySearch 2FRF-7RQ
+
+**Low priority** · collaborative profile · Rumor provenance; no Aaron bridge · Last recorded check 2026-09-28. [Details](https://www.familysearch.org/en/tree/person/details/2FRF-7RQ)
+
+**Relevance:** Formerly attached as Jean Nevay’s son; controls an unsupported Aaron-parent rumor.
+
+**Evidence:** Current profile has no parents, an unsourced possible James father and compiled spouse/child claims. Eleven source titles inventoried. Attached original 1760 Rowan bond has an unfilled bride line, no Jean or Aaron, and no established identity bridge to this William.
+
+**Dependence and limits:** Former mother attachment and legacy compilation citations cannot prove parentage. No Aaron is among six displayed children; that bounded inventory does not exclude an unrecorded child.
+
+**Specific question:** Which original establishes this William’s identity, wife and children, and any actual relationship to Aaron?
+
+- #### [RT15](./index.html#RT15) · Aaron Oliphant Devaney · FamilySearch G7P6-PN3
+
+**Medium priority** · collaborative profile · Name supported; parentage and Oliphant connection unresolved · Last recorded check 2026-09-28. [Profile](https://www.familysearch.org/en/tree/person/G7P6-PN3)
+
+**Relevance:** Separate nineteenth-century Georgia Devaney family; middle-name association is a lead only.
+
+**Evidence:** Compiled 1841–1916 dates and Samuel/Agatha parents are unproved. Original 1866 marriage independently reads Aaron Olifant Devany; inspected census associations do not name a relationship to elder Aaron.
+
+**Dependence and limits:** The independently read middle name is stronger than a tree label, but supplies no fatherhood, surname-change mechanism or connection to a tested line.
+
+**Specific question:** What original names his parents and establishes whether the Olifant name refers to kinship or another association?
+
+- #### [RT16](./index.html#RT16) · Samuel De Vany · FamilySearch LWZY-LP8
+
+**Medium priority** · collaborative profile · Several identity and parentage bridges missing · Last recorded check 2026-09-28. [Profile](https://www.familysearch.org/en/tree/person/LWZY-LP8) · [Sources](https://www.familysearch.org/en/tree/person/sources/LWZY-LP8)
+
+**Relevance:** Georgia Devaney candidate joining alleged Charlotte and younger Aaron branches.
+
+**Evidence:** Seven attached sources: four versions of the 1829 marriage, plus 1830, 1840 and 1850 censuses. They do not close identity links to the 1823 Polly Dolton groom or 1805 McCulley grandson.
+
+**Dependence and limits:** Multiple marriage attachments repeat one event. The tree’s Pendleton birthplace, parents, inheritance and two-family aggregation are propositions to test, not corroboration.
+
+**Specific question:** Which original bridges the Richmond groom, Greene husband and McCulley grandson, and explicitly names the proposed children?
+
+- #### [RT17](./index.html#RT17) · Charlotte Devinney / Devaney and John Martin Pilcher · FamilySearch
+
+**Medium priority** · collaborative profiles · Original marriage; claimed parents and Bible unresolved · Last recorded check 2026-09-28. [Charlotte details](https://www.familysearch.org/en/tree/person/details/98GK-QYJ) · [Charlotte sources](https://www.familysearch.org/en/tree/person/sources/98GK-QYJ) · [John details](https://www.familysearch.org/en/tree/person/details/98GK-QYD)
+
+**Relevance:** Independent historical collateral/comparator route for a Georgia Devaney family; no Aaron link established.
+
+**Evidence:** Original license 28 December 1841 and return 16 January 1842 directly establish the couple and bride’s surname, without parents. Charlotte’s eighteen source titles and John’s twenty-eight screened; no identified Bible transcript. Exact parentage remains unproved.
+
+**Dependence and limits:** Several marriage indexes and two exposures repeat one document. A bare Bible note with no image cannot substantiate parentage; the tree’s 1840 marriage date conflicts with the original.
+
+**Specific question:** Where is the cited Pilcher Bible, what does it literally name, and what original identifies Charlotte’s parents?
+
+- #### [RT18](./index.html#RT18) · Rutherford James and Presley Oliphant · FamilySearch
+
+**Medium priority** · collaborative profiles · Historical family supported; Aaron identity unlinked · Last recorded check 2026-09-28. [James profile](https://www.familysearch.org/en/tree/person/GQP1-ZGD) · [Presley profile](https://www.familysearch.org/en/tree/person/LZQ5-BCR) · [Published correlation](https://rutherfordtnhistory.org/wp-content/uploads/2013/11/Frowchips-43-2-Nov-and-Dec-2013.pdf)
+
+**Relevance:** Separate Tennessee Oliphant family; comparator for the 1809 Aaron witness identity.
+
+**Evidence:** Original 1849 will names Prestley W. as James’s child; original marriage and census support his historical family. A 2013 article by Susan G. Daniel offers a researched correlation to earlier Rutherford records.
+
+**Dependence and limits:** Profiles used only as source inventories. Unsourced birth/alternate-name and conflicting DNA notes are not evidence. Tester pedigrees and 1810-to-1849 identity remain separate bridges; no Aaron relationship is proved.
+
+**Specific question:** Can the property chain and named kinship records identify the early householder and determine whether the 1809 Aaron witness belongs to this family?
+
+Published correlation credited to Susan G. Daniel, Frow Chips 43(2), November–December 2013, p8.
+
+- #### [RT19](./index.html#RT19) · Benjamin Franklin Oliphant Sr. · FamilySearch K677-K7B
+
+**Medium priority** · collaborative profile · Core parent link reported; original named-parent evidence needed · Last recorded check 2026-09-28. [Public profile](https://ancestors.familysearch.org/en/K677-K7B/benjamin-franklin-oliphant-1892-1932)
+
+**Relevance:** Later core-line identity bridge from Andrew, relevant to the chain underlying the paternal comparison.
+
+**Evidence:** Saved 1910 census supports approximate 1892 birth, Texas birth and unnamed father born Georgia/mother Mississippi. It does not name his father. Exact death and Andrew fatherhood remain family-history claims.
+
+**Dependence and limits:** The profile and RT09 are derivative assertions with unestablished independence. A 1917 Alaska marriage date discrepancy still needs the original.
+
+**Specific question:** Which original birth, marriage, death or probate record explicitly names Benjamin’s parents and resolves the 1917 date?
+
+Restricted contact planning: [Private tree/contact register](https://drive.google.com/file/d/1FEEEjabOUNssVCybTH638QranW5cDwX-/view?usp=drivesdk) · [Unsent first-contact draft](https://drive.google.com/file/d/1IhuE0x_YZUT0gesEZZX_Dv_6yqf6Qmd3/view?usp=drivesdk). These files were verified owner-only on 30 September 2026; access requires Taylor’s permission. They contain planning, not a record of messages sent.
+
+Editorially reviewed 30 September 2026 against saved provenance and collateral audits. None of these resources establishes Aaron’s parents, immigrant generation or an independently documented Aaron-level paternal collateral. Contributors are identified only where already publicly credited; no living DNA identity is assigned to a public profile. Read [the Bible provenance review](./index.html#s9), [the collateral test](./index.html#R02) and [the complete Bible target](./index.html#R03) before treating a repeated pedigree as evidence.
 
 07 / Sources & methods
 
@@ -1766,15 +2020,47 @@ The 32-result Ancestry Oliphant probate index screen supplied no explicit Aaron/
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/17mPm8stPUi7H4dj5r6xFf2xSS2fuS207/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
+N61 · A specific microfiche test for the Nash service-record gap
+
+Reviewed 30 September 2026 · Catalogue locator; fiche coverage unverified · Bounded catalogue and provenance review; no fiche or service file inspected.
+
+Aaron Oliphant's actual Nash-regiment service file remains unretrieved. A bounded provenance search found a possible alternate military-source locator. Greenville's catalogue lists *War of 1812 service records*, South Carolina Militia, SCHS volume 51-510. Its separately catalogued [*Misc. mss.* Charleston Library Society set](https://aspen.greenvillelibrary.org/Record/20203) has 58 microfiches numbered intermittently 51-1 through 51-527, with library-use-only copies at Hughes Main Library's South Carolina Collection, calls SC MICROFIC / SC MICROFICHE 975.7915 CHARLESTON. These descriptions were read through search-engine catalogue extracts; direct retrieval failed.
+
+The matching number range suggests a parent-set test, but does not establish inclusion, Nash coverage or an Aaron entry. The [official Charleston Library Society institutional description](https://charlestonlibrarysociety.omeka.net/collections/show/59), directly read, identifies Ms29 Series XXIII as the list of microfiche manuscripts; the list itself was not read. The next finite test is to inspect fiche 51-510's header, source and commanders, then Aaron's entry if Nash is covered. No fiche or original service record was examined, and the militia compilations remain distinct until compared. The federal target remains NARA RG94, NAID 300392, Oliphant, Aaron, private, Nash's Regiment, South Carolina Volunteers. Company, individual dates, birthplace and civilian identity remain open.
+
+Restricted 30 September supporting records: [Supporting review](https://drive.google.com/file/d/1qqfB8LAHwLiXHN5gu3OE3icmMZJmZPun/view?usp=drivesdk) · [Scoped request](https://drive.google.com/file/d/1E_C2j6FTB5eRN2pLykobpcojsll6YwFa/view?usp=drivesdk) · [Recorded outcome](https://drive.google.com/file/d/1ZkFHG2gt16uRtwLrstOoYcQ30C5-g0ms/view?usp=drivesdk). Access requires Taylor’s permission; these supporting records retain the actual scope and limits.
+
+N62 · Early County district 7 lot 23: access route checked
+
+Reviewed 30 September 2026 · Access route checked; original grant unread · Bounded access review; no original grant or drawer entry inspected.
+
+**30 September 2026 — Early County district 7 lot 23.** Eight targeted public discovery queries and official access guidance yielded no original grant or fortunate-drawer entry. This is a bounded access result, not evidence that a record is absent. The previously read [1826 Hunter–Rainwaters deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99K-7) identifies this lot as drawn by Aaron Oliphant. The separate Appling district 1 lot 98 grant, dated 4 March 1824 and naming Sharp's district, Hancock County, was already read; it does not replace this entry.
+
+The [Georgia Archives grant-book series description](https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/789), available in indexed text, identifies onsite microfilm and a Virtual Vault State Agency Indexes *microfilm finding aid*. No underlying Early grant image or exact index URL was recovered. Native catalogue and Vault opens failed; the exact [prior volume locator](https://georgiaarchives.as.atlas-sys.com/repositories/2/archival_objects/178817) was not independently re-read today: 003-05-029, VOL1 3231, Early 1820 districts 7–8, container 16891. [Official policy](https://www.georgiaarchives.org/research/research_services) offers onsite copying or an independent researcher; it does not offer distance private copies or individual staff searches. Filmed records are [directed to microfilm onsite](https://www.georgiaarchives.org/visit).
+
+**Next record:** an authorized center/affiliate reader should inspect [catalogue 73430](https://www.familysearch.org/en/search/catalog/koha:73430), drawer index film 514012 item 4/DGS7900960, for the O-section entry tied to Early 7/23, then grant film 519018/DGS8657184, districts 5–10. Center/affiliate restrictions were observed in prior work and were not retested today. Alternatively, use the Georgia Archives onsite volume above. Copy headings, complete entry, page reference, county/militia district, dates and marginal notes; inspect all entries for this tract if needed. The grant's page, date and original wording remain unknown. No earlier residence, parentage or lottery-category inference follows from this access check.
+
+Restricted 30 September supporting records: [Supporting review](https://drive.google.com/file/d/1nb6mnNXU-6nHk3g-UqTLuHbDqp_8r113/view?usp=drivesdk) · [Scoped request](https://drive.google.com/file/d/1n2ZgMEqd1isu2kKzyqzR9mGB-LLrpMu5/view?usp=drivesdk) · [Recorded outcome](https://drive.google.com/file/d/17OcpN_SB9niICm8WpCcRrvmzJnY7Czry/view?usp=drivesdk). Access requires Taylor’s permission; these supporting records retain the actual scope and limits.
+
+N63 · Pinckney/Pinkney project discovery remains inconclusive
+
+Reviewed 30 September 2026 · Bounded discovery; no DNA comparison or exclusion · Two discovery queries and directory-shell extraction; no DNA comparison occurred.
+
+A bounded public discovery pass used two queries, *Pinckney Pinkney DNA project FamilyTreeDNA* and *Pinckney Pinkney "A823" Y DNA*. It established no named project or comparable test. The [official FamilyTreeDNA project directory](https://www.familytreedna.com/group-project-search?browse=true) returned only a short iframe/chat extraction, so the absence of those spellings in that text is not a native directory-search negative. No actual DNA comparison occurred and no surname was excluded. The claimed middle name remains unverified; it does not identify Aaron's paternal family. A useful next test requires readable native project results with a specific comparison, or an original source for the middle name.
+
+Restricted 30 September supporting records: [Supporting review](https://drive.google.com/file/d/1FpM-9_rVxCfl7VL9B5ofCwwRr_m5Y69v/view?usp=drivesdk) · [Scoped request](https://drive.google.com/file/d/1lgW3tPfIrS2hCoCitwKJRKCtWcWsv-UG/view?usp=drivesdk) · [Recorded outcome](https://drive.google.com/file/d/1Eop4X1Jf0TStMPDL86B6W00vJMRHkN9x/view?usp=drivesdk). Access requires Taylor’s permission; these supporting records retain the actual scope and limits.
+
 ### Coverage checklist
 
-The main report covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. Sixty dated research notes supply the supporting leads, corrections, bounded negative searches and exact unread references.
+The main report covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. Sixty-three dated research notes supply the supporting leads, corrections, bounded negative searches and exact unread references.
 
 **Historical review:** all 181 staged working notes were classified. Of these, 145 map to report sections or research notes; the remaining 36 have explicit historical, background, private-data or operational retention reasons in the restricted topic catalog. This is a topic-level reconciliation, not a claim that every sentence, search attempt or original source has been independently rechecked. Consult the linked working reviews for full detail before repeating a search.
 
 **Now surfaced:** American and overseas birth screens; Aaron’s Carolina and Georgia associates, land, military and estate records; distinct James, David and Devaney identities; Bible provenance and collateral families; comparator pedigrees, geographic clues, surname variants and statistical limits. Search the notes by a surname, place, record collection or note ID. Completed searches retain their date, scope and limits; blocked or unread records remain retrieval targets.
 
-**Still unresolved:** the complete Bible evidence, historical placement of the tested paternal line, comparable terminal DNA evidence, and the original records specified in [Records needed](./index.html#records). Private match identities and detailed DNA data remain in the restricted library. Its historical search ledger contains only 11 recorded events across eight search IDs and is not a complete search history; the working reviews preserve additional search detail.
+**Still unresolved:** the complete Bible evidence, historical placement of the tested paternal line, comparable terminal DNA evidence, and the original records specified in [Records needed](./index.html#records). Private match identities and detailed DNA data remain in the restricted library. Edition 01.8’s historical search-ledger snapshot contained 11 recorded events across eight search IDs. Subsequent dated notes and restricted supporting reviews preserve newer scopes separately; the historical snapshot is not a complete or current search inventory.
+
+**30 September addition:** four bounded retrieval, access or status-check scopes are preserved separately in the restricted links in [N61](./index.html#N61), [N62](./index.html#N62), [N63](./index.html#N63) and [R06](./index.html#R06). The private contact register and unsent first-contact draft are linked in [Related trees and research contacts](./index.html#related-trees). The [restricted upload-verification snapshot](https://drive.google.com/file/d/1C5QAEPfKnFgNCqwZaMfDjq7r36t68v0F/view?usp=drivesdk) lists fourteen added supporting files; it was uploaded as a fifteenth file. All fifteen were verified by name, byte size, parent folder and owner-only permissions. Local SHA-256 fingerprints are recorded; no remote content-hash equality is claimed. These additions supplement the earlier historical library snapshot.
 
 08 / Edition history
 
@@ -1828,15 +2114,21 @@ Expanded the historical tree from five to twenty deceased people, with navigatio
 
 30 September 2026
 
+### Edition 01.7 · A central research record
+
+Added a curated Clues worth following guide and dated research notes for associations, unresolved identities, bounded searches and corrections previously underrepresented in the public report. Stable note references and full contents travel with the Markdown and structured exports. Earlier-note migration remains explicitly incomplete; no new genealogical conclusion or external record search is claimed.
+
+30 September 2026
+
 ### Edition 01.8 · A research checkpoint and evidence library
 
 Made this website the authoritative starting point, added a restricted Google Drive evidence library, and reconciled 181 working notes by topic. Expanded the public research notes to sixty, with search, stable references, direct supporting-note links and matching human- and machine-readable exports. This is an editorial and archival update, with saved court images rechecked to correct party direction in N56. No new external record retrieval or origin conclusion is claimed.
 
 30 September 2026
 
-### Edition 01.7 · A central research record
+### Edition 01.9 · Related trees and precise next questions
 
-Added a curated Clues worth following guide and dated research notes for associations, unresolved identities, bounded searches and corrections previously underrepresented in the public report. Stable note references and full contents travel with the Markdown and structured exports. Earlier-note migration remains explicitly incomplete; no new genealogical conclusion or external record search is claimed.
+Renamed the report The Aaron Oliphant Inquiry and added nineteen related-tree and source-trail entries, with stable RT references, exact saved links, evidence quality, copy dependence, specific questions and last recorded verification dates. Added N61–N63 for a Nash military-source locator, the Early grant access route and a bounded Pinckney/Pinkney discovery pass. These checks recovered no underlying service file, grant or new paternal comparison. The public notes now number sixty-three; Edition 01.8’s 181-note topic reconciliation remains a historical coverage statement. Contributor credits do not establish present custody or availability. Private contact planning and an unsent Rich draft remain restricted; no messages or automated outreach were sent through this register.
 
 ### Use this research in your own work
 

@@ -45,6 +45,44 @@
       },
       "type": "array"
     },
+    "clues": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "assessment_markdown": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "references": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "reviewed_on": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "status",
+          "reviewed_on",
+          "assessment_markdown",
+          "references"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
     "edition_date": {
       "type": "string"
     },
@@ -91,6 +129,44 @@
       "type": "string"
     },
     "reader_start": {
+      "type": "array"
+    },
+    "research_notes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "details_markdown": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "reviewed_on": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "status",
+          "reviewed_on",
+          "details_markdown",
+          "urls"
+        ],
+        "type": "object"
+      },
       "type": "array"
     },
     "research_questions": {
@@ -340,6 +416,8 @@
     "hypotheses",
     "candidates",
     "research_questions",
+    "research_notes",
+    "clues",
     "tree_people",
     "tree_relationships",
     "resources",

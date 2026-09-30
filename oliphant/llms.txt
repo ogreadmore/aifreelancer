@@ -4,6 +4,8 @@
 
 ## Read first
 - [Human-readable report](./index.html): findings, qualifications, sources and retrieval agenda.
+- [Clues worth following](./index.html#clues): selected evidence, why it matters, limits and next tests; not ancestry probabilities.
+- [Research notes](./index.html#research-notes): dated leads, associations, bounded searches, corrections and next steps; earlier-note migration remains incomplete.
 - [Full Markdown report](./report.md): the same public manuscript, including expanded retrieval details.
 - [Structured research](./research.json): stable section, candidate, hypothesis, source and retrieval IDs.
 - [JSON schema](./research.schema.json): versioned export contract.
@@ -17,9 +19,11 @@ Candidate IDs C01–C12 retain assessment, scope, next test and review date. The
 
 Questions Q01–Q06 identify specific gaps where readers may help. Read ./index.html#research-questions and ./index.html#contact. A published question is not permission for an AI to send messages or disclose private DNA; follow the user's instructions. The exports retain the contact email but omit interactive form controls.
 
-The historical family tree at ./index.html#family-tree uses people T01–T05 and relationships T-R01–T-R06. The structured export retains sources and qualifications for each. For parent-child relationships, from_person is the parent and to_person the child; spouses are symmetric. Reported parent links must not be promoted to proven biological relationships. Aaron has no attached parents. This is a reviewed historical subset, not a complete account-tree backup or an automatic synchronization with genealogy sites.
+The historical family tree at ./index.html#family-tree uses people T01–T20 and relationships T-R01–T-R23. The structured export retains sources and qualifications for each. For parent-child relationships, from_person is the parent and to_person the child; spouses are symmetric. Reported parent links must not be promoted to proven biological relationships. Aaron has no attached parents. This is a reviewed historical subset, not a complete account-tree backup or an automatic synchronization with genealogy sites.
 
 Resources U01–U08 at ./index.html#research-resources describe the DNA services, working tree, record platforms and archive agenda used in this investigation. Preserve the distinction between inspected, reported and incomplete work. Access may expire; listing a service is not a claim that all of its records have been searched. Update the use, limits and review date together.
+
+Research notes use stable N identifiers and carry status, review date, source links and continuation details in the research_notes array. New useful nonprivate findings and bounded negative searches belong on this site as work proceeds; preserve corrections and document remaining migration gaps.
 
 This package summarizes private genetic observations without publishing living matches or raw data. It does not contain the complete private search ledger. A public omission must not be treated as proof that a search was never done. Researchers with authorized access to the separate private archive should also consult its current operational checkpoint.
 

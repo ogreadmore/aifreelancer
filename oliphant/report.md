@@ -88,6 +88,46 @@ Every entry has a stable reference, C01–C12. Future reviewed evidence should u
 
 The reported line through Solomon Rainwater Oliphant to Aaron and Rebecca remains the working family history. The original Bible pages or a complete, sourced transcript have not yet been retrieved. Later accounts may repeat the same source. That is a specific documentation gap, not affirmative evidence of adoption or invented parentage. [[9]](./index.html#s9)
 
+Selected evidence / Where to look next
+
+## Clues worth following
+
+A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
+
+These are selected leads, not a ranking of ancestry probabilities. Their value lies in the next question they can answer. Reviewed 30 September 2026; follow each link for the detailed evidence, conflicts and search limits.
+
+### A younger man actually bore the name Aaron Olifant Devany
+
+**Why it stands out:** the full name appears in his 1866 marriage register, and his 1870 household occurs close in enumeration order to a Humphrey household under investigation for an Oliphant connection. It gives the Devaney question a specific historical person and locality.
+
+**Limit:** neither his relationship to the older Aaron nor the reason for his name is established. A namesake need not be a relative.
+
+**Useful next test:** find a contemporary parent, sibling or guardianship record and resolve the proposed Samuel/Agatha household identification. [Read the evidence and original-record links →](./index.html#N02)
+
+### An earlier Aaron appears in a county with other Oliphants
+
+**Why it stands out:** an Aaron Oliphant helped prove a Rutherford County will in 1809. Other Oliphants lived in the county, and his co-witness’s name appears in a possible family-association chain involving William Oliphant.
+
+**Limit:** the Tennessee witness is not yet identified as Rebecca’s husband; the co-witness’s identity also needs proof. Same-county records do not establish a shared household.
+
+**Useful next test:** examine the surviving loose will and seek matching relatives, residences or transactions across Tennessee and the Pendleton–Georgia records. [Read the two missing identity links →](./index.html#N01)
+
+### Solomon’s census reports a South Carolina-born father
+
+**Why it stands out:** the independently enlarged reading of Solomon’s 1880 census supports South Carolina in the partly blotted paternal birthplace field. This is a positive birthplace clue, unlike an unsuccessful passenger-list search.
+
+**Limit:** the father is unnamed, the report is late, and its relevance to Aaron depends on the reported parentage. It says nothing about the birthplace of Aaron’s father or grandfather.
+
+**Useful next test:** recover the complete Bible record and an independent parentage source, then compare earlier South Carolina records. [Original census and reading limits](./index.html#s7) · [Bible retrieval target →](./index.html#R03)
+
+### Two different Devaney comparisons ask a testable DNA question
+
+**Why it stands out:** a relatively close Y67 Devaney comparison and a separate R-A823 DeVenney tester give specific results to investigate beyond counting surname spellings in autosomal matches.
+
+**Limit:** these are two different people. Neither establishes a recent shared paternal branch or an ancestral surname; the tested descendant’s historical lineage still needs an independent collateral check.
+
+**Useful next test:** establish the Y67 comparator’s finer SNP placement and compare reliable shared variants for the separate A823 tester with appropriate permission. [Y67 comparison](./index.html#C01) · [Separate A823 comparison](./index.html#C02) · [Exact next comparison →](./index.html#R01)
+
 Family tree / Historical people
 
 ## The family line, with its evidence.
@@ -726,6 +766,120 @@ DNA tests, family-tree platforms and record repositories
 
 Private account access was inspected during 28–29 September 2026 and may expire. Exact autosomal product versions are not fully inventoried. No credentials, kit identifiers, living-match details or raw genetic data are included here. For continuation, read the [research guide](./README.md), [structured export](./research.json) and [outstanding records](./index.html#records). Future reviewed changes should update each resource’s use, limits and review date together.
 
+Research notes / Evidence behind the report
+
+## Leads, searches and what remains unresolved.
+
+This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
+
+The main report gives the current assessment. These dated notes preserve associations, contrary evidence, searches that found no target, and the next steps needed to distinguish possibilities. Open a note for its sources and limits. All note contents are included in the [Markdown report](./report.md) and [structured research data](./research.json), including when a note is collapsed here.
+
+### Coverage and continuing updates
+
+**Earlier-note migration is still in progress.** This edition adds selected material that was previously confined to working notes; it does not claim every earlier search is represented. The [coverage checklist below](./index.html#notes-coverage) makes remaining gaps visible. New useful nonprivate results, bounded negative searches and corrections should be added to the appropriate report section or a dated note as work advances. Preserve the evidence and the reason when an assessment changes.
+
+Private DNA data, living-match identities, account details and private correspondence remain outside the public package. Their relevant conclusions and evidentiary limits can be summarized without disclosing those materials. Source links may require an account or reading-room access.
+
+N01 · Aaron near other Oliphants: the Tennessee lead
+
+Reviewed 30 September 2026 · Recorded associations; Aaron identity unresolved
+
+**What the records say:** an Aaron Oliphant, James Caldwell/Coldwell and James Norman helped prove Thomas Welch’s verbal will in Rutherford County, Tennessee, in 1809. The recorded will gives an 18 May hearing; the July court minute records the proof. James and Samuel Oliphant also occur in the county’s contemporary tax and land records. Same-county presence does not establish neighboring homes or kinship. [Recorded will](https://www.familysearch.org/ark:/61903/3:1:3QS7-99G1-6GNB) · [continuation](https://www.familysearch.org/ark:/61903/3:1:3QS7-99G1-6PVH) · [court minute, p138](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-CSKH-M).
+
+**A possible associate connection:** an original Davidson-heir decree, dated 15 August 1814 and registered 18 January 1817, identifies Elizabeth Davidson as William Oliphant’s wife and her aunt Ruth as James Caldwell’s wife. It does not name Aaron. The Caldwell husband has not been identified as the 1809 witness, and the Tennessee Aaron has not been identified as Rebecca Rainwater’s husband. Those are two separate missing links. [Decree pp460–461](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS4H-D4KP) · [p462](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS4H-D4N2).
+
+**What this does not establish:** no reviewed record establishes a shared Oliphant household on Aaron’s Pendleton–Georgia trail. The unnamed young man in James Oliphant’s 1810 household cannot be assigned to Aaron. An original apprenticeship binds James Marlin to James Oliphant with lodging in January 1810, providing an alternative household explanation; it is not an adoption record. No demonstrated bridge connects Aaron to the Charleston–Union James/David family either.
+
+**Next:** obtain the surviving loose Welch will, including endorsements, and seek an independently matching residence, relative or transaction. The recorded mark is a copy, not an autograph suitable for handwriting identification. [Exact retrieval target R09](./index.html#R09) · [Separate James–David candidate](./index.html#C05).
+
+N02 · Who was Aaron Olifant Devany?
+
+Reviewed 30 September 2026 · Full name recorded; relationship to Aaron unproved
+
+**The unusual name is real:** the Hancock County marriage register spells out **Aaron Olifant Devany**, with a license dated 13 January 1866 and marriage to Martha Andrews on 14 January. Devany is the surname; “Olifant” is not a modern expansion of an initial. This is a younger man, born around the early 1840s according to later records, distinct from Aaron Oliphant, who was dead by December 1826. [Original marriage, p104, DGS5190837 image174](https://www.familysearch.org/ark:/61903/3:1:33S7-8BZ6-2MS).
+
+**A concrete local association:** the 16 June 1870 Hancock census places A. O. Devany and Martha at dwelling273/family280, two numbered dwellings after A. Humphrey and E. A. at271/278. The Humphrey household is being investigated in connection with Eliza Ann Oliphant; her identification and proposed Aaron parentage retain their own gaps. Drury Devaney appears at275/282. Enumeration order does not prove adjoining land, a shared home or kinship. [Original 1870 census, p31/stamped436](https://www.familysearch.org/ark:/61903/3:1:S3HY-DCNS-6NF).
+
+**Parentage remains unresolved:** a modern compilation assigns Samuel Devaney and Agatha/Agnes Ledbetter as parents. The attached 1850 Samuel/Agatha household contains a seven-year-old child indexed “Avin,” whose handwritten name remains uncertain; the South Carolina birth entries conflict with the younger Aaron’s later Georgia reports. The original 1829 Samuel marriage calls the bride Agness Ledbetter, whereas the 1850 census reads Agatha. Neither the child’s identity nor the women’s equivalence is settled. [1850 household](https://www.familysearch.org/ark:/61903/3:1:S3HT-D899-PP8) · [1829 marriage](https://www.familysearch.org/ark:/61903/3:1:33SQ-GPP6-93K4).
+
+**Additional family evidence:** the 1880 original explicitly labels John, William and Eli as nephews and Sarah as a niece in Aaron O. Devany’s household. It reports Georgia for his and both parents’ birthplaces. These relationships merit investigation but do not establish a paternal brother link or a shared Y-line. A contributed funeral clipping supports the reported 1916 death, but does not name his parents; its newspaper caption still needs comparison with the complete page. [1880 census](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBZ-3M) · [Memorial and contributed clipping](https://www.findagrave.com/memorial/17386953/aaron-oliphant-davaney).
+
+**A later search recovered Agathy’s 1860 household:** the original lists Agathy Devany, Lucy and Mary L. in Greene County, dwelling257/family257, on 30 July 1860. Aaron, Samuel and Drury are absent from this three-person household. Conflicting ages, initials and birthplaces prevent an automatic merge with the 1850 family, and absence does not prove Samuel died. A broader surname search screened 180 indexed results without locating the younger Aaron. [Original 1860 household](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBT-C2T).
+
+**Assessment and next step:** the full name and local association justify a namesake or family-connection investigation, not a concluded surname transition. Seek the missing 1860 household, an explicit parent/sibling record, and the possible Augusta death-register entry for 23 May 1916. The younger Aaron’s own 1860 location remains unresolved; the recovered Agathy household does not place him there. His connection to either DNA comparator is unproved. [Death-record access guide](https://www.georgiaarchives.org/research/death_records).
+
+N03 · The alleged 1814 marriage: accessible record, bounded negative
+
+Reviewed 30 September 2026 · Bounded search; no target established · Reconciled from saved 28–29 September source reviews; original manuscripts were not re-examined for this edition.
+
+The place of Aaron and Rebecca's reported 18 August 1814 marriage is unresolved. A collaborative profile assigns Greene County, Georgia; a later family account assigns South Carolina. Neither supplies a contemporary marriage citation. The Greene marriage volume was accessible: the earlier claim that its 1814 material could not be viewed was a navigation error. The available opening index, DGS 4849035 images 67–79, was visually screened for Oliphant variants, Rainwater and Devaney variants. Manuscript pp40–45, images 100–102, were separately visually read and cover May–October 1814. No recognizable Aaron/Rebecca marriage appeared in those examined leaves. This is not a complete page-by-page volume search or proof that no marriage occurred, was registered elsewhere, or appears out of order. The useful next step is a contemporary citation identifying the actual place or a specific unindexed entry, rather than repeating the same index screen.
+
+Sources/read status: original register images previously read: [volume title](https://www.familysearch.org/ark:/61903/3:1:33S7-9PP6-9QWS), [pp40–41](https://www.familysearch.org/ark:/61903/3:1:33S7-9PP6-9QD2), [pp42–43](https://www.familysearch.org/ark:/61903/3:1:33SQ-GPP6-97Z8), [pp44–45](https://www.familysearch.org/ark:/61903/3:1:33S7-9PP6-9Q63), [O/P index](https://www.familysearch.org/ark:/61903/3:1:33S7-9PP6-9QF1).
+
+N04 · Birth searches under Devaney variants
+
+Reviewed 30 September 2026 · Bounded search; no target established · Reconciled from saved 28–29 September source reviews; original manuscripts were not re-examined for this edition.
+
+Bounded FamilySearch index searches tested a possible earlier surname; they do not establish that Aaron ever used it. The exact patterns A*ron and D*v*n*, without dates, places or parents, returned one Scottish hit: Aaron Davidson, christened at Montrose in 1766, with parents Alexander Davidson and Ann Reid. Its original image was unavailable and no American identity bridge was found. Ireland Births and Baptisms returned zero; the Catholic index returned a later parent-role entry for Aron Devlin, whose child Susanna was baptized at Dungannon in 1843. That is not Aaron's own birth. Two Jamaican interfaces returned zero and three Davidson father-role summaries respectively. No qualifying birth candidate was recovered in these particular searches. These are partial indexes with overlapping underlying material, spelling and role limitations; Scotland, Ireland and Jamaica are not excluded. Separate ScotlandsPeople church-category searches and any targeted original parish search remain uncompleted.
+
+Sources/read status: index/detail-level review only, no original birth manuscript: [Scottish exact query](https://www.familysearch.org/en/search/record/results?count=100&q.givenName=A%2Aron&q.givenName.exact=on&q.surname=D%2Av%2An%2A&q.surname.exact=on&f.collectionId=1771030), [Davidson detail](https://www.familysearch.org/ark:/61903/1:1:XB64-HMG), [Irish births query](https://www.familysearch.org/en/search/record/results?count=100&q.givenName=A%2Aron&q.givenName.exact=on&q.surname=D%2Av%2An%2A&q.surname.exact=on&f.collectionId=1584963), [Devlin parent entry](https://www.familysearch.org/ark:/61903/1:1:6FH9-YTLJ), [Jamaica transcript query](https://www.familysearch.org/en/search/record/results?count=100&q.givenName=A%2Aron&q.givenName.exact=on&q.surname=D%2Av%2An%2A&q.surname.exact=on&f.collectionId=1827268), [Jamaica births query](https://www.familysearch.org/en/search/record/results?count=100&q.givenName=A%2Aron&q.givenName.exact=on&q.surname=D%2Av%2An%2A&q.surname.exact=on&f.collectionId=1520598).
+
+N05 · Pendleton Devaney records: real people, missing bridges
+
+Reviewed 30 September 2026 · Recorded evidence; identity or relationship unresolved · Reconciled from saved 28–29 September source reviews; original manuscripts were not re-examined for this edition.
+
+Samuel McCulley's recorded will, dated 2 October 1805 and proved 2 June 1806, expressly names Samuel Diviney as his grandchild. It does not give that grandson's age or identify him with the later Greene County Samuel; it names no Aaron. A separate 1796 sheriff deed records judgments against Mary and Hugh Deveny and sale of Mary's 154 acres to John James. It does not state their relationship or connect them to John and Mary McCulley's family. John Davaney separately witnessed an 1822 deed and appears in a Cane Creek sale advertisement. A recovered execution return records a horse sold and land receiving no bid; the return does not name its acreage or watercourse, so correlation with the advertised 150 acres remains an inference. These are useful distinct local records, not a proved Devaney–Oliphant family. The next discriminators are an explicit identity or kinship record and the earlier Cane Creek acquisition, not an assumed successful sheriff conveyance.
+
+Sources/read status: originals previously visually read: [McCulley will opening](https://www.familysearch.org/ark:/61903/3:1:939L-FX98-YT), [continuation](https://www.familysearch.org/ark:/61903/3:1:939L-FX96-C1), [1796 sheriff deed p193](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS73-JCQC), [p194](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS73-JC7Y), [1822 witness deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKW-99JZ-K), [sale advertisement](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS42-G9K6-M), [execution return](https://www.familysearch.org/ark:/61903/3:1:3QHV-N3ZG-Y9Q7-J).
+
+N06 · Hancock census and lottery coverage
+
+Reviewed 30 September 2026 · Bounded search; no target established · Reconciled from saved 28–29 September source reviews; original manuscripts were not re-examined for this edition.
+
+No target household was identified in the completed 1820 Hancock “Not Stated” waypoint screen: all fifteen images, including thirteen manuscript pages, were examined. This is not the whole county census. The district aggregate's sixteen rows contain no recognizable Sharp/Sharps heading. Original readings also resolved selected given-name search candidates as Smith, Rosser, Richard and two Warren County Arons, rather than apparent Oliphant misreadings. Hancock lottery registration sections for 1821 and July–August 1825 were also visually screened without a recognizable target entry. The catalogue's “1827” label accompanies registrations made before Aaron's death and cannot be used as a postdeath widow/orphan search. The 1825 list covers only districts 102, 107 and 109; damaged leaves and gaps remain. Greene tax-film queries and selected pages likewise do not constitute a complete 691-image reading. The original Early 7/23 grant/drawer entry and contemporary district identification remain separate useful targets.
+
+Sources/read status: original census/name screens: [Not Stated cover](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBC-WK8), [district aggregate](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBC-7YK), [Smith](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBC-WV2), [Rosser](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBC-W88); lottery viewer [AH1265](https://vault.georgiaarchives.org/digital/collection/tax/id/68664/rec/9), examined objects 68642–68663. Greene tax [image655](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSL6-QSL1-7) was transcript-read; do not upgrade all tax pages to original verification.
+
+N07 · Gordon's mill and the people who must remain distinct
+
+Reviewed 30 September 2026 · Recorded evidence; identity or relationship unresolved · Reconciled from saved 28–29 September source reviews; original manuscripts were not re-examined for this edition.
+
+George Gordon's sworn admission establishes that he was deceased James Oliphant's son-in-law. A 1797 letter places the administrator at Musgrove's Mill, while separate deeds document a George Gordon acquiring the mill tract and its outstanding dower interest. These strengthen the administrator–mill-proprietor identification but do not establish Ann Gordon's maiden name or identify her as James's daughter. The 1798 dower deed concerns Ann Smith, formerly Ann Musgrove, widow of Edward Musgrove; she must not be merged with Ann Gordon. Her dower is a life interest within the existing 150 acres, not another 150-acre parcel. The separate 75- and 65-acre purchases also cannot simply be summed into Ann Gordon's approximately 240-acre settlement. A James of Laurens conveyed land alive in October 1797 and cannot be the Union James already dead by 1793. Neither candidate family's records currently connect Aaron. An explicit Oliphant heir or marriage instrument would discriminate better than further unbounded mill-title expansion.
+
+Sources/read status: original admissions/deeds previously visually read: [Gordon answer](https://www.familysearch.org/ark:/61903/3:1:3QHV-J38D-H99Q-D), [mill acquisition opening](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS7S-1TWP), [continuation](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS7S-1T8T), [Ann Smith dower](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS7S-1T94), [living Laurens James, 1797](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS7S-1TJG). Morrison purchase [opening](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS7S-1Y94) visually read; continuation remains transcript-only.
+
+N08 · Charlotte Pilcher's evidence and a withdrawn Dalton lead
+
+Reviewed 30 September 2026 · Recorded evidence; identity or relationship unresolved · Reconciled from saved 28–29 September source reviews; original manuscripts were not re-examined for this edition.
+
+Charlotte's Devinney maiden surname is supported by the original marriage license of 28 December 1841 and return of 16 January 1842, correcting a submitted 1840 marriage date. Those leaves name no parents. Later children's death records support her identity and maiden surname, but none inspected names Samuel Devaney and Polly Dalton as her parents. Lula Pilcher's later duplicate certificate gives Charlotte's birthplace as Richmond County; the earlier certificate gives Georgia only. They record one death, with unresolved informant independence, and must not be counted as independent Richmond confirmations. The Richmond estate-account lead also needed correction: an index initially read as Sarah Dalton actually names Sabra Dawson; original p297 confirms the Dawson account. That proposed Dalton positive is withdrawn. The valid Dalton administration notices remain separate from any demonstrated relationship. A sourced Bible transcript, guardian/heir record or another express parentage statement is still needed; compatible dates and counties do not supply that bridge.
+
+Sources/read status: originals previously read: [Charlotte marriage](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C91Q-9SKB-H), [Sara Proctor death certificate](https://www.familysearch.org/ark:/61903/3:1:939F-9M9L-G3), [Lula duplicate](https://www.ancestry.ca/imageviewer/collections/2562/images/004124538_00896), [Dawson index](https://www.familysearch.org/ark:/61903/3:1:3QSQ-G93L-F1DW), [Dawson p297](https://www.familysearch.org/ark:/61903/3:1:3QSQ-G93L-FYBX).
+
+N09 · Pension searches do not replace the service file
+
+Reviewed 30 September 2026 · Bounded search; no target established · Reconciled from saved 28–29 September source reviews; original manuscripts were not re-examined for this edition.
+
+Bounded pension-index searches under Oliphant and variants found no Aaron or Rebecca entry. The visually checked Oliphant/Oliphent cards identify one James and widow Temperance, with a spelling cross-reference; these are not two soldiers. The separate Old War pension index has different service coverage and is not a complete state-volunteer search. A search within NARA's separately retained bounty-only series returned a Daniel Shackelford file containing other Oliphant names. Only two highlighted manuscript images were visually read; neither identified the target Aaron or Rebecca. The cataloged digital portion represents a small subset of the roughly 360,000-file physical series, so the result cannot establish absence from the archive. Aaron's actual Nash-regiment compiled service jacket and cards remain unread. A full physical-series/name-index check for Aaron and possible widow Rebecca is another distinct target; no application or warrant has yet been located.
+
+Sources/read status: [M313 collection](https://www.familysearch.org/en/search/collection/1834325), original [James card](https://www.familysearch.org/ark:/61903/3:2:77LC-LKCT) and [cross-reference](https://www.familysearch.org/ark:/61903/3:2:77LC-LKCY) visually reviewed; [T316](https://www.familysearch.org/en/search/collection/1979425) index-only searches; [bounty series](https://catalog.archives.gov/id/567388), [Shackelford image16](https://catalog.archives.gov/id/116738679?objectPage=16), [image17](https://catalog.archives.gov/id/116738679?objectPage=17).
+
+N10 · What the Old Tennent entries actually establish
+
+Reviewed 30 September 2026 · Recorded evidence; identity or relationship unresolved · Reconciled from saved 28–29 September source reviews; original manuscripts were not re-examined for this edition.
+
+The 1897 printed Old Tennent Church history preserves useful Deveny entries, but does not verify the often repeated Irish origin pedigree. Page122 records William Deveny having William baptized on 1 September 1745 and William Devinney having John baptized on 10 May with the year blank in print. Page129 records Richard Pittinger's second wife as a woman formerly married to William Deveny. It does not call her a widow, name her, date William's death, or identify her former husband with either baptismal father. The appendix describes damaged handwriting and omitted references; these are selected published transcriptions, not original-register facsimiles. No inspected entry establishes William's reported 1680 birth, Dungannon origin, migration about 1700, Aaron as a son or a connection to the Pendleton family. The next useful source is the manuscript baptism book described by the editor, together with an identifying marriage or estate, if a documented pedigree makes that family relevant.
+
+Sources/read status: 1897 printed pp118,122,129 visually read; manuscripts not retrieved: [Internet Archive edition](https://archive.org/details/historyofoldtenn00symm_0), [same-copy public PDF](https://upload.wikimedia.org/wikipedia/commons/d/d6/History_of_the_Old_Tennent_church.._%28IA_historyofoldtenn00symm_0%29.pdf).
+
+### Coverage checklist
+
+The main report already covers the American chronology, DNA comparison limits, candidate rankings, tree evidence and fourteen retrieval targets. The notes above add context that does not fit those summaries. Further reconciliation of older working notes remains open; absence from this page is not evidence that a source has never been searched.
+
+**Now added:** N01–N10 cover Tennessee associates, younger Aaron Devany, the Greene marriage screen, overseas substitute-surname birth searches, Pendleton Devaney records, Hancock census/lottery coverage, Gordon identities, Charlotte/Dalton corrections, pension limits and Old Tennent entries.
+
+**Still to consolidate:** United States birth and early Carolina name screens; the James–Jean Nevay and Edinburgh goldsmith records; collateral children’s birthplace and parentage conflicts; Rebecca’s estate and title research; further Pendleton Devaney court/census and Samuel/Polly records; detailed tract and Charleston record coverage; and privacy-reviewed comparator pedigree/geography assessments. These are editorial reconciliation tasks, not claims that the sources are untouched. Keep the examined scope and exact unread references visible as each topic is added.
+
 08 / Edition history
 
 ## A living report, with a memory.
@@ -775,6 +929,12 @@ Added a dated resource inventory under Sources & methods covering the DNA servic
 ### Edition 01.6 · A broader sourced family tree
 
 Expanded the historical tree from five to twenty deceased people, with navigation for the core line, Rainwater relatives and Hazel’s Taylor–Newberry parents. A fresh reading of saved 1856 will images supports the explicitly named wife and seven additional children. Later core links retain their family-history, index or obituary-correlation qualifications; unknown dates and unresolved identities remain visible. No parent of Aaron is attached. MyHeritage’s core line has been expanded with qualified source notes; broader account work continues, Ancestry has not been edited, and no automatic synchronization is configured.
+
+30 September 2026
+
+### Edition 01.7 · A central research record
+
+Added a curated Clues worth following guide and dated research notes for associations, unresolved identities, bounded searches and corrections previously underrepresented in the public report. Stable note references and full contents travel with the Markdown and structured exports. Earlier-note migration remains explicitly incomplete; no new genealogical conclusion or external record search is claimed.
 
 ### Use this research in your own work
 

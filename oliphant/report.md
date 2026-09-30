@@ -88,6 +88,78 @@ Every entry has a stable reference, C01–C12. Future reviewed evidence should u
 
 The reported line through Solomon Rainwater Oliphant to Aaron and Rebecca remains the working family history. The original Bible pages or a complete, sourced transcript have not yet been retrieved. Later accounts may repeat the same source. That is a specific documentation gap, not affirmative evidence of adoption or invented parentage. [[9]](./index.html#s9)
 
+Family tree / Historical people
+
+## The family line, with its evidence.
+
+This small tree shows the reported family through three historical generations. Each relationship carries its own evidence. Aaron’s parents remain unknown; the original record establishing his parentage of Solomon has not yet been located.
+
+Recorded spouse relationship Reported parent relationship
+
+T01
+
+### Aaron Oliphant
+
+Birth unknown · died by 14 December 1826
+
+The administrator’s qualification establishes the death bound. Precise birth claims, the middle name Pinkney and an exact death date remain unverified.
+
+[1826 court minutes](https://www.familysearch.org/ark:/61903/3:1:3QSQ-G935-VV68)
+
+T02
+
+### Rebecca Rainwater
+
+Exact dates unknown · recorded alive in 1860
+
+The 1821 deed names her as Aaron’s wife and Solomon Rainwater’s daughter. Later census ages and birthplaces differ; her reported 1863 death remains unverified.
+
+[1821 deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B) · [1860 census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBT-S83)
+
+**Recorded spouses by 1821.** The deed explicitly identifies Aaron’s wife Rebecca. Their precise marriage date and place remain unverified. [Read the deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B).
+
+**Aaron → Solomon: reported father.** Later family accounts state the relationship; no original parentage entry has been read. [Family biography](https://www.therainwatercollection.com/gallery/aug2009.shtml) · [2002 account](https://www.ancestry.ca/boards/surnames.oliphant/213.1).
+
+**Rebecca → Solomon: reported mother.** The same family accounts supply this link. The deed proving her marriage does not identify her children. [Family biography](https://www.therainwatercollection.com/gallery/aug2009.shtml) · [2002 account](https://www.ancestry.ca/boards/surnames.oliphant/213.1).
+
+T03
+
+### Solomon Rainwater Oliphant
+
+Born about 1823 · death year unresolved
+
+Original census ages support the approximate birth year. Later sources differ between 1890 and 1891 for his death. His 1880 entry names neither parent.
+
+[1880 census](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBX-9JBP) · [Family biography](https://www.therainwatercollection.com/gallery/aug2009.shtml)
+
+T04
+
+### Amanda Rainwater
+
+Exact birth and death dates unverified
+
+The marriage register and later household records identify Solomon’s historical spouse. Her father’s 1856 will separately names Amanda Oliphant as his daughter.
+
+[1880 census](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBX-9JBP) · [1856 will](https://www.ancestry.ca/imageviewer/collections/8635/images/005761699_00008)
+
+**Recorded marriage: 12 March 1846, Hancock County, Georgia.** The inspected original register distinguishes the earlier 5 March entry from the performed marriage on 12 March. [Source inventory](https://www.familysearch.org/en/tree/person/sources/262V-F5D) (locator for the saved original; direct image citation still to recover).
+
+**Solomon → Andrew: reported father.** The 1850 and 1860 households support the family identification, but neither census states parent–child relationships. [Family biography](https://www.therainwatercollection.com/gallery/aug2009.shtml) · [1860 census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBT-SLT).
+
+**Amanda → Andrew: reported mother.** The same biography and early households support this link; a directly named parentage record remains to be established. [Family biography](https://www.therainwatercollection.com/gallery/aug2009.shtml) · [1860 census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBT-SLT).
+
+T05
+
+### Andrew Jackson Oliphant
+
+Born about 1847
+
+A. J. appears aged three in the saved 1850 household and twelve in 1860. Later family and cemetery material needs correlation before an exact birth day, death date or spouse history is added.
+
+[1860 census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBT-SLT) · [Cemetery transcription](https://www.okcemeteries.net/love/lakeview/o/olakeview.htm)
+
+Reviewed 29 September 2026 from the saved source audits. The underlying Bible or complete transcript remains outstanding; later accounts may repeat the same family information. Stable references T01–T05 identify people and T-R01–T-R06 identify relationships. This tree contains historical people only and does not assign a genetic result to Aaron. [Bible provenance](./index.html#s9) · [What would resolve the gap](./index.html#R03).
+
 03 / Aaron in the records
 
 ## A life comes into view.
@@ -350,6 +422,36 @@ The first five targets below would most directly sharpen the present interpretat
 
 **Parentage and autosomal assignment:** seek a specifically identified heir, guardian or church record for Aaron’s children; establish the proposed Devaney/Pilcher pedigrees and the actual shared ancestral couple before assigning DNA to that line. No confirmed loose parentage file has yet been identified.
 
+### Questions for researchers
+
+These are specific gaps where a family-held record, an existing DNA result or archive access could move the research forward. If you can help, [contact Taylor](./index.html#contact) and include the question number or record reference.
+
+- #### [Q01](./index.html#Q01) · Is a finer result available for the Devaney Y67 comparison?
+
+The five-step Y67 match currently displays only broad R-M269. Can its identity and any existing finer SNP or Big Y result be confirmed? This would help determine whether it belongs on the same younger paternal branch. [Comparison C01](./index.html#C01) · [Record target R01](./index.html#R01).
+
+- #### [Q02](./index.html#Q02) · How does the separate R-A823 DeVenney result compare?
+
+With the tester’s permission, is there an existing comparison of shared variants and DNA positions readable in both tests? A shared A823 label alone has not established a recent paternal ancestor. [Comparison C02](./index.html#C02) · [Record target R01](./index.html#R01).
+
+- #### [Q03](./index.html#Q03) · Is there an independently documented paternal-line relative with Y-DNA results?
+
+We need a sourced father-to-son line through another son of Aaron, or through another son of Solomon. Please identify which historical relationship the records establish; the two comparisons would answer different questions. [Record target R02](./index.html#R02).
+
+- #### [Q04](./index.html#Q04) · Where is the complete family Bible record?
+
+Does anyone have the Andrew J. Oliphant Bible, a complete transcript, or information about who holds it? Family pages, the title or publication page, and the history of the copy would help establish exactly what the source says. [Record target R03](./index.html#R03) · [Source note 9](./index.html#s9).
+
+- #### [Q05](./index.html#Q05) · Is there a record connecting Aaron to the James–David family?
+
+We are looking for a contemporary deed, probate, church, court or family record naming the relationship. The Charleston–Union family is a candidate; its connection to Aaron remains unproved. The painter and physician Davids must remain distinct. [Hypothesis H04](./index.html#H04) · [Scottish records](./index.html#R06).
+
+- #### [Q06](./index.html#Q06) · Can anyone help obtain the identified American records?
+
+The main priorities are Aaron Oliphant’s actual Nash’s Regiment service file and the grant or drawer entry for Early County, district 7, lot 23. The military index has already been read; the full file has not. Exact references and access limits are in [R04](./index.html#R04) and [R05](./index.html#R05).
+
+Reviewed 29 September 2026. Questions will be updated as evidence arrives. Please arrange any sharing of another person’s DNA information with their permission.
+
 07 / Sources & methods
 
 ## A conclusion should lead back to its evidence.
@@ -420,6 +522,12 @@ Added direct estate-packet, biography and court-image links already recorded in 
 
 Added ranked research priorities, unresolved comparisons and tester-specific exclusions to What We Know, based on the saved DNA and documentary reviews. Stable candidate references and review dates now travel with the Markdown and structured exports. No new searches, surname probabilities or genealogical conclusions are claimed.
 
+29 September 2026
+
+### Edition 01.4 · Family tree, contact and research questions
+
+Added a sourced tree of five historical people, distinguishing recorded spouses from reported parent relationships and preserving uncertain dates. Also added a direct email link, a contact form using the main site’s existing Formspree endpoint, and six specific questions for people with relevant records or DNA information. Stable tree and question references, evidence status and review dates accompany the public record. No new genealogical conclusion is claimed.
+
 ### Use this research in your own work
 
 [Read the full Markdown report](./report.md) · [Structured research (JSON)](./research.json) · [Start here for AI readers](./llms.txt) · [Edition checksums](./manifest.json) · [Research and update guide](./README.md)
@@ -427,3 +535,9 @@ Added ranked research priorities, unresolved comparisons and tester-specific exc
 These exports contain the same public evidence and qualifications, including expanded retrieval details. They are regenerated together; they do not expose private DNA records. A missing search in this public summary does not mean it has never been attempted.
 
 Editorial note: research assistance includes AI-supported retrieval, synthesis and comparison. Human-readable source references and explicit limits make review possible; they do not turn an inference into a fact. This web edition remains a provisional working report. Original archive images and private DNA materials are not reproduced.
+
+09 / Contact
+
+## Contact
+
+Contact Taylor Oliphant with records, corrections or information about this family. Email [taylor@aifreelancer.co](mailto:taylor@aifreelancer.co) or use the form below.

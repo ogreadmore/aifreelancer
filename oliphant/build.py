@@ -63,7 +63,7 @@ class Page(HTMLParser):
 def markdown(node):
     if isinstance(node, str):
         return re.sub(r'\s+', ' ', node)
-    if node.tag in {'script', 'style', 'nav', 'button', 'input'} or node.attrs.get('aria-hidden') == 'true':
+    if node.tag in {'script', 'style', 'nav', 'button', 'input', 'form'} or node.attrs.get('aria-hidden') == 'true':
         return ''
     if 'record-controls' in node.attrs.get('class', '') or node.attrs.get('id') == 'no-records':
         return ''
@@ -128,6 +128,25 @@ def public_exports(public):
     for row in main.all('tr', 'candidate'):
         if row.all('strong')[0].text() != row.attrs['data-priority'] or row.all(cls='candidate-status')[0].text() != row.attrs['data-status']:
             raise ValueError('Candidate visible status/priority differs from export: ' + row.attrs['id'])
+    questions = [{'id': n.attrs['id'], 'title': n.all('h4')[0].text(),
+                  'status': n.attrs['data-status'], 'reviewed_on': n.attrs['data-reviewed'],
+                  'question_markdown': clean_md(n.all('p')[0])}
+                 for n in main.all('li', 'research-question')]
+    tree_people = [{'id': n.attrs['id'], 'name': n.attrs['data-name'],
+                    'date_label': n.attrs['data-date-label'], 'date_status': n.attrs['data-date-status'],
+                    'reviewed_on': n.attrs['data-reviewed'], 'evidence_markdown': clean_md(n)}
+                   for n in main.all('article', 'tree-person')]
+    tree_relationships = [{'id': n.attrs['id'], 'type': n.attrs['data-type'],
+                           'from_person': n.attrs['data-from'], 'to_person': n.attrs['data-to'],
+                           'status': n.attrs['data-status'], 'reviewed_on': n.attrs['data-reviewed'],
+                           'evidence_markdown': clean_md(n)}
+                          for n in main.all('p', 'tree-relationship')]
+    person_ids = {n['id'] for n in tree_people}
+    for relation in tree_relationships:
+        if relation['from_person'] not in person_ids or relation['to_person'] not in person_ids:
+            raise ValueError('Unresolved family-tree person: ' + relation['id'])
+        if relation['type'] not in {'spouses', 'parent-child'}:
+            raise ValueError('Unknown family-tree relationship type: ' + relation['id'])
     ids = [n.attrs['id'] for n in page.all() if 'id' in n.attrs]
     if len(ids) != len(set(ids)):
         raise ValueError('Public page has duplicate IDs')
@@ -136,7 +155,7 @@ def public_exports(public):
         if url.startswith('#') and len(url) > 1 and url[1:] not in ids:
             raise ValueError(f'Broken page anchor: {url}')
     data = {
-        'schema_version': '1.1.0',
+        'schema_version': '1.2.0',
         'title': page.all('title')[0].text(),
         'edition_date': page.all('time')[0].attrs['datetime'],
         'manuscript_sha256': digest(html),
@@ -147,7 +166,8 @@ def public_exports(public):
         'interpretation_rules': ['No origin theory is established as probable.', 'Do not infer surname change from missing birth or passenger records.',
                                  'Distinguish record statements, same-person inference, catalogue descriptions and unread originals.',
                                  'Tester-specific exclusions do not eliminate entire surnames.', 'The reported line through Aaron remains a working history with an underlying-source gap.'],
-        'sections': sections, 'hypotheses': hypotheses, 'candidates': candidates, 'retrieval_targets': tasks, 'sources': sources,
+        'sections': sections, 'hypotheses': hypotheses, 'candidates': candidates, 'research_questions': questions,
+        'tree_people': tree_people, 'tree_relationships': tree_relationships, 'retrieval_targets': tasks, 'sources': sources,
         'history_coverage': 'The public report includes bounded search summaries and retrieval states. Detailed private historical searches are not publicly reproduced. Absence here is not evidence of an unsearched source.',
         'update_policy': 'Change the reviewed HTML manuscript and its dated notes, then regenerate. This JSON is generated; do not edit it independently.'
     }
@@ -156,6 +176,9 @@ def public_exports(public):
               'properties': {key: {'type': 'array' if isinstance(value, list) else 'string'} for key, value in data.items()}}
     for key, required in [('sections', ['id', 'title', 'markdown']), ('hypotheses', ['id', 'statement', 'confidence', 'assessment_markdown']),
                           ('candidates', ['id', 'name', 'priority', 'status', 'scope', 'reviewed_on', 'assessment_markdown', 'next_step_markdown']),
+                          ('research_questions', ['id', 'title', 'status', 'reviewed_on', 'question_markdown']),
+                          ('tree_people', ['id', 'name', 'date_label', 'date_status', 'reviewed_on', 'evidence_markdown']),
+                          ('tree_relationships', ['id', 'type', 'from_person', 'to_person', 'status', 'reviewed_on', 'evidence_markdown']),
                           ('retrieval_targets', ['id', 'priority_group', 'title', 'details_markdown', 'status']), ('sources', ['id', 'citation', 'urls'])]:
         schema['properties'][key]['items'] = {'type': 'object', 'required': required, 'additionalProperties': False,
             'properties': {name: {'type': 'array', 'items': {'type': 'string'}} if name == 'urls' else {'type': 'string'} for name in required}}
@@ -175,6 +198,10 @@ def public_exports(public):
 Read findings, uncertainty, source notes and completed coverage before proposing searches. No parent, immigrant generation, overseas home or surname event is established. Do not turn missing records into positive evidence. Do not merge the two Devaney comparators or distinct James/David candidates. Respect independent-source and same-person limits. An exact retrieval target is not a discovery.
 
 Candidate IDs C01–C12 retain assessment, scope, next test and review date. Their ranks are information-gathering priorities, not surname probabilities. A tested-line exclusion never eliminates an entire surname. Preserve IDs, cite changed evidence and date the review before regenerating the table and exports.
+
+Questions Q01–Q06 identify specific gaps where readers may help. Read ./index.html#research-questions and ./index.html#contact. A published question is not permission for an AI to send messages or disclose private DNA; follow the user's instructions. The exports retain the contact email but omit interactive form controls.
+
+The historical family tree at ./index.html#family-tree uses people T01–T05 and relationships T-R01–T-R06. The structured export retains sources and qualifications for each. For parent-child relationships, from_person is the parent and to_person the child; spouses are symmetric. Reported parent links must not be promoted to proven biological relationships. Aaron has no attached parents. This is a reviewed historical subset, not a complete account-tree backup or an automatic synchronization with genealogy sites.
 
 This package summarizes private genetic observations without publishing living matches or raw data. It does not contain the complete private search ledger. A public omission must not be treated as proof that a search was never done. Researchers with authorized access to the separate private archive should also consult its current operational checkpoint.
 

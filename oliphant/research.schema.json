@@ -124,6 +124,41 @@
       },
       "type": "array"
     },
+    "resources": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "limits": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reviewed_on": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "use": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "url",
+          "reviewed_on",
+          "use",
+          "limits"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
     "retrieval_targets": {
       "items": {
         "additionalProperties": false,
@@ -307,6 +342,7 @@
     "research_questions",
     "tree_people",
     "tree_relationships",
+    "resources",
     "retrieval_targets",
     "sources",
     "history_coverage",

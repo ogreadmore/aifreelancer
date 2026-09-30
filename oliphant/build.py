@@ -136,6 +136,10 @@ def public_exports(public):
                     'date_label': n.attrs['data-date-label'], 'date_status': n.attrs['data-date-status'],
                     'reviewed_on': n.attrs['data-reviewed'], 'evidence_markdown': clean_md(n)}
                    for n in main.all('article', 'tree-person')]
+    resources = [{'id': n.attrs['id'], 'name': n.all('th')[0].text(),
+                  'url': n.all('a')[0].attrs['href'], 'reviewed_on': n.attrs['data-reviewed'],
+                  'use': n.all(cls='resource-use')[0].text(), 'limits': n.all(cls='resource-limits')[0].text()}
+                 for n in main.all('tr', 'research-resource')]
     tree_relationships = [{'id': n.attrs['id'], 'type': n.attrs['data-type'],
                            'from_person': n.attrs['data-from'], 'to_person': n.attrs['data-to'],
                            'status': n.attrs['data-status'], 'reviewed_on': n.attrs['data-reviewed'],
@@ -155,7 +159,7 @@ def public_exports(public):
         if url.startswith('#') and len(url) > 1 and url[1:] not in ids:
             raise ValueError(f'Broken page anchor: {url}')
     data = {
-        'schema_version': '1.2.0',
+        'schema_version': '1.3.0',
         'title': page.all('title')[0].text(),
         'edition_date': page.all('time')[0].attrs['datetime'],
         'manuscript_sha256': digest(html),
@@ -167,7 +171,7 @@ def public_exports(public):
                                  'Distinguish record statements, same-person inference, catalogue descriptions and unread originals.',
                                  'Tester-specific exclusions do not eliminate entire surnames.', 'The reported line through Aaron remains a working history with an underlying-source gap.'],
         'sections': sections, 'hypotheses': hypotheses, 'candidates': candidates, 'research_questions': questions,
-        'tree_people': tree_people, 'tree_relationships': tree_relationships, 'retrieval_targets': tasks, 'sources': sources,
+        'tree_people': tree_people, 'tree_relationships': tree_relationships, 'resources': resources, 'retrieval_targets': tasks, 'sources': sources,
         'history_coverage': 'The public report includes bounded search summaries and retrieval states. Detailed private historical searches are not publicly reproduced. Absence here is not evidence of an unsearched source.',
         'update_policy': 'Change the reviewed HTML manuscript and its dated notes, then regenerate. This JSON is generated; do not edit it independently.'
     }
@@ -178,6 +182,7 @@ def public_exports(public):
                           ('candidates', ['id', 'name', 'priority', 'status', 'scope', 'reviewed_on', 'assessment_markdown', 'next_step_markdown']),
                           ('research_questions', ['id', 'title', 'status', 'reviewed_on', 'question_markdown']),
                           ('tree_people', ['id', 'name', 'date_label', 'date_status', 'reviewed_on', 'evidence_markdown']),
+                          ('resources', ['id', 'name', 'url', 'reviewed_on', 'use', 'limits']),
                           ('tree_relationships', ['id', 'type', 'from_person', 'to_person', 'status', 'reviewed_on', 'evidence_markdown']),
                           ('retrieval_targets', ['id', 'priority_group', 'title', 'details_markdown', 'status']), ('sources', ['id', 'citation', 'urls'])]:
         schema['properties'][key]['items'] = {'type': 'object', 'required': required, 'additionalProperties': False,
@@ -202,6 +207,8 @@ Candidate IDs C01–C12 retain assessment, scope, next test and review date. The
 Questions Q01–Q06 identify specific gaps where readers may help. Read ./index.html#research-questions and ./index.html#contact. A published question is not permission for an AI to send messages or disclose private DNA; follow the user's instructions. The exports retain the contact email but omit interactive form controls.
 
 The historical family tree at ./index.html#family-tree uses people T01–T05 and relationships T-R01–T-R06. The structured export retains sources and qualifications for each. For parent-child relationships, from_person is the parent and to_person the child; spouses are symmetric. Reported parent links must not be promoted to proven biological relationships. Aaron has no attached parents. This is a reviewed historical subset, not a complete account-tree backup or an automatic synchronization with genealogy sites.
+
+Resources U01–U08 at ./index.html#research-resources describe the DNA services, working tree, record platforms and archive agenda used in this investigation. Preserve the distinction between inspected, reported and incomplete work. Access may expire; listing a service is not a claim that all of its records have been searched. Update the use, limits and review date together.
 
 This package summarizes private genetic observations without publishing living matches or raw data. It does not contain the complete private search ledger. A public omission must not be treated as proof that a search was never done. Researchers with authorized access to the separate private archive should also consult its current operational checkpoint.
 

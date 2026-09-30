@@ -490,6 +490,25 @@ Machine text was used to locate records; original readings control the central d
 
 - **Interpretation and alternatives.** *Current Claim Register*, *Competing Claims Adversarial Review*, and *Mini Progress Report*, 29 September 2026. Editorial syntheses of the cited record and genetic assessments, not additional historical witnesses. The James/David Scottish identity and Aaron connection remain open (J01–J09); comparative genetic exclusions apply to sampled testers, not entire surnames.
 
+### Research resources
+
+This inventory records what has been used and what remains incomplete, as reviewed on 29 September 2026. It is a continuation guide, not a recommendation to buy every service. The numbered citations above support particular claims; the resources below explain where the work happens.
+
+DNA tests, family-tree platforms and record repositories
+
+| Resource | Use in this investigation | Limits and continuation notes |
+| --- | --- | --- |
+| [FamilyTreeDNA](https://www.familytreedna.com/) | Big Y-700 paternal test; Y37, Y67 and Y111 match views; public surname projects and paternal-branch comparisons. | R-A823 is confirmed for the tested descendant. STR match views are not separate independent tests. A separate autosomal account was reported, but its results have not been reviewed here. Private variants and historical pedigree links remain incomplete. |
+| [23andMe](https://www.23andme.com/) | Autosomal relatives and a broader paternal haplogroup report, R-M222, were inspected. | Compatible with the finer FamilyTreeDNA result; another test of the same person does not independently verify the historical line. Product generation is not established in this public inventory. |
+| [MyHeritage](https://www.myheritage.com/) | Autosomal matches, shared matches, tree surnames and chromosome comparisons; primary working account tree for sourced updates. | Some segment triangulations were reviewed, but none is assigned to Aaron or a unique ancestral couple. Tree expansion is incomplete; the attempted GEDCOM backup did not complete. The public historical tree is a separate reviewed subset. |
+| [Ancestry](https://www.ancestry.ca/) | Autosomal DNA matches, shared matches, member trees, message boards and historical record images. Research used the Canadian site with the existing account. | No account tree has yet been expanded in this phase. Member trees and relationship predictions require verification. Record access can depend on the collection and subscription; account access is not a claim that every relevant image has been examined. |
+| [GEDmatch](https://www.gedmatch.com/) | Existing uploaded-kit match results were inspected as an additional autosomal comparison resource. | Uploads and repeated appearances of the same person are not independent relatives or independent evidence. No new raw-DNA upload was made for this investigation; private kit identities are not published. |
+| [FamilySearch](https://www.familysearch.org/) | Catalogue, indexed records, original record images and collaborative-tree source inventories, especially American deeds, probate, census and marriage records. | An index, catalogue description or tree assertion is not an original-record reading. Some images require sign-in or location-based access. Exact films, image references and remaining restrictions are listed in the retrieval agenda. |
+| [Archives and special collections](./index.html#records) | National Records of Scotland, NARA, Georgia Archives, South Carolina archives, county repositories, Furman, PRONI and St Andrews are represented in the record-retrieval agenda. | Use targets R04–R14 for the exact institution, reference, prior coverage and next step. These have mixed states: originals read, catalogue-only leads, requests pending and restricted or missing material. Listing an archive does not mean its relevant holdings have all been read. |
+| [Family accounts and contributed collections](https://www.therainwatercollection.com/) | The Rainwater Collection, Oliphant message-board accounts, cemetery transcriptions and published obituaries supply leads and supporting family context. | Retain the author, record provenance and original citation when available. Copies and derivative accounts may share a common source. The complete family Bible remains outstanding; online biographies do not substitute for it. |
+
+Private account access was inspected during 28–29 September 2026 and may expire. Exact autosomal product versions are not fully inventoried. No credentials, kit identifiers, living-match details or raw genetic data are included here. For continuation, read the [research guide](./README.md), [structured export](./research.json) and [outstanding records](./index.html#records). Future reviewed changes should update each resource’s use, limits and review date together.
+
 08 / Edition history
 
 ## A living report, with a memory.
@@ -527,6 +546,12 @@ Added ranked research priorities, unresolved comparisons and tester-specific exc
 ### Edition 01.4 · Family tree, contact and research questions
 
 Added a sourced tree of five historical people, distinguishing recorded spouses from reported parent relationships and preserving uncertain dates. Also added a direct email link, a contact form using the main site’s existing Formspree endpoint, and six specific questions for people with relevant records or DNA information. The contents groups Questions for researchers beneath What would move us forward, matching its place within that chapter. Stable tree and question references, evidence status and review dates accompany the public record. No new genealogical conclusion is claimed.
+
+29 September 2026
+
+### Edition 01.5 · Research resources
+
+Added a dated resource inventory under Sources & methods covering the DNA services, working tree, record platforms and archive agenda. It distinguishes inspected results from reported or incomplete work and preserves access limits. The contents now displays related subsections together. No new ancestry conclusion follows.
 
 ### Use this research in your own work
 

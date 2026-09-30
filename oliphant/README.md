@@ -6,6 +6,8 @@ A public working investigation of Aaron Oliphant's background, migration, and pa
 
 - [Read the illustrated report](./index.html).
 - [Explore the historical family tree](./index.html#family-tree), with evidence and qualifications for each relationship.
+- [Browse clues worth following](./index.html#clues), with limits and concrete next tests.
+- [Read dated research notes](./index.html#research-notes), including associations, unsuccessful searches and corrections.
 - [Read the complete report as Markdown](./report.md), including expanded retrieval details.
 - [Use the structured research export](./research.json), described by [its schema](./research.schema.json).
 - [Find exact outstanding records](./index.html#records): fourteen stable targets, R01–R14, with access states, identifiers and questions.
@@ -20,7 +22,7 @@ Read the complete report before searching. Use H01–H05 for competing hypothese
 
 The candidate tables in What We Know use stable IDs C01–C12. Their priority order ranks information gathering, not surname likelihood. Keep the two Devaney comparators separate and retain the scope of every tested-line exclusion. For each changed assessment, update the visible priority/status, evidence, next test, and row attributes (`data-priority`, `data-status`, `data-scope`, `data-reviewed`) in `index.html`. Date the review, cite its evidence, and add an edition note. Preserve IDs if a candidate is downgraded or excluded; add new IDs for new comparisons. Regenerate and check all exports before publishing. Updates require reviewed evidence; no automatic research or status promotion occurs.
 
-`research.json` schema 1.3.0 includes `candidates` with those fields and cited Markdown assessments. The Markdown report reproduces both tables. Do not update one export independently of the manuscript.
+`research.json` schema 1.4.0 includes `candidates` with those fields and cited Markdown assessments. The Markdown report reproduces both tables. Do not update one export independently of the manuscript.
 
 The same schema includes `tree_people` (T01–T20) and `tree_relationships` (T-R01–T-R23). The twenty-person Edition 01.6 tree has overview links for the eight-person core line, ten connected Rainwater relatives and Hazel’s two Taylor–Newberry parents. Existing T01–T05 and T-R01–T-R06 retain their identities. Recorded will relationships, named-parent indexes, obituary correlations and reported family links remain visibly distinguished; Nancy’s maternity and the cross-Solomon identity bridge are not asserted. For a `parent-child` relationship, `from_person` is the parent and `to_person` the child. A `spouses` relationship is symmetric. Every entry includes a review date and cited evidence; preserve the difference between recorded marriages and reported parentage. Unknown dates remain qualified text, not guessed machine dates. Do not attach proposed ancestors to Aaron without evidence. The public tree is a historical subset, not a complete account backup, and there is no automatic synchronization with MyHeritage or Ancestry. Review each account change before incorporating its public counterpart here.
 
@@ -62,3 +64,11 @@ Questions Q01–Q06 have stable IDs, review dates and open status in `research.j
 Under Sources & methods, Research resources uses stable IDs U01–U08. The `resources` array records each platform or repository group, its URL (a page fragment for the archive agenda), use, limitations and review date. Preserve distinctions between inspected tests, reported accounts, completed edits and outstanding work. Do not assume a prior login remains active or that a listed repository was exhaustively searched. Platform entries are a continuation aid; specific historical claims still require their individual source citations.
 
 The primary MyHeritage account now follows the expanded core line through Aaron with qualified source notes; broader account expansion continues. Ancestry has not been edited. The twenty-person public tree is a separately reviewed historical subset, with no automatic synchronization; a failed GEDCOM export is not a completed backup.
+
+## Central research record and note coverage
+
+The site is the central public continuation point. After each research batch, publish useful nonprivate findings, bounded negative searches, contradictions, corrections and exact retrieval limitations in the relevant report section or a Research note. Each N identifier is permanent and carries a status, review date, citations, search scope where applicable, and a next step. Preserve superseded readings with an explicit correction rather than silently replacing them. Regenerate the full Markdown and JSON exports together.
+
+Clues worth following is a short curated guide, not a second claim register or a list of ancestry probabilities. Stable K identifiers retain the observation, why it matters, limits and next test; each links to detailed notes or source-backed report entries. Update or retire a clue visibly when the evidence changes. Schema1.4.0 adds research_notes and clues arrays; all collapsed note text is exported.
+
+Earlier-note migration is incomplete. The visible coverage checklist identifies material still to reconcile; do not claim all historical searches are public or infer unsearched status from an omission. Keep private operational notes and sensitive data local. Review and publish the useful conclusion and limits when they can be stated without disclosure. The private archive retains original materials and fuller audit detail; it is not a substitute for updating the public research record.

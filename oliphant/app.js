@@ -23,6 +23,22 @@ for (const button of filters) button.addEventListener('click', () => {
   applyFilter();
 });
 applyFilter();
+const researchNotes = [...document.querySelectorAll('.research-note')];
+const noteSearch = document.querySelector('#note-search');
+function filterNotes() {
+  const query = noteSearch.value.trim().toLocaleLowerCase();
+  let visible = 0;
+  for (const note of researchNotes) {
+    note.hidden = !`${note.id} ${note.textContent}`.toLocaleLowerCase().includes(query);
+    if (!note.hidden) visible++;
+  }
+  document.querySelector('#note-count').textContent = `${visible} of ${researchNotes.length} research notes shown`;
+}
+if (noteSearch) {
+  document.querySelector('.note-controls').hidden = false;
+  noteSearch.addEventListener('input', filterNotes);
+  filterNotes();
+}
 let printState;
 const printableDetails = [...document.querySelectorAll('details')];
 window.addEventListener('beforeprint', () => {
@@ -46,6 +62,9 @@ function revealLinkedDetail() {
   if (detail) {
     // Reset filters if a direct record link targets a hidden retrieval entry.
     if (detail.hidden) {
+      if (detail.classList.contains('research-note') && noteSearch) {
+        noteSearch.value = ''; filterNotes();
+      }
       selected = 'all'; search.value = '';
       for (const button of filters) button.setAttribute('aria-pressed', String(button.dataset.filter === 'all'));
       applyFilter();

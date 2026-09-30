@@ -24,19 +24,38 @@ for (const button of filters) button.addEventListener('click', () => {
 });
 applyFilter();
 let printState;
+const printableDetails = [...document.querySelectorAll('details')];
 window.addEventListener('beforeprint', () => {
   if (printState) return;
-  printState = records.map(record => ({ open: record.open, hidden: record.hidden }));
-  for (const record of records) { record.hidden = false; record.open = true; }
+  printState = printableDetails.map(record => ({ open: record.open, hidden: record.hidden }));
+  for (const record of printableDetails) { record.hidden = false; record.open = true; }
 });
 window.addEventListener('afterprint', () => {
   if (!printState) return;
-  records.forEach((record, index) => { record.open = printState[index].open; record.hidden = printState[index].hidden; });
+  printableDetails.forEach((record, index) => { record.open = printState[index].open; record.hidden = printState[index].hidden; });
   printState = undefined;
 });
 const printButton = document.querySelector('.print-button');
 printButton.hidden = false;
 printButton.addEventListener('click', () => window.print());
+function revealLinkedDetail() {
+  let id;
+  try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+  const target = document.getElementById(id);
+  const detail = target?.closest('details');
+  if (detail) {
+    // Reset filters if a direct record link targets a hidden retrieval entry.
+    if (detail.hidden) {
+      selected = 'all'; search.value = '';
+      for (const button of filters) button.setAttribute('aria-pressed', String(button.dataset.filter === 'all'));
+      applyFilter();
+    }
+    detail.open = true;
+    target.scrollIntoView({ block: 'start' });
+  }
+}
+window.addEventListener('hashchange', revealLinkedDetail);
+revealLinkedDetail();
 const navigation = [...document.querySelectorAll('.contents a')];
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {

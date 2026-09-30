@@ -186,7 +186,7 @@ def public_exports(public):
                                  'Tester-specific exclusions do not eliminate entire surnames.', 'The reported line through Aaron remains a working history with an underlying-source gap.'],
         'sections': sections, 'hypotheses': hypotheses, 'candidates': candidates, 'research_questions': questions, 'research_notes': research_notes, 'clues': clues,
         'tree_people': tree_people, 'tree_relationships': tree_relationships, 'resources': resources, 'retrieval_targets': tasks, 'sources': sources,
-        'history_coverage': 'The site is the central public research record. Research notes preserve selected associations, bounded searches, contradictions and next steps. Earlier working notes are still being reconciled; migration is incomplete. Absence here is not evidence of an unsearched source. Private DNA and account material are not released.',
+        'history_coverage': 'The site is the current research record. Edition 01.8 reconciles 181 historical working notes by topic: 145 map to public sections or sixty research notes, and 36 have explicit historical, background, private-data or operational retention reasons. This is not a transcript of every search or an independent re-reading of every source. The restricted library preserves supporting detail. Absence here is not evidence of an unsearched source. Private DNA and account material are not public.',
         'update_policy': 'Publish useful nonprivate findings, bounded negatives, corrections and retrieval limits in a reviewed section or research note as work advances. Preserve stable IDs and dated changes, then regenerate all exports. Do not edit this generated JSON independently.'
     }
     schema = {'$schema': 'https://json-schema.org/draft/2020-12/schema', 'title': 'Oliphant public research export',
@@ -211,7 +211,7 @@ def public_exports(public):
 - [Start here](./index.html#start-here): the authoritative research checkpoint, continuation steps and restricted evidence-library links.
 - [Human-readable report](./index.html): findings, qualifications, sources and retrieval agenda.
 - [Clues worth following](./index.html#clues): selected evidence, why it matters, limits and next tests; not ancestry probabilities.
-- [Research notes](./index.html#research-notes): dated leads, associations, bounded searches, corrections and next steps; earlier-note migration remains incomplete.
+- [Research notes](./index.html#research-notes): sixty dated leads, associations, bounded searches, corrections and next steps, with a topic-coverage checklist and restricted supporting reviews.
 - [Full Markdown report](./report.md): the same public manuscript, including expanded retrieval details.
 - [Structured research](./research.json): stable section, candidate, hypothesis, source and retrieval IDs.
 - [JSON schema](./research.schema.json): versioned export contract.
@@ -229,7 +229,7 @@ The historical family tree at ./index.html#family-tree uses people T01–T20 and
 
 Resources U01–U08 at ./index.html#research-resources describe the DNA services, working tree, record platforms and archive agenda used in this investigation. Preserve the distinction between inspected, reported and incomplete work. Access may expire; listing a service is not a claim that all of its records have been searched. Update the use, limits and review date together.
 
-Research notes use stable N identifiers and carry status, review date, source links and continuation details in the research_notes array. New useful nonprivate findings and bounded negative searches belong on this site as work proceeds; preserve corrections and document remaining migration gaps.
+Research notes use stable N identifiers and carry status, review date, source links and continuation details in the research_notes array. New useful nonprivate findings and bounded negative searches belong on this site as work proceeds; preserve corrections and document coverage limits. Edition 01.8 reconciles 181 working notes by topic, not every past query or source reading. The restricted historical event ledger contains eleven events across eight search IDs; fuller search history remains in the linked working reviews.
 
 This package summarizes private genetic observations without publishing living matches or raw data. It does not contain the complete private search ledger. A public omission must not be treated as proof that a search was never done. The website Start here section is the current checkpoint. Authorized readers can follow its restricted Google Drive links to underlying evidence, catalogs and historical working notes; those notes do not supersede current website corrections. There is no separate Start Here document in Drive.
 

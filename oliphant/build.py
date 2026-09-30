@@ -140,6 +140,20 @@ def public_exports(public):
                   'url': n.all('a')[0].attrs['href'], 'reviewed_on': n.attrs['data-reviewed'],
                   'use': n.all(cls='resource-use')[0].text(), 'limits': n.all(cls='resource-limits')[0].text()}
                  for n in main.all('tr', 'research-resource')]
+    clues = [{'id': n.attrs['id'], 'title': n.all('h3')[0].text(),
+              'status': n.attrs['data-status'], 'reviewed_on': n.attrs['data-reviewed'],
+              'assessment_markdown': clean_md(n),
+              'references': [a.attrs['href'] for a in n.all('a')]}
+             for n in main.all('article', 'clue')]
+    research_notes = [{'id': n.attrs['id'], 'title': n.all('summary')[0].text(),
+                       'status': n.attrs['data-status'], 'reviewed_on': n.attrs['data-reviewed'],
+                       'details_markdown': clean_md(n.all(cls='note-body')[0]),
+                       'urls': list(dict.fromkeys(a.attrs['href'] for a in n.all('a')
+                                                  if a.attrs.get('href', '').startswith('https://')))}
+                      for n in main.all('details', 'research-note')]
+    for note in research_notes:
+        if not note['urls'] or not note['status'] or not note['reviewed_on']:
+            raise ValueError('Research note lacks evidence or review metadata: ' + note['id'])
     tree_relationships = [{'id': n.attrs['id'], 'type': n.attrs['data-type'],
                            'from_person': n.attrs['data-from'], 'to_person': n.attrs['data-to'],
                            'status': n.attrs['data-status'], 'reviewed_on': n.attrs['data-reviewed'],
@@ -159,21 +173,21 @@ def public_exports(public):
         if url.startswith('#') and len(url) > 1 and url[1:] not in ids:
             raise ValueError(f'Broken page anchor: {url}')
     data = {
-        'schema_version': '1.3.0',
+        'schema_version': '1.4.0',
         'title': page.all('title')[0].text(),
         'edition_date': max(n.attrs['datetime'] for n in page.all('time')),
         'manuscript_sha256': digest(html),
         'publication_status': 'working_edition_deployment_not_asserted',
         'intended_base_url': 'https://aifreelancer.co/oliphant/',
         'scope': 'Audience-neutral public synthesis. Private observations are summarized with explicit limits; this is not a release of private DNA or the complete research corpus.',
-        'reader_start': ['./report.md', './index.html#findings', './index.html#theories', './index.html#records', './index.html#sources'],
+        'reader_start': ['./report.md', './index.html#findings', './index.html#research-notes', './index.html#theories', './index.html#records', './index.html#sources'],
         'interpretation_rules': ['No origin theory is established as probable.', 'Do not infer surname change from missing birth or passenger records.',
                                  'Distinguish record statements, same-person inference, catalogue descriptions and unread originals.',
                                  'Tester-specific exclusions do not eliminate entire surnames.', 'The reported line through Aaron remains a working history with an underlying-source gap.'],
-        'sections': sections, 'hypotheses': hypotheses, 'candidates': candidates, 'research_questions': questions,
+        'sections': sections, 'hypotheses': hypotheses, 'candidates': candidates, 'research_questions': questions, 'research_notes': research_notes, 'clues': clues,
         'tree_people': tree_people, 'tree_relationships': tree_relationships, 'resources': resources, 'retrieval_targets': tasks, 'sources': sources,
-        'history_coverage': 'The public report includes bounded search summaries and retrieval states. Detailed private historical searches are not publicly reproduced. Absence here is not evidence of an unsearched source.',
-        'update_policy': 'Change the reviewed HTML manuscript and its dated notes, then regenerate. This JSON is generated; do not edit it independently.'
+        'history_coverage': 'The site is the central public research record. Research notes preserve selected associations, bounded searches, contradictions and next steps. Earlier working notes are still being reconciled; migration is incomplete. Absence here is not evidence of an unsearched source. Private DNA and account material are not released.',
+        'update_policy': 'Publish useful nonprivate findings, bounded negatives, corrections and retrieval limits in a reviewed section or research note as work advances. Preserve stable IDs and dated changes, then regenerate all exports. Do not edit this generated JSON independently.'
     }
     schema = {'$schema': 'https://json-schema.org/draft/2020-12/schema', 'title': 'Oliphant public research export',
               'type': 'object', 'required': list(data), 'additionalProperties': False,
@@ -182,17 +196,21 @@ def public_exports(public):
                           ('candidates', ['id', 'name', 'priority', 'status', 'scope', 'reviewed_on', 'assessment_markdown', 'next_step_markdown']),
                           ('research_questions', ['id', 'title', 'status', 'reviewed_on', 'question_markdown']),
                           ('tree_people', ['id', 'name', 'date_label', 'date_status', 'reviewed_on', 'evidence_markdown']),
+                          ('clues', ['id', 'title', 'status', 'reviewed_on', 'assessment_markdown', 'references']),
+                          ('research_notes', ['id', 'title', 'status', 'reviewed_on', 'details_markdown', 'urls']),
                           ('resources', ['id', 'name', 'url', 'reviewed_on', 'use', 'limits']),
                           ('tree_relationships', ['id', 'type', 'from_person', 'to_person', 'status', 'reviewed_on', 'evidence_markdown']),
                           ('retrieval_targets', ['id', 'priority_group', 'title', 'details_markdown', 'status']), ('sources', ['id', 'citation', 'urls'])]:
         schema['properties'][key]['items'] = {'type': 'object', 'required': required, 'additionalProperties': False,
-            'properties': {name: {'type': 'array', 'items': {'type': 'string'}} if name == 'urls' else {'type': 'string'} for name in required}}
+            'properties': {name: {'type': 'array', 'items': {'type': 'string'}} if name in {'urls', 'references'} else {'type': 'string'} for name in required}}
     discovery = f'''# The Oliphant Inquiry
 
 > An audience-neutral working investigation of Aaron Oliphant's family. Edition {data['edition_date']}. Provisional findings; publication does not certify a conclusion.
 
 ## Read first
 - [Human-readable report](./index.html): findings, qualifications, sources and retrieval agenda.
+- [Clues worth following](./index.html#clues): selected evidence, why it matters, limits and next tests; not ancestry probabilities.
+- [Research notes](./index.html#research-notes): dated leads, associations, bounded searches, corrections and next steps; earlier-note migration remains incomplete.
 - [Full Markdown report](./report.md): the same public manuscript, including expanded retrieval details.
 - [Structured research](./research.json): stable section, candidate, hypothesis, source and retrieval IDs.
 - [JSON schema](./research.schema.json): versioned export contract.
@@ -206,9 +224,11 @@ Candidate IDs C01–C12 retain assessment, scope, next test and review date. The
 
 Questions Q01–Q06 identify specific gaps where readers may help. Read ./index.html#research-questions and ./index.html#contact. A published question is not permission for an AI to send messages or disclose private DNA; follow the user's instructions. The exports retain the contact email but omit interactive form controls.
 
-The historical family tree at ./index.html#family-tree uses people T01–T05 and relationships T-R01–T-R06. The structured export retains sources and qualifications for each. For parent-child relationships, from_person is the parent and to_person the child; spouses are symmetric. Reported parent links must not be promoted to proven biological relationships. Aaron has no attached parents. This is a reviewed historical subset, not a complete account-tree backup or an automatic synchronization with genealogy sites.
+The historical family tree at ./index.html#family-tree uses people T01–T20 and relationships T-R01–T-R23. The structured export retains sources and qualifications for each. For parent-child relationships, from_person is the parent and to_person the child; spouses are symmetric. Reported parent links must not be promoted to proven biological relationships. Aaron has no attached parents. This is a reviewed historical subset, not a complete account-tree backup or an automatic synchronization with genealogy sites.
 
 Resources U01–U08 at ./index.html#research-resources describe the DNA services, working tree, record platforms and archive agenda used in this investigation. Preserve the distinction between inspected, reported and incomplete work. Access may expire; listing a service is not a claim that all of its records have been searched. Update the use, limits and review date together.
+
+Research notes use stable N identifiers and carry status, review date, source links and continuation details in the research_notes array. New useful nonprivate findings and bounded negative searches belong on this site as work proceeds; preserve corrections and document remaining migration gaps.
 
 This package summarizes private genetic observations without publishing living matches or raw data. It does not contain the complete private search ledger. A public omission must not be treated as proof that a search was never done. Researchers with authorized access to the separate private archive should also consult its current operational checkpoint.
 

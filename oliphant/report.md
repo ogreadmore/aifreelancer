@@ -22,7 +22,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 1 October 2026, 13:50:06 EDT  · Content updated: 1 October 2026, 13:50:06 EDT  · [Edit note](./index.html#edit-0132-start-here)
+Editorial review: 1 October 2026, 14:45:02 EDT  · Content updated: 1 October 2026, 14:45:02 EDT  · [Edit note](./index.html#edit-0133-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -54,13 +54,15 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted archive:** the [adult-collateral and copy-enquiry evidence](https://drive.google.com/file/d/1pY5GnbYgyXkTunQBMTeYV3UvgbbeTCWd/view?usp=drivesdk) preserves the reviewed household records, bounded death/probate checks and current retrieval work, with a separate [first-marriage locator supplement](https://drive.google.com/file/d/1545c0c0_oq9eBu9OZvfMU7jFgVICv94k/view?usp=drivesdk). Access requires Taylor’s permission; transfer details and earlier checkpoints are below.
+**Latest restricted archive:** the [bounded Lawrence index check and source-selection review](https://drive.google.com/file/d/14pt4jjxKkUTLrH2dqc7Q1mZsYgHsritj/view?usp=drivesdk) supplement the [adult-collateral evidence](https://drive.google.com/file/d/1pY5GnbYgyXkTunQBMTeYV3UvgbbeTCWd/view?usp=drivesdk). Access requires Taylor’s permission; transfer details and earlier checkpoints are below.
 
 Earlier evidence-library transfers
 
 Dated preservation checkpoints are retained as history; their totals and descriptions apply to the editions named.
 
 **1 October 2026 preservation successor:** one [restricted evidence ZIP](https://drive.google.com/file/d/1pY5GnbYgyXkTunQBMTeYV3UvgbbeTCWd/view?usp=drivesdk) preserves 66 selected files plus an embedded manifest and readable index, 68 members in total. These include original adult-family images, the grave photograph, rereading derivatives, death/probate index leaves and selected enquiry/procedure evidence; members are not 68 independent records or cloud transfers. The recorded library total advances from 1,906 to **1,907** by one verified transfer, not a fresh full-library recount. Local SHA-256 and ZIP-member/CRC checks were completed; remote name, size, parent and unshared sole-owner permissions were checked. This transfer was not re-downloaded for remote-byte or restore testing. Earlier totals below remain dated checkpoints.
+
+**Edition 01.33 preservation:** the [restricted Lawrence review successor](https://drive.google.com/file/d/14pt4jjxKkUTLrH2dqc7Q1mZsYgHsritj/view?usp=drivesdk) contains 21 selected files plus a manifest and README, 23 ZIP members. It preserves the limited index check and private source-selection reviews. One verified upload brings the recorded library total from 1,908 to 1,909 by incremental accounting, not a full recount. Local member hashes and CRC were checked separately from remote filename, size, parent and sole-owner permissions. Uploaded bytes were not re-downloaded and no restore was tested; package members are not independent records or additional cloud transfers.
 
 **First-marriage locator supplement:** one [restricted successor ZIP](https://drive.google.com/file/d/1545c0c0_oq9eBu9OZvfMU7jFgVICv94k/view?usp=drivesdk) preserves five selected files and a readable index, six members, with no newly read original. Its verified transfer advances the recorded total from the main batch’s 1,907 checkpoint to **1,908**, still incremental accounting. Local hashes/CRC and remote name, size, intended parent and unshared sole-owner permissions were checked; remote bytes and restoration were not tested.
 
@@ -788,7 +790,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 1 October 2026, 13:50:06 EDT  · Content updated: 1 October 2026, 13:50:06 EDT  · [Edit note](./index.html#edit-0132-records)
+Editorial review: 1 October 2026, 14:45:02 EDT  · Content updated: 1 October 2026, 14:45:02 EDT  · [Edit note](./index.html#edit-0133-records)
 
 The current independent original-record focus is the federal Nash service file and the loose Welch will. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -808,7 +810,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 **Coverage:** [Andrew’s other recorded sons](./index.html#N65) supply candidates. [Henry’s parent names](./index.html#N70), [his later census readings](./index.html#N79) and [the unresolved Emmett/Raliegh household and 1940 Robert E. candidate](./index.html#N73) establish no subsequent male line. A household without a son does not prove lifetime childlessness.
 
-**Next test:** resolve the [adult Edward B.–1880 Byron identity bridge](./index.html#N101) before treating this as a Solomon collateral. The 1920 original explicitly records Milton B., eight, as Edward’s son, but no acquired adult record names Solomon or Amanda. A bounded death/probate test did not close that gap; exact administration and packet containers remain conditional retrieval leads. If the parent bridge is closed, correlate Milton’s full historical identity and document each later father–son step. A documented Solomon branch would anchor earlier than an Andrew-only comparison. For the existing Andrew-level routes, inspect Walter’s [29 May 1968 notice, image 61387527](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355), still unread after [bounded access attempts](./index.html#N67); [Robert’s two exact notices](./index.html#N96) are a parallel identity route; an official copy enquiry has been sent for the 18 November 1958 Ardmoreite notice, with the original and reply pending. Verify each relationship and adult identity before tracing a comparison line; an Andrew branch cannot settle the earlier Solomon–Aaron chain.
+**Next test:** resolve the [adult Edward B.–1880 Byron identity bridge](./index.html#N101) before treating this as a Solomon collateral. The 1920 original explicitly records Milton B., eight, as Edward’s son, but no acquired adult record names Solomon or Amanda. The bounded death/probate checks did not close that gap. A later [fifteen-image court-book pass](./index.html#N101) found no target on the administrator O leaf; the blank guardian O leaf has no established 1920 coverage. Map the relationship between the O index and later guardianship pages only if jurisdiction or a named pointer supports that next step; the separate packet container remains unread. If the parent bridge is closed, correlate Milton’s full historical identity and document each later father–son step. A documented Solomon branch would anchor earlier than an Andrew-only comparison. For the existing Andrew-level routes, inspect Walter’s [29 May 1968 notice, image 61387527](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355), still unread after [bounded access attempts](./index.html#N67); [Robert’s two exact notices](./index.html#N96) are a parallel identity route; an official copy enquiry has been sent for the 18 November 1958 Ardmoreite notice, with the original and reply pending. Verify each relationship and adult identity before tracing a comparison line; an Andrew branch cannot settle the earlier Solomon–Aaron chain.
 
 03 · Family-held source The complete family Bible record Recalled extent · original unread
 
@@ -1289,7 +1291,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 1 October 2026, 13:50:06 EDT  · Content updated: 1 October 2026, 13:50:06 EDT  · [Edit note](./index.html#edit-0132-research-notes)
+Editorial review: 1 October 2026, 14:45:02 EDT  · Content updated: 1 October 2026, 14:45:02 EDT  · [Edit note](./index.html#edit-0133-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -3000,9 +3002,13 @@ The [1900 Limestone County, Texas census, ED 56 sheet 14A, lines 46–47](https:
 
 **The adult-to-1880 connection is materially supported, but the Solomon anchor is not closed.** Age progression, Georgia birth and parental birthplaces, Texas context, and the derivative Edward Bryon/February 1872 entry fit the adult records. This is stronger than a name-only match. Nevertheless, the 1880 relationship is unstated, no acquired adult record names Solomon or Amanda, and the full-name expansion depends on derivative biography and stone correlation. Adult-family continuity, stone identity and the proposed childhood identity are distinct conclusions.
 
-**Bounded death/probate result:** targeted [Arkansas certificate](https://www.ancestry.ca/search/collections/61777) and [death-index](https://www.ancestry.ca/search/collections/8771) searches recovered no matching certificate or parent bridge. Three original state death-index leaves were read, including [the Oliphant entries](https://www.ancestry.ca/imageviewer/collections/8771/images/ARDTH_19141923_0032a05); none matches Edward/Byron in 1920. The [Lawrence Eastern District will-volume O index](https://www.ancestry.ca/imageviewer/collections/8638/images/007118189_00225) likewise supplied no target. This does not establish absence of a death registration or estate. Conditional on Lawrence probate jurisdiction, the next precise unread containers are [administration bonds 1872–1926](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00001) and [Box M2–O packets](https://www.ancestry.ca/imageviewer/collections/8638/images/007117380_00001); no Edward estate has been demonstrated there. A parent-bearing record could close or contradict the Solomon connection. Only then should Milton’s full identity and further deceased father–son chain be tested. No living descendants were searched or contacted; no public-tree addition, Aaron parentage, comparison tester or origin-confidence upgrade follows.
+**Bounded death/probate result:** targeted [Arkansas certificate](https://www.ancestry.ca/search/collections/61777) and [death-index](https://www.ancestry.ca/search/collections/8771) searches recovered no matching certificate or parent bridge. Three original state death-index leaves were read, including [the Oliphant entries](https://www.ancestry.ca/imageviewer/collections/8771/images/ARDTH_19141923_0032a05); none matches Edward/Byron in 1920. The [Lawrence Eastern District will-volume O index](https://www.ancestry.ca/imageviewer/collections/8638/images/007118189_00225) likewise supplied no target. This does not establish absence of a death registration or estate. The later court-book check below narrows those conditional leads; no Edward estate has been demonstrated. A parent-bearing record could close or contradict the Solomon connection. Only then should Milton’s full identity and further deceased father–son chain be tested. No living descendants were searched or contacted; no public-tree addition, Aaron parentage, comparison tester or origin-confidence upgrade follows.
+
+**Later bounded court-book check, 1 October 2026:** fifteen distinct images were inspected for title, date and index orientation in Ancestry collection 8638, DGS 007117353. The [administrator O index, image 90](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00090), has no recognizable Oliphant target. The [guardianship O leaf, image 283](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00283), is blank, but its coverage of 1920 was not established. The opening is an older continuation, and [image 626, pp. 362–363](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00626), shows a Western District guardianship entry dated 10 January 1927; whether the earlier O index covers those later pages remains unresolved. The pass stopped at its fifteen-image cap, preserving two complete index downloads and eight viewer captures. Those are preservation counts, not fifteen newly read cases. No Edward estate or parent-naming record was found within this scope. Lawrence probate jurisdiction remains conditional. The unfinished step is to map the relationship between the O index and later guardianship pages, if a jurisdiction or named-case pointer justifies it; [Box M2–O packets](https://www.ancestry.ca/imageviewer/collections/8638/images/007117380_00001) remain an unread container, not a located Edward estate. This is not a 1920 guardianship or countywide absence finding.
 
 Restricted supporting records: [adult-family readings, bounded death/probate review and exact provenance](https://drive.google.com/file/d/1pY5GnbYgyXkTunQBMTeYV3UvgbbeTCWd/view?usp=drivesdk). The separate [1896 locator review](https://drive.google.com/file/d/1545c0c0_oq9eBu9OZvfMU7jFgVICv94k/view?usp=drivesdk) preserves the dependent index/access check. Access requires Taylor’s permission; source originals, private details and the finite search ledger remain outside the public package.
+
+Restricted court-book successor: [bounded index readings, provenance and source-selection review](https://drive.google.com/file/d/14pt4jjxKkUTLrH2dqc7Q1mZsYgHsritj/view?usp=drivesdk). Access requires Taylor’s permission.
 
 ### Coverage checklist
 
@@ -3052,7 +3058,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 1 October 2026, 13:50:06 EDT  · Content updated: 1 October 2026, 13:50:06 EDT  · [Edit note](./index.html#edit-0132-updates)
+Editorial review: 1 October 2026, 14:45:02 EDT  · Content updated: 1 October 2026, 14:45:02 EDT  · [Edit note](./index.html#edit-0133-updates)
 
 29 September 2026
 
@@ -3487,6 +3493,26 @@ Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 13:50:06 ED
 - [Research notes](./index.html#research-notes): Added N101 for five adult-family documents, the grave photograph and the corrected 1880 rereading, with separate identity bridges and bounded death/probate coverage. Updated N23/N62/N65/N92/N96 current retrieval consequences; prior dated coverage is retained.
 
 - [Edition history](./index.html#updates): Appended this collateral identity and copying-status edition and its verified restricted preservation successor; preserved earlier editions and their immutable editor notes. Historical-tree relationships, genetic ranks and origin confidence remain unchanged.
+
+1 October 2026
+
+### Edition 01.33 · A bounded collateral probate check
+
+N101 and R02 now record a fifteen-image Lawrence court-book orientation pass. The administrator O index has no target; the blank guardian O leaf has unverified 1920 coverage, and the relationship between that index and later Western District guardianship pages remains unresolved. Further index mapping and the separate packet container remain conditional leads, with no identified Edward estate or parent bridge. Two downloaded indexes and eight captures are distinct preservation types. The public tree, 101-note count, candidate ranks and Aaron-origin confidence are unchanged.
+
+The [verified restricted supplement](./index.html#library-transfer-edition0133) preserves 21 selected files plus a manifest and README; one upload advances the incremental library total to 1,909. No remote-byte or restoration test is claimed.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 14:45:02 EDT . This is the bounded editorial reconciliation, not a new source date for unchanged sections.
+
+- [Start here](./index.html#start-here): Link the verified restricted Lawrence review supplement concisely, retaining earlier adult-family and transfer-history evidence. Direct Aaron priorities and interpretation are unchanged.
+
+- [Records](./index.html#records): R02 reflects the limited administrator/guardian index pass and unresolved relationship between the O index and later pages. No Solomon parent bridge or independent male-line anchor is established.
+
+- [Research notes](./index.html#research-notes): N101 adds fifteen-image orientation limits, two downloaded O indexes, unverified 1920 guardianship coverage and the unresolved relationship between the O index and later Western District pages. Earlier adult-family conclusions and contradictions remain unchanged.
+
+- [Updates](./index.html#updates): Append this bounded probate and preservation successor, retaining previous editions. The count remains 101 notes, with 21 historical people and 23 qualified relationships; ranks and origin confidence are unchanged.
 
 09 / Contact
 

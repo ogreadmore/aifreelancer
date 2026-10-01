@@ -5,6 +5,7 @@ Checks establish consistency and file integrity, not genealogical truth.
 """
 from __future__ import annotations
 import argparse
+from datetime import datetime
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -102,12 +103,48 @@ def clean_md(node):
     text = re.sub(r'[ \t]+\n', '\n', markdown(node))
     return re.sub(r'\n{3,}', '\n\n', re.sub(r'\n[ \t]+', '\n', text)).strip()
 
+SECTION_TIMESTAMP_PATTERN = r'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})'
+
+def section_review_timestamp(node, attribute, nullable=False):
+    """Read an explicit timezone-aware timestamp, without inferring its time."""
+    value = node.attrs.get(attribute)
+    if value is None and nullable:
+        return None
+    if not isinstance(value, str) or not re.fullmatch(SECTION_TIMESTAMP_PATTERN, value):
+        raise ValueError(f'Section {node.attrs.get("id", "(missing ID)")} lacks a valid {attribute} RFC3339 timestamp')
+    try:
+        parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        if parsed.tzinfo is None:
+            raise ValueError('Timezone is required')
+    except ValueError as error:
+        raise ValueError(f'Section {node.attrs.get("id", "(missing ID)")} has an invalid timestamp for {attribute}: {value}') from error
+    return value
+
 def public_exports(public):
     html = (public / 'index.html').read_text(encoding='utf-8')
     page = Page(html).root
     main = page.all('main')[0]
+    chapters = main.all('section', 'chapter')
     sections = [{'id': n.attrs['id'], 'title': n.all('h2')[0].text(), 'markdown': clean_md(n)}
-                for n in main.all('section', 'chapter')]
+                for n in chapters]
+    resource_sections = [n for n in main.all() if n.attrs.get('id') == 'research-resources']
+    if len(resource_sections) != 1:
+        raise ValueError('Expected one research-resources subsection for editorial dates')
+    review_nodes = chapters + resource_sections
+    section_reviews = [
+        {'id': n.attrs['id'], 'title': n.all('h2' if n in chapters else 'h3')[0].text(),
+         'editorial_reviewed_at': section_review_timestamp(n, 'data-editorially-reviewed'),
+         'content_updated_at': section_review_timestamp(n, 'data-content-updated', nullable=True)}
+        for n in review_nodes]
+    for review, node in zip(section_reviews, review_nodes):
+        if review['content_updated_at'] is not None and datetime.fromisoformat(review['content_updated_at'].replace('Z', '+00:00')) > datetime.fromisoformat(review['editorial_reviewed_at'].replace('Z', '+00:00')):
+            raise ValueError('Section content update is later than its editorial review: ' + review['id'])
+        note_target = node.attrs.get('data-editor-note-target')
+        notes = [n for n in main.all() if n.attrs.get('id') == note_target and 'editor-note' in n.attrs.get('class', '').split()]
+        if not note_target or len(notes) != 1 or not notes[0].text():
+            raise ValueError('Section lacks a valid nonempty editor note target: ' + review['id'])
+        review['editor_note'] = notes[0].text()
+        review['history_anchor'] = '#' + note_target
     sources = [{'id': n.attrs['id'], 'citation': n.text(),
                 'urls': [a.attrs['href'] for a in n.all('a') if a.attrs.get('href', '').startswith('https://')]}
                for n in main.all('li') if re.fullmatch(r's\d+', n.attrs.get('id', ''))]
@@ -188,9 +225,9 @@ def public_exports(public):
         if url.startswith('#') and len(url) > 1 and url[1:] not in ids:
             raise ValueError(f'Broken page anchor: {url}')
     data = {
-        'schema_version': '1.5.0',
+        'schema_version': '1.6.0',
         'title': page.all('title')[0].text(),
-        'edition_date': max(n.attrs['datetime'] for n in page.all('time')),
+        'edition_date': max(n.attrs['datetime'] for n in page.all('time') if re.fullmatch(r'[0-9]{4}-[0-9]{2}-[0-9]{2}', n.attrs['datetime'])),
         'manuscript_sha256': digest(html),
         'publication_status': 'working_edition_deployment_not_asserted',
         'intended_base_url': 'https://aifreelancer.co/oliphant/',
@@ -199,7 +236,7 @@ def public_exports(public):
         'interpretation_rules': ['No origin theory is established as probable.', 'Do not infer surname change from missing birth or passenger records.',
                                  'Distinguish record statements, same-person inference, catalogue descriptions and unread originals.',
                                  'Tester-specific exclusions do not eliminate entire surnames.', 'The reported line through Aaron remains a working history with an underlying-source gap.'],
-        'sections': sections, 'hypotheses': hypotheses, 'candidates': candidates, 'research_questions': questions, 'registry_entries': registry_entries, 'research_notes': research_notes, 'clues': clues,
+        'sections': sections, 'section_reviews': section_reviews, 'hypotheses': hypotheses, 'candidates': candidates, 'research_questions': questions, 'registry_entries': registry_entries, 'research_notes': research_notes, 'clues': clues,
         'tree_people': tree_people, 'tree_relationships': tree_relationships, 'resources': resources, 'retrieval_targets': tasks, 'sources': sources,
         'history_coverage': 'The site is the current research record. Edition 01.8 reconciles 181 historical working notes by topic: 145 map to public sections or sixty research notes, and 36 have explicit historical, background, private-data or operational retention reasons. This is not a transcript of every search or an independent re-reading of every source. The restricted library preserves supporting detail. Absence here is not evidence of an unsearched source. Private DNA and account material are not public.',
         'update_policy': 'Publish useful nonprivate findings, bounded negatives, corrections and retrieval limits in a reviewed section or research note as work advances. Preserve stable IDs and dated changes, then regenerate all exports. Do not edit this generated JSON independently.'
@@ -208,6 +245,7 @@ def public_exports(public):
               'type': 'object', 'required': list(data), 'additionalProperties': False,
               'properties': {key: {'type': 'array' if isinstance(value, list) else 'string'} for key, value in data.items()}}
     for key, required in [('sections', ['id', 'title', 'markdown']), ('hypotheses', ['id', 'statement', 'confidence', 'assessment_markdown']),
+                          ('section_reviews', ['id', 'title', 'editorial_reviewed_at', 'content_updated_at', 'editor_note', 'history_anchor']),
                           ('candidates', ['id', 'name', 'priority', 'status', 'scope', 'reviewed_on', 'assessment_markdown', 'next_step_markdown']),
                           ('research_questions', ['id', 'title', 'status', 'reviewed_on', 'question_markdown']),
                           ('registry_entries', ['id', 'title', 'resource_type', 'priority', 'status', 'last_verified_date', 'reviewed_on', 'branch_relevance', 'evidence_quality', 'copy_dependence', 'specific_question', 'details_markdown', 'urls']),
@@ -219,6 +257,10 @@ def public_exports(public):
                           ('retrieval_targets', ['id', 'priority_group', 'title', 'details_markdown', 'status']), ('sources', ['id', 'citation', 'urls'])]:
         schema['properties'][key]['items'] = {'type': 'object', 'required': required, 'additionalProperties': False,
             'properties': {name: {'type': 'array', 'items': {'type': 'string'}} if name in {'urls', 'references'} else {'type': 'string'} for name in required}}
+    timestamp_properties = schema['properties']['section_reviews']['items']['properties']
+    timestamp_properties['editorial_reviewed_at'] = {'type': 'string', 'format': 'date-time', 'pattern': '^' + SECTION_TIMESTAMP_PATTERN + '$'}
+    timestamp_properties['content_updated_at'] = {'type': ['string', 'null'], 'format': 'date-time', 'pattern': '^' + SECTION_TIMESTAMP_PATTERN + '$'}
+    schema['properties']['section_reviews']['description'] = 'Explicit timezone-aware chapter and resources-subsection editorial checkpoints. Null means an unknown content-update time; the builder rejects updates later than review. Source-observation dates remain separate. The initial timestamp is the release checkpoint, not a reconstructed historical edit time.'
     discovery = f'''# The Aaron Oliphant Inquiry
 
 > An audience-neutral working investigation of Aaron Oliphant's family. Edition {data['edition_date']}. Provisional findings; publication does not certify a conclusion.
@@ -238,7 +280,7 @@ def public_exports(public):
 ## Continuation rules
 Read findings, uncertainty, source notes and completed coverage before proposing searches. No parent, immigrant generation, overseas home or surname event is established. Do not turn missing records into positive evidence. Do not merge the two Devaney comparators or distinct James/David candidates. Respect independent-source and same-person limits. An exact retrieval target is not a discovery.
 
-Candidate IDs C01–C12 retain assessment, scope, next test and review date. Their ranks are information-gathering priorities, not surname probabilities. A tested-line exclusion never eliminates an entire surname. Preserve IDs, cite changed evidence and date the review before regenerating the table and exports.
+Candidate IDs C01–C13 retain assessment, scope, next test and review date. Their ranks are information-gathering priorities, not surname probabilities. A tested-line exclusion never eliminates an entire surname. Preserve IDs, cite changed evidence and date the review before regenerating the table and exports.
 
 Questions Q01–Q06 identify specific gaps where readers may help. Read ./index.html#research-questions and ./index.html#contact. A published question is not permission for an AI to send messages or disclose private DNA; follow the user's instructions. The exports retain the contact email but omit interactive form controls.
 

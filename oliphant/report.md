@@ -22,7 +22,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 30 September 2026, 22:45:46 EDT  · Content updated: 30 September 2026, 22:45:46 EDT  · [Edit note](./index.html#edit-0124-start-here)
+Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -32,15 +32,19 @@ Editorial review: 30 September 2026, 22:45:46 EDT  · Content updated: 30 Septem
 
 **Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
 
+**Name and source provenance:** [Copied Bible claims](./index.html#N17) remain secondhand, and the elder Aaron’s middle name is unverified. [The fresh birth-source check](./index.html#RT01) supplies no original for 17 May 1791. [A documented Charleston institutional association](./index.html#N53) does not connect Aaron to the distinct David candidates or the Pinckney family.
+
 ### Supporting evidence in Google Drive
 
 [Open the restricted evidence library](https://drive.google.com/drive/folders/1ZyZm9ofV12a2kjjpkKOsS8kbixDEuLd1). Access is granted individually by Taylor; having the website address does not grant access to the files. Use [Contact](./index.html#contact) to request access to particular supporting material.
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest bounded preservation:** five restricted ZIPs preserve the regional locators/readings, earlier DNA-service review, Stewart deeds with the completed VRT summary screen, separate inventory reading, and restored FTDNA/23andMe access review. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, but uploaded bytes were not re-downloaded and no restore was tested. The recorded library total is 1,885, an incremental ledger count rather than a full-library recount. [Regional evidence](https://drive.google.com/file/d/1CfHa3bjPgHJM25vtePhQ4zknz6GxgXlp/view) · [Earlier DNA review](https://drive.google.com/file/d/1tXPA9AZ_8wLw0uO1-EER4xvhAufTvfUN/view) · [Stewart deeds and VRT summaries](https://drive.google.com/file/d/1qIVMxZCLKaEEivAidofpXC-ZBK9ibUce/view) · [Inventory reading](https://drive.google.com/file/d/10x3RqUKPJ7lAEXxfhc_43bMYMeqGQtFv/view) · [Restored DNA-service access](https://drive.google.com/file/d/1Pbabf7O2SheEnfj-TyWc7GYRCDDvDExl/view). Preservation and service availability add no genealogy proof.
+**Latest bounded preservation:** five restricted ZIPs preserve the Pinckney and DNA-access review, Jamaican screen, private source-chain audit, book-delivery/profile-source check and separate Iredell reading. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,890, incrementally from 1,885 rather than by a full-library recount. Correspondence captures are converted previews, not original attachment files. [Pinckney review](https://drive.google.com/file/d/1zyLhF-Xxe4oJ3q2f8tcsFC2woi2K6NAO/view) · [Jamaican screen](https://drive.google.com/file/d/1syIkTmA28NuztQ2Tvv5CWbUs2Fgz_icB/view) · [Private source-chain audit](https://drive.google.com/file/d/1WC50BTazC-WO7yOv7jG3qEff8WD8pyyN/view) · [Book-delivery and profile-source check](https://drive.google.com/file/d/1cOQVVdim3IAjX3A3USR6O0ckV1AinwI4/view) · [Iredell reading](https://drive.google.com/file/d/1sDn2a_SlrAj4uY0pI_2OOlS_Ig5t0N6j/view). No new genetic evidence or historical parentage follows.
 
 Earlier evidence-library transfers
+
+**Latest bounded preservation:** five restricted ZIPs preserve the regional locators/readings, earlier DNA-service review, Stewart deeds with the completed VRT summary screen, separate inventory reading, and restored FTDNA/23andMe access review. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, but uploaded bytes were not re-downloaded and no restore was tested. The recorded library total is 1,885, an incremental ledger count rather than a full-library recount. [Regional evidence](https://drive.google.com/file/d/1CfHa3bjPgHJM25vtePhQ4zknz6GxgXlp/view) · [Earlier DNA review](https://drive.google.com/file/d/1tXPA9AZ_8wLw0uO1-EER4xvhAufTvfUN/view) · [Stewart deeds and VRT summaries](https://drive.google.com/file/d/1qIVMxZCLKaEEivAidofpXC-ZBK9ibUce/view) · [Inventory reading](https://drive.google.com/file/d/10x3RqUKPJ7lAEXxfhc_43bMYMeqGQtFv/view) · [Restored DNA-service access](https://drive.google.com/file/d/1Pbabf7O2SheEnfj-TyWc7GYRCDDvDExl/view). Preservation and service availability add no genealogy proof.
 
 **Latest bounded preservation:** three restricted successor ZIPs preserve the completed Ancestry focused copy, the two-leaf 1860 household reading and the Weakley estate reading/review. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, but uploaded bytes were not re-downloaded and no restore was tested. The recorded library total is 1,880, an incremental ledger count rather than a full-library recount. See [Ancestry’s current checkpoint](./index.html#U04) and [the original census result](./index.html#N38), with [the estate evidence and archive](./index.html#N01).
 
@@ -199,7 +203,7 @@ Selected evidence / Where to look next
 
 ## Clues worth following
 
-Editorial review: 30 September 2026, 22:45:46 EDT  · Content updated: 30 September 2026, 22:45:46 EDT  · [Edit note](./index.html#edit-0124-clues)
+Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-clues)
 
 A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
 
@@ -219,7 +223,7 @@ These are selected leads, not a ranking of ancestry probabilities. Their value l
 
 **Limit:** the Tennessee witness is not yet identified as Rebecca’s husband; the co-witness’s identity also needs proof. Same-county records do not establish a shared household.
 
-**Useful next test:** examine the surviving loose will and seek matching relatives, residences or transactions across Tennessee and the Pendleton–Georgia records. Stewart deeds now give earlier Iredell residence clauses for named James Caldwell grantees; a separate inventory records James Coldwell administering Ephraim B. Davidson’s estate. The Weakley estate remains a later same-name record. These results do not identify the Welch witness as Ruth’s husband or the Tennessee Aaron as Rebecca’s husband. [Read the residence/administration evidence and two missing links →](./index.html#N01)
+**Useful next test:** examine the surviving loose will and seek matching relatives, residences or transactions across Tennessee and the Pendleton–Georgia records. Recorded 1806/1808 deeds and a matched 1800 acquisition/1810 sale supply Iredell residence clues. The parcel chain does not identify its landholder with the other grantees, Ruth’s husband or the Welch witness. A separate inventory records James Coldwell administering Ephraim B. Davidson’s estate. The Weakley estate remains a later same-name record. These results do not identify the Welch witness as Ruth’s husband or the Tennessee Aaron as Rebecca’s husband. [Read the residence/administration evidence and two missing links →](./index.html#N01)
 
 ### Solomon’s census reports a South Carolina-born father
 
@@ -722,7 +726,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 30 September 2026, 21:56:21 EDT  · Content updated: 30 September 2026, 21:56:21 EDT  · [Edit note](./index.html#edit-0123-records)
+Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-records)
 
 The current independent original-record focus is the federal Nash service file and the loose Welch will. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -938,15 +942,15 @@ All nineteen entries remain visible and can be searched with the browser’s Fin
 
 - #### [RT01](./index.html#RT01) · Aaron Oliphant · FamilySearch LHXM-9VZ
 
-**High priority** · collaborative profile · Source gap; misleading memory tag identified · Last recorded check 2026-09-28. [Public profile](https://ancestors.familysearch.org/en/LHXM-9VZ/aaron-pinkney-oliphant-1791-1826) · [Sources](https://www.familysearch.org/en/tree/person/sources/LHXM-9VZ)
+**High priority** · collaborative profile · Source gap; misleading memory tag identified · Last recorded check 30 September 2026, 23:16 EDT (1 October UTC). [Public profile](https://ancestors.familysearch.org/en/LHXM-9VZ/aaron-pinkney-oliphant-1791-1826) · [Sources](https://www.familysearch.org/en/tree/person/sources/LHXM-9VZ)
 
 **Relevance:** Reported father of Solomon; source trail for exact dates, Pinkney and the older web account.
 
-**Evidence:** Three sources inspected: military index and two legacy web links. No source tagged to the precise vital dates. A misattached 1898 Emily obituary belongs to the later Pinckney family.
+**Evidence:** A fresh read-only check found the same three attached sources and zero Birth tags. The Birth drawer and all four displayed birth changes supplied no underlying record citation for 17 May 1791 in Anderson, South Carolina. The About life history is computer-generated from entered Details. This is a profile/source-history check, not a new birth-original reading.
 
-**Dependence and limits:** The 2017 family-info attachment likely repeats RT08. Neither that attachment nor the military index independently establishes parentage.
+**Dependence and limits:** The 2017 family-info attachment likely repeats RT08. Neither it nor the military index independently establishes birth or parentage. The later Anderson place-standard warning does not disprove South Carolina birth or identify a corrected locality. [Displayed birth history](https://www.familysearch.org/en/tree/person/changelog/LHXM-9VZ/birth) does not establish the claim’s first publication. The exact date and competing Anderson, Spartanburg and S. Orange locality claims remain unverified.
 
-**Specific question:** Is there an original family entry, heir receipt, guardian record or other named relationship tying Aaron and Rebecca to Solomon?
+**Specific question:** What original source supports 17 May 1791 and the historical birthplace, and what is the literal wording and provenance of any family-record entry?
 
 - #### [RT02](./index.html#RT02) · Solomon Rainwater Oliphant · FamilySearch 262V-F5D
 
@@ -1251,7 +1255,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 30 September 2026, 22:45:46 EDT  · Content updated: 30 September 2026, 22:45:46 EDT  · [Edit note](./index.html#edit-0124-research-notes)
+Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1276,6 +1280,10 @@ Reviewed 30 September 2026 · Recorded associations; Aaron identity unresolved
 **Earlier Caldwell residence, originals read 30 September 2026:** two recorded deeds identify their respective James Coldwell/Caldwell grantees as of Iredell County, North Carolina: Thomas Davidson’s deed of **7 June 1808** and George Davidson’s deed of **8 October 1806**, [pp84–85/image 329](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C39N-KBKB) and [p86/image 330](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C39N-KB2N), DGS 8477680. Their later North Carolina proofs and Stewart County recording on 28 June 1819 are separate dates; Tennessee recording does not establish residence there or a migration date. The two instruments give a genuine earlier residence clue, but neither names Ruth, Aaron, Welch or Norman, or establishes that the grantees are one man, Ruth’s husband or the 1809 witness. No William–Aaron parent relationship follows.
 
 **Separate Davidson administration, original read 30 September 2026:** an [additional inventory dated 7 November 1825, Stewart Bonds/Settlements Vol. B, image 37/p70](https://www.familysearch.org/ark:/61903/3:1:S7WF-SJHP-89), records a note from **Ephraim B. Davidson**, due 9 February 1820 and credited on 30 September 1820 by **James Coldwell, administrator of E.B.D.** The explicit debtor name resolves the earlier abbreviated snippet. This is a recorded financial association, with no James wife, kinship or prior residence stated. It does not identify him as Ruth’s husband, the Welch witness or the Weakley decedent, or identify Ephraim B. as the Ephraim in George Davidson’s 1814 will. No Aaron or William parent relationship follows.
+
+**Separate Iredell deed, read 30 September 2026:** a register copy executed **9 November 1810** records James Caldwell/Coldwell of Iredell selling two local parcels to George L. Davidson for $500. [Opening, pp840–841/image 469](https://www.familysearch.org/ark:/61903/3:1:3QS7-L98G-G8MW) · [continuation, pp842–843/image 470](https://www.familysearch.org/ark:/61903/3:1:3QSQ-G98G-GZBJ), DGS 7540061. November 1819 proof and February 1820 registration are later dates. No wife, Aaron or kinship is named; this party is not identified with either 1806/1808 grantee, the administrator, Welch witness or Ruth’s husband. Four queries screened thirteen selected summaries and read two instruments; a later estate-account leaf with James/Ruth names remains unlinked. Exact parcel tests are the recited 16 November 1790 patent, 4 November 1797 executors-to-Crawford deed and 23 November 1807 Raleigh deed. The patent and preceding conveyance recitals were not independently read; the parcel-transfer successor below fills the Crawford-to-Caldwell gap. [Restricted original-reading and locator archive](https://drive.google.com/file/d/1sDn2a_SlrAj4uY0pI_2OOlS_Ig5t0N6j/view).
+
+**Parcel transfer recovered:** a register copy executed **19 August 1800** records James Crawford conveying **75 acres on Third Creek** to James Caldwell, both of Iredell, for **£37 10s**. [Opening, p417/image 794](https://www.familysearch.org/ark:/61903/3:1:3QS7-9983-N81L) · [continuation, p418/image 795](https://www.familysearch.org/ark:/61903/3:1:3QS7-9983-ND9R), DGS 7513654. Acreage, boundaries and title recital match the first parcel in the 1810 sale, supporting this particular landholding chain. The 1800 copy recites **1 November 1797**, versus **4 November** in the 1810 copy; that earlier deed remains unread and its exact day unresolved. This does not identify the landholder as either 1806/1808 grantee, the administrator, Welch witness or Ruth’s husband, or establish an Aaron relationship. One query screened three summaries and read one complete instrument.
 
 **What this does not establish:** no reviewed record establishes a shared Oliphant household on Aaron’s Pendleton–Georgia trail. The unnamed young man in James Oliphant’s 1810 household cannot be assigned to Aaron. An original apprenticeship binds James Marlin to James Oliphant with lodging in January 1810, providing an alternative household explanation; it is not an adoption record. No demonstrated bridge connects Aaron to the Charleston–Union James/David family either.
 
@@ -1399,6 +1407,8 @@ Two services were used to test a possible earlier name, without assuming that Aa
 
 FamilySearch separately searched exact A*ron and D*v*n*, United States record country, birth/baptism record type and exact year ranges. All 3 results for 1760–1800 and all 10 for 1700–1813 were screened. They represent other-surname birth groups, including duplicate indexes of the same events; no plausible Devaney candidate emerged. No original birth image was read. The initial 50, 602-result fuzzy global search was not completed and supports no negative.
 
+[The fresh LHXM-9VZ source check](./index.html#RT01) found no attached birth record supporting 17 May 1791 or the precise locality. Repeated tree and family-chart assertions do not by themselves supply independent birth evidence.
+
 The date windows were search parameters, not established dates for Aaron. Exact dates can omit undated entries; wildcard matching can miss mistranscriptions. The services overlap in underlying material and are not independent proofs of absence. A documented pre-1814 household or parish would provide a useful target for manuscript work.
 
 **Sources and reading status:** [Ancestry widest query](https://www.ancestry.ca/search/categories/bmd_birth?name=Aaron_D*v*n*&birth=1700---1813&count=50&location=2&name_x=ps_psx&priority=usa); [FamilySearch widest query](https://www.familysearch.org/en/search/record/results?count=100&f.recordType=0&q.birthLikeDate.exact=on&q.birthLikeDate.from=1700&q.birthLikeDate.to=1813&q.givenName=A%2Aron&q.givenName.exact=on&q.recordCountry=United%20States&q.surname=D%2Av%2An%2A&q.surname.exact=on). Index results only.
@@ -1511,13 +1521,13 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N17 · The family Bible: attribution, exclusions and catalogue limits
 
-Reviewed 30 September 2026 · Source provenance unresolved · Editorial reconciliation of saved research; no new external record retrieval.
+Reviewed 30 September 2026 · Copied source claims reviewed; Bible originals and complete transcript unread.
 
 **Family-recollection correction, 30 September 2026:** the family researcher reports **100% certainty that the Bible’s ancestry stops at Aaron**, but only **about 75% certainty in recalling the middle name Pinckney**. Those are distinct statements about memory, not calculated probabilities or a reading of a source page. No original leaf or full transcript was inspected. Use **Aaron Oliphant** as the working name; retain Pinckney/Pinkney as an unverified variant, not evidence of a Pinckney-family connection. Future Bible inspection should establish literal wording, dates, relationships, handwriting and provenance for Aaron and later generations. Earlier origins require independent evidence. [Restricted family-recollection clarification](https://drive.google.com/file/d/11Bxl6yzbltB2IlPHqMq_5gSzBudEwbTr/view).
 
 The Rainwater biography specifically credits Andrew J. Oliphant's family Bible, transcribed by Helen Madison, for the children's birthdates. It does not expressly attribute Aaron–Solomon parentage, elder Aaron's birth or middle name to that Bible. Photograph custody credits are not Bible ownership evidence. The complete Bible, transcript, imprint, date and present custody remain unestablished.
 
-The likely January 2002 source post recovered in a later mirror groups Solomon with Aaron and Rebecca, without a Bible quotation or contemporary citation. Its edited version is not guaranteed to preserve the pre-edit wording. Later repeats do not establish independence. A misattached 1898 Emily obituary concerns later Pinckney and cannot document elder Aaron, dead by 1826.
+**Earlier copied source claim, reviewed 30 September 2026:** a 2013 attachment preview contains a post labelled 31 October 2001 that attributes James Madison and Solomon’s parentage to Andrew’s Bible, while expressly saying its writer did not have the Bible record. This is a secondhand assertion in a later copy, not a Bible reading or independently authenticated 2001 post. A copied reply labelled 2 November 2001 claims copies of death letters and an annotated children’s list; those documents and their custody remain unexamined. Neither post supplies the elder Aaron’s middle name. The 1999 copied Pickney entry names a son. [Restricted source-chain audit](https://drive.google.com/file/d/1WC50BTazC-WO7yOv7jG3qEff8WD8pyyN/view).
 
 The actually read 1969 Four States Genealogist transcript, 1(4) pp 204–205, belongs to S. R. born 1812 and Serene Todd, a Tennessee–Arkansas family; it is excluded. Its similar 1981 sequel remains unread. The Georgia DAR owner-index O/R sections had no recognized target, but an owner index cannot search every name within Bibles. A Texas four-route catalogue pass recovered no Andrew Bible; native inventories and searches were inaccessible or partial. SMU Bridwell Brid Arch 2.043 is a generic 26-Bible/enclosure collection route, not a located Oliphant holding. The decisive target remains every family-record leaf plus imprint, or the complete dated annotated transcript.
 
@@ -1526,6 +1536,8 @@ The actually read 1969 Four States Genealogist transcript, 1(4) pp 204–205, be
 The April 1995 Rainwater Researcher relevant article, printedpp 2–4 visually read, lists Rebecca Rainwater married Aaron Oliphant but does not call Solomon Oliphant Aaron's son or cite a Bible for the couple. An editorial footnote corrects the article's Elisha-versus-Edwin San Jacinto identification. Its Texas narrative confuses elder Aaron with a possible namesake; the 1826 estate contradicts a post 1836 move by the elder. The newsletter's unrelated Bible pages 7–8 are not this Oliphant Bible. [1995 newsletter](https://www.therainwatercollection.com/reference/rr_vol1issue3_apr1995.pdf). The credited Austin Colony Pioneers source lacks an author, original date or exact citation here.
 
 A likely mirror of the formerly inaccessible Roots Web message is now recovered at Ancestry's 27 January 2002 reply in thread 213.1. Subject, family, minute-level timestamp and documented board-to-list copying support high-confidence identification; raw mailing-list headers and a pre-edit copy remain missing. The currently edited post explicitly groups Aaron Pinkney/Rebecca and seven children including Solomon, but cites no Bible or underlying record. It traces the precise-date, Spartanburg and Pinkney assertions to an unsourced later account rather than verifying them. Scoped board searches read all title/snippet results for Bible 10, Helen 17, Andrew 38 and Madison 3, with relevant bodies opened; no literal entry, photograph, transcript or custodian for the Andrew J. Bible emerged. An additional 2003 lineage reply is also uncited and not proved independent. [recovered 2002 reply](https://www.ancestry.ca/boards/surnames.oliphant/213.1); [2003 lineage reply](https://www.ancestry.ca/boards/surnames.oliphant/314.1).
+
+The earliest reviewed dated published claim of the elder Aaron’s literal **Pinkney** remains the January 2002 family post, edited in February; its precise pre-edit wording remains unverified. Six additional provenance queries exposed no earlier attestation or independent citation within their stated access limits. Later namesakes and the misattached 1898 Emily obituary cannot verify the elder man’s name. The three 2013 attachment previews are derivative charts and copied posts; no original attachment bytes or contemporary naming record was recovered. The working name remains Aaron Oliphant.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1bzhmIEovmzBB0tF2IonFPcAqz5HTrK7A/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/19sujH8FGIyrEfWpcIWet0O5_y95dumbF/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1P3McPwbFWrsULARUcRDQNvIZ_yXMMNHQ/view?usp=drivesdk) · [Working review 4](https://drive.google.com/file/d/1u8qEJE1J_GYTgHq5tW5Ju_b6iKu7icaI/view?usp=drivesdk) · [Working review 5](https://drive.google.com/file/d/1ETSK3q-Vk-SyXZwpPy4BsU1xbgLnyEUX/view?usp=drivesdk) · [Working review 6](https://drive.google.com/file/d/1NC4K24Mc9guUBnKcIhoXvndP-ntDgr2S/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -2101,6 +2113,10 @@ No inspected contemporary Aaron deed, estate, court record or military index ver
 
 An obituary clipping for Emily Oliphant dated 14 October 1898 describes her as wife of Mr. Pinckney Oliphant and recently resident with family in Texas. Its attachment to Aaron 1791–1826 is incompatible with his death by 1826. The saved clipping has no visible masthead; it cannot document Aaron's marriage or middle name. A likely 2002 message-board mirror now traces the older name, precise date and Spartanburg claim to an unsourced later family account; N17 preserves its recovered provenance and equivalence limits. This supersedes the earlier inaccessible-source-only status.
 
+**Specific Charleston association, reviewed 30 September 2026:** the visually read [1849 Society of the Cincinnati publication](https://tile.loc.gov/storage-services/public/gdcmassbookdig/originalinstitut00soci/originalinstitut00soci.pdf), unnumbered roster/PDF p33, lists Major Thomas Pinckney as secretary on 29 August 1783 and Dr. David Oliphant with Colonel Charles C. Pinckney on the 6 October standing committee. The 1783 manuscript was not read. Later Army/NPS accounts describe the doctor tutoring Charles Pinckney (1757–1824), a different man from Charles Cotesworth or Thomas. The [1994 NPS report](https://npshistory.com/publications/chpi/historical_overview.pdf), printed p5 and endnote p12, cites Williams’s *A Founding Family* (1978), pp20, 41, 69; those pages remain unread, and the report’s birth-year/age arithmetic is inconsistent. Inspect those pages and notes for an underlying contemporary source. Institutional association and a dependent tutoring narrative establish no Aaron, painter or kinship bridge.
+
+**Later chart checked:** a 2013 preview of a David–Aaron family chart provides no parental record citation and combines search snippets about the Charleston painter and physician. A later contributor statement disclaims substantiation of the David–Aaron link beyond a document received from someone else; the chart’s authorship remains uncertain. Painter and physician identities remain separate. Repeated charts and copied snippets do not independently establish David as Aaron’s father. Only converted previews were read; the attachment originals remain unacquired. [Restricted provenance review](https://drive.google.com/file/d/1WC50BTazC-WO7yOv7jG3qEff8WD8pyyN/view).
+
 St Andrews catalogue ms 36220/1727 describes a 29 November 1786 letter concerning Dr. David Oliphant's Jamaican estate; ms 36220/1361 describes Lord David Olyphant's 16 April 1763 will and named relatives. Both originals remain unread. The Harvard Olyphant v. Manning report is a scholarly report and locator, not proof of nobility or an Aaron relationship. Keep Charleston painter David, the physician in the 1801 Rhode Island/Pendleton deed, Dr. David in the 1786 letter and older Lord David separate pending correlation. An estate in Jamaica does not establish immigration from Jamaica.
 
 **Original retrieval route, 30 September 2026:** the [Harvard case image list](https://amesfoundation.law.harvard.edu/ColonialAppeals/CaribAppeals/PCRegImageList_mysqli.php?RepNo=JAM_1751_04) now exposes AALT facsimile links for Privy Council registers PC2/102 p289 and PC2/103 pp292, 359, 370–375 and 409. The first attempted committee-report leaf, [PC2/103 p370](https://aalt.law.uh.edu/AALT7/G2/PC2no103/IMG_0192_1.htm), could not be opened through the ordinary tested routes. No original leaf was read, and an access failure is not record absence. The bounded next action is that leaf and its necessary continuation when accessible, preserving the separate David identities. No Devaney relationship or Aaron connection has been established.
@@ -2111,11 +2127,15 @@ St Andrews catalogue ms 36220/1727 describes a 29 November 1786 letter concernin
 
 The one [filmed manuscript transcript, DGS 004620484 item 2 image 89, p169](https://www.familysearch.org/ark:/61903/3:1:939F-DZXL-Z), reads Eleanor **Olyphant**, spinster, marrying Harry Cradock, both of St Catherine, by licence; the index says Olysshant. The target shares the preceding August 20 date within the 1780 block; 20 August 1780 agrees with the index but is not repeated on the target lines. No parent, Aaron or Devaney is named. This is one event, not independent bride/groom evidence, and warrants no Cradock pedigree expansion. The separate Jamaican Davids and unread appeal/will/letter targets retain their earlier limits.
 
+**Separate Pinckney–Jamaica screen, 30 September 2026:** four queries screened eight selected historical summaries without an explicit pre-1826 personal connection. The [1826](https://www.jamaicanfamilysearch.com/Members/1826al16.htm) and [1827 almanac summaries](https://www.jamaicanfamilysearch.com/Members/a1827al10.htm) list Oliphant and Pinkney/Pinckney entries separately; the pages and originals were not personally read. A visually read [1859 printed South Carolina council journal](https://upload.wikimedia.org/wikipedia/commons/3/31/Collections_of_the_South_Carolina_Historical_Society_%28IA_acx1027.0003.001.umich.edu%29.pdf), pp147, 149, places Col. Pinckney and Doct. Oliphant at January 1776 sessions near Jamaican shipping discussion. Their given names are unestablished there; the location describes ships, not their residence or ancestry. No Jamaican family connection or archive-wide exclusion follows. [Restricted bounded review](https://drive.google.com/file/d/1syIkTmA28NuztQ2Tvv5CWbUs2Fgz_icB/view).
+
 The official PRONI Name Search returned no Oliphant or Olyphant in four selected indexes: pre 1858 wills/administrations and surviving fragments of 1740 householders, 1766 religious census and 1775 dissenters' petitions. This is not an Ulster exclusion. All 39 Oliphant catalogue titles were screened and four early descriptions opened; none names Aaron or an American link.
 
 The Baronscourt descriptions concern an uncertain Oliphant(?) carpenter in 1791 and a proposed inn manager in 1792, without forenames. The T2541 descriptions are copies/transcripts of those same letters, not independent events. An inn proposal is not an appointment. Original letters, 1791–1796 accounts and Woodgate correspondence remain unread. Soane ARC9647 supplies architectural context without an Oliphant recruitment or migration bridge. A1634 Sligo dispute is Connaught, not proof of Ulster residence; a 1901 Donegal surname occurrence is a later locality, not a pre 1800 immigrant link.
 
 **Sources and reading status:** [Rainwater biography](https://www.therainwatercollection.com/gallery/aug2009.shtml); [1786 Dr. David catalogue](https://collections.st-andrews.ac.uk/item/letter-james-wedderburn-to-james-paterson-junior-concerning-the-jamaica-estate-of-dr-david-oliphant/2034722); [1763 Lord David catalogue](https://collections.st-andrews.ac.uk/item/copy-will-of-david-lord-olyphant-dated-16-april-1763-leaving-his-estates-in-jamaica-to-his-wife/2033738); [Harvard case report](https://amesfoundation.law.harvard.edu/ColonialAppeals/CaribAppeals/report_carib_mysqli.php?report_no=JAM_1751_04); [PRONI name coverage](https://www.proni.gov.uk/name-search); [PRONI catalogue](https://apps.proni.gov.uk/eCatNI_IE/SearchPage.aspx); [Soane context](https://collections.soane.org/ARC9647). Institutional catalogue/report evidence is not upgraded to original-document reading.
+
+New supporting review: [Restricted Pinckney source and locator archive](https://drive.google.com/file/d/1zyLhF-Xxe4oJ3q2f8tcsFC2woi2K6NAO/view). Namesake identities, Aaron’s origin and historical confidence remain unchanged.
 
 Restricted supporting notes: [Regional reading and locator archive](https://drive.google.com/file/d/1CfHa3bjPgHJM25vtePhQ4zknz6GxgXlp/view) · [Completed VRT summary-screen successor](https://drive.google.com/file/d/1qIVMxZCLKaEEivAidofpXC-ZBK9ibUce/view) · [Working review 1](https://drive.google.com/file/d/1u8qEJE1J_GYTgHq5tW5Ju_b6iKu7icaI/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1khwB_c2K-x5baDdhzwhGOTt4gSAm3owz/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -2918,7 +2938,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 30 September 2026, 22:45:46 EDT  · Content updated: 30 September 2026, 22:45:46 EDT  · [Edit note](./index.html#edit-0124-updates)
+Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-updates)
 
 29 September 2026
 
@@ -3181,6 +3201,28 @@ Editor: AI research assistant. Editorial checkpoint: 30 September 2026, 22:45:46
 - [Leads, searches and what remains unresolved.](./index.html#research-notes): Added 1806/1808 Iredell deed residence clauses and a separate 1825 inventory/1820 administration association to N01, retired N75’s superseded residence instruction, and reconciled Scottish locators/Irish/Jamaican bounds; identities remain unproved.
 
 - [A living report, with a memory.](./index.html#updates): Appended this regional/access successor and retained all published earlier editions and immutable section notes.
+
+30 September 2026
+
+### Edition 01.25 · Name/date provenance and bounded institutional associations
+
+[A matched 1800 acquisition/1810 Iredell sale](./index.html#N01) fills a specific title gap, while the preceding executor-deed recital differs by three days and its original remains unread. The landholder is not identified as Ruth’s husband or the Welch witness; Aaron’s identity and parents remain unresolved.
+
+[Copied Bible and middle-name claims](./index.html#N17), [a fresh birth-profile source check](./index.html#RT01) and [separate institutional/Jamaican results](./index.html#N53) retain their original-versus-derivative and identity limits. Five [restricted ZIPs](./index.html#library-transfer-edition0125) have metadata/owner-only verification, without original-attachment, remote-byte or restore claims. Historical confidence, candidate ranks and the public tree are unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 30 September 2026, 23:49:26 EDT . This marks the release’s editorial review, not a new inspection of historical sources.
+
+- [Pick up the investigation here.](./index.html#start-here): Added concise Bible/name and birth-source provenance links and the five-ZIP restricted preservation checkpoint; direct Aaron priorities and confidence remain unchanged.
+
+- [Clues worth following](./index.html#clues): Updated K02 with the matched 1800 acquisition/1810 Iredell sale; the landholder is not identified with the other Caldwell parties, Ruth’s husband or the Welch witness.
+
+- [The evidence still needed.](./index.html#records): Updated RT01 from the fresh exact-profile source/birth-history check: three sources, zero Birth tags and no supporting original; date/place and literal family-entry wording remain unverified.
+
+- [Leads, searches and what remains unresolved.](./index.html#research-notes): Reconciled N01’s matched parcel chain and 1797 recital-day conflict, N17’s secondhand source chain, N53’s qualified institutional/Jamaican results and N11’s profile pointer; no Aaron parentage or middle-name proof follows.
+
+- [A living report, with a memory.](./index.html#updates): Appended this bounded provenance/parcel successor and five-ZIP archive scope while preserving all earlier editions and immutable editor notes.
 
 09 / Contact
 

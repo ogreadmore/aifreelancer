@@ -24,7 +24,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-start-here)
+Editorial review: 1 October 2026, 19:17:27 EDT  · Content updated: 1 October 2026, 19:17:27 EDT  · [Edit note](./index.html#edit-0137-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -34,7 +34,7 @@ Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 20
 
 - **Retrieve exact Aaron-related originals.** Prioritize the [Nash service file](./index.html#R04), [loose Welch will](./index.html#R09), [Early 7/23 entry](./index.html#R05) and [identified Hancock papers](./index.html#N92) through their recorded access routes. No parents are promised; do not repeat completed catalogue work without a new pointer.
 
-- **Use the qualified household comparison.** [The Charleston David and Edgefield John originals are now read](./index.html#N13); John’s anonymous young male is an age fit only, with a documented William as an alternative to test. The wider inventory remains incomplete. Any next family search needs a named identity or kinship discriminator, not another surname screen.
+- **Use the qualified household comparison.** [The two census originals and selected Edgefield probate originals are now read](./index.html#N13); the census’s anonymous young male remains an age fit only, with the probate testator’s named son William an alternative to test. The wider inventory remains incomplete. Any next family search needs a named identity or kinship discriminator, not another surname screen.
 
 **Requests in progress:** [The correspondence tracker](./index.html#correspondence) distinguishes unanswered, replied, deferred, failed and uncertain requests. [NARA’s guidance needs clarification](./index.html#N85); the clarification was sent and awaits a reply. [Rutherford supplied photographs of the already-read bound will pages](./index.html#N84); the sent clarification about separate loose material awaits a reply. Paid Georgia retrieval remains deferred while existing-copy and lower-cost routes are checked. A 1 October reply about the [two comparator tests](./index.html#R01) supplies procedural guidance and a potential collateral, but no new variant data or documented paternal split. Both tests remain unresolved. Check the tracker and restricted receipts before contact. No copying order has been placed or paid retrieval commissioned.
 
@@ -56,9 +56,11 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation:** the [current reply and genetic-method review](https://drive.google.com/file/d/1_9GtBFsqZhKqrqZTV-nFdHWPN3eI-x7I/view?usp=drivesdk) follows the [dated historical-correspondence synthesis](https://drive.google.com/file/d/1DvRF68DO17c5mNiBPwa2dIn3c6-Rr_RV/view?usp=drivesdk). The recorded library total is **1,915**, by incremental accounting, not a full recount. Current checked access is restricted to the owner and authorized named viewers; identities and private correspondence remain unpublished. New-file name, size, parent and permissions were checked; remote bytes and restoration were not tested. Historical owner-only receipts retain their dated upload scope.
+**Latest restricted preservation:** the [selected John probate originals and bounded reply/access reviews](https://drive.google.com/file/d/1moo6apQv9g8SzdDkYszPAnB8Z4hPi0cM/view?usp=drivesdk) and [selected William original papers](https://drive.google.com/file/d/1j12wV3HWI04qeK2qxVmfC_0eKIHPs3VE/view?usp=drivesdk) are preserved with their reading limits. The recorded library total is **1,918**, by incremental accounting, not a recount. Filename, size, destination and owner/authorized-viewer permissions were checked; remote bytes and restoration were not tested. Earlier checkpoints are retained below.
 
 Earlier evidence-library transfers
+
+**Latest restricted preservation:** the [current reply and genetic-method review](https://drive.google.com/file/d/1_9GtBFsqZhKqrqZTV-nFdHWPN3eI-x7I/view?usp=drivesdk) follows the [dated historical-correspondence synthesis](https://drive.google.com/file/d/1DvRF68DO17c5mNiBPwa2dIn3c6-Rr_RV/view?usp=drivesdk). The recorded library total is **1,915**, by incremental accounting, not a full recount. Current checked access is restricted to the owner and authorized named viewers; identities and private correspondence remain unpublished. New-file name, size, parent and permissions were checked; remote bytes and restoration were not tested. Historical owner-only receipts retain their dated upload scope.
 
 Dated preservation checkpoints are retained as history; their totals and descriptions apply to the editions named.
 
@@ -241,7 +243,7 @@ Selected evidence / Where to look next
 
 ## Clues worth following
 
-Editorial review: 1 October 2026, 03:38:17 EDT  · Content updated: 1 October 2026, 03:38:17 EDT  · [Edit note](./index.html#edit-0129-clues)
+Editorial review: 1 October 2026, 19:17:27 EDT  · Content updated: 1 October 2026, 19:17:27 EDT  · [Edit note](./index.html#edit-0137-clues)
 
 A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
 
@@ -263,7 +265,7 @@ Which documentary lead deserves the next test?
 | Priority 3 · indirect [William–Betsy Gordy compilation](./index.html#N14) | A separate family compilation and the recorded William–Thomas gift provide specific people and sources to test. | Establish an Aaron connection; lost-letter traditions, other Williams and the unchecked original 1806 register remain distinct. |
 | Priority 3 · indirect [Younger Aaron Olifant Devany](./index.html#N02) | The full name is recorded in his 1866 marriage, providing a specific namesake to investigate. | Identify his parents and establish a relationship to the elder Aaron; proposed Samuel/Agatha identities remain unresolved. |
 | Priority 3 · indirect [John/Mary Davaney candidates](./index.html#N21) | Original estate papers name the couple and place John in Gwinnett in 1834; earlier district presence permits comparison. | Prove the census/estate identities and Samuel’s parent link. Do not merge this couple with the younger namesake’s proposed family. |
-| Unranked · household check [Edgefield John Oliphant, 1810](./index.html#N13) | The newly read original has an anonymous male 16–25. A separate known family names son William, offering a concrete alternative. | Resolve census/testator identity and William’s age/residence before proposing Aaron. The will typescripts do not name Aaron; no parent is identified. |
+| Unranked · household check [Edgefield John Oliphant, 1810](./index.html#N13) | The census original has an anonymous male 16–25. Selected John probate originals corroborate a named son William, offering a concrete alternative to test. | Resolve census/testator identity and William’s age/residence before proposing Aaron. Selected John and William will/probate originals do not name Aaron; no parent of Aaron is identified. |
 
 [The household-coverage note](./index.html#N13) compares five selected households, including the newly read Charleston David and Edgefield John schedules. David has no recorded male 16–25; this is not a fatherhood exclusion. The tied tier reflects different concrete tests; the evidence does not justify a finer order. Genetic comparators have separate [DNA comparison priorities](./index.html#C01). No Aaron parentage or historical-confidence upgrade is implied.
 
@@ -794,7 +796,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-records)
+Editorial review: 1 October 2026, 19:17:27 EDT  · Content updated: 1 October 2026, 19:17:27 EDT  · [Edit note](./index.html#edit-0137-records)
 
 The current independent original-record focus is the federal Nash service file and the loose Welch will. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -980,7 +982,7 @@ Current request status · private recipients, addresses and message bodies are n
 | COR02 Existing DNA research contact | [Two distinct Devaney comparisons](./index.html#R01) and [an independent paternal collateral](./index.html#R02). | Sent 30 Sep; replied 1 Oct 2026 **Reply received; target data still missing** | Verify the correct GD5 comparator and consent for any existing finer result; document the proposed collateral’s paternal split. No new calls or pedigree supplied. Do not merge the comparators or duplicate contact. |
 | COR03 NARA | [Aaron, Nash’s SC Volunteers, War of 1812, RG 94/NAID 300392](./index.html#N85) — complete service file and copy route. | 1 Oct 2026; clarification same day **Replied with guidance; clarification reply pending** | Resolve mixed war references and exact file/quote. No order placed. |
 | COR04 Rutherford County Archives | [Thomas Welch, 14/18 May 1809; RB 1b p 82](./index.html#R09) — surviving loose item, all sides and citation. | 1 Oct 2026 **Register photographs received; clarification sent, reply pending** | Await the sent clarification about separate loose sheets, proof and citation; do not duplicate it. No copying order placed. |
-| COR05 Historical-source contributor · FamilySearch | [LHXM-9VZ source attachments](./index.html#RT01) — original birth, birthplace and Bible/middle-name citation. | 1 Oct 2026 **Sent; reply pending** | Await the existing source enquiry; delivery does not verify the family claims. |
+| COR05 Historical-source contributor · FamilySearch | [LHXM-9VZ source attachments](./index.html#RT01) — original birth, birthplace and Bible/middle-name citation. | Sent 1 Oct 2026 **Selected thread checked; no reply visible** | Await the existing source enquiry. The outgoing message was visible in that thread; recipient receipt and wider correspondence were not verified. Do not resend. |
 | COR06 Birth-date contributor · email | [17 May 1791 entry](./index.html#RT01) — original support and literal family-entry wording. | 1 Oct 2026 **Alternate email sent; reply pending** | Await this route; its earlier failed chat is COR07. |
 | COR07 Same birth-date contributor · FamilySearch route | [Same source question as COR06](./index.html#RT01). | 1 Oct 2026 **Failed: explicitly undelivered** | Do not retry this route; COR06 is the delivered outgoing alternative. |
 | COR08 Georgia Archives | [Early district 7 lot 23](./index.html#N62) and [Hancock C 613886](./index.html#N92) — digital/onsite access procedure. | 1 Oct 2026 **Official form accepted; substantive reply pending** | Await guidance; no duplicate, copying order or paid work commissioned. |
@@ -1321,7 +1323,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-research-notes)
+Editorial review: 1 October 2026, 19:17:27 EDT  · Content updated: 1 October 2026, 19:17:27 EDT  · [Edit note](./index.html#edit-0137-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1507,7 +1509,7 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N13 · Early Carolina name screens and the Spartanburg census clue
 
-Reviewed 1 October 2026 · Earlier bounded screens and the 1820 reading retained; two further 1810 households and their headers now read. Publication child-name claims remain unverified; original wills remain unread.
+Reviewed 1 October 2026 · Earlier bounded screens, the 1820 reading and two further 1810 households retained; selected John and William will/probate originals now read. Publication child-name claims remain unverified; supporting papers in both estate packets remain unread.
 
 The South Carolina FamilySearch full-text query +Aaron +Ol*ph*, place South Carolina, years 1750–1814, screened all 207 result titles. The +Aaron +Ol*f* variant screened keyword labels across all 214 results. Selected transcripts resolved apparent candidates into separate people: Aaron Broyles and Dr. Olivant, Aaron Moore or Templeman and Robert Oliphant, Andrew Oliphant and Aaron Coats, David Oliphant and Aaron J. Moses, and Samuel Alston misread as Olfton with Aaron Smith. The already known 1821 Aaron–Job Rainwater deed reappeared in two indexes; it is one event.
 
@@ -1531,7 +1533,11 @@ A separate original neighborhood check of Solomon Rainwater's 1800 Pendleton pag
 
 **Two further originals read, 1 October 2026:** [David Oliphant’s Charleston schedule](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBD-96MQ) has two males 10–15 and one 45+, with no male 16–25. [John Oliphant’s Edgefield schedule](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBQ-9J13) has one male 16–25 and one 45+. The respective [Charleston](https://www.familysearch.org/ark:/61903/3:1:33S7-9YB6-9Z27) and [Edgefield headers](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBQ-9V8R) control locality and column order; the viewer’s mixed-group county labels do not. If the reported 1791 birth is correct, among these two newly read households, age 19 fits only John’s younger-male category. No occupant is named Aaron or assigned a relationship. David’s missing age category does not exclude fatherhood with an adult son elsewhere; his identity with the painter, physician or administrator remains unproved.
 
-**Known family counterweight:** previously read archive-hosted [John will typescripts](https://www.archivesindex.sc.gov/index.php/Detail/objects/S108093000800677000) name wife Nancy, son William and three daughters; the [1827 William will typescript](https://www.archivesindex.sc.gov/index.php/Detail/objects/S108093000900419000) repeats those sisters. Neither names Aaron. These are existing derivative readings, not newly discovered original wills. Census/testator identity and William’s age and residence remain unproved; William is an alternative to test, not an identified census occupant. This limited omission does not exclude a family relationship.
+**Known family counterweight:** selected filmed loose papers in John Oliphant’s packet 765 corroborate the family previously known from [archive-hosted typescripts](https://www.archivesindex.sc.gov/index.php/Detail/objects/S108093000800677000): wife Nancy, son William and daughters Sarah Burnes, Lydia Nicholson and Beersheba Hollingsworth. The [will and probate oath, image 779](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L986), [execution and endorsement, image 780](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9RN), and [appraisement warrants, image 785](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L95G), on DGS 7649217 establish that John was deceased by 4 October 1815. His will was executed 28 January 1815 and endorsed as recorded 20 May 1816 in **Book B, pages 353–354**. The earlier SCDAH Book A 353 locator remains unresolved. Packet 765 is definite; the circled box number is uncertain between 20 and 21, within the catalogue’s Boxes 20–21 range and alongside the earlier Box 21 locator.
+
+**William’s originals also read:** [image 774](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9YF) names sisters Sarah Burns, Lidia Nicholson and Basheba Hollingsworth. These record-level spellings corroborate the known family context; they are not silently normalized or treated as new individuals. [Image 775](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9B6) names nephew William H. Hollingsworth and an interest in a house and lot in Augusta, Georgia. It describes the enslaved woman read as Moriah/Mariah and her four children as property under protection, with privileges conditional on “good order and a proper subordination” and an alternative Ohio provision. The earlier typescript supplies $250 each; repair tape masks part of that amount in this scan. These directions do not establish an executed emancipation, Ohio movement or biological paternity. The will was executed 13 October 1827; [the proof and endorsement, image 776](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9Y7), positively identify packet 764, proved 7 January 1828 and recorded 22 January 1828 in Book C, page 257, with John Hollingsworth qualified as executor.
+
+These are original-record facsimiles; physical documents and autograph authenticity were not examined. The selected papers name no Aaron or earlier parent of either testator. William’s will does not itself name John as his father; the family comparison also uses John’s separately controlled will. Census/testator identity and William’s age and residence remain unproved; William is an alternative to test, not an identified census occupant. John’s conditional marriage provision does not prove William’s lifetime childlessness. The Augusta property does not identify an immigrant. Neither selected omission excludes a family relationship. Supporting papers in both packets remain unread; a positively linked paper naming kin or an interstate place would be a useful next discriminator. The exact bound John entry on DGS 7648985 could resolve the book-letter crosswalk.
 
 **Inventory boundary:** the earlier 23-result count survived without a complete saved name list. One reconstituted nonexact Oliphant/1810 collection screen again returned 23 distinct index records linked to 22 images; two named entries share one image and are not automatically one household. Only the two selected South Carolina schedules received new original readings. The earlier 1790 queries’ overlapping 17 and 37 title results are not 54 families. This remains selected, incomplete household coverage, not an exhaustive variant/state inventory.
 
@@ -3096,7 +3102,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-updates)
+Editorial review: 1 October 2026, 19:17:27 EDT  · Content updated: 1 October 2026, 19:17:27 EDT  · [Edit note](./index.html#edit-0137-updates)
 
 29 September 2026
 
@@ -3615,6 +3621,26 @@ Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 18:11:42 ED
 - [Research notes](./index.html#research-notes): N32 records current official A823 dating separately from unresolved pairwise timing and generic surname heuristics.
 
 - [Updates](./index.html#updates): Append this narrow reply/method/preservation successor; retain earlier editions, evidence confidence, ranks and tree relationships.
+
+1 October 2026
+
+### Edition 01.37 · Selected probate originals and pending enquiries
+
+Selected filmed loose probate papers corroborate Edgefield John’s previously known wife and children and establish that he was deceased by 4 October 1815. William’s original will/proof papers corroborate named relatives and an Augusta property interest, with conditional protection/Ohio provisions that establish neither implementation nor paternity. N13 preserves the original Book B 353–354 endorsement, the unresolved earlier Book A locator, definite packet 765 and uncertain box number. Census/testator identity and an Aaron relationship remain unproved; supporting estate papers remain unread. One existing FamilySearch source-enquiry thread was checked with no incoming reply visible; other bounded checks leave requests pending and saved drafts unsent. Selected John and William sources and bounded reply/access reviews are preserved in the linked restricted successors; remote bytes and restoration were not tested. No public-tree relationship, documentary priority, genetic result or origin-confidence change follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 19:17:27 EDT . This records the editorial reconciliation, not a new Aaron life event or deployed verification.
+
+- [Start here](./index.html#start-here): Link the selected John and William probate originals while keeping census/testator identity unresolved; reconcile both verified restricted source archives and retain the earlier 1,915 checkpoint unchanged in history.
+
+- [Clues](./index.html#clues): Update only the unranked Edgefield John source class. The census occupant, probate testator and named son remain separate identity tests; no priority or parentage upgrade.
+
+- [Records](./index.html#records): COR05 records the checked existing FamilySearch thread with no incoming reply visible. Other limited reply checks leave existing pending states unchanged; no enquiry or order sent.
+
+- [Research notes](./index.html#research-notes): N13 records selected John and William original facsimiles, known-family corroboration, dates, qualified locator discrepancy and conditional property provisions. No Aaron/immigrant bridge or implemented emancipation, migration or paternity is established.
+
+- [Updates](./index.html#updates): Append this selected-original, bounded-correspondence and preservation successor. Preserve prior edition entries, editor notes, tree relationships, ranks and historical/genetic confidence.
 
 09 / Contact
 

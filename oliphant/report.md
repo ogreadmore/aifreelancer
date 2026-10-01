@@ -22,7 +22,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 1 October 2026, 00:49:18 EDT  · Content updated: 1 October 2026, 00:49:18 EDT  · [Edit note](./index.html#edit-0126-start-here)
+Editorial review: 1 October 2026, 01:12:28 EDT  · Content updated: 1 October 2026, 01:12:28 EDT  · [Edit note](./index.html#edit-0127-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -40,9 +40,11 @@ Editorial review: 1 October 2026, 00:49:18 EDT  · Content updated: 1 October 20
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest bounded preservation:** eight restricted ZIPs preserve the parcel-transfer evidence, book/source-delivery controls, revised Stein and Doty readings, and private surname-query/Slough documentary checks. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,898, incrementally from 1,890 rather than by a full-library recount. The offered Maryland pages and earlier private book-delivery ZIP remain unacquired; separately retrieved public books do not identify that ZIP. [Parcel evidence](https://drive.google.com/file/d/14-JK5kprggb058FQSMecVQHsZUIeHemj/view) · [Bibliographic controls](https://drive.google.com/file/d/1MapBuhzZKC55au0-Pq5hbYasxz45DH6T/view) · [Addenda delivery check](https://drive.google.com/file/d/1hikTyX3ICyMT4xkTHJh8eAhgCaFKgI4B/view) · [Keyword review](https://drive.google.com/file/d/1tubiQvrbMIevHEDMVn6OMqLmOi0YF5oO/view) · [Revised Stein reading](https://drive.google.com/file/d/1SEuOdPzM4Pi3PRoniyh7D4aa8iWflk6c/view) · [Initial Slough check](https://drive.google.com/file/d/1kerZnljSG4aEwqNl3O5dZoqWs94WfRRG/view) · [Doty reading](https://drive.google.com/file/d/1Aa7TxE-hoZf2dqjJUndgaN_pZilV3WOl/view) · [Death-record successor](https://drive.google.com/file/d/1scNKIoM1RbnVgVD6bNmvNx4ZaRzD5vOn/view). No new Aaron parentage or genetic assignment follows.
+**Latest bounded preservation:** two restricted ZIPs preserve the final candidate-household check and a private evidence-summary checkpoint. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,900, incrementally from 1,898 rather than by a full-library recount. [Household follow-up](https://drive.google.com/file/d/1LkdBNOOcJTOS2fHJv06bjDSKLuwpIFrY/view) · [Restricted evidence summary](https://drive.google.com/file/d/1_Ibd4GhPyg7zaj6ljbpcJC9XkpVJmzdD/view). The qualified household supplies no book-family bridge or new genetic assignment.
 
 Earlier evidence-library transfers
+
+**Latest bounded preservation:** eight restricted ZIPs preserve the parcel-transfer evidence, book/source-delivery controls, revised Stein and Doty readings, and private surname-query/Slough documentary checks. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,898, incrementally from 1,890 rather than by a full-library recount. The offered Maryland pages and earlier private book-delivery ZIP remain unacquired; separately retrieved public books do not identify that ZIP. [Parcel evidence](https://drive.google.com/file/d/14-JK5kprggb058FQSMecVQHsZUIeHemj/view) · [Bibliographic controls](https://drive.google.com/file/d/1MapBuhzZKC55au0-Pq5hbYasxz45DH6T/view) · [Addenda delivery check](https://drive.google.com/file/d/1hikTyX3ICyMT4xkTHJh8eAhgCaFKgI4B/view) · [Keyword review](https://drive.google.com/file/d/1tubiQvrbMIevHEDMVn6OMqLmOi0YF5oO/view) · [Revised Stein reading](https://drive.google.com/file/d/1SEuOdPzM4Pi3PRoniyh7D4aa8iWflk6c/view) · [Initial Slough check](https://drive.google.com/file/d/1kerZnljSG4aEwqNl3O5dZoqWs94WfRRG/view) · [Doty reading](https://drive.google.com/file/d/1Aa7TxE-hoZf2dqjJUndgaN_pZilV3WOl/view) · [Death-record successor](https://drive.google.com/file/d/1scNKIoM1RbnVgVD6bNmvNx4ZaRzD5vOn/view). No new Aaron parentage or genetic assignment follows.
 
 **Latest bounded preservation:** five restricted ZIPs preserve the Pinckney and DNA-access review, Jamaican screen, private source-chain audit, book-delivery/profile-source check and separate Iredell reading. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,890, incrementally from 1,885 rather than by a full-library recount. Correspondence captures are converted previews, not original attachment files. [Pinckney review](https://drive.google.com/file/d/1zyLhF-Xxe4oJ3q2f8tcsFC2woi2K6NAO/view) · [Jamaican screen](https://drive.google.com/file/d/1syIkTmA28NuztQ2Tvv5CWbUs2Fgz_icB/view) · [Private source-chain audit](https://drive.google.com/file/d/1WC50BTazC-WO7yOv7jG3qEff8WD8pyyN/view) · [Book-delivery and profile-source check](https://drive.google.com/file/d/1cOQVVdim3IAjX3A3USR6O0ckV1AinwI4/view) · [Iredell reading](https://drive.google.com/file/d/1sDn2a_SlrAj4uY0pI_2OOlS_Ig5t0N6j/view). No new genetic evidence or historical parentage follows.
 
@@ -1259,7 +1261,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 1 October 2026, 00:49:18 EDT  · Content updated: 1 October 2026, 00:49:18 EDT  · [Edit note](./index.html#edit-0126-research-notes)
+Editorial review: 1 October 2026, 01:12:28 EDT  · Content updated: 1 October 2026, 01:12:28 EDT  · [Edit note](./index.html#edit-0127-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1819,7 +1821,9 @@ Two saved autosomal tree-surname searches returned 13 and fourteen results with 
 
 An original Ohio death certificate retrieved in the bounded surname follow-up reports a previously unresolved first parent link and supports the 1872 birth year over a conflicting derivative-tree year. The parent information was supplied by a later informant; no independently documented path to either particular Slough/Hale couple in the compiled family history has been established. This retrieval supplies no genetic attribution or change to the assessment of Aaron’s parentage.
 
-The initial three-query check read three derivative items and a collection pointer without establishing that parent link. Its successor made two form submissions, read one original certificate and inspected one linked child-birth index; that index is not an additional upward parent record. The next documentary dependency is independent identification of the reported parent couple and a connecting path to a specific book family. No new triangulation was performed; the existing joined chromosome-3 group, Y comparisons and historical confidence are unchanged. [Restricted initial query-semantics review](https://drive.google.com/file/d/1tubiQvrbMIevHEDMVn6OMqLmOi0YF5oO/view) · [Initial documentary check](https://drive.google.com/file/d/1kerZnljSG4aEwqNl3O5dZoqWs94WfRRG/view) · [Original death-record successor](https://drive.google.com/file/d/1scNKIoM1RbnVgVD6bNmvNx4ZaRzD5vOn/view); living identities and detailed DNA remain private.
+A separately examined original 1880 census provides a candidate household for the parent pair reported in that later death certificate. The daughter is recorded as age 6, conflicting with the reported 1872 birth, which would make her 7 at the census. Identity remains qualified; no independent second upward link or connection to either particular Slough/Hale book couple has been established. This unresolved bridge does not exclude all genealogical relationships and changes no DNA attribution or ancestry confidence. [Restricted household follow-up](https://drive.google.com/file/d/1LkdBNOOcJTOS2fHJv06bjDSKLuwpIFrY/view).
+
+The initial three-query check read three derivative items and a collection pointer without establishing that parent link. Its successor made two form submissions, read one original certificate and inspected one linked child-birth index; that index is not an additional upward parent record. The next documentary dependency is resolving the daughter’s age and identity, then independently identifying the reported parent couple and a connecting path to a specific book family. No new triangulation was performed; the existing joined chromosome-3 group, Y comparisons and historical confidence are unchanged. [Restricted initial query-semantics review](https://drive.google.com/file/d/1tubiQvrbMIevHEDMVn6OMqLmOi0YF5oO/view) · [Initial documentary check](https://drive.google.com/file/d/1kerZnljSG4aEwqNl3O5dZoqWs94WfRRG/view) · [Original death-record successor](https://drive.google.com/file/d/1scNKIoM1RbnVgVD6bNmvNx4ZaRzD5vOn/view); living identities and detailed DNA remain private.
 
 A defensible enrichment analysis would first define the eligible family branch and comparable tree coverage, group related testers into independent family clusters, and establish a baseline for clusters with and without the candidate surname. It would retain relationship distance, uncertainty, variant-grouping sensitivity and the effect of searching many surnames, then seek validation in evidence not used to choose the candidate. Those denominators and branch assignments are not available here. No significance test, posterior surname odds or numerical origin probability has been calculated. Finer SNP topology and independent records currently discriminate better than more arithmetic on spelling totals.
 
@@ -2958,7 +2962,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 1 October 2026, 00:49:18 EDT  · Content updated: 1 October 2026, 00:49:18 EDT  · [Edit note](./index.html#edit-0126-updates)
+Editorial review: 1 October 2026, 01:12:28 EDT  · Content updated: 1 October 2026, 01:12:28 EDT  · [Edit note](./index.html#edit-0127-updates)
 
 29 September 2026
 
@@ -3261,6 +3265,22 @@ Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 00:49:18 ED
 - [Leads, searches and what remains unresolved.](./index.html#research-notes): N32 records the completed Slough checks and original-reported first parent link, with the book-family bridge unverified. N14 distinguishes selected compilation readings, unread sources, edition/custody limits and the 50/54-acre discrepancy; no Aaron bridge follows.
 
 - [A living report, with a memory.](./index.html#updates): Appended this bounded query/source-control successor and its eight-ZIP scope while preserving all earlier editions and 41 prior immutable editor notes.
+
+1 October 2026
+
+### Edition 01.27 · Qualified household follow-up
+
+An original 1880 household is a candidate for the parent pair reported in the later death certificate, but the daughter’s age conflicts with the reported birth year. Identity and the particular Slough/Hale book-family bridge remain unresolved; no genetic assignment, Aaron parentage, rank or historical-confidence change follows. Two metadata/owner-only-verified restricted ZIPs advance the incremental recorded library checkpoint to 1,900. Earlier editions and editor notes remain unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 01:12:28 EDT . This marks the release’s editorial review, not a new inspection of historical sources.
+
+- [Pick up the investigation here.](./index.html#start-here): Updated the two-ZIP preservation checkpoint to the incremental total of 1,900; the published 1,898 paragraph remains unchanged in earlier transfer history.
+
+- [Leads, searches and what remains unresolved.](./index.html#research-notes): Appended N32’s anonymous original-household candidate and age conflict; identity and the independent book-family bridge remain unresolved, without new DNA attribution.
+
+- [A living report, with a memory.](./index.html#updates): Appended this bounded household/preservation successor while retaining all previous editions and 45 immutable editor notes.
 
 09 / Contact
 

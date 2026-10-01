@@ -198,3 +198,9 @@ Eight restricted ZIP transfers were metadata/owner-only verified, advancing the 
 ## Edition 01.27 · Qualified household follow-up
 
 Edition 01.27 records an anonymous original-household candidate and the unresolved age/identity conflict in N32. It supplies no independently established book-family bridge, new genetic comparison or Aaron parentage. Two restricted metadata/owner-only-verified ZIPs advance the incremental recorded library total from 1,898 to 1,900; local checksums are retained, without remote-byte or restore verification. The public tree, candidate ranks and historical confidence remain unchanged.
+
+## Edition 01.28 · District overlap and qualified household leads
+
+N13 records the original 1820 Spartanburg Robert/Rainwater schedule and unnamed household bins, with two Geo Divine appearances kept separate. Published child-name extracts remain unverified and cannot identify the census occupants. N21/N88 distinguish earlier Pendleton district presence from a documented association; the three new co-name queries were summary screens, not original readings or an exhaustive negative. No Aaron relationship, public-tree or rank/confidence change follows. Three metadata/owner-only-verified restricted ZIPs advance the incremental recorded library total to 1,903; remote bytes and restore remain untested.
+
+K06 presents selected documentary research-priority tiers, not an exhaustive household inventory or a probability/parentage ranking. Rutherford’s named 1809 Aaron has the first identity test; Laurens William, Spartanburg Robert and the James–David/Gordon family share a tied second tier. Broader compilation and Devany identities remain indirect, separate leads. Existing DNA/candidate-table priorities and historical confidence are unchanged.

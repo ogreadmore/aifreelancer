@@ -1,6 +1,6 @@
 # The Aaron Oliphant Inquiry
 
-Public working edition, 2026-09-30. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
+Public working edition, 2026-10-01. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
 Instructions
 
@@ -22,11 +22,11 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-start-here)
+Editorial review: 1 October 2026, 00:49:18 EDT  · Content updated: 1 October 2026, 00:49:18 EDT  · [Edit note](./index.html#edit-0126-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
-**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. Use **Aaron Oliphant** as the working name. The family researcher recalls that the Bible’s ancestry stops at Aaron; no page has been examined, and its wording and provenance still need checking. The [separate middle-name recollection](./index.html#N17) is less certain. The Bible’s remaining role is to verify Aaron and later generations, while independent earlier-origin research continues. The active original-record priorities are [the exact federal Nash regiment service file](./index.html#R04), [Thomas Welch’s 1809 loose will](./index.html#R09) and [Aaron’s exact loose debt-case papers](./index.html#N92). The early Rutherford court O-index, DGS 8142649, now has a completed reading of two visible O leaves: [image 20’s right leaf](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GB-3?lang=en&i=19) and [image 21’s left continuation](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GT-T?lang=en&i=20). No recognizable Aaron/Aron Oliphant variant was found there. Image 21’s bottom continuation reference remains partly obscured; the entire O section and individual book-letter chronology are not established. This bounded negative supplies no new Aaron identity, residence or parentage. [The three record groups are compared as an identity test](./index.html#N83), not treated as one person merely because the names match. The stronger Pendleton–Georgia family anchor does not establish that the Tennessee witness was a different man. Earlier [collateral census](./index.html#N79), [Rutherford tax](./index.html#N80), [Gwinnett index](./index.html#N81) and [Greene guardian-letter](./index.html#N82) findings retain their bounded coverage and identity limits. No later male-child chain, comparison tester or new ancestry discovery has been established.
+**Checkpoint reviewed 1 October 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. Use **Aaron Oliphant** as the working name. The family researcher recalls that the Bible’s ancestry stops at Aaron; no page has been examined, and its wording and provenance still need checking. The [separate middle-name recollection](./index.html#N17) is less certain. The Bible’s remaining role is to verify Aaron and later generations, while independent earlier-origin research continues. The active original-record priorities are [the exact federal Nash regiment service file](./index.html#R04), [Thomas Welch’s 1809 loose will](./index.html#R09) and [Aaron’s exact loose debt-case papers](./index.html#N92). The early Rutherford court O-index, DGS 8142649, now has a completed reading of two visible O leaves: [image 20’s right leaf](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GB-3?lang=en&i=19) and [image 21’s left continuation](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GT-T?lang=en&i=20). No recognizable Aaron/Aron Oliphant variant was found there. Image 21’s bottom continuation reference remains partly obscured; the entire O section and individual book-letter chronology are not established. This bounded negative supplies no new Aaron identity, residence or parentage. [The three record groups are compared as an identity test](./index.html#N83), not treated as one person merely because the names match. The stronger Pendleton–Georgia family anchor does not establish that the Tennessee witness was a different man. Earlier [collateral census](./index.html#N79), [Rutherford tax](./index.html#N80), [Gwinnett index](./index.html#N81) and [Greene guardian-letter](./index.html#N82) findings retain their bounded coverage and identity limits. No later male-child chain, comparison tester or new ancestry discovery has been established.
 
 **Latest original follow-ups:** [Rainwater’s 1812 title network](./index.html#N88), [the Rutherford Norman deed](./index.html#N89), [Welch’s 1804 Lincoln deed](./index.html#N90) and [five Brown acquisition candidates](./index.html#N91) add original readings without an Aaron identity, prior-home or kinship bridge. [The uncertain estate payee](./index.html#N86) remains unidentified; [loose estate series](./index.html#N87) and [the exact loose Walthall case locator](./index.html#N92) improve retrieval. The bound Walthall writs were already read on 28 September and are not counted as new historical evidence. Two further checks now define the [1860 proposed James household](./index.html#N38) and a [Weakley James Caldwell estate](./index.html#N01); neither establishes the missing Aaron identity or parentage links.
 
@@ -40,9 +40,11 @@ Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 Septem
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest bounded preservation:** five restricted ZIPs preserve the Pinckney and DNA-access review, Jamaican screen, private source-chain audit, book-delivery/profile-source check and separate Iredell reading. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,890, incrementally from 1,885 rather than by a full-library recount. Correspondence captures are converted previews, not original attachment files. [Pinckney review](https://drive.google.com/file/d/1zyLhF-Xxe4oJ3q2f8tcsFC2woi2K6NAO/view) · [Jamaican screen](https://drive.google.com/file/d/1syIkTmA28NuztQ2Tvv5CWbUs2Fgz_icB/view) · [Private source-chain audit](https://drive.google.com/file/d/1WC50BTazC-WO7yOv7jG3qEff8WD8pyyN/view) · [Book-delivery and profile-source check](https://drive.google.com/file/d/1cOQVVdim3IAjX3A3USR6O0ckV1AinwI4/view) · [Iredell reading](https://drive.google.com/file/d/1sDn2a_SlrAj4uY0pI_2OOlS_Ig5t0N6j/view). No new genetic evidence or historical parentage follows.
+**Latest bounded preservation:** eight restricted ZIPs preserve the parcel-transfer evidence, book/source-delivery controls, revised Stein and Doty readings, and private surname-query/Slough documentary checks. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,898, incrementally from 1,890 rather than by a full-library recount. The offered Maryland pages and earlier private book-delivery ZIP remain unacquired; separately retrieved public books do not identify that ZIP. [Parcel evidence](https://drive.google.com/file/d/14-JK5kprggb058FQSMecVQHsZUIeHemj/view) · [Bibliographic controls](https://drive.google.com/file/d/1MapBuhzZKC55au0-Pq5hbYasxz45DH6T/view) · [Addenda delivery check](https://drive.google.com/file/d/1hikTyX3ICyMT4xkTHJh8eAhgCaFKgI4B/view) · [Keyword review](https://drive.google.com/file/d/1tubiQvrbMIevHEDMVn6OMqLmOi0YF5oO/view) · [Revised Stein reading](https://drive.google.com/file/d/1SEuOdPzM4Pi3PRoniyh7D4aa8iWflk6c/view) · [Initial Slough check](https://drive.google.com/file/d/1kerZnljSG4aEwqNl3O5dZoqWs94WfRRG/view) · [Doty reading](https://drive.google.com/file/d/1Aa7TxE-hoZf2dqjJUndgaN_pZilV3WOl/view) · [Death-record successor](https://drive.google.com/file/d/1scNKIoM1RbnVgVD6bNmvNx4ZaRzD5vOn/view). No new Aaron parentage or genetic assignment follows.
 
 Earlier evidence-library transfers
+
+**Latest bounded preservation:** five restricted ZIPs preserve the Pinckney and DNA-access review, Jamaican screen, private source-chain audit, book-delivery/profile-source check and separate Iredell reading. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,890, incrementally from 1,885 rather than by a full-library recount. Correspondence captures are converted previews, not original attachment files. [Pinckney review](https://drive.google.com/file/d/1zyLhF-Xxe4oJ3q2f8tcsFC2woi2K6NAO/view) · [Jamaican screen](https://drive.google.com/file/d/1syIkTmA28NuztQ2Tvv5CWbUs2Fgz_icB/view) · [Private source-chain audit](https://drive.google.com/file/d/1WC50BTazC-WO7yOv7jG3qEff8WD8pyyN/view) · [Book-delivery and profile-source check](https://drive.google.com/file/d/1cOQVVdim3IAjX3A3USR6O0ckV1AinwI4/view) · [Iredell reading](https://drive.google.com/file/d/1sDn2a_SlrAj4uY0pI_2OOlS_Ig5t0N6j/view). No new genetic evidence or historical parentage follows.
 
 **Latest bounded preservation:** five restricted ZIPs preserve the regional locators/readings, earlier DNA-service review, Stewart deeds with the completed VRT summary screen, separate inventory reading, and restored FTDNA/23andMe access review. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, but uploaded bytes were not re-downloaded and no restore was tested. The recorded library total is 1,885, an incremental ledger count rather than a full-library recount. [Regional evidence](https://drive.google.com/file/d/1CfHa3bjPgHJM25vtePhQ4zknz6GxgXlp/view) · [Earlier DNA review](https://drive.google.com/file/d/1tXPA9AZ_8wLw0uO1-EER4xvhAufTvfUN/view) · [Stewart deeds and VRT summaries](https://drive.google.com/file/d/1qIVMxZCLKaEEivAidofpXC-ZBK9ibUce/view) · [Inventory reading](https://drive.google.com/file/d/10x3RqUKPJ7lAEXxfhc_43bMYMeqGQtFv/view) · [Restored DNA-service access](https://drive.google.com/file/d/1Pbabf7O2SheEnfj-TyWc7GYRCDDvDExl/view). Preservation and service availability add no genealogy proof.
 
@@ -620,9 +622,11 @@ Solomon’s census entry reports his unnamed father born in South Carolina. The 
 
 ## A paternal branch is a clue. It is not an address or a surname.
 
-Editorial review: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-dna)
+Editorial review: 1 October 2026, 00:49:18 EDT  · Content updated: 1 October 2026, 00:49:18 EDT  · [Edit note](./index.html#edit-0126-dna)
 
 Y-DNA follows the direct paternal line. Autosomal DNA reflects many ancestral lines. These answer different questions, and a shared surname in an autosomal match’s tree does not identify the source of the shared DNA. [[8]](./index.html#s8)
+
+**Book-family search control:** surname-keyword hits include substrings and related testers; they do not verify particular book-family connections or new genetic groups. [N32 records the query controls and unresolved book-family bridge](./index.html#N32). Aaron’s origins and the existing comparisons remain unresolved.
 
 R-A823
 
@@ -1255,7 +1259,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-research-notes)
+Editorial review: 1 October 2026, 00:49:18 EDT  · Content updated: 1 October 2026, 00:49:18 EDT  · [Edit note](./index.html#edit-0126-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1297,7 +1301,7 @@ The estate does not identify this James as Ruth Davidson’s husband or the 1809
 
 **Edition 01.14 retrieval advance:** [The official loose-will copy procedure](./index.html#N84) and exact all-sides request are prepared. This is access planning, not another recorded-copy reading or new identity evidence.
 
-Restricted evidence: [Separate administration/inventory archive](https://drive.google.com/file/d/10x3RqUKPJ7lAEXxfhc_43bMYMeqGQtFv/view) · [Stewart deed reading and review archive](https://drive.google.com/file/d/1qIVMxZCLKaEEivAidofpXC-ZBK9ibUce/view) · [Weakley estate reading and review archive](https://drive.google.com/file/d/1KIXV4m1JqusyfcUKeLQS5jHRon1Oq8TK/view) · [Earlier supporting review](https://drive.google.com/file/d/1WFMcxav9LknCyu3lgMfUkfrTySiv-px6/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
+Restricted evidence: [Recovered parcel-transfer archive](https://drive.google.com/file/d/14-JK5kprggb058FQSMecVQHsZUIeHemj/view) · [Separate administration/inventory archive](https://drive.google.com/file/d/10x3RqUKPJ7lAEXxfhc_43bMYMeqGQtFv/view) · [Stewart deed reading and review archive](https://drive.google.com/file/d/1qIVMxZCLKaEEivAidofpXC-ZBK9ibUce/view) · [Weakley estate reading and review archive](https://drive.google.com/file/d/1KIXV4m1JqusyfcUKeLQS5jHRon1Oq8TK/view) · [Earlier supporting review](https://drive.google.com/file/d/1WFMcxav9LknCyu3lgMfUkfrTySiv-px6/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
 N02 · Who was Aaron Olifant Devany?
 
@@ -1457,7 +1461,7 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N14 · James–Jean Nevay, the William–Jean rumor and distinct Williams
 
-Reviewed 30 September 2026 · Indexed family; identities unresolved · Editorial reconciliation of saved research; no new external record retrieval.
+Reviewed 1 October 2026 · Indexed family; identities unresolved · Earlier index/original reviews and later selected compilation pages; Edinburgh originals remain unread.
 
 Indexed Edinburgh births name James Oliphant and Jean or Joan Nevay: David, 1 September 1762; Ann, 14 November 1763; Jean, 10 April 1764 and 10 April 1765 in conflicting entries. All inspected originals were unavailable. The one-year conflict and unusually short Ann-to-Jean interval require original parish entries; paired child/parent indexes do not represent independent births.
 
@@ -1476,6 +1480,16 @@ The William–Betsy Gordy family compilation relies on a lost family letter for 
 A different William's 1842 Guilford estate names widow Mary; it must not simply become the man reported dead in 1828. Captain William's reported Jamaican death in 1785 is another distinct candidate. None is currently Aaron's established father. The unverified 1791 birth cannot make an unnamed boy, age fit or hypothetical tax exemption into proof.
 
 **Sources and reading status:** [Laurens wagon sale](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS7S-1TPS); [1800 Laurens census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GR8W-X5Z); [William–Thomas gift](https://www.familysearch.org/ark:/61903/3:1:3QS7-99DX-88M1); [family compilation](https://www.familysearch.org/library/books/viewer/58759/); [autobiography](https://www.sermonindex.net/books/oliphant-james-h-autobiography/1/). Specified originals previously visually read; compilation and autobiography are later testimony.
+
+**Revised compilation retrieved:** [FamilySearch Books 260935](https://www.familysearch.org/library/books/viewer/260935/), edited by Nancy Hawlick Stein, supplies 329 PDF pages with revised content dated March 1977. Its exact identity with the separately catalogued 226-page 1977 West edition remains unverified. Seven selected pages were visually read; one earlier gift page was used only for OCR/navigation. This was not a whole-book examination. A chart’s inferred 1824 death conflicts with the replacement entry’s 1828 family-letter date; neither independently proves William’s death. The reproduced 1897 letter’s writer was unsure of the ancestor’s name; the editor substituted William. An 1806 Guilford Book 9:114 facsimile names William Senior and Junior, without a recognized literal father/son statement or Aaron reference. Its 50-acre pixel reading differs from an earlier 54-acre transcription; the original register remains unchecked. It supplies no Aaron-parent bridge. Papers reported privately held by the editor in 1975 have no verified present custody. [Restricted revised-volume reading](https://drive.google.com/file/d/1SEuOdPzM4Pi3PRoniyh7D4aa8iWflk6c/view).
+
+**Separate unread sources:** the [1982 supplement](https://www.familysearch.org/en/search/catalog/236509), fiche 6017710, has an exact [Books item 539273](https://www.familysearch.org/library/books/records/item/539273-addenda-corrections-descendants-of-william-oliphant-of-north-carolina-collateral-families-martindale-burch-morgan-hale-vaughn-slough-colee-mitchell-king-ancestors-from-eastern-short-of-maryland-and-sussex-county-delaware-supplement-1) labelled Protected (search only); no pages were read. The separately offered five-page Maryland addenda remain unacquired, with delivery/custody unverified. Three targeted queries and one additional relevant message supplied no new delivery pointer, within that bounded scope. These pages are not identified with either supplement or the retrieved volume. [Restricted delivery review](https://drive.google.com/file/d/1hikTyX3ICyMT4xkTHJh8eAhgCaFKgI4B/view).
+
+The accessible [*Oliphant-Rauch-Doty genealogy*, FamilySearch Books 162187](https://www.familysearch.org/library/books/viewer/162187/), compiled by Eva Emery Doty, has now been downloaded. Its title and foreword establish **1976** for this copy; a separate stamp dates microfilming to 1977. That corrects this copy’s bibliographic status without identifying the unread private ZIP or every separately catalogued 1977 edition.
+
+Seven selected pages were visually read and one dedication page examined through OCR, within an eight-page limit. The opening discussion keeps the William-and-Lydia family separate from the Guilford William-and-Betsy family and the Covenanter tradition. Its compiler’s 1976 assessment reports no established connection, not exclusion of a relationship. It prints a 1902 daughter’s letter naming William and Lydia, but the original letter remains unread and the proposed Matthew parentage is conditional. These are sources for a distinct candidate family, with no documented Aaron relationship, immigrant bridge or new genetic assignment. The full 120-page acquisition is not a whole-book reading or Aaron-absence finding. Unread pointers are printed family letters p11/PDF15, the compiler’s Maryland Case 4565 reference (Hugh, September 1805), and *History of Pickaway County and Its Representative Citizens*, chapter XVIII/p192; the case’s present repository and identification remain unverified. [Restricted selected Doty source reading](https://drive.google.com/file/d/1Aa7TxE-hoZf2dqjJUndgaN_pZilV3WOl/view).
+
+Earlier catalogue-only support: the [institutional excerpt](https://catalog.wrhs.org/collections/search?subject=Doty+family%3Bsubject-join%3Dexact%3Bsmode%3Dsimple%3Brmode%3Dnone%3Bstyle%3D%3Bbrand%3Ddefault) reported 1976; [Open Library](https://openlibrary.org/authors/OL423605A/Eva_Emery_Doty) reported 1977. The retrieved title resolves this copy, not every catalogue record. [Restricted earlier bibliographic review](https://drive.google.com/file/d/1MapBuhzZKC55au0-Pq5hbYasxz45DH6T/view).
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -1795,11 +1809,17 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N32 · Why surname counts cannot yet become ancestry probabilities
 
-Reviewed 30 September 2026 · Method defined; statistical inputs insufficient · Editorial reconciliation of saved research; no new external record retrieval.
+Reviewed 1 October 2026 · Method defined; statistical inputs insufficient · Earlier match-count audits and later bounded book-family keyword controls; no new genetic comparison.
 
 The saved Y67 list contains 23 matches: two at genetic distance five, three at six and eighteen at seven. This describes a selected match list, rather than 23 independent ancestral families. Fourteen have finer branch information; eleven split above A823 and three follow a downstream path that the tested Oliphant sample's reviewed reads do not support. Nine remain broad-only. Missing finer testing is missing information, not evidence that an unresolved comparator is especially close.
 
 Two saved autosomal tree-surname searches returned 13 and fourteen results with twelve people in both sets: fifteen unique people, not 27 independent confirmations. A surname anywhere in a match's tree does not establish that person's direct paternal surname. Relatives, repeated platforms and variant spellings need deduplication. The existing service-confirmed triangles concern inherited segments in a reported paternal-family context; no shared segment has been assigned uniquely to Aaron or to the exclusively male Oliphant line.
+
+**Book-family query review:** seven surname-keyword searches returned possible leads, including given-name substrings, longer surnames and related testers. For example, a Colee keyword search also returned given names containing that text; it was not an exact-surname-only search. A returned count is not a verified connection to a particular family in the compilation. Some submitted ancestry names the requested surname, but no reviewed route yet establishes its connection to the book’s specific couples. These results do not establish seven independent families, one genetic cluster, surname enrichment or a new Aaron connection.
+
+An original Ohio death certificate retrieved in the bounded surname follow-up reports a previously unresolved first parent link and supports the 1872 birth year over a conflicting derivative-tree year. The parent information was supplied by a later informant; no independently documented path to either particular Slough/Hale couple in the compiled family history has been established. This retrieval supplies no genetic attribution or change to the assessment of Aaron’s parentage.
+
+The initial three-query check read three derivative items and a collection pointer without establishing that parent link. Its successor made two form submissions, read one original certificate and inspected one linked child-birth index; that index is not an additional upward parent record. The next documentary dependency is independent identification of the reported parent couple and a connecting path to a specific book family. No new triangulation was performed; the existing joined chromosome-3 group, Y comparisons and historical confidence are unchanged. [Restricted initial query-semantics review](https://drive.google.com/file/d/1tubiQvrbMIevHEDMVn6OMqLmOi0YF5oO/view) · [Initial documentary check](https://drive.google.com/file/d/1kerZnljSG4aEwqNl3O5dZoqWs94WfRRG/view) · [Original death-record successor](https://drive.google.com/file/d/1scNKIoM1RbnVgVD6bNmvNx4ZaRzD5vOn/view); living identities and detailed DNA remain private.
 
 A defensible enrichment analysis would first define the eligible family branch and comparable tree coverage, group related testers into independent family clusters, and establish a baseline for clusters with and without the candidate surname. It would retain relationship distance, uncertainty, variant-grouping sensitivity and the effect of searching many surnames, then seek validation in evidence not used to choose the candidate. Those denominators and branch assignments are not available here. No significance test, posterior surname odds or numerical origin probability has been calculated. Finer SNP topology and independent records currently discriminate better than more arithmetic on spelling totals.
 
@@ -2938,7 +2958,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-updates)
+Editorial review: 1 October 2026, 00:49:18 EDT  · Content updated: 1 October 2026, 00:49:18 EDT  · [Edit note](./index.html#edit-0126-updates)
 
 29 September 2026
 
@@ -3223,6 +3243,24 @@ Editor: AI research assistant. Editorial checkpoint: 30 September 2026, 23:49:26
 - [Leads, searches and what remains unresolved.](./index.html#research-notes): Reconciled N01’s matched parcel chain and 1797 recital-day conflict, N17’s secondhand source chain, N53’s qualified institutional/Jamaican results and N11’s profile pointer; no Aaron parentage or middle-name proof follows.
 
 - [A living report, with a memory.](./index.html#updates): Appended this bounded provenance/parcel successor and five-ZIP archive scope while preserving all earlier editions and immutable editor notes.
+
+1 October 2026
+
+### Edition 01.26 · Book-family query controls and distinct source delivery
+
+Clarifies that surname-keyword hits do not establish particular book-family DNA connections or independent genetic groups; an original death certificate now reports the first parent link in a Slough lead, while the book-family bridge remains unresolved. Selected pages of a distinct revised Stein compilation are now read, with founder-name, death-date and edition-identity uncertainty preserved. The 1982 supplement and offered Maryland pages remain unread/unacquired; a separately retrieved 1976 Doty compilation retains distinct families and an unread 1902 letter, without an Aaron bridge. Eight metadata/owner-only-verified restricted archives preserve completed bounded work. Ranks, historical confidence and the public tree are unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 00:49:18 EDT . This marks the release’s editorial review, not a new inspection of historical sources.
+
+- [Pick up the investigation here.](./index.html#start-here): Updated the eight-ZIP preservation checkpoint to the incremental total of 1,898, with metadata and owner-only checks. The previous 1,890 checkpoint and all dated transfer history remain intact.
+
+- [A paternal branch is a clue. It is not an address or a surname.](./index.html#dna): Added one linked surname-keyword control: substring and related-tester hits are not verified book-family connections or new genetic groups; existing comparisons and confidence remain unchanged.
+
+- [Leads, searches and what remains unresolved.](./index.html#research-notes): N32 records the completed Slough checks and original-reported first parent link, with the book-family bridge unverified. N14 distinguishes selected compilation readings, unread sources, edition/custody limits and the 50/54-acre discrepancy; no Aaron bridge follows.
+
+- [A living report, with a memory.](./index.html#updates): Appended this bounded query/source-control successor and its eight-ZIP scope while preserving all earlier editions and 41 prior immutable editor notes.
 
 09 / Contact
 

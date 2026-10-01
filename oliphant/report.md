@@ -2,12 +2,6 @@
 
 Public working edition, 2026-09-30. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
-Start here / Research checkpoint
-
-## Pick up the investigation here.
-
-Editorial review: 30 September 2026, 20:31:25 EDT  · Content updated: 30 September 2026, 20:31:25 EDT  · [Edit note](./index.html#edit-0121-header-contact)
-
 Instructions
 
 This website is the current research record. Read it first, then follow its citations and the restricted evidence library for the underlying material. There is no separate research starting point in Drive.
@@ -23,6 +17,12 @@ This website is the current research record. Read it first, then follow its cita
 - **Update this site when a research batch is complete.** Reconcile changed findings, completed coverage, corrections, confidence and next steps here. Preserve stable IDs and superseded readings, date the change, rebuild the [Markdown report](./report.md) and [structured export](./research.json), and verify the published edition.
 
 [How to update this report](./README.md#rebuild-and-verify): editing, section timestamps, retained notes, rebuild checks and live verification for human and AI contributors.
+
+Start here / Research checkpoint
+
+## Pick up the investigation here.
+
+Editorial review: 30 September 2026, 20:39:23 EDT  · Content updated: 30 September 2026, 20:39:23 EDT  · [Edit note](./index.html#edit-0121-instructions-panel)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -2938,7 +2938,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 30 September 2026, 20:31:25 EDT  · Content updated: 30 September 2026, 20:31:25 EDT  · [Edit note](./index.html#edit-0121-header-contact)
+Editorial review: 30 September 2026, 20:39:23 EDT  · Content updated: 30 September 2026, 20:39:23 EDT  · [Edit note](./index.html#edit-0121-instructions-panel)
 
 29 September 2026
 
@@ -3115,6 +3115,8 @@ Editor: AI research assistant · Editorial checkpoint: 30 September 2026, 20:16:
 - [Contact](./index.html#contact): Reviewed; the existing contact routes and form remain unchanged; delivery was not tested.
 
 **Navigation and instructions correction · 30 September 2026, 20:31:25 EDT  · AI research assistant:** Removed the duplicate Contact item from the main navigation; the upper-right Contact link remains. Moved the existing research and update guidance into Instructions at the start of Start here, linked from contents; current findings remain visible. No evidence, assessment or contact-section content changed.
+
+**Instructions layout correction · 30 September 2026, 20:39:23 EDT  · AI research assistant:** Placed the unchanged Instructions accordion in its own bordered panel before the research checkpoint heading, with clear spacing when closed or open. No research evidence, assessment or source-inspection date changed.
 
 ### Use this research in your own work
 

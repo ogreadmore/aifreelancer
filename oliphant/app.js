@@ -51,9 +51,6 @@ window.addEventListener('afterprint', () => {
   printableDetails.forEach((record, index) => { record.open = printState[index].open; record.hidden = printState[index].hidden; });
   printState = undefined;
 });
-const printButton = document.querySelector('.print-button');
-printButton.hidden = false;
-printButton.addEventListener('click', () => window.print());
 function revealLinkedDetail() {
   let id;
   try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }

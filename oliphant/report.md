@@ -6,7 +6,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · Content updated: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-start-here)
+Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-start-here)
 
 This website is the current research record. Read it first, then follow its citations and the restricted evidence library for the underlying material. There is no separate research starting point in Drive.
 
@@ -96,7 +96,7 @@ For human and AI readers: [machine-readable entry point](./llms.txt) · [full re
 
 ## Three questions. One unfinished history.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-questions)
+Editorial review: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-questions)
 
 01
 
@@ -120,7 +120,7 @@ Explain the genetic difference from other tested Oliphant branches, including wh
 
 ## The American story is clearer. The older connection is still missing.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · Content updated: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-findings)
+Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-findings)
 
 No parent, immigrant generation, overseas home, or surname-transition event has yet been established for Aaron. No single origin theory currently deserves to be called probable.
 
@@ -189,7 +189,7 @@ Selected evidence / Where to look next
 
 ## Clues worth following
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-clues)
+Editorial review: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-clues)
 
 A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
 
@@ -239,7 +239,7 @@ Family tree / Historical people
 
 ## The family line, with its evidence.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · Content updated: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-family-tree)
+Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-family-tree)
 
 Twenty-three deceased historical people appear in the core family line, Andrew’s collateral sons and two connected branches. Each relationship carries its own evidence. Aaron’s parents remain unknown; the original record establishing his parentage of Solomon has not yet been located. The eleven-person account cores remain separate; [MyHeritage](./index.html#U03) and [Ancestry](./index.html#U04) have their own completion and backup checks. Fourteen historical people and fifteen qualified relationships from this public tree remain to be copied to the account trees. Account copying does not add evidence to these relationships.
 
@@ -578,7 +578,7 @@ Family history / Pictures
 
 ## Historical pictures
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · Content updated: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-historical-pictures)
+Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-historical-pictures)
 
 Two pictures are displayed unchanged from [The Rainwater Collection’s gallery](https://www.therainwatercollection.com/gallery/aug2009.shtml). Identification and dating rely on contributor captions; original inscriptions and reverses were not examined. These illustrations do not independently establish kinship or Aaron’s parentage.
 
@@ -596,7 +596,7 @@ Credit: The Rainwater Collection, Susan Chance-Rainwater and R. Steven Rainwater
 
 ## A life comes into view.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-timeline)
+Editorial review: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-timeline)
 
 Dates below belong to documents. A purchase does not necessarily establish residence, and people with the same name are not automatically the same person.
 
@@ -640,7 +640,7 @@ Solomon’s census entry reports his unnamed father born in South Carolina. The 
 
 ## A paternal branch is a clue. It is not an address or a surname.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-dna)
+Editorial review: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-dna)
 
 Y-DNA follows the direct paternal line. Autosomal DNA reflects many ancestral lines. These answer different questions, and a shared surname in an autosomal match’s tree does not identify the source of the shared DNA. [[8]](./index.html#s8)
 
@@ -684,7 +684,7 @@ This public-facing edition omits living matches’ names, kit identifiers, segme
 
 ## What we think—and what could change it.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-theories)
+Editorial review: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-theories)
 
 Confidence describes support for a proposition, not the likelihood that a useful record exists. These are overlapping possibilities, not mutually exclusive choices or calculated probabilities. [[12]](./index.html#s12)
 
@@ -746,7 +746,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-records)
+Editorial review: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-records)
 
 The current independent original-record focus is the federal Nash service file and the loose Welch will. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -1204,7 +1204,7 @@ Editorially reviewed 30 September 2026 against saved provenance and collateral a
 
 ## A conclusion should lead back to its evidence.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · Content updated: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-sources)
+Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-sources)
 
 This edition was reconciled against the current claim register and independent reviews of 29 September 2026. It is a synthesis of that work, not a fresh examination of every manuscript. Original-image links may require a free account or access at a participating location; a subscription does not necessarily remove those restrictions.
 
@@ -1217,6 +1217,8 @@ This edition was reconciled against the current claim register and independent r
 Machine text was used to locate records; original readings control the central documentary claims. Copied accounts are not counted as independent witnesses. An unsuccessful search describes only the collections, pages and spellings actually checked. Confidence is qualitative: no surname probabilities have been calculated.
 
 **How this record stays current:** each changed finding has one stable place for its evidence, limits and next test. Every affected summary, confidence label, resource status and next step is reviewed together, with short links back to that detail. Dated corrections retain earlier readings, contradictions and bounded negative searches. Public conclusions and exports are kept separate from private DNA, living-person details and account records; local preservation, restricted upload and a verified live edition are distinct steps. Section timestamps track editorial review and known content changes from Edition 01.21. This first timestamp records the release’s editorial checkpoint, not a reconstructed time of earlier edits. It does not mean the underlying sources were inspected again. Dated section edit notes are retained in the edition history.
+
+[How to update this report](./README.md#rebuild-and-verify): editing, section timestamps, retained notes, rebuild checks and live verification for human and AI contributors.
 
 - **Pendleton deed, 29 January 1821.** Book P, p382. Names Aaron of Hancock County and Rebecca as daughter of deceased Solomon Rainwater. [Original image](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B). Original visually read in the research archive; claims A03–A04.
 
@@ -1250,7 +1252,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/13WKr
 
 ### Research resources
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · Content updated: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-research-resources)
+Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-research-resources)
 
 This inventory records what has been used and what remains incomplete; each entry carries its own review date. It is a continuation guide, not a recommendation to buy every service. The numbered citations above support particular claims; the resources below explain where the work happens.
 
@@ -1273,7 +1275,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · Content updated: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-research-notes)
+Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -2932,7 +2934,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · Content updated: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-updates)
+Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-updates)
 
 29 September 2026
 
@@ -3072,11 +3074,11 @@ Completed the visible O portions of two Rutherford court-index images, DGS 81426
 
 The eleven-person Ancestry core copy now has qualified historical citations, with living-person privacy retained. Six additional MyHeritage core profiles also gained formal qualified citations and two biography corrections. Current account-status summaries link to [MyHeritage](./index.html#U03) and [Ancestry](./index.html#U04); the Ancestry DNA-to-tree link remains unset. The public historical tree stays at twenty-three people and twenty-six qualified relationships. Account copying adds no parent of Aaron, ancestral DNA assignment or historical confidence change.
 
-Sources & methods now explains the review of affected sections, stable evidence detail, retained corrections and public/private separation. Six [verified restricted files](./index.html#library-transfer-edition0121) preserve the bounded account, court and access evidence plus deferred-source documentation; archived members are not independent records or additional transfers. Earlier editions retain their dated scope. N99 also preserves an already observed, deferred 1943 typescript route; no entry or original bond was read. C13 makes the existing autosomal group visible in the candidate comparison, with pedigree work deferred. The count of one hundred research notes, existing candidate ranks and Devaney hypothesis’s low historical confidence are unchanged.
+The upper-right Contact link replaces the report-print button. Sources & methods now explains the review of affected sections, stable evidence detail, retained corrections and public/private separation. Six [verified restricted files](./index.html#library-transfer-edition0121) preserve the bounded account, court and access evidence plus deferred-source documentation; archived members are not independent records or additional transfers. Earlier editions retain their dated scope. N99 also preserves an already observed, deferred 1943 typescript route; no entry or original bond was read. C13 makes the existing autosomal group visible in the candidate comparison, with pedigree work deferred. The count of one hundred research notes, existing candidate ranks and Devaney hypothesis’s low historical confidence are unchanged.
 
 Section review and edit notes
 
-Editor: AI research assistant · Editorial checkpoint: 30 September 2026, 20:06:50 EDT . This records the reviewed release batch, not the time of source inspection or a reconstructed earlier edit. Later editions append their own notes.
+Editor: AI research assistant · Editorial checkpoint: 30 September 2026, 20:16:58 EDT . This records the reviewed release batch, not the time of source inspection or a reconstructed earlier edit. Later editions append their own notes.
 
 - [Start here](./index.html#start-here): Updated completed account status and verified archive scope; earlier transfer history remains expandable.
 
@@ -3098,13 +3100,13 @@ Editor: AI research assistant · Editorial checkpoint: 30 September 2026, 20:06:
 
 - [What would move us forward](./index.html#records): Reviewed; no outstanding direct Aaron original or bilateral Y comparison was completed by these maintenance tasks.
 
-- [Sources & methods](./index.html#sources): Added the coordinated maintenance policy and explicit editorial timestamps; source-inspection dates are retained.
+- [Sources & methods](./index.html#sources): Added the coordinated maintenance policy, a discoverable human/AI editing guide and explicit editorial timestamps; source-inspection dates are retained.
 
 - [Research resources](./index.html#research-resources): Updated the completed Ancestry and MyHeritage core tasks, qualified backup checks and unset Ancestry DNA-to-tree link.
 
 - [Research notes](./index.html#research-notes): Added bounded deferred catalogue and copy-procedure qualifications to N99/N100; no typescript entry, original bond or death certificate was read in that follow-up.
 
-- [Edition history](./index.html#updates): Recorded this consolidated edition and its section edit notes while retaining all earlier editions.
+- [Edition history](./index.html#updates): Recorded this consolidated edition, the header Contact link and its section edit notes while retaining all earlier editions.
 
 - [Contact](./index.html#contact): Reviewed; the existing contact routes and form remain unchanged; delivery was not tested.
 
@@ -3120,6 +3122,6 @@ Editorial note: research assistance includes AI-supported retrieval, synthesis a
 
 ## Contact
 
-Editorial review: 30 September 2026, 20:06:50 EDT  · [Edit note](./index.html#edit-0121-contact)
+Editorial review: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-contact)
 
 Contact Taylor Oliphant with records, corrections or information about this family. Email [taylor@aifreelancer.co](mailto:taylor@aifreelancer.co) or use the form below.

@@ -46,6 +46,16 @@ Keep source statements separate from identity inferences. A catalogue entry is n
 
 ## Rebuild and verify
 
+For human and AI contributors:
+
+1. Read the current assessment and cited evidence. Edit canonical `index.html`; place the detailed finding and its limits at one stable anchor, then reconcile every affected summary, status, confidence and next test. Keep existing IDs, contradictions and dated earlier readings.
+2. Review every chapter and the resources subsection. Set `data-editorially-reviewed` to the actual editorial checkpoint as RFC3339 with timezone. Change `data-content-updated` only when substantive content changed; preserve an unchanged section’s prior value, and omit an unknown value. These are editorial checkpoints, not refreshed source inspections.
+3. Append concise section notes to the new edition’s expandable history, recording editor, checkpoint, change or unchanged review, and remaining limits. Preserve all published earlier notes. Give each note an ID and `editor-note` class, point the section’s `data-editor-note-target` to that ID, and link its visible timestamp to it. The generated `section_reviews` array carries the same timestamps, note and history link.
+4. Rebuild and check with the commands below. Review the diff and desktop/mobile presentation, including links into collapsed details. Check evidence and privacy separately; passing software checks cannot certify either.
+5. Publish only the eleven allowlisted public files. Verify the resulting repository revision and served files against the reviewed local hashes, and confirm the edition and changed anchors on the live site. A local build or upload alone is not a live release.
+
+Local operators may also maintain a private impact checklist and source fingerprints. Those aids are outside this public package and do not replace the review above.
+
 Requires Python 3.10 or later; standard library only. From this directory:
 
 ```sh

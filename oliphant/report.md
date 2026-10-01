@@ -12,6 +12,8 @@ This website is the current research record. Read it first, then follow its cita
 
 - **Choose one question that evidence could settle.** The active independent original-record tests are [Aaron’s federal Nash regiment service file](./index.html#R04), [Thomas Welch’s original loose will](./index.html#R09) and [the exact loose debt-case papers](./index.html#N92). The two visible Rutherford court O leaves have now been read; the entire O section remains incomplete, with exact source pointers above. The [two Devaney comparisons](./index.html#R01) await a reply, and an [independent paternal collateral](./index.html#R02) remains a separate historical-line test. [Bible inspection](./index.html#R03) will check wording, dates and provenance for Aaron and later generations; independent earlier-origin work need not wait for it. Other targets retain their exact retrieval references.
 
+- **Check correspondence before contact.** Read [Requests and correspondence](./index.html#correspondence) and the relevant restricted delivery evidence. Do not duplicate pending requests or resend uncertain submissions without resolving their status. On a reply, update the same row and the linked source/record notes together.
+
 - **Leave the next researcher a usable result.** Record the date, question, repository, collection, exact query and filters, pages or images examined, access limits, result, citation, and next finite action. Distinguish an index hit, an original reading and a same-person inference.
 
 - **Update this site when a research batch is complete.** Reconcile changed findings, completed coverage, corrections, confidence and next steps here. Preserve stable IDs and superseded readings, date the change, rebuild the [Markdown report](./report.md) and [structured export](./research.json), and verify the published edition.
@@ -22,7 +24,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 1 October 2026, 15:56:52 EDT  · Content updated: 1 October 2026, 15:56:52 EDT  · [Edit note](./index.html#edit-0134-start-here)
+Editorial review: 1 October 2026, 16:46:40 EDT  · Content updated: 1 October 2026, 16:46:40 EDT  · [Edit note](./index.html#edit-0134-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -34,7 +36,7 @@ Editorial review: 1 October 2026, 15:56:52 EDT  · Content updated: 1 October 20
 
 - **Use the qualified household comparison.** [The Charleston David and Edgefield John originals are now read](./index.html#N13); John’s anonymous young male is an age fit only, with a documented William as an alternative to test. The wider inventory remains incomplete. Any next family search needs a named identity or kinship discriminator, not another surname screen.
 
-**Current enquiries:** [NARA has supplied copy guidance](./index.html#N85), but mixed War of 1812/Civil War wording leaves the exact Nash file and ordering route unconfirmed. A same-thread clarification was sent on 1 October; its reply is pending. The [loose Welch will](./index.html#R09), [birth/Bible provenance](./index.html#RT01), [NRS originals](./index.html#R06), [Richmond administration letters](./index.html#N23) and [Robert’s exact 1958 notice](./index.html#N96) still await the requested records or substantive answers. Paid Georgia onsite retrieval of [Early 7/23](./index.html#N62) and [Hancock C613886](./index.html#N92) remains deferred while existing-copy and lower-cost routes are checked. Restored sessions expose the [DNA match resources](./index.html#research-resources), but add no comparison evidence; [the two comparator tests](./index.html#R01) still await target data or a reply. Await existing enquiries rather than duplicate them. No copying order has been placed or paid retrieval commissioned.
+**Requests in progress:** [The correspondence tracker](./index.html#correspondence) distinguishes unanswered, replied, deferred, failed and uncertain requests. [NARA’s guidance needs clarification](./index.html#N85); the clarification was sent and awaits a reply. [Rutherford supplied two photographs of the already-read bound will pages](./index.html#N84), not a confirmed loose Welch manuscript. Paid Georgia retrieval remains deferred while existing-copy and lower-cost routes are checked. The [two comparator tests](./index.html#R01) still await target data or a reply; restored account access adds no comparison evidence. Check the tracker and restricted receipts before contact. No copying order has been placed or paid retrieval commissioned.
 
 Completed checks and corrections
 
@@ -790,9 +792,9 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 1 October 2026, 15:56:52 EDT  · Content updated: 1 October 2026, 15:56:52 EDT  · [Edit note](./index.html#edit-0134-records)
+Editorial review: 1 October 2026, 16:46:40 EDT  · Content updated: 1 October 2026, 16:46:40 EDT  · [Edit note](./index.html#edit-0134-records)
 
-The current independent original-record focus is the federal Nash service file and the loose Welch will. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
+The current independent original-record focus is the federal Nash service file and the loose Welch will. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
 01 · Genetic comparison Resolve the two Devaney comparisons Enquiry sent · reply pending
 
@@ -810,7 +812,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 **Coverage:** [Andrew’s other recorded sons](./index.html#N65) supply candidates. [Henry’s parent names](./index.html#N70), [his later census readings](./index.html#N79) and [the unresolved Emmett/Raliegh household and 1940 Robert E. candidate](./index.html#N73) establish no subsequent male line. A household without a son does not prove lifetime childlessness.
 
-**Next test:** resolve the [adult Edward B.–1880 Byron identity bridge](./index.html#N101) before treating this as a Solomon collateral. The 1920 original explicitly records Milton B., eight, as Edward’s son, but no acquired adult record names Solomon or Amanda. The bounded death/probate checks did not close that gap. A later [fifteen-image court-book pass](./index.html#N101) found no target on the administrator O leaf; the blank guardian O leaf has no established 1920 coverage. Map the relationship between the O index and later guardianship pages only if jurisdiction or a named pointer supports that next step; the separate packet container remains unread. If the parent bridge is closed, correlate Milton’s full historical identity and document each later father–son step. A documented Solomon branch would anchor earlier than an Andrew-only comparison. For the existing Andrew-level routes, inspect Walter’s [29 May 1968 notice, image 61387527](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355), still unread after [bounded access attempts](./index.html#N67); [Robert’s two exact notices](./index.html#N96) are a parallel identity route; an official copy enquiry has been sent for the 18 November 1958 Ardmoreite notice, with the original and reply pending. Restored login still exposes Publisher Extra for that exact page; use the existing copy enquiry rather than treating account access as image entitlement. Verify each relationship and adult identity before tracing a comparison line; an Andrew branch cannot settle the earlier Solomon–Aaron chain.
+**Next test:** resolve the [adult Edward B.–1880 Byron identity bridge](./index.html#N101) before treating this as a Solomon collateral. The 1920 original explicitly records Milton B., eight, as Edward’s son, but no acquired adult record names Solomon or Amanda. The bounded death/probate checks did not close that gap. A later [fifteen-image court-book pass](./index.html#N101) found no target on the administrator O leaf; the blank guardian O leaf has no established 1920 coverage. Map the relationship between the O index and later guardianship pages only if jurisdiction or a named pointer supports that next step; the separate packet container remains unread. If the parent bridge is closed, correlate Milton’s full historical identity and document each later father–son step. A documented Solomon branch would anchor earlier than an Andrew-only comparison. For the existing Andrew-level routes, inspect Walter’s [29 May 1968 notice, image 61387527](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355), still unread after [bounded access attempts](./index.html#N67); [Robert’s two exact notices](./index.html#N96) are a parallel identity route; an official copy enquiry has been sent for the 18 November 1958 Ardmoreite notice, with the original and reply pending. Restored login exposes Publisher Extra for both exact newspaper pages; the existing copy enquiry concerns only the Ardmoreite. Use that enquiry rather than treating account access as image entitlement. Verify each relationship and adult identity before tracing a comparison line; an Andrew branch cannot settle the earlier Solomon–Aaron chain.
 
 03 · Family-held source The complete family Bible record Recalled extent · original unread
 
@@ -874,13 +876,13 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 **30 September update:** [Exact paper-unit locators and an unresolved ledger-attribution test](./index.html#N66). L53062 / PK034 has a Pickens filming note; L53034 / C0907 remains a distinct comparison. Neither has been matched to film 1025480 / DGS8687026 or to a surviving Aaron packet.
 
-09 · Rutherford County Archives Thomas Welch’s loose will, 1809 Enquiry sent · loose item unread
+09 · Rutherford County Archives Thomas Welch’s loose will, 1809 Register copies received · loose item unconfirmed
 
 **Reference:** original loose wills 1804–1899: **Welch, Thomas**, written **14 and 18 May 1809**, recorded **11 July 1809**, RB **1b p82**, nuncupative. Distinguish the later 1842/1843 Welch entry.
 
 **Already read:** recorded will DGS **7642461 images 118–119** and court proof DGS **8142650 image 193, p138**.
 
-**Question and route:** obtain all sides, endorsements and attachments of the listed loose item to test the Tennessee Aaron’s identity. [The official archive-specific email/mail procedure is now documented](./index.html#N84). An electronic-copy/access enquiry was sent on 1 October 2026; a reply is pending. The loose original, exact box/folder and item-image route remain unverified. No fee was authorized; do not duplicate the enquiry.
+**Question and route:** obtain all sides, endorsements and attachments of the listed loose item to test the Tennessee Aaron’s identity. The 1 October archive reply supplied [two photographs of the same bound register pages 82–83](./index.html#N84), not a confirmed loose item. No new autograph or identity bridge follows. Clarify whether separate loose sheets, wrapper or proof papers survive, with an item citation and complete-side copies; that follow-up has not yet been sent. See [COR04](./index.html#COR04) before contact. Do not repeat the original enquiry or treat the inventory’s loose-will heading as proof that these photographs fulfill it.
 
 **Edition 01.12 bounded follow-up:** [The three-spread Caldwell index check](./index.html#N75) supplied no unambiguous early James deed target. The surviving loose Welch will remains the direct identity retrieval target.
 
@@ -963,6 +965,30 @@ We are looking for a contemporary deed, probate, church, court or family record 
 The main priorities are Aaron Oliphant’s actual Nash’s Regiment service file and the grant or drawer entry for Early County, district 7, lot 23. The military index has already been read; the full file has not. Exact references and access limits are in [R04](./index.html#R04) and [R05](./index.html#R05).
 
 Reviewed 29 September 2026. Questions will be updated as evidence arrives. Please arrange any sharing of another person’s DNA information with their permission.
+
+### Requests and correspondence
+
+Check this tracker and the relevant restricted delivery evidence before contacting anyone. Do not duplicate a pending request or silently resend an uncertain submission. Update the existing row on a reply, then reconcile its linked record and source notes. “Sent” confirms the outgoing record, not receipt of an original or a verified family claim.
+
+Current request status · private recipients, addresses and message bodies are not published. On narrow screens, scroll the table sideways.
+
+| Request / public role | Exact purpose | Sent or attempted / status | Next action |
+| --- | --- | --- | --- |
+| COR01 National Records of Scotland | [GD 113/5/35c item 17; CS 17/1/6 p 196, /7 p 345, /25 p 340](./index.html#R06) — copies and quote. | 28 Sep 2026 **Sent; acknowledged; substantive reply pending** | Await the existing request; no duplicate or paid order. |
+| COR02 Existing DNA research contact | [Two distinct Devaney comparisons](./index.html#R01) and [an independent paternal collateral](./index.html#R02). | 30 Sep 2026 **Sent; reply pending** | Await target data. The latest selected conversation tail showed no new incoming; wider history was not rechecked. Do not merge the comparators or resend. |
+| COR03 NARA | [Aaron, Nash’s SC Volunteers, War of 1812, RG 94/NAID 300392](./index.html#N85) — complete service file and copy route. | 1 Oct 2026; clarification same day **Replied with guidance; clarification reply pending** | Resolve mixed war references and exact file/quote. No order placed. |
+| COR04 Rutherford County Archives | [Thomas Welch, 14/18 May 1809; RB 1b p 82](./index.html#R09) — surviving loose item, all sides and citation. | 1 Oct 2026 **Replied; two bound-register photographs received** | Clarify whether separate loose sheets/proof survive. Follow-up not yet sent. |
+| COR05 Historical-source contributor · FamilySearch | [LHXM-9VZ source attachments](./index.html#RT01) — original birth, birthplace and Bible/middle-name citation. | 1 Oct 2026 **Sent; reply pending** | Await the existing source enquiry; delivery does not verify the family claims. |
+| COR06 Birth-date contributor · email | [17 May 1791 entry](./index.html#RT01) — original support and literal family-entry wording. | 1 Oct 2026 **Alternate email sent; reply pending** | Await this route; its earlier failed chat is COR07. |
+| COR07 Same birth-date contributor · FamilySearch route | [Same source question as COR06](./index.html#RT01). | 1 Oct 2026 **Failed: explicitly undelivered** | Do not retry this route; COR06 is the delivered outgoing alternative. |
+| COR08 Georgia Archives | [Early district 7 lot 23](./index.html#N62) and [Hancock C 613886](./index.html#N92) — digital/onsite access procedure. | 1 Oct 2026 **Official form accepted; substantive reply pending** | Await guidance; no duplicate, copying order or paid work commissioned. |
+| COR09 Oklahoma Historical Society | [Daily Ardmoreite, 18 Nov 1958, p 2](./index.html#N96) — complete notice, holdings and copy quote. | 1 Oct 2026 **Sent; reply pending** | Await this exact notice route; the Oklahoman is not included. |
+| COR10 Independent onsite copy researcher | [Early district 7 lot 23](./index.html#N62) and [Hancock C 613886](./index.html#N92) — bounded copying quote. | 1 Oct 2026 **Estimate received; paid retrieval deferred** | Wait for existing-copy/contact checks; no estimate accepted or order placed. |
+| COR11 Richmond County Probate Court | [William A. Davaney letters: temporary 7 p 175; permanent 14 p 89](./index.html#N23) — copies and related estate papers. | 1 Oct 2026 **Sent; reply pending** | Await procedure/quote; estate identity remains unproved. No order placed. |
+| COR12 South Carolina Department of Archives and History | [PK 034/C 0907 versus film 1025480/DGS 8687026](./index.html#N66) — Grisham-register crosswalk and loose-paper route. | 1 Oct 2026 **Submission attempted; delivery uncertain** | Resolve delivery before any resubmission; no acceptance or answer verified. |
+| COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
+
+These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use Gmail for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
 
 ### Related trees and research contacts
 
@@ -1220,7 +1246,7 @@ Editorially reviewed 30 September 2026 against saved provenance and collateral a
 
 ## A conclusion should lead back to its evidence.
 
-Editorial review: 1 October 2026, 15:56:52 EDT  · Content updated: 1 October 2026, 13:50:06 EDT  · [Edit note](./index.html#edit-0134-sources)
+Editorial review: 1 October 2026, 16:46:40 EDT  · Content updated: 1 October 2026, 13:50:06 EDT  · [Edit note](./index.html#edit-0134-sources)
 
 This report combines dated original-record readings, derivative sources and private comparison reviews. Later research notes record subsequent inspections, corrections and access checks; the cited dates describe their own scopes, not a fresh rereading of every source for this edition. Original-image links may require a free account or access at a participating location; a subscription does not necessarily remove those restrictions.
 
@@ -1268,7 +1294,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/13WKr
 
 ### Research resources
 
-Editorial review: 1 October 2026, 15:56:52 EDT  · Content updated: 1 October 2026, 15:56:52 EDT  · [Edit note](./index.html#edit-0134-research-resources)
+Editorial review: 1 October 2026, 16:46:40 EDT  · Content updated: 1 October 2026, 16:46:40 EDT  · [Edit note](./index.html#edit-0134-research-resources)
 
 [Restricted 1 October access and reply review](https://drive.google.com/file/d/19D6LB5nDK6Yw7oDaoigceDob_yerwLA4/view?usp=drivesdk) preserves the scoped observations and correspondence. File metadata and owner-only access were verified; remote bytes and restoration were not tested.
 
@@ -1284,7 +1310,7 @@ DNA tests, family-tree platforms and record repositories
 | [Ancestry](https://www.ancestry.ca/) | Autosomal DNA matches, shared matches, member trees, message boards and historical record images; a separately maintained core account tree. Research used the Canadian site with the existing account. A 1 October check showed a populated DNA match list; this adds no new genetic evidence. | The focused paternal copy now includes Rebecca’s father Solomon Rainwater and Andrew’s recorded sons Robert, Walter and Henry, with qualified citations; the earlier eleven-person core was preserved. Its normal native export passed independent checks for fifteen people, seven families and ten source objects. Repeated source references are not independent records, and no restore was tested. The two existing living profiles were left unchanged; raw exports and account details remain private. This copies previously reviewed relationships, supplying no new proof of Aaron’s parents, biological paternity or the reported Aaron–Solomon link. The [public historical tree](./index.html#family-tree) remains twenty-one people and twenty-three qualified relationships. The DNA-to-tree link remains unset; completing the account copy does not complete that connection. [Restricted focused-copy and native-export archive](https://drive.google.com/file/d/1OmgmdFQT8IVuiW1bIFVkx7kPnVmrR-mm/view). Member trees and relationship predictions require verification; account access does not mean every relevant image has been examined. |
 | [GEDmatch](https://www.gedmatch.com/) | Existing uploaded-kit match results were inspected as an additional autosomal comparison resource. A 1 October check showed the populated default free One-to-Many list; no new phasing or biological comparison was performed. | The access check established usable data, not a new ancestor or a match assigned to one paternal-grandparent branch. Uploads and repeated appearances of the same person are not independent relatives or independent evidence. No new raw-DNA upload was made for this investigation; private kit identities are not published. |
 | [FamilySearch](https://www.familysearch.org/) | Catalogue, indexed records, original record images and collaborative-tree source inventories, especially American deeds, probate, census and marriage records. Two source-contributor enquiries about existing birth/Bible provenance are now reply-pending; see [RT01](./index.html#RT01). | An index, catalogue description or tree assertion is not an original-record reading. Some images require sign-in or location-based access. Restored login on 1 October still left the [exact 1896 marriage image](./index.html#N101) restricted to a FamilySearch Center or affiliate library; no original was read. Exact films, image references and remaining restrictions are listed in the retrieval agenda. |
-| [Archives and special collections](./index.html#records) | National Records of Scotland, NARA, Georgia Archives, South Carolina archives, county repositories, Furman, PRONI and St Andrews are represented in the record-retrieval agenda. [NARA](./index.html#R04) and [Rutherford loose-will](./index.html#R09) copy-route enquiries were sent on 1 October. NARA supplied procedural ordering guidance, but a clarification of its mixed war references was sent and awaits a reply; the service file remains unread; the loose-will reply and original remain pending. A combined [Georgia Archives access enquiry](./index.html#N62) was accepted, and paid onsite retrieval of Early 7/23 and [Hancock C613886](./index.html#N92) is deferred while existing-copy and lower-cost routes are checked. Separate copy enquiries cover the [Richmond administration letters](./index.html#N23) and [exact Robert notice](./index.html#N96). The records and substantive replies remain pending; no copying order has been placed or paid retrieval commissioned. | Use targets R04–R14 for the exact institution, reference, prior coverage and next step. These have mixed states: originals read, catalogue-only leads, requests pending and restricted or missing material. Listing an archive does not mean its relevant holdings have all been read. |
+| [Archives and special collections](./index.html#records) | National Records of Scotland, NARA, Georgia Archives, South Carolina archives, county repositories, Furman, PRONI and St Andrews are represented in the record-retrieval agenda. [NARA](./index.html#R04) and [Rutherford loose-will](./index.html#R09) copy-route enquiries were sent on 1 October. NARA supplied procedural ordering guidance, but a clarification of its mixed war references was sent and awaits a reply; the service file remains unread; Rutherford supplied bound-register photographs, with the separate loose Welch item still unconfirmed. A combined [Georgia Archives access enquiry](./index.html#N62) was accepted, and paid onsite retrieval of Early 7/23 and [Hancock C613886](./index.html#N92) is deferred while existing-copy and lower-cost routes are checked. Separate copy enquiries cover the [Richmond administration letters](./index.html#N23) and [18 November 1958 Ardmoreite notice](./index.html#N96). Both Robert newspaper originals remain unread behind Publisher Extra; the Oklahoman is not covered by that copy enquiry. Other requested records and replies remain pending; [the tracker](./index.html#correspondence) distinguishes each request. No copying order has been placed or paid retrieval commissioned. | Use targets R04–R14 for the exact institution, reference, prior coverage and next step. These have mixed states: originals read, catalogue-only leads, requests pending and restricted or missing material. Listing an archive does not mean its relevant holdings have all been read. |
 | [Family accounts and contributed collections](https://www.therainwatercollection.com/) | The Rainwater Collection, Oliphant message-board accounts, cemetery transcriptions and published obituaries supply leads and supporting family context. | Retain the author, record provenance and original citation when available. Copies and derivative accounts may share a common source. The complete family Bible remains outstanding; online biographies do not substitute for it. |
 
 Account-access observations retain their individual dates above and may expire. Exact autosomal product versions are not fully inventoried. No credentials, kit identifiers, living-match details or raw genetic data are included here. For continuation, read the [research guide](./README.md), [structured export](./research.json) and [outstanding records](./index.html#records). Future reviewed changes should update each resource’s use, limits and review date together.
@@ -1293,7 +1319,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 1 October 2026, 15:56:52 EDT  · Content updated: 1 October 2026, 15:56:52 EDT  · [Edit note](./index.html#edit-0134-research-notes)
+Editorial review: 1 October 2026, 16:46:40 EDT  · Content updated: 1 October 2026, 16:46:40 EDT  · [Edit note](./index.html#edit-0134-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -2691,7 +2717,7 @@ Restricted supporting synthesis: [Existing-record identity comparison](https://d
 
 N84 · The loose Welch will has a specific archive copy route
 
-Reviewed 1 October 2026 · Earlier official policy/inventory reading; later enquiry sent; zero loose-original readings
+Reviewed 1 October 2026 · Earlier official policy/inventory reading and supplied bound-register photographs; zero loose-original readings
 
 The county’s [archive-specific research policy](https://rutherfordcountytn.gov/archives-research-policy) accepts email or mail enquiries with a mailing address, limits an enquiry to three individuals and asks researchers to allow up to two weeks. Its displayed rate is **$0.15 per page, with the first ten pages free**, subject to change. Electronic delivery, resolution and a complete packet are not guaranteed. At the 30 September checkpoint, no request, order or payment commitment had been made.
 
@@ -2699,7 +2725,9 @@ The [official original-loose-wills inventory](https://secured.rutherfordcountytn
 
 Four focused queries and four official documents supplied the custody/request procedure but exposed no item-image or precise box/folder link. That is not proof that no scan exists elsewhere. The earlier unsigned request specifies every surviving leaf, front and back, wrapper, endorsement and attachment, with the archive citation and supplied-side count. It asks for the loose manuscript rather than another copy of the already read recorded will or court proof. Private requester details remain outside this report.
 
-Endorsements or witness statements might supply residence, occupation, associates or authentic writing absent from the recorded copy. Those details are possible, not promised. Distinguish genuine witness writing from clerk copies; a common mark alone cannot identify a person, and no authenticated autograph comparator is assumed. The loose original remains unread. No Aaron parent, middle name, migration or origin conclusion changes. See [the exact retrieval target](./index.html#R09) and [the independent identity comparison](./index.html#N83). This finite online route investigation is complete; an electronic-copy/access enquiry was sent on 1 October 2026 and a reply is pending. No fee was authorized. Await that reply rather than repeating the enquiry; the sent message is not a recovered manuscript.
+**1 October archive reply:** two photographs show the same bound will-register pages **82–83** already read in DGS 7642461 images 118–119. Text sequence, handwriting, line breaks and flourishes match; the recording line reads **11 July 1809**, agreeing with the known inventory. This is a new reproduction of the known event, not an independently dated Aaron appearance, a loose manuscript or a genuine witness autograph. Neither image adds Aaron’s age, parents, birthplace, occupation, prior residence or a link to Rebecca Rainwater’s husband. No separate reverse, wrapper or loose-file endorsement was supplied, and the reply gives no new item citation or completeness certification.
+
+The separate loose-packet question remains open. Clarify with the custodian whether surviving loose sheets or associated proof papers exist apart from these register pages, and request an item-level citation and complete-side images if available. No follow-up has yet been sent. Possible identifying endorsements are not promised; a copied mark is not an authenticated autograph. See [R09](./index.html#R09), [the identity comparison](./index.html#N83) and [the request tracker](./index.html#COR04). No parentage, middle-name, migration or origin conclusion changes.
 
 Restricted supporting record: [Official retrieval review and unsigned request packet](https://drive.google.com/file/d/1FuPhPy4___A-I1i1D-WoylSIpjmDdY6n/view). Access requires Taylor’s permission; private requester details are excluded from this report.
 
@@ -2883,13 +2911,13 @@ A focused obituary-index search identified two **R. E. Oliphant, age 80, Mariett
 
 The first original reached security verification; the second exact URL was inaccessible through the public web tool. These are access limits, not newspaper absence. The two indexes may reproduce the same report, so they are not independent corroboration. Their inferred birth, death-place and relationship fields are not adopted as original wording; missing indexed child fields do not establish lifetime childlessness.
 
-**Authenticated access checks, 30 September and 1 October 2026:** the exact Ardmoreite viewer required Publisher Extra on both occasions, including after restored login at 15:38 EDT on 1 October. The original remains unread. [Ancestry Canada’s official All Access description](https://help.ancestry.ca/hc/en-ca/articles/53933280003987-All-Access-Membership) includes Newspapers.com Basic; that does not satisfy this page’s Publisher Extra requirement. These checks update entitlement, preserving the earlier security and public-tool attempt history.
+**Authenticated exact-page checks:** the *Daily Ardmoreite*, 18 November 1958, p. 2, required Publisher Extra on 30 September and again on 1 October at 15:38 EDT. The distinct *Daily Oklahoman*, 19 November 1958, p. 28, also required Publisher Extra in the restored session at 16:15 EDT on 1 October. Neither original was read. [Ancestry Canada’s official All Access description](https://help.ancestry.ca/hc/en-ca/articles/53933280003987-All-Access-Membership) includes Newspapers.com Basic; that does not satisfy these pages’ Publisher Extra requirement. These are entitlement observations, preserving the earlier security and public-tool attempt history, not evidence of notice content or independent family corroboration.
 
 **1 October copy-route successor:** an enquiry was sent to the [Oklahoma Historical Society Research Center](https://www.okhistory.org/general/researchpolicies) for the complete *Daily Ardmoreite* notice of **18 November 1958, p. 2**, including any continuation and issue identification. Its [published obituary-copy service](https://www.okhistory.org/research/genfees) lists $15, but eligibility, exact issue holdings, delivery and total charge require confirmation: we have the publication reference, not a verified death date/place. The notice and reply remain pending; no paid order or fee was authorized. This offers a copy route without repeating the subscription access attempt.
 
 A separate official [OK2Explore death-index search](https://ok2explore.health.ok.gov/App/DeathSearch) used surname Oliphant, year 1959 and a ±1-year range, with other fields blank. All five returned entries were read; none matched Robert Emmett/E or the 17 November 1959 Love County lead. The results URL is stateful: reproduce those fields. This is a bounded 1958–1960 index negative, not death-certificate absence.
 
-The finite batch completed four queries, two selected index-detail opens and two exact original-access attempts, with zero newspaper originals read or downloaded. Only the first two strong candidates from the ranked obituary result page were selected; no full 390-result screen is claimed. The next test is the complete 18 November Ardmoreite notice, with the 19 November Oklahoman as a distinct alternate, before interpreting relatives or matching the adult [Emmett household](./index.html#N73). The Andrew/Alfred head-name conflict and any later father–son continuation remain unresolved. No Aaron origin, tree relationship or historical DNA anchor changes.
+The earlier notice-locator batch completed four queries, two selected index-detail opens and two exact original-access attempts, with zero newspaper originals read or downloaded. Only the first two strong candidates from the ranked obituary result page were selected; no full 390-result screen is claimed. The next test is the complete 18 November Ardmoreite notice, with the 19 November Oklahoman as a distinct alternate, before interpreting relatives or matching the adult [Emmett household](./index.html#N73). The Andrew/Alfred head-name conflict and any later father–son continuation remain unresolved. No Aaron origin, tree relationship or historical DNA anchor changes.
 
 Restricted supporting review: [Robert notice-index and original-access review](https://drive.google.com/file/d/1fVQsuARKzkm-zdJ5Udtmu7k34sidDOEE/view?usp=drivesdk). Access requires Taylor’s permission; exact source provenance and finite scope/result are retained with the evidence.
 
@@ -3062,7 +3090,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 1 October 2026, 15:56:52 EDT  · Content updated: 1 October 2026, 15:56:52 EDT  · [Edit note](./index.html#edit-0134-updates)
+Editorial review: 1 October 2026, 16:46:40 EDT  · Content updated: 1 October 2026, 16:46:40 EDT  · [Edit note](./index.html#edit-0134-updates)
 
 29 September 2026
 
@@ -3522,23 +3550,23 @@ Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 14:45:02 ED
 
 ### Edition 01.34 · Restored access and qualified copy guidance
 
-NARA’s procedural reply supplies ordering guidance but leaves the exact War of 1812 Nash file and quote unconfirmed; a same-thread clarification was sent and awaits a reply. Restored research sessions expose populated DNA lists without new comparison evidence; the exact 1896 marriage image still requires Center/affiliate access, and Robert’s 1958 notice still requires Publisher Extra or the pending archive-copy route. No historical original, parent bridge, tree relationship, candidate rank or origin-confidence change follows. No copying order has been placed or paid retrieval commissioned.
+NARA’s procedural reply supplies ordering guidance but leaves the exact War of 1812 Nash file and quote unconfirmed; a same-thread clarification was sent and awaits a reply. Added a public request tracker to prevent duplicate contact. Rutherford supplied two photographs of the already-read bound will pages 82–83; no loose original or new Aaron identity was established. Restored research sessions expose populated DNA lists without new comparison evidence; the exact 1896 marriage image still requires Center/affiliate access, and both exact Robert newspaper pages still require Publisher Extra. The pending archive-copy enquiry concerns only the Ardmoreite. No historical original, parent bridge, tree relationship, candidate rank or origin-confidence change follows. No copying order has been placed or paid retrieval commissioned.
 
 Section review and edit notes
 
-Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 15:56:52 EDT . This records the editorial reconciliation, not a historical source reading or deployed verification.
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 16:46:40 EDT . This records the editorial reconciliation, not a historical source reading or deployed verification.
 
-- [Start here](./index.html#start-here): Reconcile NARA’s procedural reply and current selected reply/access limits. Keep exact direct-Aaron priorities and Georgia deferral; no new historical or genetic evidence.
+- [Start here](./index.html#start-here): Require correspondence and restricted-delivery checks before contact. Summarize the unresolved NARA clarification and supplied Welch bound copies; preserve direct-Aaron priorities and Georgia deferral without an evidence upgrade.
 
-- [Records](./index.html#records): R04 records the sent clarification of the Nash service-file route and awaits a reply before ordering; R02 distinguishes restored newspaper login from Publisher Extra entitlement. Parent and historical-line gaps remain open.
+- [Records](./index.html#records): Add the request tracker with sent, replied, deferred, failed, uncertain and unsent states. R04 awaits the sent military clarification; R09 distinguishes supplied bound-register copies from the still-unconfirmed loose item. R02 preserves both newspaper entitlement limits.
 
-- [Sources](./index.html#sources): Review the procedural reply, dated restored-session observations and exact image/subscription restrictions as access evidence. No private correspondence, account identifiers or living DNA details enter the public report.
+- [Sources](./index.html#sources): Review procedural replies, access restrictions and source-specific custodial-copy evidence. The supplied Welch photographs reproduce the known register; private correspondence, recipient identities and living DNA stay excluded.
 
-- [Research resources](./index.html#research-resources): U01–U07 distinguish restored populated results, missing bilateral data, location restrictions and guidance-only archive replies. Account access is dated and does not establish new comparison evidence.
+- [Research resources](./index.html#research-resources): U01–U07 distinguish restored data, missing bilateral calls, location/subscription restrictions and reply source classes. Link the correspondence tracker; the Welch reply supplies bound copies without confirming loose material.
 
-- [Research notes](./index.html#research-notes): N85 records procedural guidance, its war-reference mismatch and the sent clarification; N101 preserves the exact Center/affiliate dependency and N96 the Publisher Extra restriction. No newly read historical original, parent bridge or surname conclusion.
+- [Research notes](./index.html#research-notes): N84 classifies the supplied Welch photographs as reproductions of the already-read bound pages, with the loose item unresolved. N85 retains the pending clarification; N101/N96 retain exact access gates. No parent bridge or surname conclusion.
 
-- [Updates](./index.html#updates): Append the bounded access/reply successor, preserve earlier editions and editor notes, and keep tree relationships, candidate ranks and origin confidence unchanged.
+- [Updates](./index.html#updates): Append the bounded access/reply successor and public correspondence continuity. Preserve earlier editions and editor notes; copied Welch pages do not change tree relationships, candidate ranks or origin confidence.
 
 09 / Contact
 

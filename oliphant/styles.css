@@ -23,3 +23,6 @@
 .research-note{border-top:1px solid var(--line,#d7d8ce);padding:1.1rem 0}.research-note summary{cursor:pointer;font-family:Georgia,serif;font-size:1.2rem;line-height:1.5;color:#203f39}.research-note summary:focus-visible{outline:2px solid #946b40;outline-offset:5px}.note-body{padding:.5rem 0 1rem}.note-body p{overflow-wrap:anywhere}#notes-coverage{margin-top:2rem}
 
 .clue-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}.clue{padding:1.5rem;background:#f0f2e8;border:1px solid #d7d8ce}.clue h3{margin-top:0}.clue p{font-size:1rem;overflow-wrap:anywhere}@media(max-width:700px){.clue-grid{grid-template-columns:1fr}}
+
+/* Separate research instructions from the checkpoint that follows. */
+.instructions-panel{margin:0 0 44px;border:1px solid #aeb9a3;border-left:3px solid var(--green);background:var(--soft);padding:20px 24px;scroll-margin-top:30px}.instructions-panel>summary{cursor:pointer;font:24px/1.35 var(--serif);color:var(--green)}.instructions-body{padding-top:20px}.instructions-body>p:last-child{margin-bottom:0}.instructions-body .continuation-steps{margin-bottom:20px}@media(max-width:760px){.instructions-panel{padding:18px;margin-bottom:36px}.instructions-panel>summary{font-size:23px}}

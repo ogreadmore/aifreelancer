@@ -22,13 +22,15 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 1 October 2026, 01:12:28 EDT  · Content updated: 1 October 2026, 01:12:28 EDT  · [Edit note](./index.html#edit-0127-start-here)
+Editorial review: 1 October 2026, 02:00:56 EDT  · Content updated: 1 October 2026, 02:00:56 EDT  · [Edit note](./index.html#edit-0128-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
 **Checkpoint reviewed 1 October 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. Use **Aaron Oliphant** as the working name. The family researcher recalls that the Bible’s ancestry stops at Aaron; no page has been examined, and its wording and provenance still need checking. The [separate middle-name recollection](./index.html#N17) is less certain. The Bible’s remaining role is to verify Aaron and later generations, while independent earlier-origin research continues. The active original-record priorities are [the exact federal Nash regiment service file](./index.html#R04), [Thomas Welch’s 1809 loose will](./index.html#R09) and [Aaron’s exact loose debt-case papers](./index.html#N92). The early Rutherford court O-index, DGS 8142649, now has a completed reading of two visible O leaves: [image 20’s right leaf](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GB-3?lang=en&i=19) and [image 21’s left continuation](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GT-T?lang=en&i=20). No recognizable Aaron/Aron Oliphant variant was found there. Image 21’s bottom continuation reference remains partly obscured; the entire O section and individual book-letter chronology are not established. This bounded negative supplies no new Aaron identity, residence or parentage. [The three record groups are compared as an identity test](./index.html#N83), not treated as one person merely because the names match. The stronger Pendleton–Georgia family anchor does not establish that the Tennessee witness was a different man. Earlier [collateral census](./index.html#N79), [Rutherford tax](./index.html#N80), [Gwinnett index](./index.html#N81) and [Greene guardian-letter](./index.html#N82) findings retain their bounded coverage and identity limits. No later male-child chain, comparison tester or new ancestry discovery has been established.
 
 **Latest original follow-ups:** [Rainwater’s 1812 title network](./index.html#N88), [the Rutherford Norman deed](./index.html#N89), [Welch’s 1804 Lincoln deed](./index.html#N90) and [five Brown acquisition candidates](./index.html#N91) add original readings without an Aaron identity, prior-home or kinship bridge. [The uncertain estate payee](./index.html#N86) remains unidentified; [loose estate series](./index.html#N87) and [the exact loose Walthall case locator](./index.html#N92) improve retrieval. The bound Walthall writs were already read on 28 September and are not counted as new historical evidence. Two further checks now define the [1860 proposed James household](./index.html#N38) and a [Weakley James Caldwell estate](./index.html#N01); neither establishes the missing Aaron identity or parentage links.
+
+**Rainwater–Devaney overlap:** [the 1810 Pendleton district presence](./index.html#N21) remains separate from a direct relationship. [The 1820 Spartanburg original](./index.html#N13) places Robert near a Rainwater block in the schedule, with four unnamed young occupants; published child-name claims remain unverified. Neither establishes Robert’s relationship to Aaron or assigns a DNA segment.
 
 **Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
 
@@ -40,9 +42,11 @@ Editorial review: 1 October 2026, 01:12:28 EDT  · Content updated: 1 October 20
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest bounded preservation:** two restricted ZIPs preserve the final candidate-household check and a private evidence-summary checkpoint. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,900, incrementally from 1,898 rather than by a full-library recount. [Household follow-up](https://drive.google.com/file/d/1LkdBNOOcJTOS2fHJv06bjDSKLuwpIFrY/view) · [Restricted evidence summary](https://drive.google.com/file/d/1_Ibd4GhPyg7zaj6ljbpcJC9XkpVJmzdD/view). The qualified household supplies no book-family bridge or new genetic assignment.
+**Latest bounded preservation:** three restricted ZIPs preserve the Rainwater–Devaney association screen, the three-page 1820 census reading with its separate header, and limited-access child-name publication extracts. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,903, incrementally from 1,900 rather than by a full-library recount. [Association screen](https://drive.google.com/file/d/1PlqKbzC1YdD0e70O3sokQOd39JNu3unD/view) · [1820 census reading](https://drive.google.com/file/d/1_zyHRCJvilFSbZ1mEI410gnbdNlbocTr/view) · [Child-name extracts](https://drive.google.com/file/d/1CC7BnkqvW0kgK-zgZ0NwJFW46H0P8xO4/view). The actual Bible and printed transcription remain unread; preservation is not kinship proof.
 
 Earlier evidence-library transfers
+
+**Latest bounded preservation:** two restricted ZIPs preserve the final candidate-household check and a private evidence-summary checkpoint. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,900, incrementally from 1,898 rather than by a full-library recount. [Household follow-up](https://drive.google.com/file/d/1LkdBNOOcJTOS2fHJv06bjDSKLuwpIFrY/view) · [Restricted evidence summary](https://drive.google.com/file/d/1_Ibd4GhPyg7zaj6ljbpcJC9XkpVJmzdD/view). The qualified household supplies no book-family bridge or new genetic assignment.
 
 **Latest bounded preservation:** eight restricted ZIPs preserve the parcel-transfer evidence, book/source-delivery controls, revised Stein and Doty readings, and private surname-query/Slough documentary checks. Filenames, sizes, destination folders and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,898, incrementally from 1,890 rather than by a full-library recount. The offered Maryland pages and earlier private book-delivery ZIP remain unacquired; separately retrieved public books do not identify that ZIP. [Parcel evidence](https://drive.google.com/file/d/14-JK5kprggb058FQSMecVQHsZUIeHemj/view) · [Bibliographic controls](https://drive.google.com/file/d/1MapBuhzZKC55au0-Pq5hbYasxz45DH6T/view) · [Addenda delivery check](https://drive.google.com/file/d/1hikTyX3ICyMT4xkTHJh8eAhgCaFKgI4B/view) · [Keyword review](https://drive.google.com/file/d/1tubiQvrbMIevHEDMVn6OMqLmOi0YF5oO/view) · [Revised Stein reading](https://drive.google.com/file/d/1SEuOdPzM4Pi3PRoniyh7D4aa8iWflk6c/view) · [Initial Slough check](https://drive.google.com/file/d/1kerZnljSG4aEwqNl3O5dZoqWs94WfRRG/view) · [Doty reading](https://drive.google.com/file/d/1Aa7TxE-hoZf2dqjJUndgaN_pZilV3WOl/view) · [Death-record successor](https://drive.google.com/file/d/1scNKIoM1RbnVgVD6bNmvNx4ZaRzD5vOn/view). No new Aaron parentage or genetic assignment follows.
 
@@ -207,11 +211,29 @@ Selected evidence / Where to look next
 
 ## Clues worth following
 
-Editorial review: 30 September 2026, 23:49:26 EDT  · Content updated: 30 September 2026, 23:49:26 EDT  · [Edit note](./index.html#edit-0125-clues)
+Editorial review: 1 October 2026, 02:00:56 EDT  · Content updated: 1 October 2026, 02:00:56 EDT  · [Edit note](./index.html#edit-0128-clues)
 
 A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
 
-These are selected leads, not a ranking of ancestry probabilities. Their value lies in the next question they can answer. Reviewed 30 September 2026; follow each link for the detailed evidence, conflicts and search limits.
+These are selected leads, not a ranking of ancestry probabilities. Their value lies in the next question they can answer. The documentary tiers below were added on 1 October 2026; earlier clue source-review dates remain unchanged. Follow each link for the detailed evidence, conflicts and search limits.
+
+### Documentary contenders
+
+These are research-priority tiers, not ancestry probabilities or proved parents. They compare selected family and associate leads, not a complete census-household inventory. Age fit uses the unverified 1791 birth only provisionally; Robert is not the unique candidate or an identified Aaron household.
+
+Which documentary lead deserves the next test?
+
+| Lead / priority | Why it merits a test | Missing link / next test |
+| --- | --- | --- |
+| Priority 1 [Rutherford Aaron, 1809](./index.html#N01) | The will proof actually names an Aaron. James Caldwell and a possible William association offer an identity test. | Identify the witness as Rebecca’s husband and resolve the associate chain. Retrieve Welch’s loose will; Caldwell identities remain unmerged. |
+| Priority 2 · tied [Laurens William, 1794/1800](./index.html#N14) | A wagon transaction and nearby associates support a household candidate with two unnamed boys under ten. | Find a record naming Aaron as a child or establishing migration; census age fit alone is insufficient. |
+| Priority 2 · tied [Spartanburg Robert, 1820](./index.html#N13) | An original household appears after three entries from the Rainwater block. A separate Bible-transcription extract offers possible child names. | Resolve census/vendor identity and inspect the actual transcription/Bible. The young occupants are unnamed; no Aaron is recorded in this household; the adult bracket does not prove fatherhood. |
+| Priority 2 · tied [James–David / Gordon family](./index.html#N27) | Original estate papers identify a real family; [Gordon expressly calls himself James’s son-in-law](./index.html#N29). | Find a contemporary Aaron relationship and identify David; he is not established as James’s son or the painter. See [C05](./index.html#C05). |
+| Priority 3 · indirect [William–Betsy Gordy compilation](./index.html#N14) | A separate family compilation and the recorded William–Thomas gift provide specific people and sources to test. | Establish an Aaron connection; lost-letter traditions, other Williams and the unchecked original 1806 register remain distinct. |
+| Priority 3 · indirect [Younger Aaron Olifant Devany](./index.html#N02) | The full name is recorded in his 1866 marriage, providing a specific namesake to investigate. | Identify his parents and establish a relationship to the elder Aaron; proposed Samuel/Agatha identities remain unresolved. |
+| Priority 3 · indirect [Pendleton John/Mary candidates](./index.html#N21) | Original estate papers name the couple and place John in Gwinnett in 1834; earlier district presence permits comparison. | Prove the census/estate identities and Samuel’s parent link. Do not merge this couple with the younger namesake’s proposed family. |
+
+[The household-coverage note](./index.html#N13) also records Rutherford James Oliphant’s 1810 age fit and the unexamined candidates. The tied tier reflects different concrete tests; the evidence does not justify a finer order. Genetic comparators have separate [DNA comparison priorities](./index.html#C01). No Aaron parentage or historical-confidence upgrade is implied.
 
 ### A younger man actually bore the name Aaron Olifant Devany
 
@@ -1261,7 +1283,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 1 October 2026, 01:12:28 EDT  · Content updated: 1 October 2026, 01:12:28 EDT  · [Edit note](./index.html#edit-0127-research-notes)
+Editorial review: 1 October 2026, 02:00:56 EDT  · Content updated: 1 October 2026, 02:00:56 EDT  · [Edit note](./index.html#edit-0128-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1445,9 +1467,9 @@ Search-engine queries found no further qualifying direct-Aaron item in returned 
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1zK4agR-Hr7Cw6Y8uYu2PSH1JwI9TILqC/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
-N13 · Early Carolina full-text screens and false co-occurrences
+N13 · Early Carolina name screens and the Spartanburg census clue
 
-Reviewed 30 September 2026 · Bounded title/transcript searches · Editorial reconciliation of saved research; no new external record retrieval.
+Reviewed 1 October 2026 · Earlier bounded screens retained; three 1820 target pages and a separate header newly read. Child-name publication extracts remain unverified.
 
 The South Carolina FamilySearch full-text query +Aaron +Ol*ph*, place South Carolina, years 1750–1814, screened all 207 result titles. The +Aaron +Ol*f* variant screened keyword labels across all 214 results. Selected transcripts resolved apparent candidates into separate people: Aaron Broyles and Dr. Olivant, Aaron Moore or Templeman and Robert Oliphant, Andrew Oliphant and Aaron Coats, David Oliphant and Aaron J. Moses, and Samuel Alston misread as Olfton with Aaron Smith. The already known 1821 Aaron–Job Rainwater deed reappeared in two indexes; it is one event.
 
@@ -1459,7 +1481,21 @@ North Carolina queries for 1770–1814 with keywords Ol*ph* Ol*f* Olivant screen
 
 A separate original neighborhood check of Solomon Rainwater's 1800 Pendleton page and the two-page 1810 spread recognized no Oliphant surname. Adjoining pages were screened only through indexed names, not manual original readings. Enumeration order is not proof of physical adjacency; unnamed people are not Aaron or Rebecca. The 1810 national nonexact Oliphant search's 23 results supplied no Aaron/Pendleton hit, without exhaustive variant coverage. [1800 original](https://www.familysearch.org/ark:/61903/3:1:33S7-9R8W-NS5); [1810 original](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBM-9YP). The same-name Cooper Bennett near Rainwater is an associate correlation to test, not a kinship statement.
 
+**1820 Spartanburg original:** [stamped p. 262, image 32 of 56](https://www.familysearch.org/ark:/61903/3:1:33S7-9YYT-986D), records Levi, John, Burrel and Wm Rainwater consecutively. Wm Whitley, John Fortenberry and Sarah Musgrove intervene before **Robt Olliphint**—Robert, not Aaron. The schedule is nonalphabetical, but enumeration order does not establish property adjacency, a business connection or kinship. The [separately read column header](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYYT-98QM) identifies six free white household members: two males under ten, one male 26–44, two females under ten and one female 26–44. The four young occupants are unnamed and are not expressly identified as Robert’s children; the adult woman is not named or called his wife. Provisionally associating the sole adult male bracket with the head supplies an identity screen, not an exact birth or relationship to Aaron.
+
+[Page 251](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYYT-9ZYJ) and [page 275](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYYY-3R) each read Geo Divine. Those appearances remain unmerged; neither is on p. 262, and Divine is not equated with Devaney. The [1790 surname index’s Devine, Reinwaters/Rainwaters, Oliffen and Divine entries](https://www.skcensus.com/1790-census-index-spartanburg-county-south-carolina/) remain derivative locators with originals unread; Oliffen is not silently identified as Oliphant.
+
+**Possible named children, not established household identities:** a search extract of [*The Genie*, vol. 27 no. 2 (1993), printed p. 57](https://www.altgenealogy.com/Genie%20Archives/1993/Vol%2027%20No%202.pdf), describes an Oliphant family Bible with an 1884 imprint. Its extracted “Their Children” heading attributes Richard (30 May 1814), James A. (5 April 1816) and Rosanna (1 June 1818; died 13 December 1820) to Robert and a wife whose given name is blank, surname Lynch. The actual printed layout and original Bible remain unread; the early entries would be retrospective. This is a different Bible from Taylor’s recalled Aaron family Bible. These candidates cannot identify the four young census occupants; the fourth remains unidentified. A [submitted Richard profile](https://ancestors.familysearch.org/en/G1HL-51V/richard-madison-oliphant-1814-1860) gives conflicting parents and is unverified. A separate [1995 researcher query, printed p. 80](https://www.piedmont-historical-society.org/quarterlies/phs_vol9_no2.pdf), names Richard and Mary Lee but supplies no inspected parentage instrument or Aaron connection. Both publications have a James Oliphant submitter name; their independence is unestablished. No child is imported into the public tree.
+
+**Other regional candidates:** Robert is neither the only possible household lead nor an identified Aaron household. [Laurens William’s 1800 household](./index.html#N14) has two unnamed boys under ten; [the 1809 Rutherford record](./index.html#N01) actually names an Aaron in a possible Caldwell–William association network. Neither assigns Aaron to Robert’s family. If the reported 1791 birth is approximately correct, the 1820 under-ten occupants cannot be Aaron. The adult male’s 26–44 bracket includes roughly Aaron’s generation; it is not evidence that Robert was his father.
+
+**Household coverage remains incomplete:** earlier original readings supply two conditional age fits: [Laurens William in 1800](./index.html#N14) has two unnamed boys under ten, and [Rutherford James Oliphant in 1810](https://www.familysearch.org/ark:/61903/3:1:33S7-9YY6-SGXS) has one unnamed male 16–25. Neither is identified as Aaron; James Marlin’s documented apprenticeship offers an alternative for the latter household, without proving its occupant. This is James Oliphant’s household, not James Caldwell’s. The earlier 1790 variant queries’ 17 and 37 title results overlap, not 54 distinct families. The 1810 national 23-result screen located David in Charleston and John in Edgefield, but their original household bins remain unread in the reviewed scope. The next finite inventory test is to recover and deduplicate the saved 23-result list, then inspect those two exact original households. This local coverage audit added no external reading or pedigree expansion.
+
+**Next discriminator:** inspect the actual 1993 transcription and its Bible provenance, or the Robert-vendor land clause in [John Red’s Spartanburg will typescript, book B p. 60](https://www.archivesindex.sc.gov/index.php/Detail/objects/S108093002400231000), to obtain a precise conveyance locator. The earlier typescript review reports a will written 12 February 1825; the 1995 query calls it 1826. That discrepancy and the census/vendor identities remain unresolved. John Red’s children are not Robert’s children. No Robert–Aaron relationship has been established.
+
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1Yd9XtMDMVkPeSjhocpqEBtpKMM2fBXUv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1k3qgv1-cI8ft0LQeY90-LPGI1FGDN76j/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1RzkojLHyqVZoFVRQshIZgeJ5oKuTv3k9/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
+
+Restricted original-reading scope and provenance: [1820 census preservation](https://drive.google.com/file/d/1_zyHRCJvilFSbZ1mEI410gnbdNlbocTr/view). [Restricted child-name discovery extracts](https://drive.google.com/file/d/1CC7BnkqvW0kgK-zgZ0NwJFW46H0P8xO4/view) preserve the limited-access observations, not original Bible or parentage records.
 
 N14 · James–Jean Nevay, the William–Jean rumor and distinct Williams
 
@@ -1623,7 +1659,7 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N21 · McCulley estate, John/Mary and the Georgia census candidates
 
-Reviewed 30 September 2026 · Original couple and migration anchor; Samuel bridge missing · Editorial reconciliation of saved research; no new external record retrieval.
+Reviewed 1 October 2026 · Earlier John/Mary originals retained; three new bounded co-name summary searches do not establish a Rainwater relationship or Samuel parent link.
 
 McCulley packet 485, images 130–172, was sequentially transcript-screened with key originals read. The 4 March 1833 petition names John Divinay and Mary among seven couples outside South Carolina, with Barney McCully outside that brace. Samuel Diviney, the 1805 will's grandchild, is absent from the eight parties. That omission establishes no death or disinheritance: the papers alternate Samuel/Jane estate descriptions and leave the property interests uncertain.
 
@@ -1636,6 +1672,8 @@ An original 1810 Pendleton Jno Devany has unnamed males under 10, 10–15 and 26
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1MI6V2vTkY5EQyV-xNy_CkbMg9u_Y41IA/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1epY_BWkP3vu0spLL0O3CDbjyX2ORKqDH/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1x5bkKbE4rtsfXbJ7EZpgBf_gpVmZlODN/view?usp=drivesdk) · [Working review 4](https://drive.google.com/file/d/12b6GYdkuDRzjR5M9uH6SoHZq5whD1KL_/view?usp=drivesdk) · [Working review 5](https://drive.google.com/file/d/1GOfNhrFXw_PjDXX7XETH-GBUWtEcR61T/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
 **Edition 01.13 original follow-up:** [The first Gwinnett estate-docket section’s D/V index leaves](./index.html#N81) were read without a recognizable target. That section begins in 1856; the later section and proceeding bodies remain unread. It does not resolve the 1834 John/Mary identities or a Samuel parent link.
+
+**Rainwater–Devaney overlap, checked 1 October 2026:** the already read [1810 Jno Devany census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBM-9TM) and [Solomon Rainwater census](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBM-9YP) place both surnames in Pendleton, four viewer images apart; they do not record a relationship or adjoining land. [The 1812 Rainwater deed](./index.html#N88) names James Liddell as a witness, while Wm Liddle appears beside Jno in the census; those given names must not be merged. Three required co-name Full-Text searches using Devany, Davaney and Diviney returned five, zero and two summaries. All seven were later or outside early South Carolina/Georgia; no result original was opened. This is not an all-spelling or archive-wide negative. A documented association could test an alternative autosomal route through Rebecca’s family, without assigning a DNA match or explaining Aaron’s paternal surname. [The separately read 1820 Spartanburg household](./index.html#N13) concerns Robert, not Aaron. [Restricted association-search scope](https://drive.google.com/file/d/1PlqKbzC1YdD0e70O3sokQOd39JNu3unD/view).
 
 N22 · Samuel's marriage and Greene/Hancock probate limits
 
@@ -2671,7 +2709,7 @@ Restricted supporting records: [Supporting review 1](https://drive.google.com/fi
 
 N88 · Solomon Rainwater’s 1812 deed names a specific title network
 
-Reviewed 30 September 2026 · Newly examined deed and limited earlier estate-inventory follow-up
+Reviewed 1 October 2026 · Crosslink reconciliation; the earlier 30 September deed and packet readings retain their original scope.
 
 [Pendleton book M p. 28, DGS 7856756 image 434](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS73-MSHJ-9), and its [p. 29 continuation, image 435](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CS73-MSHL-M), record John Watson to Solomon Rainwater, both of Pendleton District, South Carolina, **10 October 1812, $450, 387 acres on Twenty Three Mile Creek, waters of Seneca River**. Abraham Padgett is a boundary neighbor; witnesses are Jno. McMillion and James Liddell. Elizabeth Watson, John’s wife, released dower on 7 November. Proof and recording are dated 7 December 1812.
 
@@ -2684,6 +2722,8 @@ With zero discovery queries, the pass also enlarged pp. 8–10 of the previously
 This finite packet pass used zero discovery queries and did not fully retranscribe every face. The filmed envelope is bounded; no additional named Aaron obligation is presently locatable within it. A productive next estate test requires a concrete different purchaser-note or court-paper locator, not repetition of the already tested packet or ledger-to-case-number mismatch. The 1814 purchaser’s identification with Rebecca’s husband remains plausible; the named 1821 couple remains the stronger anchor. No origin or kinship conclusion changes.
 
 Restricted supporting records: [Supporting review 1](https://drive.google.com/file/d/1XLMt58tX6w4w-4dU3bWnhnh9_BEeKXD7/view?usp=drivesdk) · [Supporting review 2](https://drive.google.com/file/d/1claS50wxskgW7UmNSUoG4fjARJ31GDDm/view?usp=drivesdk). Access requires Taylor’s permission; original scans remain restricted.
+
+For the separately recorded 1810 Devaney district presence and bounded direct-association check, see [N21](./index.html#N21); the 1820 Robert/Rainwater census clue is in [N13](./index.html#N13). Shared district presence and Liddle/Liddell surname resemblance do not establish kinship.
 
 N89 · The Rutherford original reads Ferney G. Norman
 
@@ -2962,7 +3002,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 1 October 2026, 01:12:28 EDT  · Content updated: 1 October 2026, 01:12:28 EDT  · [Edit note](./index.html#edit-0127-updates)
+Editorial review: 1 October 2026, 02:00:56 EDT  · Content updated: 1 October 2026, 02:00:56 EDT  · [Edit note](./index.html#edit-0128-updates)
 
 29 September 2026
 
@@ -3281,6 +3321,24 @@ Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 01:12:28 ED
 - [Leads, searches and what remains unresolved.](./index.html#research-notes): Appended N32’s anonymous original-household candidate and age conflict; identity and the independent book-family bridge remain unresolved, without new DNA attribution.
 
 - [A living report, with a memory.](./index.html#updates): Appended this bounded household/preservation successor while retaining all previous editions and 45 immutable editor notes.
+
+1 October 2026
+
+### Edition 01.28 · District overlap and qualified household leads
+
+The 1820 Spartanburg original identifies Robt Olliphint after three intervening entries from the Rainwater block, with four unnamed under-ten household members. Possible child names come from unverified publication extracts, not identified census relationships. Earlier 1810 Pendleton presence and three bounded co-name summary searches establish no Rainwater–Devaney relationship. Three restricted metadata/owner-only-verified ZIPs advance the incremental recorded library checkpoint to 1,903. K06 adds explicit documentary research-priority tiers, distinct from genetic comparator priorities; these are not ancestry probabilities. No Aaron parentage, genetic assignment, existing candidate-table rank, public-tree relationship or historical-confidence change follows; previous editions and editor notes remain unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 02:00:56 EDT . This marks the release’s editorial review, not a new inspection of historical sources.
+
+- [Pick up the investigation here.](./index.html#start-here): Added the linked district/household contrast and three-ZIP incremental preservation checkpoint of 1,903; the prior 1,900 paragraph remains unchanged in earlier history.
+
+- [Clues worth following](./index.html#clues): Added K06 first as a full-width documentary-contender overview with explicit research-priority tiers, tied tests and incomplete-household coverage; existing K01–K05 and genetic comparator priorities retain their evidence limits.
+
+- [Leads, searches and what remains unresolved.](./index.html#research-notes): Reconciled N13’s original Spartanburg rows/header, unmerged Divine entries, retrospective child-name extracts and incomplete household coverage; N21/N88 distinguish Pendleton district presence from documented association. No Aaron relationship or genetic assignment follows.
+
+- [A living report, with a memory.](./index.html#updates): Appended this bounded overlap, documentary-priority and preservation successor while retaining all earlier editions and 48 immutable editor notes.
 
 09 / Contact
 

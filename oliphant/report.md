@@ -6,17 +6,11 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-start-here)
+Editorial review: 30 September 2026, 20:31:25 EDT  · Content updated: 30 September 2026, 20:31:25 EDT  · [Edit note](./index.html#edit-0121-header-contact)
+
+Instructions
 
 This website is the current research record. Read it first, then follow its citations and the restricted evidence library for the underlying material. There is no separate research starting point in Drive.
-
-**The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
-
-**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. Use **Aaron Oliphant** as the working name. The family researcher recalls that the Bible’s ancestry stops at Aaron; no page has been examined, and its wording and provenance still need checking. The [separate middle-name recollection](./index.html#N17) is less certain. The Bible’s remaining role is to verify Aaron and later generations, while independent earlier-origin research continues. The active original-record priorities are [the exact federal Nash regiment service file](./index.html#R04), [Thomas Welch’s 1809 loose will](./index.html#R09) and [Aaron’s exact loose debt-case papers](./index.html#N92). The early Rutherford court O-index, DGS 8142649, now has a completed reading of two visible O leaves: [image 20’s right leaf](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GB-3?lang=en&i=19) and [image 21’s left continuation](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GT-T?lang=en&i=20). No recognizable Aaron/Aron Oliphant variant was found there. Image 21’s bottom continuation reference remains partly obscured; the entire O section and individual book-letter chronology are not established. This bounded negative supplies no new Aaron identity, residence or parentage. [The three record groups are compared as an identity test](./index.html#N83), not treated as one person merely because the names match. The stronger Pendleton–Georgia family anchor does not establish that the Tennessee witness was a different man. Earlier [collateral census](./index.html#N79), [Rutherford tax](./index.html#N80), [Gwinnett index](./index.html#N81) and [Greene guardian-letter](./index.html#N82) findings retain their bounded coverage and identity limits. No later male-child chain, comparison tester or new ancestry discovery has been established.
-
-**Latest original follow-ups:** [Rainwater’s 1812 title network](./index.html#N88), [the Rutherford Norman deed](./index.html#N89), [Welch’s 1804 Lincoln deed](./index.html#N90) and [five Brown acquisition candidates](./index.html#N91) add original readings without an Aaron identity, prior-home or kinship bridge. [The uncertain estate payee](./index.html#N86) remains unidentified; [loose estate series](./index.html#N87) and [the exact loose Walthall case locator](./index.html#N92) improve retrieval. The bound Walthall writs were already read on 28 September and are not counted as new historical evidence.
-
-**Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
 
 - **Understand the present assessment.** Read [What we know](./index.html#findings), the [candidate comparison](./index.html#candidate-comparison) and [competing explanations](./index.html#theories). Rankings set research priorities, not surname probabilities.
 
@@ -27,6 +21,16 @@ This website is the current research record. Read it first, then follow its cita
 - **Leave the next researcher a usable result.** Record the date, question, repository, collection, exact query and filters, pages or images examined, access limits, result, citation, and next finite action. Distinguish an index hit, an original reading and a same-person inference.
 
 - **Update this site when a research batch is complete.** Reconcile changed findings, completed coverage, corrections, confidence and next steps here. Preserve stable IDs and superseded readings, date the change, rebuild the [Markdown report](./report.md) and [structured export](./research.json), and verify the published edition.
+
+[How to update this report](./README.md#rebuild-and-verify): editing, section timestamps, retained notes, rebuild checks and live verification for human and AI contributors.
+
+**The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
+
+**Checkpoint reviewed 30 September 2026 :** Aaron’s parents, birthplace, immigrant generation and surname history remain unresolved. Use **Aaron Oliphant** as the working name. The family researcher recalls that the Bible’s ancestry stops at Aaron; no page has been examined, and its wording and provenance still need checking. The [separate middle-name recollection](./index.html#N17) is less certain. The Bible’s remaining role is to verify Aaron and later generations, while independent earlier-origin research continues. The active original-record priorities are [the exact federal Nash regiment service file](./index.html#R04), [Thomas Welch’s 1809 loose will](./index.html#R09) and [Aaron’s exact loose debt-case papers](./index.html#N92). The early Rutherford court O-index, DGS 8142649, now has a completed reading of two visible O leaves: [image 20’s right leaf](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GB-3?lang=en&i=19) and [image 21’s left continuation](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSKH-C9GT-T?lang=en&i=20). No recognizable Aaron/Aron Oliphant variant was found there. Image 21’s bottom continuation reference remains partly obscured; the entire O section and individual book-letter chronology are not established. This bounded negative supplies no new Aaron identity, residence or parentage. [The three record groups are compared as an identity test](./index.html#N83), not treated as one person merely because the names match. The stronger Pendleton–Georgia family anchor does not establish that the Tennessee witness was a different man. Earlier [collateral census](./index.html#N79), [Rutherford tax](./index.html#N80), [Gwinnett index](./index.html#N81) and [Greene guardian-letter](./index.html#N82) findings retain their bounded coverage and identity limits. No later male-child chain, comparison tester or new ancestry discovery has been established.
+
+**Latest original follow-ups:** [Rainwater’s 1812 title network](./index.html#N88), [the Rutherford Norman deed](./index.html#N89), [Welch’s 1804 Lincoln deed](./index.html#N90) and [five Brown acquisition candidates](./index.html#N91) add original readings without an Aaron identity, prior-home or kinship bridge. [The uncertain estate payee](./index.html#N86) remains unidentified; [loose estate series](./index.html#N87) and [the exact loose Walthall case locator](./index.html#N92) improve retrieval. The bound Walthall writs were already read on 28 September and are not counted as new historical evidence.
+
+**Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
 
 ### Supporting evidence in Google Drive
 
@@ -1204,7 +1208,7 @@ Editorially reviewed 30 September 2026 against saved provenance and collateral a
 
 ## A conclusion should lead back to its evidence.
 
-Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-sources)
+Editorial review: 30 September 2026, 20:31:25 EDT  · Content updated: 30 September 2026, 20:31:25 EDT  · [Edit note](./index.html#edit-0121-header-contact)
 
 This edition was reconciled against the current claim register and independent reviews of 29 September 2026. It is a synthesis of that work, not a fresh examination of every manuscript. Original-image links may require a free account or access at a participating location; a subscription does not necessarily remove those restrictions.
 
@@ -1216,9 +1220,9 @@ This edition was reconciled against the current claim register and independent r
 
 Machine text was used to locate records; original readings control the central documentary claims. Copied accounts are not counted as independent witnesses. An unsuccessful search describes only the collections, pages and spellings actually checked. Confidence is qualitative: no surname probabilities have been calculated.
 
-**How this record stays current:** each changed finding has one stable place for its evidence, limits and next test. Every affected summary, confidence label, resource status and next step is reviewed together, with short links back to that detail. Dated corrections retain earlier readings, contradictions and bounded negative searches. Public conclusions and exports are kept separate from private DNA, living-person details and account records; local preservation, restricted upload and a verified live edition are distinct steps. Section timestamps track editorial review and known content changes from Edition 01.21. This first timestamp records the release’s editorial checkpoint, not a reconstructed time of earlier edits. It does not mean the underlying sources were inspected again. Dated section edit notes are retained in the edition history.
+### Keeping this record current
 
-[How to update this report](./README.md#rebuild-and-verify): editing, section timestamps, retained notes, rebuild checks and live verification for human and AI contributors.
+**How this record stays current:** each changed finding has one stable place for its evidence, limits and next test. Every affected summary, confidence label, resource status and next step is reviewed together, with short links back to that detail. Dated corrections retain earlier readings, contradictions and bounded negative searches. Public conclusions and exports are kept separate from private DNA, living-person details and account records; local preservation, restricted upload and a verified live edition are distinct steps. Section timestamps track editorial review and known content changes from Edition 01.21. This first timestamp records the release’s editorial checkpoint, not a reconstructed time of earlier edits. It does not mean the underlying sources were inspected again. Dated section edit notes are retained in the edition history.
 
 - **Pendleton deed, 29 January 1821.** Book P, p382. Names Aaron of Hancock County and Rebecca as daughter of deceased Solomon Rainwater. [Original image](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B). Original visually read in the research archive; claims A03–A04.
 
@@ -2934,7 +2938,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 30 September 2026, 20:16:58 EDT  · Content updated: 30 September 2026, 20:16:58 EDT  · [Edit note](./index.html#edit-0121-updates)
+Editorial review: 30 September 2026, 20:31:25 EDT  · Content updated: 30 September 2026, 20:31:25 EDT  · [Edit note](./index.html#edit-0121-header-contact)
 
 29 September 2026
 
@@ -3109,6 +3113,8 @@ Editor: AI research assistant · Editorial checkpoint: 30 September 2026, 20:16:
 - [Edition history](./index.html#updates): Recorded this consolidated edition, the header Contact link and its section edit notes while retaining all earlier editions.
 
 - [Contact](./index.html#contact): Reviewed; the existing contact routes and form remain unchanged; delivery was not tested.
+
+**Navigation and instructions correction · 30 September 2026, 20:31:25 EDT  · AI research assistant:** Removed the duplicate Contact item from the main navigation; the upper-right Contact link remains. Moved the existing research and update guidance into Instructions at the start of Start here, linked from contents; current findings remain visible. No evidence, assessment or contact-section content changed.
 
 ### Use this research in your own work
 

@@ -249,3 +249,7 @@ Before contacting a researcher or repository, check [Requests and correspondence
 ## Edition 01.35 · Geographic coverage and pending source clarification
 
 The Welch source-survival clarification was sent in the existing thread and awaits a reply; the supplied bound-register photographs remain distinct from an unconfirmed loose manuscript. Two bounded SCDAH reply-account queries found no acknowledgement trace, so delivery remains uncertain and no duplicate is indicated. N31 now makes completed country/locality and four Big Y profile/available-tree coverage explicit: no verified close-paternal county/parish cluster or new genetic evidence follows. The 101 notes, historical tree, candidate ranks and origin confidence remain unchanged; no copying order or charge was authorized.
+
+## Edition 01.36 · Reply received, comparison still unresolved
+
+A substantive genetic-research reply supplies a consent-based finer-result route and a potential collateral, with no new calls or independently documented paternal split. Both Devaney comparisons remain distinct and unresolved. N32 separates the current A823 group-wide date from pairwise timing and unsupported surname-based age rules. Two verified restricted synthesis uploads advance the incremental library checkpoint from 1,913 to 1,915, with owner and authorized named-viewer access. No historical original, tree relationship, candidate rank or origin-confidence change follows; no test or copying order was placed.

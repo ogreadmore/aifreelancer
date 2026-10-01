@@ -10,7 +10,7 @@ This website is the current research record. Read it first, then follow its cita
 
 - **Check what has already been done.** Read the relevant [research notes](./index.html#research-notes), [coverage checklist](./index.html#notes-coverage) and [source qualifications](./index.html#sources). Check the linked historical reviews before repeating a search; the topic audit is not a transcript of every past search.
 
-- **Choose one question that evidence could settle.** The active independent original-record tests are [Aaron’s federal Nash regiment service file](./index.html#R04), [Thomas Welch’s original loose will](./index.html#R09) and [the exact loose debt-case papers](./index.html#N92). The two visible Rutherford court O leaves have now been read; the entire O section remains incomplete, with exact source pointers above. The [two Devaney comparisons](./index.html#R01) await a reply, and an [independent paternal collateral](./index.html#R02) remains a separate historical-line test. [Bible inspection](./index.html#R03) will check wording, dates and provenance for Aaron and later generations; independent earlier-origin work need not wait for it. Other targets retain their exact retrieval references.
+- **Choose one question that evidence could settle.** The active independent original-record tests are [Aaron’s federal Nash regiment service file](./index.html#R04), [Thomas Welch’s original loose will](./index.html#R09) and [the exact loose debt-case papers](./index.html#N92). The two visible Rutherford court O leaves have now been read; the entire O section remains incomplete, with exact source pointers above. The [two Devaney comparisons](./index.html#R01) remain unresolved after a reply supplied procedural guidance, and an [independent paternal collateral](./index.html#R02) remains a separate historical-line test. [Bible inspection](./index.html#R03) will check wording, dates and provenance for Aaron and later generations; independent earlier-origin work need not wait for it. Other targets retain their exact retrieval references.
 
 - **Check correspondence before contact.** Read [Requests and correspondence](./index.html#correspondence) and the relevant restricted delivery evidence. Do not duplicate pending requests or resend uncertain submissions without resolving their status. On a reply, update the same row and the linked source/record notes together.
 
@@ -24,19 +24,19 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 1 October 2026, 17:22:20 EDT  · Content updated: 1 October 2026, 17:22:20 EDT  · [Edit note](./index.html#edit-0135-start-here)
+Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
 **Best working picture:** The working preference is an American-born Aaron, with immigration in an earlier generation. This has moderate support, not a proved birthplace or parentage. The conservative starting assumption is a family already using Oliphant; no surname transition has been observed. The tested descendant’s Y line has a plausible deeper northern-Irish context, with Scotland still open, but it is not independently anchored at Aaron. [Read the interpretation and its alternatives](./index.html#theories).
 
-- **Resolve the genetic comparison and historical anchor.** Await the existing [two-comparator enquiry](./index.html#R01) and seek a [documented independent male-line collateral](./index.html#R02). Missing finer data are a dependency, not permission to substitute surname counts.
+- **Resolve the genetic comparison and historical anchor.** Use the reply’s [consent-based route to seek finer comparison data](./index.html#R01) and seek a [documented independent male-line collateral](./index.html#R02). Missing finer data are a dependency, not permission to substitute surname counts.
 
 - **Retrieve exact Aaron-related originals.** Prioritize the [Nash service file](./index.html#R04), [loose Welch will](./index.html#R09), [Early 7/23 entry](./index.html#R05) and [identified Hancock papers](./index.html#N92) through their recorded access routes. No parents are promised; do not repeat completed catalogue work without a new pointer.
 
 - **Use the qualified household comparison.** [The Charleston David and Edgefield John originals are now read](./index.html#N13); John’s anonymous young male is an age fit only, with a documented William as an alternative to test. The wider inventory remains incomplete. Any next family search needs a named identity or kinship discriminator, not another surname screen.
 
-**Requests in progress:** [The correspondence tracker](./index.html#correspondence) distinguishes unanswered, replied, deferred, failed and uncertain requests. [NARA’s guidance needs clarification](./index.html#N85); the clarification was sent and awaits a reply. [Rutherford supplied photographs of the already-read bound will pages](./index.html#N84); the sent clarification about separate loose material awaits a reply. Paid Georgia retrieval remains deferred while existing-copy and lower-cost routes are checked. The [two comparator tests](./index.html#R01) still await target data or a reply; restored account access adds no comparison evidence. Check the tracker and restricted receipts before contact. No copying order has been placed or paid retrieval commissioned.
+**Requests in progress:** [The correspondence tracker](./index.html#correspondence) distinguishes unanswered, replied, deferred, failed and uncertain requests. [NARA’s guidance needs clarification](./index.html#N85); the clarification was sent and awaits a reply. [Rutherford supplied photographs of the already-read bound will pages](./index.html#N84); the sent clarification about separate loose material awaits a reply. Paid Georgia retrieval remains deferred while existing-copy and lower-cost routes are checked. A 1 October reply about the [two comparator tests](./index.html#R01) supplies procedural guidance and a potential collateral, but no new variant data or documented paternal split. Both tests remain unresolved. Check the tracker and restricted receipts before contact. No copying order has been placed or paid retrieval commissioned.
 
 Completed checks and corrections
 
@@ -56,7 +56,7 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted archive:** the [bounded Lawrence index check and source-selection review](https://drive.google.com/file/d/14pt4jjxKkUTLrH2dqc7Q1mZsYgHsritj/view?usp=drivesdk) supplement the [adult-collateral evidence](https://drive.google.com/file/d/1pY5GnbYgyXkTunQBMTeYV3UvgbbeTCWd/view?usp=drivesdk). Access requires Taylor’s permission; transfer details and earlier checkpoints are below.
+**Latest restricted preservation:** the [current reply and genetic-method review](https://drive.google.com/file/d/1_9GtBFsqZhKqrqZTV-nFdHWPN3eI-x7I/view?usp=drivesdk) follows the [dated historical-correspondence synthesis](https://drive.google.com/file/d/1DvRF68DO17c5mNiBPwa2dIn3c6-Rr_RV/view?usp=drivesdk). The recorded library total is **1,915**, by incremental accounting, not a full recount. Current checked access is restricted to the owner and authorized named viewers; identities and private correspondence remain unpublished. New-file name, size, parent and permissions were checked; remote bytes and restoration were not tested. Historical owner-only receipts retain their dated upload scope.
 
 Earlier evidence-library transfers
 
@@ -678,13 +678,15 @@ Solomon’s census entry reports his unnamed father born in South Carolina. The 
 
 ## A paternal branch is a clue. It is not an address or a surname.
 
-Editorial review: 1 October 2026, 17:22:20 EDT  · Content updated: 1 October 2026, 17:22:20 EDT  · [Edit note](./index.html#edit-0135-dna)
+Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-dna)
 
 Y-DNA follows the direct paternal line. Autosomal DNA reflects many ancestral lines. These answer different questions, and a shared surname in an autosomal match’s tree does not identify the source of the shared DNA. [[8]](./index.html#s8)
 
 **Book-family search control:** surname-keyword hits include substrings and related testers; they do not verify particular book-family connections or new genetic groups. [N32 records the query controls and unresolved book-family bridge](./index.html#N32). Aaron’s origins and the existing comparisons remain unresolved.
 
 **Geographic test:** country/locality assessment and review of four Big Y profiles and available tree fields have already been performed. No verified close-paternal county/parish cluster is established. [N31 records the completed coverage and remaining requirements](./index.html#N31).
+
+**Comparison reply, 1 October 2026:** guidance identifies a consent-based route to seek finer results for the unresolved GD5 comparator and a potential collateral whose paternal split still needs documentation. It supplies no new genetic comparison or historical anchor. [Neither surname category nor the A823 group date establishes this pair’s age](./index.html#N32); private participant data require authorization.
 
 R-A823
 
@@ -792,17 +794,17 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 1 October 2026, 17:22:20 EDT  · Content updated: 1 October 2026, 17:22:20 EDT  · [Edit note](./index.html#edit-0135-records)
+Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-records)
 
 The current independent original-record focus is the federal Nash service file and the loose Welch will. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
-01 · Genetic comparison Resolve the two Devaney comparisons Enquiry sent · reply pending
+01 · Genetic comparison Resolve the two Devaney comparisons Reply received · finer data missing
 
 **Target:** confirm the private/public mapping and any finer existing result for the GD5 Y67 match; separately compare the R-A823 DeVenney tester with Taylor at mutually callable sites.
 
 **Question:** is either a genealogically recent paternal relative, or do the lines split much earlier?
 
-**Route:** a consented comparison with the relevant test administrator. A focused enquiry about the two comparisons and paternal collateral branches was sent on 30 September 2026; a reply is pending. Match identifiers belong in the private request, not this page. Absence from a match list is not a measured pairwise distance.
+**Route:** a consented comparison with the relevant tester or kit manager. The reply does not make private project-administrator data available; seek the participant’s consent. A focused enquiry sent on 30 September received a substantive reply on 1 October. It supplies a consent-based route to seek an existing finer result for the unresolved GD5 comparator, or finer testing if none exists, and suggests a potential collateral. No test was ordered; no new calls or independently documented paternal split were supplied. The separately typed DeVenney comparison is unchanged. See [the dating limits](./index.html#N32). Match identifiers belong in the private request, not this page. Absence from a match list is not a measured pairwise distance.
 
 Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSHxRYeXo1u65kb_KQmkY48phacX0fK/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
@@ -975,7 +977,7 @@ Current request status · private recipients, addresses and message bodies are n
 | Request / public role | Exact purpose | Sent or attempted / status | Next action |
 | --- | --- | --- | --- |
 | COR01 National Records of Scotland | [GD 113/5/35c item 17; CS 17/1/6 p 196, /7 p 345, /25 p 340](./index.html#R06) — copies and quote. | 28 Sep 2026 **Sent; acknowledged; substantive reply pending** | Await the existing request; no duplicate or paid order. |
-| COR02 Existing DNA research contact | [Two distinct Devaney comparisons](./index.html#R01) and [an independent paternal collateral](./index.html#R02). | 30 Sep 2026 **Sent; reply pending** | Await target data. The latest selected conversation tail showed no new incoming; wider history was not rechecked. Do not merge the comparators or resend. |
+| COR02 Existing DNA research contact | [Two distinct Devaney comparisons](./index.html#R01) and [an independent paternal collateral](./index.html#R02). | Sent 30 Sep; replied 1 Oct 2026 **Reply received; target data still missing** | Verify the correct GD5 comparator and consent for any existing finer result; document the proposed collateral’s paternal split. No new calls or pedigree supplied. Do not merge the comparators or duplicate contact. |
 | COR03 NARA | [Aaron, Nash’s SC Volunteers, War of 1812, RG 94/NAID 300392](./index.html#N85) — complete service file and copy route. | 1 Oct 2026; clarification same day **Replied with guidance; clarification reply pending** | Resolve mixed war references and exact file/quote. No order placed. |
 | COR04 Rutherford County Archives | [Thomas Welch, 14/18 May 1809; RB 1b p 82](./index.html#R09) — surviving loose item, all sides and citation. | 1 Oct 2026 **Register photographs received; clarification sent, reply pending** | Await the sent clarification about separate loose sheets, proof and citation; do not duplicate it. No copying order placed. |
 | COR05 Historical-source contributor · FamilySearch | [LHXM-9VZ source attachments](./index.html#RT01) — original birth, birthplace and Bible/middle-name citation. | 1 Oct 2026 **Sent; reply pending** | Await the existing source enquiry; delivery does not verify the family claims. |
@@ -1319,7 +1321,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 1 October 2026, 17:22:20 EDT  · Content updated: 1 October 2026, 17:22:20 EDT  · [Edit note](./index.html#edit-0135-research-notes)
+Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1897,11 +1899,13 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N32 · Why surname counts cannot yet become ancestry probabilities
 
-Reviewed 1 October 2026 · Method defined; statistical inputs insufficient · Earlier match-count audits and later bounded book-family keyword controls; no new genetic comparison.
+Reviewed 1 October 2026 · Method defined; statistical inputs insufficient · Earlier match-count and book-family controls plus current reply/official group-date review; no new genetic comparison.
 
 The saved Y67 list contains 23 matches: two at genetic distance five, three at six and eighteen at seven. This describes a selected match list, rather than 23 independent ancestral families. Fourteen have finer branch information; eleven split above A823 and three follow a downstream path that the tested Oliphant sample's reviewed reads do not support. Nine remain broad-only. Missing finer testing is missing information, not evidence that an unresolved comparator is especially close.
 
 **Saved STR-only timing screen, 28 September 2026:** the service’s Y67/GD5 report gave a rounded headline around 1400 CE with wide uncertainty. This was a generic test-level/distance distribution calibrated from other tested pairs, not a finer-SNP date measured for these two men. It keeps an old paternal connection plausible but does not exclude later ancestry, date surname acquisition or identify Aaron’s family. [Method and limits](https://help.familytreedna.com/hc/en-us/articles/6162096082831-Y-DNA-FTDNATiP-Report-Introduction).
+
+**1 October reply and date controls:** the reply supplies a route to seek a consented finer result, not new genotype or pedigree evidence. Fixed age rules based on same versus different surnames do not provide a measured date for the unresolved GD5 pair. The current [official A823 story](https://discover.familytreedna.com/y-dna/R-A823/story) models the common ancestor of all sampled A823 members at about 650 CE (most likely 673 CE; 95% interval 407–897 CE). That group-wide estimate is not the closest common-ancestor date of each pair below it and cannot substitute for either missing bilateral comparison. A younger pairwise relationship remains possible unless an independently resolved split rules it out. The GD5 Y67 comparator and separately typed A823 DeVenney remain distinct; a suggested collateral is not yet a documented historical-line anchor. No test, new calls or pair-specific date were obtained.
 
 Two saved autosomal tree-surname searches returned 13 and fourteen results with twelve people in both sets: fifteen unique people, not 27 independent confirmations. A surname anywhere in a match's tree does not establish that person's direct paternal surname. Relatives, repeated platforms and variant spellings need deduplication. The existing service-confirmed triangles concern inherited segments in a reported paternal-family context; no shared segment has been assigned uniquely to Aaron or to the exclusively male Oliphant line.
 
@@ -3092,7 +3096,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 1 October 2026, 17:22:20 EDT  · Content updated: 1 October 2026, 17:22:20 EDT  · [Edit note](./index.html#edit-0135-updates)
+Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-updates)
 
 29 September 2026
 
@@ -3591,6 +3595,26 @@ Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 17:22:20 ED
 - [Research notes](./index.html#research-notes): N31 records completed profile/tree coverage and its pedigree/branch limits; N84 replaces the unsent instruction with the sent clarification and reply-pending boundary.
 
 - [Updates](./index.html#updates): Append this coverage/correspondence successor, preserving previous editions and editor notes. No tree, candidate-rank or origin-confidence change.
+
+1 October 2026
+
+### Edition 01.36 · Reply received, comparison still unresolved
+
+A substantive genetic-research reply supplies a consent-based finer-result route and a potential collateral, with no new calls or independently documented paternal split. Both Devaney comparisons remain distinct and unresolved. N32 separates the current A823 group-wide date from pairwise timing and unsupported surname-based age rules. Two verified restricted synthesis uploads advance the incremental library checkpoint from 1,913 to 1,915, with owner and authorized named-viewer access. No historical original, tree relationship, candidate rank or origin-confidence change follows; no test or copying order was placed.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 18:11:42 EDT . This records the editorial reconciliation, not a new historical or genetic result.
+
+- [Start here](./index.html#start-here): Replace pending-reply instructions with received procedural guidance and missing target data; update the verified restricted-library checkpoint and current authorized-viewer policy.
+
+- [DNA](./index.html#dna): Link the reply’s consent-based next route and the limits of group-wide versus pairwise timing; no new genotype or historical anchor.
+
+- [Records](./index.html#records): COR02 and R01 now distinguish reply received from missing finer calls and an unverified collateral; no duplicate contact or test order.
+
+- [Research notes](./index.html#research-notes): N32 records current official A823 dating separately from unresolved pairwise timing and generic surname heuristics.
+
+- [Updates](./index.html#updates): Append this narrow reply/method/preservation successor; retain earlier editions, evidence confidence, ranks and tree relationships.
 
 09 / Contact
 

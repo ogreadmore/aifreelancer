@@ -22,7 +22,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 1 October 2026, 05:21:50 EDT  · Content updated: 1 October 2026, 05:21:50 EDT  · [Edit note](./index.html#edit-0130-start-here)
+Editorial review: 1 October 2026, 12:18:44 EDT  · Content updated: 1 October 2026, 12:18:44 EDT  · [Edit note](./index.html#edit-0131-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -34,7 +34,7 @@ Editorial review: 1 October 2026, 05:21:50 EDT  · Content updated: 1 October 20
 
 - **Use the qualified household comparison.** [The Charleston David and Edgefield John originals are now read](./index.html#N13); John’s anonymous young male is an age fit only, with a documented William as an alternative to test. The wider inventory remains incomplete. Any next family search needs a named identity or kinship discriminator, not another surname screen.
 
-**Current enquiries, 1 October 2026:** [NARA’s service-file copy-route enquiry](./index.html#R04) has an automatic receipt; [the loose Welch will enquiry](./index.html#R09) and [two birth/Bible source-provenance enquiries](./index.html#RT01) await substantive answers. These four successful sends are retrieval progress, not historical evidence; avoid duplicate requests. [Robert E.’s 1940 single-person household](./index.html#N73) supplies no later son or resolution of the Andrew–Alfred identity conflict.
+**Current enquiries:** [NARA’s service-file enquiry](./index.html#R04) has an automatic receipt; [the loose Welch will](./index.html#R09), [birth/Bible provenance](./index.html#RT01) and [NRS originals](./index.html#R06) still await substantive answers. A combined Georgia Archives access enquiry for [Early 7/23](./index.html#N62) and [the exact Hancock loose case](./index.html#N92) was accepted on 1 October. Bounded reply checks found no substantive answer for NARA, Welch, one birth-source enquiry or NRS; other reply checks were incomplete where account access was unavailable. Await the existing requests rather than duplicate them. Submission and acknowledgement are retrieval progress, not historical proof.
 
 Completed checks and corrections
 
@@ -54,7 +54,9 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest bounded preservation:** one [restricted collateral and enquiry successor](https://drive.google.com/file/d/1GnBeaboK2Ye9oqgOdfwNNjr3mv7m4RRr/view) preserves 28 selected evidence files and two embedded indexes. Filename, size, destination and owner-only permissions were verified. Local member hashes and ZIP checks are retained; remote bytes and restoration were not tested. The recorded library total is 1,905, incrementally from 1,904 rather than a full-library recount. This preservation adds no parentage or genetic assignment.
+**Latest bounded preservation:** one [restricted access-enquiry and reply-check successor](https://drive.google.com/file/d/1DzwWAFm03_ve2_PAl0Qaw6s8h9syriKg/view?usp=drivesdk) preserves 24 selected files and two embedded indexes. Filename, size, destination and owner-only permissions were verified; local member hashes and ZIP checks are retained. Remote bytes and restoration were not tested. The recorded library total is 1,906, incrementally from 1,905 rather than a full-library recount. This records access work and saved-coverage assessment, with no new historical original or genetic assignment.
+
+**Earlier Edition 01.30 preservation:** one [restricted collateral and enquiry successor](https://drive.google.com/file/d/1GnBeaboK2Ye9oqgOdfwNNjr3mv7m4RRr/view) preserves 28 selected evidence files and two embedded indexes. Filename, size, destination and owner-only permissions were verified. Local member hashes and ZIP checks are retained; remote bytes and restoration were not tested. The recorded library total is 1,905, incrementally from 1,904 rather than a full-library recount. This preservation adds no parentage or genetic assignment.
 
 **Earlier Edition 01.29 preservation:** one restricted ZIP preserves the comprehensive audits, selected 1810 household sources and refreshed resource catalogs. Filename, size, destination and owner-only permissions were checked; local checksums are retained, without remote-byte or restore verification. The recorded library total is 1,904, incrementally from 1,903 rather than by a full-library recount. [Restricted audit and source successor](https://drive.google.com/file/d/1dRCVJvOjUPCN6vPZg8ePZW7AkgFix_Fm/view?usp=drivesdk). Preservation adds no parentage or genetic assignment.
 
@@ -778,7 +780,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 1 October 2026, 05:21:50 EDT  · Content updated: 1 October 2026, 05:21:50 EDT  · [Edit note](./index.html#edit-0130-records)
+Editorial review: 1 October 2026, 12:18:44 EDT  · Content updated: 1 October 2026, 12:18:44 EDT  · [Edit note](./index.html#edit-0131-records)
 
 The current independent original-record focus is the federal Nash service file and the loose Welch will. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -798,7 +800,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 **Coverage:** [Andrew’s other recorded sons](./index.html#N65) supply candidates. [Henry’s parent names](./index.html#N70), [his later census readings](./index.html#N79) and [the unresolved Emmett/Raliegh household and 1940 Robert E. candidate](./index.html#N73) establish no subsequent male line. A household without a son does not prove lifetime childlessness.
 
-**Next test:** inspect Walter’s [29 May 1968 notice, image 61387527](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355), still unread after [bounded access attempts](./index.html#N67); [Robert’s two exact notices](./index.html#N96) are a parallel identity route. Verify each relationship and adult identity before tracing a comparison line; an Andrew branch cannot settle the earlier Solomon–Aaron chain.
+**Next test:** first seek an exact adult named-parent or later-son record for [Byron, recorded in Solomon’s 1880 household](./index.html#N65); no such unread source or complete later male line was identified in the saved coverage. A documented Solomon branch would anchor earlier than an Andrew-only comparison. For the existing Andrew-level routes, inspect Walter’s [29 May 1968 notice, image 61387527](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355), still unread after [bounded access attempts](./index.html#N67); [Robert’s two exact notices](./index.html#N96) are a parallel identity route. Verify each relationship and adult identity before tracing a comparison line; an Andrew branch cannot settle the earlier Solomon–Aaron chain.
 
 03 · Family-held source The complete family Bible record Recalled extent · original unread
 
@@ -822,13 +824,13 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1Qbta3xC9_vuQQAyD0hfY9rDxJir9tRt1/view?usp=drivesdk) · [Supporting review 2](https://drive.google.com/file/d/1muSHxRYeXo1u65kb_KQmkY48phacX0fK/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
-05 · Georgia Archives / FamilySearch Early County district 7, lot 23 Location-restricted
+05 · Georgia Archives / FamilySearch Early County district 7, lot 23 Access enquiry submitted · originals unread
 
 **Reference:** original grant and drawer entry for Aaron Oliphant; Georgia Archives **003-05-029, VOL 1 3231**, Early 1820 districts 7–8, container **16891**, [object 178817](https://georgiaarchives.as.atlas-sys.com/repositories/2/archival_objects/178817). FamilySearch [catalogue 73430](https://www.familysearch.org/en/search/catalog/koha:73430), film **519018**, DGS **8657184** (districts 5–10); drawer index **7900960**. Exact image not located.
 
 **Question:** what residence, district, draw and grant details distinguish this Aaron? Compare the already-read Appling 1/98 grant, rather than replacing it.
 
-**Route:** an authorized FamilySearch center/affiliate reader or onsite archival retrieval. A later deed names the tract; the underlying grant and drawer entry remain unread. This is not a demonstrated subscription paywall.
+**Route:** an authorized FamilySearch center/affiliate reader or onsite archival retrieval. A later deed names the tract; the underlying grant and drawer entry remain unread. This is not a demonstrated subscription paywall. [A combined Georgia Archives access enquiry](./index.html#N62) covering this volume and the exact Hancock loose case was accepted on 1 October; await guidance rather than duplicate it. Submission is not a recovered grant or confirmed remote-copy service.
 
 **30 September update:** [The checked Early grant access route](./index.html#N62). The underlying individual record remains unread.
 
@@ -850,7 +852,7 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 **Sharp dependency:** the original S index/certificate remains unread. [VOL1 1681/object 157332](./index.html#N68) and [film 159001/DGS 8628331](./index.html#N74) are not officially crosswalked. [Greene’s 1814 Richard Sharp[e]/144](./index.html#N76), [the 1813 heading](./index.html#N78) and [the 1812 screen](./index.html#N77) do not identify Hancock’s unit or establish county-wide absence. Greene tax catalogue 124308/film 1018452/DGS 8191031 retains its bounded coverage; another query needs a specific new year/district or identity pointer.
 
-**Title and paper comparisons:** [five Brown acquisitions](./index.html#N91) and [three](./index.html#N94) [disposals](./index.html#N95) have not reconstructed Aaron’s 245¾-acre title. The complete [loose C613886 debt folder](./index.html#N92) and separate [estate route](./index.html#N87) remain unread. Exact reading scopes and corrections belong in the linked notes; a same-name parcel is not an earlier-residence or kinship bridge.
+**Title and paper comparisons:** [five Brown acquisitions](./index.html#N91) and [three](./index.html#N94) [disposals](./index.html#N95) have not reconstructed Aaron’s 245¾-acre title. The complete [loose C613886 debt folder](./index.html#N92) and separate [estate route](./index.html#N87) remain unread. The combined access enquiry covering C613886 and the Early grant volume was accepted on 1 October; await guidance before arranging onsite copying. Exact reading scopes and corrections belong in the linked notes; a same-name parcel is not an earlier-residence or kinship bridge.
 
 08 · Pendleton court papers The loose 1816–1817 debt cases Series unresolved
 
@@ -1208,7 +1210,7 @@ Editorially reviewed 30 September 2026 against saved provenance and collateral a
 
 ## A conclusion should lead back to its evidence.
 
-Editorial review: 1 October 2026, 05:21:50 EDT  · Content updated: 1 October 2026, 05:21:50 EDT  · [Edit note](./index.html#edit-0130-sources)
+Editorial review: 1 October 2026, 12:18:44 EDT  · Content updated: 1 October 2026, 12:18:44 EDT  · [Edit note](./index.html#edit-0131-sources)
 
 This report combines dated original-record readings, derivative sources and private comparison reviews. Later research notes record subsequent inspections, corrections and access checks; the cited dates describe their own scopes, not a fresh rereading of every source for this edition. Original-image links may require a free account or access at a participating location; a subscription does not necessarily remove those restrictions.
 
@@ -1256,7 +1258,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/13WKr
 
 ### Research resources
 
-Editorial review: 1 October 2026, 05:21:50 EDT  · Content updated: 1 October 2026, 05:21:50 EDT  · [Edit note](./index.html#edit-0130-research-resources)
+Editorial review: 1 October 2026, 12:18:44 EDT  · Content updated: 1 October 2026, 12:18:44 EDT  · [Edit note](./index.html#edit-0131-research-resources)
 
 This inventory records what has been used and what remains incomplete; each entry carries its own review date. It is a continuation guide, not a recommendation to buy every service. The numbered citations above support particular claims; the resources below explain where the work happens.
 
@@ -1270,7 +1272,7 @@ DNA tests, family-tree platforms and record repositories
 | [Ancestry](https://www.ancestry.ca/) | Autosomal DNA matches, shared matches, member trees, message boards and historical record images; a separately maintained core account tree. Research used the Canadian site with the existing account. A 30 September 21:52:45 EDT check showed a populated DNA match list; this adds no new genetic evidence. | The focused paternal copy now includes Rebecca’s father Solomon Rainwater and Andrew’s recorded sons Robert, Walter and Henry, with qualified citations; the earlier eleven-person core was preserved. Its normal native export passed independent checks for fifteen people, seven families and ten source objects. Repeated source references are not independent records, and no restore was tested. The two existing living profiles were left unchanged; raw exports and account details remain private. This copies previously reviewed relationships, supplying no new proof of Aaron’s parents, biological paternity or the reported Aaron–Solomon link. The [public historical tree](./index.html#family-tree) remains twenty-one people and twenty-three qualified relationships. The DNA-to-tree link remains unset; completing the account copy does not complete that connection. [Restricted focused-copy and native-export archive](https://drive.google.com/file/d/1OmgmdFQT8IVuiW1bIFVkx7kPnVmrR-mm/view). Member trees and relationship predictions require verification; account access does not mean every relevant image has been examined. |
 | [GEDmatch](https://www.gedmatch.com/) | Existing uploaded-kit match results were inspected as an additional autosomal comparison resource. A 30 September 21:54:20 EDT check populated the default fifty-row One-to-Many grid, at a 7 cM threshold and 45,000 overlap. | The access check established usable data, not a new ancestor or a match assigned to one paternal-grandparent branch. Uploads and repeated appearances of the same person are not independent relatives or independent evidence. No new raw-DNA upload was made for this investigation; private kit identities are not published. |
 | [FamilySearch](https://www.familysearch.org/) | Catalogue, indexed records, original record images and collaborative-tree source inventories, especially American deeds, probate, census and marriage records. Two source-contributor enquiries about existing birth/Bible provenance are now reply-pending; see [RT01](./index.html#RT01). | An index, catalogue description or tree assertion is not an original-record reading. Some images require sign-in or location-based access. Exact films, image references and remaining restrictions are listed in the retrieval agenda. |
-| [Archives and special collections](./index.html#records) | National Records of Scotland, NARA, Georgia Archives, South Carolina archives, county repositories, Furman, PRONI and St Andrews are represented in the record-retrieval agenda. [NARA](./index.html#R04) and [Rutherford loose-will](./index.html#R09) copy-route enquiries were sent on 1 October; substantive replies and both originals remain pending. | Use targets R04–R14 for the exact institution, reference, prior coverage and next step. These have mixed states: originals read, catalogue-only leads, requests pending and restricted or missing material. Listing an archive does not mean its relevant holdings have all been read. |
+| [Archives and special collections](./index.html#records) | National Records of Scotland, NARA, Georgia Archives, South Carolina archives, county repositories, Furman, PRONI and St Andrews are represented in the record-retrieval agenda. [NARA](./index.html#R04) and [Rutherford loose-will](./index.html#R09) copy-route enquiries were sent on 1 October; substantive replies and both originals remain pending. A separate combined [Georgia Archives access enquiry](./index.html#N62) for Early 7/23 and [Hancock C613886](./index.html#N92) was accepted on 1 October; both originals remain unread, with onsite or independent-researcher copying the stated private route. | Use targets R04–R14 for the exact institution, reference, prior coverage and next step. These have mixed states: originals read, catalogue-only leads, requests pending and restricted or missing material. Listing an archive does not mean its relevant holdings have all been read. |
 | [Family accounts and contributed collections](https://www.therainwatercollection.com/) | The Rainwater Collection, Oliphant message-board accounts, cemetery transcriptions and published obituaries supply leads and supporting family context. | Retain the author, record provenance and original citation when available. Copies and derivative accounts may share a common source. The complete family Bible remains outstanding; online biographies do not substitute for it. |
 
 Account-access observations retain their individual dates above and may expire. Exact autosomal product versions are not fully inventoried. No credentials, kit identifiers, living-match details or raw genetic data are included here. For continuation, read the [research guide](./README.md), [structured export](./research.json) and [outstanding records](./index.html#records). Future reviewed changes should update each resource’s use, limits and review date together.
@@ -1279,7 +1281,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 1 October 2026, 05:21:50 EDT  · Content updated: 1 October 2026, 05:21:50 EDT  · [Edit note](./index.html#edit-0130-research-notes)
+Editorial review: 1 October 2026, 12:18:44 EDT  · Content updated: 1 October 2026, 12:18:44 EDT  · [Edit note](./index.html#edit-0131-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -2329,13 +2331,15 @@ Restricted 30 September supporting records: [Supporting review](https://drive.go
 
 **Later parent-set access recovery:** [N71](./index.html#N71) directly reads Greenville record 20203 and exact copy references, retaining the unproved 51-510 inclusion and Nash-coverage limits.
 
-N62 · Early County district 7 lot 23: access route checked
+N62 · Early County district 7 lot 23: access enquiry submitted
 
-Reviewed 30 September 2026 · Access route checked; original grant unread · Bounded access review; no original grant or drawer entry inspected.
+Reviewed 1 October 2026 · Access enquiry submitted; grant and drawer entry unread · Earlier bounded access reading and current submission; no historical original recovered.
 
 **30 September 2026 — Early County district 7 lot 23.** Eight targeted public discovery queries and official access guidance yielded no original grant or fortunate-drawer entry. This is a bounded access result, not evidence that a record is absent. The previously read [1826 Hunter–Rainwaters deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99K-7) identifies this lot as drawn by Aaron Oliphant. The separate Appling district 1 lot 98 grant, dated 4 March 1824 and naming Sharp's district, Hancock County, was already read; it does not replace this entry.
 
 The [Georgia Archives grant-book series description](https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/789), available in indexed text, identifies onsite microfilm and a Virtual Vault State Agency Indexes *microfilm finding aid*. No underlying Early grant image or exact index URL was recovered. Native catalogue and Vault opens failed; the exact [prior volume locator](https://georgiaarchives.as.atlas-sys.com/repositories/2/archival_objects/178817) was not independently re-read today: 003-05-029, VOL1 3231, Early 1820 districts 7–8, container 16891. [Official policy](https://www.georgiaarchives.org/research/research_services) offers onsite copying or an independent researcher; it does not offer distance private copies or individual staff searches. Filmed records are [directed to microfilm onsite](https://www.georgiaarchives.org/visit).
+
+**1 October access enquiry:** one combined question about this identified grant volume and [Hancock’s exact loose case](./index.html#N92) was submitted through the Georgia Archives’ official reference form; its acceptance message was verified. It asks about existing digital surrogates, authorized access and onsite/researcher procedure. The archive’s [private-copy route](https://www.georgiaarchives.org/research/research_services) remains onsite or through an independent researcher. Submission does not establish a grant entry, copying availability or a substantive answer. Both originals remain unread; await guidance and do not duplicate the enquiry. No fee was authorized.
 
 **Next record:** an authorized center/affiliate reader should inspect [catalogue 73430](https://www.familysearch.org/en/search/catalog/koha:73430), drawer index film 514012 item 4/DGS7900960, for the O-section entry tied to Early 7/23, then grant film 519018/DGS8657184, districts 5–10. Center/affiliate restrictions were observed in prior work and were not retested today. Alternatively, use the Georgia Archives onsite volume above. Copy headings, complete entry, page reference, county/militia district, dates and marginal notes; inspect all entries for this tract if needed. The grant's page, date and original wording remain unknown. No earlier residence, parentage or lottery-category inference follows from this access check.
 
@@ -2379,7 +2383,9 @@ Nine public discovery queries, the Andrew, Robert and Walter public profiles, an
 
 The Walter obituary [index record 536130276](https://www.ancestry.ca/search/collections/61843/records/536130276) gives an exact next original: *The San Bernardino County Sun*, 29 May 1968, [newspaper image 61387527, identified article](https://www.newspapers.com/image/61387527/?article=25cbba3f-723a-4921-8431-3e6bdd6614f1&focus=0.37779182,0.31922755,0.4831177,0.34194168&xid=3355). The original notice remains unread; the AI index names no parent or child, and its Marietta/Adair burial location conflicts with the Love County cemetery context.
 
-**Next test:** inspect that original notice or a deceased son's death or probate record for named children, then document every subsequent father–son step. A comparison through another son of Andrew would initially anchor the shared paternal path at Andrew; it would not establish the earlier Solomon–Aaron chain or Aaron's other proposed sons. See [the collateral retrieval target](./index.html#R02) and [the three historical candidates](./index.html#tree-andrew-collateral). No parent of Aaron, immigrant home or surname transition is identified.
+**Earlier branch to test:** the previously read [1880 Solomon/Amanda household](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBX-9JBP) records Byron, eight, as a son. A documented continuation through this branch would anchor at Solomon, earlier than an Andrew-only comparison. The saved-coverage assessment identified no exact unread adult named-parent or later-son source for Byron; it added no original reading or established male line. First obtain such an identifying source before tracing further. The reported Aaron Pinkney born in 1852 is a separate proposed son, whose Bible parentage entry remains unread.
+
+**Andrew-level alternative:** inspect that original notice or a deceased son's death or probate record for named children, then document every subsequent father–son step. A comparison through another son of Andrew would initially anchor the shared paternal path at Andrew; it would not establish the earlier Solomon–Aaron chain or Aaron's other proposed sons. See [the collateral retrieval target](./index.html#R02) and [the three historical candidates](./index.html#tree-andrew-collateral). No parent of Aaron, immigrant home or surname transition is identified.
 
 Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1zI0LlHRdgY9E7wWuHWb3BAnfHhlMKl1m/view). Access requires Taylor’s permission; the original scans, provenance and bounded scope/result remain in the restricted library.
 
@@ -2789,7 +2795,7 @@ Restricted supporting records: [Supporting review 1](https://drive.google.com/fi
 
 N92 · The known Walthall debt case now has an exact loose-file locator
 
-Reviewed 30 September 2026 · Catalogue advance and correction; bound writs were already read on 28 September
+Reviewed 1 October 2026 · Access enquiry submitted; loose folder unread; bound writs retain their 28 September reading
 
 The Georgia Archives catalogue lists [“Maltall, Richard v. Aaron Oliphent [Oliphant], Oct. 1826”](https://georgiaarchives.as.atlas-sys.com/repositories/2/archival_objects/406905): **Hancock Superior Court 170-01-001, RCB 65388, C 613886, object 406905**. This is a new exact retrieval locator for the probable loose counterpart of already known litigation. The folder remains unread. Its title date must not be confused with the [whole series’ 1794–1956 span and 119-cubic-foot extent](https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/2616). Unrestricted catalogue access does not confirm remote copying or a fee.
 
@@ -2799,7 +2805,7 @@ The note and Woodard land bond may be reciprocal obligations, but neither explic
 
 One official Oliphant catalogue query returned seventeen titles/descriptions, all screened. Aaron’s detail and parent series were opened. Four later Solomon titles were retained only as catalogue references: 1853 bearer case C613901; Naomi Freeny/Freeney proceedings C634569 and C640200; and an 1857 State case C730453. No charge, outcome, occupation, violence, flight or identity bridge is established; these do not corroborate the family’s vague rumor. The separate film-limited Oliph* search returned three snippets, of which only the two known bound leaves were read. No complete county court search is claimed.
 
-The next record is the complete loose C613886 folder, including reverses, wrapper, note and endorsements if present. An exact copy-enquiry draft is unsent; no archive message, order or payment occurred. Compare its contents with the bound record before claiming additional evidence.
+The next record is the complete loose C613886 folder, including reverses, wrapper, note and endorsements if present. At the 30 September checkpoint, the exact draft was unsent. On 1 October, a combined access enquiry covering this folder and [the identified Early grant volume](./index.html#N62) was submitted and its acceptance message verified. It asks about existing surrogates and onsite/researcher procedure, rather than staff research or unavailable private distance copying. Await guidance; do not duplicate the enquiry. No order or fee was authorized. Compare its contents with the bound record before claiming additional evidence.
 
 Restricted supporting records: [Supporting review 1](https://drive.google.com/file/d/1GGZF3v6AcF2-_UDW93HtNZO596Gjl3xU/view?usp=drivesdk) · [Supporting review 2](https://drive.google.com/file/d/1y2YatrBTAFfDyfwm9TcSN9f8tA3xjjAG/view?usp=drivesdk). Access requires Taylor’s permission; original scans remain restricted.
 
@@ -3014,7 +3020,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 1 October 2026, 05:21:50 EDT  · Content updated: 1 October 2026, 05:21:50 EDT  · [Edit note](./index.html#edit-0130-updates)
+Editorial review: 1 October 2026, 12:18:44 EDT  · Content updated: 1 October 2026, 12:18:44 EDT  · [Edit note](./index.html#edit-0131-updates)
 
 29 September 2026
 
@@ -3403,6 +3409,28 @@ Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 05:21:50 ED
 - [Research notes](./index.html#research-notes): N73 preserves the 1940 original and blank boundary, one-household limits and misplaced birthplace entry. N65 links it; N84/N85 retain dated unsent history and current sent status.
 
 - [Updates](./index.html#updates): Append this narrow result/outreach successor; preserve all previous edition histories and checkpoints. Edition 01.29 remains live until actual release.
+
+1 October 2026
+
+### Edition 01.31 · Exact access enquiries and bounded reply checks
+
+A combined Georgia Archives question about the identified Early grant volume and Hancock loose case was accepted. It seeks access guidance, not staff genealogy research; the originals remain unread and private copying is through onsite access or an independent researcher. Bounded checks identified no substantive answer to the checked existing archive and birth-source requests; unavailable account access leaves other reply statuses unverifiable. The collateral next test favors an earlier Solomon-level branch, with no exact unread adult relationship source yet identified. The [restricted successor](./index.html#library-transfer-edition0131) preserves selected access and reply-check evidence; its metadata verification advances the incremental library total to 1,906 without remote-byte or restore testing. No historical original, parentage, paternal-line continuation, candidate-rank or confidence change follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 12:18:44 EDT . This records the editorial review, not a historical source reading or deployed verification.
+
+- [Start here](./index.html#start-here): Link the accepted exact Georgia Archives access enquiry, bounded reply-check limits and restricted preservation successor. No historical-confidence change.
+
+- [Records](./index.html#records): R05/N62 and R07/N92 distinguish submitted access guidance from unread originals. R02 prefers a documented Solomon-level collateral test, while preserving exact Andrew-level alternatives and their access limits.
+
+- [Sources](./index.html#sources): Review catalogue, submission, reply-check and saved-coverage source classes; no new historical original or independent corroboration.
+
+- [Research resources](./index.html#research-resources): U07 records the two exact Georgia Archives targets and onsite/researcher copy route. The restricted successor has metadata and local member checks only.
+
+- [Research notes](./index.html#research-notes): N62/N92 retain dated prior coverage and add the accepted combined enquiry. N65 records the earlier Solomon-level branch direction, missing exact adult relationship source and unchanged historical reading limits.
+
+- [Updates](./index.html#updates): Append the narrow retrieval-status and preservation successor; retain prior histories. No candidate rank, tree relationship or ancestry-confidence change.
 
 09 / Contact
 

@@ -193,3 +193,8 @@ N14 distinguishes the 329-page revised Stein PDF, with seven selected visual pag
 The retrieved Doty title and foreword establish 1976 for that 120-page copy, with seven visual pages and one OCR page read. Its separate 1977 microfilm stamp does not settle every catalogued edition. William/Lydia, William/Betsy and Covenanter traditions remain separate; the original 1902 letter and conditional Matthew parentage are unverified. Printed letters p11/PDF15, Case 4565/1805 and Pickaway history p192 are unread pointers, not an Aaron bridge or family exclusion. Offered Maryland pages and the earlier private delivery ZIP remain unacquired.
 
 Eight restricted ZIP transfers were metadata/owner-only verified, advancing the incremental recorded library from 1,890 to 1,898 rather than by recount. Local checksums are retained; remote bytes and restore were not tested. No candidate rank, public-tree relationship, historical confidence or Aaron parentage changed.
+
+
+## Edition 01.27 · Qualified household follow-up
+
+Edition 01.27 records an anonymous original-household candidate and the unresolved age/identity conflict in N32. It supplies no independently established book-family bridge, new genetic comparison or Aaron parentage. Two restricted metadata/owner-only-verified ZIPs advance the incremental recorded library total from 1,898 to 1,900; local checksums are retained, without remote-byte or restore verification. The public tree, candidate ranks and historical confidence remain unchanged.

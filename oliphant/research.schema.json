@@ -430,6 +430,37 @@
       },
       "type": "array"
     },
+    "supplemental_pages": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "markdown": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "source_json": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "url",
+          "source_json",
+          "markdown",
+          "scope"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
     "title": {
       "type": "string"
     },
@@ -520,6 +551,7 @@
     "intended_base_url",
     "scope",
     "reader_start",
+    "supplemental_pages",
     "interpretation_rules",
     "sections",
     "section_reviews",

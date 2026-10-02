@@ -10,7 +10,7 @@
 - [Related trees and research contacts](./index.html#related-trees): 19 source trails, collateral profiles and comparator families, with provenance limits and exact next questions.
 - [Full Markdown report](./report.md): the same public manuscript, including expanded retrieval details.
 - [Structured research](./research.json): stable section, candidate, hypothesis, source and retrieval IDs.
-- [Paternal-line comparisons](./family-lines.html): a separate tested-branch exclusion register; [structured source](./family-lines.json) and [Markdown](./family-lines.md). Preserve observations, qualifiers and unknowns; a surname-wide absence is not a lineage exclusion.
+- [Paternal-line comparisons](./family-lines.html): a separate tested-branch exclusion register with [historical cross-references](./family-lines.html#historical-cross-references); [structured source](./family-lines.json) and [Markdown](./family-lines.md). DNA and historical results are independent. Preserve observations, qualifiers and unknowns; a surname-wide absence is not a lineage exclusion.
 - [JSON schema](./research.schema.json): versioned export contract.
 - [Continuation and build guide](./README.md): reproducible updates and source limits.
 - [File checksums](./manifest.json): integrity and freshness; not a factual certification.

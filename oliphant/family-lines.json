@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "title": "Paternal-line comparisons",
   "prepared_on": "2026-10-02",
   "observed_on": "2026-09-29",
@@ -963,6 +963,294 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-02T17:29:38Z",
-  "editor_note": "Created from the saved 29 September comparison audit and dated successor assessments. Eleven typed-line exclusions, three qualified McMaster observations and nine unresolved Y67 observations are preserved, plus the separate unresolved A823 comparator. No fresh genotype, pedigree, whole-surname exclusion or origin-confidence change."
+  "editorial_reviewed_at": "2026-10-02T19:14:52Z",
+  "editor_note": "Added a separately assessed historical cross-reference screen of the nine unresolved Y67 surname comparisons and the distinct A823 DeVenney comparator. Existing DNA observations, genetic assessments and origin confidence are unchanged. Recorded names and administrative roles are preserved; no tester-to-historical-family bridge or surname transition is established.",
+  "documentary_cross_reference": {
+    "prepared_on": "2026-10-02",
+    "reviewed_at": "2026-10-02T19:14:52Z",
+    "scope": "A bounded cross-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator. No fresh external discovery query, archive-wide search or all-surname inventory was completed. Historical record dates and prior reading scopes are retained in each entry.",
+    "methodology": [
+      "Use the recorded spelling, date, place and role. Listed search forms are discovery vocabulary; they do not establish that differently named people share a family. Devine/Divine, McCain, Burns and Carrell require their own identity evidence. Oliphant, Olliphant, Olyphant, Olifant, Olifent, Oliphint and Olliphint are discovery forms for future source searches; the younger marriage’s recorded form is Aaron Olifant Devany, not a normalized replacement.",
+      "The strongest named-local lead is the younger Aaron Olifant Devany in Hancock decades after the elder Aaron. His name, county and enumeration association do not prove kinship or connect him to either distinct DNA comparator.",
+      "Government execution, an officiant’s name and a possible parcel predecessor are different kinds of association. A routine official signature is weak family evidence; reconstruct a named personal relationship before assigning ancestry.",
+      "Hancock and Greene named records provide the core comparison anchors. Earlier Pendleton appearances retain same-person limits; the Rutherford witness’s identity remains unresolved. A record made in one county can state residence in another.",
+      "Rank the next documentary test within this finite screen, not the likelihood of an ancestral surname. Preserve DNA status separately. Failure to locate a connection in saved material does not exclude the surname or imply that the relevant records were exhaustively searched."
+    ],
+    "rows": [
+      {
+        "id": "HX01",
+        "surname_label": "Devaney / Devany / DeVenney",
+        "comparison_ids": [
+          "FL02",
+          "FL24"
+        ],
+        "assessment": "named_local_lead",
+        "priority": "First follow-up in this surname cross-reference; the overall documentary tier remains indirect.",
+        "evidence": [
+          {
+            "label": "Hancock marriage, 14 January 1866: Aaron Olifant Devany and Martha Andrews",
+            "url": "https://www.familysearch.org/ark:/61903/3:1:33S7-8BZ6-2MS",
+            "scope": "p. 104; DGS 5190837, image 174. License 13 January; marriage return 14 January 1866. Full name and marriage established. Previously read 28 September; saved original locally reinspected 2 October 2026."
+          },
+          {
+            "label": "Hancock enumeration, 16 June 1870: Humphrey, A. O. and Drury households",
+            "url": "https://www.familysearch.org/ark:/61903/3:1:S3HY-DCNS-6NF",
+            "scope": "p. 31, stamped 436: dwellings/families 271/278, 273/280 and 275/282, with intervening households. Enumeration association only. Previously read 28 September; saved original locally reinspected 2 October 2026."
+          },
+          {
+            "label": "Elder Aaron's stated Hancock residence, 29 January 1821",
+            "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B",
+            "scope": "Pendleton Book P, p. 382. Calls Aaron of Hancock County and identifies wife Rebecca as deceased Solomon Rainwater’s daughter. Previously read 28 September; saved original locally reinspected 2 October 2026."
+          },
+          {
+            "label": "N02: namesake evidence, conflicting identities and completed coverage",
+            "url": "https://aifreelancer.co/oliphant/#N02",
+            "scope": "Existing public synthesis dated 30 September 2026; read from the current saved report on 2 October. No fresh repository acquisition or access check."
+          }
+        ],
+        "limits": "A later full name and same county supply a specific lead, with no demonstrated kinship to elder Aaron or explanation for the name. Enumeration order proves neither adjoining land nor family relationship. Parents and Drury relationship remain unresolved. FL02's broad Y67 GD5 comparison and FL24's separate A823 comparison are different testers; neither has a documented descent to this historical family. No surname-transition or historical Y-line conclusion follows.",
+        "next_test": "Seek an explicit parent, sibling, guardian, heir or naming statement. Await the existing Richmond request for William A. Davaney’s temporary letters (book 7, p. 175), permanent letters (book 14, p. 89) and associated estate papers (COR11/N23). Verify estate and nephew identities before using kinship wording. Do not repeat the completed broad 1860 and guardian/index screens without a new discriminator.",
+        "search_forms": [
+          "Devaney",
+          "Devany",
+          "Deveney",
+          "Devanney",
+          "Davaney",
+          "DeVenney",
+          "Devanny",
+          "Deviney",
+          "Devine",
+          "Divine"
+        ]
+      },
+      {
+        "id": "HX02",
+        "surname_label": "Wood / Woods",
+        "comparison_ids": [
+          "FL05"
+        ],
+        "assessment": "indirect_associate",
+        "priority": "Low: official execution and unresolved secondary readings",
+        "evidence": [
+          {
+            "label": "Aaron's Appling grant, 4 March 1824, p. 63",
+            "url": "https://www.familysearch.org/ark:/61903/3:1:3QHV-63CH-ZL3K",
+            "scope": "Elisha Wood, S.E.D., appears in the official execution of the recorded grant naming Aaron Olliphant of Sharp's district, Hancock County. The saved original was reread on 2 October. This is an official role, not demonstrated personal contact, kinship or an identified Wood comparison lineage."
+          },
+          {
+            "label": "N26: neighboring parcels and the grant-name conflict",
+            "url": "https://aifreelancer.co/oliphant/#N26",
+            "scope": "The separate 50-acre Knight/Harden/Gentry parcel reads Mathew Good in 1818 and Matthew Wood in 1823. The underlying grant remains unverified. This parcel is distinct from Aaron's 230-acre bond tract. Jonathan Woodard/Woodward is a documented bond party, but his surname is not automatically Wood."
+          }
+        ],
+        "limits": "No documented link to the FL05 paternal family. The later Celia Wood statement in a Devany death certificate belongs to a separate, incompletely linked namesake-family investigation. Official execution, the Good/Wood conflict and Woodard must not be counted as three independent Wood-family links.",
+        "next_test": "Require a named personal or family connection before extending the historical Wood lead; verify the original grant behind the Good/Wood conflict only if it becomes discriminating. Resolve the correctly identified comparison's finer SNP placement separately.",
+        "search_forms": [
+          "Wood",
+          "Woods",
+          "Woodard",
+          "Woodward"
+        ]
+      },
+      {
+        "id": "HX03",
+        "surname_label": "Cain / Caine / Cane / Kain / Kane",
+        "comparison_ids": [
+          "FL17"
+        ],
+        "assessment": "unresolved_after_bounded_screen",
+        "priority": "Low: separate McCain lead outside Aaron's documented anchors",
+        "evidence": [
+          {
+            "label": "Sarah Dalton temporary administration, 22 April 1826, p. 55",
+            "url": "https://www.familysearch.org/ark:/61903/3:1:3QS7-893L-FYY2",
+            "scope": "William McCain administered Sarah Dalton's estate in Richmond County. The saved original-source review records the abbreviated Mc surname and no stated relationship. This is a separate surname and an indirect Dalton candidate trail, rather than an Aaron transaction in Hancock, Greene, Pendleton or Rutherford. The saved original was previously read 29 September 2026; this cross-reference uses that dated review rather than a fresh reading."
+          },
+          {
+            "label": "N23: Dalton notices and bounded probate coverage",
+            "url": "https://aifreelancer.co/oliphant/#N23",
+            "scope": "The notices name no Polly, Samuel, Charlotte, Devaney or Oliphant; the supposed Sarah Dalton estate account was corrected to Sabra Dawson. No bridge from this McCain to Aaron or the Cain comparison was established."
+          }
+        ],
+        "limits": "No named Cain-family intersection with Aaron was identified in the examined saved corpus. McCain is a discovery possibility, not an established Cain variant. A separate 1795 Laurens Cain boundary context involving James Oliphant is outside the stated anchors and lacks an Aaron bridge. Cane Creek is a place-name, not a surname hit. This is not a county-wide or archival negative.",
+        "next_test": "Pursue McCain only after a named Dalton-to-Aaron bridge or independent evidence of surname identity appears. Otherwise obtain the identified comparison's finer SNP evidence and a documented paternal route before broad pedigree expansion.",
+        "search_forms": [
+          "Cain",
+          "Caine",
+          "Cane",
+          "Kain",
+          "Kane",
+          "McCain",
+          "McCaine"
+        ]
+      },
+      {
+        "id": "HX04",
+        "surname_label": "McCubbin / McCubbins / M'Cubbin / MacCubbin",
+        "comparison_ids": [
+          "FL18"
+        ],
+        "assessment": "unresolved_after_bounded_screen",
+        "priority": "No documentary promotion from this screen",
+        "evidence": [
+          {
+            "label": "N35: completed public-project coverage and identity limits",
+            "url": "https://aifreelancer.co/oliphant/#N35",
+            "scope": "Existing project coverage was reviewed before the local historical-name screen. Scotland and other project members' Dumfries labels are submitted pedigree or group context; they do not establish a historical McCubbin family in Aaron's documented places."
+          }
+        ],
+        "limits": "No named McCubbin-form connection to Aaron or an identified associate was found in the examined saved Markdown corpus. Attachments, unindexed manuscripts and complete county record series were not exhaustively screened. This does not exclude a historical connection or supply a negative finer SNP call.",
+        "next_test": "Require a named historical person with a dated transaction, relationship or migration bridge into Aaron's anchors; verify comparison identity and finer SNP placement before building a Scotland pedigree.",
+        "search_forms": [
+          "McCubbin",
+          "McCubbins",
+          "M'Cubbin",
+          "MacCubbin",
+          "Mc Cubbins"
+        ]
+      },
+      {
+        "id": "HX05",
+        "surname_label": "Nesbitt / Nesbit / Nisbet / Nisbett",
+        "comparison_ids": [
+          "FL19"
+        ],
+        "assessment": "unresolved_after_bounded_screen",
+        "priority": "Low: county-level surname occurrence only",
+        "evidence": [
+          {
+            "label": "Greene 1813 tax digest, DGS 8191031, image 359",
+            "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSL6-QS2J-T?lang=en&i=358",
+            "scope": "The existing O-transition audit describes the John Dawson district 141 leaf as Norwood/Nisbet to Pollard. The audit did not record a Nisbet forename or relationship to Aaron. Its target was an O-surname screen, not a full Nisbet household or tax-line study. Original O-section screen dated 30 September 2026; the Nisbet line was not newly transcribed here."
+          },
+          {
+            "label": "N35: Nesbitt comparison remains unresolved",
+            "url": "https://aifreelancer.co/oliphant/#N35",
+            "scope": "The claimed nineteenth-century Irish ancestor and project Donegal/S658 heading are distinct from this earlier Georgia surname occurrence; no documented connection joins them."
+          }
+        ],
+        "limits": "A county surname occurrence has little discrimination. No named Nesbitt/Nisbet-to-Aaron association was found within the reviewed saved corpus; this is not an exhaustive tax or county negative. Variant spellings are search terms, not established identity.",
+        "next_test": "Read the exact Nisbet tax line for a given name, land and district only if a new dated associate or migration bridge makes it useful; do not infer the DNA family's Georgia presence from an alphabetic N-to-P boundary in the O-screen.",
+        "search_forms": [
+          "Nesbitt",
+          "Nesbit",
+          "Nisbet",
+          "Nisbett"
+        ]
+      },
+      {
+        "id": "HX06",
+        "surname_label": "Scanlan / Scanlon / Scanlin",
+        "comparison_ids": [
+          "FL20"
+        ],
+        "assessment": "unresolved_after_bounded_screen",
+        "priority": "No documentary promotion from this screen",
+        "evidence": [
+          {
+            "label": "N35: completed Scanlan project/profile coverage",
+            "url": "https://aifreelancer.co/oliphant/#N35",
+            "scope": "The previously reviewed public project and profile supplied no identified paternal ancestor or usable pedigree mapping for this comparison. The local historical-name screen added no named intersection with Aaron's documented places or associates."
+          }
+        ],
+        "limits": "No named connection was identified within the examined saved corpus. This is a local text-screen result; original attachments and complete archival holdings were not exhaustively searched. The surname family is neither excluded nor placed in a particular Irish locality.",
+        "next_test": "Obtain a correctly identified paternal ancestor or finer SNP result, then test a specific named person against an exact dated Aaron-place record; avoid an undirected county surname grid.",
+        "search_forms": [
+          "Scanlan",
+          "Scanlon",
+          "Scanlin"
+        ]
+      },
+      {
+        "id": "HX07",
+        "surname_label": "Byrne / Byrnes / Byrn",
+        "comparison_ids": [
+          "FL21"
+        ],
+        "assessment": "unresolved_after_bounded_screen",
+        "priority": "No documentary promotion; keep Burn/Burns separate",
+        "evidence": [
+          {
+            "label": "N13: selected Edgefield Oliphant family papers",
+            "url": "https://aifreelancer.co/oliphant/#N13",
+            "scope": "John Oliphant's daughter is recorded as Sarah Burnes and William Oliphant's sister as Sarah Burns in selected originals. These are other historical Oliphants in Edgefield, outside the stated Aaron anchors, with no demonstrated Aaron relationship or Byrne identity. Burn/Burns is a separate phonetic discovery possibility. John’s will is dated 28 January 1815 and William’s 13 October 1827; selected originals were read 1 October 2026, not newly reinspected in this screen."
+          },
+          {
+            "label": "N35: Byrne comparison limits",
+            "url": "https://aifreelancer.co/oliphant/#N35",
+            "scope": "The submitted Thomas Byrne birth-year/Ireland label and extended STR comparison provide no documentary bridge from the comparison to an Aaron-place Byrne family."
+          }
+        ],
+        "limits": "No named Byrne-form connection to Aaron was found in the examined saved corpus. Burn/Burns occurrences in other Oliphant candidate families are not Byrne evidence. No exhaustive archival or surname-family exclusion follows.",
+        "next_test": "Require an original named person or explicit alias/relationship linking Byrne forms to a dated Aaron-place record before treating Burn/Burns as the same family; resolve the comparison's finer SNP and pedigree identity separately.",
+        "search_forms": [
+          "Byrne",
+          "Byrnes",
+          "Byrn",
+          "Burn",
+          "Burns",
+          "Burnes"
+        ]
+      },
+      {
+        "id": "HX08",
+        "surname_label": "Collins / Collin / Collings",
+        "comparison_ids": [
+          "FL22"
+        ],
+        "assessment": "indirect_associate",
+        "priority": "Low: reported officiant in the Rainwater network",
+        "evidence": [
+          {
+            "label": "John and Martha Rainwater pension selection, PDF p. 11",
+            "url": "https://www.therainwatercollection.com/reference/ref1525.pdf#page=11",
+            "scope": "Samuel and Polly Bowen's 1851 Anderson affidavit says they believed John Rainwater and Martha Adams were married on 14 March 1815 by M. Collins, a regular ordained minister. The saved p. 11 original image was reread on 2 October. It is retrospective testimony about a marriage, not a contemporary Collins/Aaron transaction."
+          },
+          {
+            "label": "N57: Rainwater military and migration context",
+            "url": "https://aifreelancer.co/oliphant/#N57",
+            "scope": "The Rainwater pension narrative supplies a Pendleton-Hancock-Greene route and a Nash-regiment context worth correlating with Aaron. Identification of this pensioner with Aaron's estate associate remains qualified; the officiant is an additional indirect name, not an Aaron relative."
+          }
+        ],
+        "limits": "The affidavit says M. Collins, not an expanded given name. No relationship to Aaron or to FL22's paternal family is documented. A separate saved Aaron Collins machine-text hit was rejected as an apparent transcription artifact. County-level Collins presence and a reported officiant role cannot repair missing comparison identity/SNP evidence.",
+        "next_test": "Seek a contemporary marriage/church record that identifies the specific minister and couple if this network becomes discriminating. Require a personal Aaron bridge and independently documented paternal route before promoting the surname.",
+        "search_forms": [
+          "Collins",
+          "Collin",
+          "Collings"
+        ]
+      },
+      {
+        "id": "HX09",
+        "surname_label": "Mc Carroll / McCarroll / MacCarroll",
+        "comparison_ids": [
+          "FL23"
+        ],
+        "assessment": "indirect_associate",
+        "priority": "Targeted parcel lead; surname identity remains unproved",
+        "evidence": [
+          {
+            "label": "Carrell to Leonard Shockley, 25 October 1811, pp. 143-144",
+            "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-L3QL-6",
+            "scope": "Harvel/Harwel A. Carrell of Hancock conveyed 230 acres in Greene and Hancock on Shoulderbone to Leonard Shockley of Greene. The saved p. 144 original was reread on 2 October. Its ordered Pole-branch/Mapp/S55E/S35W description strongly corresponds to the later 1822/1830 tract sequence associated, with limits, with Aaron's 1825 bond. The recorded spelling remains Carrell."
+          },
+          {
+            "label": "N26: incomplete 230-acre title chain",
+            "url": "https://aifreelancer.co/oliphant/#N26",
+            "scope": "The 1825 bond names James Harden as occupant; his 1822 acquisition matches the 1830 Woodward/Barnes description. Leonard-to-Michael L. Shockley and Hardin-to-Woodard transfers remain unlocated, and the 1811 deed itself does not name Aaron."
+          }
+        ],
+        "limits": "This is an earlier parcel party, not a demonstrated personal associate or relative of Aaron. Carrell has not been identified as Carroll or McCarroll, and dropping the Mc prefix is only a discovery possibility. No link to FL23's paternal family or any surname transition follows.",
+        "next_test": "Close the two missing interests in the specific 230-acre title chain or find an explicit Carrell/Aaron record. Require source evidence for a Carrell-to-McCarroll identity before expanding that surname pedigree.",
+        "search_forms": [
+          "McCarroll",
+          "Mc Carroll",
+          "MacCarroll",
+          "M'Carroll",
+          "Carroll",
+          "Carrell"
+        ]
+      }
+    ]
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "title": "Paternal-line comparisons",
   "prepared_on": "2026-10-02",
   "observed_on": "2026-09-29",
@@ -963,8 +963,8 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-02T19:47:34Z",
-  "editor_note": "Grouped Devaney/DeVenney and McMaster/McMasters under single surname headings while preserving all distinct FL observations. Added explicit qualitative candidate ranks, with Devaney first, eight open alternatives tied and sampled separated branches last. Historical entries follow the same order. No new evidence or confidence upgrade.",
+  "editorial_reviewed_at": "2026-10-02T20:30:38Z",
+  "editor_note": "Supplement revision 01.46: applied eight saved-evidence layers across nine open surname headings, with source roles, dependencies, unresolved pedigree bridges and exact next tests. All 24 genetic observations, nine historical findings, group ranks and confidence remain unchanged. No fresh account data, new archival acquisition or new biological exclusion; the main manuscript is unchanged.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
     "reviewed_at": "2026-10-02T19:14:52Z",
@@ -1588,5 +1588,1845 @@
       "historical_ids": []
     }
   ],
-  "ranking_note": "A qualitative order of the current sampled-line cases, strongest working case first; not a calculated surname probability or a ranking of every family using these names. Rank 1 is Devaney, with low historical confidence. Rank 2 contains eight tied open alternatives because their relative likelihood is not established. Rank 3 contains sampled branches set aside, retaining all qualifications and untested-family possibilities. Ties are alphabetical, not hidden subranks."
+  "ranking_note": "A qualitative order of the current sampled-line cases, strongest working case first; not a calculated surname probability or a ranking of every family using these names. Rank 1 is Devaney, with low historical confidence. Rank 2 contains eight tied open alternatives because their relative likelihood is not established. Rank 3 contains sampled branches set aside, retaining all qualifications and untested-family possibilities. Ties are alphabetical, not hidden subranks.",
+  "filter_stack": {
+    "reviewed_at": "2026-10-02T20:25:25Z",
+    "scope": "Eight evidence layers applied to the nine open surname groups, using our saved records and DNA observations. No new DNA results or archive records were acquired for this review. Linked sources retain their original dates and coverage limits.",
+    "rules": [
+      "Read this as a dependency-aware evidence stack, not a weighted score, surname probability or series of automatic passes. Cells qualify the exact proposition and reviewed scope.",
+      "The same source or test reused across layers is not independent corroboration. Adding status cells cannot create a probability. Shared A823 supports broad branch compatibility only, not surname-era closeness; a missing autosomal attribution does not block investigation of the Y line.",
+      "support means the stated bounded observation is supported, not that a candidate family passes every filter. limited means a real source-role/identity/coverage limit. unresolved means a performed review leaves the question open. not_tested means the specified test was not executed or lacked an identified target; it is neither absence nor incompatibility.",
+      "FS01 and FS02 preserve the existing genetic and documentary screens. All 24 FL classifications, nine HX assessments, display groups and ranks remain unchanged.",
+      "A chronology contradiction applies only to the exact identity proposal. The younger 1866 namesake is not the elder Aaron who died by December 1826; his surname and possible family relationship are not excluded.",
+      "Keep official execution, retrospectively reported officiation, earlier parcel interest, personal association and explicit kinship distinct. Variants are discovery forms, not identity proof.",
+      "FS06 requires two separately documented bridges: elder Aaron to a candidate historical paternal family, and that historical person's independently documented father–son chain to the exact comparator. One cannot repair the other.",
+      "A recorded heir, uncle or other kinship term does not itself demonstrate biological male-line transmission. Verify each father–son route separately and retain possible maternal, adoptive or marital relationships until the sources distinguish them.",
+      "FS07 uses time-matched, independently documented paternal localities and migration/kinship evidence. Country labels, surname rarity, STR distance and ancient branch models do not date or orient a surname transition.",
+      "FS08 is parallel autosomal corroboration, not a mandatory Y-line gate. One joined/nested segment group is not multiple independent ancestral confirmations; lack of an inherited segment does not exclude a lineage.",
+      "Dependencies identify missing inputs for interpretation, not permission to repeat saved searches, pending requests or unchanged access gates. Apply precise next tests only when a new pointer or the named data/source dependency changes.",
+      "Dependencies are reusable evidence inputs, not requirements that earlier filters must first pass. A parish, migration or autosomal source may help supply an earlier identity/kinship bridge; each lane can be investigated when its own specific inputs permit."
+    ],
+    "layers": [
+      {
+        "id": "FS01",
+        "title": "Genetic branch compatibility",
+        "depends_on": [],
+        "question": "Does the sampled paternal branch remain compatible at a useful genetic resolution?",
+        "applied_scope": "The ten FL observations attached to the nine open surname groups, retaining the existing sampled-line classifications.",
+        "result": "FL24 shares A823 but a younger pairwise branch is unproved. FL02 and the other eight Y67 observations lack finer placement. This stack adds no genetic pass or exclusion.",
+        "limits": "A broad label, STR distance or project grouping does not identify a historical paternal family, date surname adoption or orient a surname change. Related observations are not independent family counts.",
+        "next_test": "Use correctly identified, consented existing finer calls and mutually callable coverage; preserve derived, ancestral and no-call states and the separation of FL02 from FL24.",
+        "evidence": [
+          {
+            "label": "N32: genetic method and missing-data limits",
+            "url": "./index.html#N32",
+            "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+          },
+          {
+            "label": "R01: two distinct Devaney comparisons",
+            "url": "./index.html#R01",
+            "scope": "Bilateral comparison target and distinct GD5/finer-result route; missing input is not incompatibility."
+          }
+        ]
+      },
+      {
+        "id": "FS02",
+        "title": "Historical surname and place screen",
+        "depends_on": [],
+        "question": "Does reviewed historical material identify a specific surname-form lead in Aaron's documented places or network?",
+        "applied_scope": "The nine unchanged HX rows, based on the saved corpus screen and its dated selected-original reviews.",
+        "result": "The existing screen identifies the later Devany namesake, official Wood execution, a reported Collins officiant and an earlier Carrell parcel party. Other rows retain bounded nonconnection or county-label limits.",
+        "limits": "A name or county occurrence is a lead. McCain, Burn/Burns, Carrell and Woodard do not become Cain, Byrne, McCarroll or Wood without identity evidence. Unlocated within the reviewed corpus is not archival absence.",
+        "next_test": "Develop an exact named person and dated record before extending a pedigree; follow existing HX next tests instead of repeating undirected surname queries.",
+        "evidence": [
+          {
+            "label": "HX01–HX09: bounded historical cross-reference",
+            "url": "./family-lines.html#HX01",
+            "scope": "Existing nine-row screen retains its individual roles, coverage, dates and limits."
+          },
+          {
+            "label": "N35: bounded public-project identity screens",
+            "url": "./index.html#N35",
+            "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+          }
+        ]
+      },
+      {
+        "id": "FS03",
+        "title": "Exact-person chronology and identity",
+        "depends_on": [
+          "FS02"
+        ],
+        "question": "Can each proposed historical person be distinguished from namesakes and linked to the relevant Aaron event?",
+        "applied_scope": "Dates, spelling, role and identity statements in the saved HX reviews, compared with the 1821 couple anchor and death by 14 December 1826.",
+        "result": "The 1866 younger Devany cannot be the elder Aaron. Wood is a named official in 1824, Collins a retrospective report about 1815, and Carrell an 1811 party. These observations do not yet identify candidate paternal families. No incompatible simultaneous life separates the 1809 Rutherford witness from the later Aaron.",
+        "limits": "The namesake's later chronology rules out literal same-person identity, not kinship or the surname. A copied register signature or clerk's mark is not an authenticated autograph. Aaron's military company, dates and age remain unread.",
+        "next_test": "Retrieve Aaron's actual CMSR after the pending clarification and compare exact company, service and identifying details. For candidate people, use parent/residence/alias statements rather than matching spelling alone.",
+        "evidence": [
+          {
+            "label": "N83: which Aaron?",
+            "url": "./index.html#N83",
+            "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+          },
+          {
+            "label": "R04: Aaron's complete Nash service file",
+            "url": "./index.html#R04",
+            "scope": "Exact jacket-and-cards target remains unread; pending route clarification is a retrieval dependency, not a historical finding."
+          },
+          {
+            "label": "N02: younger Aaron Olifant Devany",
+            "url": "./index.html#N02",
+            "scope": "1866 marriage and 1870 enumeration are named local leads. Elder Aaron was dead by December 1826; younger-family parents and elder-family relationship remain unresolved."
+          }
+        ]
+      },
+      {
+        "id": "FS04",
+        "title": "Role-aware family and associate links",
+        "depends_on": [
+          "FS03"
+        ],
+        "question": "What relationship does the record actually state: family, personal transaction, official duty, officiation or earlier parcel interest?",
+        "applied_scope": "The recorded roles of the named HX leads, with Rebecca's explicitly stated Rainwater parentage kept separate.",
+        "result": "Rebecca's Rainwater parentage is explicit, but none of the nine candidate rows names an elder-Aaron relationship to a comparator paternal family. Devany household nephew/niece terms leave the connecting parent open. The three indirect HX roles are not three personal-family links.",
+        "limits": "Routine official execution, retrospective officiation and a parcel predecessor cannot be counted as personal kinship. Rainwater marriage kinship does not imply a biological paternal Rainwater branch.",
+        "next_test": "Require a dated direct relationship or personal-associate instrument; for the Devany nephews/niece establish the connecting parent and paternal, maternal or marriage route.",
+        "evidence": [
+          {
+            "label": "N02: younger Aaron Olifant Devany",
+            "url": "./index.html#N02",
+            "scope": "1866 marriage and 1870 enumeration are named local leads. Elder Aaron was dead by December 1826; younger-family parents and elder-family relationship remain unresolved."
+          },
+          {
+            "label": "N57: Rainwater military and migration context",
+            "url": "./index.html#N57",
+            "scope": "Saved pension selection is incomplete and pensioner-to-estate-associate identity qualified. Morehead-company dates belong to John, not automatically Aaron."
+          },
+          {
+            "label": "N26: parcel correlation and title gaps",
+            "url": "./index.html#N26",
+            "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+          },
+          {
+            "label": "HX02: Wood's official role",
+            "url": "./family-lines.html#HX02",
+            "scope": "Recorded grant names Elisha Wood, S.E.D.; this is an official execution role, not established personal contact."
+          }
+        ]
+      },
+      {
+        "id": "FS05",
+        "title": "Same parcel and legal-interest path",
+        "depends_on": [
+          "FS03",
+          "FS04"
+        ],
+        "question": "Do ordered boundaries and actual transfers join the same land and the same legal interest to Aaron?",
+        "applied_scope": "The reviewed 230-acre Shoulderbone sequence and the distinct Wood/Good 50-acre context; no candidate-specific parcel analysis is claimed for the other seven groups.",
+        "result": "Ordered landmarks and bearings strongly correlate Carrell's 1811, Shockley/Hardin's 1822 and Woodward's 1830 tract descriptions with the qualified 1825 bond link. Legal transfers remain missing; Aaron's title and occupation are not proved. Wood/Good and Woodard identities remain distinct.",
+        "limits": "Physical correspondence is not a complete title chain or kinship. The estate's damages are not demonstrated title. County boundaries or recording delays do not prove household migration. No candidate parcel test means not tested, not nonapplicable or negative.",
+        "next_test": "Close Leonard-to-Michael L. Shockley and Hardin-to-Woodard interests, or obtain an explicit recital identifying the missing interest. Verify the Good/Wood grant only if a specific personal Wood bridge makes it discriminating.",
+        "evidence": [
+          {
+            "label": "N26: parcel correlation and title gaps",
+            "url": "./index.html#N26",
+            "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+          },
+          {
+            "label": "R07: title and earlier-residence retrieval",
+            "url": "./index.html#R07",
+            "scope": "Exact title gaps and dated bounded index/deed coverage; existing completed scopes should not be repeated without a new pointer."
+          },
+          {
+            "label": "s11: Woodard bond, pleading and judgment",
+            "url": "./index.html#s11",
+            "scope": "Bond dated 26 September 1825, copied in Greene Superior Court proceedings pp112–114, March 1830; DGS8458688 images357–358. Saved source review reads the 9 March1830 monetary judgment and correlates the estate recovery; it does not demonstrate a conveyance of title. No new image reading in this stack."
+          }
+        ]
+      },
+      {
+        "id": "FS06",
+        "title": "Explicit kinship and exact-tester pedigree bridges",
+        "depends_on": [
+          "FS01",
+          "FS03",
+          "FS04"
+        ],
+        "question": "Are both separate bridges documented: elder Aaron to a candidate historical family, and that historical person's paternal descent to the exact comparator?",
+        "applied_scope": "All nine HX role statements and ten linked FL unknown/pedigree statements, plus the saved independent-collateral gate.",
+        "result": "No row demonstrates bridge A, an elder-Aaron kinship link to the candidate historical paternal family. No row demonstrates bridge B, an independently sourced father–son chain from that historical person to the exact comparator. The known Edward/Milton adult-family link does not supply Edward's missing Solomon/Amanda parentage.",
+        "limits": "These are two missing demonstrated bridges in the reviewed register, not biological exclusions or whole-archive negatives. An heir, uncle or sibling relationship does not alone establish paternal Y transmission; maternal, adoptive or marital routes remain possible. Document every relevant father–son step across the claimed patrilineal bridge, retaining recorded-parentage versus biological-paternity limits. Exact comparator identity, source independence and each generation matter. Even a Solomon collateral would not automatically close Solomon-to-Aaron.",
+        "next_test": "For Devany, await the existing Richmond estate request and verify identity before using heir wording. In parallel, seek a parent-bearing Edward record and independent male-line collateral; then document each father–son step and any consented comparison.",
+        "evidence": [
+          {
+            "label": "N23: Richmond notices and Davaney estate target",
+            "url": "./index.html#N23",
+            "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+          },
+          {
+            "label": "N101: earlier paternal collateral",
+            "url": "./index.html#N101",
+            "scope": "Adult-family continuity and Milton's recorded Son link are supported; adult Edward-to-Solomon/Amanda parentage and an exact tester bridge remain unclosed."
+          },
+          {
+            "label": "R02: independent paternal collateral",
+            "url": "./index.html#R02",
+            "scope": "Documentary identity and generation reached are separate from tester availability and genetic results."
+          }
+        ]
+      },
+      {
+        "id": "FS07",
+        "title": "Independent paternal parish and migration",
+        "depends_on": [
+          "FS01",
+          "FS03"
+        ],
+        "question": "Does an independently documented paternal locality at the relevant generation join a candidate American family through migration or kinship evidence?",
+        "applied_scope": "Saved comparator country/ancestor fields, the already reviewed public-project locality limits and the distinct broad Devaney/A823 observations.",
+        "result": "Four broad unresolved rows report Ireland, one Scotland and four unknown. None of the four Ireland ancestor fields provides county or parish. Separate A823 Tyrone and Donegal observations lack proved family independence and a verified chain to Aaron.",
+        "limits": "Country labels, project headings and other members' pedigrees do not locate the exact tester or Aaron. A modeled ancient branch date is not a surname-era pair date. No verified parish plus migration bridge is demonstrated in this reviewed set.",
+        "next_test": "First establish exact comparator identity, finer compatibility and an independent father–son pedigree to a dated parish; then test a specific two-sided American/overseas migration or kinship intersection.",
+        "evidence": [
+          {
+            "label": "N31: paternal geographical feasibility",
+            "url": "./index.html#N31",
+            "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+          },
+          {
+            "label": "N33: broad Devaney pedigree limit",
+            "url": "./index.html#N33",
+            "scope": "No verified colonial tester pedigree or parish/migration bridge; index entries and a different Dungannon tradition cannot be transferred to the GD5 comparator."
+          },
+          {
+            "label": "N35: bounded public-project identity screens",
+            "url": "./index.html#N35",
+            "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+          }
+        ]
+      },
+      {
+        "id": "FS08",
+        "title": "Autosomal ancestral-branch attribution",
+        "depends_on": [],
+        "question": "Can an independently documented transmission route assign the joined segment to an ancestral branch and then a historical couple?",
+        "applied_scope": "Existing saved chromosome-3 triangulation and the documented missing single-grandparent control; a parallel corroboration lane for all nine candidate groups.",
+        "result": "The existing 24.4 cM and 11.5 cM observations form one nested group, with conditional paternal-family attribution. No single-grandparent tester/control or responsible historical couple is demonstrated; no candidate surname is assigned.",
+        "limits": "This is parallel evidence, not a mandatory Y-line gate. Paternal cousins descending through both grandparents cannot choose one grandparent; mother subtraction cannot choose between them. Coordinate overlap, surname diversity, copied trees, endogamy, multiple relationships and segment loss require separate controls.",
+        "next_test": "When an already tested, independently documented single-grandparent collateral and usable same-service interval are identified, obtain explicit three-way triangulation. Then test older branch controls and independent pedigrees before attributing a couple or Aaron.",
+        "evidence": [
+          {
+            "label": "N97: one joined autosomal group",
+            "url": "./index.html#N97",
+            "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+          },
+          {
+            "label": "N48: autosomal ancestral-branch attribution",
+            "url": "./index.html#N48",
+            "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+          }
+        ]
+      }
+    ],
+    "candidate_rows": [
+      {
+        "group_id": "SG01",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL24 shares broad A823; no younger callable pairwise branch is proved. Separate FL02 is the saved Y67 GD5 R-M269 observation with finer placement missing. They are distinct comparators, neither placed in the historical Devany family.",
+            "evidence": [
+              {
+                "label": "FL24: unchanged genetic observation",
+                "url": "./family-lines.html#FL24",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "FL02: unchanged genetic observation",
+                "url": "./family-lines.html#FL02",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "support",
+            "detail": "The saved 1866 marriage spells out Aaron Olifant Devany in Hancock, and 1870 enumeration supplies a specific local association. Support is for a named local lead only; no elder-Aaron kinship or tester pedigree is established.",
+            "evidence": [
+              {
+                "label": "HX01: unchanged historical assessment",
+                "url": "./family-lines.html#HX01",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N02: younger Aaron Olifant Devany",
+                "url": "./index.html#N02",
+                "scope": "1866 marriage and 1870 enumeration are named local leads. Elder Aaron was dead by December 1826; younger-family parents and elder-family relationship remain unresolved."
+              },
+              {
+                "label": "N23: Richmond notices and Davaney estate target",
+                "url": "./index.html#N23",
+                "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+              },
+              {
+                "label": "N33: broad Devaney pedigree limit",
+                "url": "./index.html#N33",
+                "scope": "No verified colonial tester pedigree or parish/migration bridge; index entries and a different Dungannon tradition cannot be transferred to the GD5 comparator."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "limited",
+            "detail": "The younger man, born around the early 1840s in later records and marrying in 1866, cannot be Aaron Oliphant who was dead by 14 December 1826. This rejects literal same-person identity only; naming, kinship and surname-family hypotheses remain open. The 1850 child and Agness/Agatha identities retain conflicts.",
+            "evidence": [
+              {
+                "label": "HX01: unchanged historical assessment",
+                "url": "./family-lines.html#HX01",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N02: younger Aaron Olifant Devany",
+                "url": "./index.html#N02",
+                "scope": "1866 marriage and 1870 enumeration are named local leads. Elder Aaron was dead by December 1826; younger-family parents and elder-family relationship remain unresolved."
+              },
+              {
+                "label": "N23: Richmond notices and Davaney estate target",
+                "url": "./index.html#N23",
+                "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+              },
+              {
+                "label": "N33: broad Devaney pedigree limit",
+                "url": "./index.html#N33",
+                "scope": "No verified colonial tester pedigree or parish/migration bridge; index entries and a different Dungannon tradition cannot be transferred to the GD5 comparator."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "limited",
+            "detail": "The 1880 younger household calls three children nephews and one a niece, but does not identify the connecting parent or paternal versus maternal/marriage route. The 1870 sequence is enumeration order, not adjoining land or kinship; Rebecca's 1821 Rainwater father statement names no Devany relative.",
+            "evidence": [
+              {
+                "label": "HX01: unchanged historical assessment",
+                "url": "./family-lines.html#HX01",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N02: younger Aaron Olifant Devany",
+                "url": "./index.html#N02",
+                "scope": "1866 marriage and 1870 enumeration are named local leads. Elder Aaron was dead by December 1826; younger-family parents and elder-family relationship remain unresolved."
+              },
+              {
+                "label": "N23: Richmond notices and Davaney estate target",
+                "url": "./index.html#N23",
+                "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+              },
+              {
+                "label": "N33: broad Devaney pedigree limit",
+                "url": "./index.html#N33",
+                "scope": "No verified colonial tester pedigree or parish/migration bridge; index entries and a different Dungannon tradition cannot be transferred to the GD5 comparator."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "not_tested",
+            "detail": "No exact Devany parcel-to-Aaron legal-interest hypothesis was tested in the reviewed sources. Same county and enumeration order supply neither a parcel match nor a negative title result.",
+            "evidence": [
+              {
+                "label": "HX01: unchanged historical assessment",
+                "url": "./family-lines.html#HX01",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no parent/sibling/heir instrument links elder Aaron to this Devany family. Bridge B: neither FL02 nor FL24 has an independently documented paternal chain to the younger Aaron or this family. Nephew labels and a shared broad branch cannot close either bridge.",
+            "evidence": [
+              {
+                "label": "HX01: unchanged historical assessment",
+                "url": "./family-lines.html#HX01",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL24: unchanged genetic observation",
+                "url": "./family-lines.html#FL24",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "FL02: unchanged genetic observation",
+                "url": "./family-lines.html#FL02",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N02: younger Aaron Olifant Devany",
+                "url": "./index.html#N02",
+                "scope": "1866 marriage and 1870 enumeration are named local leads. Elder Aaron was dead by December 1826; younger-family parents and elder-family relationship remain unresolved."
+              },
+              {
+                "label": "N23: Richmond notices and Davaney estate target",
+                "url": "./index.html#N23",
+                "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+              },
+              {
+                "label": "N33: broad Devaney pedigree limit",
+                "url": "./index.html#N33",
+                "scope": "No verified colonial tester pedigree or parish/migration bridge; index entries and a different Dungannon tradition cannot be transferred to the GD5 comparator."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "limited",
+            "detail": "FL02's saved Ireland ancestor label has no county/parish or verified paternal chain. Separate FL24's Tyrone report and the Donegal A823 observation have unresolved independence; neither is a verified migration bridge to the Hancock Devany family.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              },
+              {
+                "label": "N33: broad Devaney pedigree limit",
+                "url": "./index.html#N33",
+                "scope": "No verified colonial tester pedigree or parish/migration bridge; index entries and a different Dungannon tradition cannot be transferred to the GD5 comparator."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "limited",
+            "detail": "The saved 24.4 cM and 11.5 cM chromosome-3 observations form one nested group, conditionally paternal-family evidence. Other surname leads have no assigned ancestral source; they are not all this same group. No branch-only control, responsible Devany couple or elder-Aaron connection is established; spelling diversity does not date a surname transition.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "The leading working case remains a named local Devany lead plus two separate unresolved genetic comparisons. It has no demonstrated kinship, exact-tester pedigree, parish/migration or assigned autosomal bridge.",
+        "next_test": "Await the existing William A. Davaney estate response; verify estate/nephew identity and seek explicit parent/heir wording. Separately resolve each Devaney genetic comparison and its independent paternal pedigree."
+      },
+      {
+        "group_id": "SG02",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL21 retains saved Y67 GD7 and broad R-M269 only. A compatible public Y67 row and a different extended-STR measure do not supply finer A823 placement, exact mapping or a surname-era date.",
+            "evidence": [
+              {
+                "label": "FL21: unchanged genetic observation",
+                "url": "./family-lines.html#FL21",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "unresolved",
+            "detail": "The reviewed saved corpus found no named Byrne-form Aaron connection. Sarah Burnes/Burns in the selected Edgefield Oliphant wills belongs to other candidate families; it does not establish Byrne identity or an Aaron bridge.",
+            "evidence": [
+              {
+                "label": "HX07: unchanged historical assessment",
+                "url": "./family-lines.html#HX07",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N13: selected other Oliphant family papers",
+                "url": "./index.html#N13",
+                "scope": "John's 1815 will records Sarah Burnes; William's 1827 will records Sarah Burns. Neither supplies an Aaron relationship or identifies Byrne."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "limited",
+            "detail": "John's 28 January 1815 and William's 13 October 1827 wills date the distinct Burnes/Burns observations, but no original alias identifies them as Byrne and neither family is tied to Aaron. No exact Aaron-place Byrne person is identified for an identity comparison.",
+            "evidence": [
+              {
+                "label": "HX07: unchanged historical assessment",
+                "url": "./family-lines.html#HX07",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N13: selected other Oliphant family papers",
+                "url": "./index.html#N13",
+                "scope": "John's 1815 will records Sarah Burnes; William's 1827 will records Sarah Burns. Neither supplies an Aaron relationship or identifies Byrne."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "limited",
+            "detail": "The wills explicitly relate Sarah to John or William, not to Aaron. Those family roles cannot be transferred across the unproved Aaron/Edgefield and Burn/Burns/Byrne identities.",
+            "evidence": [
+              {
+                "label": "HX07: unchanged historical assessment",
+                "url": "./family-lines.html#HX07",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N13: selected other Oliphant family papers",
+                "url": "./index.html#N13",
+                "scope": "John's 1815 will records Sarah Burnes; William's 1827 will records Sarah Burns. Neither supplies an Aaron relationship or identifies Byrne."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "not_tested",
+            "detail": "No identified Byrne person and exact Aaron parcel were joined for a legal-interest comparison. The selected Edgefield family statements are not a tested Aaron title path; no parcel absence is inferred.",
+            "evidence": [
+              {
+                "label": "HX07: unchanged historical assessment",
+                "url": "./family-lines.html#HX07",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no Byrne-to-elder-Aaron explicit kinship is demonstrated in the bounded corpus. Bridge B: no historical Byrne person's sourced father–son chain to FL21 is established; compatible project markers and submitted ancestry do not supply it.",
+            "evidence": [
+              {
+                "label": "HX07: unchanged historical assessment",
+                "url": "./family-lines.html#HX07",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL21: unchanged genetic observation",
+                "url": "./family-lines.html#FL21",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N13: selected other Oliphant family papers",
+                "url": "./index.html#N13",
+                "scope": "John's 1815 will records Sarah Burnes; William's 1827 will records Sarah Burns. Neither supplies an Aaron relationship or identifies Byrne."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "limited",
+            "detail": "FL21's saved Ireland/ancestor label has no county/parish in the field examined. No independently verified paternal locality or migration link to an Aaron-place Byrne family is established.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "not_tested",
+            "detail": "No exact historical Byrne family or branch-only tester is identified for autosomal attribution in this reviewed candidate set. The unassigned joined chromosome-3 group cannot be labelled Byrne; no Byrne segment absence or incompatibility is established.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "Byrne remains open. Other-family Burnes/Burns kinship is recorded, but it supplies neither a Byrne identity nor an Aaron or exact-comparator bridge.",
+        "next_test": "Require an original named Byrne person or explicit alias/relationship at an Aaron anchor before equating Burn/Burns with Byrne; resolve FL21 identity, finer SNP data and independent pedigree separately."
+      },
+      {
+        "group_id": "SG03",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL17 retains saved Y67 GD7 and broad R-M269. The initial compatible public-project row lacks established exact mapping and finer callable placement relative to A823.",
+            "evidence": [
+              {
+                "label": "FL17: unchanged genetic observation",
+                "url": "./family-lines.html#FL17",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "unresolved",
+            "detail": "The 22 April 1826 Richmond notice names William McCain administering Sarah Dalton's estate, outside the direct Aaron anchors. No named Cain-family Aaron intersection was found within the saved screen; McCain-to-Cain identity is unproved.",
+            "evidence": [
+              {
+                "label": "HX03: unchanged historical assessment",
+                "url": "./family-lines.html#HX03",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N23: Richmond notices and Davaney estate target",
+                "url": "./index.html#N23",
+                "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "limited",
+            "detail": "The dated 1826 McCain administration identifies an estate role, not an elder-Aaron transaction. No stated relationship or dated move joins this man to Aaron; the separate 1795 Laurens Cain boundary context lacks an Aaron bridge.",
+            "evidence": [
+              {
+                "label": "HX03: unchanged historical assessment",
+                "url": "./family-lines.html#HX03",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N23: Richmond notices and Davaney estate target",
+                "url": "./index.html#N23",
+                "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "limited",
+            "detail": "McCain is recorded as administrator, not as a relative of Sarah Dalton or Aaron. The notices name no Oliphant/Devaney kinship, and the former Sarah Dalton estate-account lead is corrected to Sabra Dawson.",
+            "evidence": [
+              {
+                "label": "HX03: unchanged historical assessment",
+                "url": "./family-lines.html#HX03",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N23: Richmond notices and Davaney estate target",
+                "url": "./index.html#N23",
+                "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "not_tested",
+            "detail": "No exact Cain/McCain parcel or legal interest has been compared with Aaron's tracts in the reviewed scope. A different Laurens boundary context is not a demonstrated same-parcel path.",
+            "evidence": [
+              {
+                "label": "HX03: unchanged historical assessment",
+                "url": "./family-lines.html#HX03",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no explicit Cain/McCain kinship connects elder Aaron to this candidate family. Bridge B: no sourced paternal descent from the historical McCain or an identified Cain person to FL17 is demonstrated; even their surname identity is open.",
+            "evidence": [
+              {
+                "label": "HX03: unchanged historical assessment",
+                "url": "./family-lines.html#HX03",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL17: unchanged genetic observation",
+                "url": "./family-lines.html#FL17",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N23: Richmond notices and Davaney estate target",
+                "url": "./index.html#N23",
+                "scope": "Saved early administration notices state no Aaron kinship; later William A. Davaney letters and associated papers remain unread and estate identity is unproved."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "limited",
+            "detail": "FL17's saved Ireland/ancestor label contains no county/parish in the examined field. No original-supported paternal locality plus American migration or kinship bridge is established.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "not_tested",
+            "detail": "No independently documented Cain family or branch-only tester was available for a candidate-specific autosomal test. The existing joined chromosome-3 group has no assigned historical couple; it gives no Cain exclusion.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "The reviewed McCain estate role remains an unjoined indirect Dalton trail. Cain is open, with no demonstrated identity, Aaron kinship or exact-tester pedigree bridge.",
+        "next_test": "Pursue the specific McCain record only after a named Dalton-to-Aaron bridge or independent McCain/Cain identity evidence appears; otherwise resolve FL17 identity/finer result and documented paternal route."
+      },
+      {
+        "group_id": "SG04",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL22 retains saved Y67 GD7 and broad R-M269; the saved Collins project screen did not positively identify the exact comparator. Finer placement remains missing, rather than negative.",
+            "evidence": [
+              {
+                "label": "FL22: unchanged genetic observation",
+                "url": "./family-lines.html#FL22",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "limited",
+            "detail": "An 1851 Bowen affidavit in the saved Rainwater pension selection reports that M. Collins officiated at John Rainwater/Martha Adams's 14 March 1815 marriage. This is a specific reported network name, not an Aaron transaction.",
+            "evidence": [
+              {
+                "label": "HX08: unchanged historical assessment",
+                "url": "./family-lines.html#HX08",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N57: Rainwater military and migration context",
+                "url": "./index.html#N57",
+                "scope": "Saved pension selection is incomplete and pensioner-to-estate-associate identity qualified. Morehead-company dates belong to John, not automatically Aaron."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "limited",
+            "detail": "The testimony was made in 1851 about a marriage in 1815; M. Collins's given name is not expanded by the source. The pensioner-to-Aaron-estate-associate identity remains qualified, so neither date nor name identifies an Aaron-place Collins paternal family.",
+            "evidence": [
+              {
+                "label": "HX08: unchanged historical assessment",
+                "url": "./family-lines.html#HX08",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N57: Rainwater military and migration context",
+                "url": "./index.html#N57",
+                "scope": "Saved pension selection is incomplete and pensioner-to-estate-associate identity qualified. Morehead-company dates belong to John, not automatically Aaron."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "limited",
+            "detail": "M. Collins is a retrospectively reported minister for a qualified associate. No personal relationship or kinship to elder Aaron is stated. A saved Aaron Collins machine-text hit was rejected as an apparent transcription artifact.",
+            "evidence": [
+              {
+                "label": "HX08: unchanged historical assessment",
+                "url": "./family-lines.html#HX08",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N57: Rainwater military and migration context",
+                "url": "./index.html#N57",
+                "scope": "Saved pension selection is incomplete and pensioner-to-estate-associate identity qualified. Morehead-company dates belong to John, not automatically Aaron."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "not_tested",
+            "detail": "No exact Collins parcel or legal-interest path to an Aaron tract was tested. A reported marriage-officiant role supplies no title comparison or parcel absence.",
+            "evidence": [
+              {
+                "label": "HX08: unchanged historical assessment",
+                "url": "./family-lines.html#HX08",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no direct elder-Aaron-to-Collins family kinship is documented; reported officiation is not that bridge. Bridge B: no sourced paternal line joins the unidentified M. Collins or a historical Collins family to FL22, whose exact project mapping is also unproved.",
+            "evidence": [
+              {
+                "label": "HX08: unchanged historical assessment",
+                "url": "./family-lines.html#HX08",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL22: unchanged genetic observation",
+                "url": "./family-lines.html#FL22",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N57: Rainwater military and migration context",
+                "url": "./index.html#N57",
+                "scope": "Saved pension selection is incomplete and pensioner-to-estate-associate identity qualified. Morehead-company dates belong to John, not automatically Aaron."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "not_tested",
+            "detail": "FL22's reviewed saved ancestor field supplies no named paternal ancestor/locality. No candidate-specific verified parish/migration intersection can yet be applied; unknown origin does not exclude a locality.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "not_tested",
+            "detail": "No independent Collins historical pedigree and single-grandparent tester/control were identified for autosomal attribution. The unassigned joined group is not a Collins test and establishes no Collins segment absence.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "Collins is an indirect reported officiant lead with unresolved person, family and exact-comparator identity. The existing role cannot promote it to an Aaron paternal link.",
+        "next_test": "If the network becomes discriminating, seek a contemporary record identifying the minister and couple, then a personal Aaron bridge; obtain correctly identified finer comparator data and an independent paternal chain."
+      },
+      {
+        "group_id": "SG05",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL23 retains saved Y67 GD7 and broad R-M269; the bounded public McCarroll chart did not positively identify its exact row. No finer branch incompatibility or compatibility at a younger resolution is demonstrated.",
+            "evidence": [
+              {
+                "label": "FL23: unchanged genetic observation",
+                "url": "./family-lines.html#FL23",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "limited",
+            "detail": "The 25 October 1811 deed records Harvel/Harwel A. Carrell of Hancock conveying the specific 230-acre Shoulderbone tract to Leonard Shockley. This is a concrete earlier parcel party; Carrell-to-McCarroll identity is not established.",
+            "evidence": [
+              {
+                "label": "HX09: unchanged historical assessment",
+                "url": "./family-lines.html#HX09",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "limited",
+            "detail": "Carrell's 1811 deed predates Aaron's 1825 bond and does not name Aaron. Its copied spelling and role are retained; no alias or relationship identifies him as McCarroll or as an elder-Aaron personal associate.",
+            "evidence": [
+              {
+                "label": "HX09: unchanged historical assessment",
+                "url": "./family-lines.html#HX09",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "limited",
+            "detail": "Carrell is the earlier grantor in a qualified tract sequence, not a recorded relative or direct personal associate of Aaron. Leonard and Michael L. Shockley are separately named men, with their intervening interest unresolved.",
+            "evidence": [
+              {
+                "label": "HX09: unchanged historical assessment",
+                "url": "./family-lines.html#HX09",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "limited",
+            "detail": "The 1811 Pole-branch/Mapp/S55E/S35W description strongly corresponds to the 1822 and 1830 sequence, strengthened by named James Harden occupancy in the 1825 bond. Leonard-to-Michael and Hardin-to-Woodard transfers remain missing; Aaron's title/occupation and Carrell-to-McCarroll identity are not proved.",
+            "evidence": [
+              {
+                "label": "HX09: unchanged historical assessment",
+                "url": "./family-lines.html#HX09",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no explicit kinship instrument links Carrell/McCarroll's family to elder Aaron; matching land is not kinship. Bridge B: no sourced father–son chain joins Carrell or an identified McCarroll historical family to FL23, and Carrell/McCarroll identity itself remains unproved.",
+            "evidence": [
+              {
+                "label": "HX09: unchanged historical assessment",
+                "url": "./family-lines.html#HX09",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL23: unchanged genetic observation",
+                "url": "./family-lines.html#FL23",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "not_tested",
+            "detail": "FL23's reviewed saved ancestor field supplies no paternal ancestor or locality. No independent parish and migration test can be applied to the earlier Carrell party or exact comparator without identity/pedigree evidence.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "not_tested",
+            "detail": "No independently documented Carrell/McCarroll pedigree and branch-only tester were identified for an autosomal attribution test. Neither the title sequence nor the unassigned chromosome-3 group assigns McCarroll ancestry or excludes it.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "The physical parcel correlation is specific, while surname identity and legal-interest continuity remain incomplete. McCarroll remains open without an Aaron-family or exact-tester bridge.",
+        "next_test": "Close the two missing 230-acre transfers or find an explicit Carrell/Aaron record; require original evidence equating Carrell with McCarroll before extending that pedigree."
+      },
+      {
+        "group_id": "SG06",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL18 retains saved Y67 GD7 and broad R-M269. A compatible public row and the saved disabled/empty SNP route supply no reliable finer placement or confirmed exact identity.",
+            "evidence": [
+              {
+                "label": "FL18: unchanged genetic observation",
+                "url": "./family-lines.html#FL18",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "unresolved",
+            "detail": "No named McCubbin-form Aaron or associate connection was found in the examined saved Markdown corpus. The scope did not exhaust original attachments, unindexed manuscripts or county series.",
+            "evidence": [
+              {
+                "label": "HX04: unchanged historical assessment",
+                "url": "./family-lines.html#HX04",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "not_tested",
+            "detail": "The saved screen supplies no named historical McCubbin at a dated Aaron anchor for exact-person chronology. Submitted Scotland/project context is not an identified historical person; missing a target is not an incompatible life.",
+            "evidence": [
+              {
+                "label": "HX04: unchanged historical assessment",
+                "url": "./family-lines.html#HX04",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "unresolved",
+            "detail": "No dated direct family or personal-associate McCubbin relationship to Aaron was demonstrated by the reviewed corpus screen. Other project members' pedigrees do not supply a historical Aaron network role.",
+            "evidence": [
+              {
+                "label": "HX04: unchanged historical assessment",
+                "url": "./family-lines.html#HX04",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "not_tested",
+            "detail": "No named McCubbin person and exact Aaron parcel/legal interest were available for comparison. This unperformed path is not a negative land search or a declaration that land evidence is inapplicable.",
+            "evidence": [
+              {
+                "label": "HX04: unchanged historical assessment",
+                "url": "./family-lines.html#HX04",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no explicit elder-Aaron-to-McCubbin historical kinship is demonstrated within the reviewed screen. Bridge B: no independently sourced paternal chain from an identified historical McCubbin family to FL18 is established; project compatibility and labels do not close it.",
+            "evidence": [
+              {
+                "label": "HX04: unchanged historical assessment",
+                "url": "./family-lines.html#HX04",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL18: unchanged genetic observation",
+                "url": "./family-lines.html#FL18",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "limited",
+            "detail": "FL18's saved Scotland label and other project members' Dumfries context are submitted/group information. No independently verified parish for the exact comparator or dated migration bridge to Aaron is demonstrated.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "not_tested",
+            "detail": "No identified McCubbin historical pedigree and single-grandparent tester/control were available for candidate-specific autosomal attribution. The existing unassigned joined group neither assigns McCubbin ancestry nor supplies an exclusion.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "McCubbin remains open after a bounded saved-name screen and unresolved genetic mapping; no historical person, Aaron kinship or exact-tester pedigree has been joined.",
+        "next_test": "Require a named historical McCubbin with a dated transaction, relationship or migration into an Aaron anchor; resolve comparator identity and finer SNP placement before a Scotland pedigree expansion."
+      },
+      {
+        "group_id": "SG07",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL19 retains saved Y67 GD7 and broad R-M222. The compatible public row and Donegal/S658 project context do not establish exact identity or an individual finer call relative to A823.",
+            "evidence": [
+              {
+                "label": "FL19: unchanged genetic observation",
+                "url": "./family-lines.html#FL19",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "limited",
+            "detail": "The 1813 Greene tax O-transition audit recorded a Norwood/Nisbet-to-Pollard range in John Dawson's district 141 leaf. It supplied no Nisbet forename or Aaron relationship; this is a county surname occurrence only.",
+            "evidence": [
+              {
+                "label": "HX05: unchanged historical assessment",
+                "url": "./family-lines.html#HX05",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              },
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "not_tested",
+            "detail": "The exact Nisbet tax line was not transcribed for given name, land or individual identity. The 1813 leaf dates a surname occurrence but cannot be correlated to a submitted nineteenth-century Irish ancestor or an exact Aaron associate.",
+            "evidence": [
+              {
+                "label": "HX05: unchanged historical assessment",
+                "url": "./family-lines.html#HX05",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              },
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "unresolved",
+            "detail": "The saved tax-range observation states no personal or family relationship between a Nisbet and Aaron. No named Nesbitt/Nisbet association was demonstrated within the bounded corpus; a district alphabet boundary is not a network link.",
+            "evidence": [
+              {
+                "label": "HX05: unchanged historical assessment",
+                "url": "./family-lines.html#HX05",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              },
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "not_tested",
+            "detail": "No individually identified Nisbet tax land was matched to an exact Aaron parcel. The O-screen did not read a full Nisbet line or establish a title path; no parcel negative is claimed.",
+            "evidence": [
+              {
+                "label": "HX05: unchanged historical assessment",
+                "url": "./family-lines.html#HX05",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no explicit elder-Aaron/Nesbitt kinship joins the unidentified Georgia occurrence to a candidate family. Bridge B: no sourced father–son descent joins that occurrence or a defined historical Nesbitt family to FL19; submitted Ireland/Donegal context is not the missing chain.",
+            "evidence": [
+              {
+                "label": "HX05: unchanged historical assessment",
+                "url": "./family-lines.html#HX05",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL19: unchanged genetic observation",
+                "url": "./family-lines.html#FL19",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              },
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "limited",
+            "detail": "FL19's saved Ireland ancestor field has no county/parish. The project Donegal/S658 heading is distinct from an independently documented exact-comparator locality; no verified migration bridge joins it to the 1813 Georgia occurrence.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "not_tested",
+            "detail": "No identified historical Nesbitt family and branch-only tester/control were available for an autosomal attribution test. The unassigned joined chromosome-3 group supplies neither a Nesbitt label nor an absence result.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "Nesbitt has a low-discrimination county surname occurrence, with the individual tax entry and genetic/pedigree mapping unresolved. No Aaron-family or exact-tester bridge is established.",
+        "next_test": "Read the exact Nisbet tax line only when a new dated associate or migration pointer makes it useful; obtain the exact comparator's finer placement and independently documented paternal locality."
+      },
+      {
+        "group_id": "SG08",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL20 retains saved Y67 GD7 and broad R-M269. The saved Scanlan chart/profile screen did not positively map the comparator or provide an identified paternal ancestor; finer placement remains missing.",
+            "evidence": [
+              {
+                "label": "FL20: unchanged genetic observation",
+                "url": "./family-lines.html#FL20",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "unresolved",
+            "detail": "No named Scanlan/Scanlon/Scanlin intersection with Aaron's places or associates was found in the examined saved corpus. This text screen is not exhaustive original-manuscript or archival coverage.",
+            "evidence": [
+              {
+                "label": "HX06: unchanged historical assessment",
+                "url": "./family-lines.html#HX06",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "not_tested",
+            "detail": "No named historical Scanlan at an exact dated Aaron anchor was identified for chronology/identity comparison. The earlier chart/profile supplied no usable paternal-ancestor mapping; no incompatible person is established.",
+            "evidence": [
+              {
+                "label": "HX06: unchanged historical assessment",
+                "url": "./family-lines.html#HX06",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "unresolved",
+            "detail": "No dated direct family or personal-associate Scanlan relationship to Aaron was demonstrated within the bounded reviewed screen. Lack of an identified connection is not proof of historical absence.",
+            "evidence": [
+              {
+                "label": "HX06: unchanged historical assessment",
+                "url": "./family-lines.html#HX06",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "not_tested",
+            "detail": "No identified Scanlan person and exact Aaron parcel/legal interest were available for a comparison. The lack of a tested parcel hypothesis supplies no land-record absence or incompatibility.",
+            "evidence": [
+              {
+                "label": "HX06: unchanged historical assessment",
+                "url": "./family-lines.html#HX06",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no explicit elder-Aaron-to-Scanlan historical kinship is demonstrated in the reviewed corpus. Bridge B: no sourced father–son chain joins a historical Scanlan person to FL20, and the usable paternal ancestor/exact project mapping is still missing.",
+            "evidence": [
+              {
+                "label": "HX06: unchanged historical assessment",
+                "url": "./family-lines.html#HX06",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL20: unchanged genetic observation",
+                "url": "./family-lines.html#FL20",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "not_tested",
+            "detail": "FL20's reviewed saved field supplies no named paternal ancestor or locality. No independent parish/migration intersection can yet be applied; the surname is not placed in a particular Irish locality by this screen.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "not_tested",
+            "detail": "No identified Scanlan historical pedigree and branch-only tester/control were available for an autosomal attribution test. The unassigned joined chromosome-3 group neither assigns Scanlan ancestry nor excludes it.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "Scanlan remains open with missing finer placement, exact historical person and usable paternal mapping. The bounded saved-name screen supplies no genealogical exclusion.",
+        "next_test": "Obtain a correctly identified paternal ancestor or consented finer result; then test one named person against an exact dated Aaron-place record instead of a broad county surname grid."
+      },
+      {
+        "group_id": "SG09",
+        "cells": [
+          {
+            "layer_id": "FS01",
+            "status": "unresolved",
+            "detail": "FL05 retains saved Y67 GD6 and broad R-M222. Its compatible public-project row has unproved exact mapping and no established finer placement relative to A823.",
+            "evidence": [
+              {
+                "label": "FL05: unchanged genetic observation",
+                "url": "./family-lines.html#FL05",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N32: genetic method and missing-data limits",
+                "url": "./index.html#N32",
+                "scope": "Saved public method review; broad STR distance and project labels do not establish a younger shared branch or surname-era date."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS02",
+            "status": "limited",
+            "detail": "Aaron's 4 March 1824 Appling grant names Elisha Wood, S.E.D., in official execution. The distinct 50-acre Good/Wood readings and Jonathan Woodard bond are separate qualified leads, not three Wood-family links.",
+            "evidence": [
+              {
+                "label": "HX02: unchanged historical assessment",
+                "url": "./family-lines.html#HX02",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS03",
+            "status": "limited",
+            "detail": "The 1824 grant contemporaneously names the specific official, but no personal or paternal identity joins him to FL05. The separate parcel reads Mathew Good in 1818 and Matthew Wood in 1823; Jonathan Woodard/Woodward is not automatically Wood.",
+            "evidence": [
+              {
+                "label": "HX02: unchanged historical assessment",
+                "url": "./family-lines.html#HX02",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N83: which Aaron?",
+                "url": "./index.html#N83",
+                "scope": "Existing synthesis of source-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS04",
+            "status": "limited",
+            "detail": "Elisha Wood's stated role is official execution, not demonstrated personal contact or kinship. The later Celia Wood statement belongs to an incompletely linked Devany-family inquiry; it cannot make the official, neighbor readings and Woodard one family.",
+            "evidence": [
+              {
+                "label": "HX02: unchanged historical assessment",
+                "url": "./family-lines.html#HX02",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS05",
+            "status": "limited",
+            "detail": "The Good/Wood grant-name conflict concerns a distinct 50-acre Knight/Harden/Gentry parcel, whose underlying grant is unverified. The 230-acre Woodard bond has a qualified physical sequence and missing legal transfers, but Woodard-to-Wood identity is unproved; no Wood comparator-family interest is established.",
+            "evidence": [
+              {
+                "label": "HX02: unchanged historical assessment",
+                "url": "./family-lines.html#HX02",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS06",
+            "status": "unresolved",
+            "detail": "Bridge A: no explicit elder-Aaron-to-Wood family kinship is demonstrated; official grant execution and Woodard's bond role are not that bridge. Bridge B: no sourced father–son descent joins Elisha Wood, the Good/Wood grantee or an identified historical Wood family to FL05.",
+            "evidence": [
+              {
+                "label": "HX02: unchanged historical assessment",
+                "url": "./family-lines.html#HX02",
+                "scope": "Existing saved-source role, bounded coverage and limits; no fresh archive search or original-image reading in this stack."
+              },
+              {
+                "label": "FL05: unchanged genetic observation",
+                "url": "./family-lines.html#FL05",
+                "scope": "Existing public classification and unknowns retained; this stack does not add a genetic result."
+              },
+              {
+                "label": "N26: parcel correlation and title gaps",
+                "url": "./index.html#N26",
+                "scope": "Selected deeds strongly correlate the 230-acre sequence; Leonard-to-Michael and Hardin-to-Woodard interests are missing. Distinct 50-acre Good/Wood readings and the separate Brown tract retain their limits."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS07",
+            "status": "not_tested",
+            "detail": "FL05's reviewed saved field supplies no named paternal ancestor/locality. No independent parish plus migration comparison can be applied to an exact Wood family from these inputs; unknown origin does not establish geographical incompatibility.",
+            "evidence": [
+              {
+                "label": "N31: paternal geographical feasibility",
+                "url": "./index.html#N31",
+                "scope": "Saved nine broad-only rows have four Ireland, one Scotland and four unknown labels; none of the four Irish ancestor fields supplies county/parish. Submitted locality and dependence limits retained."
+              },
+              {
+                "label": "N35: bounded public-project identity screens",
+                "url": "./index.html#N35",
+                "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+              }
+            ]
+          },
+          {
+            "layer_id": "FS08",
+            "status": "not_tested",
+            "detail": "No independently documented Wood historical pedigree and single-grandparent tester/control were identified for a candidate-specific autosomal attribution test. The unassigned joined group supplies no Wood ancestral label or exclusion.",
+            "evidence": [
+              {
+                "label": "N97: one joined autosomal group",
+                "url": "./index.html#N97",
+                "scope": "24.4 cM and 11.5 cM service results concern one nested chromosome-3 group. Conditional paternal-family evidence does not identify a responsible surname, historical couple or male line."
+              },
+              {
+                "label": "N48: autosomal ancestral-branch attribution",
+                "url": "./index.html#N48",
+                "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+              }
+            ]
+          }
+        ],
+        "result": "Wood has a contemporary official co-record, with secondary spelling and parcel identities still unresolved. It remains open without personal kinship, exact-comparator descent or assigned autosomal evidence.",
+        "next_test": "Require a named personal/family Wood-to-Aaron connection; verify the Good/Wood original grant only if it becomes discriminating. Resolve FL05 identity/finer result independently of the Woodard parcel chain."
+      }
+    ],
+    "summary": "Devaney remains the leading working lead, with low historical confidence. None of the nine open groups yet has both a documented family connection to Aaron and a verified male-line pedigree linking that historical family to the specific DNA tester. The namesake, official, minister and parcel clues remain distinct. Missing data do not eliminate a surname."
+  }
 }

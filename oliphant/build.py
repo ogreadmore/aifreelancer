@@ -277,7 +277,7 @@ def public_exports(public):
 - [Related trees and research contacts](./index.html#related-trees): {len(registry_entries)} source trails, collateral profiles and comparator families, with provenance limits and exact next questions.
 - [Full Markdown report](./report.md): the same public manuscript, including expanded retrieval details.
 - [Structured research](./research.json): stable section, candidate, hypothesis, source and retrieval IDs.
-- [Paternal-line comparisons](./family-lines.html): a separate tested-branch exclusion register with [historical cross-references](./family-lines.html#historical-cross-references); [structured source](./family-lines.json) and [Markdown](./family-lines.md). DNA and historical results are independent. Preserve observations, qualifiers and unknowns; a surname-wide absence is not a lineage exclusion.
+- [Paternal-line comparisons](./family-lines.html): a separate tested-branch exclusion register with the [filter stack](./family-lines.html#filter-stack) and [historical cross-references](./family-lines.html#historical-cross-references); [structured source](./family-lines.json) and [Markdown](./family-lines.md). DNA and historical results are independent. Preserve observations, qualifiers and unknowns; a surname-wide absence is not a lineage exclusion.
 - [JSON schema](./research.schema.json): versioned export contract.
 - [Continuation and build guide](./README.md): reproducible updates and source limits.
 - [File checksums](./manifest.json): integrity and freshness; not a factual certification.
@@ -366,11 +366,162 @@ def documentary_cross_reference(data, comparison_ids, public):
                 raise ValueError('Unknown local historical citation anchor')
     return data
 
+FILTER_STATUSES = {
+    'support': ('SUP', 'Support in the stated scope'),
+    'unresolved': ('OPEN', 'Unresolved'),
+    'limited': ('LIM', 'Limited evidence or coverage'),
+    'not_applicable': ('N/A', 'Not applicable in the stated scope'),
+    'contradiction': ('CON', 'Contradiction in the stated scope'),
+    'not_tested': ('NT', 'Not tested'),
+}
+FILTER_IDS = tuple(f'FS{number:02}' for number in range(1, 9))
+FILTER_CSS = '''
+.filter-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;padding-left:24px;margin:20px 0 28px}.filter-flow li{border:1px solid var(--line);padding:12px;background:#fffdf8;margin:0}.filter-legend{font-size:13px;line-height:1.9}.filter-scroll{overflow-x:auto;max-width:100%;margin:18px 0}.filter-scroll:focus-visible{outline:3px solid #9d713c;outline-offset:3px}#filter-matrix{table-layout:fixed;min-width:720px}#filter-matrix th,#filter-matrix td{padding:12px 8px;text-align:center;width:auto!important}#filter-matrix th:first-child{width:24%!important;text-align:left}#filter-matrix tbody th{font-size:14px}#filter-matrix thead a{color:white}#filter-matrix .support{background:#e3ecdf}#filter-matrix .limited{background:#f4e8d1}#filter-matrix .contradiction{background:#f1dcdb}#filter-matrix .not_tested,#filter-matrix .not_applicable{background:#e8e8e3}#filter-matrix abbr{text-decoration:none;font-weight:650;font-size:12px}.filter-detail{border:1px solid var(--line);padding:16px 20px;margin:12px 0;background:#fffdf8;scroll-margin-top:20px;overflow-wrap:anywhere}.filter-detail h4{font-size:16px;margin:24px 0 10px}.filter-detail section{border-top:1px solid var(--line);scroll-margin-top:20px}.filter-detail .references{font-size:13px}
+@media(max-width:760px){#filter-matrix{display:table;width:100%!important}#filter-matrix thead{display:table-header-group;position:static;width:auto;height:auto;overflow:visible;clip:auto}#filter-matrix tbody{display:table-row-group;width:auto!important}#filter-matrix tr{display:table-row;margin:0;border:0;background:transparent}#filter-matrix th,#filter-matrix td,#filter-matrix tbody th{display:table-cell;width:auto!important}#filter-matrix tbody th{font-size:14px}#filter-matrix th:first-child{width:24%!important}.filter-detail{padding:14px}.filter-flow{grid-template-columns:1fr}}
+@media print{.filter-scroll{overflow:visible}#filter-matrix{min-width:0;font-size:8pt}#filter-matrix th,#filter-matrix td{padding:6pt 3pt}#filter-matrix abbr{font-size:8pt}.filter-flow{display:block}.filter-flow li{break-inside:avoid}.filter-detail{border:0;padding:0}.filter-detail>div{display:block!important}.filter-detail summary{margin-top:16pt}.filter-detail section{break-inside:avoid}}
+'''
+
+def validate_filter_stack(stack, surname_groups, comparison_ids, historical_ids, public):
+    """Validate scoped assessments, not a score or a sequence of exclusions."""
+    text_field = lambda value: isinstance(value, str) and bool(value.strip())
+    if not isinstance(stack, dict) or set(stack) != {'reviewed_at', 'scope', 'rules', 'layers', 'candidate_rows', 'summary'}:
+        raise ValueError('Unknown or missing filter-stack fields')
+    timestamp = stack['reviewed_at']
+    if not isinstance(timestamp, str) or not re.fullmatch(SECTION_TIMESTAMP_PATTERN, timestamp) or not timestamp.endswith('Z'):
+        raise ValueError('Filter stack requires an explicit UTC Z review timestamp')
+    datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+    if not all(text_field(stack[key]) for key in ['scope', 'summary']) or not isinstance(stack['rules'], list) or not stack['rules'] or not all(text_field(rule) for rule in stack['rules']):
+        raise ValueError('Filter stack requires scope, rules and current summary')
+    layers = stack['layers']
+    fields = {'id', 'title', 'depends_on', 'question', 'applied_scope', 'result', 'limits', 'next_test', 'evidence'}
+    if not isinstance(layers, list) or len(layers) < len(FILTER_IDS):
+        raise ValueError('Filter stack requires the eight established layers')
+    seen = set()
+    for layer in layers:
+        if not isinstance(layer, dict) or set(layer) != fields or not isinstance(layer['id'], str) or not re.fullmatch(r'FS[0-9]{2,}', layer['id']) or int(layer['id'][2:]) < 1 or layer['id'] in seen:
+            raise ValueError('Invalid/duplicate filter-layer ID or fields')
+        if not all(text_field(layer[key]) for key in fields - {'depends_on', 'evidence'}):
+            raise ValueError('Incomplete filter-layer text')
+        dependencies = layer['depends_on']
+        if not isinstance(dependencies, list) or not all(isinstance(item, str) for item in dependencies) or len(set(dependencies)) != len(dependencies) or not set(dependencies) <= seen:
+            raise ValueError('Filter dependencies must be unique backward references; cycles are invalid')
+        seen.add(layer['id'])
+    if not set(FILTER_IDS) <= seen or [layer['id'] for layer in layers[:2]] != ['FS01', 'FS02']:
+        raise ValueError('Filter stack must retain FS01–FS08, with FS01 and FS02 first')
+    # Open headings follow reviewed rank; set-aside sampled branches remain above.
+    open_groups = [group for group in surname_groups if group['rank'] < 3]
+    expected_groups = {group['id'] for group in open_groups}
+    candidates = stack['candidate_rows']
+    if not isinstance(candidates, list) or len(candidates) != len(open_groups):
+        raise ValueError('Filter stack must cover every open surname group exactly once')
+    seen_groups = set()
+    for row in candidates:
+        if not isinstance(row, dict) or set(row) != {'group_id', 'cells', 'result', 'next_test'} or not isinstance(row['group_id'], str) or row['group_id'] not in expected_groups or row['group_id'] in seen_groups:
+            raise ValueError('Invalid/duplicate filter-stack candidate group')
+        seen_groups.add(row['group_id'])
+        if not all(text_field(row[key]) for key in ['result', 'next_test']) or not isinstance(row['cells'], list) or len(row['cells']) != len(layers):
+            raise ValueError('Incomplete filter-stack candidate text or layer coverage')
+        cell_ids = set()
+        for cell in row['cells']:
+            if not isinstance(cell, dict) or set(cell) != {'layer_id', 'status', 'detail', 'evidence'} or not isinstance(cell['layer_id'], str) or cell['layer_id'] not in seen or cell['layer_id'] in cell_ids:
+                raise ValueError('Invalid/duplicate filter-stack candidate layer')
+            cell_ids.add(cell['layer_id'])
+            if not isinstance(cell['status'], str) or cell['status'] not in FILTER_STATUSES or not text_field(cell['detail']):
+                raise ValueError('Unknown filter status or missing detail')
+    index_ids = {node.attrs['id'] for node in Page((public / 'index.html').read_text(encoding='utf-8')).root.all() if 'id' in node.attrs}
+    supplement_ids = comparison_ids | historical_ids | {group['id'] for group in surname_groups} | seen | {'filter-stack', 'filter-matrix', 'filter-legend', 'filter-layers', 'filter-candidates', 'surname-ranking', 'comparisons', 'historical-cross-references', 'unrepresented', 'main'}
+    for item in layers + [cell for row in candidates for cell in row['cells']]:
+        citations = item['evidence']
+        if not isinstance(citations, list) or not citations:
+            raise ValueError('Filter assessments require scoped evidence citations')
+        for citation in citations:
+            if not isinstance(citation, dict) or set(citation) != {'label', 'url', 'scope'} or not all(text_field(citation[key]) for key in citation):
+                raise ValueError('Incomplete filter evidence citation')
+            url = citation['url']
+            if re.search(r'\s|[\x00-\x1f\x7f<>"`\\]', url):
+                raise ValueError('Invalid filter citation URL')
+            try:
+                parsed = urlsplit(url)
+                parsed.port
+            except ValueError as exc:
+                raise ValueError('Invalid filter citation URL') from exc
+            if parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password:
+                continue
+            if parsed.scheme or parsed.netloc or parsed.query:
+                raise ValueError('Unsupported filter citation URL')
+            if parsed.path in {'./family-lines.json', './family-lines.md'} and not parsed.fragment:
+                continue
+            targets = index_ids if parsed.path == './index.html' else supplement_ids if parsed.path in {'', './family-lines.html'} else set()
+            if not parsed.fragment or parsed.fragment not in targets:
+                raise ValueError('Unknown local filter citation anchor')
+    return stack
+
+def filter_stack_outputs(stack, surname_groups):
+    """Keep the HTML overview compact; preserve every assessment in both formats."""
+    esc = lambda value: escape(str(value), quote=True)
+    md_text = lambda value: re.sub(r'([\\`*_[\]{}()#+.!|>\-])', r'\\\1', escape(str(value), quote=False))
+    md_url = lambda value: quote(value, safe='/:?&=#%+@,;~.-')
+    def references(citations):
+        return '<ul class="references">' + ''.join(f'<li><a href="{esc(link["url"])}">{esc(link["label"])}</a><small>{esc(link["scope"])}</small></li>' for link in citations) + '</ul>'
+    def md_references(citations):
+        return '\n'.join('- [' + md_text(link['label']) + '](' + md_url('./family-lines.html' + link['url'] if link['url'].startswith('#') else link['url']) + ') — ' + md_text(link['scope']) for link in citations) + '\n\n'
+    layers = stack['layers']
+    layer_ids = [layer['id'] for layer in layers]
+    layer_by_id = {layer['id']: layer for layer in layers}
+    candidate_by_id = {row['group_id']: row for row in stack['candidate_rows']}
+    ordered_groups = [group for group in surname_groups if group['id'] in candidate_by_id]
+    legend = ' · '.join(f'<abbr title="{esc(label)}">{abbreviation}</abbr>: {esc(label)}' for abbreviation, label in FILTER_STATUSES.values())
+    flow = ''.join(f'<li><a href="#{layer["id"]}">{layer["id"]} · {esc(layer["title"])}</a><small>Depends on: ' + (', '.join(f'<a href="#{item}">{item}</a>' for item in layer['depends_on']) or 'No preceding layer') + (' · Parallel autosomal corroboration route' if layer['id'] == 'FS08' else '') + '</small></li>' for layer in layers)
+    layer_details = []
+    for layer in layers:
+        dependencies = ', '.join(f'<a href="#{item}">{item}</a>' for item in layer['depends_on']) or 'No preceding layer'
+        layer_details.append(f'<details id="{layer["id"]}" class="filter-detail"><summary>{layer["id"]} · {esc(layer["title"])}</summary><div><p><strong>Question:</strong> {esc(layer["question"])}</p><p><strong>Depends on:</strong> {dependencies}</p><p><strong>Applied scope:</strong> {esc(layer["applied_scope"])}</p><p><strong>Result:</strong> {esc(layer["result"])}</p><p><strong>Limits:</strong> {esc(layer["limits"])}</p><p><strong>Next test:</strong> {esc(layer["next_test"])}</p>{references(layer["evidence"])}</div></details>')
+    matrix_rows, candidate_details = [], []
+    for group in ordered_groups:
+        row = candidate_by_id[group['id']]
+        cells = {cell['layer_id']: cell for cell in row['cells']}
+        matrix_cells, detailed_cells = [], []
+        for layer_id in layer_ids:
+            cell = cells[layer_id]
+            abbreviation, label = FILTER_STATUSES[cell['status']]
+            target = group['id'] + '-' + layer_id
+            matrix_cells.append(f'<td class="filter-state {cell["status"]}"><a href="#{target}" aria-label="{esc(group["surname_label"])} · {layer_id}: {esc(label)}"><abbr title="{esc(label)}">{abbreviation}</abbr></a></td>')
+            detailed_cells.append(f'<section id="{target}"><h4><a href="#{layer_id}">{layer_id} · {esc(layer_by_id[layer_id]["title"])}</a></h4><p><strong>{esc(label)}:</strong> {esc(cell["detail"])}</p>{references(cell["evidence"])}</section>')
+        matrix_rows.append(f'<tr><th scope="row"><a href="#filter-{group["id"]}">{esc(group["surname_label"])}</a><small>Rank {group["rank"]}{" · tied" if group["rank"] > 1 else ""} · <a href="#{group["id"]}">{group["id"]}</a></small></th>{"".join(matrix_cells)}</tr>')
+        candidate_details.append(f'<details id="filter-{group["id"]}" class="filter-detail"><summary>{esc(group["surname_label"])} · {group["id"]} · assessments and evidence</summary><div><p><strong>Current result:</strong> {esc(row["result"])}</p><p><strong>Next test:</strong> {esc(row["next_test"])}</p>{"".join(detailed_cells)}</div></details>')
+    header_cells = ''.join(f'<th scope="col"><a href="#{layer["id"]}"><abbr title="{esc(layer["title"])}">{layer["id"]}</abbr></a></th>' for layer in layers)
+    html = f'''<section aria-labelledby="filter-stack"><h2 id="filter-stack">Filter stack — what has been applied, and what remains open</h2><p>{esc(stack['scope'])}</p><small>Editorial review: <time datetime="{esc(stack['reviewed_at'])}">{esc(stack['reviewed_at'])}</time></small><div class="method"><p><strong>Current result:</strong> {esc(stack['summary'])}</p><p>Each cell distinguishes support, limits, missing evidence and a test not yet performed. The same record or DNA observation reused across layers is not independent support.</p><details><summary>Starting screens: DNA and historical records</summary><p>{esc(layers[0]['result'])}</p><p>{esc(layers[1]['result'])}</p></details><details><summary>Filter rules and source independence</summary><ul>{''.join('<li>' + esc(rule) + '</li>' for rule in stack['rules'])}</ul></details></div><h3>Layer flow and dependencies</h3><p>Dependencies show which evidence informs another layer; they do not stop documentary searches while genetic data are missing. FS08 is a separate autosomal route. It can corroborate a family connection, but does not by itself establish a paternal surname.</p><ol class="filter-flow">{flow}</ol><h3>Open candidates across all {len(layers)} layers</h3><p id="filter-legend" class="filter-legend">{legend}</p><div class="filter-scroll" role="region" aria-label="Candidate matrix; scroll horizontally on smaller screens" tabindex="0"><table id="filter-matrix" aria-describedby="filter-legend"><caption>{len(ordered_groups)} open surname headings, in the reviewed surname rank order. Each cell opens its scoped detail below. These are assessments, not cumulative survivor counts.</caption><thead><tr><th scope="col">Surname / rank</th>{header_cells}</tr></thead><tbody>{''.join(matrix_rows)}</tbody></table></div><h3 id="filter-candidates">Candidate details and citations</h3>{''.join(candidate_details)}<h3 id="filter-layers">Layer questions, limits and next tests</h3>{''.join(layer_details)}</section>'''
+    md = '## Filter stack\n\n' + md_text(stack['scope']) + '\n\nEditorial review: ' + stack['reviewed_at'] + '.\n\n'
+    md += '**Already applied:** FS01 and FS02 in the saved comparison scope. ' + md_text(layers[0]['result']) + ' ' + md_text(layers[1]['result']) + '\n\n**Remaining layers:** Read each layer’s applied scope and result. Unresolved, limited and untested cells are not failed gates.\n\n**Current result:** ' + md_text(stack['summary']) + '\n\n'
+    md += 'No score, ancestry probability or cumulative survivor count is supplied. Correlated testers, copied trees and repeated references to one record do not add independent support. Dependencies identify information needed to interpret a result; they do not mark completed gates or stop historical searches. Parish, migration and other documentary findings can contribute to a missing kinship bridge. FS08 is a parallel autosomal corroboration route. It can be assessed while finer Y evidence is missing; shared DNA still needs segment and pedigree controls before assigning a particular ancestor. Documentary work can also proceed independently. A historical name does not assign a genotype.\n\n'
+    md += '\n'.join('- ' + md_text(rule) for rule in stack['rules']) + '\n\n### Layer flow and dependencies\n\n'
+    for layer in layers:
+        md += '- [' + layer['id'] + ' · ' + md_text(layer['title']) + '](./family-lines.html#' + layer['id'] + '). Depends on: ' + (', '.join(layer['depends_on']) or 'No preceding layer') + ('; parallel autosomal corroboration route' if layer['id'] == 'FS08' else '') + '.\n'
+    md += '\n### Candidate matrix\n\n' + '; '.join(abbreviation + ': ' + label for abbreviation, label in FILTER_STATUSES.values()) + '.\n\n| Surname / rank | ' + ' | '.join(layer_ids) + ' |\n| --- | ' + ' | '.join('---' for _ in layer_ids) + ' |\n'
+    for group in ordered_groups:
+        cells = {cell['layer_id']: cell for cell in candidate_by_id[group['id']]['cells']}
+        md += '| ' + md_text(group['surname_label']) + ' / ' + str(group['rank']) + ' | ' + ' | '.join(FILTER_STATUSES[cells[item]['status']][0] for item in layer_ids) + ' |\n'
+    md += '\n### Candidate details and citations\n\n'
+    for group in ordered_groups:
+        row = candidate_by_id[group['id']]
+        cells = {cell['layer_id']: cell for cell in row['cells']}
+        md += '#### ' + group['id'] + ' · ' + md_text(group['surname_label']) + '\n\nCurrent result: ' + md_text(row['result']) + '\n\nNext test: ' + md_text(row['next_test']) + '\n\n'
+        for layer_id in layer_ids:
+            cell = cells[layer_id]
+            md += '**' + layer_id + ' · ' + md_text(layer_by_id[layer_id]['title']) + ': ' + FILTER_STATUSES[cell['status']][1] + '.** ' + md_text(cell['detail']) + '\n\n' + md_references(cell['evidence'])
+    md += '### Layer details\n\n'
+    for layer in layers:
+        md += '#### ' + layer['id'] + ' · ' + md_text(layer['title']) + '\n\nDepends on: ' + (', '.join(layer['depends_on']) or 'No preceding layer') + '.\n\n'
+        for key, label in [('question', 'Question'), ('applied_scope', 'Applied scope'), ('result', 'Result'), ('limits', 'Limits'), ('next_test', 'Next test')]:
+            md += label + ': ' + md_text(layer[key]) + '\n\n'
+        md += md_references(layer['evidence'])
+    return html, md
+
 def family_line_outputs(public):
     """Render the reviewed public supplement from one structured source."""
     data = json.loads((public / 'family-lines.json').read_text(encoding='utf-8'))
-    required = {'schema_version', 'title', 'prepared_on', 'observed_on', 'dataset_scope', 'interpretation_rules', 'summary', 'comparisons', 'dependency_groups', 'editorial_reviewed_at', 'editor_note', 'documentary_cross_reference', 'surname_groups', 'ranking_note'}
-    if set(data) != required or data['schema_version'] != '1.2.0':
+    required = {'schema_version', 'title', 'prepared_on', 'observed_on', 'dataset_scope', 'interpretation_rules', 'summary', 'comparisons', 'dependency_groups', 'editorial_reviewed_at', 'editor_note', 'documentary_cross_reference', 'surname_groups', 'ranking_note', 'filter_stack'}
+    if set(data) != required or data['schema_version'] != '1.3.0':
         raise ValueError('Unknown or missing family-line source fields')
     for name in ['prepared_on', 'observed_on']:
         datetime.strptime(data[name], '%Y-%m-%d')
@@ -451,6 +602,8 @@ def family_line_outputs(public):
     if len(assigned) != len(set(assigned)) or set(assigned) != identifiers:
         raise ValueError('Every FL observation must belong to exactly one display group')
     surname_groups = sorted(surname_groups, key=lambda group: (group['rank'], group['surname_label'].casefold()))
+    stack = validate_filter_stack(data['filter_stack'], surname_groups, identifiers, historical_ids, public)
+    filter_html, filter_md = filter_stack_outputs(stack, surname_groups)
     group_by_fl = {item: group for group in surname_groups for item in group['comparison_ids']}
     ordered_comparisons = [by_comparison[item] for group in surname_groups for item in group['comparison_ids']]
     ordered_historical = sorted(historical['rows'], key=lambda row: (group_by_fl[row['comparison_ids'][0]]['rank'], group_by_fl[row['comparison_ids'][0]]['surname_label'].casefold()))
@@ -490,22 +643,25 @@ def family_line_outputs(public):
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Dated paternal-line comparisons for the Aaron Oliphant inquiry: tested branches, qualified exclusions and missing evidence."><title>Paternal-line comparisons — The Aaron Oliphant Inquiry</title><style>
 :root{{--paper:#f6f3eb;--ink:#263c35;--green:#203f39;--line:#d6d9cd;--muted:#62695f}}*{{box-sizing:border-box}}body{{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,sans-serif}}a{{color:var(--green);text-underline-offset:3px}}a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{{outline:3px solid #9d713c;outline-offset:4px}}header{{border-bottom:1px solid var(--line);padding:20px max(24px,calc((100vw - 1320px)/2));display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}}header a{{font-size:14px}}.brand{{font:20px Georgia,serif;text-decoration:none}}main{{max-width:1368px;margin:auto;padding:48px 24px 72px}}.intro{{max-width:780px}}.eyebrow,.row-id{{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#876238}}h1{{font:clamp(34px,5vw,56px)/1.15 Georgia,serif;margin:16px 0 22px}}h2{{font:28px/1.3 Georgia,serif;margin:40px 0 16px}}p{{margin:12px 0}}.muted,small{{color:var(--muted)}}small{{display:block;font-size:12px;line-height:1.55;margin-top:7px}}.metrics{{display:flex;gap:16px;flex-wrap:wrap;margin:28px 0}}.metric{{background:#e9ede2;border:1px solid var(--line);padding:16px 22px;flex:1;min-width:190px}}.metric strong{{font:32px Georgia,serif;display:block}}.metric span{{font-size:13px}}.method{{max-width:900px;border-left:3px solid var(--green);padding:8px 22px;background:#fffdf8}}.controls{{display:flex;gap:18px;flex-wrap:wrap;margin:28px 0 14px}}.controls>div{{flex:1;min-width:220px}}label{{display:block;font-size:13px;font-weight:600;margin-bottom:6px}}input,select{{width:100%;padding:12px;background:#fffdf8;border:1px solid #adb9a9;color:var(--ink);font:inherit}}table{{width:100%;border-collapse:collapse;font-size:13px}}caption{{text-align:left;color:var(--muted);padding:12px 0}}thead{{background:var(--green);color:white}}th,td{{text-align:left;vertical-align:top;padding:20px 16px;border-bottom:1px solid var(--line)}}tbody th{{width:16%;font-size:17px;font-weight:500}}td:nth-child(2){{width:29%}}td:nth-child(3){{width:28%}}td:nth-child(4){{width:27%}}.row-id{{display:block;margin-bottom:6px}}.rank-label{{display:block;font:600 12px/1.5 system-ui,sans-serif;color:#876238;margin-bottom:8px}}#surname-table{{table-layout:fixed}}#surname-table td,#surname-table th{{overflow-wrap:anywhere}}.technical-records{{margin:24px 0;border:1px solid var(--line);padding:18px;background:#fffdf8}}.technical-records>summary{{font-size:17px}}.branch{{font-family:monospace}}.status{{font-size:12px;font-weight:600;padding:5px 9px;display:inline-block;border:1px solid #adbaad;background:#e9ede2;border-radius:2px}}.status.branch_separated{{background:#e8e8e3}}.status.qualified_separation{{background:#f4e8d1}}summary{{cursor:pointer;font-weight:600}}.row-detail{{margin-top:12px;overflow-wrap:anywhere}}ul{{padding-left:20px}}li{{margin:8px 0}}.references li{{margin:16px 0}}#historical-table{{table-layout:fixed;margin-top:22px}}#historical-table th,#historical-table td{{overflow-wrap:anywhere}}#historical-table small a{{white-space:nowrap}}.cell-label{{display:none}}.empty{{padding:25px;border:1px solid var(--line)}}[hidden]{{display:none!important}}footer{{border-top:1px solid var(--line);padding-top:24px;margin-top:40px;font-size:13px}}.downloads{{display:flex;gap:24px;flex-wrap:wrap}}@media(max-width:760px){{main{{padding:30px 18px}}header{{padding:18px}}.metrics{{gap:10px}}.metric{{min-width:140px;padding:14px}}table,tbody,tr,td,tbody th{{display:block;width:100%!important}}thead{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}}tr{{margin:18px 0;border:1px solid var(--line);background:#fffdf8;scroll-margin-top:20px}}td,tbody th{{padding:16px 18px}}tbody th{{font-size:23px;background:#e9ede2}}td:last-child{{border:0}}.cell-label{{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}}}}@media print{{.controls,header{{display:none}}main{{padding:0}}body{{background:white}}table{{font-size:9pt}}th,td{{padding:8pt}}details{{display:block}}.row-detail{{display:block}}}}
 </style></head><body><header><a class="brand" href="./index.html">The Aaron Oliphant Inquiry</a><a href="./index.html#dna">Back to the genetic evidence</a></header><main id="main"><div class="intro"><p class="eyebrow">Supporting comparison register</p><h1>Paternal-line comparisons</h1><p>Which tested branches can we set aside—and what still needs checking?</p><p class="muted">{esc(data['dataset_scope'])}</p><small>Saved observations: {esc(data['observed_on'])} · Editorial review: <time datetime="{esc(data['editorial_reviewed_at'])}">{esc(data['editorial_reviewed_at'])}</time></small></div>
-<nav class="downloads" aria-label="Supplement sections"><a href="#surname-ranking">Ranked surnames</a><a href="#comparisons">DNA records</a><a href="#historical-cross-references">Historical cross-references</a></nav>
+<nav class="downloads" aria-label="Supplement sections"><a href="#surname-ranking">Ranked surnames</a><a href="#filter-stack">Filter stack</a><a href="#comparisons">DNA records</a><a href="#historical-cross-references">Historical cross-references</a></nav>
 <div class="metrics"><div class="metric"><strong>{len(observed)}</strong><span>saved Y67 observations</span></div><div class="metric"><strong>{summary['broad_only_observations']}</strong><span>without decisive finer placement</span></div><div class="metric"><strong>0</strong><span>demonstrated surname-era connections in this register</span></div></div>
 <div class="method"><p><strong>A tested-branch exclusion is not a surname-wide exclusion.</strong> Several testers may descend from one paternal family; their surnames and number of tests do not establish independent coverage. A missing match or an absent name in a positive-only SNP list is not a negative genotype.</p><p>The Devaney and DeVenney observations share a surname heading below. Their DNA records remain separate: one is a broad Y67 comparison and the other a distinct A823 comparator outside that capture.</p><details><summary>How to interpret and update this register</summary><ul>{rules}</ul><p><strong>Editing:</strong> update the reviewed public <a href="./family-lines.json">structured source</a>, preserving FL IDs, observed dates, source citations, qualifying evidence and dependency groups. Rebuild HTML and Markdown together; reconcile a changed conclusion with the main report's candidates, DNA, theories and next tests. Follow the <a href="./index.html#publication-maintenance">editing policy</a>. Raw tester data stay restricted.</p><p><strong>Latest editor note:</strong> {esc(data['editor_note'])}</p></details></div>
 {ranked_html}
+{filter_html}
 <h2 id="comparisons">Individual DNA evidence</h2><details id="comparison-records" class="technical-records"><summary>Individual comparison records ({len(data['comparisons'])})</summary><div class="controls"><div><label for="family-search">Surname or branch</label><input id="family-search" type="search" placeholder="For example, Devaney or A984"></div><div><label for="family-status">Assessment</label><select id="family-status"><option value="all">All comparisons</option><option value="unresolved">Unresolved finer placement</option><option value="shared_branch_unresolved">Shared branch; recent link unresolved</option><option value="branch_separated">Set aside: separate branch</option><option value="qualified_separation">Set aside with quality qualification</option></select></div></div><p id="result-count" aria-live="polite" class="muted">{len(data['comparisons'])} comparison observations shown</p><table id="comparison-table" aria-label="Paternal-line comparison observations"><caption>Observation IDs identify saved comparisons, not independently established families. All exclusions are limited to the inspected branch.</caption><thead><tr><th scope="col">Surname / observation</th><th scope="col">Saved DNA evidence</th><th scope="col">Assessment and scope</th><th scope="col">Evidence and next test</th></tr></thead><tbody>{''.join(rows)}</tbody></table><p class="empty" id="no-comparisons" hidden>No comparisons match these filters. An absent row is not an exclusion.</p></details>
 {historical_html}
 <h2 id="unrepresented">What this list cannot eliminate</h2><p>Untested or unobserved paternal families remain open. The former surname may not appear among today's matches. Lower-resolution comparisons outside this register remain outside its exclusion scope. No family is selected as the answer merely because other sampled branches have been set aside.</p><p>We have not completed an all-surname Big Y census or measured independent founder coverage. The next useful work is the correctly identified closer comparator's finer data, a quality-aware A823 comparison, and a documented independent historical paternal line. No fresh test, pedigree or county claim is created by this page.</p><footer><div class="downloads"><a href="./family-lines.json">Structured data</a><a href="./family-lines.md">Markdown version</a><a href="./index.html#dna">Main research report</a></div><p>Sources retain their individual observation dates. Editorial timestamps and software checks do not certify source truth or current account access.</p></footer></main><script>
-const familyRows=[...document.querySelectorAll('#comparison-table tbody tr')];const search=document.getElementById('family-search');const status=document.getElementById('family-status');function filterComparisons(){{let count=0;const query=search.value.trim().toLocaleLowerCase();for(const row of familyRows){{const show=(status.value==='all'||row.dataset.status===status.value)&&row.textContent.toLocaleLowerCase().includes(query);row.hidden=!show;if(show)count++;}}document.getElementById('result-count').textContent=count+' of '+familyRows.length+' comparison observations shown';document.getElementById('no-comparisons').hidden=count!==0;}}search.addEventListener('input',filterComparisons);status.addEventListener('change',filterComparisons);function revealComparisonAnchor(hash=location.hash){{const row=familyRows.find(item=>'#'+item.id===hash);if(row){{document.getElementById('comparison-records').open=true;if(row.hidden){{search.value='';status.value='all';filterComparisons();}}row.scrollIntoView();}}}}window.addEventListener('hashchange',()=>revealComparisonAnchor());document.addEventListener('click',event=>{{const link=event.target.closest('a');if(link)revealComparisonAnchor(link.getAttribute('href'));}});revealComparisonAnchor();
+const familyRows=[...document.querySelectorAll('#comparison-table tbody tr')];const search=document.getElementById('family-search');const status=document.getElementById('family-status');function filterComparisons(){{let count=0;const query=search.value.trim().toLocaleLowerCase();for(const row of familyRows){{const show=(status.value==='all'||row.dataset.status===status.value)&&row.textContent.toLocaleLowerCase().includes(query);row.hidden=!show;if(show)count++;}}document.getElementById('result-count').textContent=count+' of '+familyRows.length+' comparison observations shown';document.getElementById('no-comparisons').hidden=count!==0;}}search.addEventListener('input',filterComparisons);status.addEventListener('change',filterComparisons);function revealComparisonAnchor(hash=location.hash){{if(hash&&hash.startsWith('#')){{const target=document.getElementById(hash.slice(1));if(target){{let ancestor=target;while(ancestor){{if(ancestor.tagName==='DETAILS')ancestor.open=true;ancestor=ancestor.parentElement;}}}}}}const row=familyRows.find(item=>'#'+item.id===hash);if(row){{document.getElementById('comparison-records').open=true;if(row.hidden){{search.value='';status.value='all';filterComparisons();}}row.scrollIntoView();}}}}window.addEventListener('hashchange',()=>revealComparisonAnchor());document.addEventListener('click',event=>{{const link=event.target.closest('a');if(link)revealComparisonAnchor(link.getAttribute('href'));}});revealComparisonAnchor();let printDetails=[];window.addEventListener('beforeprint',()=>{{printDetails=[...document.querySelectorAll('.filter-detail')].map(item=>[item,item.open]);for(const [item] of printDetails)item.open=true;}});window.addEventListener('afterprint',()=>{{for(const [item,open] of printDetails)item.open=open;printDetails=[];}});
 </script></body></html>
 '''
+    html = html.replace('</style>', FILTER_CSS + '</style>', 1)
     md = '# Paternal-line comparisons\n\n' + data['dataset_scope'] + '\n\nSaved observations: ' + data['observed_on'] + '. Editorial review: ' + data['editorial_reviewed_at'] + '.\n\n' + '\n'.join('- ' + rule for rule in data['interpretation_rules']) + '\n\n'
     md += '## Ranked surname candidates\n\n' + md_text(data['ranking_note']) + '\n\nVariants share display headings, not combined DNA observations or proved pedigrees. Ties are alphabetical.\n\n'
     for group in surname_groups:
         md += '### Rank ' + str(group['rank']) + (' (tied)' if group['rank'] > 1 else '') + ' · ' + md_text(group['surname_label']) + '\n\n' + md_text(group['case_label']) + '. ' + md_text(group['basis']) + '\n\nDistinct DNA records: ' + ', '.join('[' + item + '](./family-lines.html#' + item + ')' for item in group['comparison_ids']) + '.\n\n'
         if group['historical_ids']:
             md += 'Historical evidence: ' + ', '.join('[' + item + '](./family-lines.html#' + item + ')' for item in group['historical_ids']) + '.\n\n'
+    md += filter_md
     md += '## Individual DNA evidence\n\n'
     for row in ordered_comparisons:
         md += '### ' + row['id'] + ' · ' + row['surname_label'] + '\n\n' + row['status_label'] + '. ' + row['exclusion_scope'] + '\n\n'

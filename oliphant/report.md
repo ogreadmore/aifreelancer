@@ -24,7 +24,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2 October 2026, 03:04:24 EDT  · Content updated: 2 October 2026, 03:04:24 EDT  · [Edit note](./index.html#edit-0140-start-here)
+Editorial review: 2 October 2026, 05:12:08 EDT  · Content updated: 2 October 2026, 05:12:08 EDT  · [Edit note](./index.html#edit-0142-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -56,9 +56,11 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation:** the [current compilation-source supplement](https://drive.google.com/file/d/1OPcIi2qP_uPYKZWSTA7D2-7Nlw0N5gMu/view?usp=drivesdk) follows the [selected account-reading checkpoint](./index.html#library-transfer-edition0140-account). It preserves 26 selected files and two supporting package files, 28 package members. Two verified transfers advance the recorded library total from 1,923 to **1,925**, by incremental accounting, not a recount. Each new file’s name, size, destination and named owner/reader permissions were checked; local archive integrity was verified, while remote bytes and restoration were not tested. Source preservation does not authenticate the compilation or establish new parentage or paternal origins. The complete dated 1,924 and 1,923 predecessors remain below.
+**Latest restricted preservation:** the [Lampasas index supplement](https://drive.google.com/file/d/1_At6QrTAQN_EIu2OxiWQkNuklulAKNl4/view?usp=drivesdk) preserves eight selected files, including two original scans, plus two package documents: ten archive members. One metadata-verified transfer advances the recorded library total from 1,925 to **1,926**, by incremental accounting, not a recount. Name, size, destination and named owner/reader permissions were checked; local archive integrity was verified, while remote bytes and restoration were not tested. The [bounded index result](./index.html#N101) supplies no parentage or heir link. Earlier preservation checkpoints remain below.
 
 Earlier evidence-library transfers
+
+**Earlier compilation-source preservation, 2 October 2026:** the [current compilation-source supplement](https://drive.google.com/file/d/1OPcIi2qP_uPYKZWSTA7D2-7Nlw0N5gMu/view?usp=drivesdk) follows the [selected account-reading checkpoint](./index.html#library-transfer-edition0140-account). It preserves 26 selected files and two supporting package files, 28 package members. Two verified transfers advance the recorded library total from 1,923 to **1,925**, by incremental accounting, not a recount. Each new file’s name, size, destination and named owner/reader permissions were checked; local archive integrity was verified, while remote bytes and restoration were not tested. Source preservation does not authenticate the compilation or establish new parentage or paternal origins. The complete dated 1,924 and 1,923 predecessors remain below.
 
 **Latest restricted preservation:** a [selected account-reading supplement](https://drive.google.com/file/d/14mnQsyqo3vPyr-DIAOB_OiEmADYpb32z/view?usp=drivesdk) preserves one newly read John/Nancy account scan, its source review and selected private continuation assessments: 25 selected files and two supporting package files, 27 package members. One verified transfer advances the recorded library total to **1,924**, by incremental accounting from 1,923, not a recount. Filename, size, intended destination and named owner/reader permissions were checked; local archive integrity was verified, while remote bytes and restoration were not tested. Preservation does not establish new parentage or paternal origins. Earlier checkpoints are retained below.
 
@@ -1336,7 +1338,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2 October 2026, 03:04:24 EDT  · Content updated: 2 October 2026, 03:04:24 EDT  · [Edit note](./index.html#edit-0140-research-notes)
+Editorial review: 2 October 2026, 05:12:08 EDT  · Content updated: 2 October 2026, 05:12:08 EDT  · [Edit note](./index.html#edit-0142-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -3059,7 +3061,7 @@ Restricted supporting reviews: [death locator and marker review](https://drive.g
 
 N101 · Byron’s adult identity and a possible earlier collateral branch
 
-Reviewed 1 October 2026 · Five adult-family originals, a grave photograph and an earlier census rereading; no independent historical Y anchor established
+Reviewed 2 October 2026 · Adult-family originals and bounded index checks; no independent historical Y anchor established
 
 The previously read [1880 Lee County, Texas census](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBX-9JBP) lists Byron, eight, in the S.R./Amanda Oliphant household. Enlarged reading establishes **Georgia** as his birthplace and both parents’ birthplaces; the earlier scaled Texas reading is withdrawn. The household’s relationship cells are blank, so the census does not explicitly call him a son. The [family biography’s Bible transcription](https://www.therainwatercollection.com/gallery/aug2009.shtml) names Edward Bryon, reportedly born 8 February 1872, among Solomon and Amanda’s children. The Bible original remains unread.
 
@@ -3075,9 +3077,13 @@ The [1900 Limestone County, Texas census, ED 56 sheet 14A, lines 46–47](https:
 
 **Later bounded court-book check, 1 October 2026:** fifteen distinct images were inspected for title, date and index orientation in Ancestry collection 8638, DGS 007117353. The [administrator O index, image 90](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00090), has no recognizable Oliphant target. The [guardianship O leaf, image 283](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00283), is blank, but its coverage of 1920 was not established. The opening is an older continuation, and [image 626, pp. 362–363](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00626), shows a Western District guardianship entry dated 10 January 1927; whether the earlier O index covers those later pages remains unresolved. The pass stopped at its fifteen-image cap, preserving two complete index downloads and eight viewer captures. Those are preservation counts, not fifteen newly read cases. No Edward estate or parent-naming record was found within this scope. Lawrence probate jurisdiction remains conditional. The unfinished step is to map the relationship between the O index and later guardianship pages, if a jurisdiction or named-case pointer justifies it; [Box M2–O packets](https://www.ancestry.ca/imageviewer/collections/8638/images/007117380_00001) remain an unread container, not a located Edward estate. This is not a 1920 guardianship or countywide absence finding.
 
+**Lampasas index check, 2 October 2026:** selected [image 15](https://www.familysearch.org/ark:/61903/3:1:3QSQ-G9Q9-5SY) and [image 16](https://www.familysearch.org/ark:/61903/3:1:3QSQ-G9Q9-51) of the home-accessible probate minute index, volume 3 (catalogued 1889–1892), supplied no recognized Solomon/Oliphant pointer. This was an N/P-interval screen: no separate O heading or complete O coverage was established, and underlying minutes remain unread. Reported Lampasas death does not establish probate jurisdiction; no Edward/Byron heir link followed.
+
 Restricted supporting records: [adult-family readings, bounded death/probate review and exact provenance](https://drive.google.com/file/d/1pY5GnbYgyXkTunQBMTeYV3UvgbbeTCWd/view?usp=drivesdk). The separate [1896 locator review](https://drive.google.com/file/d/1545c0c0_oq9eBu9OZvfMU7jFgVICv94k/view?usp=drivesdk) preserves the dependent index/access check. Access requires Taylor’s permission; source originals, private details and the finite search ledger remain outside the public package.
 
 Restricted court-book successor: [bounded index readings, provenance and source-selection review](https://drive.google.com/file/d/14pt4jjxKkUTLrH2dqc7Q1mZsYgHsritj/view?usp=drivesdk). Access requires Taylor’s permission.
+
+Restricted Lampasas supplement: [two original index scans, the bounded reading and exact provenance](https://drive.google.com/file/d/1_At6QrTAQN_EIu2OxiWQkNuklulAKNl4/view?usp=drivesdk). Access requires Taylor’s permission.
 
 ### Coverage checklist
 
@@ -3127,7 +3133,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2 October 2026, 03:42:54 EDT  · Content updated: 2 October 2026, 03:42:54 EDT  · [Edit note](./index.html#edit-0141-updates)
+Editorial review: 2 October 2026, 05:12:08 EDT  · Content updated: 2 October 2026, 05:12:08 EDT  · [Edit note](./index.html#edit-0142-updates)
 
 29 September 2026
 
@@ -3740,6 +3746,22 @@ Editor: AI research assistant. Editorial checkpoint: 2 October 2026, 03:42:54 ED
 - [Records](./index.html#records): Correct only the two Related trees statements that still called the answered 30 September enquiry reply-pending. Link the existing COR02/N32/R01 controls; preserve the separate 1 October RT01 enquiries as pending and the earlier four-question draft as unsent.
 
 - [Updates](./index.html#updates): Append this reply-status correction and the Records checkpoint; preserve earlier edition history, evidence conclusions, candidate ranks and relationships.
+
+2 October 2026
+
+### Edition 01.42 · A bounded collateral-source test and continuity review
+
+Added two exact Lampasas probate-index spreads to [N101](./index.html#N101). The selected N/P interval supplied no recognized Solomon/Oliphant pointer; no complete O-section mapping, estate, Edward/Byron heir link or probate jurisdiction was established. Candidates, historical relationships, genetic ranks and origin confidence remain unchanged. The [verified restricted supplement](./index.html#latest-library-preservation) brings the incremental library ledger to 1,926. The private handoff review repaired stale metadata; it is not a new historical discovery.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2 October 2026, 05:12:08 EDT . This marks the scoped editorial reconciliation, not every source-inspection time or deployed verification.
+
+- [Start here](./index.html#start-here): Updated only the latest restricted preservation checkpoint to the verified 1,926-file incremental ledger; retained the 1,925 predecessor in history. Research priorities and confidence unchanged.
+
+- [Research notes](./index.html#research-notes): Added the two-spread Lampasas N/P-interval check to N101 with exact sources and O-mapping, metadata and jurisdiction limits; all other 100 notes unchanged. No estate, heir or parent link established.
+
+- [Edition history](./index.html#updates): Appended this bounded source-coverage and preservation edition with scoped review timestamps; retained earlier entries and unrelated section dates.
 
 09 / Contact
 

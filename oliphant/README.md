@@ -273,3 +273,7 @@ One further filmed account/sale scan was read: an undated John Oliphant estate a
 ## Edition 01.41 · Corrected related-contact reply status
 
 Two Related trees summaries still described the 30 September enquiry as reply-pending. They now reflect the substantive reply received on 1 October, already recorded in the request tracker and comparison notes. Finer comparison data and the documented paternal split remain unresolved. The separate 1 October birth/Bible source enquiries remain pending. No new contact, genetic result, historical source, candidate rank or ancestry conclusion follows.
+
+## Edition 01.42 · Bounded Lampasas collateral-source check
+
+N101 records two original index spreads from Lampasas probate minute-index volume 3, catalogued 1889–1892. The selected N/P interval supplied no recognized target pointer; complete O mapping, underlying minutes, probate jurisdiction and an Edward/Byron heir link remain unestablished. No relationship, surname or origin-confidence change follows. The verified restricted supplement adds one cloud transfer to the incremental ledger (1,926); it is not a full-library recount or remote restore test. Private continuity metadata was reconciled separately.

@@ -24,7 +24,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 1 October 2026, 19:17:27 EDT  · Content updated: 1 October 2026, 19:17:27 EDT  · [Edit note](./index.html#edit-0137-start-here)
+Editorial review: 1 October 2026, 19:54:51 EDT  · Content updated: 1 October 2026, 19:54:51 EDT  · [Edit note](./index.html#edit-0138-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -56,9 +56,11 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation:** the [selected John probate originals and bounded reply/access reviews](https://drive.google.com/file/d/1moo6apQv9g8SzdDkYszPAnB8Z4hPi0cM/view?usp=drivesdk) and [selected William original papers](https://drive.google.com/file/d/1j12wV3HWI04qeK2qxVmfC_0eKIHPs3VE/view?usp=drivesdk) are preserved with their reading limits. The recorded library total is **1,918**, by incremental accounting, not a recount. Filename, size, destination and owner/authorized-viewer permissions were checked; remote bytes and restoration were not tested. Earlier checkpoints are retained below.
+**Latest restricted preservation:** the [selected Nancy estate originals and review](https://drive.google.com/file/d/1k-VOW8_L5FdJAUkhOQaAYt5S1o3HSJgU/view?usp=drivesdk) and [two selected 1790 Union household originals and review](https://drive.google.com/file/d/1eq5jo4KonttbNNonCfLGwD2WXVDe1OY-/view?usp=drivesdk) are preserved with their reading limits. The recorded library total is **1,920**, by incremental accounting, not a recount. Filename, size, destination and owner/authorized-viewer permissions were checked; remote bytes and restoration were not tested. Earlier checkpoints are retained below.
 
 Earlier evidence-library transfers
+
+**Latest restricted preservation:** the [selected John probate originals and bounded reply/access reviews](https://drive.google.com/file/d/1moo6apQv9g8SzdDkYszPAnB8Z4hPi0cM/view?usp=drivesdk) and [selected William original papers](https://drive.google.com/file/d/1j12wV3HWI04qeK2qxVmfC_0eKIHPs3VE/view?usp=drivesdk) are preserved with their reading limits. The recorded library total is **1,918**, by incremental accounting, not a recount. Filename, size, destination and owner/authorized-viewer permissions were checked; remote bytes and restoration were not tested. Earlier checkpoints are retained below.
 
 **Latest restricted preservation:** the [current reply and genetic-method review](https://drive.google.com/file/d/1_9GtBFsqZhKqrqZTV-nFdHWPN3eI-x7I/view?usp=drivesdk) follows the [dated historical-correspondence synthesis](https://drive.google.com/file/d/1DvRF68DO17c5mNiBPwa2dIn3c6-Rr_RV/view?usp=drivesdk). The recorded library total is **1,915**, by incremental accounting, not a full recount. Current checked access is restricted to the owner and authorized named viewers; identities and private correspondence remain unpublished. New-file name, size, parent and permissions were checked; remote bytes and restoration were not tested. Historical owner-only receipts retain their dated upload scope.
 
@@ -1323,7 +1325,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 1 October 2026, 19:17:27 EDT  · Content updated: 1 October 2026, 19:17:27 EDT  · [Edit note](./index.html#edit-0137-research-notes)
+Editorial review: 1 October 2026, 19:54:51 EDT  · Content updated: 1 October 2026, 19:54:51 EDT  · [Edit note](./index.html#edit-0138-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1509,7 +1511,7 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N13 · Early Carolina name screens and the Spartanburg census clue
 
-Reviewed 1 October 2026 · Earlier bounded screens, the 1820 reading and two further 1810 households retained; selected John and William will/probate originals now read. Publication child-name claims remain unverified; supporting papers in both estate packets remain unread.
+Reviewed 1 October 2026 · Earlier bounded screens, two selected 1790 Union households, the 1820 reading and two further 1810 households retained; selected John and William will/probate originals and Nancy estate papers now read. Publication child-name claims remain unverified; other supporting estate papers remain unread.
 
 The South Carolina FamilySearch full-text query +Aaron +Ol*ph*, place South Carolina, years 1750–1814, screened all 207 result titles. The +Aaron +Ol*f* variant screened keyword labels across all 214 results. Selected transcripts resolved apparent candidates into separate people: Aaron Broyles and Dr. Olivant, Aaron Moore or Templeman and Robert Oliphant, Andrew Oliphant and Aaron Coats, David Oliphant and Aaron J. Moses, and Samuel Alston misread as Olfton with Aaron Smith. The already known 1821 Aaron–Job Rainwater deed reappeared in two indexes; it is one event.
 
@@ -1531,9 +1533,13 @@ A separate original neighborhood check of Solomon Rainwater's 1800 Pendleton pag
 
 **Selected household coverage:** earlier originals supply two conditional age fits: [Laurens William in 1800](./index.html#N14) has two unnamed boys under ten, and [Rutherford James Oliphant in 1810](https://www.familysearch.org/ark:/61903/3:1:33S7-9YY6-SGXS) has one unnamed male 16–25. Neither is identified as Aaron; James Marlin’s documented apprenticeship offers an alternative for the latter. This is James Oliphant’s household, not James Caldwell’s.
 
+**Two selected 1790 Union originals now read:** [James Oliphant’s return](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBZ-HC7) records one free white male sixteen or over and 25 enslaved people; [Rebeckah Olliphant’s](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBZ-4LC) records one such male and four free white females. Both male-under-sixteen entries are dashes; no household relationships are recorded. If Aaron’s reported 1791 birth is correct, he was not yet born at the census reference date, so these entries cannot exclude a parent. This James is not proved to be [the deceased Union estate James](./index.html#N27), and Rebeckah is not identified as Aaron’s wife or another known relative. An independently identifying family or estate link is needed; the regional inventory remains incomplete.
+
 **Two further originals read, 1 October 2026:** [David Oliphant’s Charleston schedule](https://www.familysearch.org/ark:/61903/3:1:33SQ-GYBD-96MQ) has two males 10–15 and one 45+, with no male 16–25. [John Oliphant’s Edgefield schedule](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBQ-9J13) has one male 16–25 and one 45+. The respective [Charleston](https://www.familysearch.org/ark:/61903/3:1:33S7-9YB6-9Z27) and [Edgefield headers](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBQ-9V8R) control locality and column order; the viewer’s mixed-group county labels do not. If the reported 1791 birth is correct, among these two newly read households, age 19 fits only John’s younger-male category. No occupant is named Aaron or assigned a relationship. David’s missing age category does not exclude fatherhood with an adult son elsewhere; his identity with the painter, physician or administrator remains unproved.
 
 **Known family counterweight:** selected filmed loose papers in John Oliphant’s packet 765 corroborate the family previously known from [archive-hosted typescripts](https://www.archivesindex.sc.gov/index.php/Detail/objects/S108093000800677000): wife Nancy, son William and daughters Sarah Burnes, Lydia Nicholson and Beersheba Hollingsworth. The [will and probate oath, image 779](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L986), [execution and endorsement, image 780](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9RN), and [appraisement warrants, image 785](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L95G), on DGS 7649217 establish that John was deceased by 4 October 1815. His will was executed 28 January 1815 and endorsed as recorded 20 May 1816 in **Book B, pages 353–354**. The earlier SCDAH Book A 353 locator remains unresolved. Packet 765 is definite; the circled box number is uncertain between 20 and 21, within the catalogue’s Boxes 20–21 range and alongside the earlier Box 21 locator.
+
+**Nancy’s estate cross-reference:** the [citation and administration bond, image 847](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9MK), name Nancy Oliphant deceased by 3 November 1817, with William applying to administer her estate. A [9 December 1817 petition, image 846](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9SQ), explicitly connects her personal estate with John Oliphant’s estate. This supports the known family context, but neither paper calls her John’s widow or William’s mother, nor names an Aaron or earlier parent. These are two selected scans, not a complete estate review; other papers remain unread.
 
 **William’s originals also read:** [image 774](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9YF) names sisters Sarah Burns, Lidia Nicholson and Basheba Hollingsworth. These record-level spellings corroborate the known family context; they are not silently normalized or treated as new individuals. [Image 775](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9B6) names nephew William H. Hollingsworth and an interest in a house and lot in Augusta, Georgia. It describes the enslaved woman read as Moriah/Mariah and her four children as property under protection, with privileges conditional on “good order and a proper subordination” and an alternative Ohio provision. The earlier typescript supplies $250 each; repair tape masks part of that amount in this scan. These directions do not establish an executed emancipation, Ohio movement or biological paternity. The will was executed 13 October 1827; [the proof and endorsement, image 776](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C9P1-L9Y7), positively identify packet 764, proved 7 January 1828 and recorded 22 January 1828 in Book C, page 257, with John Hollingsworth qualified as executor.
 
@@ -3102,7 +3108,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 1 October 2026, 19:17:27 EDT  · Content updated: 1 October 2026, 19:17:27 EDT  · [Edit note](./index.html#edit-0137-updates)
+Editorial review: 1 October 2026, 19:54:51 EDT  · Content updated: 1 October 2026, 19:54:51 EDT  · [Edit note](./index.html#edit-0138-updates)
 
 29 September 2026
 
@@ -3641,6 +3647,22 @@ Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 19:17:27 ED
 - [Research notes](./index.html#research-notes): N13 records selected John and William original facsimiles, known-family corroboration, dates, qualified locator discrepancy and conditional property provisions. No Aaron/immigrant bridge or implemented emancipation, migration or paternity is established.
 
 - [Updates](./index.html#updates): Append this selected-original, bounded-correspondence and preservation successor. Preserve prior edition entries, editor notes, tree relationships, ranks and historical/genetic confidence.
+
+1 October 2026
+
+### Edition 01.38 · Nancy estate context and selected Union households
+
+Two selected Nancy probate scans establish that she was deceased by 3 November 1817 and explicitly connect her estate with John Oliphant’s estate, without freshly stating widow, mother or son roles. Two selected 1790 Union census originals supply James and Rebeckah household counts, not named relationships. Under Aaron’s unverified 1791 birth claim he was not yet born at the census reference date; the rows cannot exclude parentage. Census-to-estate identity remains unproved. Both source supplements are preserved with their reading limits; remote bytes and restoration were not tested. No public-tree relationship, documentary priority, genetic interpretation or origin-confidence change follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 1 October 2026, 19:54:51 EDT . This records the editorial reconciliation, not a new Aaron life event or deployed verification.
+
+- [Start here](./index.html#start-here): Reconcile the two verified restricted Nancy and Union source supplements; preserve the dated 1,918 checkpoint in earlier history. Current named-Aaron and genetic priorities remain unchanged.
+
+- [Research notes](./index.html#research-notes): N13 adds Nancy’s deceased-by date and explicit estate cross-reference, and two selected 1790 Union household originals. No new widow/mother/son wording, census-to-estate identity, Aaron parentage or earlier family is established.
+
+- [Updates](./index.html#updates): Append this bounded probate-context, census-source and preservation successor; preserve all earlier editions, editor notes, tree relationships, priorities and historical/genetic confidence.
 
 09 / Contact
 

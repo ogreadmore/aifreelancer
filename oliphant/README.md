@@ -6,6 +6,7 @@ A public working investigation of Aaron Oliphant's background, migration, and pa
 
 - [Start here on the website](./index.html#start-here): current checkpoint, continuation steps and evidence-library access.
 - [Read the illustrated report](./index.html).
+- [Compare tested paternal branches](./family-lines.html), with scoped exclusions, unresolved data and next tests.
 - [Explore the historical family tree](./index.html#family-tree), with evidence and qualifications for each relationship.
 - [See historical pictures](./index.html#historical-pictures): two credited remote portraits with caption-based identifications and qualified dating.
 - [Browse clues worth following](./index.html#clues), with limits and concrete next tests.
@@ -52,7 +53,7 @@ For human and AI contributors:
 2. Review every chapter and the resources subsection. Set `data-editorially-reviewed` to the actual editorial checkpoint as RFC3339 with timezone. Change `data-content-updated` only when substantive content changed; preserve an unchanged section’s prior value, and omit an unknown value. These are editorial checkpoints, not refreshed source inspections.
 3. Append concise section notes to the new edition’s expandable history, recording editor, checkpoint, change or unchanged review, and remaining limits. Preserve all published earlier notes. Give each note an ID and `editor-note` class, point the section’s `data-editor-note-target` to that ID, and link its visible timestamp to it. The generated `section_reviews` array carries the same timestamps, note and history link.
 4. Rebuild and check with the commands below. Review the diff and desktop/mobile presentation, including links into collapsed details. Check evidence and privacy separately; passing software checks cannot certify either.
-5. Publish only the eleven allowlisted public files. Verify the resulting repository revision and served files against the reviewed local hashes, and confirm the edition and changed anchors on the live site. A local build or upload alone is not a live release.
+5. Publish only the fourteen allowlisted public files. Verify the resulting repository revision and served files against the reviewed local hashes, and confirm the edition and changed anchors on the live site. A local build or upload alone is not a live release.
 
 Local operators may also maintain a private impact checklist and source fingerprints. Those aids are outside this public package and do not replace the review above.
 
@@ -63,13 +64,13 @@ python build.py build
 python build.py check
 ```
 
-`index.html` is the canonical public manuscript. Edit it, update its dated edition notes and source qualifications, then regenerate. Do not edit `report.md`, `research.json`, `research.schema.json`, `llms.txt` or `manifest.json` independently. `styles.css` and `app.js` provide presentation and progressive enhancement; the report and retrieval details remain readable without JavaScript.
+`index.html` is the canonical main public manuscript. `family-lines.json` is the reviewed public source for the separate paternal-line register; `family-lines.html` and `family-lines.md` are generated together. Edit these two sources, update dated edition notes and source qualifications, then regenerate. Do not edit `report.md`, `research.json`, `research.schema.json`, `llms.txt` or `manifest.json` independently. `styles.css` and `app.js` provide presentation and progressive enhancement; the report and retrieval details remain readable without JavaScript.
 
 The build is offline and deterministic. It rejects unexpected package files, duplicate HTML IDs, broken in-page anchors and unknown local links; `check` rejects stale exports or changed checksums. This verifies consistency, **not factual accuracy, remote link access or privacy clearance**. Review every changed claim against its cited source before publishing. Keep a dated note describing what changed and why. Git history preserves earlier editions.
 
 For each editorial batch, keep one stable evidence detail for each changed finding and review every affected chapter and resource entry. Reconcile summaries, confidence/status labels and next tests together, with concise links back to the detail. Retain dated corrections, contradictions and bounded negatives; remove superseded current instructions without erasing their history. Track pending public updates and private work explicitly. Keep public exports separate from living-person, DNA and account records, and distinguish local preservation, verified restricted transfer and verified live publication. See [the maintenance policy](./index.html#publication-maintenance).
 
-The publication allowlist is the eleven files named in `build.py`, including `.gitattributes` to preserve consistent line endings across operating systems. Deploy only those files inside `/oliphant/`. Do not copy a private working directory, account screenshots, living matches' identities, raw DNA, credentials or restricted archive scans into this folder. Public source links can still require sign-in or reading-room access; those restrictions are not resolved by this package.
+The publication allowlist is the fourteen files named in `build.py`, including `.gitattributes` to preserve consistent line endings across operating systems. Deploy only those files inside `/oliphant/`. Do not copy a private working directory, account screenshots, living matches' identities, raw DNA, credentials or restricted archive scans into this folder. Public source links can still require sign-in or reading-room access; those restrictions are not resolved by this package.
 
 ## Publication and access limits
 
@@ -277,3 +278,7 @@ Two Related trees summaries still described the 30 September enquiry as reply-pe
 ## Edition 01.42 · Bounded Lampasas collateral-source check
 
 N101 records two original index spreads from Lampasas probate minute-index volume 3, catalogued 1889–1892. The selected N/P interval supplied no recognized target pointer; complete O mapping, underlying minutes, probate jurisdiction and an Edward/Byron heir link remain unestablished. No relationship, surname or origin-confidence change follows. The verified restricted supplement adds one cloud transfer to the incremental ledger (1,926); it is not a full-library recount or remote restore test. Private continuity metadata was reconciled separately.
+
+## Edition 01.43 · Linked paternal-line comparisons
+
+The separate [register](./family-lines.html) presents 23 saved Y67 observations and one distinct A823 comparator. It does not count observations as independent families or eliminate whole surnames. Preserve stable FL IDs, source observation dates, qualifiers and dependence groups when editing `family-lines.json`. Its totals and statuses are checked by the builder; unknown finer placement remains unknown. Reconcile any changed conclusion with the main candidates, DNA, explanations and next tests. The JSON and Markdown versions support researchers and AI readers; private tester identities and raw data remain outside the fourteen-file publication allowlist. No fresh genetic result or historical conclusion is added.

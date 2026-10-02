@@ -694,7 +694,7 @@ Solomon’s census entry reports his unnamed father born in South Carolina. The 
 
 ## A paternal branch is a clue. It is not an address or a surname.
 
-Editorial review: 1 October 2026, 18:11:42 EDT  · Content updated: 1 October 2026, 18:11:42 EDT  · [Edit note](./index.html#edit-0136-dna)
+Editorial review: 2026-10-02T17:29:38Z  · Content updated: 2026-10-02T17:29:38Z  · [Edit note](./index.html#edit-0143-dna)
 
 Y-DNA follows the direct paternal line. Autosomal DNA reflects many ancestral lines. These answer different questions, and a shared surname in an autosomal match’s tree does not identify the source of the shared DNA. [[8]](./index.html#s8)
 
@@ -717,6 +717,8 @@ Y67 matches reviewed
 Still too broadly typed for equivalent exclusion
 
 Fourteen of the reviewed Y67 comparators have more-resolved results that place their split on older branches, within the limits described in the private audit. Nine remain insufficiently resolved. This narrows particular comparisons; it cannot exclude every family bearing a surname. [[8]](./index.html#s8)
+
+For the tested-branch exclusions and remaining gaps, see the [paternal-line comparison register](./family-lines.html).
 
 ### Why Devaney stays on the list
 
@@ -3133,7 +3135,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2 October 2026, 05:12:08 EDT  · Content updated: 2 October 2026, 05:12:08 EDT  · [Edit note](./index.html#edit-0142-updates)
+Editorial review: 2026-10-02T17:29:38Z  · Content updated: 2026-10-02T17:29:38Z  · [Edit note](./index.html#edit-0143-updates)
 
 29 September 2026
 
@@ -3762,6 +3764,20 @@ Editor: AI research assistant. Editorial checkpoint: 2 October 2026, 05:12:08 ED
 - [Research notes](./index.html#research-notes): Added the two-spread Lampasas N/P-interval check to N101 with exact sources and O-mapping, metadata and jurisdiction limits; all other 100 notes unchanged. No estate, heir or parent link established.
 
 - [Edition history](./index.html#updates): Appended this bounded source-coverage and preservation edition with scoped review timestamps; retained earlier entries and unrelated section dates.
+
+2 October 2026
+
+### Edition 01.43 · Paternal-line comparison register
+
+A separate [comparison register](./family-lines.html) makes the existing 23 saved Y67 observations and one distinct A823 comparator accessible without expanding the main report. Eleven observed branches can be set aside, three McMaster observations retain quality qualifications, and nine lack decisive finer placement. Repeated testers are not counted as independent families; no surname-wide exclusion or new origin conclusion follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-02T17:29:38Z . This is a saved-data presentation update, not a fresh account reading.
+
+- [DNA](./index.html#dna): Add one compact link to the comparison register. Existing ranks, source dates, confidence and next genetic tests remain unchanged.
+
+- [Edition history](./index.html#updates): Append this supplement and its editorial checkpoint. Earlier source coverage and editor notes remain intact.
 
 09 / Contact
 

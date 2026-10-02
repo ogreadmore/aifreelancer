@@ -1,0 +1,968 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Paternal-line comparisons",
+  "prepared_on": "2026-10-02",
+  "observed_on": "2026-09-29",
+  "dataset_scope": "23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.",
+  "interpretation_rules": [
+    "Exclusions apply to the specific observed typed lines, never to every family with the surname.",
+    "Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.",
+    "Official Y67 GD, extended STR differences, single-copy lower bounds and SNP differences are different measures; only official same-level Y67 GD appears in that column.",
+    "A close STR distance cannot establish recentness. Broad placement, no-call or absent match-list entry is not a negative genotype.",
+    "McMaster/McMasters separation retains qualitative read-view limits; it is not calibrated raw sequence QC.",
+    "No surname probabilities, precise pairwise dates, former-surname direction, Aaron-level genetic assignment or confidence change is supplied. An untested family remains possible."
+  ],
+  "summary": {
+    "observed_tests": 23,
+    "separate_a823_comparators": 1,
+    "named_branch_observations": 14,
+    "broad_only_observations": 9,
+    "status_counts": {
+      "branch_separated": 11,
+      "unresolved": 9,
+      "qualified_separation": 3,
+      "shared_branch_unresolved": 1
+    },
+    "y67_gd_counts": {
+      "5": 2,
+      "6": 3,
+      "7": 18
+    },
+    "independent_family_count": null,
+    "demonstrated_surname_era_connections": 0
+  },
+  "dependency_groups": [
+    {
+      "id": "DG01",
+      "members": [
+        "FL03",
+        "FL06",
+        "FL07"
+      ],
+      "reason": "Shared downstream McMaster/McMasters path; two terminal assignments. Three observations do not establish three independent paternal families."
+    },
+    {
+      "id": "DG02",
+      "members": [
+        "FL01",
+        "FL09"
+      ],
+      "reason": "Kelly's saved path includes Brown's BY76755 branch. Different surname labels are not independent branch evidence; documentary relationship remains unknown."
+    },
+    {
+      "id": "DG03",
+      "members": [
+        "FL11",
+        "FL13"
+      ],
+      "reason": "McCormack's saved path descends through McCormick's BY81068 branch. Broader shared placement is not independent-family proof."
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "FL01",
+      "surname_label": "Brown",
+      "comparison_set": "saved_y67",
+      "y67_gd": 5,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-BY76755",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-ZZ87.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C10",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-BY76755/compare/R-A823",
+          "label": "R-BY76755 versus R-A823",
+          "observed_on": "2026-09-28",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": "DG02"
+    },
+    {
+      "id": "FL02",
+      "surname_label": "Devaney",
+      "comparison_set": "saved_y67",
+      "y67_gd": 5,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M269",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C01",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N33",
+          "label": "Comparator identity and pedigree limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#R01",
+          "label": "Separate genetic comparison routes",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL03",
+      "surname_label": "McMaster",
+      "comparison_set": "saved_y67",
+      "y67_gd": 6,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-FTE33708",
+      "branch_relation": "Observed downstream cluster follows A984/A11242 below R-A823; saved Oliphant read views qualitatively support ancestral states at those sites.",
+      "status": "qualified_separation",
+      "status_label": "Recent paternal link excluded on reviewed evidence · qualitative limit",
+      "exclusion_scope": "This one observation within the three-comparator McMaster/McMasters cluster. Separation has qualitative read-view support, not a raw-call or counted-depth audit; no whole-surname exclusion.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C12",
+          "label": "Qualified McMaster/McMasters assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-FTE33708/compare/R-A823",
+          "label": "Saved downstream-cluster path",
+          "observed_on": "2026-09-29",
+          "scope": "Shows the FTE33057 ancestor node and FTE33708 path below A823; not this individual's raw calls or a direct pairwise date. Ancestral-state read-view evidence is summarized in C12."
+        }
+      ],
+      "unknown": [
+        "Calibrated calls, depth, quality and callability at the cluster markers.",
+        "Actual bilateral site states for a correctly identified representative.",
+        "Documentary pedigree independence among the three observations."
+      ],
+      "next_test": "If usable consented existing data become available, formally check A984/A11242 calls and coverage with one identified cluster representative, retaining a derived A823 control. No repeated account gate or broad surname search is needed.",
+      "dependency_group": "DG01"
+    },
+    {
+      "id": "FL04",
+      "surname_label": "Whelan–Early",
+      "comparison_set": "saved_y67",
+      "y67_gd": 6,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-Y61966",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-ZZ87.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C10",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-Y61966/compare/R-A823",
+          "label": "R-Y61966 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL05",
+      "surname_label": "Wood",
+      "comparison_set": "saved_y67",
+      "y67_gd": 6,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M222",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C03",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL06",
+      "surname_label": "McMaster",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-FTE33708",
+      "branch_relation": "Observed downstream cluster follows A984/A11242 below R-A823; saved Oliphant read views qualitatively support ancestral states at those sites.",
+      "status": "qualified_separation",
+      "status_label": "Recent paternal link excluded on reviewed evidence · qualitative limit",
+      "exclusion_scope": "This one observation within the three-comparator McMaster/McMasters cluster. Separation has qualitative read-view support, not a raw-call or counted-depth audit; no whole-surname exclusion.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C12",
+          "label": "Qualified McMaster/McMasters assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-FTE33708/compare/R-A823",
+          "label": "Saved downstream-cluster path",
+          "observed_on": "2026-09-29",
+          "scope": "Shows the FTE33057 ancestor node and FTE33708 path below A823; not this individual's raw calls or a direct pairwise date. Ancestral-state read-view evidence is summarized in C12."
+        }
+      ],
+      "unknown": [
+        "Calibrated calls, depth, quality and callability at the cluster markers.",
+        "Actual bilateral site states for a correctly identified representative.",
+        "Documentary pedigree independence among the three observations."
+      ],
+      "next_test": "If usable consented existing data become available, formally check A984/A11242 calls and coverage with one identified cluster representative, retaining a derived A823 control. No repeated account gate or broad surname search is needed.",
+      "dependency_group": "DG01"
+    },
+    {
+      "id": "FL07",
+      "surname_label": "McMasters",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-FTE33057",
+      "branch_relation": "Observed downstream cluster follows A984/A11242 below R-A823; saved Oliphant read views qualitatively support ancestral states at those sites.",
+      "status": "qualified_separation",
+      "status_label": "Recent paternal link excluded on reviewed evidence · qualitative limit",
+      "exclusion_scope": "This one observation within the three-comparator McMaster/McMasters cluster. Separation has qualitative read-view support, not a raw-call or counted-depth audit; no whole-surname exclusion.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C12",
+          "label": "Qualified McMaster/McMasters assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-FTE33708/compare/R-A823",
+          "label": "Saved downstream-cluster path",
+          "observed_on": "2026-09-29",
+          "scope": "Shows the FTE33057 ancestor node and FTE33708 path below A823; not this individual's raw calls or a direct pairwise date. Ancestral-state read-view evidence is summarized in C12."
+        }
+      ],
+      "unknown": [
+        "Calibrated calls, depth, quality and callability at the cluster markers.",
+        "Actual bilateral site states for a correctly identified representative.",
+        "Documentary pedigree independence among the three observations."
+      ],
+      "next_test": "If usable consented existing data become available, formally check A984/A11242 calls and coverage with one identified cluster representative, retaining a derived A823 control. No repeated account gate or broad surname search is needed.",
+      "dependency_group": "DG01"
+    },
+    {
+      "id": "FL08",
+      "surname_label": "Reynolds",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-BY82347",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-ZZ87.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C10",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-BY82347/compare/R-A823",
+          "label": "R-BY82347 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL09",
+      "surname_label": "Kelly",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-FTD12679",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-ZZ87.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C10",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-FTD12679/compare/R-A823",
+          "label": "R-FTD12679 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": "DG02"
+    },
+    {
+      "id": "FL10",
+      "surname_label": "Daly",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-FT372333",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-ZZ87.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C10",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-FT372333/compare/R-A823",
+          "label": "R-FT372333 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL11",
+      "surname_label": "McCormick",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-BY81068",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-ZZ87.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C10",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-BY81068/compare/R-A823",
+          "label": "R-BY81068 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": "DG03"
+    },
+    {
+      "id": "FL12",
+      "surname_label": "Ashworth",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-FTD16270",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-ZZ87.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C10",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-FTD16270/compare/R-A823",
+          "label": "R-FTD16270 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL13",
+      "surname_label": "McCormack",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-FTH80951",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-ZZ87.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C10",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-FTH80951/compare/R-A823",
+          "label": "R-FTH80951 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": "DG03"
+    },
+    {
+      "id": "FL14",
+      "surname_label": "Joyce",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-BY71053",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-DF105.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C11",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-BY71053/compare/R-A823",
+          "label": "R-BY71053 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL15",
+      "surname_label": "Quirke",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-FTA8437",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-DF105.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C11",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-FTA8437/compare/R-A823",
+          "label": "R-FTA8437 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL16",
+      "surname_label": "Hawley",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-BY38400",
+      "branch_relation": "Resolved branch splits from the tested Oliphant R-A823 path above A823, at R-DF105.",
+      "status": "branch_separated",
+      "status_label": "Recent paternal link excluded as typed",
+      "exclusion_scope": "This observed typed comparator only; no exclusion of other people or families sharing the surname. No exact pairwise ancestor date is claimed.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C11",
+          "label": "Tested-line branch assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Method and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "https://discover.familytreedna.com/y-dna/R-BY38400/compare/R-A823",
+          "label": "R-BY38400 versus R-A823",
+          "observed_on": "2026-09-29",
+          "scope": "Saved direct branch comparison; topology supports the tested-line distinction. Displayed dates are modeled branch estimates, not pairwise dates or surname dates."
+        }
+      ],
+      "unknown": [
+        "Independently documented paternal pedigree and its independence from other testers.",
+        "Other families with this surname, including untested lines.",
+        "Exact pairwise common-ancestor age; a branch model is not that measurement."
+      ],
+      "next_test": "Revisit only with a typing correction, changed branch evidence or a distinct comparator line. Do not expand this tester's surname pedigree as a recent paternal-origin lead on the present typing.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL17",
+      "surname_label": "Cain",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M269",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C04",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL18",
+      "surname_label": "McCubbin",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M269",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C04",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL19",
+      "surname_label": "Nesbitt",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M222",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C04",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL20",
+      "surname_label": "Scanlan",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M269",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C04",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL21",
+      "surname_label": "Byrne",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M269",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C04",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection.",
+        "Y111 testing or match-list absence does not supply the missing finer SNP placement."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL22",
+      "surname_label": "Collins",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M269",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C04",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection.",
+        "Y111 testing or match-list absence does not supply the missing finer SNP placement."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL23",
+      "surname_label": "Mc Carroll",
+      "comparison_set": "saved_y67",
+      "y67_gd": 7,
+      "gd_method": "Official saved FTDNA Y67 genetic distance, compared at the same 67-marker level; not extended-STR differences.",
+      "displayed_branch": "R-M269",
+      "branch_relation": "Only the broad displayed branch is available for this observation; no finer placement relative to R-A823 is established.",
+      "status": "unresolved",
+      "status_label": "Open · finer placement missing",
+      "exclusion_scope": "One observed comparator only. A broad branch and STR distance neither exclude a recent paternal connection nor demonstrate one; untested alternatives remain open.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C04",
+          "label": "Unresolved comparator assessment",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Missing-data and method limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Exact identity mapping needed for any proposed public-project counterpart.",
+        "Existing finer SNP/sequencing result and mutually callable site states.",
+        "Independently documented paternal pedigree and historical connection.",
+        "Y111 testing or match-list absence does not supply the missing finer SNP placement."
+      ],
+      "next_test": "Obtain one correctly identified, consented existing finer-result/availability row, then compare reliable derived, ancestral and no-call states with callable coverage. If no finer data exist, report that dependency; do not infer placement from project groups or repeat unchanged profiles/charts.",
+      "dependency_group": null
+    },
+    {
+      "id": "FL24",
+      "surname_label": "DeVenney",
+      "comparison_set": "separate_a823",
+      "y67_gd": null,
+      "gd_method": "Not a row in the saved 23-match list. Official Y67 GD is not established here; a saved seven ordinary single-copy repeat-step comparison is an incomplete, different measure and is not substituted for official GD.",
+      "displayed_branch": "R-A823",
+      "branch_relation": "Shares the broad R-A823 label; no younger shared branch or callability-aware pairwise relationship is demonstrated.",
+      "status": "shared_branch_unresolved",
+      "status_label": "Open · recent shared branch unproved",
+      "exclusion_scope": "A separate comparator from the GD5 Devaney observation; neither a whole-family exclusion nor a second independent confirmation of that same family.",
+      "evidence_urls": [
+        {
+          "url": "./index.html#C02",
+          "label": "Separate A823 comparator",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#R01",
+          "label": "Bilateral comparison target",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N31",
+          "label": "Geography and historical-placement limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        },
+        {
+          "url": "./index.html#N32",
+          "label": "Callability and independence limits",
+          "observed_on": null,
+          "scope": "Existing public assessment; source-reading dates remain those recorded there."
+        }
+      ],
+      "unknown": [
+        "Reliable shared/private variant states at mutually callable positions, with quality and assembly reconciliation.",
+        "Actual pairwise differences and branch relationship; match-list absence is not a measured distance.",
+        "Independently documented paternal pedigree and historical connection to the Oliphant line."
+      ],
+      "next_test": "Use a correctly identified, consented bilateral comparison of existing calls and coverage. Keep this comparator distinct from the GD5 observation; no locality, pedigree or surname transition follows from the shared A823 label alone.",
+      "dependency_group": null
+    }
+  ],
+  "editorial_reviewed_at": "2026-10-02T17:29:38Z",
+  "editor_note": "Created from the saved 29 September comparison audit and dated successor assessments. Eleven typed-line exclusions, three qualified McMaster observations and nine unresolved Y67 observations are preserved, plus the separate unresolved A823 comparator. No fresh genotype, pedigree, whole-surname exclusion or origin-confidence change."
+}

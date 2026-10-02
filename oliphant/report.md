@@ -808,7 +808,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2 October 2026, 03:04:24 EDT  · Content updated: 2 October 2026, 03:04:24 EDT  · [Edit note](./index.html#edit-0140-records)
+Editorial review: 2 October 2026, 03:42:54 EDT  · Content updated: 2 October 2026, 03:42:54 EDT  · [Edit note](./index.html#edit-0141-records)
 
 The current independent original-record focus is the federal Nash service file and the loose Welch will. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -1009,13 +1009,13 @@ These are bounded current statuses, not an exhaustive mailbox audit. Continue ex
 
 ### Related trees and research contacts
 
-Current contact status: the approved three-question enquiry was sent on 30 September 2026. [Restricted sent-message record](https://drive.google.com/file/d/1lmIlc7jnOAHzY8ALf4qchiLZsWH0lthn/view?usp=drivesdk). The earlier four-question draft linked below was not sent. A reply remains pending.
+Current contact status: the approved three-question enquiry was sent on 30 September 2026. [Restricted sent-message record](https://drive.google.com/file/d/1lmIlc7jnOAHzY8ALf4qchiLZsWH0lthn/view?usp=drivesdk). The earlier four-question draft linked below was not sent. A substantive reply was received on 1 October 2026; finer comparison data and a documented paternal collateral remain missing. See [the current request status](./index.html#COR02) and [the reply and dating limits](./index.html#N32).
 
 These are inspected profiles, a submitted tree and published family accounts that may help locate records or test a proposed branch. Most profiles are collaboratively edited; they do not have a single verified owner. A public author credit does not establish present availability or custody. If you can supply a source, [contact Taylor](./index.html#contact) and quote the RT reference.
 
 Priority ranks the next evidence question, not the likelihood of descent. Dates below identify the last recorded external check; links were compiled from saved reviews on 30 September 2026 and were not revisited that day. Some account access may be required. Repeated attachments, copied pedigrees and related family accounts are not independent confirmations.
 
-All nineteen entries remain visible and can be searched with the browser’s Find command by name, place or RT reference. Begin with the credited Bible and transcript trail through an existing research contact. Before approaching a named contributor, verify the current profile and frame a specific document question. Private contact planning and unsent drafts belong in the restricted evidence library. The focused enquiry sent on 30 September remains reply-pending. [Two additional birth/Bible source-provenance enquiries were sent on 1 October](./index.html#RT01); substantive answers are pending. No automated outreach is configured.
+All nineteen entries remain visible and can be searched with the browser’s Find command by name, place or RT reference. Begin with the credited Bible and transcript trail through an existing research contact. Before approaching a named contributor, verify the current profile and frame a specific document question. Private contact planning and unsent drafts belong in the restricted evidence library. The focused enquiry sent on 30 September received a substantive reply on 1 October; the actual finer results and documented paternal split remain unresolved. See [the next comparison](./index.html#R01). [Two additional birth/Bible source-provenance enquiries were sent on 1 October](./index.html#RT01); substantive answers are pending. No automated outreach is configured.
 
 - #### [RT01](./index.html#RT01) · Aaron Oliphant · FamilySearch LHXM-9VZ
 
@@ -3127,7 +3127,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2 October 2026, 03:04:24 EDT  · Content updated: 2 October 2026, 03:04:24 EDT  · [Edit note](./index.html#edit-0140-updates)
+Editorial review: 2 October 2026, 03:42:54 EDT  · Content updated: 2 October 2026, 03:42:54 EDT  · [Edit note](./index.html#edit-0141-updates)
 
 29 September 2026
 
@@ -3726,6 +3726,20 @@ Editor: AI research assistant. Editorial checkpoint: 2 October 2026, 03:04:24 ED
 - [Research notes](./index.html#research-notes): N13 records the undated John account, separately dated Nancy sale and qualified packet correlation. N17 records current DOC acquisition, uncertain identity versus the old preview, both marriage-date contradictions and unchanged parentage/source limits.
 
 - [Updates](./index.html#updates): Append selected original-account and compilation-source coverage, the sent clarification and two verified preservation transfers; preserve earlier editions, candidate ranks, family relationships and historical/genetic confidence.
+
+2 October 2026
+
+### Edition 01.41 · Corrected related-contact reply status
+
+Two Related trees summaries still described the 30 September enquiry as reply-pending. They now reflect the substantive reply received on 1 October, already recorded in the request tracker and comparison notes. Finer comparison data and the documented paternal split remain unresolved. The separate 1 October birth/Bible source enquiries remain pending. No new contact, genetic result, historical source, candidate rank or ancestry conclusion follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2 October 2026, 03:42:54 EDT . This records a correction from saved delivery/reply controls, not a new conversation check or deployed verification.
+
+- [Records](./index.html#records): Correct only the two Related trees statements that still called the answered 30 September enquiry reply-pending. Link the existing COR02/N32/R01 controls; preserve the separate 1 October RT01 enquiries as pending and the earlier four-question draft as unsent.
+
+- [Updates](./index.html#updates): Append this reply-status correction and the Records checkpoint; preserve earlier edition history, evidence conclusions, candidate ranks and relationships.
 
 09 / Contact
 

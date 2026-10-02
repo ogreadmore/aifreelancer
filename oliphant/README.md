@@ -286,3 +286,7 @@ The separate [register](./family-lines.html) presents 23 saved Y67 observations 
 ## Edition 01.44 · Historical cross-references
 
 The [same comparison page](./family-lines.html#historical-cross-references) adds a separate bounded documentary screen of the open genetic comparisons. Source schema 1.1.0 adds `documentary_cross_reference`; preserve HX IDs, FL references, search forms, exact recorded spellings, roles, source dates, limits and next tests. Search vocabulary is not proof of surname equivalence. A local or administrative association does not assign a tested paternal line to the historical family. Existing genetic rows and assessments remain unchanged. Edit the structured source, then regenerate both HTML and Markdown and review affected main summaries without expanding the main report.
+
+## Edition 01.45 · Ranked surname groups
+
+`family-lines.json` schema 1.2.0 adds 21 presentation groups and a qualitative ranking note. Preserve all 24 FL observation records separately. Devaney/DeVenney and McMaster/McMasters share display headings, not asserted pedigrees. Rank 1 is the leading low-confidence working candidate; eight Rank 2 cases are tied, and Rank 3 refers only to sampled separated branches. Preserve ties and source qualifications; do not turn a group or a missing match into a surname-wide exclusion. Historical detail follows the group order.

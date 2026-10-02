@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "title": "Paternal-line comparisons",
   "prepared_on": "2026-10-02",
   "observed_on": "2026-09-29",
@@ -963,8 +963,8 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-02T19:14:52Z",
-  "editor_note": "Added a separately assessed historical cross-reference screen of the nine unresolved Y67 surname comparisons and the distinct A823 DeVenney comparator. Existing DNA observations, genetic assessments and origin confidence are unchanged. Recorded names and administrative roles are preserved; no tester-to-historical-family bridge or surname transition is established.",
+  "editorial_reviewed_at": "2026-10-02T19:47:34Z",
+  "editor_note": "Grouped Devaney/DeVenney and McMaster/McMasters under single surname headings while preserving all distinct FL observations. Added explicit qualitative candidate ranks, with Devaney first, eight open alternatives tied and sampled separated branches last. Historical entries follow the same order. No new evidence or confidence upgrade.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
     "reviewed_at": "2026-10-02T19:14:52Z",
@@ -1252,5 +1252,341 @@
         ]
       }
     ]
-  }
+  },
+  "surname_groups": [
+    {
+      "id": "SG01",
+      "surname_label": "Devaney / DeVenney / Devany",
+      "rank": 1,
+      "case_label": "Leading working candidate · low historical confidence",
+      "basis": "One distinct DeVenney comparator shares A823, while the separate Devaney Y67 GD5 observation lacks finer placement. The younger Aaron Olifant Devany supplies a named Hancock lead. These routes remain unconnected: no recent pairwise relationship, tested descent to that historical family or surname transition is established.",
+      "variants": [
+        "Devaney",
+        "DeVenney",
+        "Devany",
+        "Devanney",
+        "Davaney",
+        "Deveney",
+        "Devanny",
+        "Deviney"
+      ],
+      "comparison_ids": [
+        "FL24",
+        "FL02"
+      ],
+      "historical_ids": [
+        "HX01"
+      ]
+    },
+    {
+      "id": "SG02",
+      "surname_label": "Byrne / Byrnes",
+      "rank": 2,
+      "case_label": "Open alternative · tied",
+      "basis": "Finer SNP placement is missing; no historical bridge to this comparator has been established.",
+      "variants": [
+        "Byrne",
+        "Byrnes"
+      ],
+      "comparison_ids": [
+        "FL21"
+      ],
+      "historical_ids": [
+        "HX07"
+      ]
+    },
+    {
+      "id": "SG03",
+      "surname_label": "Cain / Caine / Kane",
+      "rank": 2,
+      "case_label": "Open alternative · tied",
+      "basis": "Finer SNP placement is missing; no historical bridge to this comparator has been established.",
+      "variants": [
+        "Cain",
+        "Caine",
+        "Kane"
+      ],
+      "comparison_ids": [
+        "FL17"
+      ],
+      "historical_ids": [
+        "HX03"
+      ]
+    },
+    {
+      "id": "SG04",
+      "surname_label": "Collins / Collin",
+      "rank": 2,
+      "case_label": "Open alternative · tied",
+      "basis": "Finer SNP placement is missing; no historical bridge to this comparator has been established.",
+      "variants": [
+        "Collins",
+        "Collin"
+      ],
+      "comparison_ids": [
+        "FL22"
+      ],
+      "historical_ids": [
+        "HX08"
+      ]
+    },
+    {
+      "id": "SG05",
+      "surname_label": "McCarroll / Mc Carroll / MacCarroll",
+      "rank": 2,
+      "case_label": "Open alternative · tied",
+      "basis": "Finer SNP placement is missing; no historical bridge to this comparator has been established.",
+      "variants": [
+        "McCarroll",
+        "Mc Carroll",
+        "MacCarroll"
+      ],
+      "comparison_ids": [
+        "FL23"
+      ],
+      "historical_ids": [
+        "HX09"
+      ]
+    },
+    {
+      "id": "SG06",
+      "surname_label": "McCubbin / McCubbins",
+      "rank": 2,
+      "case_label": "Open alternative · tied",
+      "basis": "Finer SNP placement is missing; no historical bridge to this comparator has been established.",
+      "variants": [
+        "McCubbin",
+        "McCubbins"
+      ],
+      "comparison_ids": [
+        "FL18"
+      ],
+      "historical_ids": [
+        "HX04"
+      ]
+    },
+    {
+      "id": "SG07",
+      "surname_label": "Nesbitt / Nisbet",
+      "rank": 2,
+      "case_label": "Open alternative · tied",
+      "basis": "Finer SNP placement is missing; no historical bridge to this comparator has been established.",
+      "variants": [
+        "Nesbitt",
+        "Nisbet"
+      ],
+      "comparison_ids": [
+        "FL19"
+      ],
+      "historical_ids": [
+        "HX05"
+      ]
+    },
+    {
+      "id": "SG08",
+      "surname_label": "Scanlan / Scanlon",
+      "rank": 2,
+      "case_label": "Open alternative · tied",
+      "basis": "Finer SNP placement is missing; no historical bridge to this comparator has been established.",
+      "variants": [
+        "Scanlan",
+        "Scanlon"
+      ],
+      "comparison_ids": [
+        "FL20"
+      ],
+      "historical_ids": [
+        "HX06"
+      ]
+    },
+    {
+      "id": "SG09",
+      "surname_label": "Wood / Woods",
+      "rank": 2,
+      "case_label": "Open alternative · tied",
+      "basis": "Finer SNP placement is missing; no historical bridge to this comparator has been established.",
+      "variants": [
+        "Wood",
+        "Woods"
+      ],
+      "comparison_ids": [
+        "FL05"
+      ],
+      "historical_ids": [
+        "HX02"
+      ]
+    },
+    {
+      "id": "SG10",
+      "surname_label": "Ashworth",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Ashworth"
+      ],
+      "comparison_ids": [
+        "FL12"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG11",
+      "surname_label": "Brown",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Brown"
+      ],
+      "comparison_ids": [
+        "FL01"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG12",
+      "surname_label": "Daly",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Daly"
+      ],
+      "comparison_ids": [
+        "FL10"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG13",
+      "surname_label": "Hawley",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Hawley"
+      ],
+      "comparison_ids": [
+        "FL16"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG14",
+      "surname_label": "Joyce",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Joyce"
+      ],
+      "comparison_ids": [
+        "FL14"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG15",
+      "surname_label": "Kelly",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Kelly"
+      ],
+      "comparison_ids": [
+        "FL09"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG16",
+      "surname_label": "McCormack",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "McCormack"
+      ],
+      "comparison_ids": [
+        "FL13"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG17",
+      "surname_label": "McCormick",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "McCormick"
+      ],
+      "comparison_ids": [
+        "FL11"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG18",
+      "surname_label": "McMaster / McMasters",
+      "rank": 3,
+      "case_label": "Sampled cluster set aside · quality qualification",
+      "basis": "Three related McMaster/McMasters observations retain qualitative read-view separation and the unresolved raw-call quality limit. They are not three independent families. Other untested McMaster lines remain possible.",
+      "variants": [
+        "McMaster",
+        "McMasters"
+      ],
+      "comparison_ids": [
+        "FL03",
+        "FL06",
+        "FL07"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG19",
+      "surname_label": "Quirke",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Quirke"
+      ],
+      "comparison_ids": [
+        "FL15"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG20",
+      "surname_label": "Reynolds",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Reynolds"
+      ],
+      "comparison_ids": [
+        "FL08"
+      ],
+      "historical_ids": []
+    },
+    {
+      "id": "SG21",
+      "surname_label": "Whelan–Early",
+      "rank": 3,
+      "case_label": "Sampled branch set aside",
+      "basis": "Saved evidence separates this sampled branch. The individual record defines the exclusion scope; other families using the name remain possible.",
+      "variants": [
+        "Whelan–Early"
+      ],
+      "comparison_ids": [
+        "FL04"
+      ],
+      "historical_ids": []
+    }
+  ],
+  "ranking_note": "A qualitative order of the current sampled-line cases, strongest working case first; not a calculated surname probability or a ranking of every family using these names. Rank 1 is Devaney, with low historical confidence. Rank 2 contains eight tied open alternatives because their relative likelihood is not established. Rank 3 contains sampled branches set aside, retaining all qualifications and untested-family possibilities. Ties are alphabetical, not hidden subranks."
 }

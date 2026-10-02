@@ -694,7 +694,7 @@ Solomon’s census entry reports his unnamed father born in South Carolina. The 
 
 ## A paternal branch is a clue. It is not an address or a surname.
 
-Editorial review: 2026-10-02T19:14:52Z  · Content updated: 2026-10-02T19:14:52Z  · [Edit note](./index.html#edit-0144-dna)
+Editorial review: 2026-10-02T19:47:34Z  · Content updated: 2026-10-02T19:47:34Z  · [Edit note](./index.html#edit-0145-dna)
 
 Y-DNA follows the direct paternal line. Autosomal DNA reflects many ancestral lines. These answer different questions, and a shared surname in an autosomal match’s tree does not identify the source of the shared DNA. [[8]](./index.html#s8)
 
@@ -718,7 +718,7 @@ Still too broadly typed for equivalent exclusion
 
 Fourteen of the reviewed Y67 comparators have more-resolved results that place their split on older branches, within the limits described in the private audit. Nine remain insufficiently resolved. This narrows particular comparisons; it cannot exclude every family bearing a surname. [[8]](./index.html#s8)
 
-For tested-branch exclusions, historical cross-references and remaining gaps, see the [paternal-line comparison register](./family-lines.html).
+For ranked surname groups, tested-branch exclusions, historical cross-references and remaining gaps, see the [paternal-line comparison register](./family-lines.html).
 
 ### Why Devaney stays on the list
 
@@ -3135,7 +3135,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-02T19:14:52Z  · Content updated: 2026-10-02T19:14:52Z  · [Edit note](./index.html#edit-0144-updates)
+Editorial review: 2026-10-02T19:47:34Z  · Content updated: 2026-10-02T19:47:34Z  · [Edit note](./index.html#edit-0145-updates)
 
 29 September 2026
 
@@ -3792,6 +3792,14 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-02T19:14:52Z . This
 - [DNA](./index.html#dna): Expand the existing compact link’s description to include historical cross-references. Genetic conclusions, ranks and source dates remain unchanged.
 
 - [Edition history](./index.html#updates): Append this screen’s scope and preserve previous history. The historical table is separate from DNA assessments; no county-wide or surname-wide exclusion is claimed.
+
+Edition 01.45 · Ranked surname groups · 2026-10-02T19:47:34Z
+
+Grouped surname variants into a ranked overview on the existing comparison page. Devaney is the leading working candidate with low historical confidence; eight other open surnames remain tied, and sampled separated branches follow. Individual testers, source spelling and genetic results remain distinct. No new relationship or confidence upgrade.
+
+Editor: AI assistant · 2026-10-02T19:47:34Z. DNA: updated the compact link to the grouped and ranked supplement; all existing genetic assessments and evidence retained.
+
+Editor: AI assistant · 2026-10-02T19:47:34Z. Updates: added this grouping and ranking explanation; earlier edition history is preserved.
 
 09 / Contact
 

@@ -963,8 +963,8 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-02T20:30:38Z",
-  "editor_note": "Supplement revision 01.46: applied eight saved-evidence layers across nine open surname headings, with source roles, dependencies, unresolved pedigree bridges and exact next tests. All 24 genetic observations, nine historical findings, group ranks and confidence remain unchanged. No fresh account data, new archival acquisition or new biological exclusion; the main manuscript is unchanged.",
+  "editorial_reviewed_at": "2026-10-03T00:55:07Z",
+  "editor_note": "Revision01.47: three archive replies reconciled; NARA exact CMSR request prepared but unpaid/unsubmitted. Candidate statuses, ranks and genetic evidence unchanged.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
     "reviewed_at": "2026-10-02T19:14:52Z",
@@ -1661,7 +1661,7 @@
         "applied_scope": "Dates, spelling, role and identity statements in the saved HX reviews, compared with the 1821 couple anchor and death by 14 December 1826.",
         "result": "The 1866 younger Devany cannot be the elder Aaron. Wood is a named official in 1824, Collins a retrospective report about 1815, and Carrell an 1811 party. These observations do not yet identify candidate paternal families. No incompatible simultaneous life separates the 1809 Rutherford witness from the later Aaron.",
         "limits": "The namesake's later chronology rules out literal same-person identity, not kinship or the surname. A copied register signature or clerk's mark is not an authenticated autograph. Aaron's military company, dates and age remain unread.",
-        "next_test": "Retrieve Aaron's actual CMSR after the pending clarification and compare exact company, service and identifying details. For candidate people, use parent/residence/alias statements rather than matching spelling alone.",
+        "next_test": "Complete the prepared $30 electronic CMSR request, then read the actual jacket/cards and compare company, service and identifying details. Recipient/payment steps and submission remain outstanding; no order is confirmed. For candidate people, use parent/residence/alias statements rather than matching spelling alone.",
         "evidence": [
           {
             "label": "N83: which Aaron?",
@@ -1671,7 +1671,7 @@
           {
             "label": "R04: Aaron's complete Nash service file",
             "url": "./index.html#R04",
-            "scope": "Exact jacket-and-cards target remains unread; pending route clarification is a retrieval dependency, not a historical finding."
+            "scope": "Exact jacket-and-cards target remains unread. The 2 October reply confirms the $30 War of 1812 route and stated 60–90-day turnaround; its authenticated request is prepared with recipient/payment steps and submission outstanding. No paid or submitted order is confirmed. Procedural guidance and form preparation are not historical findings."
           },
           {
             "label": "N02: younger Aaron Olifant Devany",

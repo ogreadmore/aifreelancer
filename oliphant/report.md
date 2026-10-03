@@ -698,7 +698,7 @@ Solomon’s census entry reports his unnamed father born in South Carolina. The 
 
 ## A paternal branch is a clue. It is not an address or a surname.
 
-Editorial review: 2026-10-02T19:47:34Z  · Content updated: 2026-10-02T19:47:34Z  · [Edit note](./index.html#edit-0145-dna)
+Editorial review: 2026-10-03T07:46:43Z  · Content updated: 2026-10-03T07:46:43Z  · [Edit note](./index.html#edit-0149-dna)
 
 Y-DNA follows the direct paternal line. Autosomal DNA reflects many ancestral lines. These answer different questions, and a shared surname in an autosomal match’s tree does not identify the source of the shared DNA. [[8]](./index.html#s8)
 
@@ -722,7 +722,7 @@ Still too broadly typed for equivalent exclusion
 
 Fourteen of the reviewed Y67 comparators have more-resolved results that place their split on older branches, within the limits described in the private audit. Nine remain insufficiently resolved. This narrows particular comparisons; it cannot exclude every family bearing a surname. [[8]](./index.html#s8)
 
-For ranked surname groups, tested-branch exclusions, historical cross-references and remaining gaps, see the [paternal-line comparison register](./family-lines.html).
+The [paternal-line comparison register](./family-lines.html) separates ranked surname groups, individual DNA observations, independent historical cross-references and the evidence still needed. Start with its current result and section guide; no surname-era connection is demonstrated.
 
 ### Why Devaney stays on the list
 
@@ -3141,7 +3141,23 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-03T07:25:47Z  · Content updated: 2026-10-03T07:25:47Z  · [Edit note](./index.html#edit-0148-updates)
+Editorial review: 2026-10-03T07:46:43Z  · Content updated: 2026-10-03T07:46:43Z  · [Edit note](./index.html#edit-0149-updates)
+
+3 October 2026
+
+### Edition 01.49 · A guide to paternal-line comparisons
+
+The [comparison register](./family-lines.html) now opens with its current result and a guide to surname ranks, DNA observations, historical checks and evidence filters. Section jumps and return links make the longer tables easier to navigate; the main sidebar links directly to the register beneath the DNA chapter.
+
+All evidence records, ranks, assessments, citations and source dates remain unchanged. No new genetic or historical conclusion follows from this editorial revision.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-03T07:46:43Z . This marks the navigation and explanation revision, not a fresh source reading or deployment.
+
+- [DNA](./index.html#dna): Clarified the comparison-register entry point and added its sidebar subsection; genetic conclusions and next tests remain unchanged.
+
+- [Edition history](./index.html#updates): Appended this scoped navigation revision and preserved every earlier edition and checkpoint.
 
 3 October 2026
 

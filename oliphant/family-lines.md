@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-03T00:55:07Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-03T07:46:43Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -10,6 +10,15 @@ Saved observations: 2026-09-29. Editorial review: 2026-10-03T00:55:07Z.
 - A close STR distance cannot establish recentness. Broad placement, no-call or absent match-list entry is not a negative genotype.
 - McMaster/McMasters separation retains qualitative read-view limits; it is not calibrated raw sequence QC.
 - No surname probabilities, precise pairwise dates, former-surname direction, Aaron-level genetic assignment or confidence change is supplied. An untested family remains possible.
+
+## Current result and guide
+
+9 surname headings remain open. Devaney is the leading working candidate, with low historical confidence; eight alternatives are tied. The sampled branches under 12 other headings are set aside within their stated DNA limits. No whole surname is eliminated and no surname-era connection is demonstrated.
+
+- [Ranked surname groups](./family-lines.html#surname-ranking): Start with the working order and its limits. A heading groups spelling variants; it does not prove a shared family or give an ancestry probability.
+- [Evidence filters](./family-lines.html#filter-stack): Read what each evidence layer has actually established and what is missing. Unresolved or untested cells are not exclusions; these layers do not produce a score.
+- [Individual DNA observations](./family-lines.html#comparisons): Open the records for the separate tested comparisons, branch assessments, dated citations and next tests. Search and assessment controls affect this table only.
+- [Historical cross-references](./family-lines.html#historical-cross-references): Review the independent documentary checks. A historical name does not identify a tester’s paternal family. Retrieval priority tells which record to seek next; it is separate from candidate rank.
 
 ## Ranked surname candidates
 
@@ -1539,4 +1548,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Revision01.47: three archive replies reconciled; NARA exact CMSR request prepared but unpaid/unsubmitted. Candidate statuses, ranks and genetic evidence unchanged.
+Editor note: Revision01.49: added a current-result guide, persistent section navigation and return links. All comparison, historical and filter records, ranks, assessments, citations and source-observation dates are unchanged; no new evidence or conclusion.

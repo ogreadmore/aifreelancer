@@ -1344,7 +1344,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-03T07:25:47Z  · Content updated: 2026-10-03T07:25:47Z  · [Edit note](./index.html#edit-0148-research-notes)
+Editorial review: 2026-10-03T09:21:25Z  · Content updated: 2026-10-03T09:21:25Z  · [Edit note](./index.html#edit-0150-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -3087,6 +3087,8 @@ The [1900 Limestone County, Texas census, ED 56 sheet 14A, lines 46–47](https:
 
 **Ancestry index query, 3 October 2026:** one query in [Texas probate collection 2115](https://www.ancestry.ca/search/collections/2115?name=Solomon_Oliphant&count=50&e-Self-Probate=1891_Lampasas-Texas-USA) for Solomon Oliphant, probate 1891 and Lampasas, returned “zero good matches.” The browse menu advertises the 1889–1892 Lampasas minute/index holdings on the previously located film, but no named estate or Edward/Byron heir pointer emerged. No original image was read. This bounded query does not establish estate absence, complete indexing or probate jurisdiction; the adult-to-Solomon bridge remains open.
 
+**Same-film boundary check, 3 October 2026:** Ancestry’s Lampasas volume 3 index presents consecutive [M at viewer image 15, frame _00568](https://www.ancestry.ca/imageviewer/collections/2115/images/005786590_00568), [N at 16, _00569](https://www.ancestry.ca/imageviewer/collections/2115/images/005786590_00569), and [P at 17, _00570](https://www.ancestry.ca/imageviewer/collections/2115/images/005786590_00570) on DGS 005786590. The N/P spreads match the previously read FamilySearch images 15/16; they are alignment context, not new or independent evidence. Normal Next navigation went directly from N to P, with no separate O-labelled frame in that exact interval. The newly read [filming card, viewer image 1](https://www.ancestry.ca/imageviewer/collections/2115/images/005786590_00554), identifies the Lampasas courthouse probate-minute index, filmed 29 August 1985; item 5 is a film identifier, not volume 5. The browse date span remains metadata. Physical and filming completeness, an unlabelled O allocation and O entries elsewhere remain unknown. No named Oliphant minute reference or heir instrument emerged, and no underlying minute/case original was read. This remains partial coverage, not a complete O-surname or probate-absence finding. A verified complete O allocation could resolve the index-coverage question; minute retrieval requires a specific named estate reference. The adult Edward-to-Solomon parent bridge remains open.
+
 Restricted supporting records: [adult-family readings, bounded death/probate review and exact provenance](https://drive.google.com/file/d/1pY5GnbYgyXkTunQBMTeYV3UvgbbeTCWd/view?usp=drivesdk). The separate [1896 locator review](https://drive.google.com/file/d/1545c0c0_oq9eBu9OZvfMU7jFgVICv94k/view?usp=drivesdk) preserves the dependent index/access check. Access requires Taylor’s permission; source originals, private details and the finite search ledger remain outside the public package.
 
 Restricted court-book successor: [bounded index readings, provenance and source-selection review](https://drive.google.com/file/d/14pt4jjxKkUTLrH2dqc7Q1mZsYgHsritj/view?usp=drivesdk). Access requires Taylor’s permission.
@@ -3141,7 +3143,21 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-03T07:46:43Z  · Content updated: 2026-10-03T07:46:43Z  · [Edit note](./index.html#edit-0149-updates)
+Editorial review: 2026-10-03T09:21:25Z  · Content updated: 2026-10-03T09:21:25Z  · [Edit note](./index.html#edit-0150-updates)
+
+3 October 2026
+
+### Edition 01.50 · Lampasas index boundaries mapped
+
+[The same-film original check](./index.html#N101) maps consecutive M/N/P images and finds no separate O-labelled frame in that exact interval. Physical and filming completeness remain unverified; no named estate, heir instrument or adult-to-Solomon parent bridge follows. Earlier partial scopes and contradictions remain intact; genetic evidence, ranks and confidence are unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-03T09:21:25Z . This records the narrow source reconciliation; it does not certify complete index coverage or deployment.
+
+- [Research notes](./index.html#research-notes): N101 adds exact M/N/P viewer/frame mappings and filming-card provenance, preserving earlier N/P and query scopes. No complete O negative, named case, parentage, jurisdiction or confidence change is asserted.
+
+- [Edition history](./index.html#updates): Appended this scoped original-mapping successor; preserved all previous edition entries, comparison navigation and supplement revision 01.49.
 
 3 October 2026
 

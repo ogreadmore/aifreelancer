@@ -1,6 +1,6 @@
 # The Aaron Oliphant Inquiry
 
-Public working edition, 2026-10-02. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
+Public working edition, 2026-10-03. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
 Instructions
 
@@ -24,7 +24,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2 October 2026, 20:55:07 EDT  · Content updated: 2 October 2026, 20:55:07 EDT  · [Edit note](./index.html#edit-0147-start-here)
+Editorial review: 2026-10-03T07:25:47Z  · Content updated: 2026-10-03T07:25:47Z  · [Edit note](./index.html#edit-0148-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -56,7 +56,9 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation:** the [archive-reply and source-review supplement](https://drive.google.com/file/d/1etuXbAAutXThwnkP5C_VVDF4J8eConDV/view?usp=drivesdk) preserves the three received procedural answers, bounded search scopes and the reviewed reconciliation in 28 archive members. One metadata-verified transfer advances the incremental library ledger from 1,926 to **1,927**; members are not separate cloud transfers. Exact name, size, sole destination and Taylor-owner/Rich-reader permissions were checked. Local CRC and member hashes passed; remote content and restoration were not tested. The replies supply access guidance, not new historical originals or DNA results. [Rutherford](./index.html#N84) · [NARA](./index.html#N85) · [Georgia](./index.html#N62).
+**Latest restricted preservation, 3 October 2026:** the [restored-session and finite-source supplement](https://drive.google.com/file/d/15IeFd8WDSZd63ICvu6AsEkpygKWgYEh5/view?usp=drivesdk) preserves 15 archive members covering the dated comparator readback, bounded reply check and collateral-source reviews. One metadata-verified transfer advances the incremental ledger from 1,927 to **1,928**; archive members are not separate cloud files or a library recount. Name, size, destination and Taylor-owner/Rich-reader permissions were checked, with local CRC and hashes verified separately. Remote bytes and restoration were not tested. No new historical original, genotype or confidence change follows.
+
+**Earlier Edition 01.47 preservation:** the [archive-reply and source-review supplement](https://drive.google.com/file/d/1etuXbAAutXThwnkP5C_VVDF4J8eConDV/view?usp=drivesdk) preserves the three received procedural answers, bounded search scopes and the reviewed reconciliation in 28 archive members. One metadata-verified transfer advances the incremental library ledger from 1,926 to **1,927**; members are not separate cloud transfers. Exact name, size, sole destination and Taylor-owner/Rich-reader permissions were checked. Local CRC and member hashes passed; remote content and restoration were not tested. The replies supply access guidance, not new historical originals or DNA results. [Rutherford](./index.html#N84) · [NARA](./index.html#N85) · [Georgia](./index.html#N62).
 
 **Earlier Edition 01.42 preservation:** the [Lampasas index supplement](https://drive.google.com/file/d/1_At6QrTAQN_EIu2OxiWQkNuklulAKNl4/view?usp=drivesdk) preserves eight selected files, including two original scans, plus two package documents: ten archive members. One metadata-verified transfer advances the recorded library total from 1,925 to **1,926**, by incremental accounting, not a recount. Name, size, destination and named owner/reader permissions were checked; local archive integrity was verified, while remote bytes and restoration were not tested. The [bounded index result](./index.html#N101) supplies no parentage or heir link. Earlier preservation checkpoints remain below.
 
@@ -1269,7 +1271,7 @@ Editorially reviewed 30 September 2026 against saved provenance and collateral a
 
 ## A conclusion should lead back to its evidence.
 
-Editorial review: 2 October 2026, 20:55:07 EDT  · Content updated: 2 October 2026, 20:55:07 EDT  · [Edit note](./index.html#edit-0147-sources)
+Editorial review: 2026-10-03T07:25:47Z  · Content updated: 2026-10-03T07:25:47Z  · [Edit note](./index.html#edit-0148-sources)
 
 This report combines dated original-record readings, derivative sources and private comparison reviews. Later research notes record subsequent inspections, corrections and access checks; the cited dates describe their own scopes, not a fresh rereading of every source for this edition. Original-image links may require a free account or access at a participating location; a subscription does not necessarily remove those restrictions.
 
@@ -1317,7 +1319,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/13WKr
 
 ### Research resources
 
-Editorial review: 2 October 2026, 20:55:07 EDT  · Content updated: 2 October 2026, 20:55:07 EDT  · [Edit note](./index.html#edit-0147-research-resources)
+Editorial review: 2026-10-03T07:25:47Z  · Content updated: 2026-10-03T07:25:47Z  · [Edit note](./index.html#edit-0148-research-resources)
 
 [Restricted 1 October access and reply review](https://drive.google.com/file/d/19D6LB5nDK6Yw7oDaoigceDob_yerwLA4/view?usp=drivesdk) preserves the scoped observations and correspondence. File metadata and owner-only access were verified; remote bytes and restoration were not tested.
 
@@ -1327,7 +1329,7 @@ DNA tests, family-tree platforms and record repositories
 
 | Resource | Use in this investigation | Limits and continuation notes |
 | --- | --- | --- |
-| [FamilyTreeDNA](https://www.familytreedna.com/) | Big Y-700 paternal test; Y37, Y67 and Y111 match views; public surname projects and paternal-branch comparisons. | R-A823 is confirmed for the tested descendant. STR match views are not separate independent tests. The earlier 1 October 15:31 EDT check exposed populated Big Y Matching without a target Devaney/DeVenney row or bilateral comparison control. A later 1 October own-kit review confirmed usable Big Y results; the site’s rendered reads do not supply independently validated sequence quality. Raw export remains access-dependent and no file was acquired. A separately reported autosomal account remains unverified by the bounded navigation; this does not establish that no test or other account route exists. The [documented Family Finder route](https://help.familytreedna.com/hc/en-us/articles/360004683815-Family-Finder-Matches-Introduction) is not an observed result here. No target-comparator calls or new bilateral genetic comparison were obtained. The two Devaney comparators remain distinct; finer target results, common callable-site data and historical pedigree links are still missing. [Earlier restricted 1 October access review](./index.html#resource-access-review-20261001) · [Later restricted access-review supplement](https://drive.google.com/file/d/1k9svYNeK5Agc_pi_FZCynTaoZXx5W03h/view?usp=drivesdk). |
+| [FamilyTreeDNA](https://www.familytreedna.com/) | Big Y-700 paternal test; Y37, Y67 and Y111 match views; public surname projects and paternal-branch comparisons. | R-A823 is confirmed for the tested descendant. STR match views are not separate independent tests. The earlier 1 October 15:31 EDT check exposed populated Big Y Matching without a target Devaney/DeVenney row or bilateral comparison control. A later 1 October own-kit review confirmed usable Big Y results; the site’s rendered reads do not supply independently validated sequence quality. Raw export remains access-dependent and no file was acquired. A separately reported autosomal account remains unverified by the bounded navigation; this does not establish that no test or other account route exists. The [documented Family Finder route](https://help.familytreedna.com/hc/en-us/articles/360004683815-Family-Finder-Matches-Introduction) is not an observed result here. No target-comparator calls or new bilateral genetic comparison were obtained. The two Devaney comparators remain distinct; finer target results, common callable-site data and historical pedigree links are still missing. A 3 October check of the exact GD5 Y67 comparator’s row and profile still showed Y67 and broad R-M269, with no Big Y STR comparison displayed and no reported paternal locality more precise than Ireland. This remains distinct from the separate A823 comparator and supplies no finer calls, pairwise date or historical paternal bridge. [Earlier restricted 1 October access review](./index.html#resource-access-review-20261001) · [Later restricted access-review supplement](https://drive.google.com/file/d/1k9svYNeK5Agc_pi_FZCynTaoZXx5W03h/view?usp=drivesdk). [Restricted 3 October successor](https://drive.google.com/file/d/15IeFd8WDSZd63ICvu6AsEkpygKWgYEh5/view?usp=drivesdk). |
 | [23andMe](https://www.23andme.com/) | Autosomal relatives and a broader paternal haplogroup report, R-M222, were inspected. | Compatible with the finer FamilyTreeDNA result; another test of the same person does not independently verify the historical line. A 1 October 15:31 EDT check showed the actual populated relatives list. This establishes availability, not a new comparison or ancestral assignment. Product generation is not established in this public inventory. [Restricted 1 October access review](./index.html#resource-access-review-20261001). No match query was performed in that check. |
 | [MyHeritage](https://www.myheritage.com/) | Autosomal matches, shared matches, tree surnames and chromosome comparisons; primary working account tree for sourced updates. A 1 October check showed populated DNA matches; no new comparison was performed. | The focused paternal copy added Rebecca’s father Solomon Rainwater and Andrew’s recorded sons Robert, Walter and Henry, with qualified citations. A normal native export now contains fifteen people, seven families and eight source objects, with eighteen profile-source attachments. The earlier eleven-person core and its citations were preserved. These are copied, previously reviewed relationships; they add no Aaron parent, biological paternity proof or ancestral DNA assignment. Some segment triangulations were reviewed, but none is assigned to Aaron or a unique ancestral couple. Native rich-text formatting limits portability; no restore was tested. Raw exports remain private. [Restricted four-person copy and native-export archive](https://drive.google.com/file/d/19z7EmwM0Zl-blnZ1OHMNKVpIpTnFXZKA/view) · [Earlier citation archive](https://drive.google.com/file/d/1ywP8xqexZAVTfqOgSai0KgzGrJBG3w9b/view) · [Earlier backup audit](https://drive.google.com/file/d/1ofdoJCa025MRHoxhrFZ3a60nafeeYRzZ/view). Other displayed branches are context, not an active expansion checklist. The public historical tree is a separate reviewed subset; the [Ancestry copy](./index.html#U04) is maintained separately, with no automatic synchronization. |
 | [Ancestry](https://www.ancestry.ca/) | Autosomal DNA matches, shared matches, member trees, message boards and historical record images; a separately maintained core account tree. Research used the Canadian site with the existing account. A 1 October check showed a populated DNA match list; this adds no new genetic evidence. | The focused paternal copy now includes Rebecca’s father Solomon Rainwater and Andrew’s recorded sons Robert, Walter and Henry, with qualified citations; the earlier eleven-person core was preserved. Its normal native export passed independent checks for fifteen people, seven families and ten source objects. Repeated source references are not independent records, and no restore was tested. The two existing living profiles were left unchanged; raw exports and account details remain private. This copies previously reviewed relationships, supplying no new proof of Aaron’s parents, biological paternity or the reported Aaron–Solomon link. The [public historical tree](./index.html#family-tree) remains twenty-one people and twenty-three qualified relationships. The DNA-to-tree link remains unset; completing the account copy does not complete that connection. [Restricted focused-copy and native-export archive](https://drive.google.com/file/d/1OmgmdFQT8IVuiW1bIFVkx7kPnVmrR-mm/view). Member trees and relationship predictions require verification; account access does not mean every relevant image has been examined. |
@@ -1342,7 +1344,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2 October 2026, 20:55:07 EDT  · Content updated: 2 October 2026, 20:55:07 EDT  · [Edit note](./index.html#edit-0147-research-notes)
+Editorial review: 2026-10-03T07:25:47Z  · Content updated: 2026-10-03T07:25:47Z  · [Edit note](./index.html#edit-0148-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -3065,7 +3067,7 @@ Restricted supporting reviews: [death locator and marker review](https://drive.g
 
 N101 · Byron’s adult identity and a possible earlier collateral branch
 
-Reviewed 2 October 2026 · Adult-family originals and bounded index checks; no independent historical Y anchor established
+Reviewed 3 October 2026 · Adult-family originals and bounded index checks; no independent historical Y anchor established
 
 The previously read [1880 Lee County, Texas census](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBX-9JBP) lists Byron, eight, in the S.R./Amanda Oliphant household. Enlarged reading establishes **Georgia** as his birthplace and both parents’ birthplaces; the earlier scaled Texas reading is withdrawn. The household’s relationship cells are blank, so the census does not explicitly call him a son. The [family biography’s Bible transcription](https://www.therainwatercollection.com/gallery/aug2009.shtml) names Edward Bryon, reportedly born 8 February 1872, among Solomon and Amanda’s children. The Bible original remains unread.
 
@@ -3082,6 +3084,8 @@ The [1900 Limestone County, Texas census, ED 56 sheet 14A, lines 46–47](https:
 **Later bounded court-book check, 1 October 2026:** fifteen distinct images were inspected for title, date and index orientation in Ancestry collection 8638, DGS 007117353. The [administrator O index, image 90](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00090), has no recognizable Oliphant target. The [guardianship O leaf, image 283](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00283), is blank, but its coverage of 1920 was not established. The opening is an older continuation, and [image 626, pp. 362–363](https://www.ancestry.ca/imageviewer/collections/8638/images/007117353_00626), shows a Western District guardianship entry dated 10 January 1927; whether the earlier O index covers those later pages remains unresolved. The pass stopped at its fifteen-image cap, preserving two complete index downloads and eight viewer captures. Those are preservation counts, not fifteen newly read cases. No Edward estate or parent-naming record was found within this scope. Lawrence probate jurisdiction remains conditional. The unfinished step is to map the relationship between the O index and later guardianship pages, if a jurisdiction or named-case pointer justifies it; [Box M2–O packets](https://www.ancestry.ca/imageviewer/collections/8638/images/007117380_00001) remain an unread container, not a located Edward estate. This is not a 1920 guardianship or countywide absence finding.
 
 **Lampasas index check, 2 October 2026:** selected [image 15](https://www.familysearch.org/ark:/61903/3:1:3QSQ-G9Q9-5SY) and [image 16](https://www.familysearch.org/ark:/61903/3:1:3QSQ-G9Q9-51) of the home-accessible probate minute index, volume 3 (catalogued 1889–1892), supplied no recognized Solomon/Oliphant pointer. This was an N/P-interval screen: no separate O heading or complete O coverage was established, and underlying minutes remain unread. Reported Lampasas death does not establish probate jurisdiction; no Edward/Byron heir link followed.
+
+**Ancestry index query, 3 October 2026:** one query in [Texas probate collection 2115](https://www.ancestry.ca/search/collections/2115?name=Solomon_Oliphant&count=50&e-Self-Probate=1891_Lampasas-Texas-USA) for Solomon Oliphant, probate 1891 and Lampasas, returned “zero good matches.” The browse menu advertises the 1889–1892 Lampasas minute/index holdings on the previously located film, but no named estate or Edward/Byron heir pointer emerged. No original image was read. This bounded query does not establish estate absence, complete indexing or probate jurisdiction; the adult-to-Solomon bridge remains open.
 
 Restricted supporting records: [adult-family readings, bounded death/probate review and exact provenance](https://drive.google.com/file/d/1pY5GnbYgyXkTunQBMTeYV3UvgbbeTCWd/view?usp=drivesdk). The separate [1896 locator review](https://drive.google.com/file/d/1545c0c0_oq9eBu9OZvfMU7jFgVICv94k/view?usp=drivesdk) preserves the dependent index/access check. Access requires Taylor’s permission; source originals, private details and the finite search ledger remain outside the public package.
 
@@ -3137,7 +3141,29 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2 October 2026, 20:55:07 EDT  · Content updated: 2 October 2026, 20:55:07 EDT  · [Edit note](./index.html#edit-0147-updates)
+Editorial review: 2026-10-03T07:25:47Z  · Content updated: 2026-10-03T07:25:47Z  · [Edit note](./index.html#edit-0148-updates)
+
+3 October 2026
+
+### Edition 01.48 · Bounded source and comparator checks
+
+[One Ancestry probate query](./index.html#N101) supplied no named Solomon estate or Edward/Byron heir pointer; no new original was read. The [dated comparator check](./index.html#U01) still supplied no finer genetic comparison or more precise paternal locality. The Solomon parent bridge, comparator distinctions, rankings and historical confidence remain unchanged.
+
+The [verified restricted supplement](./index.html#latest-library-preservation) advances incremental accounting to 1,928, with remote bytes and restoration untested.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-03T07:25:47Z . This records the scoped editorial reconciliation, not deployment or a new historical-original reading.
+
+- [Start here](./index.html#start-here): Updated only the current restricted-preservation link and incremental total to 1,928; retained the dated 1,927 predecessor and earlier counts. Research summaries and priorities remain unchanged.
+
+- [Sources](./index.html#sources): Reviewed the dated U01 availability consequence and its restricted source link; source classes, privacy boundaries and historical evidence remain unchanged.
+
+- [Research resources](./index.html#research-resources): Added a date-only exact-comparator availability observation and discreet restricted successor link in U01, without living names, ancestor details, kit identifiers or account data.
+
+- [Research notes](./index.html#research-notes): Added the one-query Ancestry result in N101 with indexing, jurisdiction and unread-original limits. All other notes remain identical.
+
+- [Edition history](./index.html#updates): Appended this narrow successor and preserved all earlier editions, rankings and confidence.
 
 2 October 2026
 

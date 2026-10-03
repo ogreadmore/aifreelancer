@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-02T20:30:38Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-03T00:55:07Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -741,10 +741,10 @@ Result: The 1866 younger Devany cannot be the elder Aaron\. Wood is a named offi
 
 Limits: The namesake's later chronology rules out literal same\-person identity, not kinship or the surname\. A copied register signature or clerk's mark is not an authenticated autograph\. Aaron's military company, dates and age remain unread\.
 
-Next test: Retrieve Aaron's actual CMSR after the pending clarification and compare exact company, service and identifying details\. For candidate people, use parent/residence/alias statements rather than matching spelling alone\.
+Next test: Complete the prepared $30 electronic CMSR request, then read the actual jacket/cards and compare company, service and identifying details\. Recipient/payment steps and submission remain outstanding; no order is confirmed\. For candidate people, use parent/residence/alias statements rather than matching spelling alone\.
 
 - [N83: which Aaron?](./index.html#N83) — Existing synthesis of source\-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack\.
-- [R04: Aaron's complete Nash service file](./index.html#R04) — Exact jacket\-and\-cards target remains unread; pending route clarification is a retrieval dependency, not a historical finding\.
+- [R04: Aaron's complete Nash service file](./index.html#R04) — Exact jacket\-and\-cards target remains unread\. The 2 October reply confirms the $30 War of 1812 route and stated 60–90\-day turnaround; its authenticated request is prepared with recipient/payment steps and submission outstanding\. No paid or submitted order is confirmed\. Procedural guidance and form preparation are not historical findings\.
 - [N02: younger Aaron Olifant Devany](./index.html#N02) — 1866 marriage and 1870 enumeration are named local leads\. Elder Aaron was dead by December 1826; younger\-family parents and elder\-family relationship remain unresolved\.
 
 #### FS04 · Role\-aware family and associate links
@@ -1539,4 +1539,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Supplement revision 01.46: applied eight saved-evidence layers across nine open surname headings, with source roles, dependencies, unresolved pedigree bridges and exact next tests. All 24 genetic observations, nine historical findings, group ranks and confidence remain unchanged. No fresh account data, new archival acquisition or new biological exclusion; the main manuscript is unchanged.
+Editor note: Revision01.47: three archive replies reconciled; NARA exact CMSR request prepared but unpaid/unsubmitted. Candidate statuses, ranks and genetic evidence unchanged.

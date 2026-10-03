@@ -29,20 +29,20 @@
       "sha256": "e5023d941c3883e3603455ee6b9aa7c7bbb87d233b5d85edd73483d08ef25672"
     },
     "index.html": {
-      "bytes": 807412,
-      "sha256": "6531e3855f3a0ca6b5381118af6b8565c8deaec50fdd6a2ac90afef930416468"
+      "bytes": 810406,
+      "sha256": "11ea2703533918aae32a89e8a24a6813cf79d747a3a20306542e379766ed7bfc"
     },
     "llms.txt": {
       "bytes": 6457,
       "sha256": "111cf4e49d217a4fd094c6d77599335f08e5a8eac1fa37f5c50130fde4ea2fa2"
     },
     "report.md": {
-      "bytes": 679499,
-      "sha256": "94efc31d8f17c0145d009a0c72cb2be60503783756a3e120daa69dc1e38bae89"
+      "bytes": 682060,
+      "sha256": "b068eec1b9befae6e96e21ab104c5bf2229a88bcc19d085770a1d2d16b586630"
     },
     "research.json": {
-      "bytes": 1334164,
-      "sha256": "58ef28ec4a26b5a1cc3e97b812b29edb4572dd4e28537f90e43c8be8f9f84704"
+      "bytes": 1338662,
+      "sha256": "095307056ed5f5af3397386c97c14ff4012316817df9bd4a643fdb11f180c90f"
     },
     "research.schema.json": {
       "bytes": 12618,

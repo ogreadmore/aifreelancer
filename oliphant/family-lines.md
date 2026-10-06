@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-06T18:16:45Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-06T22:18:19Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -11,6 +11,7 @@ Saved observations: 2026-09-29. Editorial review: 2026-10-06T18:16:45Z.
 - McMaster/McMasters separation retains qualitative read-view limits; it is not calibrated raw sequence QC.
 - No surname probabilities, precise pairwise dates, former-surname direction, Aaron-level genetic assignment or confidence change is supplied. An untested family remains possible.
 - The 6 October public Cannon chart includes several A823 subgroups and other ancestral surnames. Project proportions are not independent-family counts or surname probabilities; see the dated N32 source review. No untyped historical family can be assigned the branch of a similarly named tested comparator.
+- The 1790 Orangeburg Robert Cannan/Cannon household has now been read in the original census. Its unnamed household counts do not identify children, the submitted project pedigree, a tester or a connection to Aaron. See N32’s original-source test; surname ranks remain unchanged.
 
 ## Current result and guide
 
@@ -1630,4 +1631,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Revision01.53: add the bounded public Cannon project check to the interpretation guide. Project proportions and broad A823 groupings do not identify an ancestral surname. Exact observed comparison rows, ranks, dependencies and confidence are unchanged; other untested families remain open.
+Editor note: Revision 01.55: an original 1790 Orangeburg census verifies a Robert Cannan/Cannon household; it does not identify the submitted project pedigree or a tested-family bridge. All comparison observations, rankings, dependencies and confidence remain unchanged.

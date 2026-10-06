@@ -1354,7 +1354,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-06T21:21:45Z  · Content updated: 2026-10-06T21:21:45Z  · [Edit note](./index.html#edit-0154-research-notes)
+Editorial review: 2026-10-06T22:18:19Z  · Content updated: 2026-10-06T22:18:19Z  · [Edit note](./index.html#edit-0155-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1958,7 +1958,7 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N32 · Why surname counts cannot yet become ancestry probabilities
 
-Reviewed 6 October 2026 · Method defined; statistical inputs insufficient · Earlier controls retained; bounded public Cannon subgroup/source review added; no new genetic comparison.
+Reviewed 6 October 2026 · Method defined; statistical inputs insufficient · Earlier controls retained; Orangeburg census original and official later transcription read; household identity and tested-family bridge unresolved.
 
 The saved Y67 list contains 23 matches: two at genetic distance five, three at six and eighteen at seven. This describes a selected match list, rather than 23 independent ancestral families. Fourteen have finer branch information; eleven split above A823 and three follow a downstream path that the tested Oliphant sample's reviewed reads do not support. Nine remain broad-only. Missing finer testing is missing information, not evidence that an unresolved comparator is especially close.
 
@@ -1967,6 +1967,8 @@ The saved Y67 list contains 23 matches: two at genetic distance five, three at s
 **1 October reply and date controls:** the reply supplies a route to seek a consented finer result, not new genotype or pedigree evidence. Fixed age rules based on same versus different surnames do not provide a measured date for the unresolved GD5 pair. The current [official A823 story](https://discover.familytreedna.com/y-dna/R-A823/story) models the common ancestor of all sampled A823 members at about 650 CE (most likely 673 CE; 95% interval 407–897 CE). That group-wide estimate is not the closest common-ancestor date of each pair below it and cannot substitute for either missing bilateral comparison. A younger pairwise relationship remains possible unless an independently resolved split rules it out. The GD5 Y67 comparator and separately typed A823 DeVenney remain distinct; a suggested collateral is not yet a documented historical-line anchor. No test, new calls or pair-specific date were obtained.
 
 **6 October public-project check:** the [Cannon Y-results chart](https://www.familytreedna.com/public/Cannon?iframe=ydna-results-overview), first page of two, labels A823 subgroups A8683, BY590, A984 and unresolved TBD. Administrator grouping is not a confirmed finer assignment for every row. One submitted ancestry entry reports Robert Cannon, 1740–93, Orangeburg, South Carolina, with a broad R-M269/Y-DNA37 result. The pedigree and any identification with a historical census household remain unverified; no connection to Aaron or to a particular comparator is established. The chart includes other ancestral surnames, and related participants need not represent independent families. Project proportions therefore cannot establish the most likely ancestral surname. This source lead does not overturn any exact tested-line split or exclude untested Cannon/McMaster families. The next test is a documented family-to-tester bridge plus mutually callable finer SNP evidence; source-pointer clarification is pending. No new genotype, pairwise date, rank or confidence increase follows.
+
+**Original census test, 6 October 2026:** the [1790 Orangeburg manuscript census, page 269](https://www.ancestry.ca/imageviewer/collections/5058/images/4185996_00167?pid=388864) (NARA M637, roll 11; FHL film 0568151) records Robert Cannan, indexed as Cannon, with two free white males aged sixteen or older, four males under sixteen, three females and seven enslaved people. The other-free-person column has no numeral. The [Census Bureau’s 1908 transcription, printed page 102](https://www2.census.gov/library/publications/decennial/1790/heads-of-families-south-carolina.pdf), places this entry in Orangeburgh District’s south part and agrees with those counts; it is a later copy of the same enumeration, not independent family evidence. The manuscript continuation leaf lacks column headings; category labels were correlated with the published table and indexed record. James Dogharty immediately precedes the entry and William Hall follows it, but enumeration order does not prove adjoining properties. No spouse or child is named: four young males are not four established sons. The household is now verified; identification with the project’s submitted Robert Cannon, 1740–93, and a documented paternal line to a tester remain unproved. Neither Aaron’s presence, an Oliphant connection nor a finer DNA assignment follows. Existing tested-line exclusions and surname rankings are unchanged. The next discriminator is a cited family record connecting this head to the particular tested lineage, followed by a finer SNP comparison.
 
 Two saved autosomal tree-surname searches returned 13 and fourteen results with twelve people in both sets: fifteen unique people, not 27 independent confirmations. A surname anywhere in a match's tree does not establish that person's direct paternal surname. Relatives, repeated platforms and variant spellings need deduplication. The existing service-confirmed triangles concern inherited segments in a reported paternal-family context; no shared segment has been assigned uniquely to Aaron or to the exclusively male Oliphant line.
 
@@ -3177,7 +3179,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-06T21:21:45Z  · Content updated: 2026-10-06T21:21:45Z  · [Edit note](./index.html#edit-0154-updates)
+Editorial review: 2026-10-06T22:18:19Z  · Content updated: 2026-10-06T22:18:19Z  · [Edit note](./index.html#edit-0155-updates)
 
 6 October 2026
 
@@ -3194,6 +3196,20 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+6 October 2026
+
+### Edition 01.55 · A Cannon household verified
+
+[An original 1790 census confirms the Orangeburg Robert Cannan/Cannon household](./index.html#cannon-orangeburg-census). It names no children and does not connect that household to Aaron or a tested paternal line. The linked comparison guide records this distinction; no surname rank or historical confidence changes.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-06T22:18:19Z . One original census leaf and a later official transcription reviewed; earlier source readings retain their dates.
+
+- [research-notes](./index.html#research-notes): N32 adds the original 1790 Orangeburg household, exact source locator, derivative transcription and count/identity limits. No named kinship, tested-family mapping or ranking change.
+
+- [updates](./index.html#updates): Append the bounded original-source result and its unresolved family-to-tester bridge; preserve prior editions.
 
 6 October 2026
 

@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "title": "Paternal-line comparisons",
-  "prepared_on": "2026-10-02",
+  "prepared_on": "2026-10-03",
   "observed_on": "2026-09-29",
   "dataset_scope": "23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.",
   "interpretation_rules": [
@@ -963,8 +963,8 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-03T07:46:43Z",
-  "editor_note": "Revision01.49: added a current-result guide, persistent section navigation and return links. All comparison, historical and filter records, ranks, assessments, citations and source-observation dates are unchanged; no new evidence or conclusion.",
+  "editorial_reviewed_at": "2026-10-06T17:28:23Z",
+  "editor_note": "Revision01.52: retained the objective Devaney evidence section, made the possible surname transition explicitly conditional and reconciled the6October partial pension/death-custody source recovery. Main comparison labels now agree with the eight tied open alternatives. No observed genotype, dependence group, historical connection or confidence changes.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
     "reviewed_at": "2026-10-02T19:14:52Z",
@@ -3428,5 +3428,139 @@
       }
     ],
     "summary": "Devaney remains the leading working lead, with low historical confidence. None of the nine open groups yet has both a documented family connection to Aaron and a verified male-line pedigree linking that historical family to the specific DNA tester. The namesake, official, minister and parcel clues remain distinct. Missing data do not eliminate a surname."
+  },
+  "devaney_evidence": {
+    "title": "Devaney: supporting evidence and unresolved tests",
+    "reviewed_at": "2026-10-06T17:28:23Z",
+    "summary": "Devaney remains the strongest working surname candidate in this register. The evidence below supports further testing; it does not identify Aaron’s father, prove a former surname or date a surname change.",
+    "rows": [
+      {
+        "id": "DE01",
+        "title": "Two distinct Y-DNA leads",
+        "result": "One saved Y67 Devaney comparison has official genetic distance 5 and only broad R-M269 placement. A separate DeVenney comparator is assigned R-A823; its official Y67 distance is not established here.",
+        "limits": "These are different testers. A close STR distance or shared A823 label does not establish a recent paternal ancestor, a descent from the namesake’s family or a surname transition.",
+        "next_test": "Obtain existing finer placement for the correctly identified Y67 comparator and compare reliable variants and readable positions for the separate A823 comparator. A branch splitting above A823 would weaken that specific recent-paternal case; unsupplied calls cannot count as negatives.",
+        "citations": [
+          {
+            "url": "#FL02",
+            "label": "Y67 comparison"
+          },
+          {
+            "url": "#FL24",
+            "label": "Separate A823 comparison"
+          },
+          {
+            "url": "./index.html#R01",
+            "label": "Exact genetic tests"
+          }
+        ]
+      },
+      {
+        "id": "DE02",
+        "title": "A completed autosomal segment group",
+        "result": "On 30 September the service confirmed a 24.4 cM chromosome-3 three-person triangle and a nested 11.5 cM four-person shared interval joining the candidate with the earlier group.",
+        "limits": "One nested group is not two independent confirmations. The responsible ancestral couple, exclusive grandparent branch and connection to the uninterrupted Oliphant paternal line remain unidentified. An ancestral-surname entry does not identify the segment’s source.",
+        "next_test": "Document the shared ancestral couple and test attribution across both paternal-grandparent branches. Attribution to another branch would weaken use of this group for Aaron’s paternal origins. Do not repeat the completed triangles as new evidence.",
+        "citations": [
+          {
+            "url": "./index.html#N97",
+            "label": "Completed segment comparisons"
+          },
+          {
+            "url": "./index.html#N48",
+            "label": "Branch-attribution limits"
+          },
+          {
+            "url": "./index.html#N41",
+            "label": "Earlier controls and small-segment limits"
+          }
+        ]
+      },
+      {
+        "id": "DE03",
+        "title": "Verified spelling searches, with overlap",
+        "result": "28 September: Devaney 13 results and Devane 14, with 12 overlapping displayed identities and 15 in their union; both lists read. 30 September: Devanney 1, already in both sets. Devine showed 24 on 30 September and 3 October; the first 20 and final 4 were read on those respective dates.",
+        "limits": "Queries match display names or submitted ancestral fields. The strongest inspected Devine-query ancestry field was Deviney; one newly inspected display-name hit had no Devine in its displayed ancestry list. No complete independent-family count or comparable enrichment denominator is established. The counts cannot be added as independent confirmations.",
+        "next_test": "A useful successor would require documented ancestors, independent family grouping and ancestral-segment attribution. Spelling diversity alone cannot distinguish an overseas connection from a later American connection or date migration.",
+        "citations": [
+          {
+            "url": "./index.html#N97",
+            "label": "Dated query coverage and identity limits"
+          },
+          {
+            "url": "./index.html#N32",
+            "label": "Statistical and dependence limits"
+          }
+        ]
+      },
+      {
+        "id": "DE04",
+        "title": "The name Aaron Olifant Devany is original evidence",
+        "result": "The Hancock marriage register names Aaron Olifant Devany and Martha Andrews: license 13 January, return 14 January 1866. Elder Aaron Oliphant’s 1821 deed states Hancock residence. The younger man’s 1870 household also occurs in Hancock, near Humphrey and Drury households in enumeration order.",
+        "limits": "The younger man lived decades later. The marriage names no parents and gives no reason for the name. Schedule order does not prove adjacent land or kinship. Proposed Samuel/Agatha parentage, a connection to elder Aaron and descent to either comparator remain unproved.",
+        "next_test": "Seek an explicit parent or sibling statement, the possible Augusta local death entry of 23 May 1916, and the already-requested Richmond Davaney estate papers after establishing the decedent’s identity. A documented unrelated namesake origin would weaken this historical association.",
+        "citations": [
+          {
+            "url": "https://www.familysearch.org/ark:/61903/3:1:33S7-8BZ6-2MS",
+            "label": "Original 1866 marriage"
+          },
+          {
+            "url": "./index.html#N02",
+            "label": "Family evidence and contradictions"
+          },
+          {
+            "url": "#HX01",
+            "label": "Historical cross-reference"
+          },
+          {
+            "url": "./index.html#N23",
+            "label": "Pending estate target and identity limits"
+          }
+        ]
+      },
+      {
+        "id": "DE05",
+        "title": "Comparison with other open surname cases",
+        "result": "The bounded saved-record review found no demonstrated family bridge between elder Aaron and the other unresolved comparators. It did find limited surname occurrences, an official signature, a minister and an earlier parcel holder. None supplies the same verified Aaron Olifant naming combination in the reviewed material.",
+        "limits": "This is a finite reviewed-corpus result, not an exhaustive archive search or a whole-surname exclusion. Common local names and different record roles do not constitute equivalent family evidence. An untested paternal family could still be the answer.",
+        "next_test": "Reopen an alternative when a specific original supplies a relevant identity, father–son chain or compatible finer Y result. Missing historical hits alone cannot eliminate the eight tied alternatives.",
+        "citations": [
+          {
+            "url": "#historical-cross-references",
+            "label": "Bounded documentary results"
+          },
+          {
+            "url": "#filter-stack",
+            "label": "Filter coverage and limits"
+          },
+          {
+            "url": "#surname-ranking",
+            "label": "Ranks and open alternatives"
+          }
+        ]
+      },
+      {
+        "id": "DE06",
+        "title": "The latest historical source check supplied no new parentage",
+        "result": "The 3 October exact newspaper page remained blocked and the exact Devany main pension query was negative. The 6 October recovery read the official Augusta death-custody route but could not access pension endpoints: zero new name queries, result sets or originals. The earlier bounded reply check supplied no new probate response.",
+        "limits": "Access failure is not a pension negative; variants and supplements remain unsearched in the successor. Augusta recording from1904 and a named custodian do not establish that Aaron’s1916 entry survives, names parents or is online. No copy procedure, price, individual death entry or parentage original was obtained.",
+        "next_test": "Check existence/access for the possible Augusta local death entry of23May1916 through Richmond Vital Records; await the separate pending estate request. A separately scoped responsive-site pension successor must verify actual variant-query semantics and supplement links. Do not duplicate the probate enquiry or infer a fee commitment.",
+        "citations": [
+          {
+            "url": "./index.html#N02",
+            "label": "Exact source check and retrievals"
+          },
+          {
+            "url": "https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/3169",
+            "label": "Official pension series"
+          },
+          {
+            "url": "https://vault.georgiaarchives.org/digital/collection/TestApps",
+            "label": "Pension main-series index"
+          }
+        ]
+      }
+    ],
+    "assessment": "The combined evidence explains why Devaney deserves the next discriminating tests. Historical confidence remains low: neither an Aaron-to-Devaney family bridge nor a historical-family-to-exact-tester paternal pedigree has been demonstrated. If a surname transition occurred, it could predate Aaron; its direction, date and mechanism remain unproved."
   }
 }

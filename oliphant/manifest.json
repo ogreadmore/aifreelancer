@@ -13,36 +13,36 @@
       "sha256": "3ad9da7b20d9a5636a48068528ce733a840b2baee8bd4f4be251cb73432c8970"
     },
     "build.py": {
-      "bytes": 88487,
-      "sha256": "3a7113285c054992cdd987d1a1967781380becef35b33435f45e39be5263f47a"
+      "bytes": 96732,
+      "sha256": "b8b40b8156e12db148cc7047e4374b88247f29c2d610bbb9d6ccb48dd92bb27f"
     },
     "family-lines.html": {
-      "bytes": 232994,
-      "sha256": "b6917f89bc0aac623078c946815400bf3a9171c757224629bd4178281c8ddd46"
+      "bytes": 243777,
+      "sha256": "c8f7f878a07b6e357495ea7f2c561578ae180869634ca57a4573eacfb3bf28dc"
     },
     "family-lines.json": {
-      "bytes": 202605,
-      "sha256": "e86b6eb8390a7a175f27753d102fa62d3f5aedcea7775012b9e7903b5ed1ecc1"
+      "bytes": 211724,
+      "sha256": "ea7d36ea653b5cb9d13f9f0b153f73e8f9a7be1ff43f759369ccd6ce9635bc21"
     },
     "family-lines.md": {
-      "bytes": 159309,
-      "sha256": "e5023d941c3883e3603455ee6b9aa7c7bbb87d233b5d85edd73483d08ef25672"
+      "bytes": 166992,
+      "sha256": "9921269fd2c64b1eb4f635b999e3e9f92d1f194dc21a63f55ca722d46eeddc42"
     },
     "index.html": {
-      "bytes": 810406,
-      "sha256": "11ea2703533918aae32a89e8a24a6813cf79d747a3a20306542e379766ed7bfc"
+      "bytes": 827364,
+      "sha256": "607b66351134519e4f1286ea41d220ae44f463baa7322b71d9c01ada66ad56ce"
     },
     "llms.txt": {
       "bytes": 6457,
-      "sha256": "111cf4e49d217a4fd094c6d77599335f08e5a8eac1fa37f5c50130fde4ea2fa2"
+      "sha256": "128e5e84bb07768ab4c1414f39c2808299d2b933430630758250b585c2d6a97a"
     },
     "report.md": {
-      "bytes": 682060,
-      "sha256": "b068eec1b9befae6e96e21ab104c5bf2229a88bcc19d085770a1d2d16b586630"
+      "bytes": 696513,
+      "sha256": "e14490da83738a1278d4bdc29eafa10e9ed7168330870c6a02d39025a6c6b447"
     },
     "research.json": {
-      "bytes": 1338662,
-      "sha256": "095307056ed5f5af3397386c97c14ff4012316817df9bd4a643fdb11f180c90f"
+      "bytes": 1361717,
+      "sha256": "f1afcf32918048b51059eed1d37e53996a5082003df42d6c1170fb34d335a970"
     },
     "research.schema.json": {
       "bytes": 12618,

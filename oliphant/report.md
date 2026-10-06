@@ -24,7 +24,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-06T13:28:23-04:00  · [Edit note](./index.html#edit-0152-start-here)
+Editorial review: 2026-10-06T13:40:41-04:00  · Content updated: 2026-10-06T13:40:41-04:00  · [Edit note](./index.html#edit-0152-preservation-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -56,7 +56,9 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation, 3 October 2026:** the [restored-session and finite-source supplement](https://drive.google.com/file/d/15IeFd8WDSZd63ICvu6AsEkpygKWgYEh5/view?usp=drivesdk) preserves 15 archive members covering the dated comparator readback, bounded reply check and collateral-source reviews. One metadata-verified transfer advances the incremental ledger from 1,927 to **1,928**; archive members are not separate cloud files or a library recount. Name, size, destination and Taylor-owner/Rich-reader permissions were checked, with local CRC and hashes verified separately. Remote bytes and restoration were not tested. No new historical original, genotype or confidence change follows.
+**Latest restricted preservation, 6 October 2026:** the [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk) preserves eleven privacy-reviewed research derivatives plus README and manifest, thirteen ZIP members. One metadata/permissions-verified cloud transfer advances the incremental ledger from **1,931 to 1,932**, not a whole-library recount. Exact name, size, destination and named owner/reader permissions were verified; local hashes and CRC were checked. Remote bytes and restoration were not tested. Preservation adds no historical original, genotype or confidence change.
+
+**Earlier restricted preservation, 3 October 2026:** the [restored-session and finite-source supplement](https://drive.google.com/file/d/15IeFd8WDSZd63ICvu6AsEkpygKWgYEh5/view?usp=drivesdk) preserves 15 archive members covering the dated comparator readback, bounded reply check and collateral-source reviews. One metadata-verified transfer advances the incremental ledger from 1,927 to **1,928**; archive members are not separate cloud files or a library recount. Name, size, destination and Taylor-owner/Rich-reader permissions were checked, with local CRC and hashes verified separately. Remote bytes and restoration were not tested. No new historical original, genotype or confidence change follows.
 
 **Earlier Edition 01.47 preservation:** the [archive-reply and source-review supplement](https://drive.google.com/file/d/1etuXbAAutXThwnkP5C_VVDF4J8eConDV/view?usp=drivesdk) preserves the three received procedural answers, bounded search scopes and the reviewed reconciliation in 28 archive members. One metadata-verified transfer advances the incremental library ledger from 1,926 to **1,927**; members are not separate cloud transfers. Exact name, size, sole destination and Taylor-owner/Rich-reader permissions were checked. Local CRC and member hashes passed; remote content and restoration were not tested. The replies supply access guidance, not new historical originals or DNA results. [Rutherford](./index.html#N84) · [NARA](./index.html#N85) · [Georgia](./index.html#N62).
 
@@ -1352,7 +1354,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-06T13:28:23-04:00  · [Edit note](./index.html#edit-0152-research-notes)
+Editorial review: 2026-10-06T13:40:41-04:00  · Content updated: 2026-10-06T13:40:41-04:00  · [Edit note](./index.html#edit-0152-preservation-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1417,6 +1419,8 @@ Reviewed 30 September 2026 · Full name recorded; relationship to Aaron unproved
 **Exact source successor, 3 October 2026:** the [24 May 1916 Augusta Herald page 14](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn89053972/1916-05-24/ed-1/seq-14/) stopped at browser verification; neither it nor pages 10/11 was read. The contributed funeral clipping calls him a Confederate veteran but names no parents; its caption remains unverified against the full page. One exact *Devany* search in the [official Confederate pension main-series index](https://vault.georgiaarchives.org/digital/collection/TestApps) returned no results. That search excludes other spellings, widow-indexed files, supplements and service records from its coverage; no military absence follows. [RG058-01-001](https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/3169) supplies the next collection route. A bounded reply check supplied no new probate response; the [Richmond request](./index.html#N23) remains pending. No parentage or name-origin conclusion changes.
 
 **Recovered source scope, 6 October 2026:** the broader pension-and-death-record successor was closed partial. The official pension catalogue and known main collection could not be read; **zero new pension name queries, result sets or originals** were examined. Other spellings and supplements remain unsearched in this successor; the earlier exact *Devany* main-series negative retains its separate bounded scope. The [Georgia Archives guide](https://www.georgiaarchives.org/research/death_records) confirms Augusta death recording from 1904 and directs research to Richmond County Health Department Vital Records. The [current official local-office page](https://dph.georgia.gov/locations/richmond-county-health-department-0) supplies a precise custody route; its address differs from the older guide. Neither identifies Aaron’s individual 1916 entry, parent fields, online access, copy procedure or price. No death-record enquiry or original acquisition occurred. The next direct-parent test is existence/access for the possible local entry of Aaron O. Devany/Devaney/Davaney/Daveney, reported died 23 May 1916; [the pending estate-letter request](./index.html#COR11) remains separate and must not be duplicated. No parentage, naming-history or confidence conclusion changes.
+
+Restricted supporting successor, 6 October 2026: [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk). Individually authorized access is required; the dated source reviews preserve their original evidence and limits.
 
 Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/18VNZ-HHuxDW_HwcUnmZ8jRw0wCmsih6q/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
@@ -1627,6 +1631,8 @@ Earlier catalogue-only support: the [institutional excerpt](https://catalog.wrhs
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
 **Later official retrieval advance:** [N72](./index.html#N72) identifies the original-register reel and date block behind the David index. No personal manuscript entry or family identity bridge has yet been read.
+
+Restricted supporting successor, 6 October 2026: [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk). Individually authorized access is required; the dated source reviews preserve their original evidence and limits.
 
 N15 · Edinburgh goldsmith training and the missing American bridge
 
@@ -3019,6 +3025,8 @@ The pattern is compatible with an older overseas connection, a later American co
 
 Restricted supporting review: [Devaney variant and independence audit](https://drive.google.com/file/d/1xpH0LUXssXbgo8Tz-o9ztmbZjijOm69y/view) · [later explicit service-triangle review](https://drive.google.com/file/d/1aJUTT51dq3iNoVrFJjJ3yfo9deD_gwH6/view). Living identities, account URLs, match-row identifiers and detailed DNA remain private. The [direct joined-result review](https://drive.google.com/file/d/1eF5okJcg3tJ3Wop9fRHAcl-yfuuffuae/view) is now verified in the restricted archive, with living details retained privately.
 
+Restricted supporting successor, 6 October 2026: [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk). Individually authorized access is required; the dated source reviews preserve their original evidence and limits.
+
 N98 — One Wayne residual hit resolves to a Pipkin estate sale
 
 Reviewed 30 September 2026 · One original register spread; bounded false positive
@@ -3167,7 +3175,23 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-06T13:28:23-04:00  · [Edit note](./index.html#edit-0152-updates)
+Editorial review: 2026-10-06T13:40:41-04:00  · Content updated: 2026-10-06T13:40:41-04:00  · [Edit note](./index.html#edit-0152-preservation-updates)
+
+6 October 2026
+
+### Edition 01.52 · Restricted supporting evidence linked
+
+Links the [6 October preservation successor](./index.html#latest-library-preservation) to its dated research notes. One verified cloud transfer advances incremental accounting to 1,932; remote bytes and restoration remain untested. The preservation links change no historical or genetic conclusion.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  (America/New_York). This is supporting-source linkage, not a renewed historical-source examination.
+
+- [start-here](./index.html#start-here): Linked the 6 October restricted preservation successor and incremental 1,931-to-1,932 ledger, retaining the dated 3 October predecessor and exact verification limits.
+
+- [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
+
+- [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
 
 6 October 2026
 

@@ -826,7 +826,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-06T13:28:23-04:00  · [Edit note](./index.html#edit-0152-records)
+Editorial review: 2026-10-06T18:16:45Z  · Content updated: 2026-10-06T18:16:45Z  · [Edit note](./index.html#edit-0153-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -1009,7 +1009,7 @@ Current request status · private recipients, addresses and message bodies are n
 | Request / public role | Exact purpose | Sent or attempted / status | Next action |
 | --- | --- | --- | --- |
 | COR01 National Records of Scotland | [GD 113/5/35c item 17; CS 17/1/6 p 196, /7 p 345, /25 p 340](./index.html#R06) — copies and quote. | 28 Sep 2026 **Sent; acknowledged; substantive reply pending** | Await the existing request; no duplicate or paid order. |
-| COR02 Existing DNA research contact | [Two distinct Devaney comparisons](./index.html#R01) and [an independent paternal collateral](./index.html#R02). | Sent 30 Sep; replied 1 Oct 2026 **Reply received; target data still missing** | Verify the correct GD5 comparator and consent for any existing finer result; document the proposed collateral’s paternal split. No new calls or pedigree supplied. Do not merge the comparators or duplicate contact. |
+| COR02 Existing DNA research contact | [Two distinct Devaney comparisons](./index.html#R01) and [an independent paternal collateral](./index.html#R02). | Sent 30 Sep; replied 1 Oct; source follow-up sent 6 Oct 2026 **Earlier reply received; new source question pending** | Verify the correct GD5 comparator and consent for any existing finer result; document the proposed collateral’s paternal split. No new calls or pedigree supplied. A focused follow-up asks for public Cannon/McMaster subgroup and early South Carolina source pointers; no new calls or family bridge. Await that answer without duplicating either request. Do not merge the comparators. |
 | COR03 NARA | [Aaron, Nash’s SC Volunteers, War of 1812, RG 94/NAID 300392](./index.html#N85) — complete service file and copy route. | 1 Oct 2026; reply 2 Oct; reconciled 3 Oct; support enquiry 6 Oct **Support enquiry sent; response pending; submission unconfirmed** | Submission remains unconfirmed after conflicting completion and portal evidence; reconcile the existing request and cart before retrying. No accepted order or charge is independently confirmed. Technical/status enquiry sent 6 October to reconcile the existing submission and failed portal; response pending. The enquiry does not authorize a new order or charge. Specific jacket not supplied; the quoted turnaround has no independently confirmed acceptance date. |
 | COR04 Rutherford County Archives | [Thomas Welch, 14/18 May 1809; RB 1b p 82](./index.html#R09) — surviving loose item, all sides and citation. | 1 Oct 2026; reply 2 Oct **Bound source identified; separate loose material not demonstrated** | Retain the inventory/book-label discrepancy; reopen only with a new item-level pointer. Do not repeat the clarification. No order placed. |
 | COR05 Historical-source contributor · FamilySearch | [LHXM-9VZ source attachments](./index.html#RT01) — original birth, birthplace and Bible/middle-name citation. | Sent 1 Oct 2026 **Selected thread checked; no reply visible** | Await the existing source enquiry. The outgoing message was visible in that thread; recipient receipt and wider correspondence were not verified. Do not resend. |
@@ -1354,7 +1354,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-06T13:40:41-04:00  · Content updated: 2026-10-06T13:40:41-04:00  · [Edit note](./index.html#edit-0152-preservation-research-notes)
+Editorial review: 2026-10-06T18:16:45Z  · Content updated: 2026-10-06T18:16:45Z  · [Edit note](./index.html#edit-0153-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1958,13 +1958,15 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N32 · Why surname counts cannot yet become ancestry probabilities
 
-Reviewed 1 October 2026 · Method defined; statistical inputs insufficient · Earlier match-count and book-family controls plus current reply/official group-date review; no new genetic comparison.
+Reviewed 6 October 2026 · Method defined; statistical inputs insufficient · Earlier controls retained; bounded public Cannon subgroup/source review added; no new genetic comparison.
 
 The saved Y67 list contains 23 matches: two at genetic distance five, three at six and eighteen at seven. This describes a selected match list, rather than 23 independent ancestral families. Fourteen have finer branch information; eleven split above A823 and three follow a downstream path that the tested Oliphant sample's reviewed reads do not support. Nine remain broad-only. Missing finer testing is missing information, not evidence that an unresolved comparator is especially close.
 
 **Saved STR-only timing screen, 28 September 2026:** the service’s Y67/GD5 report gave a rounded headline around 1400 CE with wide uncertainty. This was a generic test-level/distance distribution calibrated from other tested pairs, not a finer-SNP date measured for these two men. It keeps an old paternal connection plausible but does not exclude later ancestry, date surname acquisition or identify Aaron’s family. [Method and limits](https://help.familytreedna.com/hc/en-us/articles/6162096082831-Y-DNA-FTDNATiP-Report-Introduction).
 
 **1 October reply and date controls:** the reply supplies a route to seek a consented finer result, not new genotype or pedigree evidence. Fixed age rules based on same versus different surnames do not provide a measured date for the unresolved GD5 pair. The current [official A823 story](https://discover.familytreedna.com/y-dna/R-A823/story) models the common ancestor of all sampled A823 members at about 650 CE (most likely 673 CE; 95% interval 407–897 CE). That group-wide estimate is not the closest common-ancestor date of each pair below it and cannot substitute for either missing bilateral comparison. A younger pairwise relationship remains possible unless an independently resolved split rules it out. The GD5 Y67 comparator and separately typed A823 DeVenney remain distinct; a suggested collateral is not yet a documented historical-line anchor. No test, new calls or pair-specific date were obtained.
+
+**6 October public-project check:** the [Cannon Y-results chart](https://www.familytreedna.com/public/Cannon?iframe=ydna-results-overview), first page of two, labels A823 subgroups A8683, BY590, A984 and unresolved TBD. Administrator grouping is not a confirmed finer assignment for every row. One submitted ancestry entry reports Robert Cannon, 1740–93, Orangeburg, South Carolina, with a broad R-M269/Y-DNA37 result. The pedigree and any identification with a historical census household remain unverified; no connection to Aaron or to a particular comparator is established. The chart includes other ancestral surnames, and related participants need not represent independent families. Project proportions therefore cannot establish the most likely ancestral surname. This source lead does not overturn any exact tested-line split or exclude untested Cannon/McMaster families. The next test is a documented family-to-tester bridge plus mutually callable finer SNP evidence; source-pointer clarification is pending. No new genotype, pairwise date, rank or confidence increase follows.
 
 Two saved autosomal tree-surname searches returned 13 and fourteen results with twelve people in both sets: fifteen unique people, not 27 independent confirmations. A surname anywhere in a match's tree does not establish that person's direct paternal surname. Relatives, repeated platforms and variant spellings need deduplication. The existing service-confirmed triangles concern inherited segments in a reported paternal-family context; no shared segment has been assigned uniquely to Aaron or to the exclusively male Oliphant line.
 
@@ -3175,7 +3177,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-06T13:40:41-04:00  · Content updated: 2026-10-06T13:40:41-04:00  · [Edit note](./index.html#edit-0152-preservation-updates)
+Editorial review: 2026-10-06T18:16:45Z  · Content updated: 2026-10-06T18:16:45Z  · [Edit note](./index.html#edit-0153-updates)
 
 6 October 2026
 
@@ -3192,6 +3194,22 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+6 October 2026
+
+### Edition 01.53 · Project branches and source follow-up
+
+[A bounded public Cannon project check](./index.html#project-subgroup-review) adds a broad-only South Carolina family lead and distinguishes project membership from independent paternal families. The linked comparison guide preserves every saved observation and rank. A focused source-pointer follow-up is [sent and pending](./index.html#COR02); no new genotype, documented kinship or confidence increase is established.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-06T18:16:45Z . This is a bounded source reconciliation, not a new inspection of every historical original.
+
+- [records](./index.html#records): COR02 now records the focused source-pointer follow-up sent on 6 October, distinct from the earlier answered genetic enquiry; reply pending, with no duplicate contact.
+
+- [research-notes](./index.html#research-notes): N32 adds the independently inspected public Cannon subgroup and broad-only South Carolina ancestry entry, retaining pedigree, sample, source and count limits; no genetic or historical confidence change.
+
+- [updates](./index.html#updates): Append this bounded project-source and correspondence successor; preserve earlier editions and all unchanged evidence ranks.
 
 6 October 2026
 

@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-06T17:28:23Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-06T18:16:45Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -10,6 +10,7 @@ Saved observations: 2026-09-29. Editorial review: 2026-10-06T17:28:23Z.
 - A close STR distance cannot establish recentness. Broad placement, no-call or absent match-list entry is not a negative genotype.
 - McMaster/McMasters separation retains qualitative read-view limits; it is not calibrated raw sequence QC.
 - No surname probabilities, precise pairwise dates, former-surname direction, Aaron-level genetic assignment or confidence change is supplied. An untested family remains possible.
+- The 6 October public Cannon chart includes several A823 subgroups and other ancestral surnames. Project proportions are not independent-family counts or surname probabilities; see the dated N32 source review. No untyped historical family can be assigned the branch of a similarly named tested comparator.
 
 ## Current result and guide
 
@@ -149,7 +150,7 @@ Distinct DNA records: [FL11](./family-lines.html#FL11).
 
 ### Rank 3 (tied) · McMaster / McMasters
 
-Sampled cluster set aside · quality qualification. Three related McMaster/McMasters observations retain qualitative read\-view separation and the unresolved raw\-call quality limit\. They are not three independent families\. Other untested McMaster lines remain possible\.
+Sampled cluster set aside · quality qualification. Three related McMaster/McMasters observations retain qualitative read\-view separation and the unresolved raw\-call quality limit\. They are not three independent families\. Other untested McMaster lines remain possible\. The broader project suggestion does not overturn those exact sampled results; a documented early South Carolina family\-to\-tester bridge is still missing\. See N32’s dated public\-source review\.
 
 Distinct DNA records: [FL03](./family-lines.html#FL03), [FL06](./family-lines.html#FL06), [FL07](./family-lines.html#FL07).
 
@@ -1629,4 +1630,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Revision01.52: retained the objective Devaney evidence section, made the possible surname transition explicitly conditional and reconciled the6October partial pension/death-custody source recovery. Main comparison labels now agree with the eight tied open alternatives. No observed genotype, dependence group, historical connection or confidence changes.
+Editor note: Revision01.53: add the bounded public Cannon project check to the interpretation guide. Project proportions and broad A823 groupings do not identify an ancestral surname. Exact observed comparison rows, ranks, dependencies and confidence are unchanged; other untested families remain open.

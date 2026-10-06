@@ -10,7 +10,8 @@
     "Official Y67 GD, extended STR differences, single-copy lower bounds and SNP differences are different measures; only official same-level Y67 GD appears in that column.",
     "A close STR distance cannot establish recentness. Broad placement, no-call or absent match-list entry is not a negative genotype.",
     "McMaster/McMasters separation retains qualitative read-view limits; it is not calibrated raw sequence QC.",
-    "No surname probabilities, precise pairwise dates, former-surname direction, Aaron-level genetic assignment or confidence change is supplied. An untested family remains possible."
+    "No surname probabilities, precise pairwise dates, former-surname direction, Aaron-level genetic assignment or confidence change is supplied. An untested family remains possible.",
+    "The 6 October public Cannon chart includes several A823 subgroups and other ancestral surnames. Project proportions are not independent-family counts or surname probabilities; see the dated N32 source review. No untyped historical family can be assigned the branch of a similarly named tested comparator."
   ],
   "summary": {
     "observed_tests": 23,
@@ -963,8 +964,8 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-06T17:28:23Z",
-  "editor_note": "Revision01.52: retained the objective Devaney evidence section, made the possible surname transition explicitly conditional and reconciled the6October partial pension/death-custody source recovery. Main comparison labels now agree with the eight tied open alternatives. No observed genotype, dependence group, historical connection or confidence changes.",
+  "editorial_reviewed_at": "2026-10-06T18:16:45Z",
+  "editor_note": "Revision01.53: add the bounded public Cannon project check to the interpretation guide. Project proportions and broad A823 groupings do not identify an ancestral surname. Exact observed comparison rows, ranks, dependencies and confidence are unchanged; other untested families remain open.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
     "reviewed_at": "2026-10-02T19:14:52Z",
@@ -1533,7 +1534,7 @@
       "surname_label": "McMaster / McMasters",
       "rank": 3,
       "case_label": "Sampled cluster set aside · quality qualification",
-      "basis": "Three related McMaster/McMasters observations retain qualitative read-view separation and the unresolved raw-call quality limit. They are not three independent families. Other untested McMaster lines remain possible.",
+      "basis": "Three related McMaster/McMasters observations retain qualitative read-view separation and the unresolved raw-call quality limit. They are not three independent families. Other untested McMaster lines remain possible. The broader project suggestion does not overturn those exact sampled results; a documented early South Carolina family-to-tester bridge is still missing. See N32’s dated public-source review.",
       "variants": [
         "McMaster",
         "McMasters"

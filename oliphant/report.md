@@ -12,6 +12,8 @@ This website is the current research record. Read it first, then follow its cita
 
 - **Choose one question that evidence could settle.** The active independent original-record tests are [Aaron’s federal Nash regiment service file](./index.html#R04), [the Rutherford witness identity/source test](./index.html#R09) and [the exact loose debt-case papers](./index.html#N92). The two visible Rutherford court O leaves have now been read; the entire O section remains incomplete, with exact source pointers above. The [two Devaney comparisons](./index.html#R01) remain unresolved after a reply supplied procedural guidance, and an [independent paternal collateral](./index.html#R02) remains a separate historical-line test. [Bible inspection](./index.html#R03) will check wording, dates and provenance for Aaron and later generations; independent earlier-origin work need not wait for it. Other targets retain their exact retrieval references.
 
+- **Review individual follow-ups.** Present the complete draft to the research owner before contacting an individual family researcher. Institutional catalogue enquiries must still respect current authorization and the correspondence tracker.
+
 - **Check correspondence before contact.** Read [Requests and correspondence](./index.html#correspondence) and the relevant restricted delivery evidence. Do not duplicate pending requests or resend uncertain submissions without resolving their status. On a reply, update the same row and the linked source/record notes together.
 
 - **Leave the next researcher a usable result.** Record the date, question, repository, collection, exact query and filters, pages or images examined, access limits, result, citation, and next finite action. Distinguish an index hit, an original reading and a same-person inference.
@@ -24,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-06T21:21:45Z  · Content updated: 2026-10-06T21:21:45Z  · [Edit note](./index.html#edit-0154-start-here)
+Editorial review: 2026-10-07T01:57:54Z  · Content updated: 2026-10-07T01:57:54Z  · [Edit note](./index.html#edit-0156-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -47,6 +49,8 @@ Completed checks and corrections
 **Rainwater–Devaney overlap:** [the 1810 Pendleton district presence](./index.html#N21) remains separate from a direct relationship. [The 1820 Spartanburg original](./index.html#N13) places Robert near a Rainwater block in the schedule, with four unnamed young occupants; published child-name claims remain unverified. Neither establishes Robert’s relationship to Aaron or assigns a DNA segment.
 
 **Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
+
+**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). Present custody and Aaron content remain unverified; a [catalogue-location enquiry](./index.html#COR15) is pending. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
 
 **Name and source provenance:** [Copied Bible claims](./index.html#N17) remain secondhand, and the elder Aaron’s middle name is unverified. [The fresh birth-source check](./index.html#RT01) supplies no original for 17 May 1791. [A documented Charleston institutional association](./index.html#N53) does not connect Aaron to the distinct David candidates or the Pinckney family.
 
@@ -826,7 +830,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-06T21:21:45Z  · Content updated: 2026-10-06T21:21:45Z  · [Edit note](./index.html#edit-0154-records)
+Editorial review: 2026-10-07T01:57:54Z  · Content updated: 2026-10-07T01:57:54Z  · [Edit note](./index.html#edit-0156-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -958,6 +962,8 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 14 · Conditional follow-ups Other records that need a sharper target Not order-ready
 
+**Samuel Grant collection crosswalk:** the historical accession [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) now has a specific collection attribution. Confirm its present repository and folder inventory before requesting papers; the older Bible58:3 pointer is not an identified Aaron record. [A bibliographic enquiry is pending; no paid work has been ordered](./index.html#COR15), without a copying order.
+
 **Military rolls:** Nash regiment muster, pay and descriptive rolls: NARA **RG 94, PI-17 entries 55A, 55B, 55C; inventory entry 55**, [NAID 654644](https://catalog.archives.gov/id/654644), South Carolina, Lt. Col. Reuben Nash. Unit box, company and individual coverage remain unresolved; originals unread. The South Caroliniana Nash roster typescript, accession **2350**, 18 sheets, OCLC **31399861**, has a catalogue copy marked missing. No Aaron entry has been read in it.
 
 **Bounty land:** NARA **NAID 567388** is a conditional series search, not a located application for Aaron or Rebecca. Resolve soldier identity before ordering an assumed file.
@@ -1021,7 +1027,8 @@ Current request status · private recipients, addresses and message bodies are n
 | COR11 Richmond County Probate Court | [William A. Davaney letters: temporary 7 p 175; permanent 14 p 89](./index.html#N23) — copies and related estate papers. | 1 Oct; procedure reply and clarification 6 Oct 2026 **Procedure received; targeted clarification pending** | Mail/onsite terms: $10 search per estate/file and $1 per plain-copy page. Clarification asks one-estate fee treatment, unknown case fields and a copying total. No exact case or historical papers supplied; estate identity remains unproved. No paid search or order placed. |
 | COR12 South Carolina Department of Archives and History | [PK 034/C 0907 versus film 1025480/DGS 8687026](./index.html#N66) — Grisham-register crosswalk and loose-paper route. | 1 Oct 2026 **Submission attempted; delivery uncertain** | Two dated reply-account queries found no acknowledgement trace; delivery remains uncertain. Resolve before resubmission; no acceptance or answer verified. |
 | COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
-| COR14 Existing genealogy research contact | [Aaron compilation](./index.html#N17) — underlying birth, middle-name and parentage citations. | 2 Oct 2026 **Compilation received; provenance clarification sent, reply pending** | Await the existing source-provenance enquiry; no duplicate contact. The supplied compilation does not independently establish parentage or authenticate its claimed family records. |
+| COR14 Existing genealogy research contact | [Aaron compilations](./index.html#N17) — underlying birth, middle-name and parentage citations. | Sent 2 Oct; replied 6 Oct 2026 **Further derivative files received; original citations still missing** | Additional historical correspondence review was offered. Retain the source-quality limits and [specific underlying-source leads](./index.html#roddy-source-successor); do not repeat the original question. No contemporary parentage citation supplied. Any proposed individual follow-up requires an owner-reviewed draft. |
+| COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Sent 6 Oct 2026 local / 7 Oct UTC **Bibliographic enquiry sent; reply pending** | Await current collection/container and film pointers, including original-versus-copy distinction. The sent payload uses the published accession only. No chargeable research, copying order or individual-researcher contact. |
 
 These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use Gmail for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
 
@@ -1354,7 +1361,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-06T22:18:19Z  · Content updated: 2026-10-06T22:18:19Z  · [Edit note](./index.html#edit-0155-research-notes)
+Editorial review: 2026-10-07T01:57:54Z  · Content updated: 2026-10-07T01:57:54Z  · [Edit note](./index.html#edit-0156-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1628,6 +1635,12 @@ Earlier catalogue-only support: the [institutional excerpt](https://catalog.wrhs
 
 **Bibliographic names are a separate role:** printed p. xix/PDF 24 cites Walter Wood’s *East Neuk of Fife*, p. 249, and Wood’s edition of Douglas’s *Peerage of Scotland*, II p. 330. Author/editor names supply book pointers, not intermarriage evidence. The bounded saved-book text navigation and public discovery pass established no direct Wood spouse or parent of elder Aaron; it was not a whole-book visual examination or an exhaustive absence finding. [The younger Devany family](./index.html#N02) and [official, parcel and maternal Wood clues](./family-lines.html#HX02) retain their distinct identity and relationship limits.
 
+#### Samuel Grant Oliphant genealogical papers: an exact historical locator
+
+**Accession-list reading, 6 October 2026:** [*Pennsylvania Genealogical Magazine*, volume 30, number 2, printed page 144/PDF 74](https://genpa.org/wp-content/uploads/publications/pennsylvania-genealogical-magazine/PGM-Volume-30-Number-2.pdf), lists Dr. Samuel Grant Oliphant’s letters, circa 1897–1930, and Oliphant/allied-family genealogical charts at **FC/Ol/Box58.1–58.8**. Printed page 135/PDF 65 dates the combined Genealogical Society and Historical Society of Pennsylvania accession list to January–June 1977 and defines FC as Family File Case. Its format does not distinguish manuscripts from copies. Both accession-list pages were independently checked; no family letter was read. This adds a named collection and full range to the previously retained, unread HSP Oliphant Bible, 1795–1830, pointer **FC Ol Box58:3**. The similar references warrant a crosswalk question; they do not establish that the Bible belongs to this collection or concerns Aaron.
+
+The [current GSP surname-index description](https://genpa.org/public-collections/surname-index-to-gsp-manuscripts-collections/) locates its selected holdings at HSP, but does not crosswalk this accession. Its Oliphant/Haines entry 8327 is a different pointer. Family Records No. 2, films 525531–525582, [catalogue 499720](https://www.familysearch.org/en/search/catalog/499720), is a possible series route without a target-film identification; its catalogue was inaccessible during this pass. [Johns Hopkins MS-0086](https://aspace.library.jhu.edu/repositories/3/resources/98) describes academic notebooks, not verified custody of these genealogical letters. No present repository, surviving container inventory, Aaron item or migration/parentage source has been confirmed. A [public-reference-only institutional enquiry](./index.html#COR15) is pending. First obtain the current collection/container crosswalk and distinguish originals from copies; then request a specific source-bearing item. The earlier editor-held papers cannot automatically be identified with the 1977 accession.
+
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
 **Later official retrieval advance:** [N72](./index.html#N72) identifies the original-register reel and date block behind the David index. No personal manuscript entry or family identity bridge has yet been read.
@@ -1674,7 +1687,7 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N17 · The family Bible: attribution, exclusions and catalogue limits
 
-Reviewed 2 October 2026 · Current original attachment acquired and stored text read; compilation claims remain distinct from historical originals. Bible originals and complete transcript remain unread.
+Reviewed 6 October 2026 · Three additional original files acquired and complete derivative text read; no original historical Bible or family letter supplied.
 
 **Family-recollection correction, 30 September 2026:** the family researcher reports **100% certainty that the Bible’s ancestry stops at Aaron**, but only **about 75% certainty in recalling the middle name Pinckney**. Those are distinct statements about memory, not calculated probabilities or a reading of a source page. No original leaf or full transcript was inspected. Use **Aaron Oliphant** as the working name; retain Pinckney/Pinkney as an unverified variant, not evidence of a Pinckney-family connection. Future Bible inspection should establish literal wording, dates, relationships, handwriting and provenance for Aaron and later generations. Earlier origins require independent evidence. [Restricted family-recollection clarification](https://drive.google.com/file/d/11Bxl6yzbltB2IlPHqMq_5gSzBudEwbTr/view).
 
@@ -1692,7 +1705,9 @@ A likely mirror of the formerly inaccessible Roots Web message is now recovered 
 
 The earliest reviewed dated published claim of the elder Aaron’s literal **Pinkney** remains the January 2002 family post, edited in February; its precise pre-edit wording remains unverified. Six additional provenance queries exposed no earlier attestation or independent citation within their stated access limits. Later namesakes and the misattached 1898 Emily obituary cannot verify the elder man’s name. The three 2013 attachment previews are derivative charts and copied posts; that earlier preview review recovered no original attachment bytes or contemporary naming record. The working name remains Aaron Oliphant.
 
-**Current attachment acquisition, 2 October 2026:** an original DOC file was supplied and its complete stored text was read. Its filename and opening match the previously reviewed 2013 DOC preview, but the earlier binary was never acquired; identical bytes, an unchanged revision and the earlier conversion’s completeness cannot be established. It remains a descendant compilation, not an original historical record or an independent attestation of Aaron’s birth, middle name or parents. Its Solomon table gives **12 March 1841**, while its narrative gives **12 March 1846**; the previously read original marriage register controls the latter date. Its younger Aaron marriage date of **28 October 1843** conflicts with the original **24 October 1843** return discussed in [the collateral review](./index.html#N37). Those proposed branches remain unproved as Aaron’s children. No Bible leaf, cited parentage instrument, authenticated photograph attribution or earlier-origin bridge was supplied. The [restricted source-review supplement](https://drive.google.com/file/d/1OPcIi2qP_uPYKZWSTA7D2-7Nlw0N5gMu/view?usp=drivesdk) retains the file, text and provenance. A [source-provenance clarification](./index.html#COR14) was sent on 2 October; its reply is pending.
+**Current attachment acquisition, 2 October 2026:** an original DOC file was supplied and its complete stored text was read. Its filename and opening match the previously reviewed 2013 DOC preview, but the earlier binary was never acquired; identical bytes, an unchanged revision and the earlier conversion’s completeness cannot be established. It remains a descendant compilation, not an original historical record or an independent attestation of Aaron’s birth, middle name or parents. Its Solomon table gives **12 March 1841**, while its narrative gives **12 March 1846**; the previously read original marriage register controls the latter date. Its younger Aaron marriage date of **28 October 1843** conflicts with the original **24 October 1843** return discussed in [the collateral review](./index.html#N37). Those proposed branches remain unproved as Aaron’s children. No Bible leaf, cited parentage instrument, authenticated photograph attribution or earlier-origin bridge was supplied. The [restricted source-review supplement](https://drive.google.com/file/d/1OPcIi2qP_uPYKZWSTA7D2-7Nlw0N5gMu/view?usp=drivesdk) retains the file, text and provenance. The [source-provenance enquiry](./index.html#COR14) received a further reply on 6 October with three additional files; no contemporary birth or parentage citation was supplied.
+
+**Expanded source reading, 6 October 2026:** the three newly delivered originals are RTF files: a short archived-thread list, a David-to-Aaron pedigree and a copied descendant discussion. Full text exposes material omitted by the earlier limited Yahoo conversions; earlier captures are not complete-original readings. The old binaries were never acquired, so identical bytes or unchanged revisions cannot be claimed. The pedigree gives no source-bearing David–Aaron link and mixes painter references with copied physician material. Its potentially duplicated James households and unproved census assignments are warnings to verify identities, not grounds for merging people. The fuller descendant text adds two precise reported-source leads: a **27 November 1916 Andrew J. Oliphant letter to T. S. Ivey**, and a separate **Edward-family Bible** described in a copied August 2000 reply. The letter is a source lead for family-history collection; the reported Bible concerns Edward and uncertain parental name forms, not Aaron. Neither original historical document was supplied or read. The [archived thread reference](https://www.genealogy.com/forum/surnames/topics/oliphant/501/) was inaccessible through web and blocked in Chrome; no public post was independently recovered in this pass. The underlying death letters, annotated child list and Andrew Bible remain unexamined. No birth, middle-name, parentage or surname-transition confidence changes. Private delivery text and files are excluded from the public repository.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1bzhmIEovmzBB0tF2IonFPcAqz5HTrK7A/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/19sujH8FGIyrEfWpcIWet0O5_y95dumbF/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1P3McPwbFWrsULARUcRDQNvIZ_yXMMNHQ/view?usp=drivesdk) · [Working review 4](https://drive.google.com/file/d/1u8qEJE1J_GYTgHq5tW5Ju_b6iKu7icaI/view?usp=drivesdk) · [Working review 5](https://drive.google.com/file/d/1ETSK3q-Vk-SyXZwpPy4BsU1xbgLnyEUX/view?usp=drivesdk) · [Working review 6](https://drive.google.com/file/d/1NC4K24Mc9guUBnKcIhoXvndP-ntDgr2S/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -2059,6 +2074,8 @@ A father-to-son comparison through a separately proved different son of Aaron wo
 The next documentary question is an express heir, guardian, inheritance deed or authenticated contemporary family entry linking Aaron and Rebecca to a proposed collateral. Only then should each later father-to-son step be validated. No living candidate or surviving male line has been established in this audit.
 
 Sources/read status: original historical images previously visually read: [James Madison mortality schedule](https://www.familysearch.org/ark:/61903/3:1:3QHV-B3P2-4B99), [Loinda's matching household](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBX-7L1), [Aaron P. marriage](https://www.familysearch.org/ark:/61903/3:1:33SQ-GPP6-9WMW), [Aaron P. 1880 census](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBX-9VWB). Submitted/retrospective evidence: [Rainwater biography](https://www.therainwatercollection.com/gallery/aug2009.shtml), [public Oliphant chart](https://www.familytreedna.com/public/oliphant?iframe=ydna-results-overview).
+
+**Further source lead, 6 October 2026:** the [expanded derivative discussion](./index.html#roddy-source-successor) reports a separate Edward-family Bible. Its literal wording, date and custody remain unexamined; uncertain parental names and the adult-to-earlier-Byron identity bridge remain unresolved. It is a retrieval target, not a validated collateral pedigree or historical Y anchor.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1Jn3T-ccYX25kth1AtfrQflEFMANknoVg/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/19gcV4Zq5OHYYT0fn09LPcZzVuhBLhiDO/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/13WKrIu-yrvoaZ8wW918Teal6_c9LbQvj/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -3179,7 +3196,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-06T22:18:19Z  · Content updated: 2026-10-06T22:18:19Z  · [Edit note](./index.html#edit-0155-updates)
+Editorial review: 2026-10-07T01:57:54Z  · Content updated: 2026-10-07T01:57:54Z  · [Edit note](./index.html#edit-0156-updates)
 
 6 October 2026
 
@@ -3196,6 +3213,24 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+6 October 2026
+
+### Edition 01.56 · A genealogical archive to trace
+
+[A 1977 accession list identifies Samuel Grant Oliphant’s genealogical letters and charts](./index.html#samuel-grant-archive), refining an older Bible shelfmark lead. Current custody and Aaron content remain unknown; a catalogue enquiry is pending. [Three historical derivative files are now preserved and fully read](./index.html#roddy-source-successor), correcting earlier preview limits. No parentage, DNA result, surname rank or confidence changes.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-07T01:57:54Z . Private correspondence and original attachments are not published.
+
+- [start-here](./index.html#start-here): Link the exact historical archive locator and expanded derivative reading; add the owner-review requirement for individual correspondence.
+
+- [records](./index.html#records): Update COR14 received status, add COR15 sent catalogue enquiry and R14 current-custody test; no copying order or fee.
+
+- [research-notes](./index.html#research-notes): N14 supplies the independently read accession locator and old Bible-pointer distinction; N17 corrects full-reading/access limits and source leads; N37 retains an unverified collateral Bible target.
+
+- [updates](./index.html#updates): Append this bounded source-access and historical-catalogue result; confidence and ranks unchanged.
 
 6 October 2026
 

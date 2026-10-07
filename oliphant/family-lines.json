@@ -965,12 +965,12 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-07T01:57:54Z",
-  "editor_note": "Revision 01.56: the Samuel Grant genealogy archive has a specific historical accession locator, with present custody unverified. Expanded derivative source readings do not change any genetic observation, historical identity, ranking or confidence. See the main report N14/N17.",
+  "editorial_reviewed_at": "2026-10-07T08:03:30Z",
+  "editor_note": "Revision 01.57: original younger-Aaron pension testimony and a qualified 1926 agency supplement added; elder-Aaron parentage, genetic results, ranks and historical confidence unchanged.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
-    "reviewed_at": "2026-10-02T19:14:52Z",
-    "scope": "A bounded cross-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator. No fresh external discovery query, archive-wide search or all-surname inventory was completed. Historical record dates and prior reading scopes are retained in each entry.",
+    "reviewed_at": "2026-10-07T08:03:30Z",
+    "scope": "A bounded cross-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator. No fresh external discovery query, archive-wide search or all-surname inventory was completed. Historical record dates and prior reading scopes are retained in each entry. On 7 October, HX01 alone was additionally reviewed against one newly acquired 15-image main pension file and one separate supplement image; other HX source-reading dates remain unchanged.",
     "methodology": [
       "Use the recorded spelling, date, place and role. Listed search forms are discovery vocabulary; they do not establish that differently named people share a family. Devine/Divine, McCain, Burns and Carrell require their own identity evidence. Oliphant, Olliphant, Olyphant, Olifant, Olifent, Oliphint and Olliphint are discovery forms for future source searches; the younger marriage’s recorded form is Aaron Olifant Devany, not a normalized replacement.",
       "The strongest named-local lead is the younger Aaron Olifant Devany in Hancock decades after the elder Aaron. His name, county and enumeration association do not prove kinship or connect him to either distinct DNA comparator.",
@@ -1008,10 +1008,20 @@
             "label": "N02: namesake evidence, conflicting identities and completed coverage",
             "url": "https://aifreelancer.co/oliphant/#N02",
             "scope": "Existing public synthesis dated 30 September 2026; read from the current saved report on 2 October. No fresh repository acquisition or access check."
+          },
+          {
+            "label": "Aaron O. Davaney, Richmond pension file, 1897–1907",
+            "url": "https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927",
+            "scope": "Georgia Archives RG58-1-1, USAMILCONFEDGA_184995-01055. Fifteen digital images acquired and read by two readers 7 October 2026. Image2Q3: sworn 23 July 1841 Greene County, Georgia birth; image 3 lifelong Lundy acquaintance. Retrospective testimony, no named parents or elder-Aaron link; O not expanded."
+          },
+          {
+            "label": "Mrs Martha A. Davaney, 1 March 1926 payment agency",
+            "url": "https://vault.georgiaarchives.org/digital/collection/pension/id/6594",
+            "scope": "cpa23533: sole original image acquired/read 7 October. Samuel M. Devaney named agent; no husband or kinship term; pensioner identity unresolved."
           }
         ],
         "limits": "A later full name and same county supply a specific lead, with no demonstrated kinship to elder Aaron or explanation for the name. Enumeration order proves neither adjoining land nor family relationship. Parents and Drury relationship remain unresolved. FL02's broad Y67 GD5 comparison and FL24's separate A823 comparison are different testers; neither has a documented descent to this historical family. No surname-transition or historical Y-line conclusion follows.",
-        "next_test": "Seek an explicit parent, sibling, guardian, heir or naming statement. Await the existing Richmond request for William A. Davaney’s temporary letters (book 7, p. 175), permanent letters (book 14, p. 89) and associated estate papers (COR11/N23). Verify estate and nephew identities before using kinship wording. Do not repeat the completed broad 1860 and guardian/index screens without a new discriminator.",
+        "next_test": "Use the younger man’s Greene birth claim and W. C. [D?] Lundy’s lifelong-acquaintance statement to identify an exact original service entry and a record that names his parents. Preserve the 1850 child and Samuel/Agatha identity conflicts. Seek the possible Augusta 1916 death entry; await the pending Richmond estate clarification without duplicating it. No demonstrated elder-Aaron or comparator bridge.",
         "search_forms": [
           "Devaney",
           "Devany",
@@ -3433,7 +3443,7 @@
   },
   "devaney_evidence": {
     "title": "Devaney: supporting evidence and unresolved tests",
-    "reviewed_at": "2026-10-06T17:28:23Z",
+    "reviewed_at": "2026-10-07T08:03:30Z",
     "summary": "Devaney remains the strongest working surname candidate in this register. The evidence below supports further testing; it does not identify Aaron’s father, prove a former surname or date a surname change.",
     "rows": [
       {
@@ -3543,22 +3553,22 @@
       },
       {
         "id": "DE06",
-        "title": "The latest historical source check supplied no new parentage",
-        "result": "The 3 October exact newspaper page remained blocked and the exact Devany main pension query was negative. The 6 October recovery read the official Augusta death-custody route but could not access pension endpoints: zero new name queries, result sets or originals. The earlier bounded reply check supplied no new probate response.",
-        "limits": "Access failure is not a pension negative; variants and supplements remain unsearched in the successor. Augusta recording from1904 and a named custodian do not establish that Aaron’s1916 entry survives, names parents or is online. No copy procedure, price, individual death entry or parentage original was obtained.",
-        "next_test": "Check existence/access for the possible Augusta local death entry of23May1916 through Richmond Vital Records; await the separate pending estate request. A separately scoped responsive-site pension successor must verify actual variant-query semantics and supplement links. Do not duplicate the probate enquiry or infer a fee commitment.",
+        "title": "An original pension now sharpens the younger namesake test",
+        "result": "On 7 October, six-spelling any-word searches in the official main and supplement indexes returned one result each. Aaron O. Davaney’s fifteen-image file gives sworn 23 July 1841 birth in Greene County, Georgia and a named lifelong Lundy acquaintance. The separately read Martha supplement is a 1 March 1926 payment agency form; no kinship stated.",
+        "limits": "Retrospective birth testimony, not a birth registration. O is not expanded. No named parent/sibling or elder-Aaron link in the main file; the supplement names no husband or agent relationship. Service year/company, some ages and initials differ. The 1850 child identity and parentage remain open; historical confidence and ranks unchanged.",
+        "next_test": "Use the younger man’s Greene birth claim and W. C. [D?] Lundy’s lifelong-acquaintance statement to identify an exact original service entry and a record that names his parents. Preserve the 1850 child and Samuel/Agatha identity conflicts. Seek the possible Augusta 1916 death entry; await the pending Richmond estate clarification without duplicating it. No demonstrated elder-Aaron or comparator bridge.",
         "citations": [
           {
-            "url": "./index.html#N02",
-            "label": "Exact source check and retrievals"
+            "url": "./index.html#devany-pension-original",
+            "label": "Original findings, contradictions and completed coverage"
           },
           {
-            "url": "https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/3169",
-            "label": "Official pension series"
+            "url": "https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927",
+            "label": "Main pension file"
           },
           {
-            "url": "https://vault.georgiaarchives.org/digital/collection/TestApps",
-            "label": "Pension main-series index"
+            "url": "https://vault.georgiaarchives.org/digital/collection/pension/id/6594",
+            "label": "Separate 1926 payment agency"
           }
         ]
       }

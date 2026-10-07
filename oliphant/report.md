@@ -1,6 +1,6 @@
 # The Aaron Oliphant Inquiry
 
-Public working edition, 2026-10-06. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
+Public working edition, 2026-10-07. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
 Instructions
 
@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-07T01:57:54Z  · Content updated: 2026-10-07T01:57:54Z  · [Edit note](./index.html#edit-0156-start-here)
+Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -49,6 +49,8 @@ Completed checks and corrections
 **Rainwater–Devaney overlap:** [the 1810 Pendleton district presence](./index.html#N21) remains separate from a direct relationship. [The 1820 Spartanburg original](./index.html#N13) places Robert near a Rainwater block in the schedule, with four unnamed young occupants; published child-name claims remain unverified. Neither establishes Robert’s relationship to Aaron or assigns a DNA segment.
 
 **Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
+
+**New original-source result:** the younger Aaron O. Davaney’s [pension file reports 23 July 1841 birth in Greene County, Georgia](./index.html#devany-pension-original) and names a lifelong acquaintance. It supplies no parents or elder-Aaron link; surname ranks and historical confidence remain unchanged.
 
 **New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). Present custody and Aaron content remain unverified; a [catalogue-location enquiry](./index.html#COR15) is pending. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
 
@@ -198,7 +200,7 @@ Explain the genetic difference from other tested Oliphant branches, including wh
 
 ## The American story is clearer. The older connection is still missing.
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-06T13:26:07-04:00  · [Edit note](./index.html#edit-0152-findings)
+Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-findings)
 
 No parent, immigrant generation, overseas home, or surname-transition event has yet been established for Aaron. No single origin theory currently deserves to be called probable.
 
@@ -267,7 +269,7 @@ Selected evidence / Where to look next
 
 ## Clues worth following
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-03T18:54:43Z  · [Edit note](./index.html#edit-0152-clues)
+Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-clues)
 
 A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
 
@@ -287,7 +289,7 @@ Which documentary lead deserves the next test?
 | Priority 2 · tied [Spartanburg Robert, 1820](./index.html#N13) | An original household appears after three entries from the Rainwater block. A separate Bible-transcription extract offers possible child names. | Resolve census/vendor identity and inspect the actual transcription/Bible. The young occupants are unnamed; no Aaron is recorded. The adult age bracket is a poor father fit if 1791 is approximately correct; census/vendor identity and possible other relationships remain unresolved. |
 | Priority 2 · tied [James–David / Gordon family](./index.html#N27) | Original estate papers identify a real family; [Gordon expressly calls himself James’s son-in-law](./index.html#N29). | Find a contemporary Aaron relationship and identify David; he is not established as James’s son or the painter. See [C05](./index.html#C05). |
 | Priority 3 · indirect [William–Betsy Gordy compilation](./index.html#N14) | A separate family compilation and the recorded William–Thomas gift provide specific people and sources to test. | Establish an Aaron connection; lost-letter traditions, other Williams and the unchecked original 1806 register remain distinct. |
-| Priority 3 · indirect [Younger Aaron Olifant Devany](./index.html#N02) | The full name is recorded in his 1866 marriage, providing a specific namesake to investigate. | Identify his parents and establish a relationship to the elder Aaron; proposed Samuel/Agatha identities remain unresolved. |
+| Priority 3 · indirect [Younger Aaron Olifant Devany](./index.html#N02) | His 1866 marriage records the full name. A newly read 1897 pension adds a sworn Greene County birth claim and a lifelong acquaintance, providing more precise identity tests. | Identify his parents and establish a relationship to the elder Aaron; proposed Samuel/Agatha identities remain unresolved. |
 | Priority 3 · indirect [John/Mary Davaney candidates](./index.html#N21) | Original estate papers name the couple and place John in Gwinnett in 1834; earlier district presence permits comparison. | Prove the census/estate identities and Samuel’s parent link. Do not merge this couple with the younger namesake’s proposed family. |
 | Unranked · household check [Edgefield John Oliphant, 1810](./index.html#N13) | The census original has an anonymous male 16–25. Selected John probate originals corroborate a named son William, offering a concrete alternative to test. | Resolve census/testator identity and William’s age/residence before proposing Aaron. Selected John and William will/probate originals do not name Aaron; no parent of Aaron is identified. |
 
@@ -295,11 +297,11 @@ Which documentary lead deserves the next test?
 
 ### A younger man actually bore the name Aaron Olifant Devany
 
-**Why it stands out:** the full name appears in his 1866 marriage register, and his 1870 household occurs close in enumeration order to a Humphrey household under investigation for an Oliphant connection. It gives the Devaney question a specific historical person and locality.
+**Why it stands out:** the full name appears in his 1866 marriage register, and his 1870 household occurs close in enumeration order to a Humphrey household under investigation for an Oliphant connection. A newly read pension file adds his sworn 23 July 1841 Greene County birth claim and a witness who says he knew him all his life. These give the namesake investigation more precise source targets.
 
 **Limit:** neither his relationship to the older Aaron nor the reason for his name is established. A namesake need not be a relative.
 
-**Useful next test:** find a contemporary parent, sibling or guardianship record and resolve the proposed Samuel/Agatha household identification. [Read the evidence and original-record links →](./index.html#N02)
+**Useful next test:** test the Greene County birth claim and Lundy’s statement that he knew him all his life against a record that names his parents; resolve the proposed Samuel/Agatha household identification. [Read the evidence and original-record links →](./index.html#N02)
 
 [Devaney evidence and unresolved tests →](./family-lines.html#devaney-evidence)
 
@@ -343,7 +345,7 @@ Family tree / Historical people
 
 ## The family line, with its evidence.
 
-Editorial review: 1 October 2026, 05:21:50 EDT  · Content updated: 1 October 2026, 05:21:50 EDT  · [Edit note](./index.html#edit-0130-family-tree)
+Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-family-tree)
 
 Twenty-one deceased historical people appear in the core family line, Andrew’s collateral sons and the connected Rainwater branch. Each relationship carries its own evidence. Aaron’s parents remain unknown; the original record establishing his parentage of Solomon has not yet been located. The account trees remain separate; [MyHeritage](./index.html#U03) and [Ancestry](./index.html#U04) have their own completion and backup checks. Only entries relevant to Aaron’s origins and paternal comparisons are current account-copy priorities. Account copying does not add evidence to these relationships.
 
@@ -1224,7 +1226,7 @@ Lizette Gabrielson, public board author; 30 April 2003, 10:04 AM.
 
 **Relevance:** Separate nineteenth-century Georgia Devaney family; middle-name association is a lead only.
 
-**Evidence:** Compiled 1841–1916 dates and Samuel/Agatha parents are unproved. Original 1866 marriage independently reads Aaron Olifant Devany; inspected census associations do not name a relationship to elder Aaron.
+**Evidence:** Original 1866 marriage reads Aaron Olifant Devany. The newly read 1897 pension applicant reports 23 July 1841 birth in Greene County, Georgia; it strongly fits the younger man but does not identify parents. The 1916 death caption, Samuel/Agatha parentage and elder-Aaron relationship retain their limits. [Original pension and contradictions](./index.html#devany-pension-original).
 
 **Dependence and limits:** The independently read middle name is stronger than a tree label, but supplies no fatherhood, surname-change mechanism or connection to a tested line.
 
@@ -1361,7 +1363,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-07T01:57:54Z  · Content updated: 2026-10-07T01:57:54Z  · [Edit note](./index.html#edit-0156-research-notes)
+Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1407,7 +1409,7 @@ Restricted evidence: [Recovered parcel-transfer archive](https://drive.google.co
 
 N02 · Who was Aaron Olifant Devany?
 
-Reviewed 30 September 2026 · Full name recorded; relationship to Aaron unproved
+Reviewed 7 October 2026 · Original pension testimony added; parentage and elder-Aaron relationship unproved
 
 **The unusual name is real:** the Hancock County marriage register spells out **Aaron Olifant Devany**, with a license dated 13 January 1866 and marriage to Martha Andrews on 14 January. Devany is the surname; “Olifant” is not a modern expansion of an initial. This is a younger man, born around the early 1840s according to later records, distinct from Aaron Oliphant, who was dead by December 1826. [Original marriage, p104, DGS5190837 image174](https://www.familysearch.org/ark:/61903/3:1:33S7-8BZ6-2MS).
 
@@ -1423,9 +1425,17 @@ Reviewed 30 September 2026 · Full name recorded; relationship to Aaron unproved
 
 **Edition 01.13 parentage test:** [A newly read Greene guardian-letter D leaf](./index.html#N82) supplied no recognizable target. It neither verifies nor rejects the proposed Samuel/Agatha household identification; the later index and letter bodies remain unread.
 
-**Exact source successor, 3 October 2026:** the [24 May 1916 Augusta Herald page 14](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn89053972/1916-05-24/ed-1/seq-14/) stopped at browser verification; neither it nor pages 10/11 was read. The contributed funeral clipping calls him a Confederate veteran but names no parents; its caption remains unverified against the full page. One exact *Devany* search in the [official Confederate pension main-series index](https://vault.georgiaarchives.org/digital/collection/TestApps) returned no results. That search excludes other spellings, widow-indexed files, supplements and service records from its coverage; no military absence follows. [RG058-01-001](https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/3169) supplies the next collection route. A bounded reply check supplied no new probate response; the [Richmond request](./index.html#N23) remains pending. No parentage or name-origin conclusion changes.
+**Earlier coverage and remaining death source:** on 3 October, one exact *Devany* main pension query was negative; a 6 October attempt could not access the broader pension route and ran no new name queries or original reading. The completed 7 October queries below supersede that access block, without erasing the earlier bounded negative. The [24 May 1916 Augusta Herald page 14](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn89053972/1916-05-24/ed-1/seq-14/) and pages 10/11 remain unread; the contributed funeral clipping’s caption remains unverified against a full page.
 
-**Recovered source scope, 6 October 2026:** the broader pension-and-death-record successor was closed partial. The official pension catalogue and known main collection could not be read; **zero new pension name queries, result sets or originals** were examined. Other spellings and supplements remain unsearched in this successor; the earlier exact *Devany* main-series negative retains its separate bounded scope. The [Georgia Archives guide](https://www.georgiaarchives.org/research/death_records) confirms Augusta death recording from 1904 and directs research to Richmond County Health Department Vital Records. The [current official local-office page](https://dph.georgia.gov/locations/richmond-county-health-department-0) supplies a precise custody route; its address differs from the older guide. Neither identifies Aaron’s individual 1916 entry, parent fields, online access, copy procedure or price. No death-record enquiry or original acquisition occurred. The next direct-parent test is existence/access for the possible local entry of Aaron O. Devany/Devaney/Davaney/Daveney, reported died 23 May 1916; [the estate-letter procedure clarification](./index.html#COR11) remains separate: the court supplied mail/onsite terms on 6 October, but no historical papers. Do not duplicate it. No parentage, naming-history or confidence conclusion changes.
+**Possible parent-bearing death source:** the [Georgia Archives guide](https://www.georgiaarchives.org/research/death_records) records Augusta registration from 1904 and points to Richmond County Health Department Vital Records. The [current official local office](https://dph.georgia.gov/locations/richmond-county-health-department-0) provides the custody route; its address differs from the older guide. No individual 23 May 1916 Aaron entry, parent fields, online image, copy procedure or price has been obtained, and no death-record enquiry has been sent. The [separate estate clarification](./index.html#COR11) remains pending after the court’s 6 October mail/onsite procedure reply; no historical papers received. Do not duplicate it.
+
+**Original pension evidence, 7 October 2026:** a six-spelling, all-fields *Any of the words* query in the main index returned one file, [**Davaney, Aaron O., Richmond County**, RG58-1-1, USAMILCONFEDGA_184995-01055](https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927). All fifteen digital images were acquired and independently read by two readers. In his sworn answers of **13 February 1897**, image 2 right, Q3, the applicant reports birth on **23 July 1841 in Greene County, Georgia**. Later renewals repeat continuous Georgia residence since that date. This is retrospective birth testimony, not an 1841 registration or fifteen independent confirmations. The name, Augusta residence, date and service context strongly fit the younger Devany; the file does not expand his O initial, settle the ambiguous 1850 child or establish Samuel/Agatha parentage. Earlier South Carolina nativity conflicts remain unresolved.
+
+**A precise lifelong associate:** image 3 left identifies **W. C. [D?] Lundy**, Greene County, Comfort post office, who says he had known the applicant all his life and served in his company. His 27 February 1897 oath has a separate certificate in image 15. This is a named-acquaintance lead, not stated kinship. The initial applicant answer appears to give late 1861/Company C, 44th Georgia; Lundy gives March 1862/Company K, and renewals repeat K. Enlistment/company, some annual age answers and 1899 initials differ; the original service record remains the discriminator. A wife and ten children are mentioned without names. No named parent, sibling or elder-Aaron link was found in these fifteen images; no surname-transition or historical Y conclusion follows.
+
+**Supplement checked separately:** the same six-spelling query in the supplements returned one result, [Mrs. Martha A. Davaney, cpa23533](https://vault.georgiaarchives.org/digital/collection/pension/id/6594). Its sole image is a **1 March 1926 pension-payment agency appointment**, naming Samuel M. Devaney as agent. It names no husband and does not state that the agent is a son or other relative; the pensioner has not been independently identified as Aaron’s wife. The generic indexed “affidavit” label does not make it a birth or kinship statement. These completed queries supersede the failed 6 October access route while preserving the earlier exact-Devany negative. No scans are republished.
+
+**Next discriminating tests:** use the younger man’s Greene birth claim and Lundy’s lifelong acquaintance to identify an exact original service entry and a record that names his parents; test the 1850 identity rather than merging on age/name alone. The possible Augusta 1916 death entry and separate [pending estate clarification](./index.html#COR11) remain open. The elder-Aaron relationship and both DNA-comparator pedigrees are still unproved.
 
 Restricted supporting successor, 6 October 2026: [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk). Individually authorized access is required; the dated source reviews preserve their original evidence and limits.
 
@@ -3196,7 +3206,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-07T01:57:54Z  · Content updated: 2026-10-07T01:57:54Z  · [Edit note](./index.html#edit-0156-updates)
+Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-updates)
 
 6 October 2026
 
@@ -3213,6 +3223,28 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+7 October 2026
+
+### Edition 01.57 · The younger namesake’s pension
+
+[Aaron O. Davaney’s fifteen-image pension file](./index.html#devany-pension-original) supplies a sworn 23 July 1841 Greene CountyGeorgia birth claim and a lifelong associate. A separately read1926 Martha agency form supplies no kinship. These sources improve identity tests; parents, elder-Aaron connection, surname transition and genetic rankings remain unresolved and unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-07T08:03:30Z . Historical source scans are not republished.
+
+- [start-here](./index.html#start-here): Link the younger namesake’s new original pension result, with no elder-Aaron or surname-confidence upgrade.
+
+- [findings](./index.html#findings): Refine the existing indirect namesake candidate’s next test using sworn birth and lifelong-acquaintance evidence; retain priority 3.
+
+- [clues](./index.html#clues): Update K01 with original pension identifiers and the exact associate test, preserving unproved kinship.
+
+- [family-tree](./index.html#family-tree): Update RT15 source quality: the1841 birth now has original retrospective testimony; no parent-child edge added or online profile freshly checked.
+
+- [research-notes](./index.html#research-notes): N02 records15 main images, one separate 1926 supplement, bounded index coverage, contradictions, relationship limits and finite next tests.
+
+- [updates](./index.html#updates): Append the original-source result with scope and no ranking/confidence change.
 
 6 October 2026
 

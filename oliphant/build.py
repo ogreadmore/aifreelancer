@@ -528,6 +528,9 @@ DEVANEY_EVIDENCE_IDS = tuple(f'DE{number:02}' for number in range(1, 7))
 DEVANEY_PUBLIC_SOURCE_URLS = frozenset({
     'https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/3169',
     'https://vault.georgiaarchives.org/digital/collection/TestApps',
+    # Exact official originals acquired and independently read on 7 October 2026.
+    'https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927',
+    'https://vault.georgiaarchives.org/digital/collection/pension/id/6594',
 })
 DEVANEY_EVIDENCE_CSS = '''
 .devaney-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}.devaney-card{min-width:0;border:1px solid var(--line);padding:20px;background:#fffdf8;overflow-wrap:anywhere}.devaney-card h3{font:21px/1.4 Georgia,serif;margin:0 0 14px}.devaney-card>p{font-size:14px}.devaney-detail{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}.devaney-detail summary{font-size:13px}.devaney-detail p,.devaney-detail .references{font-size:13px}.devaney-card .row-id{margin-bottom:8px}

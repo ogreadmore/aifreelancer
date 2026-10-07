@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-07T01:57:54Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-07T08:03:30Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -177,7 +177,7 @@ Distinct DNA records: [FL04](./family-lines.html#FL04).
 
 Devaney remains the strongest working surname candidate in this register\. The evidence below supports further testing; it does not identify Aaron’s father, prove a former surname or date a surname change\.
 
-Editorial review: 2026-10-06T17:28:23Z.
+Editorial review: 2026-10-07T08:03:30Z.
 
 ### DE01 · Two distinct Y\-DNA leads
 
@@ -239,17 +239,17 @@ Editorial review: 2026-10-06T17:28:23Z.
 - [Filter coverage and limits](./family-lines.html#filter-stack)
 - [Ranks and open alternatives](./family-lines.html#surname-ranking)
 
-### DE06 · The latest historical source check supplied no new parentage
+### DE06 · An original pension now sharpens the younger namesake test
 
-**Result:** The 3 October exact newspaper page remained blocked and the exact Devany main pension query was negative\. The 6 October recovery read the official Augusta death\-custody route but could not access pension endpoints: zero new name queries, result sets or originals\. The earlier bounded reply check supplied no new probate response\.
+**Result:** On 7 October, six\-spelling any\-word searches in the official main and supplement indexes returned one result each\. Aaron O\. Davaney’s fifteen\-image file gives sworn 23 July 1841 birth in Greene County, Georgia and a named lifelong Lundy acquaintance\. The separately read Martha supplement is a 1 March 1926 payment agency form; no kinship stated\.
 
-**Limits:** Access failure is not a pension negative; variants and supplements remain unsearched in the successor\. Augusta recording from1904 and a named custodian do not establish that Aaron’s1916 entry survives, names parents or is online\. No copy procedure, price, individual death entry or parentage original was obtained\.
+**Limits:** Retrospective birth testimony, not a birth registration\. O is not expanded\. No named parent/sibling or elder\-Aaron link in the main file; the supplement names no husband or agent relationship\. Service year/company, some ages and initials differ\. The 1850 child identity and parentage remain open; historical confidence and ranks unchanged\.
 
-**Next test:** Check existence/access for the possible Augusta local death entry of23May1916 through Richmond Vital Records; await the separate pending estate request\. A separately scoped responsive\-site pension successor must verify actual variant\-query semantics and supplement links\. Do not duplicate the probate enquiry or infer a fee commitment\.
+**Next test:** Use the younger man’s Greene birth claim and W\. C\. \[D?\] Lundy’s lifelong\-acquaintance statement to identify an exact original service entry and a record that names his parents\. Preserve the 1850 child and Samuel/Agatha identity conflicts\. Seek the possible Augusta 1916 death entry; await the pending Richmond estate clarification without duplicating it\. No demonstrated elder\-Aaron or comparator bridge\.
 
-- [Exact source check and retrievals](./index.html#N02)
-- [Official pension series](https://georgiaarchives.as.atlas-sys.com/repositories/2/resources/3169)
-- [Pension main\-series index](https://vault.georgiaarchives.org/digital/collection/TestApps)
+- [Original findings, contradictions and completed coverage](./index.html#devany-pension-original)
+- [Main pension file](https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927)
+- [Separate 1926 payment agency](https://vault.georgiaarchives.org/digital/collection/pension/id/6594)
 
 **Assessment:** The combined evidence explains why Devaney deserves the next discriminating tests\. Historical confidence remains low: neither an Aaron\-to\-Devaney family bridge nor a historical\-family\-to\-exact\-tester paternal pedigree has been demonstrated\. If a surname transition occurred, it could predate Aaron; its direction, date and mechanism remain unproved\.
 
@@ -1444,9 +1444,9 @@ Next test: Revisit only with a typing correction, changed branch evidence or a d
 
 ## Historical cross-references
 
-A bounded cross\-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026\. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator\. No fresh external discovery query, archive\-wide search or all\-surname inventory was completed\. Historical record dates and prior reading scopes are retained in each entry\.
+A bounded cross\-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026\. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator\. No fresh external discovery query, archive\-wide search or all\-surname inventory was completed\. Historical record dates and prior reading scopes are retained in each entry\. On 7 October, HX01 alone was additionally reviewed against one newly acquired 15\-image main pension file and one separate supplement image; other HX source\-reading dates remain unchanged\.
 
-Prepared: 2026-10-02. Editorial review: 2026-10-02T19:14:52Z.
+Prepared: 2026-10-02. Editorial review: 2026-10-07T08:03:30Z.
 
 DNA and historical results are independent. A named person, surname occurrence or local association does not connect a paternal line to a tested comparator or to Aaron. This screen does not change DNA assessments, infer SNP calls, exclude a whole surname or establish an ancestor. Candidate rank follows the grouped overview; record-retrieval priority is separate and is not an ancestry probability. A bounded negative leaves other records and families open.
 
@@ -1470,12 +1470,14 @@ Limits: A later full name and same county supply a specific lead, with no demons
 
 Record-retrieval priority: First follow\-up in this surname cross\-reference; the overall documentary tier remains indirect\.
 
-Next test: Seek an explicit parent, sibling, guardian, heir or naming statement\. Await the existing Richmond request for William A\. Davaney’s temporary letters \(book 7, p\. 175\), permanent letters \(book 14, p\. 89\) and associated estate papers \(COR11/N23\)\. Verify estate and nephew identities before using kinship wording\. Do not repeat the completed broad 1860 and guardian/index screens without a new discriminator\.
+Next test: Use the younger man’s Greene birth claim and W\. C\. \[D?\] Lundy’s lifelong\-acquaintance statement to identify an exact original service entry and a record that names his parents\. Preserve the 1850 child and Samuel/Agatha identity conflicts\. Seek the possible Augusta 1916 death entry; await the pending Richmond estate clarification without duplicating it\. No demonstrated elder\-Aaron or comparator bridge\.
 
 - [Hancock marriage, 14 January 1866: Aaron Olifant Devany and Martha Andrews](https://www.familysearch.org/ark:/61903/3:1:33S7-8BZ6-2MS) — p\. 104; DGS 5190837, image 174\. License 13 January; marriage return 14 January 1866\. Full name and marriage established\. Previously read 28 September; saved original locally reinspected 2 October 2026\.
 - [Hancock enumeration, 16 June 1870: Humphrey, A\. O\. and Drury households](https://www.familysearch.org/ark:/61903/3:1:S3HY-DCNS-6NF) — p\. 31, stamped 436: dwellings/families 271/278, 273/280 and 275/282, with intervening households\. Enumeration association only\. Previously read 28 September; saved original locally reinspected 2 October 2026\.
 - [Elder Aaron's stated Hancock residence, 29 January 1821](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B) — Pendleton Book P, p\. 382\. Calls Aaron of Hancock County and identifies wife Rebecca as deceased Solomon Rainwater’s daughter\. Previously read 28 September; saved original locally reinspected 2 October 2026\.
 - [N02: namesake evidence, conflicting identities and completed coverage](https://aifreelancer.co/oliphant/#N02) — Existing public synthesis dated 30 September 2026; read from the current saved report on 2 October\. No fresh repository acquisition or access check\.
+- [Aaron O\. Davaney, Richmond pension file, 1897–1907](https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927) — Georgia Archives RG58\-1\-1, USAMILCONFEDGA\_184995\-01055\. Fifteen digital images acquired and read by two readers 7 October 2026\. Image2Q3: sworn 23 July 1841 Greene County, Georgia birth; image 3 lifelong Lundy acquaintance\. Retrospective testimony, no named parents or elder\-Aaron link; O not expanded\.
+- [Mrs Martha A\. Davaney, 1 March 1926 payment agency](https://vault.georgiaarchives.org/digital/collection/pension/id/6594) — cpa23533: sole original image acquired/read 7 October\. Samuel M\. Devaney named agent; no husband or kinship term; pensioner identity unresolved\.
 
 Candidate rank: 2 (tied).
 
@@ -1631,4 +1633,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Revision 01.56: the Samuel Grant genealogy archive has a specific historical accession locator, with present custody unverified. Expanded derivative source readings do not change any genetic observation, historical identity, ranking or confidence. See the main report N14/N17.
+Editor note: Revision 01.57: original younger-Aaron pension testimony and a qualified 1926 agency supplement added; elder-Aaron parentage, genetic results, ranks and historical confidence unchanged.

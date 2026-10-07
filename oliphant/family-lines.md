@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-06T22:18:19Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-07T01:57:54Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -1631,4 +1631,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Revision 01.55: an original 1790 Orangeburg census verifies a Robert Cannan/Cannon household; it does not identify the submitted project pedigree or a tested-family bridge. All comparison observations, rankings, dependencies and confidence remain unchanged.
+Editor note: Revision 01.56: the Samuel Grant genealogy archive has a specific historical accession locator, with present custody unverified. Expanded derivative source readings do not change any genetic observation, historical identity, ranking or confidence. See the main report N14/N17.

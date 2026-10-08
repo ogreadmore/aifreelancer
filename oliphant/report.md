@@ -1,6 +1,6 @@
 # The Aaron Oliphant Inquiry
 
-Public working edition, 2026-10-07. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
+Public working edition, 2026-10-08. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
 Instructions
 
@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-start-here)
+Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T07:04:42Z  · [Edit note](./index.html#edit-0160-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -50,9 +50,9 @@ Completed checks and corrections
 
 **Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
 
-**New original-source result:** [William C. D. Lundy’s own pension identifies the younger Aaron Devany’s lifelong witness](./index.html#lundy-pension-original) and places Lundy in Greene County’s Dark Corner district. This narrows a childhood-household test; no parents or elder-Aaron link are established. Surname ranks and historical confidence remain unchanged.
+**Latest source test:** [The lifelong witness’s census comparison](./index.html#lundy-census-original) found an age-compatible 1850 William and a broad White Plains postal overlap in 1860, but no specific childhood relationship to the younger Aaron Devany. A suggested death certificate concerns the witness’s wife. Surname ranks and historical confidence remain unchanged.
 
-**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). Present custody and Aaron content remain unverified; a [received volume reference awaits clarification](./index.html#COR15). The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
+**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). Present custody and Aaron content remain unverified; [GSP confirms it does not hold the underlying records](./index.html#COR15), while its printed volume remains unidentified. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
 
 **Name and source provenance:** [Copied Bible claims](./index.html#N17) remain secondhand, and the elder Aaron’s middle name is unverified. [The fresh birth-source check](./index.html#RT01) supplies no original for 17 May 1791. [A documented Charleston institutional association](./index.html#N53) does not connect Aaron to the distinct David candidates or the Pinckney family.
 
@@ -200,7 +200,7 @@ Explain the genetic difference from other tested Oliphant branches, including wh
 
 ## The American story is clearer. The older connection is still missing.
 
-Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-findings)
+Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T06:53:48Z  · [Edit note](./index.html#edit-0160-findings)
 
 No parent, immigrant generation, overseas home, or surname-transition event has yet been established for Aaron. No single origin theory currently deserves to be called probable.
 
@@ -269,7 +269,7 @@ Selected evidence / Where to look next
 
 ## Clues worth following
 
-Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-clues)
+Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T06:53:48Z  · [Edit note](./index.html#edit-0160-clues)
 
 A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
 
@@ -289,7 +289,7 @@ Which documentary lead deserves the next test?
 | Priority 2 · tied [Spartanburg Robert, 1820](./index.html#N13) | An original household appears after three entries from the Rainwater block. A separate Bible-transcription extract offers possible child names. | Resolve census/vendor identity and inspect the actual transcription/Bible. The young occupants are unnamed; no Aaron is recorded. The adult age bracket is a poor father fit if 1791 is approximately correct; census/vendor identity and possible other relationships remain unresolved. |
 | Priority 2 · tied [James–David / Gordon family](./index.html#N27) | Original estate papers identify a real family; [Gordon expressly calls himself James’s son-in-law](./index.html#N29). | Find a contemporary Aaron relationship and identify David; he is not established as James’s son or the painter. See [C05](./index.html#C05). |
 | Priority 3 · indirect [William–Betsy Gordy compilation](./index.html#N14) | A separate family compilation and the recorded William–Thomas gift provide specific people and sources to test. | Establish an Aaron connection; lost-letter traditions, other Williams and the unchecked original 1806 register remain distinct. |
-| Priority 3 · indirect [Younger Aaron Olifant Devany](./index.html#N02) | His 1866 marriage records the full name. His pension reports Greene County birth; William C. D. Lundy’s own file identifies the lifelong witness and gives a precise locality for that associate. | Compare their childhood households, then seek explicit parentage. Lundy’s Dark Corner locality does not place Aaron there; no elder-Aaron relationship is established. |
+| Priority 3 · indirect [Younger Aaron Olifant Devany](./index.html#N02) | His 1866 marriage records the full name. Original pensions identify a lifelong witness; an age-compatible 1850 census candidate and a broad 1860 postal overlap supply no specific childhood relationship. | Seek a record naming the younger Aaron’s parents or siblings. The completed household comparison did not establish kinship; Lundy’s locality does not place Aaron there. No elder-Aaron relationship is established. |
 | Priority 3 · indirect [John/Mary Davaney candidates](./index.html#N21) | Original estate papers name the couple and place John in Gwinnett in 1834; earlier district presence permits comparison. | Prove the census/estate identities and Samuel’s parent link. Do not merge this couple with the younger namesake’s proposed family. |
 | Unranked · household check [Edgefield John Oliphant, 1810](./index.html#N13) | The census original has an anonymous male 16–25. Selected John probate originals corroborate a named son William, offering a concrete alternative to test. | Resolve census/testator identity and William’s age/residence before proposing Aaron. Selected John and William will/probate originals do not name Aaron; no parent of Aaron is identified. |
 
@@ -297,11 +297,11 @@ Which documentary lead deserves the next test?
 
 ### A younger man actually bore the name Aaron Olifant Devany
 
-**Why it stands out:** the full name appears in his 1866 marriage register, and his 1870 household occurs close in enumeration order to a Humphrey household under investigation for an Oliphant connection. A newly read pension file adds his sworn 23 July 1841 Greene County birth claim and a witness who says he knew him all his life. The witness is now strongly identified as William C. D. Lundy; his own pension names Dark Corner district, Greene County. This is a locality for the associate, not a demonstrated childhood address for Aaron.
+**Why it stands out:** the full name appears in his 1866 marriage register, and his 1870 household occurs close in enumeration order to a Humphrey household under investigation for an Oliphant connection. A newly read pension file adds his sworn 23 July 1841 Greene County birth claim and a witness who says he knew him all his life. The witness is now strongly identified as William C. D. Lundy; his own pension names Dark Corner district, Greene County. This is a locality for the associate, not a demonstrated childhood address for Aaron. The 8 October census test found an age-compatible William in 1850, but no specific childhood link; shared White Plains post office in 1860 is broad geography.
 
 **Limit:** neither his relationship to the older Aaron nor the reason for his name is established. A namesake need not be a relative.
 
-**Useful next test:** compare original Lundy and Devany childhood households, then obtain a record naming Aaron’s parents; resolve the proposed Samuel/Agatha identification. [Read the evidence and original-record links →](./index.html#N02)
+**Useful next test:** obtain a record naming the younger Aaron’s parents or siblings; resolve the proposed Samuel/Agatha identification. The bounded Lundy household test is complete, without establishing kinship. [Read the evidence and original-record links →](./index.html#N02)
 
 [Devaney evidence and unresolved tests →](./family-lines.html#devaney-evidence)
 
@@ -832,7 +832,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-08T00:06:53Z  · Content updated: 2026-10-08T00:06:53Z  · [Edit note](./index.html#edit-0158-records)
+Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T07:04:42Z  · [Edit note](./index.html#edit-0160-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -964,7 +964,7 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 14 · Conditional follow-ups Other records that need a sharper target Not order-ready
 
-**Samuel Grant collection crosswalk:** the historical accession [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) now has a specific collection attribution. Confirm its present repository and folder inventory before requesting papers; the older Bible58:3 pointer is not an identified Aaron record. [A bibliographic enquiry is pending; no paid work has been ordered](./index.html#COR15), without a copying order.
+**Samuel Grant collection crosswalk:** the historical accession [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) now has a specific collection attribution. Confirm its present repository and folder inventory before requesting papers; the older Bible58:3 pointer is not an identified Aaron record. [GSP’s answered enquiry confirms it does not hold the underlying records](./index.html#COR15); the printed volume’s identity and current repository crosswalk remain unresolved. No paid work or copying has been ordered.
 
 **Military rolls:** Nash regiment muster, pay and descriptive rolls: NARA **RG 94, PI-17 entries 55A, 55B, 55C; inventory entry 55**, [NAID 654644](https://catalog.archives.gov/id/654644), South Carolina, Lt. Col. Reuben Nash. Unit box, company and individual coverage remain unresolved; originals unread. The South Caroliniana Nash roster typescript, accession **2350**, 18 sheets, OCLC **31399861**, has a catalogue copy marked missing. No Aaron entry has been read in it.
 
@@ -1030,7 +1030,7 @@ Current request status · private recipients, addresses and message bodies are n
 | COR12 South Carolina Department of Archives and History | [PK 034/C 0907 versus film 1025480/DGS 8687026](./index.html#N66) — Grisham-register crosswalk and loose-paper route. | 1 Oct 2026 **Submission attempted; delivery uncertain** | Two dated reply-account queries found no acknowledgement trace; delivery remains uncertain. Resolve before resubmission; no acceptance or answer verified. |
 | COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
 | COR14 Existing genealogy research contact | [Aaron compilations](./index.html#N17) — underlying birth, middle-name and parentage citations. | Sent 2 Oct; replied 6 Oct 2026 **Further derivative files received; original citations still missing** | Additional historical correspondence review was offered. Retain the source-quality limits and [specific underlying-source leads](./index.html#roddy-source-successor); do not repeat the original question. No contemporary parentage citation supplied. Any proposed individual follow-up requires an owner-reviewed draft. |
-| COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Reply received 7 Oct 2026 **Volume reference ambiguous; clarification sent** 7 Oct local / 8 Oct UTC | Distinguish the accession-list magazine from a bound copy of the genealogical papers; obtain an exact title or repository and original-versus-copy crosswalk. No originals supplied, paid work or copying ordered. Await the existing clarification; do not duplicate it. |
+| COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Reply and clarification received 7 Oct Eastern / 8 Oct UTC 2026 **Printed volume held; underlying records not held** | Clarification answered. Identify the printed volume and present FC-paper repository/crosswalk; no HSP custody or loss inferred. No originals supplied, copying ordered or paid work commissioned. Do not repeat the answered GSP enquiry. |
 
 These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use Gmail for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
 
@@ -1363,7 +1363,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-research-notes)
+Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T07:04:42Z  · [Edit note](./index.html#edit-0160-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1441,7 +1441,11 @@ Reviewed 7 October 2026 · Original pension testimony added; parentage and elder
 
 **Completed scope:** one all-fields, *Any of the words*, main-index *Lundy* query returned nine entries, including four Greene candidates. W. C. D. was selected and tested against originals; the other pension files remain unread. Three preceding web-discovery queries yielded no relevant result opened. Neither screen is an archive-wide absence claim. No census, parent-bearing deed/probate or original compiled service file was read in this batch.
 
-**Next discriminating tests:** compare William C. D. Lundy’s original 1850/1860 Greene households and locality with the younger Devany’s unresolved household, then seek an explicit parent or sibling statement. Preserve the proposed Samuel/Agatha and 1850 child identity conflicts; lifelong acquaintance alone is not kinship. The exact original service entry, possible Augusta 1916 death entry and separate [pending estate clarification](./index.html#COR11) remain open. The elder-Aaron relationship and both DNA-comparator pedigrees are still unproved.
+**Childhood-household test, 8 October 2026:** the [1850 Greene County original](https://www.ancestry.ca/search/collections/8054/records/18687202), 148th District, 3 September, household **290/290**, lists William, nine, with Lewis, Jane and six other household members. His age fits the witness’s retrospective 1841 birth chronology, but no C. D. initials or relationship fields establish identity or biological parents. William’s occupation and property cells are blank; the indexed farmer, $2,000 and dwelling 296 should not be adopted. The [1860 original for Archd Lundy](https://www.ancestry.ca/search/collections/7667/records/11187427), White Plains post office, 21 July, page 78, household **119/119**, contains Archd, Martha, Eliz, Harriet A. and Harriet Grimes, eighteen. William and recognized Devany/Oliphant names are absent from that household. Shared White Plains post office with Agathy Devany’s previously read sheet is broad locality, not adjoining property or a parentage link.
+
+**Bounded coverage and a corrected source role:** the 1850 surname-only *Lundy*, exact-Greene search screened twelve indexed results and read one household original. The equivalent 1860 search returned four indexed Lundy names in one household; its original also contains the differently surnamed Harriet Grimes. An earlier fuzzy 1860 query screened only the first fifty of 116 results. These are not exhaustive census negatives. A suggested [death record indexed under W. C. D. Lundy](https://www.ancestry.ca/search/collections/2562/records/45287541) is actually **Mrs. Mattie Lundy’s certificate, 4 April 1926**, naming him as husband. Its parents belong to her, not him. All three originals were independently read by two readers; no specific Devany childhood relationship was found.
+
+**Next discriminating tests:** seek an explicit parent or sibling statement for younger Aaron. His own 1860 household, the proposed Samuel/Agatha identification, the exact service entry, possible Augusta 1916 death entry and [pending estate clarification](./index.html#COR11) remain unresolved. If William’s candidate identity must be closed first, test the exact original marriage pointer, **Ancestry collection 4766, record 1188777**; it remains unread. The elder-Aaron relationship and both DNA-comparator pedigrees are still unproved. Do not repeat the completed household screen or treat lifelong acquaintance as kinship.
 
 Restricted supporting successor, 6 October 2026: [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk). Individually authorized access is required; the dated source reviews preserve their original evidence and limits.
 
@@ -1655,7 +1659,7 @@ Earlier catalogue-only support: the [institutional excerpt](https://catalog.wrhs
 
 **Accession-list reading, 6 October 2026:** [*Pennsylvania Genealogical Magazine*, volume 30, number 2, printed page 144/PDF 74](https://genpa.org/wp-content/uploads/publications/pennsylvania-genealogical-magazine/PGM-Volume-30-Number-2.pdf), lists Dr. Samuel Grant Oliphant’s letters, circa 1897–1930, and Oliphant/allied-family genealogical charts at **FC/Ol/Box58.1–58.8**. Printed page 135/PDF 65 dates the combined Genealogical Society and Historical Society of Pennsylvania accession list to January–June 1977 and defines FC as Family File Case. Its format does not distinguish manuscripts from copies. Both accession-list pages were independently checked; no family letter was read. This adds a named collection and full range to the previously retained, unread HSP Oliphant Bible, 1795–1830, pointer **FC Ol Box58:3**. The similar references warrant a crosswalk question; they do not establish that the Bible belongs to this collection or concerns Aaron.
 
-The [current GSP surname-index description](https://genpa.org/public-collections/surname-index-to-gsp-manuscripts-collections/) locates its selected holdings at HSP, but does not crosswalk this accession. Its Oliphant/Haines entry 8327 is a different pointer. Family Records No. 2, films 525531–525582, [catalogue 499720](https://www.familysearch.org/en/search/catalog/499720), is a possible series route without a target-film identification; its catalogue was inaccessible during this pass. [Johns Hopkins MS-0086](https://aspace.library.jhu.edu/repositories/3/resources/98) describes academic notebooks, not verified custody of these genealogical letters. No present repository, surviving container inventory, Aaron item or migration/parentage source has been confirmed. A [7 October institutional reply](./index.html#COR15) mentions a printed volume in the library without identifying it. That does not distinguish the accession-list magazine from a separate bound copy of the genealogical papers, or confirm original-letter custody. A non-fee clarification was sent in the same thread, 7 October local / 8 October UTC. First identify the volume and current collection/container crosswalk, distinguishing originals from copies; then request a specific source-bearing item. The earlier editor-held papers cannot automatically be identified with the 1977 accession.
+The [current GSP surname-index description](https://genpa.org/public-collections/surname-index-to-gsp-manuscripts-collections/) locates its selected holdings at HSP, but does not crosswalk this accession. Its Oliphant/Haines entry 8327 is a different pointer. Family Records No. 2, films 525531–525582, [catalogue 499720](https://www.familysearch.org/en/search/catalog/499720), is a possible series route without a target-film identification; its catalogue was inaccessible during this pass. [Johns Hopkins MS-0086](https://aspace.library.jhu.edu/repositories/3/resources/98) describes academic notebooks, not verified custody of these genealogical letters. No present repository, surviving container inventory, Aaron item or migration/parentage source has been confirmed. A [clarification received 8 October UTC / 7 October Eastern](./index.html#COR15) states that GSP’s library holds a printed volume but **does not hold the underlying records**. The volume’s title and the present repository of the FC papers are still unstated. This rules out GSP as the confirmed custody route for those originals; it does not establish HSP custody or loss of the papers. The answered clarification supplied no historical contents. Identify the current repository and collection/container crosswalk before requesting a specific source-bearing item; do not duplicate the answered GSP enquiry. The earlier editor-held papers cannot automatically be identified with the 1977 accession.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -3212,7 +3216,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-updates)
+Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T07:04:42Z  · [Edit note](./index.html#edit-0160-updates)
 
 6 October 2026
 
@@ -3229,6 +3233,28 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+8 October 2026
+
+### Edition 01.60 · Original-record checks and archive custody
+
+[Three original records](./index.html#lundy-census-original) supplied an age-compatible 1850 William, a broad 1860 postal overlap and a correction: the suggested death certificate is his wife’s. GSP also clarified that it does not hold the underlying Samuel Grant records. No specific Devany kinship or elder-Aaron connection was established; ranks and confidence are unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-08T07:04:42Z . Original scans remain outside the public report.
+
+- [start-here](./index.html#start-here): Replace the next-household instruction with its bounded result; record the new custody clarification, with unchanged confidence.
+
+- [findings](./index.html#findings): Priority3 records completed household coverage, with explicit parent/sibling evidence still required; no ranking change.
+
+- [clues](./index.html#clues): K01 distinguishes a broad postal overlap from kinship and advances its next test.
+
+- [research-notes](./index.html#research-notes): N02 records the census originals and corrected death role; N14 distinguishes GSP’s custody denial from unknown current FC-paper custody.
+
+- [updates](./index.html#updates): Append the completed census test and correction without a surname or parentage-confidence upgrade.
+
+- [records](./index.html#records): COR15 and R14 record the answered custody clarification; GSP does not hold the underlying records. No new copying order or request.
 
 7 October 2026
 

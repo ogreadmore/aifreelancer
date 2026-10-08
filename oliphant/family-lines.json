@@ -965,12 +965,12 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-08T03:30:00Z",
-  "editor_note": "Revision 01.59: the younger namesake’s lifelong witness identified from his own 28-image pension; locality and contradictions retained. No elder-Aaron parentage, genetic result, rank or historical-confidence change.",
+  "editorial_reviewed_at": "2026-10-08T07:04:42Z",
+  "editor_note": "Revision 01.60: three originals complete a bounded witness-household test and correct a spouse-role death-index hit. No established Devany kinship, elder-Aaron parentage, genotype, surname rank or historical-confidence change.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
-    "reviewed_at": "2026-10-08T03:30:00Z",
-    "scope": "A bounded cross-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator. No fresh external discovery query, archive-wide search or all-surname inventory was completed. Historical record dates and prior reading scopes are retained in each entry. On 7 October, HX01 alone was additionally reviewed against one newly acquired 15-image main pension file and one separate supplement image; other HX source-reading dates remain unchanged. On 7 October, the HX01 successor additionally correlated all 28 images of William C. D. Lundy’s pension with the named witness; other HX evidence is unchanged.",
+    "reviewed_at": "2026-10-08T07:04:42Z",
+    "scope": "A bounded cross-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator. No fresh external discovery query, archive-wide search or all-surname inventory was completed. Historical record dates and prior reading scopes are retained in each entry. On 7 October, HX01 alone was additionally reviewed against one newly acquired 15-image main pension file and one separate supplement image; other HX source-reading dates remain unchanged. On 7 October, the HX01 successor additionally correlated all 28 images of William C. D. Lundy’s pension with the named witness; other HX evidence is unchanged. On 8 October, HX01 adds two census originals and one corrected spouse-role death certificate; no other historical surname coverage was extended.",
     "methodology": [
       "Use the recorded spelling, date, place and role. Listed search forms are discovery vocabulary; they do not establish that differently named people share a family. Devine/Divine, McCain, Burns and Carrell require their own identity evidence. Oliphant, Olliphant, Olyphant, Olifant, Olifent, Oliphint and Olliphint are discovery forms for future source searches; the younger marriage’s recorded form is Aaron Olifant Devany, not a normalized replacement.",
       "The strongest named-local lead is the younger Aaron Olifant Devany in Hancock decades after the elder Aaron. His name, county and enumeration association do not prove kinship or connect him to either distinct DNA comparator.",
@@ -1023,10 +1023,25 @@
             "label": "William C. D. Lundy’s Greene pension: identified lifelong witness",
             "url": "https://vault.georgiaarchives.org/digital/collection/TestApps/id/68007",
             "scope": "RG58-1-1, USAMILCONFEDGA_182622-00911. All28digital images read by two readers 7 October 2026. Image 10 right matches Greene, Comfort, Company K, 44th Georgia,27 February 1897 oath. Images 23–24 give Lundy’s Dark Corner locality; no Devany/Oliphant kinship or named parents found. Preserve right/left arm and 1864/1862 conflicts."
+          },
+          {
+            "label": "Lundy household and source-role test, 8 October 2026",
+            "url": "https://www.ancestry.ca/search/collections/8054/records/18687202",
+            "scope": "1850 Greene148thDistrict,3September,290/290,William9; candidate only; original acquired and independently read by two readers. No recognized Devany kinship or elder-Aaron bridge."
+          },
+          {
+            "label": "Lundy household and source-role test, 8 October 2026",
+            "url": "https://www.ancestry.ca/search/collections/7667/records/11187427",
+            "scope": "1860 GreeneWhitePlainsPO,21July,p78,119/119; noWilliam or recognizedDevany in household; original acquired and independently read by two readers. No recognized Devany kinship or elder-Aaron bridge."
+          },
+          {
+            "label": "Lundy household and source-role test, 8 October 2026",
+            "url": "https://www.ancestry.ca/search/collections/2562/records/45287541",
+            "scope": "Mrs.MattieLundy death4April1926; WCDhusband, not deceased or parental subject; original acquired and independently read by two readers. No recognized Devany kinship or elder-Aaron bridge."
           }
         ],
         "limits": "A later full name and same county supply a specific lead, with no demonstrated kinship to elder Aaron or explanation for the name. Enumeration order proves neither adjoining land nor family relationship. Parents and Drury relationship remain unresolved. FL02's broad Y67 GD5 comparison and FL24's separate A823 comparison are different testers; neither has a documented descent to this historical family. No surname-transition or historical Y-line conclusion follows.",
-        "next_test": "Compare William C. D. Lundy’s original 1850/1860 Greene households and locality with the younger Devany’s unresolved household, then seek an explicit parent or sibling source. Dark Corner is Lundy’s locality, not a proved childhood address for Aaron. Preserve the 1850 child and Samuel/Agatha conflicts. The original service entry and possible Augusta 1916 death entry remain unread; await the pending Richmond estate clarification without duplicating it. No elder-Aaron or comparator bridge.",
+        "next_test": "Seek an explicit parent or sibling record for the younger Aaron, especially the possible Augusta 1916 death entry and existing Richmond estate clarification. The 1850 William candidate needs independent full-initial/family correlation before use; original marriage collection 4766, record 1188777 remains unread. Neither childhood residence nor kinship follows from a shared post office. No elder-Aaron or DNA-comparator bridge.",
         "search_forms": [
           "Devaney",
           "Devany",
@@ -3448,7 +3463,7 @@
   },
   "devaney_evidence": {
     "title": "Devaney: supporting evidence and unresolved tests",
-    "reviewed_at": "2026-10-08T03:30:00Z",
+    "reviewed_at": "2026-10-08T07:04:42Z",
     "summary": "Devaney remains the strongest working surname candidate in this register. The evidence below supports further testing; it does not identify Aaron’s father, prove a former surname or date a surname change.",
     "rows": [
       {
@@ -3559,9 +3574,9 @@
       {
         "id": "DE06",
         "title": "Original pensions sharpen the younger namesake test",
-        "result": "On 7 October, six-spelling any-word searches in the official main and supplement indexes returned one result each. Aaron O. Davaney’s fifteen-image file gives sworn 23 July 1841 birth in Greene County, Georgia and a named lifelong Lundy acquaintance. The separately read Martha supplement is a 1 March 1926 payment agency form; no kinship stated. The separately read 28-image William C. D. Lundy pension strongly identifies that witness and gives Dark Corner district as Lundy’s locality; it supplies no parentage or Devany/Oliphant kinship.",
+        "result": "On 7 October, six-spelling any-word searches in the official main and supplement indexes returned one result each. Aaron O. Davaney’s fifteen-image file gives sworn 23 July 1841 birth in Greene County, Georgia and a named lifelong Lundy acquaintance. The separately read Martha supplement is a 1 March 1926 payment agency form; no kinship stated. The separately read 28-image William C. D. Lundy pension strongly identifies that witness and gives Dark Corner district as Lundy’s locality; it supplies no parentage or Devany/Oliphant kinship. On 8 October, an 1850 William, nine, was an age-compatible candidate, and the 1860 Archd household shares White Plains post office with Agathy’s previously read sheet. Neither original establishes the witness’s childhood identity or a specific Devany relationship. The suggested W. C. D. death hit is Mrs. Mattie Lundy’s certificate, naming him as husband.",
         "limits": "Retrospective birth testimony, not a birth registration. O is not expanded. No named parent/sibling or elder-Aaron link in the main file; the supplement names no husband or agent relationship. Service year/company, some ages and initials differ. The 1850 child identity and parentage remain open; historical confidence and ranks unchanged.",
-        "next_test": "Compare William C. D. Lundy’s original 1850/1860 Greene households and locality with the younger Devany’s unresolved household, then seek an explicit parent or sibling source. Dark Corner is Lundy’s locality, not a proved childhood address for Aaron. Preserve the 1850 child and Samuel/Agatha conflicts. The original service entry and possible Augusta 1916 death entry remain unread; await the pending Richmond estate clarification without duplicating it. No elder-Aaron or comparator bridge.",
+        "next_test": "Seek an explicit parent or sibling record for the younger Aaron, especially the possible Augusta 1916 death entry and existing Richmond estate clarification. The 1850 William candidate needs independent full-initial/family correlation before use; original marriage collection 4766, record 1188777 remains unread. Neither childhood residence nor kinship follows from a shared post office. No elder-Aaron or DNA-comparator bridge.",
         "citations": [
           {
             "url": "./index.html#devany-pension-original",
@@ -3578,6 +3593,10 @@
           {
             "label": "William C. D. Lundy’s Greene pension: identified lifelong witness",
             "url": "https://vault.georgiaarchives.org/digital/collection/TestApps/id/68007"
+          },
+          {
+            "label": "Completed Lundy household test and corrected death-record role",
+            "url": "./index.html#lundy-census-original"
           }
         ]
       }

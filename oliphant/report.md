@@ -834,7 +834,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-records)
+Editorial review: 2026-10-08T17:01:21Z  · Content updated: 2026-10-08T17:01:21Z  · [Edit note](./index.html#edit-0162-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -1028,7 +1028,7 @@ Current request status · private recipients, addresses and message bodies are n
 | COR08 Georgia Archives | [Early district 7 lot 23](./index.html#N62) and [Hancock C 613886](./index.html#N92) — digital/onsite access procedure. | 1 Oct 2026; reply 2 Oct **Onsite/researcher route confirmed; originals unread** | No distance copying; Early microfilm and Hancock original-room access. Paid onsite retrieval remains deferred; no work commissioned. |
 | COR09 Oklahoma Historical Society | [Daily Ardmoreite, 18 Nov 1958, p 2](./index.html#N96) — complete notice, holdings and copy route. | Sent and replied 1 Oct 2026 **Procedural reply received; original unread** | Express request route supplied; paid retrieval deferred. Exact issue/page and completeness remain unverified; no order placed. The Oklahoman is not included. |
 | COR10 Independent onsite copy researcher | [Early district 7 lot 23](./index.html#N62) and [Hancock C 613886](./index.html#N92) — bounded copying quote. | 1 Oct 2026 **Estimate received; paid retrieval deferred** | Wait for existing-copy/contact checks; no estimate accepted or order placed. |
-| COR11 Richmond County Probate Court | [William A. Davaney letters: temporary 7 p 175; permanent 14 p 89](./index.html#N23) — copies and related estate papers. | 1 Oct; procedure reply and clarification 6 Oct 2026 **Procedure received; targeted clarification pending** | Mail/onsite terms: $10 search per estate/file and $1 per plain-copy page. Clarification asks one-estate fee treatment, unknown case fields and a copying total. No exact case or historical papers supplied; estate identity remains unproved. No paid search or order placed. |
+| COR11 Richmond County Probate Court | [William A. Davaney letters: temporary 7 p 175; permanent 14 p 89](./index.html#N23) — copies and related estate papers. | 1 Oct; procedure/clarification 6 Oct; reply 8 Oct 2026 **Fee reply received; estate and total unresolved** | The latest reply reiterates $10 per research request. It does not settle whether both references are one estate/fee, acceptable unknown case fields, case identity or copying total. Use the supplied mail/onsite procedure for any later bounded retrieval; do not repeat the clarification. No historical papers, paid search or order. |
 | COR12 South Carolina Department of Archives and History | [PK 034/C 0907 versus film 1025480/DGS 8687026](./index.html#N66) — Grisham-register crosswalk and loose-paper route. | 1 Oct 2026 **Submission attempted; delivery uncertain** | Two dated reply-account queries found no acknowledgement trace; delivery remains uncertain. Resolve before resubmission; no acceptance or answer verified. |
 | COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
 | COR14 Existing genealogy research contact | [Aaron compilations](./index.html#N17) — underlying birth, middle-name and parentage citations. | Sent 2 Oct; replied 6 Oct 2026 **Further derivative files received; original citations still missing** | Additional historical correspondence review was offered. Retain the source-quality limits and [specific underlying-source leads](./index.html#roddy-source-successor); do not repeat the original question. No contemporary parentage citation supplied. Any proposed individual follow-up requires an owner-reviewed draft. |
@@ -1368,7 +1368,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-research-notes)
+Editorial review: 2026-10-08T17:01:21Z  · Content updated: 2026-10-08T17:01:21Z  · [Edit note](./index.html#edit-0162-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1432,7 +1432,7 @@ Reviewed 7 October 2026 · Original pension testimony added; parentage and elder
 
 **Earlier coverage and remaining death source:** on 3 October, one exact *Devany* main pension query was negative; a 6 October attempt could not access the broader pension route and ran no new name queries or original reading. The completed 7 October queries below supersede that access block, without erasing the earlier bounded negative. The [24 May 1916 Augusta Herald page 14](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn89053972/1916-05-24/ed-1/seq-14/) and pages 10/11 remain unread; the contributed funeral clipping’s caption remains unverified against a full page.
 
-**Possible parent-bearing death source:** the [Georgia Archives guide](https://www.georgiaarchives.org/research/death_records) records Augusta registration from 1904 and points to Richmond County Health Department Vital Records. The [current official local office](https://dph.georgia.gov/locations/richmond-county-health-department-0) provides the custody route; its address differs from the older guide. No individual 23 May 1916 Aaron entry, parent fields, online image, copy procedure or price has been obtained, and no death-record enquiry has been sent. The [separate estate clarification](./index.html#COR11) remains pending after the court’s 6 October mail/onsite procedure reply; no historical papers received. Do not duplicate it.
+**Possible parent-bearing death source:** the [Georgia Archives guide](https://www.georgiaarchives.org/research/death_records) records Augusta registration from 1904 and points to Richmond County Health Department Vital Records. The [current official local office](https://dph.georgia.gov/locations/richmond-county-health-department-0) provides the custody route; its address differs from the older guide. No individual 23 May 1916 Aaron entry, parent fields, online image, copy procedure or price has been obtained, and no death-record enquiry has been sent. The [separate estate clarification](./index.html#COR11) received an 8 October fee-only reply; estate identity and copying total remain unresolved. No historical papers received. Use the [supplied procedure and current limits](./index.html#N23); do not repeat the clarification.
 
 **Original pension evidence, 7 October 2026:** a six-spelling, all-fields *Any of the words* query in the main index returned one file, [**Davaney, Aaron O., Richmond County**, RG58-1-1, USAMILCONFEDGA_184995-01055](https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927). All fifteen digital images were acquired and independently read by two readers. In his sworn answers of **13 February 1897**, image 2 right, Q3, the applicant reports birth on **23 July 1841 in Greene County, Georgia**. Later renewals repeat continuous Georgia residence since that date. This is retrospective birth testimony, not an 1841 registration or fifteen independent confirmations. The name, Augusta residence, date and service context strongly fit the younger Devany; the file does not expand his O initial, settle the ambiguous 1850 child or establish Samuel/Agatha parentage. Earlier South Carolina nativity conflicts remain unresolved.
 
@@ -1450,7 +1450,7 @@ Reviewed 7 October 2026 · Original pension testimony added; parentage and elder
 
 **Bounded coverage and a corrected source role:** the 1850 surname-only *Lundy*, exact-Greene search screened twelve indexed results and read one household original. The equivalent 1860 search returned four indexed Lundy names in one household; its original also contains the differently surnamed Harriet Grimes. An earlier fuzzy 1860 query screened only the first fifty of 116 results. These are not exhaustive census negatives. A suggested [death record indexed under W. C. D. Lundy](https://www.ancestry.ca/search/collections/2562/records/45287541) is actually **Mrs. Mattie Lundy’s certificate, 4 April 1926**, naming him as husband. Its parents belong to her, not him. All three originals were independently read by two readers; no specific Devany childhood relationship was found.
 
-**Next discriminating tests:** seek an explicit parent or sibling statement for younger Aaron. His own 1860 household, the proposed Samuel/Agatha identification, the exact service entry, possible Augusta 1916 death entry and [pending estate clarification](./index.html#COR11) remain unresolved. If William’s candidate identity must be closed first, test the exact original marriage pointer, **Ancestry collection 4766, record 1188777**; it remains unread. The elder-Aaron relationship and both DNA-comparator pedigrees are still unproved. Do not repeat the completed household screen or treat lifelong acquaintance as kinship.
+**Next discriminating tests:** seek an explicit parent or sibling statement for younger Aaron. His own 1860 household, the proposed Samuel/Agatha identification, the exact service entry, possible Augusta 1916 death entry and [unidentified estate and unread papers](./index.html#COR11) remain unresolved. If William’s candidate identity must be closed first, test the exact original marriage pointer, **Ancestry collection 4766, record 1188777**; it remains unread. The elder-Aaron relationship and both DNA-comparator pedigrees are still unproved. Do not repeat the completed household screen or treat lifelong acquaintance as kinship.
 
 Restricted supporting successor, 6 October 2026: [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk). Individually authorized access is required; the dated source reviews preserve their original evidence and limits.
 
@@ -1858,7 +1858,7 @@ The supposed Sarah Dalton accountp 297 was withdrawn after original index/accoun
 
 The same index names William A. Davaney, temporary letters book 7 (1913–1919), p. 175, and permanent letters book 14 (1919–1927), p. 89. The index ends in 1955, but the inspected filmed letters end in 1900. The older permanent book 7 is a different series, not the requested later temporary book 7. Neither letter was retrieved. Identification with William Adrian Devaney died 4 August 1919 remains a hypothesis; page/volume range cannot date both proceedings to 1919. The precise next target is both later letters and any associated petition/distribution, without promising parents or heirs.
 
-**Copy procedure and next step, 6 October 2026:** the court answered the 1 October enquiry with a mail or onsite request procedure: a $10 search fee per file, $1 per plain-copy page, and a completed form with payment and a stamped addressed return envelope for mail. Its [one-page request form](https://www.augustaga.gov/DocumentCenter/View/20101/Estate-Research-Record-Request-Form) specifies the $10 fee per estate and money-order payment for mail; onsite self-inspection can avoid the search fee. The reply supplies no letter, estate number, confirmed decedent, associated heir paper, page count or total quote, and does not expressly confirm these exact volumes. A clarification was sent in the same thread about treating the two references as one estate if appropriate, using unknown case/death fields, and obtaining a case identity and copying total before copies are charged. Plain copies suffice; no certified copies, paid search or order have been requested. Await that clarification rather than repeating the initial enquiry. The proposed nephew identity and relationship to the younger Aaron remain unproved.
+**Copy procedure and next step, 6–8 October 2026:** the court answered the 1 October enquiry with a mail or onsite request procedure: a $10 search fee per file, $1 per plain-copy page, and a completed form with payment and a stamped addressed return envelope for mail. Its [one-page request form](https://www.augustaga.gov/DocumentCenter/View/20101/Estate-Research-Record-Request-Form) specifies the $10 fee per estate and money-order payment for mail; onsite self-inspection can avoid the search fee. The reply supplies no letter, estate number, confirmed decedent, associated heir paper, page count or total quote, and does not expressly confirm these exact volumes. A clarification was sent in the same thread about treating the two references as one estate if appropriate, using unknown case/death fields, and obtaining a case identity and copying total before copies are charged. The 8 October reply reiterates a $10 fee for each research request, without answering those specific questions or supplying an estate identity, page count or total. This replaces clarification-pending status, not the unresolved evidence. Plain copies suffice; no certified copies, paid search or order have been requested. Do not repeat the same clarification. Any later retrieval should be one bounded request listing both references, with estate identity and charges established before a copying commitment; no such request is commissioned here. The proposed nephew identity and relationship to the younger Aaron remain unproved.
 
 **Sources and reading status:** [Thomas notice](https://www.familysearch.org/ark:/61903/3:1:3QS7-L93L-FT12); [Sarah temporary](https://www.familysearch.org/ark:/61903/3:1:3QS7-893L-FYY2); [Sarah permanent](https://www.familysearch.org/ark:/61903/3:1:3QS7-893L-FB3R); [William A. index](https://www.familysearch.org/ark:/61903/3:1:3QS7-893L-J3JW); [actual filmed coverage](https://www.familysearch.org/en/search/catalog/koha:128306); [Richmond historical record-request route](https://www.augustaga.gov/DocumentCenter/View/20101/Estate-Research-Record-Request-Form). Early notice originals and late index visually read; later letters absent from inspected film inventory.
 
@@ -3223,7 +3223,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-updates)
+Editorial review: 2026-10-08T17:01:21Z  · Content updated: 2026-10-08T17:01:21Z  · [Edit note](./index.html#edit-0162-updates)
 
 6 October 2026
 
@@ -3240,6 +3240,22 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+8 October 2026
+
+### Edition 01.62 · Received fee reply
+
+[Richmond’s 8 October reply](./index.html#COR11) reiterates a search fee but supplies no estate identification or historical papers. The two indexed entries, fee treatment and copying total remain unresolved; [the current procedure and next step](./index.html#N23) replace pending-clarification wording. A bounded Gmail intake found this new procedural reply; four Yahoo searches after 6 October found no matches for Oliphant, Aaron, archives or NARA. This is not a whole-mailbox or Facebook audit. No order, charge, new genetic evidence, family relationship, surname ranking or confidence upgrade follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-08T17:01:21Z . Private bodies and contact details remain outside the public report.
+
+- [records](./index.html#records): COR11 records the received fee-only reply; estate identity and total remain unresolved. No paid search or order; do not repeat the clarification.
+
+- [research-notes](./index.html#research-notes): N23 is the canonical procedural successor; N02 links to unresolved estate papers rather than a pending clarification. No parentage or confidence change.
+
+- [updates](./index.html#updates): Record the bounded Gmail/Yahoo intake and fee-only procedural successor; private thread contents remain restricted and research rankings are unchanged.
 
 8 October 2026
 

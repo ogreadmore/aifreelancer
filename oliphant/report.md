@@ -1368,7 +1368,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-08T17:01:21Z  · Content updated: 2026-10-08T17:01:21Z  · [Edit note](./index.html#edit-0162-research-notes)
+Editorial review: 2026-10-08T20:23:59Z  · Content updated: 2026-10-08T20:23:59Z  · [Edit note](./index.html#edit-0163-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -2540,7 +2540,7 @@ The Walter obituary [index record 536130276](https://www.ancestry.ca/search/coll
 
 **Earlier branch to test:** the previously read [1880 Solomon/Amanda household](https://www.familysearch.org/ark:/61903/3:1:33S7-9YBX-9JBP) lists Byron, eight, in that household; its relationship column is blank for the household, so it does not explicitly call him a son. The family biography supplies the proposed parentage. A documented continuation through this branch would anchor at Solomon, earlier than an Andrew-only comparison. [The later adult-family originals](./index.html#N101) now materially support a working connection to Edward B. Oliphant and explicitly record his son Milton. They do not name Solomon or Amanda as Edward’s parents. Close that identity bridge before tracing this potential male line; the earlier saved-coverage assessment remains a dated pre-retrieval result. The reported Aaron Pinkney born in 1852 is a separate proposed son, whose Bible parentage entry remains unread.
 
-**Andrew-level alternative:** the [exact Robert notice now has a pending copy enquiry](./index.html#N96). Inspect that notice, Walter’s notice or a deceased son's death or probate record for named children, then document every subsequent father–son step. A comparison through another son of Andrew would initially anchor the shared paternal path at Andrew; it would not establish the earlier Solomon–Aaron chain or Aaron's other proposed sons. See [the collateral retrieval target](./index.html#R02) and [the three historical candidates](./index.html#tree-andrew-collateral). No parent of Aaron, immigrant home or surname transition is identified.
+**Andrew-level alternative:** OHS answered the *Daily Ardmoreite* enquiry with [a procedural copy route](./index.html#N96); the original notice remains unread and paid retrieval is deferred. See [the request status](./index.html#COR09). Inspect that notice, Walter’s notice or a deceased son's death or probate record for named children, then document every subsequent father–son step. A comparison through another son of Andrew would initially anchor the shared paternal path at Andrew; it would not establish the earlier Solomon–Aaron chain or Aaron's other proposed sons. See [the collateral retrieval target](./index.html#R02) and [the three historical candidates](./index.html#tree-andrew-collateral). No parent of Aaron, immigrant home or surname transition is identified.
 
 Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1zI0LlHRdgY9E7wWuHWb3BAnfHhlMKl1m/view). Access requires Taylor’s permission; the original scans, provenance and bounded scope/result remain in the restricted library.
 
@@ -2558,7 +2558,7 @@ Two inspected Pendleton Common Pleas paper units supply exact catalogue locators
 
 A separate attribution clue concerns [L53062, abstracts of decrees in summary process, 1816–1819](https://scarchcat.rediscoverysoftware.com/MADetailS.aspx?rID=000053/.L%20%2053062&db=series&dir=SCARCHIVE). Its official description says it was filmed with Pickens County Commissioner of Locations plat books, 1828–1882; its inspected partial-reel [unit 000001 is at PK034](https://scarchcat.rediscoverysoftware.com/MADetailF.aspx?rID=000053/.L%20%2053062-000001&db=fileunit&dir=SCARCHIVE). That unusual provenance resembles the already-read Grisham volume's bound-with-Pickens note. It is a clue to test, not a demonstrated match. The earlier working attribution, [L53034, abstracts of judgments, 1816–1819](https://scarchcat.rediscoverysoftware.com/MADetailS.aspx?rID=000053/.L%20%2053034&db=series&dir=SCARCHIVE), has an inspected [unit 000001 at C0907](https://scarchcat.rediscoverysoftware.com/MADetailF.aspx?rID=000053/.L%20%2053034-000001&db=fileunit&dir=SCARCHIVE). Keep these distinct titles and locations separate until original title, page and reel evidence correlates them. Neither abstract register is itself a located loose obligation.
 
-The next finite test is a repository or original title-and-page crosswalk between PK034, C0907 and the known FamilySearch catalogue 411214, film 1025480 / DGS8687026, followed by any surviving magistrate papers. Candidate paper or memorandum locations remain AN117, L53085 / 260C04 and L53061 / AN197–AN198. No enquiry was sent. Summons 1063 and 1386 are not established Common Pleas roll numbers; [N56's numerical mismatch and corrected party direction](./index.html#N56) remain controlling. Four targeted discovery queries returned no engine hits, while the ordinary public browser displayed the inspected catalogue records; failed web extraction is not a record-loss finding. No parentage, birthplace or origin conclusion follows.
+The next finite test is a repository or original title-and-page crosswalk between PK034, C0907 and the known FamilySearch catalogue 411214, film 1025480 / DGS8687026, followed by any surviving magistrate papers. Candidate paper or memorandum locations remain AN117, L53085 / 260C04 and L53061 / AN197–AN198. No enquiry was sent in this 30 September catalogue pass. A subsequent 1 October crosswalk submission is delivery-uncertain; [resolve that attempt](./index.html#COR12) before further contact. Summons 1063 and 1386 are not established Common Pleas roll numbers; [N56's numerical mismatch and corrected party direction](./index.html#N56) remain controlling. Four targeted discovery queries returned no engine hits, while the ordinary public browser displayed the inspected catalogue records; failed web extraction is not a record-loss finding. No parentage, birthplace or origin conclusion follows.
 
 Restricted 30 September supporting record: [Supporting review](https://drive.google.com/file/d/1IA4Y1MJqNZud6lazLymwMyhfF1zNL84i/view). Access requires Taylor’s permission; the review preserves the catalogue readings, two bounded scopes, exact queries, screenshot and attribution limits.
 
@@ -2818,13 +2818,13 @@ The accepted working family begins with Aaron Oliphant and Rebecca Rainwater. Th
 
 | Record group | What the reviewed evidence records | Missing bridge and discriminating test |
 | --- | --- | --- |
-| Rutherford, Tennessee, May/July 1809 | Aaron Oliphant joins James Caldwell/Coldwell and James Norman in proof of Thomas Welch’s verbal will. The recorded will and court proof concern the same event. [Sources and associates](./index.html#N01). | No wife, age, birthplace, Rainwater connection or move is stated. Read the surviving [loose will’s sides, endorsements and attachments](./index.html#R09), or a dated transaction linking this witness to the later named couple. An independently documented incompatible adult life could distinguish a namesake; none is established here. |
+| Rutherford, Tennessee, May/July 1809 | Aaron Oliphant joins James Caldwell/Coldwell and James Norman in proof of Thomas Welch’s verbal will. The recorded will and court proof concern the same event. [Sources and associates](./index.html#N01). | No wife, age, birthplace, Rainwater connection or move is stated. No separate loose will or packet is demonstrated by the supplied record and reply; retain [the inventory/book-label discrepancy](./index.html#N84). Reopen [that route](./index.html#R09) only with a new item-level pointer or crosswalk. Seek a dated relationship, residence or transaction linking this witness to the later named couple. An independently documented incompatible adult life could distinguish a namesake; none is established here. |
 | Nash’s Regiment, War of 1812 military index | Aaron Oliphant, private, with Olephant/O’Lephant cross-reference. The personal service file remains unread. [Military and Rainwater context](./index.html#N57). | Company, service dates and identifying remarks are unknown. Retrieve the [complete federal jacket and cards](./index.html#R04), then compare them with John Rainwater’s independently recorded Morehead-company service. Same-regiment association alone does not identify Aaron as Rebecca’s husband. |
 | Pendleton and Georgia, 1814–1826 | An Aaron buys from Solomon Rainwater’s estate in 1814 and appears in 1816–1817 debt registers. The [29 January 1821 deed](./index.html#s1) names Aaron of Hancock, Georgia, and wife Rebecca, daughter of deceased Solomon Rainwater. Later [land](./index.html#s3) and [estate](./index.html#s4) records supply the Georgia chronology. | The 1821 deed is a strong couple/family anchor; it identifies Rebecca’s father, not Aaron’s. The 1814 purchaser’s identification with Rebecca’s later husband is plausible but not established by the sale alone. A purchaser need not be an heir, and the earlier debt registers do not name a wife. Seek an explicit backward reference, genuine original obligation or residence/relative statement tying an earlier candidate to this couple. [Loose debt papers](./index.html#R08) and [title connections](./index.html#R07) remain separate targets. |
 
 **Assessment:** the Pendleton–Georgia family association is more concrete than the Tennessee connection. This ranks documentary linkage, not the probability that the 1809 witness was a different man. The military entry is a separate identity test and does not replace a civilian bridge. Neither active original is promised to name parents. A copied signature or mark is not an autograph suitable for handwriting identification.
 
-No new parent, birthplace, immigrant generation, tested paternal placement or surname transition is established by this comparison. Missing birth/passenger records cannot locate a name change, and selected autosomal surname counts do not identify its generation. Keep [the two Devaney comparisons](./index.html#R01) separate; the sent enquiry remains reply-pending.
+No new parent, birthplace, immigrant generation, tested paternal placement or surname transition is established by this comparison. Missing birth/passenger records cannot locate a name change, and selected autosomal surname counts do not identify its generation. Keep [the two Devaney comparisons](./index.html#R01) separate. The comparison enquiry received a reply on 1 October; finer comparison data and an independently documented paternal split remain missing. See [the current follow-up status](./index.html#COR02); the later source question remains distinct.
 
 Restricted supporting synthesis: [Existing-record identity comparison](https://drive.google.com/file/d/12iNQEIw6qQGXoDqhb-GQxqy-USK9ZJ7o/view) · [Controlling 1814 purchaser qualification](https://drive.google.com/file/d/1PriJ0Nmq9QfTutzPNINCk7UIkRHcYMzn/view). Access requires Taylor’s permission; this review adds no new original reading.
 
@@ -3223,7 +3223,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-08T17:01:21Z  · Content updated: 2026-10-08T17:01:21Z  · [Edit note](./index.html#edit-0162-updates)
+Editorial review: 2026-10-08T20:23:59Z  · Content updated: 2026-10-08T20:23:59Z  · [Edit note](./index.html#edit-0163-updates)
 
 6 October 2026
 
@@ -4212,6 +4212,20 @@ Grouped surname variants into a ranked overview on the existing comparison page.
 Editor: AI assistant · 2026-10-02T19:47:34Z. DNA: updated the compact link to the grouped and ranked supplement; all existing genetic assessments and evidence retained.
 
 Editor: AI assistant · 2026-10-02T19:47:34Z. Updates: added this grouping and ranking explanation; earlier edition history is preserved.
+
+8 October 2026
+
+### Edition 01.63 · Current actions reconciled
+
+A whole-site consistency audit corrects four stale action/status statements in [N65](./index.html#N65), [N66](./index.html#N66) and [N83](./index.html#N83). The replies and source limits were already recorded elsewhere. The linked [identity filter](./family-lines.html#FS03) now requires reconciliation of the existing NARA submission and cart state before another checkout. The audit reviewed current summaries, ranks, relationships, retrievals, correspondence and resource checkpoints; it did not reread every historical original or test every external link. No new historical evidence, genotype, parentage, surname ranking or confidence change follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-08T20:23:59Z . Unaffected chapter timestamps and earlier source-reading dates are retained.
+
+- [research-notes](./index.html#research-notes): Correct N65, N66 and N83 to the already-recorded replies, delivery uncertainty and qualified loose-will route; preserve source-reading dates and historical conclusions.
+
+- [updates](./index.html#updates): Record the consistency audit and scoped status corrections, including the linked comparison register. No fresh historical source, genotype, rank or confidence change.
 
 09 / Contact
 

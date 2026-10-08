@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-08T07:04:42Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-08T20:23:59Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -259,7 +259,7 @@ Editorial review: 2026-10-08T07:04:42Z.
 
 Eight evidence layers applied to the nine open surname groups, using our saved records and DNA observations\. No new DNA results or archive records were acquired for this review\. Linked sources retain their original dates and coverage limits\.
 
-Editorial review: 2026-10-02T20:25:25Z.
+Editorial review: 2026-10-08T20:23:59Z.
 
 **Already applied:** FS01 and FS02 in the saved comparison scope. FL24 shares A823 but a younger pairwise branch is unproved\. FL02 and the other eight Y67 observations lack finer placement\. This stack adds no genetic pass or exclusion\. The existing screen identifies the later Devany namesake, official Wood execution, a reported Collins officiant and an earlier Carrell parcel party\. Other rows retain bounded nonconnection or county\-label limits\.
 
@@ -835,10 +835,10 @@ Result: The 1866 younger Devany cannot be the elder Aaron\. Wood is a named offi
 
 Limits: The namesake's later chronology rules out literal same\-person identity, not kinship or the surname\. A copied register signature or clerk's mark is not an authenticated autograph\. Aaron's military company, dates and age remain unread\.
 
-Next test: Complete the prepared $30 electronic CMSR request, then read the actual jacket/cards and compare company, service and identifying details\. Recipient/payment steps and submission remain outstanding; no order is confirmed\. For candidate people, use parent/residence/alias statements rather than matching spelling alone\.
+Next test: Reconcile the existing NARA submission and cart state and await the substantive support answer before any further checkout or duplicate request\. No accepted order or charge is independently confirmed\. Once the complete file is supplied, read the jacket/cards and compare company, service and identifying details\. For candidate people, use parent/residence/alias statements rather than matching spelling alone\.
 
 - [N83: which Aaron?](./index.html#N83) — Existing synthesis of source\-specific chronology, wife/residence anchors and unresolved earlier identities; no new original examination in this stack\.
-- [R04: Aaron's complete Nash service file](./index.html#R04) — Exact jacket\-and\-cards target remains unread\. The 2 October reply confirms the $30 War of 1812 route and stated 60–90\-day turnaround; its authenticated request is prepared with recipient/payment steps and submission outstanding\. No paid or submitted order is confirmed\. Procedural guidance and form preparation are not historical findings\.
+- [R04: Aaron's complete Nash service file](./index.html#R04) — The exact jacket\-and\-cards target remains unread\. The 2 October reply confirms the $30 War of 1812 route and stated 60–90\-day turnaround\. Later reported completion conflicts with the unfinished request/cart evidence; submission and charge remain unconfirmed\. The 6 October support enquiry has an automatic acknowledgment but no substantive answer in the latest checked thread\. Procedural guidance and form preparation are not historical findings; reconcile the existing attempt before retrying\.
 - [N02: younger Aaron Olifant Devany](./index.html#N02) — 1866 marriage and 1870 enumeration are named local leads\. Elder Aaron was dead by December 1826; younger\-family parents and elder\-family relationship remain unresolved\.
 
 #### FS04 · Role\-aware family and associate links
@@ -1639,4 +1639,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Revision 01.60: three originals complete a bounded witness-household test and correct a spouse-role death-index hit. No established Devany kinship, elder-Aaron parentage, genotype, surname rank or historical-confidence change.
+Editor note: Revision 01.63: the FS03 military-file next test now follows the existing submission/cart reconciliation and pending support dependency. A consistency audit retains DNA observations, nine open surname headings, rank, exclusion limits and historical confidence; no fresh source or genotype was acquired.

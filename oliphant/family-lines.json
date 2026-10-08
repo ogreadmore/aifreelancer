@@ -965,8 +965,8 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-08T07:04:42Z",
-  "editor_note": "Revision 01.60: three originals complete a bounded witness-household test and correct a spouse-role death-index hit. No established Devany kinship, elder-Aaron parentage, genotype, surname rank or historical-confidence change.",
+  "editorial_reviewed_at": "2026-10-08T20:23:59Z",
+  "editor_note": "Revision 01.63: the FS03 military-file next test now follows the existing submission/cart reconciliation and pending support dependency. A consistency audit retains DNA observations, nine open surname headings, rank, exclusion limits and historical confidence; no fresh source or genotype was acquired.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
     "reviewed_at": "2026-10-08T07:04:42Z",
@@ -1622,7 +1622,7 @@
   ],
   "ranking_note": "A qualitative order of the current sampled-line cases, strongest working case first; not a calculated surname probability or a ranking of every family using these names. Rank 1 is Devaney, with low historical confidence. Rank 2 contains eight tied open alternatives because their relative likelihood is not established. Rank 3 contains sampled branches set aside, retaining all qualifications and untested-family possibilities. Ties are alphabetical, not hidden subranks.",
   "filter_stack": {
-    "reviewed_at": "2026-10-02T20:25:25Z",
+    "reviewed_at": "2026-10-08T20:23:59Z",
     "scope": "Eight evidence layers applied to the nine open surname groups, using our saved records and DNA observations. No new DNA results or archive records were acquired for this review. Linked sources retain their original dates and coverage limits.",
     "rules": [
       "Read this as a dependency-aware evidence stack, not a weighted score, surname probability or series of automatic passes. Cells qualify the exact proposition and reviewed scope.",
@@ -1693,7 +1693,7 @@
         "applied_scope": "Dates, spelling, role and identity statements in the saved HX reviews, compared with the 1821 couple anchor and death by 14 December 1826.",
         "result": "The 1866 younger Devany cannot be the elder Aaron. Wood is a named official in 1824, Collins a retrospective report about 1815, and Carrell an 1811 party. These observations do not yet identify candidate paternal families. No incompatible simultaneous life separates the 1809 Rutherford witness from the later Aaron.",
         "limits": "The namesake's later chronology rules out literal same-person identity, not kinship or the surname. A copied register signature or clerk's mark is not an authenticated autograph. Aaron's military company, dates and age remain unread.",
-        "next_test": "Complete the prepared $30 electronic CMSR request, then read the actual jacket/cards and compare company, service and identifying details. Recipient/payment steps and submission remain outstanding; no order is confirmed. For candidate people, use parent/residence/alias statements rather than matching spelling alone.",
+        "next_test": "Reconcile the existing NARA submission and cart state and await the substantive support answer before any further checkout or duplicate request. No accepted order or charge is independently confirmed. Once the complete file is supplied, read the jacket/cards and compare company, service and identifying details. For candidate people, use parent/residence/alias statements rather than matching spelling alone.",
         "evidence": [
           {
             "label": "N83: which Aaron?",
@@ -1703,7 +1703,7 @@
           {
             "label": "R04: Aaron's complete Nash service file",
             "url": "./index.html#R04",
-            "scope": "Exact jacket-and-cards target remains unread. The 2 October reply confirms the $30 War of 1812 route and stated 60–90-day turnaround; its authenticated request is prepared with recipient/payment steps and submission outstanding. No paid or submitted order is confirmed. Procedural guidance and form preparation are not historical findings."
+            "scope": "The exact jacket-and-cards target remains unread. The 2 October reply confirms the $30 War of 1812 route and stated 60–90-day turnaround. Later reported completion conflicts with the unfinished request/cart evidence; submission and charge remain unconfirmed. The 6 October support enquiry has an automatic acknowledgment but no substantive answer in the latest checked thread. Procedural guidance and form preparation are not historical findings; reconcile the existing attempt before retrying."
           },
           {
             "label": "N02: younger Aaron Olifant Devany",

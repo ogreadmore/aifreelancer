@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T07:04:42Z  · [Edit note](./index.html#edit-0160-start-here)
+Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -52,7 +52,7 @@ Completed checks and corrections
 
 **Latest source test:** [The lifelong witness’s census comparison](./index.html#lundy-census-original) found an age-compatible 1850 William and a broad White Plains postal overlap in 1860, but no specific childhood relationship to the younger Aaron Devany. A suggested death certificate concerns the witness’s wife. Surname ranks and historical confidence remain unchanged.
 
-**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). Present custody and Aaron content remain unverified; [GSP confirms it does not hold the underlying records](./index.html#COR15), while its printed volume remains unidentified. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
+**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). Present custody and Aaron content remain unverified. [HSP accepted a catalogue enquiry on 8 October](./index.html#COR16); await its answer. No fees were authorized. [GSP does not hold the underlying records](./index.html#COR15), and its printed volume remains unidentified. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
 
 **Name and source provenance:** [Copied Bible claims](./index.html#N17) remain secondhand, and the elder Aaron’s middle name is unverified. [The fresh birth-source check](./index.html#RT01) supplies no original for 17 May 1791. [A documented Charleston institutional association](./index.html#N53) does not connect Aaron to the distinct David candidates or the Pinckney family.
 
@@ -62,7 +62,9 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation, 6 October 2026:** the [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk) preserves eleven privacy-reviewed research derivatives plus README and manifest, thirteen ZIP members. One metadata/permissions-verified cloud transfer advances the incremental ledger from **1,931 to 1,932**, not a whole-library recount. Exact name, size, destination and named owner/reader permissions were verified; local hashes and CRC were checked. Remote bytes and restoration were not tested. Preservation adds no historical original, genotype or confidence change.
+**Latest restricted preservation, 8 October 2026:** the [original-record and source-review archive](https://drive.google.com/file/d/1jrRwCDRV2lC1xILNavx4je81SJgznTNZ/view?usp=drivesdk) preserves 47 original scans, the previously read accession PDF and selected reviews and provenance, in 72 archive members. Individually authorized access is required. The downloaded archive matches the reviewed local SHA-256 and passed ZIP integrity checks. Owner and reader access were verified; this is not a full-library restoration test. Preservation does not add a new historical finding, genotype or confidence change.
+
+**Earlier restricted preservation, 6 October 2026:** the [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk) preserves eleven privacy-reviewed research derivatives plus README and manifest, thirteen ZIP members. One metadata/permissions-verified cloud transfer advances the incremental ledger from **1,931 to 1,932**, not a whole-library recount. Exact name, size, destination and named owner/reader permissions were verified; local hashes and CRC were checked. Remote bytes and restoration were not tested. Preservation adds no historical original, genotype or confidence change.
 
 **Earlier restricted preservation, 3 October 2026:** the [restored-session and finite-source supplement](https://drive.google.com/file/d/15IeFd8WDSZd63ICvu6AsEkpygKWgYEh5/view?usp=drivesdk) preserves 15 archive members covering the dated comparator readback, bounded reply check and collateral-source reviews. One metadata-verified transfer advances the incremental ledger from 1,927 to **1,928**; archive members are not separate cloud files or a library recount. Name, size, destination and Taylor-owner/Rich-reader permissions were checked, with local CRC and hashes verified separately. Remote bytes and restoration were not tested. No new historical original, genotype or confidence change follows.
 
@@ -832,7 +834,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T07:04:42Z  · [Edit note](./index.html#edit-0160-records)
+Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -964,7 +966,7 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 14 · Conditional follow-ups Other records that need a sharper target Not order-ready
 
-**Samuel Grant collection crosswalk:** the historical accession [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) now has a specific collection attribution. Confirm its present repository and folder inventory before requesting papers; the older Bible58:3 pointer is not an identified Aaron record. [GSP’s answered enquiry confirms it does not hold the underlying records](./index.html#COR15); the printed volume’s identity and current repository crosswalk remain unresolved. No paid work or copying has been ordered.
+**Samuel Grant collection crosswalk:** the historical [FC/Ol/Box58.1–58.8 accession](./index.html#samuel-grant-archive) identifies the genealogical papers, but present custody and contents remain unknown. [HSP accepted the catalogue-location enquiry on 8 October](./index.html#COR16); await its answer before requesting a specific item or sending another enquiry. [GSP’s clarification is answered: it does not hold the underlying records](./index.html#COR15). Its printed volume remains unidentified, and the older Bible58:3 pointer is not an identified Aaron record. No paid research or copying is authorized.
 
 **Military rolls:** Nash regiment muster, pay and descriptive rolls: NARA **RG 94, PI-17 entries 55A, 55B, 55C; inventory entry 55**, [NAID 654644](https://catalog.archives.gov/id/654644), South Carolina, Lt. Col. Reuben Nash. Unit box, company and individual coverage remain unresolved; originals unread. The South Caroliniana Nash roster typescript, accession **2350**, 18 sheets, OCLC **31399861**, has a catalogue copy marked missing. No Aaron entry has been read in it.
 
@@ -1031,8 +1033,9 @@ Current request status · private recipients, addresses and message bodies are n
 | COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
 | COR14 Existing genealogy research contact | [Aaron compilations](./index.html#N17) — underlying birth, middle-name and parentage citations. | Sent 2 Oct; replied 6 Oct 2026 **Further derivative files received; original citations still missing** | Additional historical correspondence review was offered. Retain the source-quality limits and [specific underlying-source leads](./index.html#roddy-source-successor); do not repeat the original question. No contemporary parentage citation supplied. Any proposed individual follow-up requires an owner-reviewed draft. |
 | COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Reply and clarification received 7 Oct Eastern / 8 Oct UTC 2026 **Printed volume held; underlying records not held** | Clarification answered. Identify the printed volume and present FC-paper repository/crosswalk; no HSP custody or loss inferred. No originals supplied, copying ordered or paid work commissioned. Do not repeat the answered GSP enquiry. |
+| COR16 Historical Society of Pennsylvania | [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — current repository, collection/container inventory and originals-versus-copies distinction. | 8 Oct 2026 **Accepted by institutional ticket system; staff answer pending** | Await the existing enquiry; do not duplicate it. No ticket number was displayed. Acceptance establishes submission only: no custody, original contents or genealogy finding, and no paid research or copying authorized. |
 
-These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use Gmail for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
+These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use verified institutional routes for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
 
 ### Related trees and research contacts
 
@@ -1290,7 +1293,7 @@ Editorially reviewed 30 September 2026 against saved provenance and collateral a
 
 ## A conclusion should lead back to its evidence.
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-06T13:28:23-04:00  · [Edit note](./index.html#edit-0152-sources)
+Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-sources)
 
 This report combines dated original-record readings, derivative sources and private comparison reviews. Later research notes record subsequent inspections, corrections and access checks; the cited dates describe their own scopes, not a fresh rereading of every source for this edition. Original-image links may require a free account or access at a participating location; a subscription does not necessarily remove those restrictions.
 
@@ -1338,9 +1341,11 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/13WKr
 
 ### Research resources
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-06T13:28:23-04:00  · [Edit note](./index.html#edit-0152-research-resources)
+Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-research-resources)
 
 [Restricted 1 October access and reply review](https://drive.google.com/file/d/19D6LB5nDK6Yw7oDaoigceDob_yerwLA4/view?usp=drivesdk) preserves the scoped observations and correspondence. File metadata and owner-only access were verified; remote bytes and restoration were not tested.
+
+[Restricted 8 October original-record and source-review preservation](./index.html#latest-library-preservation) keeps the dated evidence and reading limits; source scans and private correspondence remain outside this public report.
 
 This inventory records what has been used and what remains incomplete; each entry carries its own review date. It is a continuation guide, not a recommendation to buy every service. The numbered citations above support particular claims; the resources below explain where the work happens.
 
@@ -1363,7 +1368,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T07:04:42Z  · [Edit note](./index.html#edit-0160-research-notes)
+Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1619,7 +1624,7 @@ Restricted original-reading scope and provenance: [1820 census preservation](htt
 
 N14 · James–Jean Nevay, the William–Jean rumor and distinct Williams
 
-Reviewed 1 October 2026 · Indexed family; identities unresolved · Earlier index/original reviews and later selected compilation pages; Edinburgh originals remain unread.
+Reviewed 8 October 2026 · Indexed family; identities unresolved · Earlier index/original reviews and later selected compilation pages; Edinburgh originals remain unread.
 
 Indexed Edinburgh births name James Oliphant and Jean or Joan Nevay: David, 1 September 1762; Ann, 14 November 1763; Jean, 10 April 1764 and 10 April 1765 in conflicting entries. All inspected originals were unavailable. The one-year conflict and unusually short Ann-to-Jean interval require original parish entries; paired child/parent indexes do not represent independent births.
 
@@ -1659,7 +1664,9 @@ Earlier catalogue-only support: the [institutional excerpt](https://catalog.wrhs
 
 **Accession-list reading, 6 October 2026:** [*Pennsylvania Genealogical Magazine*, volume 30, number 2, printed page 144/PDF 74](https://genpa.org/wp-content/uploads/publications/pennsylvania-genealogical-magazine/PGM-Volume-30-Number-2.pdf), lists Dr. Samuel Grant Oliphant’s letters, circa 1897–1930, and Oliphant/allied-family genealogical charts at **FC/Ol/Box58.1–58.8**. Printed page 135/PDF 65 dates the combined Genealogical Society and Historical Society of Pennsylvania accession list to January–June 1977 and defines FC as Family File Case. Its format does not distinguish manuscripts from copies. Both accession-list pages were independently checked; no family letter was read. This adds a named collection and full range to the previously retained, unread HSP Oliphant Bible, 1795–1830, pointer **FC Ol Box58:3**. The similar references warrant a crosswalk question; they do not establish that the Bible belongs to this collection or concerns Aaron.
 
-The [current GSP surname-index description](https://genpa.org/public-collections/surname-index-to-gsp-manuscripts-collections/) locates its selected holdings at HSP, but does not crosswalk this accession. Its Oliphant/Haines entry 8327 is a different pointer. Family Records No. 2, films 525531–525582, [catalogue 499720](https://www.familysearch.org/en/search/catalog/499720), is a possible series route without a target-film identification; its catalogue was inaccessible during this pass. [Johns Hopkins MS-0086](https://aspace.library.jhu.edu/repositories/3/resources/98) describes academic notebooks, not verified custody of these genealogical letters. No present repository, surviving container inventory, Aaron item or migration/parentage source has been confirmed. A [clarification received 8 October UTC / 7 October Eastern](./index.html#COR15) states that GSP’s library holds a printed volume but **does not hold the underlying records**. The volume’s title and the present repository of the FC papers are still unstated. This rules out GSP as the confirmed custody route for those originals; it does not establish HSP custody or loss of the papers. The answered clarification supplied no historical contents. Identify the current repository and collection/container crosswalk before requesting a specific source-bearing item; do not duplicate the answered GSP enquiry. The earlier editor-held papers cannot automatically be identified with the 1977 accession.
+The [current GSP surname-index description](https://genpa.org/public-collections/surname-index-to-gsp-manuscripts-collections/) locates its selected holdings at HSP, but does not crosswalk this accession. Its Oliphant/Haines entry 8327 is a different pointer. Family Records No. 2, films 525531–525582, [catalogue 499720](https://www.familysearch.org/en/search/catalog/499720), is a possible series route without a target-film identification; its catalogue was inaccessible during this pass. [Johns Hopkins MS-0086](https://aspace.library.jhu.edu/repositories/3/resources/98) describes academic notebooks, not verified custody of these genealogical letters. No present repository, surviving container inventory, Aaron item or migration/parentage source has been confirmed. A [clarification received 8 October UTC / 7 October Eastern](./index.html#COR15) states that GSP’s library holds a printed volume but **does not hold the underlying records**. The volume’s title and the present repository of the FC papers are still unstated. This rules out GSP as the confirmed custody route for those originals; it does not establish HSP custody or loss of the papers. The answered clarification supplied no historical contents. Await [HSP’s accepted catalogue-location enquiry](./index.html#COR16) for a present repository and collection/container crosswalk before requesting a specific source-bearing item; do not duplicate it or the answered GSP enquiry. The earlier editor-held papers cannot automatically be identified with the 1977 accession.
+
+**HSP route and bounded coverage, 8 October 2026:** three focused HSP discovery queries supplied no current Samuel Grant crosswalk. This is an indexed-web result, not a holdings or name absence. HSP’s [current Research page](https://hsp.org/research) says its card catalogue includes unpublished material that Discover cannot search; no physical cards or family letters were read. The official catalogue enquiry was accepted by HSP’s ticket system, with no ticket number displayed or staff answer supplied. Earlier web-tool403/429 failures were specific route observations; ordinary browser submission subsequently succeeded. No custody or original contents follow from acceptance, and no fee was authorized.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -3216,7 +3223,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T07:04:42Z  · [Edit note](./index.html#edit-0160-updates)
+Editorial review: 2026-10-08T07:34:31Z  · Content updated: 2026-10-08T07:34:31Z  · [Edit note](./index.html#edit-0161-updates)
 
 6 October 2026
 
@@ -3233,6 +3240,28 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+8 October 2026
+
+### Edition 01.61 · Archive reference and source preservation
+
+[HSP accepted the historical FC collection enquiry](./index.html#COR16); current custody and contents await a staff answer. [The online search and card-catalogue limits](./index.html#samuel-grant-archive) remain explicit. A [restricted archive](./index.html#latest-library-preservation) preserves original scans and their source reviews. No new genealogy, genotype, surname rank, tree relationship or historical-confidence change follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-08T07:34:31Z . Private source scans and correspondence are not republished.
+
+- [start-here](./index.html#start-here): Record the accepted HSP enquiry and latest restricted source preservation; retain unresolved custody and genealogy conclusions.
+
+- [records](./index.html#records): Add COR16 as accepted by the ticket system, update R14 to await the existing enquiry, and preserve answered GSP custody denial and no-fee limits.
+
+- [sources](./index.html#sources): Review the nested research-resources preservation crosslink; source authority and historical reading limits remain unchanged.
+
+- [research-resources](./index.html#research-resources): Link the latest restricted original-record and source-review archive without publishing its private file index or scans.
+
+- [research-notes](./index.html#research-notes): N14 retains the historical accession, records HSP card-catalogue coverage limits and bounded discovery, and distinguishes accepted submission from a custody answer.
+
+- [updates](./index.html#updates): Append this limited procedural and preservation successor; retain earlier edition notes and unchanged genotypes, surname ranks, tree and historical confidence.
 
 8 October 2026
 

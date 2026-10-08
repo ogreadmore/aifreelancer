@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-08T03:30:00Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-08T07:04:42Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -177,7 +177,7 @@ Distinct DNA records: [FL04](./family-lines.html#FL04).
 
 Devaney remains the strongest working surname candidate in this register\. The evidence below supports further testing; it does not identify Aaron’s father, prove a former surname or date a surname change\.
 
-Editorial review: 2026-10-08T03:30:00Z.
+Editorial review: 2026-10-08T07:04:42Z.
 
 ### DE01 · Two distinct Y\-DNA leads
 
@@ -241,16 +241,17 @@ Editorial review: 2026-10-08T03:30:00Z.
 
 ### DE06 · Original pensions sharpen the younger namesake test
 
-**Result:** On 7 October, six\-spelling any\-word searches in the official main and supplement indexes returned one result each\. Aaron O\. Davaney’s fifteen\-image file gives sworn 23 July 1841 birth in Greene County, Georgia and a named lifelong Lundy acquaintance\. The separately read Martha supplement is a 1 March 1926 payment agency form; no kinship stated\. The separately read 28\-image William C\. D\. Lundy pension strongly identifies that witness and gives Dark Corner district as Lundy’s locality; it supplies no parentage or Devany/Oliphant kinship\.
+**Result:** On 7 October, six\-spelling any\-word searches in the official main and supplement indexes returned one result each\. Aaron O\. Davaney’s fifteen\-image file gives sworn 23 July 1841 birth in Greene County, Georgia and a named lifelong Lundy acquaintance\. The separately read Martha supplement is a 1 March 1926 payment agency form; no kinship stated\. The separately read 28\-image William C\. D\. Lundy pension strongly identifies that witness and gives Dark Corner district as Lundy’s locality; it supplies no parentage or Devany/Oliphant kinship\. On 8 October, an 1850 William, nine, was an age\-compatible candidate, and the 1860 Archd household shares White Plains post office with Agathy’s previously read sheet\. Neither original establishes the witness’s childhood identity or a specific Devany relationship\. The suggested W\. C\. D\. death hit is Mrs\. Mattie Lundy’s certificate, naming him as husband\.
 
 **Limits:** Retrospective birth testimony, not a birth registration\. O is not expanded\. No named parent/sibling or elder\-Aaron link in the main file; the supplement names no husband or agent relationship\. Service year/company, some ages and initials differ\. The 1850 child identity and parentage remain open; historical confidence and ranks unchanged\.
 
-**Next test:** Compare William C\. D\. Lundy’s original 1850/1860 Greene households and locality with the younger Devany’s unresolved household, then seek an explicit parent or sibling source\. Dark Corner is Lundy’s locality, not a proved childhood address for Aaron\. Preserve the 1850 child and Samuel/Agatha conflicts\. The original service entry and possible Augusta 1916 death entry remain unread; await the pending Richmond estate clarification without duplicating it\. No elder\-Aaron or comparator bridge\.
+**Next test:** Seek an explicit parent or sibling record for the younger Aaron, especially the possible Augusta 1916 death entry and existing Richmond estate clarification\. The 1850 William candidate needs independent full\-initial/family correlation before use; original marriage collection 4766, record 1188777 remains unread\. Neither childhood residence nor kinship follows from a shared post office\. No elder\-Aaron or DNA\-comparator bridge\.
 
 - [Original findings, contradictions and completed coverage](./index.html#devany-pension-original)
 - [Main pension file](https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927)
 - [Separate 1926 payment agency](https://vault.georgiaarchives.org/digital/collection/pension/id/6594)
 - [William C\. D\. Lundy’s Greene pension: identified lifelong witness](https://vault.georgiaarchives.org/digital/collection/TestApps/id/68007)
+- [Completed Lundy household test and corrected death\-record role](./index.html#lundy-census-original)
 
 **Assessment:** The combined evidence explains why Devaney deserves the next discriminating tests\. Historical confidence remains low: neither an Aaron\-to\-Devaney family bridge nor a historical\-family\-to\-exact\-tester paternal pedigree has been demonstrated\. If a surname transition occurred, it could predate Aaron; its direction, date and mechanism remain unproved\.
 
@@ -1445,9 +1446,9 @@ Next test: Revisit only with a typing correction, changed branch evidence or a d
 
 ## Historical cross-references
 
-A bounded cross\-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026\. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator\. No fresh external discovery query, archive\-wide search or all\-surname inventory was completed\. Historical record dates and prior reading scopes are retained in each entry\. On 7 October, HX01 alone was additionally reviewed against one newly acquired 15\-image main pension file and one separate supplement image; other HX source\-reading dates remain unchanged\. On 7 October, the HX01 successor additionally correlated all 28 images of William C\. D\. Lundy’s pension with the named witness; other HX evidence is unchanged\.
+A bounded cross\-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026\. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator\. No fresh external discovery query, archive\-wide search or all\-surname inventory was completed\. Historical record dates and prior reading scopes are retained in each entry\. On 7 October, HX01 alone was additionally reviewed against one newly acquired 15\-image main pension file and one separate supplement image; other HX source\-reading dates remain unchanged\. On 7 October, the HX01 successor additionally correlated all 28 images of William C\. D\. Lundy’s pension with the named witness; other HX evidence is unchanged\. On 8 October, HX01 adds two census originals and one corrected spouse\-role death certificate; no other historical surname coverage was extended\.
 
-Prepared: 2026-10-02. Editorial review: 2026-10-08T03:30:00Z.
+Prepared: 2026-10-02. Editorial review: 2026-10-08T07:04:42Z.
 
 DNA and historical results are independent. A named person, surname occurrence or local association does not connect a paternal line to a tested comparator or to Aaron. This screen does not change DNA assessments, infer SNP calls, exclude a whole surname or establish an ancestor. Candidate rank follows the grouped overview; record-retrieval priority is separate and is not an ancestry probability. A bounded negative leaves other records and families open.
 
@@ -1471,7 +1472,7 @@ Limits: A later full name and same county supply a specific lead, with no demons
 
 Record-retrieval priority: First follow\-up in this surname cross\-reference; the overall documentary tier remains indirect\.
 
-Next test: Compare William C\. D\. Lundy’s original 1850/1860 Greene households and locality with the younger Devany’s unresolved household, then seek an explicit parent or sibling source\. Dark Corner is Lundy’s locality, not a proved childhood address for Aaron\. Preserve the 1850 child and Samuel/Agatha conflicts\. The original service entry and possible Augusta 1916 death entry remain unread; await the pending Richmond estate clarification without duplicating it\. No elder\-Aaron or comparator bridge\.
+Next test: Seek an explicit parent or sibling record for the younger Aaron, especially the possible Augusta 1916 death entry and existing Richmond estate clarification\. The 1850 William candidate needs independent full\-initial/family correlation before use; original marriage collection 4766, record 1188777 remains unread\. Neither childhood residence nor kinship follows from a shared post office\. No elder\-Aaron or DNA\-comparator bridge\.
 
 - [Hancock marriage, 14 January 1866: Aaron Olifant Devany and Martha Andrews](https://www.familysearch.org/ark:/61903/3:1:33S7-8BZ6-2MS) — p\. 104; DGS 5190837, image 174\. License 13 January; marriage return 14 January 1866\. Full name and marriage established\. Previously read 28 September; saved original locally reinspected 2 October 2026\.
 - [Hancock enumeration, 16 June 1870: Humphrey, A\. O\. and Drury households](https://www.familysearch.org/ark:/61903/3:1:S3HY-DCNS-6NF) — p\. 31, stamped 436: dwellings/families 271/278, 273/280 and 275/282, with intervening households\. Enumeration association only\. Previously read 28 September; saved original locally reinspected 2 October 2026\.
@@ -1480,6 +1481,9 @@ Next test: Compare William C\. D\. Lundy’s original 1850/1860 Greene household
 - [Aaron O\. Davaney, Richmond pension file, 1897–1907](https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927) — Georgia Archives RG58\-1\-1, USAMILCONFEDGA\_184995\-01055\. Fifteen digital images acquired and read by two readers 7 October 2026\. Image2Q3: sworn 23 July 1841 Greene County, Georgia birth; image 3 lifelong Lundy acquaintance\. Retrospective testimony, no named parents or elder\-Aaron link; O not expanded\.
 - [Mrs Martha A\. Davaney, 1 March 1926 payment agency](https://vault.georgiaarchives.org/digital/collection/pension/id/6594) — cpa23533: sole original image acquired/read 7 October\. Samuel M\. Devaney named agent; no husband or kinship term; pensioner identity unresolved\.
 - [William C\. D\. Lundy’s Greene pension: identified lifelong witness](https://vault.georgiaarchives.org/digital/collection/TestApps/id/68007) — RG58\-1\-1, USAMILCONFEDGA\_182622\-00911\. All28digital images read by two readers 7 October 2026\. Image 10 right matches Greene, Comfort, Company K, 44th Georgia,27 February 1897 oath\. Images 23–24 give Lundy’s Dark Corner locality; no Devany/Oliphant kinship or named parents found\. Preserve right/left arm and 1864/1862 conflicts\.
+- [Lundy household and source\-role test, 8 October 2026](https://www.ancestry.ca/search/collections/8054/records/18687202) — 1850 Greene148thDistrict,3September,290/290,William9; candidate only; original acquired and independently read by two readers\. No recognized Devany kinship or elder\-Aaron bridge\.
+- [Lundy household and source\-role test, 8 October 2026](https://www.ancestry.ca/search/collections/7667/records/11187427) — 1860 GreeneWhitePlainsPO,21July,p78,119/119; noWilliam or recognizedDevany in household; original acquired and independently read by two readers\. No recognized Devany kinship or elder\-Aaron bridge\.
+- [Lundy household and source\-role test, 8 October 2026](https://www.ancestry.ca/search/collections/2562/records/45287541) — Mrs\.MattieLundy death4April1926; WCDhusband, not deceased or parental subject; original acquired and independently read by two readers\. No recognized Devany kinship or elder\-Aaron bridge\.
 
 Candidate rank: 2 (tied).
 
@@ -1635,4 +1639,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Revision 01.59: the younger namesake’s lifelong witness identified from his own 28-image pension; locality and contradictions retained. No elder-Aaron parentage, genetic result, rank or historical-confidence change.
+Editor note: Revision 01.60: three originals complete a bounded witness-household test and correct a spouse-role death-index hit. No established Devany kinship, elder-Aaron parentage, genotype, surname rank or historical-confidence change.

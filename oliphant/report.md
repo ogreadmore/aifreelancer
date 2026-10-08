@@ -832,7 +832,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-07T01:57:54Z  · Content updated: 2026-10-07T01:57:54Z  · [Edit note](./index.html#edit-0156-records)
+Editorial review: 2026-10-08T00:06:53Z  · Content updated: 2026-10-08T00:06:53Z  · [Edit note](./index.html#edit-0158-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -1030,7 +1030,7 @@ Current request status · private recipients, addresses and message bodies are n
 | COR12 South Carolina Department of Archives and History | [PK 034/C 0907 versus film 1025480/DGS 8687026](./index.html#N66) — Grisham-register crosswalk and loose-paper route. | 1 Oct 2026 **Submission attempted; delivery uncertain** | Two dated reply-account queries found no acknowledgement trace; delivery remains uncertain. Resolve before resubmission; no acceptance or answer verified. |
 | COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
 | COR14 Existing genealogy research contact | [Aaron compilations](./index.html#N17) — underlying birth, middle-name and parentage citations. | Sent 2 Oct; replied 6 Oct 2026 **Further derivative files received; original citations still missing** | Additional historical correspondence review was offered. Retain the source-quality limits and [specific underlying-source leads](./index.html#roddy-source-successor); do not repeat the original question. No contemporary parentage citation supplied. Any proposed individual follow-up requires an owner-reviewed draft. |
-| COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Sent 6 Oct 2026 local / 7 Oct UTC **Bibliographic enquiry sent; reply pending** | Await current collection/container and film pointers, including original-versus-copy distinction. The sent payload uses the published accession only. No chargeable research, copying order or individual-researcher contact. |
+| COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Reply received 7 Oct 2026 **Volume reference ambiguous; clarification sent** 7 Oct local / 8 Oct UTC | Distinguish the accession-list magazine from a bound copy of the genealogical papers; obtain an exact title or repository and original-versus-copy crosswalk. No originals supplied, paid work or copying ordered. Await the existing clarification; do not duplicate it. |
 
 These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use Gmail for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
 
@@ -1363,7 +1363,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-research-notes)
+Editorial review: 2026-10-08T00:06:53Z  · Content updated: 2026-10-08T00:06:53Z  · [Edit note](./index.html#edit-0158-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1649,7 +1649,7 @@ Earlier catalogue-only support: the [institutional excerpt](https://catalog.wrhs
 
 **Accession-list reading, 6 October 2026:** [*Pennsylvania Genealogical Magazine*, volume 30, number 2, printed page 144/PDF 74](https://genpa.org/wp-content/uploads/publications/pennsylvania-genealogical-magazine/PGM-Volume-30-Number-2.pdf), lists Dr. Samuel Grant Oliphant’s letters, circa 1897–1930, and Oliphant/allied-family genealogical charts at **FC/Ol/Box58.1–58.8**. Printed page 135/PDF 65 dates the combined Genealogical Society and Historical Society of Pennsylvania accession list to January–June 1977 and defines FC as Family File Case. Its format does not distinguish manuscripts from copies. Both accession-list pages were independently checked; no family letter was read. This adds a named collection and full range to the previously retained, unread HSP Oliphant Bible, 1795–1830, pointer **FC Ol Box58:3**. The similar references warrant a crosswalk question; they do not establish that the Bible belongs to this collection or concerns Aaron.
 
-The [current GSP surname-index description](https://genpa.org/public-collections/surname-index-to-gsp-manuscripts-collections/) locates its selected holdings at HSP, but does not crosswalk this accession. Its Oliphant/Haines entry 8327 is a different pointer. Family Records No. 2, films 525531–525582, [catalogue 499720](https://www.familysearch.org/en/search/catalog/499720), is a possible series route without a target-film identification; its catalogue was inaccessible during this pass. [Johns Hopkins MS-0086](https://aspace.library.jhu.edu/repositories/3/resources/98) describes academic notebooks, not verified custody of these genealogical letters. No present repository, surviving container inventory, Aaron item or migration/parentage source has been confirmed. A [public-reference-only institutional enquiry](./index.html#COR15) is pending. First obtain the current collection/container crosswalk and distinguish originals from copies; then request a specific source-bearing item. The earlier editor-held papers cannot automatically be identified with the 1977 accession.
+The [current GSP surname-index description](https://genpa.org/public-collections/surname-index-to-gsp-manuscripts-collections/) locates its selected holdings at HSP, but does not crosswalk this accession. Its Oliphant/Haines entry 8327 is a different pointer. Family Records No. 2, films 525531–525582, [catalogue 499720](https://www.familysearch.org/en/search/catalog/499720), is a possible series route without a target-film identification; its catalogue was inaccessible during this pass. [Johns Hopkins MS-0086](https://aspace.library.jhu.edu/repositories/3/resources/98) describes academic notebooks, not verified custody of these genealogical letters. No present repository, surviving container inventory, Aaron item or migration/parentage source has been confirmed. A [7 October institutional reply](./index.html#COR15) mentions a printed volume in the library without identifying it. That does not distinguish the accession-list magazine from a separate bound copy of the genealogical papers, or confirm original-letter custody. A non-fee clarification was sent in the same thread, 7 October local / 8 October UTC. First identify the volume and current collection/container crosswalk, distinguishing originals from copies; then request a specific source-bearing item. The earlier editor-held papers cannot automatically be identified with the 1977 accession.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -3206,7 +3206,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-updates)
+Editorial review: 2026-10-08T00:06:53Z  · Content updated: 2026-10-08T00:06:53Z  · [Edit note](./index.html#edit-0158-updates)
 
 6 October 2026
 
@@ -3223,6 +3223,22 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+7 October 2026
+
+### Edition 01.58 · Archive-custody clarification
+
+[The institutional accession enquiry received a reply](./index.html#COR15), but its volume reference does not establish original-letter custody or historical contents. A single free clarification was sent and verified. The source trail advances; Aaron’s parentage, genetic comparisons and surname rankings are unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-08T00:06:53Z . Private message bodies remain outside the public report.
+
+- [records](./index.html#records): COR15 records the received institutional reply and verified same-thread clarification; original custody and content remain unresolved.
+
+- [research-notes](./index.html#research-notes): The Samuel Grant archive paragraph distinguishes an ambiguous volume reference from original-letter custody. Historical accession evidence and all genealogy conclusions are unchanged.
+
+- [updates](./index.html#updates): Record this narrow correspondence successor; no source contents, surname rank or historical confidence change.
 
 7 October 2026
 

@@ -965,8 +965,8 @@
       "dependency_group": null
     }
   ],
-  "editorial_reviewed_at": "2026-10-08T20:23:59Z",
-  "editor_note": "Revision 01.63: the FS03 military-file next test now follows the existing submission/cart reconciliation and pending support dependency. A consistency audit retains DNA observations, nine open surname headings, rank, exclusion limits and historical confidence; no fresh source or genotype was acquired.",
+  "editorial_reviewed_at": "2026-10-08T22:40:23Z",
+  "editor_note": "Revision 01.64: a primary-source professional-method review sharpens existing filters with source/informant provenance, expectation-qualified absences, recurring personal-associate networks and later collateral-family records. WATO is deferred for the current unassigned segment evidence. These are method recommendations, not newly executed historical tests. All DNA observations, nine open surname headings, ranks, sampled-line exclusions and historical confidence remain unchanged. Main report remains Edition 01.63.",
   "documentary_cross_reference": {
     "prepared_on": "2026-10-02",
     "reviewed_at": "2026-10-08T07:04:42Z",
@@ -1622,7 +1622,7 @@
   ],
   "ranking_note": "A qualitative order of the current sampled-line cases, strongest working case first; not a calculated surname probability or a ranking of every family using these names. Rank 1 is Devaney, with low historical confidence. Rank 2 contains eight tied open alternatives because their relative likelihood is not established. Rank 3 contains sampled branches set aside, retaining all qualifications and untested-family possibilities. Ties are alphabetical, not hidden subranks.",
   "filter_stack": {
-    "reviewed_at": "2026-10-08T20:23:59Z",
+    "reviewed_at": "2026-10-08T22:40:23Z",
     "scope": "Eight evidence layers applied to the nine open surname groups, using our saved records and DNA observations. No new DNA results or archive records were acquired for this review. Linked sources retain their original dates and coverage limits.",
     "rules": [
       "Read this as a dependency-aware evidence stack, not a weighted score, surname probability or series of automatic passes. Cells qualify the exact proposition and reviewed scope.",
@@ -1636,7 +1636,11 @@
       "FS07 uses time-matched, independently documented paternal localities and migration/kinship evidence. Country labels, surname rarity, STR distance and ancient branch models do not date or orient a surname transition.",
       "FS08 is parallel autosomal corroboration, not a mandatory Y-line gate. One joined/nested segment group is not multiple independent ancestral confirmations; lack of an inherited segment does not exclude a lineage.",
       "Dependencies identify missing inputs for interpretation, not permission to repeat saved searches, pending requests or unchanged access gates. Apply precise next tests only when a new pointer or the named data/source dependency changes.",
-      "Dependencies are reusable evidence inputs, not requirements that earlier filters must first pass. A parish, migration or autosomal source may help supply an earlier identity/kinship bridge; each lane can be investigated when its own specific inputs permit."
+      "Dependencies are reusable evidence inputs, not requirements that earlier filters must first pass. A parish, migration or autosomal source may help supply an earlier identity/kinship bridge; each lane can be investigated when its own specific inputs permit.",
+      "For an absence to weigh against a hypothesis, specify why the person or fact should have been recorded, the jurisdiction and eligibility rules, surviving coverage, and whether originals or only an index were examined. A missing birth entry or an unrepresented Y surname is not an automatic exclusion.",
+      "Evaluate each information item separately: who supplied it, whether that person could know it, and whether other versions copy the same underlying record. An original document can contain secondhand information; multiple trees repeating one birth date are not independent confirmation.",
+      "Use repeated, dated personal associations across places to test identity and migration. Distinguish participants from officials who routinely serve many families. A network edge is a documented role, not a kinship assertion; no fixed number of shared associates proves a relationship.",
+      "Test candidate family reconstructions through children, daughters and their spouses, guardians, heirs and later settlements as well as the proposed fathers. A maternal or stepfamily route can explain a surname without demonstrating paternal Y transmission. Do not assign any such route to Aaron without evidence."
     ],
     "layers": [
       {
@@ -1680,6 +1684,11 @@
             "label": "N35: bounded public-project identity screens",
             "url": "./index.html#N35",
             "scope": "Saved chart/profile scope; compatible rows do not establish exact comparator identities or independently verified pedigrees, and empty SNP fields are missing data."
+          },
+          {
+            "label": "BCG: negative evidence and information quality",
+            "url": "https://www.bcgcertification.org/become-a-certified-genealogist",
+            "scope": "Evidence tutorial reviewed 8 October 2026. An absence is interpretable only against what the surviving record should contain. No new coverage-qualified absence or surname exclusion is demonstrated by this review."
           }
         ]
       },
@@ -1693,7 +1702,7 @@
         "applied_scope": "Dates, spelling, role and identity statements in the saved HX reviews, compared with the 1821 couple anchor and death by 14 December 1826.",
         "result": "The 1866 younger Devany cannot be the elder Aaron. Wood is a named official in 1824, Collins a retrospective report about 1815, and Carrell an 1811 party. These observations do not yet identify candidate paternal families. No incompatible simultaneous life separates the 1809 Rutherford witness from the later Aaron.",
         "limits": "The namesake's later chronology rules out literal same-person identity, not kinship or the surname. A copied register signature or clerk's mark is not an authenticated autograph. Aaron's military company, dates and age remain unread.",
-        "next_test": "Reconcile the existing NARA submission and cart state and await the substantive support answer before any further checkout or duplicate request. No accepted order or charge is independently confirmed. Once the complete file is supplied, read the jacket/cards and compare company, service and identifying details. For candidate people, use parent/residence/alias statements rather than matching spelling alone.",
+        "next_test": "Reconcile the existing NARA submission and cart state and await the substantive support answer before any further checkout or duplicate request. No accepted order or charge is independently confirmed. Once the complete file is supplied, read the jacket/cards and compare company, service and identifying details. For candidate people, use parent/residence/alias statements rather than matching spelling alone. For the asserted 17 May 1791 birth and Pinckney middle name, trace the earliest attributable source and its informant before using either as a strict identity constraint; repeated trees count as copies until independent sources are demonstrated.",
         "evidence": [
           {
             "label": "N83: which Aaron?",
@@ -1709,6 +1718,11 @@
             "label": "N02: younger Aaron Olifant Devany",
             "url": "./index.html#N02",
             "scope": "1866 marriage and 1870 enumeration are named local leads. Elder Aaron was dead by December 1826; younger-family parents and elder-family relationship remain unresolved."
+          },
+          {
+            "label": "Professional method: source, information and evidence analysis",
+            "url": "https://www.evidenceexplained.com/content/quicklesson-17-evidence-analysis-process-map",
+            "scope": "Method review, 8 October 2026. Separate an original source from the knowledge of its informant and trace dependence among copied statements. This is a proposed provenance test, not new verification of Aaron’s birth or middle name."
           }
         ]
       },
@@ -1722,7 +1736,7 @@
         "applied_scope": "The recorded roles of the named HX leads, with Rebecca's explicitly stated Rainwater parentage kept separate.",
         "result": "Rebecca's Rainwater parentage is explicit, but none of the nine candidate rows names an elder-Aaron relationship to a comparator paternal family. Devany household nephew/niece terms leave the connecting parent open. The three indirect HX roles are not three personal-family links.",
         "limits": "Routine official execution, retrospective officiation and a parcel predecessor cannot be counted as personal kinship. Rainwater marriage kinship does not imply a biological paternal Rainwater branch.",
-        "next_test": "Require a dated direct relationship or personal-associate instrument; for the Devany nephews/niece establish the connecting parent and paternal, maternal or marriage route.",
+        "next_test": "Require a dated direct relationship or personal-associate instrument; for the Devany nephews/niece establish the connecting parent and paternal, maternal or marriage route. First assemble dated person–event entries from the existing Pendleton estate/deed, Rutherford witness and Georgia land/court sources, retaining identities as provisional where necessary. Compare recurring personal participants across jurisdictions, then choose one source-backed associate or household bridge to investigate. Do not repeat completed Caldwell, Lundy or parcel scopes, or promote routine official duties into personal ties.",
         "evidence": [
           {
             "label": "N02: younger Aaron Olifant Devany",
@@ -1743,6 +1757,11 @@
             "label": "HX02: Wood's official role",
             "url": "./family-lines.html#HX02",
             "scope": "Recorded grant names Elisha Wood, S.E.D.; this is an official execution role, not established personal contact."
+          },
+          {
+            "label": "Professional case study: John Watts frontier family reconstruction",
+            "url": "https://historicpathways.com/download/JohnWattsNGSQSep2016FINALGalleys.pdf",
+            "scope": "Elizabeth Shown Mills, NGS Quarterly 104 (September 2016), 165–90, especially 188–89. Selected opening, association and concluding passages reviewed 8 October 2026. Geographic and recurring associational links help test a family reconstruction; the Watts conclusion does not establish any Oliphant relationship."
           }
         ]
       },
@@ -1788,7 +1807,7 @@
         "applied_scope": "All nine HX role statements and ten linked FL unknown/pedigree statements, plus the saved independent-collateral gate.",
         "result": "No row demonstrates bridge A, an elder-Aaron kinship link to the candidate historical paternal family. No row demonstrates bridge B, an independently sourced father–son chain from that historical person to the exact comparator. The known Edward/Milton adult-family link does not supply Edward's missing Solomon/Amanda parentage.",
         "limits": "These are two missing demonstrated bridges in the reviewed register, not biological exclusions or whole-archive negatives. An heir, uncle or sibling relationship does not alone establish paternal Y transmission; maternal, adoptive or marital routes remain possible. Document every relevant father–son step across the claimed patrilineal bridge, retaining recorded-parentage versus biological-paternity limits. Exact comparator identity, source independence and each generation matter. Even a Solomon collateral would not automatically close Solomon-to-Aaron.",
-        "next_test": "For Devany, await the existing Richmond estate request and verify identity before using heir wording. In parallel, seek a parent-bearing Edward record and independent male-line collateral; then document each father–son step and any consented comparison.",
+        "next_test": "For Devany, await the existing Richmond estate request and verify identity before using heir wording. In parallel, seek a parent-bearing Edward record and independent male-line collateral; then document each father–son step and any consented comparison. For a specifically identified candidate family, reconstruct all relevant children and marriages and inspect later heir, guardian or settlement records: a useful relationship statement may postdate Aaron’s departure or death. This extends the relationship test; it does not require one document to state parentage if independent evidence can form a sound argument.",
         "evidence": [
           {
             "label": "N23: Richmond notices and Davaney estate target",
@@ -1804,6 +1823,16 @@
             "label": "R02: independent paternal collateral",
             "url": "./index.html#R02",
             "scope": "Documentary identity and generation reached are separate from tester availability and genetic results."
+          },
+          {
+            "label": "Professional case study: collateral records after migration",
+            "url": "https://historicpathways.com/download/roundresearch.pdf",
+            "scope": "Elizabeth Shown Mills, Roundabout Research: Pursuing Collateral Lines to Prove Parentage of a Direct Ancestor, NGS Quarterly 91 (March 2003), 19–30. Selected opening and estate/guardian discussion reviewed 8 October 2026. Later collateral records can preserve earlier relationships; no new Aaron collateral is identified by this method review."
+          },
+          {
+            "label": "BCG: planning DNA tests to answer a defined relationship question",
+            "url": "https://bcgcertification.org/standards-for-dna-evidence/",
+            "scope": "Method review, 8 October 2026. Select comparisons for the genealogical question and integrate verifiable genetic data with documentary pedigrees. R02 already applies this principle; the review adds no tester, assay or Aaron-level genetic anchor."
           }
         ]
       },
@@ -1844,7 +1873,7 @@
         "question": "Can an independently documented transmission route assign the joined segment to an ancestral branch and then a historical couple?",
         "applied_scope": "Existing saved chromosome-3 triangulation and the documented missing single-grandparent control; a parallel corroboration lane for all nine candidate groups.",
         "result": "The existing 24.4 cM and 11.5 cM observations form one nested group, with conditional paternal-family attribution. No single-grandparent tester/control or responsible historical couple is demonstrated; no candidate surname is assigned.",
-        "limits": "This is parallel evidence, not a mandatory Y-line gate. Paternal cousins descending through both grandparents cannot choose one grandparent; mother subtraction cannot choose between them. Coordinate overlap, surname diversity, copied trees, endogamy, multiple relationships and segment loss require separate controls.",
+        "limits": "This is parallel evidence, not a mandatory Y-line gate. Paternal cousins descending through both grandparents cannot choose one grandparent; mother subtraction cannot choose between them. Coordinate overlap, surname diversity, copied trees, endogamy, multiple relationships and segment loss require separate controls. WATO is not a Y-surname ranking tool. Its developer cautions about endogamy, dependent close relatives, incorrect tree placements and extrapolation beyond its better-supported relationships/sharing amounts. The present unassigned nested segment group supplies no suitable WATO family model; no scores have been calculated.",
         "next_test": "When an already tested, independently documented single-grandparent collateral and usable same-service interval are identified, obtain explicit three-way triangulation. Then test older branch controls and independent pedigrees before attributing a couple or Aaron.",
         "evidence": [
           {
@@ -1856,6 +1885,11 @@
             "label": "N48: autosomal ancestral-branch attribution",
             "url": "./index.html#N48",
             "scope": "Either paternal grandparent remains possible; no documented shared ancestor assigns the group to Aaron's male line."
+          },
+          {
+            "label": "DNA Painter: WATO assumptions and limits",
+            "url": "https://dnapainter.com/help/wato-faq",
+            "scope": "Official FAQ sections on scores, endogamy, related testers and supported relationships/sharing reviewed 8 October 2026. Most input relationships should be closer than ninth degree and most totals exceed 40 cM. Segment lengths are not interchangeable with total sharing; our current segment group does not establish eligibility. This does not render its smaller segments genealogically useless."
           }
         ]
       }

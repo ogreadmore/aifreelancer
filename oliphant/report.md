@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-start-here)
+Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -50,9 +50,9 @@ Completed checks and corrections
 
 **Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
 
-**New original-source result:** the younger Aaron O. Davaney’s [pension file reports 23 July 1841 birth in Greene County, Georgia](./index.html#devany-pension-original) and names a lifelong acquaintance. It supplies no parents or elder-Aaron link; surname ranks and historical confidence remain unchanged.
+**New original-source result:** [William C. D. Lundy’s own pension identifies the younger Aaron Devany’s lifelong witness](./index.html#lundy-pension-original) and places Lundy in Greene County’s Dark Corner district. This narrows a childhood-household test; no parents or elder-Aaron link are established. Surname ranks and historical confidence remain unchanged.
 
-**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). Present custody and Aaron content remain unverified; a [catalogue-location enquiry](./index.html#COR15) is pending. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
+**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). Present custody and Aaron content remain unverified; a [received volume reference awaits clarification](./index.html#COR15). The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
 
 **Name and source provenance:** [Copied Bible claims](./index.html#N17) remain secondhand, and the elder Aaron’s middle name is unverified. [The fresh birth-source check](./index.html#RT01) supplies no original for 17 May 1791. [A documented Charleston institutional association](./index.html#N53) does not connect Aaron to the distinct David candidates or the Pinckney family.
 
@@ -200,7 +200,7 @@ Explain the genetic difference from other tested Oliphant branches, including wh
 
 ## The American story is clearer. The older connection is still missing.
 
-Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-findings)
+Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-findings)
 
 No parent, immigrant generation, overseas home, or surname-transition event has yet been established for Aaron. No single origin theory currently deserves to be called probable.
 
@@ -269,7 +269,7 @@ Selected evidence / Where to look next
 
 ## Clues worth following
 
-Editorial review: 2026-10-07T08:03:30Z  · Content updated: 2026-10-07T08:03:30Z  · [Edit note](./index.html#edit-0157-clues)
+Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-clues)
 
 A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
 
@@ -289,7 +289,7 @@ Which documentary lead deserves the next test?
 | Priority 2 · tied [Spartanburg Robert, 1820](./index.html#N13) | An original household appears after three entries from the Rainwater block. A separate Bible-transcription extract offers possible child names. | Resolve census/vendor identity and inspect the actual transcription/Bible. The young occupants are unnamed; no Aaron is recorded. The adult age bracket is a poor father fit if 1791 is approximately correct; census/vendor identity and possible other relationships remain unresolved. |
 | Priority 2 · tied [James–David / Gordon family](./index.html#N27) | Original estate papers identify a real family; [Gordon expressly calls himself James’s son-in-law](./index.html#N29). | Find a contemporary Aaron relationship and identify David; he is not established as James’s son or the painter. See [C05](./index.html#C05). |
 | Priority 3 · indirect [William–Betsy Gordy compilation](./index.html#N14) | A separate family compilation and the recorded William–Thomas gift provide specific people and sources to test. | Establish an Aaron connection; lost-letter traditions, other Williams and the unchecked original 1806 register remain distinct. |
-| Priority 3 · indirect [Younger Aaron Olifant Devany](./index.html#N02) | His 1866 marriage records the full name. A newly read 1897 pension adds a sworn Greene County birth claim and a lifelong acquaintance, providing more precise identity tests. | Identify his parents and establish a relationship to the elder Aaron; proposed Samuel/Agatha identities remain unresolved. |
+| Priority 3 · indirect [Younger Aaron Olifant Devany](./index.html#N02) | His 1866 marriage records the full name. His pension reports Greene County birth; William C. D. Lundy’s own file identifies the lifelong witness and gives a precise locality for that associate. | Compare their childhood households, then seek explicit parentage. Lundy’s Dark Corner locality does not place Aaron there; no elder-Aaron relationship is established. |
 | Priority 3 · indirect [John/Mary Davaney candidates](./index.html#N21) | Original estate papers name the couple and place John in Gwinnett in 1834; earlier district presence permits comparison. | Prove the census/estate identities and Samuel’s parent link. Do not merge this couple with the younger namesake’s proposed family. |
 | Unranked · household check [Edgefield John Oliphant, 1810](./index.html#N13) | The census original has an anonymous male 16–25. Selected John probate originals corroborate a named son William, offering a concrete alternative to test. | Resolve census/testator identity and William’s age/residence before proposing Aaron. Selected John and William will/probate originals do not name Aaron; no parent of Aaron is identified. |
 
@@ -297,11 +297,11 @@ Which documentary lead deserves the next test?
 
 ### A younger man actually bore the name Aaron Olifant Devany
 
-**Why it stands out:** the full name appears in his 1866 marriage register, and his 1870 household occurs close in enumeration order to a Humphrey household under investigation for an Oliphant connection. A newly read pension file adds his sworn 23 July 1841 Greene County birth claim and a witness who says he knew him all his life. These give the namesake investigation more precise source targets.
+**Why it stands out:** the full name appears in his 1866 marriage register, and his 1870 household occurs close in enumeration order to a Humphrey household under investigation for an Oliphant connection. A newly read pension file adds his sworn 23 July 1841 Greene County birth claim and a witness who says he knew him all his life. The witness is now strongly identified as William C. D. Lundy; his own pension names Dark Corner district, Greene County. This is a locality for the associate, not a demonstrated childhood address for Aaron.
 
 **Limit:** neither his relationship to the older Aaron nor the reason for his name is established. A namesake need not be a relative.
 
-**Useful next test:** test the Greene County birth claim and Lundy’s statement that he knew him all his life against a record that names his parents; resolve the proposed Samuel/Agatha household identification. [Read the evidence and original-record links →](./index.html#N02)
+**Useful next test:** compare original Lundy and Devany childhood households, then obtain a record naming Aaron’s parents; resolve the proposed Samuel/Agatha identification. [Read the evidence and original-record links →](./index.html#N02)
 
 [Devaney evidence and unresolved tests →](./family-lines.html#devaney-evidence)
 
@@ -1363,7 +1363,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-08T00:06:53Z  · Content updated: 2026-10-08T00:06:53Z  · [Edit note](./index.html#edit-0158-research-notes)
+Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1435,7 +1435,13 @@ Reviewed 7 October 2026 · Original pension testimony added; parentage and elder
 
 **Supplement checked separately:** the same six-spelling query in the supplements returned one result, [Mrs. Martha A. Davaney, cpa23533](https://vault.georgiaarchives.org/digital/collection/pension/id/6594). Its sole image is a **1 March 1926 pension-payment agency appointment**, naming Samuel M. Devaney as agent. It names no husband and does not state that the agent is a son or other relative; the pensioner has not been independently identified as Aaron’s wife. The generic indexed “affidavit” label does not make it a birth or kinship statement. These completed queries supersede the failed 6 October access route while preserving the earlier exact-Devany negative. No scans are republished.
 
-**Next discriminating tests:** use the younger man’s Greene birth claim and Lundy’s lifelong acquaintance to identify an exact original service entry and a record that names his parents; test the 1850 identity rather than merging on age/name alone. The possible Augusta 1916 death entry and separate [pending estate clarification](./index.html#COR11) remain open. The elder-Aaron relationship and both DNA-comparator pedigrees are still unproved.
+**The lifelong witness identified, 7 October 2026:** [William C. D. Lundy’s own Greene County pension, RG58-1-1, USAMILCONFEDGA_182622-00911](https://vault.georgiaarchives.org/digital/collection/TestApps/id/68007), has twenty-eight digital images, all acquired and visually examined by two readers. Image 10 right gives **Comfort post office, Company K, 44th Georgia, and a 27 February 1897 oath before Jas. H. McWhorter**—matching the witness in Davaney’s images 3/15. The combination strongly identifies the associate, without independently proving his lifelong-acquaintance assertion.
+
+**A narrower locality, with limits:** Lundy’s sworn 25 February 1896 appeal, images 23–24, says he was born in the county within four miles of his then home and lived fourteen miles from the courthouse in **Dark Corner district**. These retrospective statements concern Lundy; they do not place Aaron Devany’s childhood in that district or radius. Repeated residence-since entries give 13 June 1841; later forms say “his Birth,” but there is no contemporary birth registration here. No recognized Devany/Oliphant name, named parent or genealogical relationship was found in these twenty-eight images. The original right/left-arm descriptions and image 10’s 1864/1862 wound-year conflict are preserved, not silently harmonized.
+
+**Completed scope:** one all-fields, *Any of the words*, main-index *Lundy* query returned nine entries, including four Greene candidates. W. C. D. was selected and tested against originals; the other pension files remain unread. Three preceding web-discovery queries yielded no relevant result opened. Neither screen is an archive-wide absence claim. No census, parent-bearing deed/probate or original compiled service file was read in this batch.
+
+**Next discriminating tests:** compare William C. D. Lundy’s original 1850/1860 Greene households and locality with the younger Devany’s unresolved household, then seek an explicit parent or sibling statement. Preserve the proposed Samuel/Agatha and 1850 child identity conflicts; lifelong acquaintance alone is not kinship. The exact original service entry, possible Augusta 1916 death entry and separate [pending estate clarification](./index.html#COR11) remain open. The elder-Aaron relationship and both DNA-comparator pedigrees are still unproved.
 
 Restricted supporting successor, 6 October 2026: [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk). Individually authorized access is required; the dated source reviews preserve their original evidence and limits.
 
@@ -3206,7 +3212,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-08T00:06:53Z  · Content updated: 2026-10-08T00:06:53Z  · [Edit note](./index.html#edit-0158-updates)
+Editorial review: 2026-10-08T03:30:00Z  · Content updated: 2026-10-08T03:30:00Z  · [Edit note](./index.html#edit-0159-updates)
 
 6 October 2026
 
@@ -3223,6 +3229,26 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-06T13:40:41-04:00  
 - [research-notes](./index.html#research-notes): Added discreet restricted successor links to N02/N14/N97; historical source readings, identity limits, measured results and confidence are unchanged.
 
 - [updates](./index.html#updates): Appended this finite preservation-linkage checkpoint; earlier 01.52 review notes and all prior edition history are retained.
+
+7 October 2026
+
+### Edition 01.59 · Identifying the lifelong witness
+
+[William C. D. Lundy’s twenty-eight-image pension](./index.html#lundy-pension-original) strongly identifies the younger Devany’s associate and supplies Dark Corner district as a locality for Lundy. No parentage or elder-Aaron connection was found; surname ranks and historical confidence are unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-08T03:30:00Z . Original scans remain outside the public report.
+
+- [start-here](./index.html#start-here): Link the securely identified witness and narrow locality test; synchronize the already-known pending custody clarification.
+
+- [findings](./index.html#findings): Refine the existing priority3 indirect namesake test; no candidate rank or parentage confidence change.
+
+- [clues](./index.html#clues): K01 names the identified associate and separates his locality from Aaron’s unproved childhood address.
+
+- [research-notes](./index.html#research-notes): N02 preserves28-image original coverage, identity correlation, locality, bounded negatives, contradictions and next household test.
+
+- [updates](./index.html#updates): Append this source successor without a genealogy or genetic-confidence upgrade.
 
 7 October 2026
 

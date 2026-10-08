@@ -530,6 +530,7 @@ DEVANEY_PUBLIC_SOURCE_URLS = frozenset({
     'https://vault.georgiaarchives.org/digital/collection/TestApps',
     # Exact official originals acquired and independently read on 7 October 2026.
     'https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927',
+    'https://vault.georgiaarchives.org/digital/collection/TestApps/id/68007',
     'https://vault.georgiaarchives.org/digital/collection/pension/id/6594',
 })
 DEVANEY_EVIDENCE_CSS = '''

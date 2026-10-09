@@ -2,7 +2,7 @@
 
 23 saved Y67 tester observations, plus one separate A823 comparator. These are observation rows, not 23 independently documented paternal families. No fresh account data were read for this table; primary comparison-reading dates are retained per link.
 
-Saved observations: 2026-09-29. Editorial review: 2026-10-08T22:40:23Z.
+Saved observations: 2026-09-29. Editorial review: 2026-10-09T16:21:45Z.
 
 - Exclusions apply to the specific observed typed lines, never to every family with the surname.
 - Repeated testers, surname spellings and nested branches are not independent confirmations. No independent-family count is established.
@@ -177,7 +177,7 @@ Distinct DNA records: [FL04](./family-lines.html#FL04).
 
 Devaney remains the strongest working surname candidate in this register\. The evidence below supports further testing; it does not identify Aaron’s father, prove a former surname or date a surname change\.
 
-Editorial review: 2026-10-08T07:04:42Z.
+Editorial review: 2026-10-09T16:21:45Z.
 
 ### DE01 · Two distinct Y\-DNA leads
 
@@ -220,7 +220,7 @@ Editorial review: 2026-10-08T07:04:42Z.
 
 **Limits:** The younger man lived decades later\. The marriage names no parents and gives no reason for the name\. Schedule order does not prove adjacent land or kinship\. Proposed Samuel/Agatha parentage, a connection to elder Aaron and descent to either comparator remain unproved\.
 
-**Next test:** Seek an explicit parent or sibling statement, the possible Augusta local death entry of 23 May 1916, and the already\-requested Richmond Davaney estate papers after establishing the decedent’s identity\. A documented unrelated namesake origin would weaken this historical association\.
+**Next test:** Seek an explicit parent or sibling statement, the possible Augusta local death entry of 23 May 1916, and the unread Richmond Davaney estate papers using N23’s supplied procedure, with the decedent’s identity and charges established before a copying commitment\. The clarification reply is received; no source\-bearing retrieval is commissioned\. A documented unrelated namesake origin would weaken this historical association\.
 
 - [Original 1866 marriage](https://www.familysearch.org/ark:/61903/3:1:33S7-8BZ6-2MS)
 - [Family evidence and contradictions](./index.html#N02)
@@ -245,7 +245,7 @@ Editorial review: 2026-10-08T07:04:42Z.
 
 **Limits:** Retrospective birth testimony, not a birth registration\. O is not expanded\. No named parent/sibling or elder\-Aaron link in the main file; the supplement names no husband or agent relationship\. Service year/company, some ages and initials differ\. The 1850 child identity and parentage remain open; historical confidence and ranks unchanged\.
 
-**Next test:** Seek an explicit parent or sibling record for the younger Aaron, especially the possible Augusta 1916 death entry and existing Richmond estate clarification\. The 1850 William candidate needs independent full\-initial/family correlation before use; original marriage collection 4766, record 1188777 remains unread\. Neither childhood residence nor kinship follows from a shared post office\. No elder\-Aaron or DNA\-comparator bridge\.
+**Next test:** Seek an explicit parent or sibling record for the younger Aaron, especially the possible Augusta 1916 death entry and the unread Richmond estate papers\. The court’s clarification reply is received; no source\-bearing retrieval is commissioned\. Follow N23’s procedure and charge limits without repeating the clarification\. The 1850 William candidate needs independent full\-initial/family correlation before use; original marriage collection 4766, record 1188777 remains unread\. Neither childhood residence nor kinship follows from a shared post office\. No elder\-Aaron or DNA\-comparator bridge\.
 
 - [Original findings, contradictions and completed coverage](./index.html#devany-pension-original)
 - [Main pension file](https://vault.georgiaarchives.org/digital/collection/TestApps/id/235927)
@@ -259,7 +259,7 @@ Editorial review: 2026-10-08T07:04:42Z.
 
 Eight evidence layers applied to the nine open surname groups, using our saved records and DNA observations\. No new DNA results or archive records were acquired for this review\. Linked sources retain their original dates and coverage limits\.
 
-Editorial review: 2026-10-08T22:40:23Z.
+Editorial review: 2026-10-09T16:21:45Z.
 
 **Already applied:** FS01 and FS02 in the saved comparison scope. FL24 shares A823 but a younger pairwise branch is unproved\. FL02 and the other eight Y67 observations lack finer placement\. This stack adds no genetic pass or exclusion\. The existing screen identifies the later Devany namesake, official Wood execution, a reported Collins officiant and an earlier Carrell parcel party\. Other rows retain bounded nonconnection or county\-label limits\.
 
@@ -853,14 +853,18 @@ Depends on: FS03.
 
 Question: What relationship does the record actually state: family, personal transaction, official duty, officiation or earlier parcel interest?
 
-Applied scope: The recorded roles of the named HX leads, with Rebecca's explicitly stated Rainwater parentage kept separate\.
+Applied scope: The nine HX role statements, plus a 9 October 2026 review of saved person–event–role evidence across the Rutherford 1809 witness record, Pendleton estate/debt/deeds and Georgia land/court/estate records\. The two saved 1821 deed images were rechecked; no new source was acquired\.
 
-Result: Rebecca's Rainwater parentage is explicit, but none of the nine candidate rows names an elder\-Aaron relationship to a comparator paternal family\. Devany household nephew/niece terms leave the connecting parent open\. The three indirect HX roles are not three personal\-family links\.
+Result: The strongest cross\-place family association remains the 29 January 1821 estate\-share deeds: Aaron and the adult Solomon Rainwater are both described as of Hancock County, Georgia, and witness each other’s releases to Job Rainwater of Pendleton\. Aaron’s entitlement is through wife Rebecca, daughter of deceased Solomon Rainwater\. This supports the known Rainwater marriage network, not Aaron’s parentage or a candidate DNA family\. No new personal\-associate bridge to the 1809 Rutherford witness or a Devaney paternal family was established in this saved\-source review\. The Devany nephew/niece terms still leave the connecting parent open; the three indirect HX roles are not three personal\-family links\.
 
-Limits: Routine official execution, retrospective officiation and a parcel predecessor cannot be counted as personal kinship\. Rainwater marriage kinship does not imply a biological paternal Rainwater branch\.
+Limits: The two reciprocal releases belong to one estate transaction group; they are not two independent proofs of Aaron’s origin\. An estate purchaser need not be an heir\. Routine official execution, retrospective officiation and an earlier parcel interest are different roles from personal kinship\. Rainwater marriage kinship does not identify a biological paternal Rainwater branch\. The saved\-source review is not an exhaustive search of original county series\.
 
-Next test: Require a dated direct relationship or personal\-associate instrument; for the Devany nephews/niece establish the connecting parent and paternal, maternal or marriage route\. First assemble dated person–event entries from the existing Pendleton estate/deed, Rutherford witness and Georgia land/court sources, retaining identities as provisional where necessary\. Compare recurring personal participants across jurisdictions, then choose one source\-backed associate or household bridge to investigate\. Do not repeat completed Caldwell, Lundy or parcel scopes, or promote routine official duties into personal ties\.
+Next test: For the earlier Pendleton debt\-register Aaron, seek an actual surviving obligation, service endorsement or other identity\-bearing paper after the register\-to\-archive crosswalk is resolved \(R08\)\. Preserve the existing SCDAH submission’s uncertain delivery and do not duplicate it\. The 1809 witness and the later named couple still require a dated identity bridge\. For the younger Devany nephews/niece, establish the connecting parent and paternal, maternal or marriage route\. The dated associate extraction is now completed for this bounded saved\-source scope; reopen it for a new source or a specific unresolved identity, not by repeating completed Caldwell, Lundy or parcel searches\.
 
+- [1821 reciprocal estate releases: Pendleton Book P, pp\. 381–382](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHC-K) — Solomon Rainwater’s 29 January 1821 release begins on p\. 381 and continues on p\. 382, where Aaron and Abner Rainwater witness it\. Aaron’s adjoining release names his wife Rebecca and has Solomon and Abner as witnesses\. Both grantors are described as of Hancock County\. Saved images rechecked 9 October 2026; these are recorded copies, not verified autographs\.
+- [Aaron and Rebecca’s 1821 release, p\. 382](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B) — Explicit marriage\-derived estate interest and Rebecca’s parentage\. The adult Solomon Rainwater witness is not Solomon Rainwater Oliphant\. No Aaron parent is stated\.
+- [N83: distinct Aaron identities and missing bridges](./index.html#N83) — Existing source synthesis and qualified identity tests\. Same\-name appearances and repeated copies of the same event do not establish a continuous life\.
+- [R08: underlying Pendleton debt papers](./index.html#R08) — Register\-to\-archive crosswalk and surviving papers remain unresolved\. Existing enquiry delivery is uncertain; no repeated request or newly identified loose case is implied\.
 - [N02: younger Aaron Olifant Devany](./index.html#N02) — 1866 marriage and 1870 enumeration are named local leads\. Elder Aaron was dead by December 1826; younger\-family parents and elder\-family relationship remain unresolved\.
 - [N57: Rainwater military and migration context](./index.html#N57) — Saved pension selection is incomplete and pensioner\-to\-estate\-associate identity qualified\. Morehead\-company dates belong to John, not automatically Aaron\.
 - [N26: parcel correlation and title gaps](./index.html#N26) — Selected deeds strongly correlate the 230\-acre sequence; Leonard\-to\-Michael and Hardin\-to\-Woodard interests are missing\. Distinct 50\-acre Good/Wood readings and the separate Brown tract retain their limits\.
@@ -897,7 +901,7 @@ Result: No row demonstrates bridge A, an elder\-Aaron kinship link to the candid
 
 Limits: These are two missing demonstrated bridges in the reviewed register, not biological exclusions or whole\-archive negatives\. An heir, uncle or sibling relationship does not alone establish paternal Y transmission; maternal, adoptive or marital routes remain possible\. Document every relevant father–son step across the claimed patrilineal bridge, retaining recorded\-parentage versus biological\-paternity limits\. Exact comparator identity, source independence and each generation matter\. Even a Solomon collateral would not automatically close Solomon\-to\-Aaron\.
 
-Next test: For Devany, await the existing Richmond estate request and verify identity before using heir wording\. In parallel, seek a parent\-bearing Edward record and independent male\-line collateral; then document each father–son step and any consented comparison\. For a specifically identified candidate family, reconstruct all relevant children and marriages and inspect later heir, guardian or settlement records: a useful relationship statement may postdate Aaron’s departure or death\. This extends the relationship test; it does not require one document to state parentage if independent evidence can form a sound argument\.
+Next test: For Devany, seek an explicit parent or sibling source\. The Richmond court’s procedure and fee\-only reply are received; the estate identity and papers remain unresolved, and no source\-bearing retrieval is commissioned\. Use N23’s current instructions without repeating the clarification, and verify the decedent before using heir wording\. In parallel, seek a parent\-bearing Edward record and independent male\-line collateral; then document each father–son step and any consented comparison\. For a specifically identified candidate family, reconstruct all relevant children and marriages and inspect later heir, guardian or settlement records: a useful relationship statement may postdate Aaron’s departure or death\. This extends the relationship test; it does not require one document to state parentage if independent evidence can form a sound argument\.
 
 - [N23: Richmond notices and Davaney estate target](./index.html#N23) — Saved early administration notices state no Aaron kinship; later William A\. Davaney letters and associated papers remain unread and estate identity is unproved\.
 - [N101: earlier paternal collateral](./index.html#N101) — Adult\-family continuity and Milton's recorded Son link are supported; adult Edward\-to\-Solomon/Amanda parentage and an exact tester bridge remain unclosed\.
@@ -1458,7 +1462,7 @@ Next test: Revisit only with a typing correction, changed branch evidence or a d
 
 A bounded cross\-check of the saved research corpus and selected previously acquired originals, completed 2 October 2026\. Nine historical surname entries cover the nine unresolved Y67 observations plus the distinct A823 DeVenney comparator\. No fresh external discovery query, archive\-wide search or all\-surname inventory was completed\. Historical record dates and prior reading scopes are retained in each entry\. On 7 October, HX01 alone was additionally reviewed against one newly acquired 15\-image main pension file and one separate supplement image; other HX source\-reading dates remain unchanged\. On 7 October, the HX01 successor additionally correlated all 28 images of William C\. D\. Lundy’s pension with the named witness; other HX evidence is unchanged\. On 8 October, HX01 adds two census originals and one corrected spouse\-role death certificate; no other historical surname coverage was extended\.
 
-Prepared: 2026-10-02. Editorial review: 2026-10-08T07:04:42Z.
+Prepared: 2026-10-02. Editorial review: 2026-10-09T16:21:45Z.
 
 DNA and historical results are independent. A named person, surname occurrence or local association does not connect a paternal line to a tested comparator or to Aaron. This screen does not change DNA assessments, infer SNP calls, exclude a whole surname or establish an ancestor. Candidate rank follows the grouped overview; record-retrieval priority is separate and is not an ancestry probability. A bounded negative leaves other records and families open.
 
@@ -1482,7 +1486,7 @@ Limits: A later full name and same county supply a specific lead, with no demons
 
 Record-retrieval priority: First follow\-up in this surname cross\-reference; the overall documentary tier remains indirect\.
 
-Next test: Seek an explicit parent or sibling record for the younger Aaron, especially the possible Augusta 1916 death entry and existing Richmond estate clarification\. The 1850 William candidate needs independent full\-initial/family correlation before use; original marriage collection 4766, record 1188777 remains unread\. Neither childhood residence nor kinship follows from a shared post office\. No elder\-Aaron or DNA\-comparator bridge\.
+Next test: Seek an explicit parent or sibling record for the younger Aaron, especially the possible Augusta 1916 death entry and the unread Richmond estate papers\. The court’s clarification reply is received; no source\-bearing retrieval is commissioned\. Follow N23’s procedure and charge limits without repeating the clarification\. The 1850 William candidate needs independent full\-initial/family correlation before use; original marriage collection 4766, record 1188777 remains unread\. Neither childhood residence nor kinship follows from a shared post office\. No elder\-Aaron or DNA\-comparator bridge\.
 
 - [Hancock marriage, 14 January 1866: Aaron Olifant Devany and Martha Andrews](https://www.familysearch.org/ark:/61903/3:1:33S7-8BZ6-2MS) — p\. 104; DGS 5190837, image 174\. License 13 January; marriage return 14 January 1866\. Full name and marriage established\. Previously read 28 September; saved original locally reinspected 2 October 2026\.
 - [Hancock enumeration, 16 June 1870: Humphrey, A\. O\. and Drury households](https://www.familysearch.org/ark:/61903/3:1:S3HY-DCNS-6NF) — p\. 31, stamped 436: dwellings/families 271/278, 273/280 and 275/282, with intervening households\. Enumeration association only\. Previously read 28 September; saved original locally reinspected 2 October 2026\.
@@ -1649,4 +1653,4 @@ Next test: Require a named personal or family connection before extending the hi
 
 No complete surname inventory or independent founder coverage is established. Untested families and lower-resolution comparisons remain open. No surname is selected by elimination alone.
 
-Editor note: Revision 01.64: a primary-source professional-method review sharpens existing filters with source/informant provenance, expectation-qualified absences, recurring personal-associate networks and later collateral-family records. WATO is deferred for the current unassigned segment evidence. These are method recommendations, not newly executed historical tests. All DNA observations, nine open surname headings, ranks, sampled-line exclusions and historical confidence remain unchanged. Main report remains Edition 01.63.
+Editor note: Revision 01.65: applied the personal-associate method to the bounded saved-source set and rechecked the two 1821 estate-share deed images. The known Rainwater marriage network remains the strongest cross-place family association; no new earlier-Aaron identity or candidate-paternal-family bridge was established. Corrected four Richmond next-test references to the received procedural reply and uncommissioned retrieval. The genetic-model audit preserves all observations, nine open surname headings, ranks, sampled-line exclusions and historical confidence. Main report remains Edition 01.63.

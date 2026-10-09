@@ -1,6 +1,6 @@
 # The Aaron Oliphant Inquiry
 
-> An audience-neutral working investigation of Aaron Oliphant's family. Edition 2026-10-08. Provisional findings; publication does not certify a conclusion.
+> An audience-neutral working investigation of Aaron Oliphant's family. Edition 2026-10-09. Provisional findings; publication does not certify a conclusion.
 
 ## Read first
 - [Start here](./index.html#start-here): the authoritative research checkpoint, continuation steps and restricted evidence-library links.

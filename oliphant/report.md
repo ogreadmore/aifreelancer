@@ -714,7 +714,7 @@ Solomon’s census entry reports his unnamed father born in South Carolina. The 
 
 ## A paternal branch is a clue. It is not an address or a surname.
 
-Editorial review: 2026-10-06T13:28:23-04:00  · Content updated: 2026-10-03T18:54:43Z  · [Edit note](./index.html#edit-0152-dna)
+Editorial review: 2026-10-12T23:14:23Z  · Content updated: 2026-10-12T23:14:23Z  · [Edit note](./index.html#edit-0168-dna)
 
 Y-DNA follows the direct paternal line. Autosomal DNA reflects many ancestral lines. These answer different questions, and a shared surname in an autosomal match’s tree does not identify the source of the shared DNA. [[8]](./index.html#s8)
 
@@ -723,6 +723,8 @@ Y-DNA follows the direct paternal line. Autosomal DNA reflects many ancestral li
 **Geographic test:** country/locality assessment and review of four Big Y profiles and available tree fields have already been performed. No verified close-paternal county/parish cluster is established. [N31 records the completed coverage and remaining requirements](./index.html#N31).
 
 **Comparison reply, 1 October 2026:** guidance identifies a consent-based route to seek finer results for the unresolved GD5 comparator and a potential collateral whose paternal split still needs documentation. It supplies no new genetic comparison or historical anchor. [Neither surname category nor the A823 group date establishes this pair’s age](./index.html#N32); private participant data require authorization.
+
+**Latest account check, 12 October 2026:** a new 25-marker notification adds no resolved paternal branch; [N32 records the result and next test](./index.html#new-y-match-notice). Updated autosomal regions do not identify Aaron’s home or exclude a Scottish paternal ancestor; [N31 explains the limits](./index.html#regional-estimate-limit). The ranked comparisons remain unchanged.
 
 R-A823
 
@@ -1368,7 +1370,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-12T06:57:19Z  · Content updated: 2026-10-12T06:57:19Z  · [Edit note](./index.html#edit-0167-research-notes)
+Editorial review: 2026-10-12T23:14:23Z  · Content updated: 2026-10-12T23:14:23Z  · [Edit note](./index.html#edit-0168-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1986,7 +1988,7 @@ Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/
 
 N31 · R-A823 geography gives a search direction, not an immigrant's home
 
-Reviewed 1 October 2026 · Regional lead; recent geographical placement unresolved · Country/locality assessment, saved-table review and four Big Y profile/available-tree reviews already performed; this successor reconciles coverage without a new account inspection.
+Reviewed 12 October 2026 · Regional context; recent paternal geography unresolved. A new autosomal-method check does not repeat the earlier Y country/profile survey. Older source and account observations retain their individually stated dates.
 
 The 29 September review of FamilyTreeDNA's R-A823 country-frequency table found 105 displayed participants across the branch and its descendants, including 38 with unknown origins. Northern Ireland had the highest displayed country frequency: nine A823 participants among 2,972 testers reporting that country, rounded to 0.3%. Ireland and Scotland displayed 17 and ten A823 participants respectively, each rounded to 0.1% against different denominators. These are self-reported earliest direct-paternal origins within a selected testing sample. They are neither population frequencies nor probabilities of this family's origin. Related testers, uneven pedigree documentation, downstream branch composition and unknown origins have not been resolved.
 
@@ -2000,11 +2002,13 @@ These observations justify a northern Irish search priority, particularly testin
 
 Sources/read status: public tree and country displays reviewed on 29 September 2026; submitted locality labels, not independently proved pedigrees: [FamilyTreeDNA country frequency](https://discover.familytreedna.com/y-dna/R-A823/frequency), [YFull R-A823 tree](https://www.yfull.com/tree/R-A823/), [Devine project cluster discussion](https://www.familytreedna.com/groups/devine/about/results). See also [the distinct DeVenney comparator](./index.html#C02) and [its pedigree limits](./index.html#N34).
 
+**Autosomal region updates, 12 October 2026:** the current Ancestry regions summary and its Ulster detail were inspected. A population-region estimate is different from an ancestral journey and reflects many family branches. An Ulster assignment cannot identify Aaron’s paternal locality or distinguish a Devaney ancestor from another Irish ancestor. An absent Highlands assignment cannot exclude a Highland or other Scottish paternal ancestor: random inheritance and overlapping reference populations limit that inference. No prior/current percentage change or numerical range was measured in this pass. The existing Y-based locality leads remain unresolved. Method sources: [ancestral regions and journeys](https://help.ancestry.com/hc/en-us/articles/53933330524691-Ancestral-Regions-in-AncestryDNA), [region ranges](https://help.ancestry.com/hc/en-us/articles/53933348448915-AncestryDNA-Region-Ranges), [inheritance and population overlap](https://help.ancestry.com/hc/en-us/articles/53933322912787-Why-Is-My-Percentage-for-an-Ancestral-Region-Higher-or-Lower-Than-My-Family-Tree-Suggests-It-Should-Be). Individual estimates remain private.
+
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1Iy78Cbx4SiV0laKe41TMEfBwxugox5_P/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1vfqx8FGLBHR5wsq6IrSOUXnMVMWB0NsF/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
 N32 · Why surname counts cannot yet become ancestry probabilities
 
-Reviewed 6 October 2026 · Method defined; statistical inputs insufficient · Earlier controls retained; Orangeburg census original and official later transcription read; household identity and tested-family bridge unresolved.
+Reviewed 12 October 2026 · Notification and test-resolution limits added; the existing surname, timing and autosomal-source uncertainties remain. Older source and account observations retain their individually stated dates.
 
 The saved Y67 list contains 23 matches: two at genetic distance five, three at six and eighteen at seven. This describes a selected match list, rather than 23 independent ancestral families. Fourteen have finer branch information; eleven split above A823 and three follow a downstream path that the tested Oliphant sample's reviewed reads do not support. Nine remain broad-only. Missing finer testing is missing information, not evidence that an unresolved comparator is especially close.
 
@@ -2029,6 +2033,8 @@ The initial three-query check read three derivative items and a collection point
 A defensible enrichment analysis would first define the eligible family branch and comparable tree coverage, group related testers into independent family clusters, and establish a baseline for clusters with and without the candidate surname. It would retain relationship distance, uncertainty, variant-grouping sensitivity and the effect of searching many surnames, then seek validation in evidence not used to choose the candidate. Those denominators and branch assignments are not available here. No significance test, posterior surname odds or numerical origin probability has been calculated. Finer SNP topology and independent records currently discriminate better than more arithmetic on spelling totals.
 
 Sources/read status: the counts are private observations independently recounted in the saved 29 September audit; only aggregate methods are published. Public methodological references: [Y-DNA genetic distance](https://help.familytreedna.com/hc/en-us/articles/6019925167631-Understanding-Y-DNA-Genetic-Distance), [FTDNATiP introduction](https://help.familytreedna.com/hc/en-us/articles/6162096082831-Y-DNA-FTDNATiP-Report-Introduction). TiP estimates common-ancestor time from STR results; it does not estimate a former surname. An independently resolved deep SNP split cannot be discarded in favor of an apparently recent STR-only estimate.
+
+**New-match check, 12 October 2026:** a FamilyTreeDNA email reports one new 25-marker STR match, without naming the comparator. Direct account navigation recovered the relevant matching level and two rows dated that day; the notice cannot be assigned conclusively to either. No newly resolved paternal branch was displayed. The loaded Big Y list still showed four existing entries, with neither same-day STR comparator present. A Big Y test badge on an STR row is not itself a SNP match or an available completed haplogroup. No surname rank, recent relationship or historical confidence changes. The next test is finer result availability, followed by actual SNP placement and documented paternal ancestry. The [official new-match guide](https://help.familytreedna.com/hc/en-us/articles/14770726299151-How-Do-I-Find-My-New-Y-DNA-Matches) explains selecting the notified marker level and most-recent sorting; the broken email redirect’s cause was not diagnosed. Living identities and detailed account results remain private.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1gAp_9oNW3nQ-BhCp7y6TGDHIg_Q8JnTD/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/13WKrIu-yrvoaZ8wW918Teal6_c9LbQvj/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1zRAQlHX154zWbQE9BVz_XPUGC9ISHQp1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -3227,7 +3233,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-12T06:57:19Z  · Content updated: 2026-10-12T06:57:19Z  · [Edit note](./index.html#edit-0167-updates)
+Editorial review: 2026-10-12T23:14:23Z  · Content updated: 2026-10-12T23:14:23Z  · [Edit note](./index.html#edit-0168-updates)
 
 6 October 2026
 
@@ -4266,6 +4272,22 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-12T06:57:19Z . Unaf
 - [research-notes](./index.html#research-notes): N14 preserves the exact existing-thread follow-up, catalogue access failure and unread-content limits without publishing correspondence.
 
 - [updates](./index.html#updates): Append this procedural checkpoint only; genealogy, DNA, candidate priorities and the comparison supplement remain unchanged.
+
+12 October 2026
+
+### Edition 01.68 · New-match and regional-estimate check
+
+Direct FamilyTreeDNA access recovers a 25-marker notification and two same-day STR rows, with no newly resolved paternal branch. The notice does not identify which row it refers to; the Big Y list remains four existing entries. Ancestry’s October regions update supplies whole-family population context, not Aaron-specific geography or a Scottish exclusion. [N32](./index.html#new-y-match-notice) and [N31](./index.html#regional-estimate-limit) preserve the results, methods and limits. Private match identities and individual estimates are omitted. The Y67 baseline, separate Devaney comparisons, surname rankings, historical tree and confidence remain unchanged. No message, order or account edit was made.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-12T23:14:23Z . Unaffected section and historical source-reading dates are retained.
+
+- [dna](./index.html#dna): Link the new STR-notification check and autosomal-region limits without changing the ranked comparisons, Y67 counts or historical confidence.
+
+- [research-notes](./index.html#research-notes): N31 distinguishes regional estimates from paternal geography; N32 records recovered 25-marker access, ambiguous notice identity and unchanged Big Y list. Private values and identities are omitted.
+
+- [updates](./index.html#updates): Append the bounded account and methodological checkpoint; preserve all earlier editions, source dates and unchanged comparison ranks.
 
 09 / Contact
 

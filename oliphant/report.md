@@ -1,6 +1,6 @@
 # The Aaron Oliphant Inquiry
 
-Public working edition, 2026-10-09. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
+Public working edition, 2026-10-12. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
 Instructions
 
@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-09T17:46:33Z  · Content updated: 2026-10-09T17:46:33Z  · [Edit note](./index.html#edit-0166-start-here)
+Editorial review: 2026-10-12T06:57:19Z  · Content updated: 2026-10-12T06:57:19Z  · [Edit note](./index.html#edit-0167-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -52,7 +52,7 @@ Completed checks and corrections
 
 **Latest source test:** [The lifelong witness’s census comparison](./index.html#lundy-census-original) found an age-compatible 1850 William and a broad White Plains postal overlap in 1860, but no specific childhood relationship to the younger Aaron Devany. A suggested death certificate concerns the witness’s wife. Surname ranks and historical confidence remain unchanged.
 
-**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). [HSP confirmed custody of the Samuel Grant papers and FC Ol family files on 9 October](./index.html#COR16) and supplied two catalogue references. Detailed descriptions and Aaron content remain unread; follow the source assessment for the inventory and bounded retrieval options. No paid research or copying is commissioned. [GSP does not hold the underlying records](./index.html#COR15), and its printed volume remains unidentified. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
+**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). [HSP confirmed custody of the Samuel Grant papers and FC Ol family files on 9 October](./index.html#COR16) and supplied two catalogue references. Detailed descriptions and Aaron content remain unread. A [no-fee inventory and lookup-suitability follow-up was sent on 12 October](./index.html#COR16); await its answer before selecting paid retrieval. No paid research or copying is commissioned. [GSP does not hold the underlying records](./index.html#COR15), and its printed volume remains unidentified. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
 
 **Name and source provenance:** [Copied Bible claims](./index.html#N17) remain secondhand, and the elder Aaron’s middle name is unverified. [The fresh birth-source check](./index.html#RT01) supplies no original for 17 May 1791. [A documented Charleston institutional association](./index.html#N53) does not connect Aaron to the distinct David candidates or the Pinckney family.
 
@@ -834,7 +834,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-09T17:46:33Z  · Content updated: 2026-10-09T17:46:33Z  · [Edit note](./index.html#edit-0166-records)
+Editorial review: 2026-10-12T06:57:19Z  · Content updated: 2026-10-12T06:57:19Z  · [Edit note](./index.html#edit-0167-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -966,7 +966,7 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 14 · Conditional follow-ups Other records that need a sharper target Not order-ready
 
-**Samuel Grant papers and family files:** [HSP confirmed custody on 9 October](./index.html#COR16) and supplied [Samuel Grant Oliphant papers (ead-GSP089)](https://discover.hsp.org/Record/ead-GSP089) and [Oliphant family genealogical material (marc-76358)](https://discover.hsp.org/Record/marc-76358). The [current source assessment](./index.html#samuel-grant-archive) preserves the historical FC/Ol/Box58.1–58.8 reference, unread catalogue/contents limits and $40 Quick Search option. Seek an existing folder inventory or a suitably bounded lookup before paying; no Aaron item or original-versus-copy distinction has been established. No paid research or copying is commissioned. [GSP’s answered clarification](./index.html#COR15) and its unidentified printed volume remain separate.
+**Samuel Grant papers and family files:** [HSP confirmed custody on 9 October](./index.html#COR16) and supplied [Samuel Grant Oliphant papers (ead-GSP089)](https://discover.hsp.org/Record/ead-GSP089) and [Oliphant family genealogical material (marc-76358)](https://discover.hsp.org/Record/marc-76358). The [current source assessment](./index.html#samuel-grant-archive) preserves the historical FC/Ol/Box58.1–58.8 reference, unread catalogue/contents limits and $40 Quick Search option. A no-fee inventory and Quick Search suitability question was sent in the existing thread on 12 October; await that answer before paying; no Aaron item or original-versus-copy distinction has been established. No paid research or copying is commissioned. [GSP’s answered clarification](./index.html#COR15) and its unidentified printed volume remain separate.
 
 **Military rolls:** Nash regiment muster, pay and descriptive rolls: NARA **RG 94, PI-17 entries 55A, 55B, 55C; inventory entry 55**, [NAID 654644](https://catalog.archives.gov/id/654644), South Carolina, Lt. Col. Reuben Nash. Unit box, company and individual coverage remain unresolved; originals unread. The South Caroliniana Nash roster typescript, accession **2350**, 18 sheets, OCLC **31399861**, has a catalogue copy marked missing. No Aaron entry has been read in it.
 
@@ -1033,7 +1033,7 @@ Current request status · private recipients, addresses and message bodies are n
 | COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
 | COR14 Existing genealogy research contact | [Aaron compilations](./index.html#N17) — underlying birth, middle-name and parentage citations. | Sent 2 Oct; replied 6 Oct 2026 **Further derivative files received; original citations still missing** | Additional historical correspondence review was offered. Retain the source-quality limits and [specific underlying-source leads](./index.html#roddy-source-successor); do not repeat the original question. No contemporary parentage citation supplied. Any proposed individual follow-up requires an owner-reviewed draft. |
 | COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Reply and clarification received 7 Oct Eastern / 8 Oct UTC 2026 **Printed volume held; underlying records not held** | GSP clarification answered: its printed volume remains unidentified and it does not hold the underlying records. That reply alone established neither HSP custody nor loss. [HSP has since confirmed custody and supplied two catalogue records](./index.html#COR16); follow the [source assessment](./index.html#samuel-grant-archive) for the unread inventory and contents. No originals supplied, copying ordered or paid work commissioned. Do not repeat the answered GSP enquiry. |
-| COR16 Historical Society of Pennsylvania | [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — current custody and catalogue crosswalk. | 8 Oct enquiry; 9 Oct reply **Custody confirmed; historical contents unread** | HSP identifies [Samuel Grant Oliphant papers (ead-GSP089)](https://discover.hsp.org/Record/ead-GSP089) and [Oliphant family genealogical material (marc-76358)](https://discover.hsp.org/Record/marc-76358) and offers reading-room and remote access. Seek a folder inventory or confirm a bounded $40 Quick Search before paying. Catalogue details, Aaron entries and originals-versus-copies remain unexamined; no historical papers, copying order or fee resulted. Do not repeat the answered custody enquiry. |
+| COR16 Historical Society of Pennsylvania | [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — current custody and catalogue crosswalk. | 8 Oct enquiry; 9 Oct reply; 12 Oct follow-up **Custody confirmed; inventory follow-up pending** | HSP identifies [Samuel Grant Oliphant papers (ead-GSP089)](https://discover.hsp.org/Record/ead-GSP089) and [Oliphant family genealogical material (marc-76358)](https://discover.hsp.org/Record/marc-76358) and offers reading-room and remote access. A no-fee follow-up for an existing inventory, historical container crosswalk and Quick Search suitability was sent and read back in the same thread on 12 October. Await the answer before paying or repeating it. Catalogue details, Aaron entries and originals-versus-copies remain unexamined; no historical papers, copying order or fee resulted. Do not repeat the answered custody enquiry. |
 
 These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use verified institutional routes for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
 
@@ -1368,7 +1368,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-09T17:46:33Z  · Content updated: 2026-10-09T17:46:33Z  · [Edit note](./index.html#edit-0166-research-notes)
+Editorial review: 2026-10-12T06:57:19Z  · Content updated: 2026-10-12T06:57:19Z  · [Edit note](./index.html#edit-0167-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1624,7 +1624,7 @@ Restricted original-reading scope and provenance: [1820 census preservation](htt
 
 N14 · James–Jean Nevay, the William–Jean rumor and distinct Williams
 
-Reviewed 9 October 2026 · Indexed family; identities unresolved · HSP custody confirmed; collection contents and Edinburgh originals remain unread.
+Reviewed 12 October 2026 · Indexed family; identities unresolved · HSP custody confirmed 9 October; inventory follow-up sent 12 October; historical contents remain unread.
 
 Indexed Edinburgh births name James Oliphant and Jean or Joan Nevay: David, 1 September 1762; Ann, 14 November 1763; Jean, 10 April 1764 and 10 April 1765 in conflicting entries. All inspected originals were unavailable. The one-year conflict and unusually short Ann-to-Jean interval require original parish entries; paired child/parent indexes do not represent independent births.
 
@@ -1669,6 +1669,8 @@ The [GSP surname-index description](https://genpa.org/public-collections/surname
 **Custody and access confirmed, 9 October 2026:** HSP’s reply identifies [Samuel Grant Oliphant papers (ead-GSP089)](https://discover.hsp.org/Record/ead-GSP089) and [Oliphant family genealogical material (marc-76358)](https://discover.hsp.org/Record/marc-76358), the latter beginning with FC Ol Box58.1. Both are available for reading-room research by appointment. This resolves the repository question; it does not identify an Aaron item, provide a folder inventory, classify manuscripts versus copies or establish that the older Bible58:3 pointer concerns Aaron. The two catalogue records remain distinct until their descriptions can be inspected. Both supplied Discover pages stopped at security verification during this pass; no catalogue contents or historical papers were read.
 
 **Bounded retrieval option:** the official [Quick Search service](https://hsp.org/library-services/quick-search), checked 9 October, costs $40 for up to 30 minutes and usually takes two weeks; results are not guaranteed. [Standard remote research](https://hsp.org/research/remote-research) requires at least two hours at $70/hour for nonmembers or $50/hour for members, with a stated 6–8-week processing time. First obtain an existing folder/title inventory or confirm that a focused Aaron/Rebecca or Solomon Rainwater Oliphant lookup fits Quick Search. No paid work, copies or order have been commissioned. The answered GSP clarification still establishes that its library does not hold these underlying papers; do not repeat either custody question.
+
+**Inventory follow-up, 12 October 2026:** a catalogue-information and scope question was sent in the existing HSP thread and its reviewed text was verified in Sent. It asks for an existing finding aid or folder/title inventory for the two supplied catalogue records, the historical FC/Ol/Box58.1–58.8 crosswalk and whether an Aaron/Rebecca or Solomon Rainwater Oliphant name-index lookup is suitable for one Quick Search. The older Bible58:3 pointer remains conditional. This explicitly authorizes no chargeable research or copying; no fee, order or historical source resulted. Both exact catalogue URLs still failed public-reader access in this pass, which is not a holdings absence. Await the existing follow-up without duplicating it.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -3225,7 +3227,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-09T17:46:33Z  · Content updated: 2026-10-09T17:46:33Z  · [Edit note](./index.html#edit-0166-updates)
+Editorial review: 2026-10-12T06:57:19Z  · Content updated: 2026-10-12T06:57:19Z  · [Edit note](./index.html#edit-0167-updates)
 
 6 October 2026
 
@@ -4246,6 +4248,24 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-09T17:46:33Z . Earl
 - [research-notes](./index.html#research-notes): N14 replaces superseded unknown-custody and wait-for-reply directions with confirmed HSP holdings, unread contents limits and current service prices.
 
 - [updates](./index.html#updates): Record this procedural retrieval advance; preserve earlier editions and all ancestry confidence and candidate ranks.
+
+12 October 2026
+
+### Edition 01.67 · HSP inventory follow-up
+
+A no-fee source-inventory and Quick Search suitability question was sent and read back in the existing institutional thread. [N14](./index.html#samuel-grant-archive) preserves the catalogue-access and unread-source limits; [COR16](./index.html#COR16) prevents duplicate enquiries. The bounded Gmail intake added no new substantive incoming reply; the Yahoo check was interrupted after one completed date/Oliphant search and does not establish absence in the remaining scope. No historical original, pedigree, genotype, ancestry confidence or candidate rank changed. No purchase or copying order was placed.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-12T06:57:19Z . Unaffected section and historical source-reading dates are retained.
+
+- [start-here](./index.html#start-here): Record the verified no-fee HSP inventory/suitability follow-up and its pending answer; custody remains the received 9 October finding.
+
+- [records](./index.html#records): R14/COR16 distinguish answered custody from the newly sent inventory/crosswalk and service-suitability question. No copying or paid work commissioned.
+
+- [research-notes](./index.html#research-notes): N14 preserves the exact existing-thread follow-up, catalogue access failure and unread-content limits without publishing correspondence.
+
+- [updates](./index.html#updates): Append this procedural checkpoint only; genealogy, DNA, candidate priorities and the comparison supplement remain unchanged.
 
 09 / Contact
 

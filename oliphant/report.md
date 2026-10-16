@@ -1,6 +1,6 @@
 # The Aaron Oliphant Inquiry
 
-Public working edition, 2026-10-15. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
+Public working edition, 2026-10-16. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
 Instructions
 
@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-15T22:02:15Z  · Content updated: 2026-10-15T22:02:15Z  · [Edit note](./index.html#edit-0169-start-here)
+Editorial review: 2026-10-16T04:47:25Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0170-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -52,7 +52,7 @@ Completed checks and corrections
 
 **Latest source test:** [The lifelong witness’s census comparison](./index.html#lundy-census-original) found an age-compatible 1850 William and a broad White Plains postal overlap in 1860, but no specific childhood relationship to the younger Aaron Devany. A suggested death certificate concerns the witness’s wife. Surname ranks and historical confidence remain unchanged.
 
-**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). [HSP confirmed custody of the Samuel Grant papers and FC Ol family files on 9 October](./index.html#COR16) and supplied two catalogue references. Detailed descriptions and Aaron content remain unread. A [no-fee inventory and lookup-suitability follow-up was sent on 12 October](./index.html#COR16); await its answer before selecting paid retrieval. No paid research or copying is commissioned. [GSP does not hold the underlying records](./index.html#COR15), and its printed volume remains unidentified. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
+**New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). [HSP confirmed custody of the Samuel Grant papers and FC Ol family files](./index.html#COR16). Its 13 October answer says neither has a detailed inventory and assessing relevance needs deeper investigation. No Aaron item or historical paper has been supplied; paid research remains deferred. [GSP does not hold the underlying records](./index.html#COR15), and its printed volume remains unidentified. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
 
 **Name and source provenance:** [Copied Bible claims](./index.html#N17) remain secondhand, and the elder Aaron’s middle name is unverified. [The fresh birth-source check](./index.html#RT01) supplies no original for 17 May 1791. [A documented Charleston institutional association](./index.html#N53) does not connect Aaron to the distinct David candidates or the Pinckney family.
 
@@ -170,7 +170,7 @@ The [restricted evidence ZIP](https://drive.google.com/file/d/1g58TK9b_k5Z2c7b1d
 
 Keep the two Devaney DNA comparators separate. Do not merge the younger Aaron Olifant Devany with Aaron Oliphant, the distinct Jameses and Davids, or Rebecca’s father with the later Solomon Rainwater whose will names Amanda. Keep the accepted family history through Aaron separate from the unanswered question of where the tested paternal lineage enters that history. Missing birth or passenger records do not date a name change; one excluded tester does not eliminate a surname.
 
-**Rainwater connection, 15 October:** [N102 traces the two documented marriages and the earliest local associations](./index.html#N102). The 1706 transportation patent and unproved earlier pedigree do not yet supply a shared immigration story; test the 1821 Solomon identity and the elder Solomon’s earlier American associates first.
+**Rainwater connection, 15 October:** [N102 traces the two documented marriages and the earliest local associations](./index.html#N102). The 1706 transportation patent and unproved earlier pedigree do not yet supply a shared immigration story; test the 1821 Solomon identity and the elder Solomon’s earlier American associates first. A [new original will reading identifies Nancy Rainwater’s father as John Linn](./index.html#rainwater-later-family); the 1850 household locator and earlier identity test remain separate.
 
 **Access and unfinished work:** [Dated resource entries](./index.html#research-resources) record service access and both completed fifteen-person account copies; Ancestry’s DNA-to-tree link remains unset. Original-record restrictions, missing comparison data and the [unexamined Bible](./index.html#R03) remain distinct dependencies. The [NRS enquiry](./index.html#R06) is already submitted; check its status before duplicating it. Supporting private evidence requires Taylor’s permission.
 
@@ -844,7 +844,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-12T06:57:19Z  · Content updated: 2026-10-12T06:57:19Z  · [Edit note](./index.html#edit-0167-records)
+Editorial review: 2026-10-16T04:47:25Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0170-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -882,7 +882,7 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 **Question:** which company, service dates and enrollment details identify this soldier, and is he Rebecca’s husband? Parents are not promised.
 
-**Next test:** obtain the complete jacket, all service cards and attached papers through [NARA’s confirmed War of 1812 ordering route](./index.html#N85). The 2 October reply applies its $30 fee and stated 60–90-calendar-day turnaround to Aaron’s CMSR, resolving the earlier mixed-war wording. Staff will search using the submitted particulars; no specific jacket, company, file/box identifier or scan was supplied. The authenticated eServices form now accepts the exact filing name, war, state, volunteer status and Nash regiment; a request for the complete jacket/cards/papers is prepared. Submission remains unconfirmed after conflicting completion and portal evidence; reconcile the existing request and cart before retrying. No accepted order or charge is independently confirmed. A technical/status enquiry sent to NARA support on 6 October was automatically acknowledged; a substantive answer and order acceptance remain unconfirmed. The service file remains unread; identity with Rebecca’s husband remains a test, not an assumption.
+**Next test:** obtain the complete jacket, all service cards and attached papers through [NARA’s confirmed War of 1812 ordering route](./index.html#N85). The 2 October reply applies its $30 fee and stated 60–90-calendar-day turnaround to Aaron’s CMSR, resolving the earlier mixed-war wording. Staff will search using the submitted particulars; no specific jacket, company, file/box identifier or scan was supplied. The 2 October authenticated eServices form accepted the exact filing name, war, state, volunteer status and Nash regiment; the saved request asks for the complete jacket/cards/papers. Submission remains unconfirmed after conflicting completion and portal evidence; reconcile the existing request and cart before retrying. No accepted order or charge is independently confirmed. A technical/status enquiry sent to NARA support on 6 October was automatically acknowledged; a substantive answer and order acceptance remain unconfirmed. The 16 October mail check found no acceptance or file; the current account view was unreadable, so the earlier no-orders observation is not refreshed. The service file remains unread; identity with Rebecca’s husband remains a test, not an assumption.
 
 **Completed alternate-route coverage:** the [twenty-item CLS listing](./index.html#N69) and [Greenville parent-set description](./index.html#N71) do not establish fiche 51-510’s inclusion or Nash coverage. That header is a secondary staff/physical-access test, not a second service file. [Locator provenance](./index.html#N61) and [distinct request routes](./index.html#N85) retain the exact references. Further catalogue searching needs a new pointer or changed access.
 
@@ -976,7 +976,7 @@ Originals remain pending. Restricted 30 September supporting records: [Supportin
 
 14 · Conditional follow-ups Other records that need a sharper target Not order-ready
 
-**Samuel Grant papers and family files:** [HSP confirmed custody on 9 October](./index.html#COR16) and supplied [Samuel Grant Oliphant papers (ead-GSP089)](https://discover.hsp.org/Record/ead-GSP089) and [Oliphant family genealogical material (marc-76358)](https://discover.hsp.org/Record/marc-76358). The [current source assessment](./index.html#samuel-grant-archive) preserves the historical FC/Ol/Box58.1–58.8 reference, unread catalogue/contents limits and $40 Quick Search option. A no-fee inventory and Quick Search suitability question was sent in the existing thread on 12 October; await that answer before paying; no Aaron item or original-versus-copy distinction has been established. No paid research or copying is commissioned. [GSP’s answered clarification](./index.html#COR15) and its unidentified printed volume remain separate.
+**Samuel Grant papers and family files:** HSP holds [ead-GSP089](https://discover.hsp.org/Record/ead-GSP089) and [marc-76358](https://discover.hsp.org/Record/marc-76358). Its [13 October answer](./index.html#COR16) says neither has a detailed inventory and relevance requires deeper investigation. The [source assessment](./index.html#samuel-grant-archive) preserves historical container references and dated service terms; no Aaron item or original-versus-copy identification is established. Paid investigation remains deferred, below the direct Aaron targets. Do not repeat the answered custody/inventory enquiries. [GSP’s clarification](./index.html#COR15) remains separate.
 
 **Military rolls:** Nash regiment muster, pay and descriptive rolls: NARA **RG 94, PI-17 entries 55A, 55B, 55C; inventory entry 55**, [NAID 654644](https://catalog.archives.gov/id/654644), South Carolina, Lt. Col. Reuben Nash. Unit box, company and individual coverage remain unresolved; originals unread. The South Caroliniana Nash roster typescript, accession **2350**, 18 sheets, OCLC **31399861**, has a catalogue copy marked missing. No Aaron entry has been read in it.
 
@@ -1030,7 +1030,7 @@ Current request status · private recipients, addresses and message bodies are n
 | --- | --- | --- | --- |
 | COR01 National Records of Scotland | [GD 113/5/35c item 17; CS 17/1/6 p 196, /7 p 345, /25 p 340](./index.html#R06) — copies and quote. | 28 Sep 2026 **Sent; acknowledged; substantive reply pending** | Await the existing request; no duplicate or paid order. |
 | COR02 Existing DNA research contact | [Two distinct Devaney comparisons](./index.html#R01) and [an independent paternal collateral](./index.html#R02). | Sent 30 Sep; replied 1 Oct; source follow-up sent 6 Oct 2026 **Earlier reply received; new source question pending** | Verify the correct GD5 comparator and consent for any existing finer result; document the proposed collateral’s paternal split. No new calls or pedigree supplied. A focused follow-up asks for public Cannon/McMaster subgroup and early South Carolina source pointers; no new calls or family bridge. Await that answer without duplicating either request. Do not merge the comparators. |
-| COR03 NARA | [Aaron, Nash’s SC Volunteers, War of 1812, RG 94/NAID 300392](./index.html#N85) — complete service file and copy route. | 1 Oct 2026; reply 2 Oct; reconciled 3 Oct; support enquiry 6 Oct **Support enquiry acknowledged; substantive answer pending; submission unconfirmed** | Submission remains unconfirmed after conflicting completion and portal evidence; reconcile the existing request and cart before retrying. No accepted order or charge is independently confirmed. Technical/status enquiry sent 6 October and automatically acknowledged; substantive answer pending. Receipt acknowledgment is not order acceptance. The enquiry does not authorize a new order or charge. Specific jacket not supplied; the quoted turnaround has no independently confirmed acceptance date. |
+| COR03 NARA | [Aaron, Nash’s SC Volunteers, War of 1812, RG 94/NAID 300392](./index.html#N85) — complete service file and copy route. | 1 Oct 2026; support enquiry 6 Oct; checked 16 Oct **Support enquiry acknowledged; substantive answer pending; submission unconfirmed** | Submission remains unconfirmed after conflicting completion and portal evidence; reconcile the existing request and cart before retrying. No accepted order or charge is independently confirmed. Technical/status enquiry sent 6 October and automatically acknowledged; substantive answer pending. Receipt acknowledgment is not order acceptance. The enquiry does not authorize a new order or charge. 16 October checks found no acceptance or file; current account history remained unread after a blank account view. The prior no-orders observation retains its 6 October date. Specific jacket not supplied; quoted turnaround has no confirmed acceptance date. |
 | COR04 Rutherford County Archives | [Thomas Welch, 14/18 May 1809; RB 1b p 82](./index.html#R09) — surviving loose item, all sides and citation. | 1 Oct 2026; reply 2 Oct **Bound source identified; separate loose material not demonstrated** | Retain the inventory/book-label discrepancy; reopen only with a new item-level pointer. Do not repeat the clarification. No order placed. |
 | COR05 Historical-source contributor · FamilySearch | [LHXM-9VZ source attachments](./index.html#RT01) — original birth, birthplace and Bible/middle-name citation. | Sent 1 Oct 2026 **Selected thread checked; no reply visible** | Await the existing source enquiry. The outgoing message was visible in that thread; recipient receipt and wider correspondence were not verified. Do not resend. |
 | COR06 Birth-date contributor · email | [17 May 1791 entry](./index.html#RT01) — original support and literal family-entry wording. | 1 Oct 2026 **Alternate email sent; reply pending** | Await this route; its earlier failed chat is COR07. |
@@ -1043,7 +1043,7 @@ Current request status · private recipients, addresses and message bodies are n
 | COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
 | COR14 Existing genealogy research contact | [Aaron compilations](./index.html#N17) — underlying birth, middle-name and parentage citations. | Sent 2 Oct; replied 6 Oct 2026 **Further derivative files received; original citations still missing** | Additional historical correspondence review was offered. Retain the source-quality limits and [specific underlying-source leads](./index.html#roddy-source-successor); do not repeat the original question. No contemporary parentage citation supplied. Any proposed individual follow-up requires an owner-reviewed draft. |
 | COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Reply and clarification received 7 Oct Eastern / 8 Oct UTC 2026 **Printed volume held; underlying records not held** | GSP clarification answered: its printed volume remains unidentified and it does not hold the underlying records. That reply alone established neither HSP custody nor loss. [HSP has since confirmed custody and supplied two catalogue records](./index.html#COR16); follow the [source assessment](./index.html#samuel-grant-archive) for the unread inventory and contents. No originals supplied, copying ordered or paid work commissioned. Do not repeat the answered GSP enquiry. |
-| COR16 Historical Society of Pennsylvania | [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — current custody and catalogue crosswalk. | 8 Oct enquiry; 9 Oct reply; 12 Oct follow-up **Custody confirmed; inventory follow-up pending** | HSP identifies [Samuel Grant Oliphant papers (ead-GSP089)](https://discover.hsp.org/Record/ead-GSP089) and [Oliphant family genealogical material (marc-76358)](https://discover.hsp.org/Record/marc-76358) and offers reading-room and remote access. A no-fee follow-up for an existing inventory, historical container crosswalk and Quick Search suitability was sent and read back in the same thread on 12 October. Await the answer before paying or repeating it. Catalogue details, Aaron entries and originals-versus-copies remain unexamined; no historical papers, copying order or fee resulted. Do not repeat the answered custody enquiry. |
+| COR16 Historical Society of Pennsylvania | [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — custody, inventory and catalogue crosswalk. | 8 Oct enquiry; 9 Oct custody reply; 13 Oct inventory answer **Answered; no detailed inventory; historical papers unread** | The two collections are held and available for onsite or remote investigation, but neither has a detailed finding aid or itemized inventory. Relevance requires deeper research; no Aaron item, complete crosswalk or historical copy was supplied. Paid work remains deferred. Do not repeat the answered custody or inventory questions. |
 
 These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use verified institutional routes for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
 
@@ -1378,7 +1378,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-15T22:02:15Z  · Content updated: 2026-10-15T22:02:15Z  · [Edit note](./index.html#edit-0169-research-notes)
+Editorial review: 2026-10-16T04:47:25Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0170-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -1634,7 +1634,7 @@ Restricted original-reading scope and provenance: [1820 census preservation](htt
 
 N14 · James–Jean Nevay, the William–Jean rumor and distinct Williams
 
-Reviewed 12 October 2026 · Indexed family; identities unresolved · HSP custody confirmed 9 October; inventory follow-up sent 12 October; historical contents remain unread.
+Reviewed 16 October 2026 · Indexed family; identities unresolved · HSP inventory question answered 13 October; historical contents remain unread. Earlier historical readings retain their dates.
 
 Indexed Edinburgh births name James Oliphant and Jean or Joan Nevay: David, 1 September 1762; Ann, 14 November 1763; Jean, 10 April 1764 and 10 April 1765 in conflicting entries. All inspected originals were unavailable. The one-year conflict and unusually short Ann-to-Jean interval require original parish entries; paired child/parent indexes do not represent independent births.
 
@@ -1678,9 +1678,9 @@ The [GSP surname-index description](https://genpa.org/public-collections/surname
 
 **Custody and access confirmed, 9 October 2026:** HSP’s reply identifies [Samuel Grant Oliphant papers (ead-GSP089)](https://discover.hsp.org/Record/ead-GSP089) and [Oliphant family genealogical material (marc-76358)](https://discover.hsp.org/Record/marc-76358), the latter beginning with FC Ol Box58.1. Both are available for reading-room research by appointment. This resolves the repository question; it does not identify an Aaron item, provide a folder inventory, classify manuscripts versus copies or establish that the older Bible58:3 pointer concerns Aaron. The two catalogue records remain distinct until their descriptions can be inspected. Both supplied Discover pages stopped at security verification during this pass; no catalogue contents or historical papers were read.
 
-**Bounded retrieval option:** the official [Quick Search service](https://hsp.org/library-services/quick-search), checked 9 October, costs $40 for up to 30 minutes and usually takes two weeks; results are not guaranteed. [Standard remote research](https://hsp.org/research/remote-research) requires at least two hours at $70/hour for nonmembers or $50/hour for members, with a stated 6–8-week processing time. First obtain an existing folder/title inventory or confirm that a focused Aaron/Rebecca or Solomon Rainwater Oliphant lookup fits Quick Search. No paid work, copies or order have been commissioned. The answered GSP clarification still establishes that its library does not hold these underlying papers; do not repeat either custody question.
+**Inventory answer received, 13 October 2026:** HSP says neither supplied collection has a detailed finding aid or itemized inventory. Determining relevance requires investigation beyond its reference-query service; reading-room appointments and remote research remain available. This answers the 12 October follow-up. It supplies no Aaron item, historical scan, complete container crosswalk or original-versus-copy identification. Do not repeat the answered inventory or custody questions.
 
-**Inventory follow-up, 12 October 2026:** a catalogue-information and scope question was sent in the existing HSP thread and its reviewed text was verified in Sent. It asks for an existing finding aid or folder/title inventory for the two supplied catalogue records, the historical FC/Ol/Box58.1–58.8 crosswalk and whether an Aaron/Rebecca or Solomon Rainwater Oliphant name-index lookup is suitable for one Quick Search. The older Bible58:3 pointer remains conditional. This explicitly authorizes no chargeable research or copying; no fee, order or historical source resulted. Both exact catalogue URLs still failed public-reader access in this pass, which is not a holdings absence. Await the existing follow-up without duplicating it.
+**Paid retrieval remains conditional:** service terms checked on 9 October listed [Quick Search](https://hsp.org/library-services/quick-search) at $40 for up to 30 minutes, and [standard remote research](https://hsp.org/research/remote-research) at a two-hour minimum, $70/hour for nonmembers or $50/hour for members. Those are dated published terms; the 13 October reply does not confirm a Quick Search fit or quote this case. With no identified Aaron item, this is lower priority than the direct service, grant and court targets. No paid investigation or copying is commissioned. GSP’s answered clarification remains separate.
 
 Restricted supporting notes: [Working review 1](https://drive.google.com/file/d/1ktay2pDojN7RzlFj-V3qMfSIM5VZpXuv/view?usp=drivesdk) · [Working review 2](https://drive.google.com/file/d/1NLJ2EEGysoN9MpvEWJHOarS2b-cL6Wj1/view?usp=drivesdk) · [Working review 3](https://drive.google.com/file/d/1oH3uCHe0_Eg2nsqDVkgPltyomhknqvm1/view?usp=drivesdk). These historical reviews retain fuller search detail; the current assessment above controls.
 
@@ -2880,6 +2880,8 @@ Two focused discovery queries and eight official endpoints examined or attempted
 
 **6 October support enquiry:** a technical/status enquiry to NARA support was sent and the outgoing message independently read back. It asks to reconcile the existing submission and repair the failed portal. An automatic acknowledgment confirms receipt and asks to allow 24 hours for a reply; no substantive support answer, accepted order, charge or service file was supplied in the checked thread. The enquiry does not authorize a new order or charge. Continue the existing request only after its submission and cart state are reconciled; no service file has been supplied.
 
+**16 October confirmation check:** the existing support thread still contains only the 6 October enquiry and automatic acknowledgment. Bounded Gmail and Yahoo checks found no accepted-order confirmation or delivered service file. Saved sign-in restored an authenticated NARA home, but its account view returned blank internal frames; the current order table was not read. The earlier “no submitted orders” observation therefore retains its 6 October date. Submission and charge remain unconfirmed; do not create a duplicate while the existing request is unresolved.
+
 Restricted supporting record: [Exact unsent military request packet and access review](https://drive.google.com/file/d/1Gxzps2wRe214WFJQGxIKw8kVHsWaV4hn/view). Access requires Taylor’s permission; no personal service file or fiche header is included as a newly read original.
 
 N86 · The uncertain Rainwater payee was paid for crop labor
@@ -3239,7 +3241,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 N102 · Following the Rainwater connections before assuming shared immigration
 
-Reviewed 15 October 2026 · New 1706 hosted manuscript facsimile reading and published source-chain review; earlier American source readings retain their dates
+Reviewed 16 October 2026 · Original 1851 John Linn will clauses and probate now read; earlier American and 1706 source readings retain their dates
 
 **Both Rainwater marriages have record support.** The [29 January 1821 deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B) identifies Aaron’s wife Rebecca as deceased Solomon Rainwater’s daughter. Their precise wedding date and place remain unverified; [the bounded Greene register check](./index.html#N03) does not establish an 1814 Georgia marriage. The previously inspected [Hancock marriage register](./index.html#T-R04) records Solomon R. Oliphant and Amanda Rainwater’s ceremony on **12 March 1846**, separately from the 5 March entry. Amanda’s father Solomon’s [1856 recorded will](./index.html#N60) names her as Amanda Oliphant. No new parent is attached to Aaron.
 
@@ -3260,13 +3262,25 @@ A separate [1893 family account, printed p. 596](https://texashistory.unt.edu/ar
 
 **Next tests:** (1) correlate the adult 1821 Solomon with Amanda’s father through Hancock titles, wife, children and probate; (2) trace the elder Solomon’s pre-1812 American associates for a named Aaron contact; (3) establish the elder Solomon–James parent link before relying on the older immigrant pedigree. If Amanda’s father is proved Rebecca’s brother, the reported Oliphant couple would be first cousins. That conditional consequence is not an established relationship. The filmed estate packet in [N88](./index.html#N88) is already examined within its stated scope; a repeat requires a different concrete pointer. No shared Atlantic voyage, Ulster meeting, earlier Devaney identity or surname-transition event is established.
 
+#### Later Hancock family and the next original records
+
+**1850 household locator:** a [census transcription](https://www.therainwatercollection.com/1850.shtml) places Solomon, 57, and Nancy, 44, in Hancock district 106, dwelling 207/family 211, starting line 17, with Cicero, Virgil, Horace and other names found in the later will family. Leander’s household follows at dwelling 208/family 212, page 15, line 24. This sharpens the later-family search; it is not an original-image reading or proof that the 1821 man is the same Solomon. Enumeration order does not establish adjoining property.
+
+**John Linn’s original will now read:** the [third provision](https://www.familysearch.org/ark:/61903/3:1:3QS7-893T-8QYG) expressly names Nancy Rainwater, wife of Solomon Rainwater, as his daughter and directs five dollars to Solomon in trust for Nancy. The [conclusion and probate](https://www.familysearch.org/ark:/61903/3:1:3QS7-893T-8QK1) give execution on **26 March 1851**, proof on **7 July** and recording on **8 July 1851**. The last date corrects the earlier abstract-based recording date. These original clauses support the daughter/wife relationship; they do not establish Nancy as Amanda’s mother or identify this Solomon as Aaron’s 1821 associate.
+
+Retrieval: Warren County, Wills 1798–1852; FamilySearch catalogue 214481, film 219573, DGS **5761673**, images **349–350 of 362**. The exact image links control. The [abstract’s inherited pages 208–209](https://www.therainwatercollection.com/reference/ref832.pdf) differ from the manuscript pagination provisionally read as 308–309; that crosswalk remains open. Both complete image files were acquired; selected will clauses and proof were read, rather than every line of adjacent wills. Earlier sign-in and public-tool failures are superseded by this successful 16 October access.
+
+**Preserve the county conflict:** a compiled Solomon Rainwater–Nancy Lynn marriage dated 28 December 1826 is attributed to [Warren County records](https://www.therainwatercollection.com/reference/ref765.pdf), while an [AHGP listing](https://ahgp.org/ga/Marriages/gar1.html) labels it Upson. Neither original was read. Verify the actual marriage register before resolving the place or attaching the bride to Amanda.
+
+**Next sequence:** verify the named 1850 household and the original 1826 marriage; then follow Solomon’s Hancock acquisitions and disposals from 1821 to 1856, using Nancy’s newly documented father as an additional associate. Earlier compiled census pointers, 1830 page 164/line 24 and 1840 district 106/page 216, are waypoints rather than a completed title chain. The additional leads do not change the unresolved cross-Solomon identity or surname rankings.
+
 Source archive: Susan Chance-Rainwater and R. Steven Rainwater, [The Rainwater Collection](https://www.therainwatercollection.com/early.shtml). Original manuscript text, modern analysis, retrospective account and prior source reviews have different evidential roles.
 
 08 / Edition history
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-15T22:02:15Z  · Content updated: 2026-10-15T22:02:15Z  · [Edit note](./index.html#edit-0169-updates)
+Editorial review: 2026-10-16T04:47:25Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0170-updates)
 
 6 October 2026
 
@@ -4339,6 +4353,22 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-15T22:02:15Z . Earl
 - [research-notes](./index.html#research-notes): Add N102: reconcile prior American records, newly read 1706 patent clauses, published pedigree cautions, bounded discovery limits and the next identity tests.
 
 - [updates](./index.html#updates): Record the Rainwater source review; preserve historical source dates, existing surname ranks, confidence and family-tree relationships.
+
+16 October 2026
+
+### Edition 01.70 · Archive replies and Rainwater family record targets
+
+HSP’s inventory answer is received: neither identified collection has a detailed finding aid or itemized inventory, and relevance needs deeper investigation. NARA confirmation searches found no accepted order or delivered service file within their scope; current account history remained unread. N102 adds a later Hancock household and a newly read original will naming Nancy Rainwater, wife of Solomon, as John Linn’s daughter; recording is 8 July 1851, distinct from the 7 July proof. The earlier identity and marriage-county conflict remain open. No Aaron parentage, surname rank or confidence upgrade follows. No purchase or outgoing enquiry was made.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: - [start-here](./index.html#start-here): Replace the pending HSP inventory question with its received answer; link the new bounded Rainwater family locators.
+
+- [records](./index.html#records): Reconcile COR16/R14 with HSP’s answer and COR03/R04 with the dated NARA confirmation and unread-account limits.
+
+- [research-notes](./index.html#research-notes): Update N14 and N85; reconcile the original Linn daughter/wife clause, date correction, source-page discrepancy, derivative census locator and unresolved county/identity tests in N102.
+
+- [updates](./index.html#updates): Record the correspondence intake and Rainwater next-record tests without a surname, parentage or confidence upgrade.
 
 09 / Contact
 

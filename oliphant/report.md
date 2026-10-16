@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-16T04:47:25Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0170-start-here)
+Editorial review: 2026-10-16T05:09:09Z  · Content updated: 2026-10-16T05:09:09Z  · [Edit note](./index.html#edit-0171-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -62,7 +62,7 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation, 8 October 2026:** the [original-record and source-review archive](https://drive.google.com/file/d/1jrRwCDRV2lC1xILNavx4je81SJgznTNZ/view?usp=drivesdk) preserves 47 original scans, the previously read accession PDF and selected reviews and provenance, in 72 archive members. Individually authorized access is required. The downloaded archive matches the reviewed local SHA-256 and passed ZIP integrity checks. Owner and reader access were verified; this is not a full-library restoration test. Preservation does not add a new historical finding, genotype or confidence change.
+**Latest restricted preservation, 16 October 2026:** the [Rainwater originals and source-review supplement](https://drive.google.com/file/d/1pybi5uHfm8NwIyxA3gcHsUWnNESlNwS5/view?usp=drivesdk) preserves both 1851 Linn will images, the 1706 patent image and selected research reviews and archive guidance, in eleven archive members. Individually authorized reader access is required. Local archive integrity and remote name, size, destination and access were verified; remote file bytes and restoration were not tested. This one transfer advances the recorded incremental library total to 1,934, without a library recount. Earlier preservation checkpoints remain below.
 
 **Earlier restricted preservation, 6 October 2026:** the [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk) preserves eleven privacy-reviewed research derivatives plus README and manifest, thirteen ZIP members. One metadata/permissions-verified cloud transfer advances the incremental ledger from **1,931 to 1,932**, not a whole-library recount. Exact name, size, destination and named owner/reader permissions were verified; local hashes and CRC were checked. Remote bytes and restoration were not tested. Preservation adds no historical original, genotype or confidence change.
 
@@ -73,6 +73,8 @@ The library groups [source records and captures](https://drive.google.com/drive/
 **Earlier Edition 01.42 preservation:** the [Lampasas index supplement](https://drive.google.com/file/d/1_At6QrTAQN_EIu2OxiWQkNuklulAKNl4/view?usp=drivesdk) preserves eight selected files, including two original scans, plus two package documents: ten archive members. One metadata-verified transfer advances the recorded library total from 1,925 to **1,926**, by incremental accounting, not a recount. Name, size, destination and named owner/reader permissions were checked; local archive integrity was verified, while remote bytes and restoration were not tested. The [bounded index result](./index.html#N101) supplies no parentage or heir link. Earlier preservation checkpoints remain below.
 
 Earlier evidence-library transfers
+
+**Earlier restricted preservation, 8 October 2026:** the [original-record and source-review archive](https://drive.google.com/file/d/1jrRwCDRV2lC1xILNavx4je81SJgznTNZ/view?usp=drivesdk) preserves 47 original scans, the previously read accession PDF and selected reviews and provenance, in 72 archive members. Individually authorized access is required. The downloaded archive matches the reviewed local SHA-256 and passed ZIP integrity checks. Owner and reader access were verified; this is not a full-library restoration test. Preservation does not add a new historical finding, genotype or confidence change.
 
 **Earlier compilation-source preservation, 2 October 2026:** the [current compilation-source supplement](https://drive.google.com/file/d/1OPcIi2qP_uPYKZWSTA7D2-7Nlw0N5gMu/view?usp=drivesdk) follows the [selected account-reading checkpoint](./index.html#library-transfer-edition0140-account). It preserves 26 selected files and two supporting package files, 28 package members. Two verified transfers advance the recorded library total from 1,923 to **1,925**, by incremental accounting, not a recount. Each new file’s name, size, destination and named owner/reader permissions were checked; local archive integrity was verified, while remote bytes and restoration were not tested. Source preservation does not authenticate the compilation or establish new parentage or paternal origins. The complete dated 1,924 and 1,923 predecessors remain below.
 
@@ -844,7 +846,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-10-16T04:47:25Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0170-records)
+Editorial review: 2026-10-16T05:09:09Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0171-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -1378,7 +1380,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-16T04:47:25Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0170-research-notes)
+Editorial review: 2026-10-16T05:09:09Z  · Content updated: 2026-10-16T05:09:09Z  · [Edit note](./index.html#edit-0171-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -3274,13 +3276,15 @@ Retrieval: Warren County, Wills 1798–1852; FamilySearch catalogue 214481, film
 
 **Next sequence:** verify the named 1850 household and the original 1826 marriage; then follow Solomon’s Hancock acquisitions and disposals from 1821 to 1856, using Nancy’s newly documented father as an additional associate. Earlier compiled census pointers, 1830 page 164/line 24 and 1840 district 106/page 216, are waypoints rather than a completed title chain. The additional leads do not change the unresolved cross-Solomon identity or surname rankings.
 
+Exact next title-index target: [Hancock catalogue 215305](https://www.familysearch.org/en/search/catalog/215305), film 222008, DGS **7659174**: the R section of index A for 1821–1838, then index B for 1838–1856. Preserve each party, direction, date and deed-book/page before retrieving the deeds. Exact R-section image bounds remain unresolved. A bounded 16 October public catalogue/viewer attempt failed to retrieve the index; it is an access result, not evidence that Rainwater entries are absent.
+
 Source archive: Susan Chance-Rainwater and R. Steven Rainwater, [The Rainwater Collection](https://www.therainwatercollection.com/early.shtml). Original manuscript text, modern analysis, retrospective account and prior source reviews have different evidential roles.
 
 08 / Edition history
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-16T04:47:25Z  · Content updated: 2026-10-16T04:47:25Z  · [Edit note](./index.html#edit-0170-updates)
+Editorial review: 2026-10-16T05:09:09Z  · Content updated: 2026-10-16T05:09:09Z  · [Edit note](./index.html#edit-0171-updates)
 
 6 October 2026
 
@@ -4362,13 +4366,33 @@ HSP’s inventory answer is received: neither identified collection has a detail
 
 Section review and edit notes
 
-Editor: AI research assistant. Editorial checkpoint: - [start-here](./index.html#start-here): Replace the pending HSP inventory question with its received answer; link the new bounded Rainwater family locators.
+Editor: AI research assistant. Editorial checkpoint: 2026-10-16T04:47:25Z . Earlier source dates and unaffected section checkpoints are preserved.
+
+- [start-here](./index.html#start-here): Replace the pending HSP inventory question with its received answer; link the new bounded Rainwater family locators.
 
 - [records](./index.html#records): Reconcile COR16/R14 with HSP’s answer and COR03/R04 with the dated NARA confirmation and unread-account limits.
 
 - [research-notes](./index.html#research-notes): Update N14 and N85; reconcile the original Linn daughter/wife clause, date correction, source-page discrepancy, derivative census locator and unresolved county/identity tests in N102.
 
 - [updates](./index.html#updates): Record the correspondence intake and Rainwater next-record tests without a surname, parentage or confidence upgrade.
+
+16 October 2026
+
+### Edition 01.71 · Source preservation and continuation checks
+
+The newly acquired Rainwater originals and selected reviews are preserved in the restricted library, with unchanged reader access. Start here links the new archive; N102 gives the exact remaining Hancock title-index target and its access limit. Review-line markup and the preceding edition’s time element are corrected. No parentage, surname rank or confidence changes follow.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-16T05:09:09Z . Preservation verification does not certify historical identity or complete archive coverage.
+
+- [start-here](./index.html#start-here): Link the new restricted source supplement and retain the 8 October transfer in collapsed history. Correct the malformed closing tag in its review line.
+
+- [records](./index.html#records): Correct the malformed review-line closing tag; retrieval facts, content-update time and next actions remain unchanged.
+
+- [research-notes](./index.html#research-notes): Add the exact remaining Hancock R-index target and bounded access limit to N102; correct the review-line closing tag. Other research notes remain unchanged.
+
+- [updates](./index.html#updates): Append this preservation checkpoint and repair the malformed Edition 01.70 time element and current review-line closing tag; retain the original checkpoint time and historical content.
 
 09 / Contact
 

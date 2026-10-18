@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-16T05:09:09Z  · Content updated: 2026-10-16T05:09:09Z  · [Edit note](./index.html#edit-0171-start-here)
+Editorial review: 2026-10-16T05:36:01Z  · Content updated: 2026-10-16T05:36:01Z  · [Edit note](./index.html#edit-0172-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -62,7 +62,7 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation, 16 October 2026:** the [Rainwater originals and source-review supplement](https://drive.google.com/file/d/1pybi5uHfm8NwIyxA3gcHsUWnNESlNwS5/view?usp=drivesdk) preserves both 1851 Linn will images, the 1706 patent image and selected research reviews and archive guidance, in eleven archive members. Individually authorized reader access is required. Local archive integrity and remote name, size, destination and access were verified; remote file bytes and restoration were not tested. This one transfer advances the recorded incremental library total to 1,934, without a library recount. Earlier preservation checkpoints remain below.
+**Latest restricted preservation, 16 October 2026:** the [Rainwater originals and source-review supplement](https://drive.google.com/file/d/1pybi5uHfm8NwIyxA3gcHsUWnNESlNwS5/view?usp=drivesdk) preserves both 1851 Linn will images, the 1706 patent image and selected reviews and archive guidance. A separate [Hancock index review and correction](https://drive.google.com/file/d/1xZ5kIPEuGJyNUooq5giiH3z06ZjMjWxv/view?usp=drivesdk) preserves four viewer screenshots and their qualified readings, including the withdrawn early surname identification. Individually authorized reader access is required. Local archive integrity and remote metadata, destination and access were verified; remote file bytes and restoration were not tested. These two transfers advance recorded incremental accounting to 1,935, without a library recount. Archive members are not separate cloud files.
 
 **Earlier restricted preservation, 6 October 2026:** the [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk) preserves eleven privacy-reviewed research derivatives plus README and manifest, thirteen ZIP members. One metadata/permissions-verified cloud transfer advances the incremental ledger from **1,931 to 1,932**, not a whole-library recount. Exact name, size, destination and named owner/reader permissions were verified; local hashes and CRC were checked. Remote bytes and restoration were not tested. Preservation adds no historical original, genotype or confidence change.
 
@@ -1380,7 +1380,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-16T05:09:09Z  · Content updated: 2026-10-16T05:09:09Z  · [Edit note](./index.html#edit-0171-research-notes)
+Editorial review: 2026-10-16T05:36:01Z  · Content updated: 2026-10-16T05:36:01Z  · [Edit note](./index.html#edit-0172-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -3276,7 +3276,11 @@ Retrieval: Warren County, Wills 1798–1852; FamilySearch catalogue 214481, film
 
 **Next sequence:** verify the named 1850 household and the original 1826 marriage; then follow Solomon’s Hancock acquisitions and disposals from 1821 to 1856, using Nancy’s newly documented father as an additional associate. Earlier compiled census pointers, 1830 page 164/line 24 and 1840 district 106/page 216, are waypoints rather than a completed title chain. The additional leads do not change the unresolved cross-Solomon identity or surname rankings.
 
-Exact next title-index target: [Hancock catalogue 215305](https://www.familysearch.org/en/search/catalog/215305), film 222008, DGS **7659174**: the R section of index A for 1821–1838, then index B for 1838–1856. Preserve each party, direction, date and deed-book/page before retrieving the deeds. Exact R-section image bounds remain unresolved. A bounded 16 October public catalogue/viewer attempt failed to retrieve the index; it is an access result, not evidence that Rainwater entries are absent.
+**Specific Rainwater index pointers now recovered:** the authenticated [index A, image 135](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-29S3-W), lists Sol. Rainwater to Ab. Rainwater at **O331** and an opposite-direction Abner-to-Sol. entry whose page is read as **335** by the second reader and **333** in the first reading. [Index B, image 296](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-299J-D), supplies **[P]279**, Sol. Rainwater to a probable A. Brantley; [image 298](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-299F-H) supplies **Q575**, Sol. Rainwater from an unresolved party described as trustee. These are original index readings, not readings of the underlying deeds. Index year headings do not settle execution dates, and none of the entries establishes kinship or the 1821–1856 personal identity.
+
+**Early false lead withdrawn:** [index A, image 133](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-29SS-G), initially read as an 1818 Rainwater pointer at M6, is better read as **Rountree Solomon**. Selected candidate deed pages did not establish a Rainwater correlation. Do not treat that row as an 1818 Rainwater deed, residence or earlier association with Aaron.
+
+Retrieval: [Hancock catalogue 215305](https://www.familysearch.org/en/search/catalog/215305), index film 222008, DGS **7659174**. The 16 October authenticated screen supersedes the earlier public-tool access failure, but covers selected pages rather than every R entry. Read O331 and resolve the reciprocal 333/335 reference first; then [P]279 and Q575. Record parties, dates, residences, tract and witnesses before comparing with the 1821 deeds, the already-read 1826 Hunter exchange and the 1856 testator. Source screenshots are preserved in the restricted index review; full index-image downloads did not complete.
 
 Source archive: Susan Chance-Rainwater and R. Steven Rainwater, [The Rainwater Collection](https://www.therainwatercollection.com/early.shtml). Original manuscript text, modern analysis, retrospective account and prior source reviews have different evidential roles.
 
@@ -3284,7 +3288,7 @@ Source archive: Susan Chance-Rainwater and R. Steven Rainwater, [The Rainwater C
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-16T05:09:09Z  · Content updated: 2026-10-16T05:09:09Z  · [Edit note](./index.html#edit-0171-updates)
+Editorial review: 2026-10-16T05:36:01Z  · Content updated: 2026-10-16T05:36:01Z  · [Edit note](./index.html#edit-0172-updates)
 
 6 October 2026
 
@@ -4393,6 +4397,22 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-16T05:09:09Z . Pres
 - [research-notes](./index.html#research-notes): Add the exact remaining Hancock R-index target and bounded access limit to N102; correct the review-line closing tag. Other research notes remain unchanged.
 
 - [updates](./index.html#updates): Append this preservation checkpoint and repair the malformed Edition 01.70 time element and current review-line closing tag; retain the original checkpoint time and historical content.
+
+16 October 2026
+
+### Edition 01.72 · Rainwater index pointers and a withdrawn early reading
+
+Selected original Hancock index pages supply specific later deed targets. An initially proposed 1818 Rainwater entry is withdrawn after the surname was better read as Rountree. The underlying Rainwater deeds remain unread, and no earlier residence, kinship, personal-identity bridge, surname rank or confidence upgrade follows. The restricted source supplement preserves the reading and correction.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-16T05:36:01Z . This is a selected index reading, not a complete county or deed-book examination.
+
+- [start-here](./index.html#start-here): Link the restricted index-review supplement alongside the original will archive; distinguish screenshots, original downloads and incremental transfer accounting.
+
+- [research-notes](./index.html#research-notes): N102 records selected O331, reciprocal333/335, [P]279 andQ575 pointers and the withdrawn Rountree/M6 interpretation. Retain all unproved identities and exact next tests.
+
+- [updates](./index.html#updates): Append this bounded index-reading successor; earlier editions, source dates and all other research notes remain unchanged.
 
 09 / Contact
 

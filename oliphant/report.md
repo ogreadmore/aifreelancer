@@ -1380,7 +1380,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-19T05:45:37Z  · Content updated: 2026-10-19T05:45:37Z  · [Edit note](./index.html#edit-0173-research-notes)
+Editorial review: 2026-10-19T05:52:01Z  · Content updated: 2026-10-19T05:52:01Z  · [Edit note](./index.html#edit-0174-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -3280,11 +3280,14 @@ Retrieval: Warren County, Wills 1798–1852; FamilySearch catalogue 214481, film
 
 **Index correction:** the actual [O336–337 deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99P-M) and the [book’s own index](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99X-L) show one Solomon-to-Abner conveyance indexed under both grantor and grantee. The earlier O331 / supposed reciprocal333–335 interpretation is withdrawn. The later book’s [own index](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-L39C-L) and deed also correct P279 / probable A. Brantley to **P274–275, Richmond Burnley**. These are corrected readings of existing pointers, not extra historical events.
 
-| Original record | What it establishes | Remaining limit |
-| --- | --- | --- |
-| [O336](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99P-M)–[337](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99G-P) · 27 January 1831; registered 29 July 1835 | Solomon Rainwaters of Hancock sells Abner Rainwaters 155 Ogeechee acres for $450. The description names Joseph Roberts’s land and recites an Ignatius Few grant of 8 December 1784. Witnesses: Joseph Roberts and Thomas Crawford J.P. | No kinship is stated. The grant recital is not a newly inspected 1784 grant or a proved acquisition chain. Do not merge this tract with the different 1826 Hunter/Beaverdam exchange. |
-| [P274–275](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-L39M-H) · 22 June 1839; registered 5 May 1840 | Solomon Rainwater sells Richmond Burnley a Powelton house and lot for $1,000. Witnesses: James Bell and John W. Rabun. | Burnley and Bell are also names in the 1856 will’s witness list. Their individual identities and a continuous 1821–1856 Solomon chain still need demonstration. |
-| [Q575](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-LS2D-F)–[576, with plat](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-LS2J-6) · 31 December 1852; registered 28 January 1853 | Charles M. Irvin, court-appointed trustee for Elizabeth Ann Davis, formerly Hardwick, and Davis convey land to Solomon Rainwater for $550. The deed and plat give 190 acres; the recited decree estimated 160. The tract adjoins Solomon’s existing land. | The trust concerns Elizabeth Ann Davis, not Nancy Rainwater. No seller–buyer kinship is stated. The acreage discrepancy is explicit in one deed, not two purchases. |
+**[O336](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99P-M)–[337](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99G-P) · 27 January 1831; registered 29 July 1835**
+Solomon Rainwaters of Hancock sells Abner Rainwaters 155 Ogeechee acres for $450. The description names Joseph Roberts’s land and recites an Ignatius Few grant of 8 December 1784. Witnesses: Joseph Roberts and Thomas Crawford J.P. *Limit:* No kinship is stated. The grant recital is not a newly inspected 1784 grant or a proved acquisition chain. Do not merge this tract with the different 1826 Hunter/Beaverdam exchange.
+
+**[P274–275](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-L39M-H) · 22 June 1839; registered 5 May 1840**
+Solomon Rainwater sells Richmond Burnley a Powelton house and lot for $1,000. Witnesses: James Bell and John W. Rabun. *Limit:* Burnley and Bell are also names in the 1856 will’s witness list. Their individual identities and a continuous 1821–1856 Solomon chain still need demonstration.
+
+**[Q575](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-LS2D-F)–[576, with plat](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-LS2J-6) · 31 December 1852; registered 28 January 1853**
+Charles M. Irvin, court-appointed trustee for Elizabeth Ann Davis, formerly Hardwick, and Davis convey land to Solomon Rainwater for $550. The deed and plat give 190 acres; the recited decree estimated 160. The tract adjoins Solomon’s existing land. *Limit:* The trust concerns Elizabeth Ann Davis, not Nancy Rainwater. No seller–buyer kinship is stated. The acreage discrepancy is explicit in one deed, not two purchases.
 
 **What this changes:** the later family now has exact tracts, associates and a named court proceeding to follow. None of these deeds names Aaron, identifies a parent, establishes an earlier surname or supplies an overseas home. They do not yet prove that the adult Solomon of 1821 was Amanda’s father. These are images of county register copies, not authenticated autograph deeds.
 
@@ -3302,7 +3305,7 @@ Source archive: Susan Chance-Rainwater and R. Steven Rainwater, [The Rainwater C
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-19T05:45:37Z  · Content updated: 2026-10-19T05:45:37Z  · [Edit note](./index.html#edit-0173-updates)
+Editorial review: 2026-10-19T05:52:01Z  · Content updated: 2026-10-19T05:52:01Z  · [Edit note](./index.html#edit-0174-updates)
 
 6 October 2026
 
@@ -4445,6 +4448,20 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-19T05:45:37Z . Sele
 - [research-notes](./index.html#research-notes): N102 records O336–337, P274–275 and Q575–576, corrects provisional pointers and double counting, and retains bounded searches, unread references and identity limits. Other101notes unchanged.
 
 - [updates](./index.html#updates): Append this source-reading and correction checkpoint; preserve all prior editions as dated history.
+
+19 October 2026
+
+### Edition 01.74 · Readable deed summaries on phones
+
+The three new Hancock deed summaries now use full-width record paragraphs. A390px mobile check found the comparison table too cramped. All source facts, citations, uncertainty and next tests remain unchanged.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-19T05:52:01Z . Presentation correction only; no new historical research.
+
+- [research-notes](./index.html#research-notes): Replace only N102’s new three-column deed table with three full-width record paragraphs after390px visual QA found cramped wrapping. Citations, dates, facts, limits and next tests are unchanged.
+
+- [updates](./index.html#updates): Record this mobile-readability correction; no new source reading or historical conclusion.
 
 09 / Contact
 

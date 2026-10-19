@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-10-19T05:45:37Z  · Content updated: 2026-10-19T05:45:37Z  · [Edit note](./index.html#edit-0173-start-here)
+Editorial review: 2026-10-19T06:34:14Z  · Content updated: 2026-10-19T06:34:14Z  · [Edit note](./index.html#edit-0175-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -62,7 +62,7 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation, 19 October 2026:** the [Hancock deeds and corrected-index packet](https://drive.google.com/file/d/1J4hAA2kU7oEpQAtmdHhnFzsjQ9MmcvGP/view?usp=drivesdk) preserves eight complete source images and three reviews, plus two package documents. One metadata/permissions-verified transfer advances incremental accounting to **1,936**; thirteen members are one cloud file. Individually authorized reader access is required. Local CRC/member hashes and remote name, size, destination and named-user access were verified; remote bytes and restoration were not tested. The [16 October will/source archive](https://drive.google.com/file/d/1pybi5uHfm8NwIyxA3gcHsUWnNESlNwS5/view?usp=drivesdk) and [dated index-review predecessor](https://drive.google.com/file/d/1xZ5kIPEuGJyNUooq5giiH3z06ZjMjWxv/view?usp=drivesdk) remain available; the new deed readings control over their superseded provisional pointers.
+**Latest restricted preservation, 19 October 2026:** the [Hancock court-decree supplement](https://drive.google.com/file/d/1YCq1bDbZZ5bRX_bGh-J71diF2a6iLRKe/view?usp=drivesdk) preserves twenty complete source images, two source reviews and one provenance inventory, plus README and manifest. One metadata/permissions-verified transfer advances incremental accounting to **1,937**; twenty-five members are one cloud file. Individually authorized reader access is required. Local CRC/member hashes and remote name, size, destination and named-user access were verified; remote bytes and restoration were not tested. The [preceding deed/correction packet](https://drive.google.com/file/d/1J4hAA2kU7oEpQAtmdHhnFzsjQ9MmcvGP/view?usp=drivesdk), [16 October will/source archive](https://drive.google.com/file/d/1pybi5uHfm8NwIyxA3gcHsUWnNESlNwS5/view?usp=drivesdk) and [dated index-review predecessor](https://drive.google.com/file/d/1xZ5kIPEuGJyNUooq5giiH3z06ZjMjWxv/view?usp=drivesdk) remain available. Later corrected readings control over provisional pointers.
 
 **Earlier restricted preservation, 6 October 2026:** the [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk) preserves eleven privacy-reviewed research derivatives plus README and manifest, thirteen ZIP members. One metadata/permissions-verified cloud transfer advances the incremental ledger from **1,931 to 1,932**, not a whole-library recount. Exact name, size, destination and named owner/reader permissions were verified; local hashes and CRC were checked. Remote bytes and restoration were not tested. Preservation adds no historical original, genotype or confidence change.
 
@@ -172,7 +172,7 @@ The [restricted evidence ZIP](https://drive.google.com/file/d/1g58TK9b_k5Z2c7b1d
 
 Keep the two Devaney DNA comparators separate. Do not merge the younger Aaron Olifant Devany with Aaron Oliphant, the distinct Jameses and Davids, or Rebecca’s father with the later Solomon Rainwater whose will names Amanda. Keep the accepted family history through Aaron separate from the unanswered question of where the tested paternal lineage enters that history. Missing birth or passenger records do not date a name change; one excluded tester does not eliminate a surname.
 
-**Rainwater connection, 19 October:** [three original Hancock deeds](./index.html#rainwater-hancock-deeds) now identify specific tracts, associates and an 1852 court decree. Corrected index readings remove a supposed second conveyance. They sharpen the later Solomon identity test; Aaron’s parents, earlier surname and shared immigration remain unresolved. [Full evidence and next tests →](./index.html#N102)
+**Rainwater connection, 19 October:** the [1852 court decree is now located and read](./index.html#rainwater-davis-decree), confirming Davis’s trustee and the authority behind the later land sale to Solomon. It supplies no Rainwater kinship. The next test is Solomon’s earlier title and associates; Aaron’s parents, earlier surname and shared immigration remain unresolved. [Full evidence and next tests →](./index.html#N102)
 
 **Access and unfinished work:** [Dated resource entries](./index.html#research-resources) record service access and both completed fifteen-person account copies; Ancestry’s DNA-to-tree link remains unset. Original-record restrictions, missing comparison data and the [unexamined Bible](./index.html#R03) remain distinct dependencies. The [NRS enquiry](./index.html#R06) is already submitted; check its status before duplicating it. Supporting private evidence requires Taylor’s permission.
 
@@ -275,7 +275,7 @@ Selected evidence / Where to look next
 
 ## Clues worth following
 
-Editorial review: 2026-10-19T05:45:37Z  · Content updated: 2026-10-19T05:45:37Z  · [Edit note](./index.html#edit-0173-clues)
+Editorial review: 2026-10-19T06:34:14Z  · Content updated: 2026-10-19T06:34:14Z  · [Edit note](./index.html#edit-0175-clues)
 
 A few observations stand out because there is a concrete record or result behind them—and a specific way to test what they mean.
 
@@ -351,7 +351,7 @@ Which documentary lead deserves the next test?
 
 Aaron married Rebecca Rainwater; Solomon R. Oliphant married Amanda Rainwater. The 1814 estate sale and 1821 reciprocal releases provide a concrete American network to trace backward.
 
-**Next test:** identify the adult Solomon in the 1821 deeds as Amanda’s father before joining the two Rainwater branches. The [newly read Hancock deeds](./index.html#rainwater-hancock-deeds) supply tract and witness tests, including an October 1852 court decree to locate. A 1706 Virginia patent names Robert Rainwater, but two missing pedigree links prevent using it as this family’s immigration story. [Records, source limits and next tests →](./index.html#N102)
+**Next test:** identify the adult Solomon in the 1821 deeds as Amanda’s father before joining the two Rainwater branches. The [newly read Hancock deeds](./index.html#rainwater-hancock-deeds) supply tract and witness tests, and the [1852 Davis decree has now been read](./index.html#rainwater-davis-decree). The next title test is Solomon’s pre-existing adjoining land; no Davis–Rainwater kinship follows. A 1706 Virginia patent names Robert Rainwater, but two missing pedigree links prevent using it as this family’s immigration story. [Records, source limits and next tests →](./index.html#N102)
 
 Family tree / Historical people
 
@@ -1380,7 +1380,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-10-19T05:52:01Z  · Content updated: 2026-10-19T05:52:01Z  · [Edit note](./index.html#edit-0174-research-notes)
+Editorial review: 2026-10-19T06:34:14Z  · Content updated: 2026-10-19T06:34:14Z  · [Edit note](./index.html#edit-0175-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -3243,7 +3243,7 @@ The [Edition 01.10 restricted batch catalog](https://drive.google.com/file/d/1e3
 
 N102 · Following the Rainwater connections before assuming shared immigration
 
-Reviewed 19 October 2026 · Three later Hancock deeds now read; two provisional index interpretations corrected. Earlier source readings retain their dates
+Reviewed 19 October 2026 · Three later Hancock deeds and the recited Davis court decree now read. Earlier source readings retain their dates
 
 **Both Rainwater marriages have record support.** The [29 January 1821 deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSR8-8SHH-B) identifies Aaron’s wife Rebecca as deceased Solomon Rainwater’s daughter. Their precise wedding date and place remain unverified; [the bounded Greene register check](./index.html#N03) does not establish an 1814 Georgia marriage. The previously inspected [Hancock marriage register](./index.html#T-R04) records Solomon R. Oliphant and Amanda Rainwater’s ceremony on **12 March 1846**, separately from the 5 March entry. Amanda’s father Solomon’s [1856 recorded will](./index.html#N60) names her as Amanda Oliphant. No new parent is attached to Aaron.
 
@@ -3287,7 +3287,15 @@ Solomon Rainwaters of Hancock sells Abner Rainwaters 155 Ogeechee acres for $450
 Solomon Rainwater sells Richmond Burnley a Powelton house and lot for $1,000. Witnesses: James Bell and John W. Rabun. *Limit:* Burnley and Bell are also names in the 1856 will’s witness list. Their individual identities and a continuous 1821–1856 Solomon chain still need demonstration.
 
 **[Q575](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-LS2D-F)–[576, with plat](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-LS2J-6) · 31 December 1852; registered 28 January 1853**
-Charles M. Irvin, court-appointed trustee for Elizabeth Ann Davis, formerly Hardwick, and Davis convey land to Solomon Rainwater for $550. The deed and plat give 190 acres; the recited decree estimated 160. The tract adjoins Solomon’s existing land. *Limit:* The trust concerns Elizabeth Ann Davis, not Nancy Rainwater. No seller–buyer kinship is stated. The acreage discrepancy is explicit in one deed, not two purchases.
+Charles M. Irvin (Irwin in the minutes), court-appointed trustee for Elizabeth Ann Davis, formerly Hardwick, and Davis convey land to Solomon Rainwater for $550. The deed and plat give 190 acres; the recited decree estimated 160. The tract adjoins Solomon’s existing land. *Limit:* The trust concerns Elizabeth Ann Davis, not Nancy Rainwater. No seller–buyer kinship is stated. The acreage discrepancy is explicit in one deed, not two purchases.
+
+#### The recited court decree is now located
+
+**15 October 1852, Hancock Superior Court minutes, p. 154:** the [original Elizabeth Davis equity decree](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C3H3-5985-M) appoints **Charles M. Irwin of Morgan County** as trustee of property bequeathed to Davis by deceased **Elizabeth Gardner**. It authorizes sale of Davis’s Hancock land and investment of the proceeds for Davis and her children under Gardner’s will. The order also permits sale of an enslaved man named Joe. It does not name Solomon as a purchaser, give acreage or a price, or establish that Solomon bought Joe. The later Q575–576 deed supplies the land buyer and transaction details.
+
+**What the court record resolves:** the trustee and sale authority are documented in the cited term. The trust belongs to **Elizabeth Davis, not Nancy Rainwater**; neither this decree nor the deed states Rainwater kinship. The minutes read Irwin, while the deed was initially read Irvin. Davis’s petition, Gardner’s will and a recited former decree remain unread. Their existence is not a new Rainwater pedigree or a reason to assume a relationship.
+
+Retrieval and bounded coverage: [Superior Court minutes catalogue 214877](https://www.familysearch.org/en/search/catalog/koha:214877), film **222044**, DGS **8629266**, image **420 of 680**. Twenty complete spreads, images 401–420, are preserved in the [restricted court-source supplement](https://drive.google.com/file/d/1YCq1bDbZZ5bRX_bGh-J71diF2a6iLRKe/view?usp=drivesdk). The targeted name/order screen ran from the October opening on p. 117 through the decree on p. 154; it was not an every-case transcription or a verified term-end search. Three film-limited text queries—+Elizabeth +Davis, +Hardwick and trust*—returned zero; manual image reading found the decree. Those text-search failures must not become historical absence claims.
 
 **What this changes:** the later family now has exact tracts, associates and a named court proceeding to follow. None of these deeds names Aaron, identifies a parent, establishes an earlier surname or supplies an overseas home. They do not yet prove that the adult Solomon of 1821 was Amanda’s father. These are images of county register copies, not authenticated autograph deeds.
 
@@ -3295,7 +3303,7 @@ Charles M. Irvin, court-appointed trustee for Elizabeth Ann Davis, formerly Hard
 
 Retrieval: [Hancock catalogue 215305](https://www.familysearch.org/en/search/catalog/215305); O, film 222015 / DGS **7659219**, images **521–522 of 686**; P, film 222016 / DGS **7659220**, image **148 of 391**; Q, film 222017 / DGS **7659215**, images **310–311 of 397**. Actual book/page and exact image links control over the provisional combined-index readings. The selected deeds, indexes and reading corrections are preserved in the [restricted source packet](https://drive.google.com/file/d/1J4hAA2kU7oEpQAtmdHhnFzsjQ9MmcvGP/view?usp=drivesdk). This is selected coverage, not a complete county or volume search.
 
-**Next finite tests:** locate Hancock Superior Court’s **October term 1852 decree** appointing Irvin and authorizing the Davis sale; the minute-book page or loose-file locator has not yet been established. Trace the Rainwater land already adjoining Q576 and the earlier acquisition of the Powelton house, then compare the 1826 tract and 1856 will associates. Two separate Full Text pointers remain unread: [Abner/James Derby title context](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99V-2) and an [1844 Rainwater witness occurrence](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-L396-T). Generated snippets do not establish their relationships or dates independently.
+**Next finite tests:** the decree retrieval is complete. Trace the Rainwater land already adjoining Q576 and the earlier acquisition of the Powelton house, then compare the 1826 tract and 1856 will associates. Two separate Full Text pointers remain unread: [Abner/James Derby title context](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99V-2) and an [1844 Rainwater witness occurrence](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-L396-T). Generated snippets do not establish their relationships or dates independently.
 
 **Bounded newspaper cross-check:** Georgia Historic Newspapers’ exact-phrase searches for 1820–1840 returned four “Abner Rainwater” page hits and zero for “Solomon Rainwater” or “Solomon Rainwaters.” The four notices remain unread: [18 January 1831](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn85027027/1831-01-18/ed-1/seq-3/), [1 November 1832](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014212/1832-11-01/ed-1/seq-2/), [21 December 1833](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn90052030/1833-12-21/ed-1/seq-2/) and [1 January 1834](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn86053071/1834-01-01/ed-1/seq-2/). Relevance, identity, locality and repeated-event dependence are unverified. OCR/spelling limits prevent an absence claim; these pointers are not four established events or a family connection.
 
@@ -3305,7 +3313,7 @@ Source archive: Susan Chance-Rainwater and R. Steven Rainwater, [The Rainwater C
 
 ## A living report, with a memory.
 
-Editorial review: 2026-10-19T05:52:01Z  · Content updated: 2026-10-19T05:52:01Z  · [Edit note](./index.html#edit-0174-updates)
+Editorial review: 2026-10-19T06:34:14Z  · Content updated: 2026-10-19T06:34:14Z  · [Edit note](./index.html#edit-0175-updates)
 
 6 October 2026
 
@@ -4462,6 +4470,24 @@ Editor: AI research assistant. Editorial checkpoint: 2026-10-19T05:52:01Z . Pres
 - [research-notes](./index.html#research-notes): Replace only N102’s new three-column deed table with three full-width record paragraphs after390px visual QA found cramped wrapping. Citations, dates, facts, limits and next tests are unchanged.
 
 - [updates](./index.html#updates): Record this mobile-readability correction; no new source reading or historical conclusion.
+
+19 October 2026
+
+### Edition 01.75 · Davis trustee decree located
+
+The 15 October 1852 court minute appoints Charles M. Irwin trustee for Elizabeth Davis’s bequeathed property and authorizes sale. It supplies the authority recited in the later deed to Solomon Rainwater, with no stated Rainwater kinship. N102 retains exact source and bounded search coverage; Start here and K07 advance to the earlier-title test. Twenty original spreads and supporting reviews are preserved in the restricted supplement. No Aaron parent, prior surname, overseas home, cross-Solomon identity or DNA-confidence upgrade follows.
+
+Section review and edit notes
+
+Editor: AI research assistant. Editorial checkpoint: 2026-10-19T06:34:14Z . Targeted original-image reading, not an exhaustive court-series or all-case transcription. Earlier source-reading dates and unaffected section checkpoints are retained.
+
+- [start-here](./index.html#start-here): Replace the unlocated-decree checkpoint with the original p154 result and next title test; link the new restricted source packet and incremental preservation count. No parentage or migration upgrade.
+
+- [clues](./index.html#clues): K07 points to the completed decree reading and earlier-land title test. Keep the two marriages and unresolved cross-Solomon identity distinct.
+
+- [research-notes](./index.html#research-notes): N102 adds the original 15 October 1852 Davis decree, Gardner bequest, limited sale authority, exact source and manual/text-search scopes. Remove the completed retrieval from current next steps. Other101notes unchanged.
+
+- [updates](./index.html#updates): Record the located decree, preservation and unchanged historical/genetic confidence. Preserve all prior editions as dated history.
 
 09 / Contact
 

@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "review_date": "2026-11-16",
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 2138,
+      "sha256": "7725de1190b79336fa32c40a1e9d88049045bcfa38a2f3dd9fef37e7bfc2211a"
+    },
+    {
+      "name": "brief.md",
+      "bytes": 3448,
+      "sha256": "7f41fc685d97962881a280278488fe7af438bd83860ba196ac13063abb0a911a"
+    },
+    {
+      "name": "build.mjs",
+      "bytes": 14154,
+      "sha256": "fb983b09e3bcab9c59d1c666781fad0c57441b4f079d7d63163fcd36daa17321"
+    },
+    {
+      "name": "coaching.html",
+      "bytes": 24335,
+      "sha256": "db5b28ee0e7bf84a608945b9204c05e6735af475016fc0568763e70eb071d880"
+    },
+    {
+      "name": "coaching.md",
+      "bytes": 15443,
+      "sha256": "3dce916d6e548b293c990d866df87ba46747135a049082044a6e458eaed77eb5"
+    },
+    {
+      "name": "evidence.html",
+      "bytes": 26154,
+      "sha256": "2d3942073a164cab994fe576304a3bfd3dacc16efab62ee524310c2043aaa497"
+    },
+    {
+      "name": "expert-strategy.html",
+      "bytes": 24129,
+      "sha256": "55288b272de6b4dba4098cc60ec9e12e0c7547954a60f46642fb2ebb1cdd3788"
+    },
+    {
+      "name": "expert-strategy.md",
+      "bytes": 15996,
+      "sha256": "b442e1080df93d4d9c9bff7ed90a3ebc089e9def7815f1ee5421adc50d89730d"
+    },
+    {
+      "name": "index.html",
+      "bytes": 5285,
+      "sha256": "d8b7fbdbc6390d83311ed73209ddd8c9be23f0016a3d625103e525a9c98e53f8"
+    },
+    {
+      "name": "llms.txt",
+      "bytes": 555,
+      "sha256": "78d27fd3a6c715a5c1e950f8def083841fe016647025efaa13a51499f0e93d48"
+    },
+    {
+      "name": "reports.json",
+      "bytes": 845,
+      "sha256": "1940648bee54fade3956e22b050009bc06609e8677e04972080a442f1f745318"
+    },
+    {
+      "name": "review-bundle.md",
+      "bytes": 49062,
+      "sha256": "e24e99b0c7d7d20bd2d27c83284ab4b1b403353eaffe3f3827ce135381efb097"
+    },
+    {
+      "name": "reviewer-guide.md",
+      "bytes": 3381,
+      "sha256": "8bbc8abd036d3dd325731b40007b856f606abcfa0d014d5ea5b804dc29299c00"
+    },
+    {
+      "name": "site.js",
+      "bytes": 2063,
+      "sha256": "97aa250e0966444353d8178fca2c8ed14f267ecf2d0a2283e9fef4a9deb40b3e"
+    },
+    {
+      "name": "sources.json",
+      "bytes": 14448,
+      "sha256": "74777f2db11f3a26bf17fd1912f7055b0bff55ca9dd2f7044443932a7a7f018a"
+    },
+    {
+      "name": "styles.css",
+      "bytes": 16980,
+      "sha256": "d41f58e12f50a686d8f11bcc463f4fcad0cf4054094184d4998d3cd38d619381"
+    }
+  ]
+}

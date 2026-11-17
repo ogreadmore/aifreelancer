@@ -307,3 +307,13 @@ h1,h2,h3,.report-description h3{font-family:var(--sans);font-weight:600;letter-s
 .report-card{padding:22px 18px}
 .brand-sub{font-size:11px}
 }
+
+/* Index: title and two reports only. */
+.index-main{max-width:1040px;margin:0 auto;padding:52px 28px}
+.index-main>h1{font-size:36px;line-height:1.2;margin:0 0 30px}
+.index-page .report-card{grid-template-columns:52px minmax(0,1fr) auto;gap:24px}
+.index-page .report-description h2{font-size:25px;line-height:1.3;margin:8px 0 12px}
+.index-page .report-description h2 a{text-decoration:none}
+.index-page .report-description h2 a:hover{text-decoration:underline}
+.index-page .report-description p{margin-bottom:0}
+@media(max-width:700px){.index-main{padding:30px 20px}.index-main>h1{font-size:28px;margin-bottom:24px}.index-page .report-card{grid-template-columns:30px minmax(0,1fr);gap:14px}.index-page .report-description h2{font-size:22px}.index-page .report-open{grid-column:2;justify-self:start}}

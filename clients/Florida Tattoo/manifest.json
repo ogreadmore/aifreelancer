@@ -14,13 +14,13 @@
     },
     {
       "name": "build.mjs",
-      "bytes": 13873,
-      "sha256": "353b9cac1708477651b93f50a8c64f8f6125d9c5751b488a59bde75995c3703a"
+      "bytes": 11430,
+      "sha256": "6f352b149f32c5dae30fdbefe4a436c382757853a5fa70fc6d397ceb37bae409"
     },
     {
       "name": "coaching.html",
-      "bytes": 24056,
-      "sha256": "ec178449944e0aa8f95575bbfe8ce6a30f81d9d7783690ad1054625e162b5644"
+      "bytes": 24061,
+      "sha256": "ba407a3fb54f70219b55036b127874066b0fca16d332b2d9bf65c78025c99517"
     },
     {
       "name": "coaching.md",
@@ -29,13 +29,13 @@
     },
     {
       "name": "evidence.html",
-      "bytes": 25875,
-      "sha256": "6bb527d24d21fee080c474e2916199be1f5e5c39192b16243e177fc24cdc393f"
+      "bytes": 25880,
+      "sha256": "ee98bc04f8d826d6de8f7bc3d024dcfea1c5941f0974ddc6c40b6e2d817b9c45"
     },
     {
       "name": "expert-strategy.html",
-      "bytes": 23850,
-      "sha256": "7baac345f537c5a6440790c809862d9100be0114de5d1ce61c61d18d496f95f1"
+      "bytes": 23855,
+      "sha256": "f2a1ee0a369da38ca05d7c6b13484b8309dd3792058e6d844c56b2148ff18af9"
     },
     {
       "name": "expert-strategy.md",
@@ -44,8 +44,8 @@
     },
     {
       "name": "index.html",
-      "bytes": 5004,
-      "sha256": "e6d1ad99e9c7012a463f5da8ebc50f4d0fd8f446e4f0add8704318297ccd3753"
+      "bytes": 1670,
+      "sha256": "e06325bcd735ebc8be7f99c6f80d6c080feb327117dfe0004fdefe64d210cf6f"
     },
     {
       "name": "llms.txt",
@@ -79,8 +79,8 @@
     },
     {
       "name": "styles.css",
-      "bytes": 17896,
-      "sha256": "932a851dbb0f95b50ea4bf72b71b2f19c54872d72941f267d1e0946b8dca4152"
+      "bytes": 18697,
+      "sha256": "51e5e973cbc22386872c92935ed802b8ea5e06f500c6d8388a987b3172b78247"
     }
   ]
 }

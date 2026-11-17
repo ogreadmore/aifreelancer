@@ -1,0 +1,14 @@
+# Florida Tattoo — PR report library
+
+Prepared for Brissa Behrens by AI Freelancer. Version 1.0. Evidence review: November 16, 2026.
+
+- [Read first: case brief](brief.md)
+- [Report 01: practical PR coaching](coaching.md)
+- [Report 02: unlimited-budget strategy](expert-strategy.md)
+- [Structured source ledger](sources.json)
+- [Reviewer guide](reviewer-guide.md)
+- [Complete review bundle](review-bundle.md)
+- [Report catalog](reports.json)
+- [File integrity manifest](manifest.json)
+
+HTML entry point: https://aifreelancer.co/clients/Florida%20Tattoo/

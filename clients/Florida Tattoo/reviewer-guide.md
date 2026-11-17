@@ -1,6 +1,6 @@
 # Reviewer guide
 
-This package is prepared for Brissa Behrens by AI Freelancer, version 1.2, November 16, 2026. Its public entry point is https://aifreelancer.co/clients/Florida%20Tattoo/.
+This package is prepared for Brissa Behrens by AI Freelancer, version 1.2, November 16, 2026. Its public entry point is https://aifreelancer.co/clients/florida-tattoo/.
 
 ## Read in this order
 

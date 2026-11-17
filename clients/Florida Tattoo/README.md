@@ -1,8 +1,10 @@
+This is a generated compatibility copy. Edit ../florida-tattoo/ only.
+
 # Florida Tattoo report library
 
 Client-facing reports prepared by AI Freelancer for Brissa Behrens. Version 1.2, November 16, 2026.
 
-Live entry point: https://aifreelancer.co/clients/Florida%20Tattoo/
+Live entry point: https://aifreelancer.co/clients/florida-tattoo/
 
 ## Contents
 
@@ -22,6 +24,8 @@ Live entry point: https://aifreelancer.co/clients/Florida%20Tattoo/
 - manifest.json — file hashes for release verification.
 
 ## Maintenance
+
+The canonical directory is `clients/florida-tattoo/`. The build also maintains compatibility files under the former `clients/Florida Tattoo/` path: HTML pages redirect to the new address and preserve query strings and section links; earlier text/download URLs remain usable. Edit only the canonical directory.
 
 Edit the Markdown and sources.json, then run `node build.mjs` from this directory. The build regenerates the HTML, combined review bundle, and manifest. Add future reports through reports.json and the generator. Preserve stable report and source links. Rebuild after any content change so HTML and downloadable text agree.
 

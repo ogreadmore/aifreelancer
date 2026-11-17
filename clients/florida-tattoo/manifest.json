@@ -1,0 +1,96 @@
+{
+  "version": "1.2",
+  "review_date": "2026-11-16",
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 4252,
+      "sha256": "06509627daa5c3d3680dbf09e68ebb18a2e23557caab0fafa5f3e2d8081d0018"
+    },
+    {
+      "name": "brief.md",
+      "bytes": 4111,
+      "sha256": "d90cedf1ef5f10b0110c38770fadbe08c0a1c0cd6f2d8638d851c256db4faa73"
+    },
+    {
+      "name": "build.mjs",
+      "bytes": 13247,
+      "sha256": "4d0211215334d83badc0209bce411732460dcddab68354c36396fe0fed0c7e03"
+    },
+    {
+      "name": "coaching.html",
+      "bytes": 30296,
+      "sha256": "dff48d5d309d8bbe4d81f1834e78f2883a874a22d1c5277d0ddb116414af45ed"
+    },
+    {
+      "name": "coaching.md",
+      "bytes": 20676,
+      "sha256": "e7fde4ee05186c5458f8850275dbf9eded5b8a49883aa6ba0e866fa5787be9d6"
+    },
+    {
+      "name": "evidence.html",
+      "bytes": 34102,
+      "sha256": "bb0f14e9623d2d2d70aa968726e723d34468f673df653117ff659581b356c4ea"
+    },
+    {
+      "name": "expert-strategy.html",
+      "bytes": 25823,
+      "sha256": "3cbea202c89a1d1f296eac2711182220d62ef037ec30cfd68e10e07f620dcbc5"
+    },
+    {
+      "name": "expert-strategy.md",
+      "bytes": 17768,
+      "sha256": "d36981f9f4fc5be4ced37bd7c49ef52e6c565dc579d34252da74cae8bc1cf9ce"
+    },
+    {
+      "name": "index.html",
+      "bytes": 2234,
+      "sha256": "3426b65b43e5b989ef7679e61542b710c1e8c45b6f00252eac1299aed6dd4898"
+    },
+    {
+      "name": "llms.txt",
+      "bytes": 597,
+      "sha256": "d5dfadce51a03bb9b86a66de6b22656042163bd64f19d77a8db96d3f9b73311c"
+    },
+    {
+      "name": "pr-options.html",
+      "bytes": 26080,
+      "sha256": "0744e8fef4918064de7a7e0bc7ab5f6815d9c098cf65f17c96cea3adf40176a4"
+    },
+    {
+      "name": "pr-options.md",
+      "bytes": 17957,
+      "sha256": "863e15df3b9a44db340437e96116a7bc45204ba881b33ec4a7efb4e06c433248"
+    },
+    {
+      "name": "reports.json",
+      "bytes": 1445,
+      "sha256": "45fb2dc9ee6bd87802f9a85f65bf0f5f754ac83d7d5f307402955845e202eff2"
+    },
+    {
+      "name": "review-bundle.md",
+      "bytes": 80329,
+      "sha256": "04cf11da465336b10e3bc6eb8406f684c3f04240a43f3fbf4263fc6e9f146649"
+    },
+    {
+      "name": "reviewer-guide.md",
+      "bytes": 4449,
+      "sha256": "dc2ea671581dec11e7d9e3c64e218b941eec47047a9464bbb1a7bc1350f6bddd"
+    },
+    {
+      "name": "site.js",
+      "bytes": 2063,
+      "sha256": "97aa250e0966444353d8178fca2c8ed14f267ecf2d0a2283e9fef4a9deb40b3e"
+    },
+    {
+      "name": "sources.json",
+      "bytes": 20416,
+      "sha256": "e5fe3fc915c88f84c25fa6f2dfe09fbab4e0cc3882235b4f16647c2cac3a4ca6"
+    },
+    {
+      "name": "styles.css",
+      "bytes": 18697,
+      "sha256": "51e5e973cbc22386872c92935ed802b8ea5e06f500c6d8388a987b3172b78247"
+    }
+  ]
+}

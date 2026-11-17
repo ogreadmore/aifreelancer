@@ -12,4 +12,4 @@ Prepared for Brissa Behrens by AI Freelancer. Version 1.2. Evidence review: Nove
 - [Report catalog](reports.json)
 - [File integrity manifest](manifest.json)
 
-HTML entry point: https://aifreelancer.co/clients/Florida%20Tattoo/
+HTML entry point: https://aifreelancer.co/clients/florida-tattoo/

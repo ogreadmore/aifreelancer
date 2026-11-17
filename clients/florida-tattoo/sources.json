@@ -1,0 +1,430 @@
+{
+  "version": "1.2",
+  "review_date": "2026-11-16",
+  "sources": [
+    {
+      "id": "S01",
+      "category": "Case background",
+      "title": "Initial news coverage",
+      "url": "https://thenerdstash.com/florida-woman-in-wheelchair-allegedly-harassed-by-group-of-women-when-did-everyone-get-so-evil/",
+      "publisher": "The Nerd Stash · Gabriela Jessica",
+      "published": "2026-11-13",
+      "reviewed": "2026-11-16",
+      "type": "Secondary reporting",
+      "observation": "Reports Temperance’s account of harassment at Kia Center, identifies Taylor as the Subculturez manager, and describes an apology and employment termination announcement.",
+      "supports": [
+        "Background to the controversy",
+        "The reported business response"
+      ],
+      "limits": "The article predates the newer TikTok clarification. Its description of doubts about firing is not the latest public position. It is not independent proof of every incident detail.",
+      "used_in": [
+        "brief",
+        "coaching",
+        "expert-strategy",
+        "pr-options"
+      ]
+    },
+    {
+      "id": "S02",
+      "category": "Public updates",
+      "title": "Temperance asks people to stop reviews; acknowledges firing",
+      "url": "https://www.tiktok.com/@temperance777/video/7708822408861388062",
+      "publisher": "@temperance777 · TikTok",
+      "reviewed": "2026-11-16",
+      "type": "Primary public post · visual review",
+      "observation": "The visible caption and overlay ask people to stop leaving reviews, remove false reviews, and stop targeting unrelated shops. The overlay says the manager in the video was already fired.",
+      "excerpt": "THE MANAGER IN THE VIDEO WAS FIRED ALREADY!",
+      "supports": [
+        "The public discussion has moved beyond initial doubts",
+        "Do not encourage supporters to review unrelated businesses"
+      ],
+      "limits": "Review covers visible text, not a verified full audio transcript. A request to stop review attacks does not establish forgiveness, endorsement, or private resolution.",
+      "used_in": [
+        "brief",
+        "coaching",
+        "expert-strategy",
+        "pr-options"
+      ]
+    },
+    {
+      "id": "S03",
+      "category": "Public updates",
+      "title": "Temperance responds to a comment defending the owner",
+      "url": "https://www.tiktok.com/@temperance777/video/7708892391482166558",
+      "publisher": "@temperance777 · TikTok",
+      "reviewed": "2026-11-16",
+      "type": "Primary public post · visual review",
+      "observation": "The post criticizes an argument made in the owner’s defense while again asking people not to leave reviews or harass others. It illustrates how supporter arguments can create new conflict.",
+      "supports": [
+        "Ask supporters to stop arguing on the owner’s behalf"
+      ],
+      "limits": "One observed exchange supports this specific communication concern; it does not show that every supporter is causing harm.",
+      "used_in": [
+        "coaching",
+        "expert-strategy"
+      ]
+    },
+    {
+      "id": "S04",
+      "category": "Owner communication",
+      "title": "Owner’s comment circulated in the response video’s comments",
+      "url": "https://www.tiktok.com/@temperance777/video/7708146609913105695",
+      "publisher": "Instagram comment by @_sweetbtattoos_, circulated in TikTok comments",
+      "reviewed": "2026-11-16",
+      "type": "Circulated screenshot · authenticity confirmed by the AI Freelancer commissioning contact",
+      "observation": "A screenshot in a comment on this video shows the owner characterizing the dispute dismissively and distancing herself from it. The report accepts the screenshot as genuine and addresses the wording directly.",
+      "excerpt": "little girl drama; That has nothing to do with me",
+      "supports": [
+        "Direct acknowledgment and apology for dismissive wording",
+        "Avoid debating participants’ motives in public"
+      ],
+      "limits": "The link opens the video thread, not a stable direct link to the image. The screenshot was visually reviewed in the video’s comments. It is not separately archived in this package. Authentication was supplied by the AI Freelancer commissioning contact (not Brissa), not by an independent forensic process. Full spoken content of this 8:01 video was not reviewed.",
+      "used_in": [
+        "brief",
+        "coaching",
+        "expert-strategy",
+        "pr-options"
+      ]
+    },
+    {
+      "id": "S05",
+      "category": "Owner communication",
+      "title": "Instagram announcement cited by the news report",
+      "url": "https://www.instagram.com/p/Dfqat8-kWQD/",
+      "publisher": "Subculturez · linked announcement",
+      "reviewed": "2026-11-16",
+      "type": "Linked primary source · access limited",
+      "observation": "The news article links to this announcement as its source for the business’s apology and employment action.",
+      "supports": [
+        "Locate the original announcement referenced in S01"
+      ],
+      "limits": "The logged-out route examined led to an unavailable shop profile. The announcement’s full original wording was not directly read; the statement summary comes from S01. Inaccessibility here is not proof of deletion or absence for every viewer.",
+      "used_in": [
+        "coaching"
+      ]
+    },
+    {
+      "id": "S06",
+      "category": "Business channels",
+      "title": "Subculturez homepage and business contact",
+      "url": "https://www.subcultureztattoos.com/",
+      "publisher": "Subculturez",
+      "reviewed": "2026-11-16",
+      "type": "Official business website",
+      "observation": "The reviewed homepage provides shop information and the business email subcultureztattoos@gmail.com. No crisis update was visible on that homepage in the reviewed visit.",
+      "supports": [
+        "Provide a stable website home for the response",
+        "Use the published contact address if monitored"
+      ],
+      "limits": "This was a homepage and linked-route check, not a complete crawl of every page. Publication of an email address does not establish that it is monitored.",
+      "used_in": [
+        "coaching"
+      ]
+    },
+    {
+      "id": "S07",
+      "category": "Business channels",
+      "title": "Subculturez About page",
+      "url": "https://www.subcultureztattoos.com/about",
+      "publisher": "Subculturez",
+      "reviewed": "2026-11-16",
+      "type": "Official business website",
+      "observation": "Identifies Brissa as owner and describes the shop using attitude-focused language. A small tone edit is recommended in the current context.",
+      "excerpt": "unapologetic, no-BS; stay for the attitude",
+      "supports": [
+        "Shared-ownership context",
+        "Specific website wording recommendation"
+      ],
+      "limits": "The judgment about likely audience reaction is communication analysis, not a measured customer survey.",
+      "used_in": [
+        "brief",
+        "coaching",
+        "expert-strategy",
+        "pr-options"
+      ]
+    },
+    {
+      "id": "S08",
+      "category": "Business channels",
+      "title": "Anatomy Divine About page",
+      "url": "https://www.anatomydivine.com/about",
+      "publisher": "Anatomy Divine",
+      "reviewed": "2026-11-16",
+      "type": "Official business website",
+      "observation": "Names Brissa Behrens as the founder and owner. Lists the Altamonte Springs location and Anatomydivinetattoo@Gmail.com.",
+      "supports": [
+        "Explain the shared ownership accurately",
+        "Route Anatomy Divine appointment questions to its own business contact"
+      ],
+      "limits": "Shared ownership does not establish that Taylor worked at this shop. The published email needs to be actively monitored before it is offered as a response channel.",
+      "used_in": [
+        "brief",
+        "coaching",
+        "pr-options"
+      ]
+    },
+    {
+      "id": "S09",
+      "category": "Business channels",
+      "title": "Owner’s professional Instagram",
+      "url": "https://www.instagram.com/_sweetbtattoos_/",
+      "publisher": "@_sweetbtattoos_",
+      "reviewed": "2026-11-16",
+      "type": "Public profile access check",
+      "observation": "The professional account displayed as private in the logged-out review.",
+      "supports": [
+        "A business response needs a reliable public route"
+      ],
+      "limits": "A private account is not misconduct. The recommendation is to maintain a public business update; it is not to require access to personal content.",
+      "used_in": [
+        "coaching"
+      ]
+    },
+    {
+      "id": "S10",
+      "category": "Business channels",
+      "title": "Facebook page linked by Subculturez’s website",
+      "url": "https://www.facebook.com/profile.php?id=61550957297871",
+      "publisher": "Subculturez · website-linked Facebook",
+      "reviewed": "2026-11-16",
+      "type": "Linked business channel · access limited",
+      "observation": "The linked page was unavailable in the logged-out review.",
+      "supports": [
+        "Test response links outside an owner’s logged-in session"
+      ],
+      "limits": "This does not determine account status, deletion, or access for logged-in visitors. An older Facebook URL found in an aggregator is not used as the current primary route.",
+      "used_in": [
+        "coaching"
+      ]
+    },
+    {
+      "id": "S11",
+      "category": "Business channels",
+      "title": "Subculturez Instagram profile",
+      "url": "https://www.instagram.com/_subculturez_/",
+      "publisher": "@_subculturez_",
+      "reviewed": "2026-11-16",
+      "type": "Business channel · access limited",
+      "observation": "The profile was unavailable through the reviewed logged-out route.",
+      "supports": [
+        "Use an accessible website update"
+      ],
+      "limits": "Access limitations are observations of the review route, not conclusions about deliberate removal.",
+      "used_in": [
+        "coaching"
+      ]
+    },
+    {
+      "id": "S12",
+      "category": "Additional context",
+      "title": "Temperance’s original incident post",
+      "url": "https://www.tiktok.com/@temperance777/video/7707130878891183391",
+      "publisher": "@temperance777 · TikTok",
+      "reviewed": "2026-11-16",
+      "type": "Primary post · context link",
+      "observation": "Original incident post located through the source review. Provided for readers seeking the underlying public context.",
+      "supports": [
+        "Find the original public account"
+      ],
+      "limits": "No new investigation or full verified transcript is included. Volatile view counts are omitted.",
+      "used_in": [
+        "brief"
+      ]
+    },
+    {
+      "id": "S13",
+      "category": "Additional context",
+      "title": "Temperance’s longer account",
+      "url": "https://www.tiktok.com/@temperance777/video/7707517776855829791",
+      "publisher": "@temperance777 · TikTok",
+      "reviewed": "2026-11-16",
+      "type": "Primary post · further-reading link",
+      "observation": "A longer account located on the creator’s profile.",
+      "supports": [
+        "Additional source material for a reviewer who chooses to review the spoken content"
+      ],
+      "limits": "Linked for further review, not treated as fully transcribed or analyzed evidence for private resolution.",
+      "used_in": [
+        "evidence"
+      ]
+    },
+    {
+      "id": "G01",
+      "category": "Professional guidance",
+      "title": "Trust and Transparency in Times of Crisis",
+      "url": "https://www.prsa.org/article/trust-and-transparency-in-times-of-crisis",
+      "publisher": "PRSA · Heather Bermudez and Aileen Izquierdo",
+      "published": "2020-07",
+      "reviewed": "2026-11-16",
+      "type": "Professional guidance",
+      "observation": "Discusses authentic communication, timely information, and humility during and after a crisis.",
+      "supports": [
+        "Consistent and candid owner communication"
+      ],
+      "limits": "General professional guidance. It does not validate the facts of this case or prescribe this package’s ranking.",
+      "used_in": [
+        "coaching",
+        "expert-strategy"
+      ]
+    },
+    {
+      "id": "G02",
+      "category": "Professional guidance",
+      "title": "Crisis Management 101: Key Insights from the World of Public Relations",
+      "url": "https://www.americanbar.org/groups/litigation/resources/newsletters/products-liability/summer2020-crisis-management-101-key-insights-from-the-world-of-public-relations/",
+      "publisher": "American Bar Association · practitioner interview",
+      "published": "2020",
+      "reviewed": "2026-11-16",
+      "type": "Professional guidance",
+      "observation": "Discusses proportionate responses, audience needs, spokesperson selection, and coordination among advisers.",
+      "supports": [
+        "Team coordination and proportionate communication"
+      ],
+      "limits": "General practitioner guidance, not legal advice about this situation. The ranked team and deliverables are this report’s own recommendations.",
+      "used_in": [
+        "expert-strategy"
+      ]
+    },
+    {
+      "id": "G03",
+      "category": "Platform rules",
+      "title": "Google Maps prohibited and restricted content",
+      "url": "https://support.google.com/business/answer/7400114",
+      "publisher": "Google",
+      "reviewed": "2026-11-16",
+      "type": "Official platform policy",
+      "observation": "Reviews should reflect genuine experiences. The policy prohibits incentives and selective requests for positive reviews.",
+      "supports": [
+        "Use neutral requests for honest customer reviews"
+      ],
+      "limits": "Platform rules may change. This is not a guarantee that any particular review will be removed.",
+      "used_in": [
+        "coaching",
+        "expert-strategy"
+      ]
+    },
+    {
+      "id": "G04",
+      "category": "Platform rules",
+      "title": "Report inappropriate reviews on your Business Profile",
+      "url": "https://support.google.com/business/answer/4596773/",
+      "publisher": "Google",
+      "reviewed": "2026-11-16",
+      "type": "Official platform process",
+      "observation": "Explains reporting reviews and the appeal route. Eligibility depends on a policy violation.",
+      "supports": [
+        "Maintain an evidence-based review-report log"
+      ],
+      "limits": "Disagreement with criticism is not itself grounds for removal. Only the platform decides the outcome.",
+      "used_in": [
+        "coaching",
+        "expert-strategy"
+      ]
+    },
+    {
+      "id": "G05",
+      "category": "Crisis research",
+      "title": "Moral judgments and the limits of familiar crisis responses",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/1468-5973.70054",
+      "publisher": "Rongting Niu, Nicholas Eng, Yi Zhao and Yan Jin · Journal of Contingencies and Crisis Management",
+      "published": "2025-05-07",
+      "reviewed": "2026-11-16",
+      "type": "Peer-reviewed conceptual paper",
+      "observation": "The paper examines morally charged crises, the limits of established response approaches, and possible links between moral emotions and rejection of an organization.",
+      "supports": [
+        "Take persistent trust damage seriously when evaluating PR",
+        "Avoid promising that a standard reputation-repair response will be sufficient"
+      ],
+      "limits": "This is a conceptual framework, not an experiment or a study of these shops. It provides neither a recovery probability nor a business-closure recommendation. Its relevance here is an analytical application.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G06",
+      "category": "Platform rules",
+      "title": "Google review continuity after ownership changes, renaming, or closure",
+      "url": "https://support.google.com/business/answer/3098204",
+      "publisher": "Google",
+      "reviewed": "2026-11-16",
+      "type": "Official platform policy",
+      "observation": "Google says reviews remain for a new owner or manager using the same business name, minor name changes, and temporarily or permanently closed profiles. Larger changes are subject to different treatment; removal is not automatic.",
+      "supports": [
+        "A rename, transfer, or closure is not a reliable review reset"
+      ],
+      "limits": "Profile treatment depends on the actual change and applicable rules. This does not predict search visibility or audience reactions outside Google.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G07",
+      "category": "Platform rules",
+      "title": "Google Business Profile rules for genuine rebranding",
+      "url": "https://support.google.com/business/answer/3038177",
+      "publisher": "Google",
+      "reviewed": "2026-11-16",
+      "type": "Official platform policy · Rebranding section",
+      "observation": "Distinguishes eligible name changes on an existing profile from changes treated as a new business. Requires accurate real-world representation.",
+      "supports": [
+        "Check the actual profile requirements before changing a business name"
+      ],
+      "limits": "This is platform guidance, not a guarantee of review removal or a recommendation to create a new listing to evade a business’s history.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G08",
+      "category": "Business alternatives",
+      "title": "SBA guidance on finances, sale, ownership transfer, and closure",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "publisher": "U.S. Small Business Administration",
+      "reviewed": "2026-11-16",
+      "type": "Official business guidance · Manage finances and Close or sell sections",
+      "observation": "Recommends financial planning, valuation before sale, qualified advice, and an orderly approach to obligations when exiting a business.",
+      "supports": [
+        "Compare options using business records",
+        "Obtain advice before selling or closing"
+      ],
+      "limits": "General U.S. guidance, not an assessment of either shop or a complete Florida legal checklist. The earlier close-or-sell URL redirects to this consolidated page.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G09",
+      "category": "Florida business requirements",
+      "title": "Florida tattoo establishment licensing after an ownership change",
+      "url": "https://www.floridahealth.gov/licensing-regulations/regulated-professions/tattooing/frequently-asked-questions/",
+      "publisher": "Florida Department of Health",
+      "reviewed": "2026-11-16",
+      "type": "Official licensing guidance · Tattoo Establishments section",
+      "observation": "The Department says establishment licenses do not transfer between people and that a new license must be issued before tattooing following an ownership change.",
+      "supports": [
+        "Plan the licensing transition before promising uninterrupted service after a sale"
+      ],
+      "limits": "General guidance, not approval of a particular transaction, an assessment of either shop’s licenses, or a full checklist for tattoo and piercing operations. Confirm the actual structure and requirements with qualified advisers and the county health department.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G10",
+      "category": "Local business assistance",
+      "title": "Florida SBDC at UCF: service area and no-cost consulting",
+      "url": "https://sbdcorlando.com/frequently-asked-questions/",
+      "publisher": "Florida SBDC at the University of Central Florida",
+      "reviewed": "2026-11-16",
+      "type": "Official provider guidance",
+      "observation": "Lists Volusia and Seminole in its service area for qualifying small businesses and states that consulting is available at no cost. The consulting request page explains how to request assistance.",
+      "supports": [
+        "A concrete local starting point for an independent business assessment"
+      ],
+      "limits": "Eligibility, appointment availability, fit for the specific problem, and referrals must be confirmed. No adviser has been contacted or retained. This is not a promise of crisis, legal, insolvency, or transaction services.",
+      "used_in": [
+        "pr-options"
+      ]
+    }
+  ]
+}

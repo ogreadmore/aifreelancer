@@ -1,11 +1,12 @@
 {
   "version": "1.2",
+  "canonical_url": "https://aifreelancer.co/clients/florida-tattoo/",
   "review_date": "2026-11-16",
   "files": [
     {
       "name": "README.md",
-      "bytes": 3943,
-      "sha256": "2fe3f74b3c5eaab4f8e323445de841f8f1e993bdd4b368830c657ed17ef0af3d"
+      "bytes": 4323,
+      "sha256": "756fc6fdae8c6ebcd48f5d01f9ee7e074c042fbd4fcf92cee665ddfe03ae074b"
     },
     {
       "name": "brief.md",
@@ -14,13 +15,13 @@
     },
     {
       "name": "build.mjs",
-      "bytes": 11518,
-      "sha256": "f41d0f183ca6c4a283b60cb9777d45877ff4315d59a74be3758d65386fef1110"
+      "bytes": 93,
+      "sha256": "e70e697eee1e231f2066aee3e3a88d399329160e90582f29286db915b479c052"
     },
     {
       "name": "coaching.html",
-      "bytes": 30206,
-      "sha256": "2e61fff41166c1a0bc18645ffb4b2e8f8707c706b8f3e8f33a6f6da40ba3e5ae"
+      "bytes": 608,
+      "sha256": "b29e18cd449825f8a5fda674558692671fd98a6070fb79a7efb3cd2b6175b525"
     },
     {
       "name": "coaching.md",
@@ -29,13 +30,13 @@
     },
     {
       "name": "evidence.html",
-      "bytes": 34012,
-      "sha256": "0102064f30284302a14e38abc157204b028c17623ef1af7e46265712d42b57aa"
+      "bytes": 608,
+      "sha256": "512d4051542dd4f6676c76ac45dc93cd272b04bbff362b70a1e759675981883a"
     },
     {
       "name": "expert-strategy.html",
-      "bytes": 25726,
-      "sha256": "7c5a72e0d33fc28dfdc0bcd1bbdc04f945e00e9cb64ca379257c1fbb294e2c50"
+      "bytes": 636,
+      "sha256": "8a9d27af667d6e9ee6e17b6ef23eff023eb7331492ac937905b1a4340de87801"
     },
     {
       "name": "expert-strategy.md",
@@ -44,18 +45,18 @@
     },
     {
       "name": "index.html",
-      "bytes": 2147,
-      "sha256": "75ab4b5f9e6d6ccc7e323f071a6585997c275e0c88a18adc0fb64698c78f7422"
+      "bytes": 596,
+      "sha256": "402c5844f4d96fbe739a18d3b442154521bfa3b953dc7b714ab0df9eea00ff9d"
     },
     {
       "name": "llms.txt",
-      "bytes": 599,
-      "sha256": "4ffbab3a4222202b40ff6a266c8efe4a071c3c353127aafac38e21d5ed1fdace"
+      "bytes": 597,
+      "sha256": "d5dfadce51a03bb9b86a66de6b22656042163bd64f19d77a8db96d3f9b73311c"
     },
     {
       "name": "pr-options.html",
-      "bytes": 25988,
-      "sha256": "54b4d0c70df6b6a6e2757acc865af89eb313dce00d0a12667f8111e8785d0d88"
+      "bytes": 616,
+      "sha256": "c246d0baef96b8fcecc4d5c8e91d25bafdb8af981c9f56022916e92e0e818a3a"
     },
     {
       "name": "pr-options.md",
@@ -69,13 +70,13 @@
     },
     {
       "name": "review-bundle.md",
-      "bytes": 80333,
-      "sha256": "66d28f7679564224a3337c999ef39a6b9ec7a400af7b1a9bde5deb16b93a1bb4"
+      "bytes": 80329,
+      "sha256": "04cf11da465336b10e3bc6eb8406f684c3f04240a43f3fbf4263fc6e9f146649"
     },
     {
       "name": "reviewer-guide.md",
-      "bytes": 4451,
-      "sha256": "026500ee133793e92a8e5bf066598afcd728602f7f41d595cfaa0b2670eda3d5"
+      "bytes": 4449,
+      "sha256": "dc2ea671581dec11e7d9e3c64e218b941eec47047a9464bbb1a7bc1350f6bddd"
     },
     {
       "name": "site.js",

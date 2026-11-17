@@ -1,16 +1,16 @@
 # Florida Tattoo: case brief
 
-Prepared November 16, 2026 by AI Freelancer. Version 1.1.
+Prepared November 16, 2026 by AI Freelancer. Version 1.2.
 
 ## Who this is for
 
-Brissa Behrens, also known professionally as Brissa Renee, owns Subculturez Tattoo & Piercing in Orange City, Florida, and Anatomy Divine in Altamonte Springs, Florida. The reports address her communication, customer relationships, and business options during a social-media controversy.
+Brissa Behrens, also known professionally as Brissa Renee, owns Subculturez Tattoo & Piercing in Orange City, Florida, and Anatomy Divine in Altamonte Springs, Florida. The reports address her communication, customer relationships, and business options during a social-media controversy. They are advice prepared for her consideration, not statements issued on her behalf. The Taylor identified as the manager in this case is not the AI Freelancer contact commissioning the reports.
 
 ## What brought the situation here
 
 Temperance, who posts as @temperance777, described harassment at Kia Center while using a wheelchair. The public story connected Taylor, a Subculturez manager, to the incident. A November 13 news report described the shop’s apology and announcement that Taylor was no longer employed or affiliated with the business. The original social-media announcement was not accessible through the logged-out route examined during this review. [News report: S01](evidence.html#S01) · [Announcement: S05](evidence.html#S05).
 
-The discussion also turned to Brissa’s own dismissive comments. A circulated screenshot contains the phrases “little girl drama” and “That has nothing to do with me.” The commissioning client confirmed that screenshot is authentic. The coaching report addresses those words directly. [Comment and provenance: S04](evidence.html#S04).
+The discussion also turned to Brissa’s own dismissive comments. A circulated screenshot contains the phrases “little girl drama” and “That has nothing to do with me.” The AI Freelancer contact commissioning these reports confirmed that screenshot is authentic; this is not a claim of confirmation by Brissa. The coaching report addresses those words directly. [Comment and provenance: S04](evidence.html#S04).
 
 By the November 16 review, Temperance’s newer public posts asked people to stop review attacks and harassment, including at unrelated shops. One explicitly acknowledged that the manager had already been fired. That is a material development beyond the earlier article. It does not establish private reconciliation. [Clarification: S02](evidence.html#S02) · [Newer response: S03](evidence.html#S03).
 

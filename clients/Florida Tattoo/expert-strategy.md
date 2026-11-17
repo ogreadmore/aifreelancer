@@ -1,12 +1,14 @@
 # If budget were unlimited
 
-**Prepared for Brissa Behrens • November 16, 2026 • Version 1.1 • AI Freelancer**
+**Prepared for Brissa Behrens • November 16, 2026 • Version 1.2 • AI Freelancer**
 
 Brissa, an exceptional PR team would make it easier for you to respond calmly, take responsibility for your own words, and look after customers. Its first investment would be experienced people doing the work around you: preparing clear messages, handling questions, and helping you follow through.
 
 The priorities would stay the same as in the coaching report. More resources would buy better execution, specialist judgment, and sustained attention. Your voice and conduct would still determine whether the response feels credible.
 
 Before commissioning a large team, read [Is PR enough?](pr-options.html). It assesses whether a recovery campaign is worth pursuing and compares changes to the business, sale, and closure. The capabilities below do not guarantee that either shop can recover.
+
+**Before a large PR engagement:** have an independent accountant or business adviser assess each shop’s ability to continue, including cash, customer demand, artist capacity, and exit options. That decision runs alongside essential customer communication and comes before buying the full team below. The adviser must be free to recommend restructuring or exit. [Report 03’s decision process](pr-options.html#a-short-decision-process) includes a worksheet and a no-cost local consulting route.
 
 ## The recommended team, ranked
 
@@ -31,7 +33,7 @@ This is our judgment of importance and likely value for this situation. It is no
 
 Give one experienced adviser responsibility for the communication plan. That person works directly with you, keeps everyone using the same facts, and helps you decide which questions deserve an answer. Their most valuable work is helping you stop creating fresh conflict while demonstrating responsibility.
 
-**What they would deliver:** a one-page response plan; an agreed statement; a decision log; and rehearsal of the difficult questions about your earlier comments, Taylor’s employment, and the connection between the two shops. They would practice short answers with you until you can say them naturally without returning to the argument.
+**What they would deliver:** a one-page response plan; an agreed statement; a decision log; and rehearsal of the difficult questions about your earlier comments, the manager’s employment, and the connection between the two shops. They would practice short answers with you until you can say them naturally without returning to the argument.
 
 **What good looks like:** you can acknowledge the dismissive wording, explain the business action, and give customers a useful next step. The adviser reviews significant new statements before publication. Routine customer answers are already approved so replies do not stall.
 
@@ -71,7 +73,7 @@ Bring in a paid adviser with relevant expertise and lived experience to review t
 
 A skilled facilitator can help a private conversation stay respectful and specific. First establish whether contact already happened, what was agreed, and whether further contact would be welcome. The public posts reviewed here do not establish the status of private resolution.
 
-**What they would deliver:** an agreed format and boundaries if both parties wish to engage; a record of commitments shared only as agreed; and a clear end to outreach if contact is declined. They would help you listen and address your response without bargaining for a favorable public statement.
+**What they would deliver:** a review of prior contact and Temperance’s stated wishes, including her full current communications; an agreed format and boundaries only if both parties wish to engage; and a clear end to outreach if contact is declined. They would help you apologize and listen without asking her to explain the harm again or bargain for a favorable public statement. You should read or watch the communications yourself; the source review here did not cover the full spoken response video.
 
 **What good looks like:** any conversation serves the people involved. A decision not to participate is respected. The facilitator’s success is not measured by deletion of posts, an endorsement, or a public reconciliation photograph.
 
@@ -99,9 +101,9 @@ Track the questions that matter, the spread of inaccurate business identificatio
 
 **Value: conditional • Use when there is a real audience need**
 
-Prepare for inquiries and identify existing coverage that contains a consequential, demonstrable error or a materially outdated point. Where appropriate, send the relevant journalist a concise correction or update with a direct source.
+Prepare for inquiries and identify existing coverage that contains a consequential, demonstrable factual error. If one exists, consider a concise correction to the relevant journalist with direct supporting evidence. Do not manufacture a reason to contact the press or treat fair criticism as a factual error.
 
-**What they would deliver:** a short press Q&A; one contact for journalists; and carefully targeted responses. An update could explain the employment status and point to the newer public request to stop review attacks, without implying Temperance supports the shops.
+**What they would deliver:** a short press Q&A, one contact for journalists, and carefully targeted responses using the shop’s own accurate update. Do not pitch Temperance’s request to stop harassment as a redemption story or evidence that the matter is resolved. There may be no useful proactive media task at all.
 
 **What good looks like:** existing readers receive useful, accurate information. A national press tour, a paid redemption story, or a broad publicity push would not be an automatic purchase. More attention can keep the controversy circulating.
 
@@ -121,7 +123,7 @@ Refine the tone and resume a steady stream of real work: tattoo portfolios, arti
 
 Help the team distinguish online noise from customer experience and business results. Record the two shops separately so a shared-ownership concern is not confused with a problem at one location.
 
-**What they would deliver:** a compact weekly dashboard showing inquiries, bookings, cancellations with voluntarily supplied reasons, outstanding concerns, response times, and completed commitments. Compare like-for-like periods where records exist. Missing figures remain unknown; seasonality and other causes remain possible.
+**What they would deliver:** a compact weekly dashboard showing inquiries, bookings, cancellations with voluntarily supplied reasons, outstanding concerns, response times, and completed commitments. Include artist availability and pass financial questions to the independent business adviser. Compare like-for-like periods where records exist. Missing figures remain unknown; seasonality and other causes remain possible.
 
 **What good looks like:** the team can explain what is improving, what remains unresolved, and which work can stop. A quieter comment section or a higher review score alone is not proof that confidence has recovered.
 
@@ -139,12 +141,14 @@ Professional guidance supports thoughtful audience selection, an appropriate spo
 
 | Window | Team deliverables | Decision before moving on |
 |---|---|---|
-| First 24–48 hours | Finalize the response, coach Brissa, publish an accessible update, organize customer replies, establish a baseline. | Can a concerned customer find a clear answer and reach a responsive person? |
-| Days 3–7 | Resolve the inquiry backlog, refine the FAQ, consider private contact only if appropriate, address consequential errors. | Are unresolved questions being answered without generating new arguments? |
-| Days 8–14 | Review commitments and customer trends; gradually resume ordinary content. | Are actions consistent with the statement, and do customers have what they need? |
-| Days 15–30 | Reduce crisis coverage where justified; retain useful customer-care and communication habits. | Can normal business routines sustain the improvement? |
+| Today and the first 24 hours | Answer urgent customers now; establish a baseline and start the independent business assessment. Review the existing response with the crisis, disability-communication, and legal advisers before deciding what needs publication. Make one adequate response accessible. | Can customers get help, and does the response acknowledge Brissa’s own words without unnecessary republication? |
+| Days 2–7 | Resolve the inquiry backlog, refine the FAQ, consider private contact only if appropriate, address consequential errors. | Are unresolved questions being answered without generating new arguments? |
+| Days 8–14 | Review commitments and customer trends; consider resuming ordinary content if the response is functioning. | Are actions consistent with the statement, and do customers have what they need? |
+| Days 15–30 | Reduce crisis coverage where justified; retain useful customer-care habits and review the separately agreed commercial milestones. | Does the next investment remain justified, or should the business path change? |
 
 These windows are planning targets, not promised recovery dates. Move urgent customer work sooner. A new substantive event may require renewed attention; recycled criticism alone does not automatically justify a fresh statement.
+
+The communications timetable does not set the business’s survival deadline. The independent adviser should agree commercial review dates and earlier stop triggers using available cash, booking lead times, and commitments, as described in Report 03.
 
 ## When to increase or reduce the response
 
@@ -162,7 +166,7 @@ These windows are planning targets, not promised recovery dates. Move urgent cus
 | Writer and web editor maintain the response. | Publish one dated owner’s note and link to it consistently. |
 | Customer-care lead owns the inquiry queue. | Check a monitored business inbox at planned times and record follow-ups. |
 | Specialist tracks new developments. | Review meaningful questions twice daily; stop debating repeated provocations. |
-| Facilitator manages voluntary dialogue. | Check prior contact before considering one respectful offer. |
+| Facilitator manages voluntary dialogue. | Check prior contact and her stated wishes before considering one apology that asks for nothing. |
 | Analyst reports customer outcomes. | Keep a simple two-week record for each shop. |
 
 The first report is the implementation guide for these steps. Start there; use this report to decide which responsibilities you would hand to professionals if additional support becomes available.

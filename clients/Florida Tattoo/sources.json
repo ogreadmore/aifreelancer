@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "review_date": "2026-11-16",
   "sources": [
     {
@@ -71,14 +71,14 @@
       "url": "https://www.tiktok.com/@temperance777/video/7708146609913105695",
       "publisher": "Instagram comment by @_sweetbtattoos_, circulated in TikTok comments",
       "reviewed": "2026-11-16",
-      "type": "Circulated screenshot · authenticity confirmed by commissioning client",
+      "type": "Circulated screenshot · authenticity confirmed by the AI Freelancer commissioning contact",
       "observation": "A screenshot in a comment on this video shows the owner characterizing the dispute dismissively and distancing herself from it. The report accepts the screenshot as genuine and addresses the wording directly.",
       "excerpt": "little girl drama; That has nothing to do with me",
       "supports": [
         "Direct acknowledgment and apology for dismissive wording",
         "Avoid debating participants’ motives in public"
       ],
-      "limits": "The link opens the video thread, not a stable direct link to the image. The screenshot was visually reviewed in a comment posted by Remotea. It is not separately archived in this package. Authentication was supplied by the commissioning client, not by an independent forensic process. Full spoken content of this 8:01 video was not reviewed.",
+      "limits": "The link opens the video thread, not a stable direct link to the image. The screenshot was visually reviewed in the video’s comments. It is not separately archived in this package. Authentication was supplied by the AI Freelancer commissioning contact (not Brissa), not by an independent forensic process. Full spoken content of this 8:01 video was not reviewed.",
       "used_in": [
         "brief",
         "coaching",
@@ -388,6 +388,40 @@
         "Obtain advice before selling or closing"
       ],
       "limits": "General U.S. guidance, not an assessment of either shop or a complete Florida legal checklist. The earlier close-or-sell URL redirects to this consolidated page.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G09",
+      "category": "Florida business requirements",
+      "title": "Florida tattoo establishment licensing after an ownership change",
+      "url": "https://www.floridahealth.gov/licensing-regulations/regulated-professions/tattooing/frequently-asked-questions/",
+      "publisher": "Florida Department of Health",
+      "reviewed": "2026-11-16",
+      "type": "Official licensing guidance · Tattoo Establishments section",
+      "observation": "The Department says establishment licenses do not transfer between people and that a new license must be issued before tattooing following an ownership change.",
+      "supports": [
+        "Plan the licensing transition before promising uninterrupted service after a sale"
+      ],
+      "limits": "General guidance, not approval of a particular transaction, an assessment of either shop’s licenses, or a full checklist for tattoo and piercing operations. Confirm the actual structure and requirements with qualified advisers and the county health department.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G10",
+      "category": "Local business assistance",
+      "title": "Florida SBDC at UCF: service area and no-cost consulting",
+      "url": "https://sbdcorlando.com/frequently-asked-questions/",
+      "publisher": "Florida SBDC at the University of Central Florida",
+      "reviewed": "2026-11-16",
+      "type": "Official provider guidance",
+      "observation": "Lists Volusia and Seminole in its service area for qualifying small businesses and states that consulting is available at no cost. The consulting request page explains how to request assistance.",
+      "supports": [
+        "A concrete local starting point for an independent business assessment"
+      ],
+      "limits": "Eligibility, appointment availability, fit for the specific problem, and referrals must be confirmed. No adviser has been contacted or retained. This is not a promise of crisis, legal, insolvency, or transaction services.",
       "used_in": [
         "pr-options"
       ]

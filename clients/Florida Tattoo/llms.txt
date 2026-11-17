@@ -1,6 +1,6 @@
 # Florida Tattoo — PR report library
 
-Prepared for Brissa Behrens by AI Freelancer. Version 1.1. Evidence review: November 16, 2026.
+Prepared for Brissa Behrens by AI Freelancer. Version 1.2. Evidence review: November 16, 2026.
 
 - [Read first: case brief](brief.md)
 - [Report 01: practical PR coaching](coaching.md)

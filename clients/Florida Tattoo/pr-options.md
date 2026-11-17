@@ -1,6 +1,6 @@
 # Is PR enough?
 
-**Prepared for Brissa Behrens • November 16, 2026 • Version 1.1 • AI Freelancer**
+**Prepared for Brissa Behrens • November 16, 2026 • Version 1.2 • AI Freelancer**
 
 Brissa, this is serious enough that hiring an excellent PR agency could still leave you with businesses that struggle to recover. A better statement can address your words. It cannot make people forgive you, erase what they have seen, or guarantee that they will book appointments.
 
@@ -8,7 +8,7 @@ Brissa, this is serious enough that hiring an excellent PR agency could still le
 
 ## Could the best PR agency in Florida be enough?
 
-**Possibly, as part of a recovery effort. There is no sound basis to promise that it would be enough here.** There is also no sound basis in the public material to conclude that both businesses must close. We do not have the booking, cancellation, cash-flow, or customer-retention records needed to make that call.
+**A top agency could help, but you should not assume it can save either business.** It cannot guarantee forgiveness or enough customers to support the shops. There is also no sound basis in the public material to conclude that both businesses must close. We do not have the booking, cancellation, cash-flow, or customer-retention records needed to make that call.
 
 An excellent agency could help you communicate honestly, respond to customers, correct consequential errors, and avoid creating further conflict. Its work could reduce additional harm even if some people never return. It could also help explain a genuine management change, sale, or closure.
 
@@ -18,13 +18,13 @@ The outcome depends on factors the agency does not control: whether people belie
 
 ## Why this is harder than an ordinary PR problem
 
-The public account concerns mistreatment of a wheelchair user. Your own dismissive comments then gave people a separate reason to question your judgment as an owner. Ending Taylor’s employment addresses the employment relationship; it does not by itself answer concerns about your response. [Case sources](evidence.html#case-context) · [Owner comment](evidence.html#S04).
+The public account concerns mistreatment of a wheelchair user. Your own dismissive comments then gave people a separate reason to question your judgment as an owner. Ending the manager’s employment addresses the employment relationship; it does not by itself answer concerns about your response. [Case sources](evidence.html#case-context) · [Owner comment](evidence.html#S04).
 
 Our assessment is that this presents a serious trust problem. Some people may understand the facts and your apology and still choose another studio. For a business providing a personal service on someone’s body, the way customers expect to be treated is a meaningful part of their decision.
 
 Research on crises involving moral outrage explains why familiar reputation-repair approaches can face limits. A 2025 conceptual paper examines how moral judgments may contribute to boycotts and brand rejection. It supports taking this difficulty seriously; it does not supply a recovery rate or predict what will happen to these shops. [Research and limits](evidence.html#G05).
 
-There is one constructive development: Temperance has publicly asked people to stop review attacks and has acknowledged the firing. That can reduce confusion and provides something accurate to acknowledge. It does not establish forgiveness, private resolution, or renewed customer confidence. [Public clarification](evidence.html#S02).
+There is one constructive development: Temperance has publicly asked people to stop review attacks and has acknowledged the firing. That may reduce confusion about the employment action. Do not cite it in your own communications as support for the business. It does not establish forgiveness, private resolution, or renewed customer confidence. [Public clarification](evidence.html#S02).
 
 ## Decide what you are trying to preserve
 
@@ -89,6 +89,8 @@ An actual ownership transition may preserve value that would be lost in closure.
 
 Get an independent valuation and advice on the transaction. Assess whether a buyer has the ability and resources to operate the shop. Be accurate about what is being transferred and any continuing role you would have. A transfer to a friend or relative that leaves the same undisclosed control would not create the separation customers might expect. [SBA sale and transfer guidance](evidence.html#G08).
 
+Plan the licensing transition before promising uninterrupted service. Florida’s Department of Health says a tattoo establishment license cannot transfer between people; when ownership changes, a new license must be issued before tattooing. Have the buyer and advisers confirm the requirements for the actual transaction with the county health department. This is one transition requirement, not a complete sale checklist. [Florida licensing guidance](evidence.html#G09).
+
 ### Close in an orderly way
 
 **Closure is a legitimate option. It should not be dismissed simply because a PR plan exists.** It becomes more compelling when there is no credible path to meeting commitments, the cost of continuing exceeds the value reasonably being preserved, or you decide that continuing is no longer worthwhile after considering feasible alternatives.
@@ -105,6 +107,7 @@ Before buying a substantial campaign, ask an independent business adviser or acc
 |---|---|---|
 | Is there enough real demand? | Completed appointments, booking conversion, repeat customers, and voluntarily supplied cancellation reasons. | Whether there is a customer base worth trying to retain. |
 | Can the shop meet commitments during recovery? | A dated cash forecast, available cash, upcoming bills, deposits, and realistic service costs. | How much time and spending are actually available. |
+| Can the shop deliver the work customers want? | Current artist availability, significant departure risks, forward bookings, and realistic replacement capacity. | Whether forecast revenue can actually be earned. One departure is not automatically a closure trigger. |
 | Can the response remain credible? | Consistency between public statements, decisions, and subsequent replies. | Whether more communication is likely to help. |
 | Is there a specific barrier PR can address? | Customers repeatedly lack a factual answer or cannot find the current response. | Whether to fund a targeted communication task. |
 | Would another structure preserve more value? | Costed management, sale, downsizing, and closure scenarios. | Whether continuing the current model is the strongest option. |
@@ -119,9 +122,25 @@ Compare normal recent periods with current results, allowing for seasonality and
 
 **Within the next few business days:** prepare separate summaries for the shops covering customer demand, available resources, unresolved concerns, and realistic exit or restructuring choices. A brief from an independent business adviser and a focused opinion from an experienced crisis adviser are more useful at this stage than a promise to “fix the reputation.”
 
-**If the business review supports continuing:** agree a limited recovery attempt and a checkpoint—14 days is a practical example if resources allow. Set the spending cap, customer-service commitments, and decision criteria in advance. This is a management review date, not a deadline for forgiveness or proof that the brand has recovered.
+For an accessible starting point, the Florida SBDC at UCF offers no-cost consulting and serves Volusia and Seminole counties. Ask whether it can help review the two shops’ finances and strategic options or refer you to the right adviser. Use its [consulting request page](https://sbdcorlando.com/consulting/); availability and suitability still need confirmation. It does not replace legal or specialist insolvency advice. [Service area and terms](evidence.html#G10).
 
-**At the checkpoint:** continue only where the evidence supports the next investment. If the same concerns remain unresolved, demand is falling, or the cash forecast has worsened, compare management change, reduction, sale, and closure promptly. Avoid extending the effort just because money has already been spent.
+**If the business review supports continuing:** agree a limited attempt and write the decision criteria down before it begins. A communication checkpoint after about 14 days can test whether customers receive useful answers. Set a separate commercial review date using booking lead times, available cash, and obligations. A shop booked weeks ahead may need a different measurement window; a shop running short of cash may need a decision much sooner. Neither date is a deadline for forgiveness.
+
+### Write a decision sheet for each shop
+
+Draft these fields now and have the business adviser check the assumptions before committing significant spending. Keep the figures private. Leave unavailable figures marked unknown rather than filling them with guesses.
+
+| Field | What to write down |
+|---|---|
+| Shop and decision owner | Which shop this covers and who will review the figures. |
+| Starting position | Date; available cash; upcoming obligations; forward bookings; and artist capacity. Customer deposits are not automatically spare cash. |
+| Spending limit | Maximum additional recovery spending: $___ through ___. |
+| Commercial test | Required studio income after artist/service costs: $___ per ___; costs and commitments it must cover; realistic booking and artist assumptions. |
+| Dates | Communication check: ___; commercial decision: ___; shorter cash checks as needed. |
+| Earlier trigger | The cash floor, missed commitment, material capacity loss, or forecast change that requires immediate reassessment. Specify numbers or conditions: ___. |
+| Decision at review | Continue only if ___; otherwise obtain advice on ___ by ___. Name the person responsible. |
+
+**At each review:** compare results with those written criteria and update the forecast. If a trigger is reached, stop discretionary campaign spending and get prompt advice on the next business step; this does not automatically mean closing without a plan. Avoid extending the attempt merely because money has already been spent.
 
 ## The decision we would make today
 
@@ -130,4 +149,3 @@ Compare normal recent periods with current results, allowing for seasonality and
 We would keep closure and sale available as real options, and treat a cosmetic rename as a low-value standalone response. We would not recommend closing both businesses solely from the public controversy: the evidence reviewed does not establish their commercial condition.
 
 The best adviser for this stage is someone willing to tell you that the business plan needs to change—or that you should leave—if that is what the evidence supports. A credible engagement must leave room for that answer.
-

@@ -1,6 +1,6 @@
 # Reviewer guide
 
-This package is prepared for Brissa Behrens by AI Freelancer, version 1.1, November 16, 2026. Its public entry point is https://aifreelancer.co/clients/Florida%20Tattoo/.
+This package is prepared for Brissa Behrens by AI Freelancer, version 1.2, November 16, 2026. Its public entry point is https://aifreelancer.co/clients/Florida%20Tattoo/.
 
 ## Read in this order
 
@@ -19,6 +19,7 @@ The same reports are available as ordinary HTML. All substantive text is deliver
 - Check that a reader with no previous context understands who Brissa, Taylor, and Temperance are, and why two shops appear in the reports.
 - Check that advice is realistic for an owner doing the work herself, and that the unlimited-budget report adds meaningful professional execution.
 - Challenge the third report’s recommendation: does it fairly compare recovery, management change, rebranding, reduction, sale, and closure without assuming commercial failure or promising a rescue?
+- Check that an existing apology is assessed before another is issued, the apology addresses Brissa’s own words without borrowing Temperance’s goodwill, and business thresholds use actual records rather than invented deadlines.
 - Test navigation, mobile reading, draft-copy controls, source links, and print layout where possible.
 - Distinguish facts, observed source text, professional judgment, and proposed actions. Suggested statements are drafts, not evidence of something already published.
 - Flag new material evidence with its original URL and review date. Preserve older observations as dated records rather than silently overwriting them.
@@ -27,7 +28,7 @@ The same reports are available as ordinary HTML. All substantive text is deliver
 
 The commission accepts the business’s reported account and fixes. It does not call for a fresh incident investigation or staff-safety and operations program. The third report explicitly includes strategic evaluation of viability, restructuring, and exit; actual financial or legal assessments still require business records and the relevant adviser. The circulated screenshot is accepted as genuine; do not reintroduce an “unverified screenshot” label. The report should speak directly to Brissa without leading with internal research assumptions.
 
-Private resolution is not established by the public material reviewed. The full spoken response video was not reviewed. Keep outreach conditional on prior contact and the other person’s wishes. Do not infer endorsement or reconciliation from a public request to stop harassment. Keep the employment statement specific to Subculturez.
+Private resolution is not established by the public material reviewed. The full spoken response video was not reviewed. Before using an outreach draft or finalizing a statement that names Temperance, Brissa must check her full current communications and any stated boundaries. This condition does not delay urgent customer help. Keep outreach conditional on prior contact and the other person’s wishes. Do not infer endorsement or reconciliation from a public request to stop harassment. Keep the employment statement specific to Subculturez.
 
 The professional ranking is an advisory judgment. No firm was contacted and no service has been retained. Do not invent pricing, results, commitments, training, customer losses, implemented changes, recovery probabilities, or financial viability. Treat the crisis paper as conceptual research and the application to these shops as our judgment.
 

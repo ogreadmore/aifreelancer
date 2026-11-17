@@ -1,10 +1,12 @@
 # If budget were unlimited
 
-**Prepared for Brissa Behrens • November 16, 2026 • Version 1.0 • AI Freelancer**
+**Prepared for Brissa Behrens • November 16, 2026 • Version 1.1 • AI Freelancer**
 
 Brissa, an exceptional PR team would make it easier for you to respond calmly, take responsibility for your own words, and look after customers. Its first investment would be experienced people doing the work around you: preparing clear messages, handling questions, and helping you follow through.
 
 The priorities would stay the same as in the coaching report. More resources would buy better execution, specialist judgment, and sustained attention. Your voice and conduct would still determine whether the response feels credible.
+
+Before commissioning a large team, read [Is PR enough?](pr-options.html). It assesses whether a recovery campaign is worth pursuing and compares changes to the business, sale, and closure. The capabilities below do not guarantee that either shop can recover.
 
 ## The recommended team, ranked
 

@@ -2,7 +2,7 @@
 
 **Prepared for Brissa Behrens • Subculturez Tattoo & Piercing and Anatomy Divine**
 
-**November 16, 2026 • Version 1.0 • Prepared by AI Freelancer**
+**November 16, 2026 • Version 1.1 • Prepared by AI Freelancer**
 
 Brissa, the priority now is to rebuild confidence in how you lead your shops. You have already taken action by ending Taylor’s employment. Your next step is to make that action clear, address your dismissive comments, and give customers a respectful, consistent response.
 

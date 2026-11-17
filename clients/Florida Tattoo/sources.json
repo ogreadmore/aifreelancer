@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "review_date": "2026-11-16",
   "sources": [
     {
@@ -20,7 +20,8 @@
       "used_in": [
         "brief",
         "coaching",
-        "expert-strategy"
+        "expert-strategy",
+        "pr-options"
       ]
     },
     {
@@ -41,7 +42,8 @@
       "used_in": [
         "brief",
         "coaching",
-        "expert-strategy"
+        "expert-strategy",
+        "pr-options"
       ]
     },
     {
@@ -80,7 +82,8 @@
       "used_in": [
         "brief",
         "coaching",
-        "expert-strategy"
+        "expert-strategy",
+        "pr-options"
       ]
     },
     {
@@ -136,7 +139,8 @@
       "used_in": [
         "brief",
         "coaching",
-        "expert-strategy"
+        "expert-strategy",
+        "pr-options"
       ]
     },
     {
@@ -155,7 +159,8 @@
       "limits": "Shared ownership does not establish that Taylor worked at this shop. The published email needs to be actively monitored before it is offered as a response channel.",
       "used_in": [
         "brief",
-        "coaching"
+        "coaching",
+        "pr-options"
       ]
     },
     {
@@ -314,6 +319,77 @@
       "used_in": [
         "coaching",
         "expert-strategy"
+      ]
+    },
+    {
+      "id": "G05",
+      "category": "Crisis research",
+      "title": "Moral judgments and the limits of familiar crisis responses",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/1468-5973.70054",
+      "publisher": "Rongting Niu, Nicholas Eng, Yi Zhao and Yan Jin · Journal of Contingencies and Crisis Management",
+      "published": "2025-05-07",
+      "reviewed": "2026-11-16",
+      "type": "Peer-reviewed conceptual paper",
+      "observation": "The paper examines morally charged crises, the limits of established response approaches, and possible links between moral emotions and rejection of an organization.",
+      "supports": [
+        "Take persistent trust damage seriously when evaluating PR",
+        "Avoid promising that a standard reputation-repair response will be sufficient"
+      ],
+      "limits": "This is a conceptual framework, not an experiment or a study of these shops. It provides neither a recovery probability nor a business-closure recommendation. Its relevance here is an analytical application.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G06",
+      "category": "Platform rules",
+      "title": "Google review continuity after ownership changes, renaming, or closure",
+      "url": "https://support.google.com/business/answer/3098204",
+      "publisher": "Google",
+      "reviewed": "2026-11-16",
+      "type": "Official platform policy",
+      "observation": "Google says reviews remain for a new owner or manager using the same business name, minor name changes, and temporarily or permanently closed profiles. Larger changes are subject to different treatment; removal is not automatic.",
+      "supports": [
+        "A rename, transfer, or closure is not a reliable review reset"
+      ],
+      "limits": "Profile treatment depends on the actual change and applicable rules. This does not predict search visibility or audience reactions outside Google.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G07",
+      "category": "Platform rules",
+      "title": "Google Business Profile rules for genuine rebranding",
+      "url": "https://support.google.com/business/answer/3038177",
+      "publisher": "Google",
+      "reviewed": "2026-11-16",
+      "type": "Official platform policy · Rebranding section",
+      "observation": "Distinguishes eligible name changes on an existing profile from changes treated as a new business. Requires accurate real-world representation.",
+      "supports": [
+        "Check the actual profile requirements before changing a business name"
+      ],
+      "limits": "This is platform guidance, not a guarantee of review removal or a recommendation to create a new listing to evade a business’s history.",
+      "used_in": [
+        "pr-options"
+      ]
+    },
+    {
+      "id": "G08",
+      "category": "Business alternatives",
+      "title": "SBA guidance on finances, sale, ownership transfer, and closure",
+      "url": "https://www.sba.gov/counseling/manage-your-business/",
+      "publisher": "U.S. Small Business Administration",
+      "reviewed": "2026-11-16",
+      "type": "Official business guidance · Manage finances and Close or sell sections",
+      "observation": "Recommends financial planning, valuation before sale, qualified advice, and an orderly approach to obligations when exiting a business.",
+      "supports": [
+        "Compare options using business records",
+        "Obtain advice before selling or closing"
+      ],
+      "limits": "General U.S. guidance, not an assessment of either shop or a complete Florida legal checklist. The earlier close-or-sell URL redirects to this consolidated page.",
+      "used_in": [
+        "pr-options"
       ]
     }
   ]

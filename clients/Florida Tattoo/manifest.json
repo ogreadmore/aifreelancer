@@ -1,71 +1,81 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "review_date": "2026-11-16",
   "files": [
     {
       "name": "README.md",
-      "bytes": 2138,
-      "sha256": "7725de1190b79336fa32c40a1e9d88049045bcfa38a2f3dd9fef37e7bfc2211a"
+      "bytes": 2394,
+      "sha256": "a79071e7b091183c1ed47db4b0840c93e15007c1c6be6aec96c36455d9aabcf5"
     },
     {
       "name": "brief.md",
-      "bytes": 3448,
-      "sha256": "7f41fc685d97962881a280278488fe7af438bd83860ba196ac13063abb0a911a"
+      "bytes": 3840,
+      "sha256": "5727aa2f04e9afc8fdef6cd90be3ace1a78d8468a3fa28c94ecf391c85971860"
     },
     {
       "name": "build.mjs",
-      "bytes": 11430,
-      "sha256": "6f352b149f32c5dae30fdbefe4a436c382757853a5fa70fc6d397ceb37bae409"
+      "bytes": 11518,
+      "sha256": "6b2243c0c3704f56012e546d02e2118266faebfe10580166ff7131e37c158cfa"
     },
     {
       "name": "coaching.html",
-      "bytes": 24061,
-      "sha256": "ba407a3fb54f70219b55036b127874066b0fca16d332b2d9bf65c78025c99517"
+      "bytes": 24098,
+      "sha256": "b7951e45be56f5cecd610244a8518e3ec6bc84560f2b296c591cd5c25006cfd0"
     },
     {
       "name": "coaching.md",
       "bytes": 15443,
-      "sha256": "3dce916d6e548b293c990d866df87ba46747135a049082044a6e458eaed77eb5"
+      "sha256": "32a770f8d1404bca248e2f5cf9ebb78dd2461d8303ff7955c5e42dcb2a50c1d4"
     },
     {
       "name": "evidence.html",
-      "bytes": 25880,
-      "sha256": "ee98bc04f8d826d6de8f7bc3d024dcfea1c5941f0974ddc6c40b6e2d817b9c45"
+      "bytes": 31045,
+      "sha256": "621463654d42c81d0120f2f2f40f1f4c27119dfa4a8b0d64dee871d8e164c225"
     },
     {
       "name": "expert-strategy.html",
-      "bytes": 23855,
-      "sha256": "f2a1ee0a369da38ca05d7c6b13484b8309dd3792058e6d844c56b2148ff18af9"
+      "bytes": 24178,
+      "sha256": "2cb8375deec6d98739e08fb1b2926191b92d5c05f7888c0c404175957821d522"
     },
     {
       "name": "expert-strategy.md",
-      "bytes": 15996,
-      "sha256": "b442e1080df93d4d9c9bff7ed90a3ebc089e9def7815f1ee5421adc50d89730d"
+      "bytes": 16256,
+      "sha256": "4cf3ed5a6023d96b3831fdfc91a0e4131039342ae5dc20a18d5aa83844f849ed"
     },
     {
       "name": "index.html",
-      "bytes": 1670,
-      "sha256": "e06325bcd735ebc8be7f99c6f80d6c080feb327117dfe0004fdefe64d210cf6f"
+      "bytes": 2147,
+      "sha256": "75ab4b5f9e6d6ccc7e323f071a6585997c275e0c88a18adc0fb64698c78f7422"
     },
     {
       "name": "llms.txt",
-      "bytes": 555,
-      "sha256": "78d27fd3a6c715a5c1e950f8def083841fe016647025efaa13a51499f0e93d48"
+      "bytes": 599,
+      "sha256": "70b9aee23353029f839758ed87b77fbff675b4b51528b9570e726ef80add6091"
+    },
+    {
+      "name": "pr-options.html",
+      "bytes": 22457,
+      "sha256": "49ea117569d10cbc13fde2a7dc66d7af3d8b65ef6105f0b1dc063864202024c2"
+    },
+    {
+      "name": "pr-options.md",
+      "bytes": 15292,
+      "sha256": "938b71e0c5fbc981c85a4888896cf77a6d0e33e608616fc04f9139ee402741af"
     },
     {
       "name": "reports.json",
-      "bytes": 845,
-      "sha256": "1940648bee54fade3956e22b050009bc06609e8677e04972080a442f1f745318"
+      "bytes": 1455,
+      "sha256": "9788b0c71a84eb1bde6a60939a6693cd4d61e3a83bfdcd62fe4c1c2a3b700272"
     },
     {
       "name": "review-bundle.md",
-      "bytes": 49062,
-      "sha256": "e24e99b0c7d7d20bd2d27c83284ab4b1b403353eaffe3f3827ce135381efb097"
+      "bytes": 68527,
+      "sha256": "6c71d15b8df0b3ee27acd67c11c96f9c88e277d242d862c97a090fee1fd6d387"
     },
     {
       "name": "reviewer-guide.md",
-      "bytes": 3381,
-      "sha256": "8bbc8abd036d3dd325731b40007b856f606abcfa0d014d5ea5b804dc29299c00"
+      "bytes": 4010,
+      "sha256": "82d775e9199c174c4d7fb2a1bc97ab60a47501eb72cfe8ae3fd640e85afb3710"
     },
     {
       "name": "site.js",
@@ -74,8 +84,8 @@
     },
     {
       "name": "sources.json",
-      "bytes": 14448,
-      "sha256": "74777f2db11f3a26bf17fd1912f7055b0bff55ca9dd2f7044443932a7a7f018a"
+      "bytes": 18296,
+      "sha256": "b0313395ff188155ce69a7e1db6053d256b3a6899f9650afa930f74f4d8a214c"
     },
     {
       "name": "styles.css",

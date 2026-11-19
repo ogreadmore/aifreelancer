@@ -1,6 +1,6 @@
 # The Aaron Oliphant Inquiry
 
-Public working edition, 2026-11-14. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
+Public working edition, 2026-11-19. Generated from the reviewed HTML manuscript; full report chapters and expanded retrieval details follow.
 
 Instructions
 
@@ -26,7 +26,7 @@ Start here / Research checkpoint
 
 ## Pick up the investigation here.
 
-Editorial review: 2026-11-15T03:27:47Z  · Content updated: 2026-11-15T03:27:47Z  · [Edit note](./index.html#edit-0178-start-here)
+Editorial review: 2026-11-19T20:11:54Z  · Content updated: 2026-11-19T20:11:54Z  · [Edit note](./index.html#edit-0179-start-here)
 
 **The Devaney investigation gained a stronger shared-DNA lead.** The ancestor responsible and any connection to Aaron remain unresolved. [Read what strengthened and what remains unproved](./index.html#devaney-dna-update).
 
@@ -34,7 +34,7 @@ Editorial review: 2026-11-15T03:27:47Z  · Content updated: 2026-11-15T03:27:47Z
 
 - **Resolve the genetic comparison and historical anchor.** Use the reply’s [consent-based route to seek finer comparison data](./index.html#R01) and seek a [documented independent male-line collateral](./index.html#R02). Missing finer data are a dependency, not permission to substitute surname counts.
 
-- **Retrieve exact Aaron-related originals.** Prioritize the [Nash service file](./index.html#R04), [Rutherford witness identity/source test](./index.html#R09), [Early 7/23 entry](./index.html#R05) and [identified Hancock papers](./index.html#N92) through their recorded access routes. No parents are promised; do not repeat completed catalogue work without a new pointer.
+- **Retrieve exact Aaron-related originals.** Prioritize the [Nash service file](./index.html#R04), [Rutherford witness identity/source test](./index.html#R09), [original Early 7/23 grant and drawer list](./index.html#R05) and [identified Hancock papers](./index.html#N92) through their recorded access routes. No parents are promised; do not repeat completed catalogue work without a new pointer.
 
 - **Use the qualified household comparison.** [The two census originals and selected Edgefield probate originals are now read](./index.html#N13); the census’s anonymous young male remains an age fit only, with the probate testator’s named son William an alternative to test. The wider inventory remains incomplete. Any next family search needs a named identity or kinship discriminator, not another surname screen.
 
@@ -50,7 +50,9 @@ Completed checks and corrections
 
 **Latest successor corrections:** [Welch’s next deed is 200 acres for $50](./index.html#N93), and the adjacent grant recital names Nicholas Welch in 1772. [A Brown-to-Blackwood Richland disposal](./index.html#N94) and [two further Brown disposals](./index.html#N95) add title comparison, with the January day unresolved. The five acquisition candidates and three disposals are separate counts. None supplies an Aaron identity, origin or kinship bridge. [The marriage/pension comparison](./index.html#N99) and [Pilcher continuity records](./index.html#N100) remain subsidiary tests of DNA matches’ submitted ancestries. Further DNA-match pedigree expansion is deferred. Direct Aaron records and an exact bilateral Y-variant comparison take priority; the known relatives do not assign the chromosome 3 group to one paternal grandparent.
 
-**Latest source test:** [The lifelong witness’s census comparison](./index.html#lundy-census-original) found an age-compatible 1850 William and a broad White Plains postal overlap in 1860, but no specific childhood relationship to the younger Aaron Devany. A suggested death certificate concerns the witness’s wife. Surname ranks and historical confidence remain unchanged.
+**November land record.** Both lots attributed to Aaron appear under Sharps district, Hancock County, in the published 1820 lottery list. [See the entries on pages 247 and 248](./index.html#N62).
+
+**Earlier witness search.** [The lifelong witness’s census comparison](./index.html#lundy-census-original) found an age-compatible 1850 William and a broad White Plains postal overlap in 1860, but no specific childhood relationship to the younger Aaron Devany. A suggested death certificate concerns the witness’s wife. Surname ranks and historical confidence remain unchanged.
 
 **New archive reference:** [Samuel Grant Oliphant’s genealogical papers have a specific 1977 accession locator](./index.html#samuel-grant-archive). [HSP confirmed custody of the Samuel Grant papers and FC Ol family files](./index.html#COR16). Its 13 October answer says neither has a detailed inventory and assessing relevance needs deeper investigation. No Aaron item or historical paper has been supplied; paid research remains deferred. [GSP does not hold the underlying records](./index.html#COR15), and its printed volume remains unidentified. The [fuller historical-file reading](./index.html#roddy-source-successor) adds underlying-source leads, without changing the pedigree or surname rankings.
 
@@ -62,7 +64,7 @@ Completed checks and corrections
 
 The library groups [source records and captures](https://drive.google.com/drive/folders/1gD572DgvmVej-FQ9Hp6rJdn8tVhpCvRy), [DNA evidence](https://drive.google.com/drive/folders/1WrXayr8sZeqpn9-_zxem9oCSvOdvCCzr), [working research notes](https://drive.google.com/drive/folders/136UtFW-ZEs9C8Uh_F6s9wxHrIqU3bQgq) and [evidence catalogs](https://drive.google.com/drive/folders/1he9GST_PoaiRY58GMDYYgRyCGJS5axDV). Historical notes may contain superseded ideas; the current assessment belongs on this site. Older notes may use local filenames: the catalogs connect original paths and stable ART source identifiers to the saved evidence. An uploaded source is not necessarily fully read or independently verified.
 
-**Latest restricted preservation, 14 November 2026:** the [research supplement](https://drive.google.com/file/d/1tsJjXCuGv5CzVDbcCj2jNWWsQmTmR_SQ/view?usp=drivesdk) preserves the recovered NARA reply, bounded correspondence and current DNA reviews, and integrity receipt. Thirteen ZIP members are one cloud file, advancing the recorded incremental transfer total to **1,939**. All **2,064 local source files** were rehashed against their saved predecessors with no changes; local link checks found no missing targets. These are preservation checks, not new historical proof. Local CRC/member hashes and remote name, size, destination and existing named-user access were verified; remote bytes and restoration were not tested. The [26 October source packet](https://drive.google.com/file/d/1u-PoEHkXSsEsnjv-ELTRNzGM3ek0IK9q/view?usp=drivesdk) retains the latest Hancock deed spread; later corrected readings control.
+**Restricted sources.** The [six-page lottery extract](https://drive.google.com/file/d/1inrlkG711UeGpUq3-vnO1urIBlImbQ0e/view?usp=drivesdk) supplied on 19 November includes the title, introduction and both entries. **14 November archive check.** the [research supplement](https://drive.google.com/file/d/1tsJjXCuGv5CzVDbcCj2jNWWsQmTmR_SQ/view?usp=drivesdk) preserves the recovered NARA reply, bounded correspondence and current DNA reviews, and integrity receipt. Thirteen ZIP members are one cloud file, advancing the recorded incremental transfer total to **1,939**. All **2,064 local source files** were rehashed against their saved predecessors with no changes; local link checks found no missing targets. These are preservation checks, not new historical proof. Local CRC/member hashes and remote name, size, destination and existing named-user access were verified; remote bytes and restoration were not tested. The [26 October source packet](https://drive.google.com/file/d/1u-PoEHkXSsEsnjv-ELTRNzGM3ek0IK9q/view?usp=drivesdk) retains the latest Hancock deed spread; later corrected readings control.
 
 **Earlier restricted preservation, 6 October 2026:** the [reviewed research-evidence supplement](https://drive.google.com/file/d/1zf-UwB0pJe4fe3lOwpf2wAL982acEk6c/view?usp=drivesdk) preserves eleven privacy-reviewed research derivatives plus README and manifest, thirteen ZIP members. One metadata/permissions-verified cloud transfer advances the incremental ledger from **1,931 to 1,932**, not a whole-library recount. Exact name, size, destination and named owner/reader permissions were verified; local hashes and CRC were checked. Remote bytes and restoration were not tested. Preservation adds no historical original, genotype or confidence change.
 
@@ -208,7 +210,7 @@ Explain the genetic difference from other tested Oliphant branches, including wh
 
 ## The American story is clearer. The older connection is still missing.
 
-Editorial review: 2026-10-08T07:04:42Z  · Content updated: 2026-10-08T06:53:48Z  · [Edit note](./index.html#edit-0160-findings)
+Editorial review: 2026-11-19T20:11:54Z  · Content updated: 2026-11-19T20:11:54Z  · [Edit note](./index.html#edit-0179-findings)
 
 No parent, immigrant generation, overseas home, or surname-transition event has yet been established for Aaron. No single origin theory currently deserves to be called probable.
 
@@ -217,6 +219,8 @@ The strongest progress is a firmer framework for testing those questions. Contem
 Recorded
 
 ### Aaron’s wife and Georgia household have a solid anchor.
+
+The 1820 lottery compilation places Aaron in Sharps district, Hancock County, for two separate land awards. [Both entries and their sources](./index.html#N62).
 
 A deed dated 29 January 1821 calls Aaron of Hancock County, Georgia, and identifies his wife Rebecca as a daughter of deceased Solomon Rainwater. It names *her* father, not Aaron’s. His estate administration establishes that he was dead by 14 December 1826. [[1]](./index.html#s1) [[4]](./index.html#s4)
 
@@ -682,7 +686,7 @@ Credit: The Rainwater Collection, Susan Chance-Rainwater and R. Steven Rainwater
 
 ## A life comes into view.
 
-Editorial review: 2 October 2026, 20:55:07 EDT  · Content updated: 2 October 2026, 20:55:07 EDT  · [Edit note](./index.html#edit-0147-timeline)
+Editorial review: 2026-11-19T20:11:54Z  · Content updated: 2026-11-19T20:11:54Z  · [Edit note](./index.html#edit-0179-timeline)
 
 Dates below belong to documents. A purchase does not necessarily establish residence, and people with the same name are not automatically the same person.
 
@@ -698,11 +702,17 @@ An Aaron Oliphant helped prove Thomas Welch’s verbal will in Rutherford County
 
 An Aaron bought goods at Solomon Rainwater’s December 1814 estate sales. Original registers name Aaron in debt proceedings on 26 December 1816 and 18 March 1817. The family context makes the earlier identity plausible; the sale alone proves neither residence nor kinship. [[2]](./index.html#s2)
 
+- 1820 Hancock, GA
+
+### Two land awards name the same home district
+
+The published lottery list records Aaron Oliphant and Aaron Ollephant in Sharps district, Hancock County. The prizes were in Appling and Early counties. A later grant and a deed each identify one of these lots. [Read the two rows and their limits](./index.html#N62).
+
 - 29 Jan 1821 Hancock, GA
 
 ### A marriage relationship stated explicitly
 
-The Pendleton deed identifies Aaron of Hancock County and his wife Rebecca, Solomon Rainwater’s daughter. This is the earliest secure Georgia residence statement found in this investigation. [[1]](./index.html#s1)
+The Pendleton deed identifies Aaron of Hancock County and his wife Rebecca, Solomon Rainwater’s daughter. This dated deed directly identifies the married couple and gives Aaron’s county of residence. [[1]](./index.html#s1)
 
 - 1823–24 Two distinct tracts
 
@@ -848,7 +858,7 @@ No positive evidence currently establishes a Jamaica route or places a name chan
 
 ## The evidence still needed.
 
-Editorial review: 2026-11-15T03:27:47Z  · Content updated: 2026-11-15T03:27:47Z  · [Edit note](./index.html#edit-0178-records)
+Editorial review: 2026-11-19T20:11:54Z  · Content updated: 2026-11-19T20:11:54Z  · [Edit note](./index.html#edit-0179-records)
 
 The current independent original-record focus is the federal Nash service file and a source-bearing Rutherford identity or relationship link. [Check existing requests and correspondence](./index.html#correspondence) before contact. The other targets retain their exact references, pending dependencies and source-verification roles so work is not repeated. “Unexamined” means the underlying record has not been read; it does not promise that the record names an ancestor.
 
@@ -892,11 +902,11 @@ Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1muSH
 
 Restricted evidence: [Supporting review 1](https://drive.google.com/file/d/1Qbta3xC9_vuQQAyD0hfY9rDxJir9tRt1/view?usp=drivesdk) · [Supporting review 2](https://drive.google.com/file/d/1muSHxRYeXo1u65kb_KQmkY48phacX0fK/view?usp=drivesdk). Access requires Taylor’s permission; historical drafts do not authorize sending messages.
 
-05 · Georgia Archives / FamilySearch Early County district 7, lot 23 Paid retrieval deferred · originals unread
+05 · Georgia Archives / FamilySearch Early County district 7, lot 23 1820 printed entries read · Early original pending
 
 **Reference:** original grant and drawer entry for Aaron Oliphant; Georgia Archives **003-05-029, VOL 1 3231**, Early 1820 districts 7–8, container **16891**, [object 178817](https://georgiaarchives.as.atlas-sys.com/repositories/2/archival_objects/178817). FamilySearch [catalogue 73430](https://www.familysearch.org/en/search/catalog/koha:73430), film **519018**, DGS **8657184** (districts 5–10); drawer index **7900960**. Exact image not located.
 
-**Question:** what residence, district, draw and grant details distinguish this Aaron? Compare the already-read Appling 1/98 grant, rather than replacing it.
+Lucas prints the same home district for both lots. Check the Early manuscript grant and state drawer list for exact spellings, annotations and grant dates. [Printed entries and citations](./index.html#N62).
 
 **Route:** an authorized FamilySearch center/affiliate reader or onsite archival retrieval. A later deed names the tract; the underlying grant and drawer entry remain unread. This is not a demonstrated subscription paywall. [A combined Georgia Archives access enquiry](./index.html#N62) covering this volume and the exact Hancock loose case was accepted on 1 October. A separate fixed-scope onsite-copy quote enquiry has now been sent through the archive’s researcher-referral route for both targets. [Paid onsite retrieval is deferred while existing-copy and lower-cost routes are checked](./index.html#N62). The 2 October archive reply confirms onsite Reference Room microfilm for the Early grants and no distance copy service. No exact reel was supplied; no work was commissioned and the originals remain unread.
 
@@ -1046,10 +1056,11 @@ Current request status · private recipients, addresses and message bodies are n
 | COR10 Independent onsite copy researcher | [Early district 7 lot 23](./index.html#N62) and [Hancock C 613886](./index.html#N92) — bounded copying quote. | 1 Oct 2026 **Estimate received; paid retrieval deferred** | Wait for existing-copy/contact checks; no estimate accepted or order placed. |
 | COR11 Richmond County Probate Court | [William A. Davaney letters: temporary 7 p 175; permanent 14 p 89](./index.html#N23) — copies and related estate papers. | 1 Oct; procedure/clarification 6 Oct; reply 8 Oct 2026 **Fee reply received; estate and total unresolved** | The latest reply reiterates $10 per research request. It does not settle whether both references are one estate/fee, acceptable unknown case fields, case identity or copying total. Use the supplied mail/onsite procedure for any later bounded retrieval; do not repeat the clarification. No historical papers, paid search or order. |
 | COR12 South Carolina Department of Archives and History | [PK 034/C 0907 versus film 1025480/DGS 8687026](./index.html#N66) — Grisham-register crosswalk and loose-paper route. | 1 Oct 2026 **Submission attempted; delivery uncertain** | Two dated reply-account queries found no acknowledgement trace; delivery remains uncertain. Resolve before resubmission; no acceptance or answer verified. |
-| COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Draft prepared 30 Sep 2026 **Draft only; unsent** | Consider the exact header enquiry if useful; no Aaron entry or request acceptance established. |
+| COR13 Greenville South Carolina Room | [schs 51-510 / record 20203](./index.html#N85) — fiche heading and possible Nash coverage. | Enquiry 18 Nov · reply 19 Nov 2026 **Answered · library requires an independent human enquiry** | Staff declined the AI-assisted enquiry. Fiche and unit coverage remain open. This assistant enquiry is closed. |
 | COR14 Existing genealogy research contact | [Aaron compilations](./index.html#N17) — underlying birth, middle-name and parentage citations. | Sent 2 Oct; replied 6 Oct 2026 **Further derivative files received; original citations still missing** | Additional historical correspondence review was offered. Retain the source-quality limits and [specific underlying-source leads](./index.html#roddy-source-successor); do not repeat the original question. No contemporary parentage citation supplied. Any proposed individual follow-up requires an owner-reviewed draft. |
 | COR15 Genealogical Society of Pennsylvania | [Samuel Grant collection, FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — present repository and finding-aid crosswalk. | Reply and clarification received 7 Oct Eastern / 8 Oct UTC 2026 **Printed volume held; underlying records not held** | GSP clarification answered: its printed volume remains unidentified and it does not hold the underlying records. That reply alone established neither HSP custody nor loss. [HSP has since confirmed custody and supplied two catalogue records](./index.html#COR16); follow the [source assessment](./index.html#samuel-grant-archive) for the unread inventory and contents. No originals supplied, copying ordered or paid work commissioned. Do not repeat the answered GSP enquiry. |
 | COR16 Historical Society of Pennsylvania | [FC/Ol/Box58.1–58.8](./index.html#samuel-grant-archive) — custody, inventory and catalogue crosswalk. | 8 Oct enquiry; 9 Oct custody reply; 13 Oct inventory answer **Answered; no detailed inventory; historical papers unread** | The two collections are held and available for onsite or remote investigation, but neither has a detailed finding aid or itemized inventory. Relevance requires deeper research; no Aaron item, complete crosswalk or historical copy was supplied. Paid work remains deferred. Do not repeat the answered custody or inventory questions. |
+| COR17 Dallas Public Library, Genealogy & History | [Aaron’s two Georgia lottery entries](./index.html#N62) | Enquiry 18 Nov · source received 19 Nov 2026 **Answered · printed pages supplied and read** | Lucas, pp. 247–248, records both lots in Hancock, Sharps. Subsequent checks concern the original state records. |
 
 These are bounded current statuses, not an exhaustive mailbox audit. Continue existing threads in place; use verified institutional routes for new enquiries and retain delivery/reply evidence privately. A request, reply or estimate is not a copying order or fee commitment.
 
@@ -1384,7 +1395,7 @@ Research notes / Evidence behind the report
 
 ## Leads, searches and what remains unresolved.
 
-Editorial review: 2026-11-15T03:27:47Z  · Content updated: 2026-11-15T03:27:47Z  · [Edit note](./index.html#edit-0178-research-notes)
+Editorial review: 2026-11-19T20:11:54Z  · Content updated: 2026-11-19T20:11:54Z  · [Edit note](./index.html#edit-0179-research-notes)
 
 This site is the central public record of the investigation. Useful findings belong here even when they do not establish an ancestor.
 
@@ -2512,9 +2523,21 @@ Restricted 30 September supporting records: [Supporting review](https://drive.go
 
 **Later parent-set access recovery:** [N71](./index.html#N71) directly reads Greenville record 20203 and exact copy references, retaining the unproved 51-510 inclusion and Nash-coverage limits.
 
-N62 · Early County district 7 lot 23: access and copying enquiries
+N62 · Aaron’s two entries in the 1820 Georgia land lottery
 
-Reviewed 2 October 2026 · Paid onsite retrieval deferred; grant and drawer entry unread · Earlier bounded access reading and current retrieval status; no historical original recovered.
+Reviewed 19 November 2026 · Both printed entries read. The manuscript Early grant and drawer register remain outstanding.
+
+Silas Emmett Lucas Jr., The Third or 1820 Land Lottery of Georgia, lists two winners’ entries with the same given name and home district.
+
+- **Page 247.** Aaron Oliphant, Hancock County, Sharps militia district, drew Appling lot 98, land district 1.
+
+- **Page 248.** Aaron Ollephant, Hancock County, Sharps militia district, drew Early lot 23, land district 7.
+
+The [1824 Appling grant](https://www.familysearch.org/ark:/61903/3:1:3QHV-63CH-ZL3K) names Aaron Olliphant of Sharps district, Hancock. The [1826 Hancock deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99K-7) identifies Aaron as the drawer of the Early lot. The exact tract matches and the identical home district strongly support one drawer. This places him in the 1820 Hancock lottery records before the January 1821 deed naming Rebecca. His arrival date and parents remain unknown. Neither printed entry has a service or family-status abbreviation. [Dallas library catalogue](https://discover.dallaslibrary.org/search/card?id=e408cd2f-f68d-5d00-ad61-fadba6d6a1c5&entityType=FormatGroup) · [Restricted scan, PDF pages 5–6](https://drive.google.com/file/d/1inrlkG711UeGpUq3-vnO1urIBlImbQ0e/view?usp=drivesdk).
+
+Lucas describes an oral qualification oath. The [1818 statute](https://archive.org/details/compilationoflaw00lama/page/423/mode/1up) allowed lawful business absences under the ordinary residence rule and set a shorter-residence oath for qualifying Georgia militia service. The [1819 amendment, §14](https://dlg.usg.edu/record/dlg_zlgl_4361555), applied a later three-year cutoff to some newly eligible applicants. Neither rule dates Aaron’s move. In a [March 1820 letter from Hancock County](https://dlg.usg.edu/record/dlg_zlna_tcc469), David Kendall reported a missed muster-ground registration in his district. He supplied neither Aaron’s name nor a district identification linking his account to Sharps.
+
+The [manuscript drawer list and Early grant](./index.html#R05) may carry details omitted in print. To identify Sharps on a map, compare other Hancock drawers from this district with dated Hancock tax or militia records.
 
 **30 September 2026 — Early County district 7 lot 23.** Eight targeted public discovery queries and official access guidance yielded no original grant or fortunate-drawer entry. This is a bounded access result, not evidence that a record is absent. The previously read [1826 Hunter–Rainwaters deed](https://www.familysearch.org/ark:/61903/3:1:3Q9M-C95Y-G99K-7) identifies this lot as drawn by Aaron Oliphant. The separate Appling district 1 lot 98 grant, dated 4 March 1824 and naming Sharp's district, Hancock County, was already read; it does not replace this entry.
 
@@ -2538,7 +2561,9 @@ Restricted 30 September supporting records: [Supporting review](https://drive.go
 
 N64 · A finite commission-book test for Sharp's district
 
-Reviewed 30 September 2026 · New commission route; district unresolved · Publisher index and retrieval guidance read; no original commission or new Aaron record examined.
+Reviewed 19 November 2026 · The district name is now recorded for both lots. Its number and captain still need independent identification.
+
+The two printed entries identify the same Hancock militia district. The earlier commission search below concerns its captain and number. [See both land awards](./index.html#N62).
 
 Sharp's Hancock militia district remains unidentified. Six exact Georgia Journal pages left unread in the earlier search were attempted again: [29 June 1819 page 3](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-06-29/ed-1/seq-3/); [6 July page 6](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-07-06/ed-1/seq-6/); [13 July page 4](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-07-13/ed-1/seq-4/); [20 July page 2](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-07-20/ed-1/seq-2/); [27 July page 4](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1819-07-27/ed-1/seq-4/); and [13 February 1821 page 4](https://gahistoricnewspapers.galileo.usg.edu/lccn/sn82014251/1821-02-13/ed-1/seq-4/). The July 6 page returned access verification; the others were inaccessible or cache misses. They remain unread, not negative evidence.
 
@@ -2874,13 +2899,15 @@ Restricted supporting record: [Official retrieval review and unsigned request pa
 
 N85 · The federal service file and alternate fiche have distinct copy routes
 
-Reviewed 14 November 2026 · Substantive 28 October support reply recovered; current portal still unavailable and service file unread. Earlier route and submission observations retain their dates
+Reviewed 19 November 2026 · Greenville replied to the fiche enquiry. The federal service file remains outstanding.
+
+The South Carolina Room requires a researcher to make this enquiry independently and supplied no fiche heading or service record. The [Greenville enquiry is closed](./index.html#COR13). The separate Georgia lottery military qualification would require evidence of Georgia service. [The federal Indian Wars service index](https://www.familysearch.org/en/search/collection/2120733) offers a separate comparison. No individual Georgia service card was read in this review.
 
 The primary target is the complete federal compiled service record for **Oliphant, Aaron, private, Nash’s Regiment, South Carolina Volunteers, War of 1812, RG 94 / NAID 300392**. The previously read [Olephant reference card](https://www.familysearch.org/ark:/61903/3:1:3QHK-Q3PT-1FQD) directs filing under Oliphant, Aaron; the [principal card](https://www.familysearch.org/ark:/61903/3:1:3QHK-93PT-1XKY) names Nash and private. These are index cards, not the personal jacket. Company, individual service dates, age, birthplace and civilian identity remain unknown. Do not assign Morehead’s company or another man’s dates to this soldier.
 
 The [NARA pre-WWI guide](https://www.archives.gov/veterans/military-service-records/pre-ww-1-records) directs compiled-record requests to NATF 86. Its [served fee page](https://www.archives.gov/research/order/fees), last reviewed in 2018, quotes **$30 per case**; no current checkout total or order acceptance was obtained. The [order-status page](https://www.archives.gov/contact/order-status), last reviewed in 2022, gives **8–9 weeks** and warns of significant backlog delays. That is a published estimate, not a guaranteed delivery date or the separate reference-response allowance. The linked newer form returned Page Not Found, and the [public order portal](https://eservices.archives.gov/orderonline/start.swe?SWECmd=Start&SWEHo=eservices.archives.gov) showed server difficulties when checked on 30 September. Those access outcomes are not a historical record negative. The earlier unsent enquiry asks for the current copy route, complete jacket, all cards and attached papers, with identifying headings and order preserved. No payment or fee commitment was made.
 
-**A distinct alternate:** the [Greenville South Carolina Room](https://www.greenvillelibrary.org/sc-room) and its [official request form](https://www.greenvillelibrary.org/forms/67/records-request) provide a staff-enquiry route for unlisted record types. A bounded unsent request asks first for the title/source/unit heading of **schs 51-510, [War of 1812 service records]**, using [the previously verified record 20203 and physical copy identifiers](./index.html#N71). Membership in that intermittent fiche set, Nash coverage and an Aaron entry remain unproved. The form’s $15 military category applies only to Revolutionary/Civil War records; no price, acceptance or turnaround is confirmed for this 1812 item. Listed requests offer emailed PDF/JPEG or mailed copies, but that does not guarantee copying of this unlisted fiche. Request an Aaron entry only if the header confirms Nash coverage.
+**A distinct alternate:** the [Greenville South Carolina Room](https://www.greenvillelibrary.org/sc-room) and its [official request form](https://www.greenvillelibrary.org/forms/67/records-request) provide a staff-enquiry route for unlisted record types. The September draft asked first for the title/source/unit heading of **schs 51-510, [War of 1812 service records]**, using [the previously verified record 20203 and physical copy identifiers](./index.html#N71). Membership in that intermittent fiche set, Nash coverage and an Aaron entry remain unproved. The form’s $15 military category applies only to Revolutionary/Civil War records; no price, acceptance or turnaround is confirmed for this 1812 item. Listed requests offer emailed PDF/JPEG or mailed copies, but that does not guarantee copying of this unlisted fiche. Request an Aaron entry only if the header confirms Nash coverage.
 
 Two focused discovery queries and eight official endpoints examined or attempted supplied request particulars, not a service original or fiche header. An oversized presentation PDF was not read, and the inaccessible newer form’s indexed text was not treated as a usable current form. Earlier catalogue and twenty-item CLS screens were not repeated. Both exact drafts were **unsent at the 30 September checkpoint**. On 1 October a federal copy-route enquiry was sent and automatically acknowledged. The distinct Greenville fiche enquiry remains unsent. No order or account change occurred. See [R04](./index.html#R04) and [the identity comparison](./index.html#N83).
 
@@ -3333,7 +3360,7 @@ Source archive: Susan Chance-Rainwater and R. Steven Rainwater, [The Rainwater C
 
 ## A living report, with a memory.
 
-Editorial review: 2026-11-15T03:27:47Z  · Content updated: 2026-11-15T03:27:47Z  · [Edit note](./index.html#edit-0178-updates)
+Editorial review: 2026-11-19T20:11:54Z  · Content updated: 2026-11-19T20:11:54Z  · [Edit note](./index.html#edit-0179-updates)
 
 6 October 2026
 
@@ -4582,6 +4609,28 @@ Editor: AI research assistant. Editorial checkpoint: 2026-11-15T03:27:47Z . This
 - [research-notes](./index.html#research-notes): N32 owns the anonymous current match check; N85 owns the dated institutional reply and failed portal. The other 100 notes remain unchanged.
 
 - [updates](./index.html#updates): Append this bounded account/correspondence/integrity review; no historical identity, surname rank or confidence change.
+
+19 November 2026
+
+### Edition 01.79 · Two 1820 land awards tie Aaron to Sharps district
+
+Dallas Public Library supplied the published entries for the Appling and Early tracts. Both identify Aaron in the same Hancock militia district. The lookup advances his Georgia chronology. His parents and eligibility category remain open.
+
+Section review and edit notes
+
+Editor: AI research assistant. 2026-11-19T20:11:54Z .
+
+- [start-here](./index.html#start-here) · Link the new district evidence and the restricted source.
+
+- [findings](./index.html#findings) · Add the 1820 home district alongside the 1821 deed naming Aaron and Rebecca.
+
+- [timeline](./index.html#timeline) · Date the compiled drawer entries to 1820 and distinguish the 1821 family deed.
+
+- [records](./index.html#records) · Update the Early grant retrieval and record the outcomes of both library enquiries.
+
+- [research-notes](./index.html#research-notes) · Record both printed entries, the eligibility limits and the distinct state and federal records still needed.
+
+- [updates](./index.html#updates) · Record the source and its effect on the Hancock chronology.
 
 09 / Contact
 

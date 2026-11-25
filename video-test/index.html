@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f5">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Watch Astra and Claude edit the same AI Freelancer intro and tell Taylor which cut you prefer.">
+  <meta property="og:title" content="Which cut would you keep? · AI Freelancer">
+  <meta property="og:description" content="Astra and Claude each edited Taylor’s one-minute intro. Watch both and pick your favorite.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aifreelancer.co/video-test/">
+  <title>Video test · AI Freelancer</title>
+  <link rel="icon" href="/assets/images/favicons/favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face{font-family:DM Sans;src:url("dm-sans.woff2") format("woff2");font-weight:100 1000;font-display:swap}
+    :root{font-family:"DM Sans",system-ui,sans-serif;color:#211e28;background:#f8f7f5;--line:#d7d2da;--purple:#6440a5}
+    *{box-sizing:border-box}
+    body{margin:0}
+    a{color:inherit}
+    :focus-visible{outline:3px solid #7c45d6;outline-offset:5px}
+    .wrap{width:min(1184px,calc(100% - clamp(2.25rem,9vw,9rem)));margin-inline:auto}
+    header{border-bottom:1px solid var(--line)}
+    .mast{min-height:4.65rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:inline-flex;gap:.65rem;align-items:center;text-decoration:none;font-size:1.12rem;font-weight:750;letter-spacing:-.045em}
+    .brand img{width:1.8rem;height:1.8rem}
+    .location{color:#615969;font-size:.9rem}
+    main{padding-block:clamp(2.5rem,5vw,4.75rem) clamp(2.5rem,5vw,5rem)}
+    h1,h2,h3,p{margin:0}
+    h1{font-size:clamp(2.6rem,6.2vw,5.6rem);font-weight:650;letter-spacing:-.072em;line-height:1.04;text-wrap:balance}
+    .intro{font-size:clamp(1.02rem,1.45vw,1.24rem);color:#5a5361;line-height:1.55;max-width:52rem;margin-top:1.08rem}
+    .cuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,2.3vw,2.05rem);margin-top:clamp(1.75rem,3.4vw,3.1rem)}
+    .cut{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0}
+    .picture{position:relative;aspect-ratio:16/9;background:#121019}
+    video{display:block;width:100%;height:100%;object-fit:contain;background:#121019}
+    .play{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:3.9rem;height:3.9rem;border:1px solid #ffffffad;border-radius:50%;background:#1e1729c7;display:grid;place-items:center;cursor:pointer;color:#fff;transition:background .15s}
+    .play[hidden]{display:none}
+    .play:hover{background:#37214be8}
+    .play::after{content:"";display:block;width:0;height:0;margin-left:4px;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:13px solid currentColor}
+    .caption{padding:1.1rem 1.35rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .caption h2{font-size:clamp(1.36rem,2.1vw,1.7rem);line-height:1.1;font-weight:700;letter-spacing:-.045em}
+    .by{display:block;font-size:.81rem;font-weight:550;color:#6a6370;margin-bottom:.25rem;letter-spacing:.015em}
+    .duration{font: .91rem ui-monospace,Consolas,monospace;color:#615969;font-variant-numeric:tabular-nums}
+    .feedback{margin-top:2.1rem;border-top:1px solid var(--line);padding-top:1.7rem;display:flex;gap:2rem;align-items:center;justify-content:space-between}
+    .feedback h2{font-size:clamp(1.25rem,1.8vw,1.55rem);font-weight:650;letter-spacing:-.035em}
+    .feedback p{margin-top:.32rem;font-size:1rem;line-height:1.5;color:#5a5361}
+    .email{flex:none;display:inline-flex;align-items:center;justify-content:center;padding:.78rem 1.28rem;background:#392751;color:#fff;border-radius:8px;text-decoration:none;font-size:1rem;font-weight:650}
+    .email:hover{background:#523771}
+    @media(max-width:680px){
+      .mast{min-height:3.7rem}.cuts{grid-template-columns:1fr;gap:1.25rem}.caption{padding:.9rem 1.05rem 1rem}
+      .feedback{align-items:flex-start;flex-direction:column;gap:1.05rem;margin-top:1.5rem}.play{width:3.3rem;height:3.3rem}
+    }
+  </style>
+</head>
+<body>
+  <header><div class="wrap mast">
+    <a class="brand" href="/"><img src="/assets/images/favicons/favicon.svg" alt="">AI Freelancer</a>
+    <span class="location">Video test</span>
+  </div></header>
+  <main class="wrap">
+    <h1>Which cut would you keep?</h1>
+    <p class="intro">I gave Astra and Claude the same recording of my intro. Each made its own edit. Watch both and tell me which one you’d use.</p>
+    <div class="cuts">
+      <section class="cut" aria-labelledby="astra-title">
+        <div class="picture">
+          <video id="astra" controls playsinline preload="none" poster="astra.jpg" aria-label="Video edited by Astra">
+            <source src="astra.mp4" type="video/mp4"><track kind="captions" src="astra.vtt" srclang="en" label="English">
+            <a href="astra.mp4">Open Astra’s video</a>
+          </video>
+          <button class="play" data-for="astra" aria-label="Play Astra’s cut" hidden></button>
+        </div>
+        <div class="caption"><h2 id="astra-title"><span class="by">Made by</span>Astra</h2><span class="duration" aria-label="46 seconds">0:46</span></div>
+      </section>
+      <section class="cut" aria-labelledby="claude-title">
+        <div class="picture">
+          <video id="claude" controls playsinline preload="none" poster="claude.jpg" aria-label="Video edited by Claude">
+            <source src="claude.mp4" type="video/mp4"><track kind="captions" src="claude.vtt" srclang="en" label="English">
+            <a href="claude.mp4">Open Claude’s video</a>
+          </video>
+          <button class="play" data-for="claude" aria-label="Play Claude’s cut" hidden></button>
+        </div>
+        <div class="caption"><h2 id="claude-title"><span class="by">Made by</span>Claude</h2><span class="duration" aria-label="54 seconds">0:54</span></div>
+      </section>
+    </div>
+    <section class="feedback" aria-labelledby="feedback-title">
+      <div><h2 id="feedback-title">What worked for you?</h2><p>Tell me your favorite cut, a moment that stuck, and one thing you’d change.</p></div>
+      <a class="email" href="mailto:taylor@aifreelancer.co?subject=My%20pick%20for%20the%20video%20test&amp;body=My%20pick%3A%20%0A%0AA%20moment%20that%20stuck%3A%20%0A%0AOne%20thing%20I%E2%80%99d%20change%3A%20">Email Taylor</a>
+    </section>
+  </main>
+  <script>
+    const players = [...document.querySelectorAll('video')];
+    for (const button of document.querySelectorAll('.play')) {
+      const player = document.getElementById(button.dataset.for);
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        player.play().catch(() => { button.hidden = true; player.focus(); });
+      });
+      player.addEventListener('play', () => {
+        button.hidden = true;
+        for (const other of players) if (other !== player) other.pause();
+      });
+      player.addEventListener('ended', () => { button.hidden = false; });
+    }
+  </script>
+</body>
+</html>
